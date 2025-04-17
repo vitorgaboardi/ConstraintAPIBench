@@ -11,14 +11,28 @@ client = OpenAI(api_key="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")
 PROMPT_INSTRUCTION = """You are an expert in interpreting OpenAPI specification (OAS). Your task is to extract constraints for each parameter of the API method.
     I will provide you with the API name and description, the API method name and description, and the list of parameters, each with its name and description. For each parameter, identify and extract the following constraints:
 
-    (1) format: Specify any required input format, such as general or standard codes (e.g., ISO 8601 date/time, currency codes, country codes, IATA codes).
-    (2) values: Constraints about the values parameters can assume. This includes "max" for maximum numeric value, "min" for minimum numeric value, and "specific" for a closed set of valid values. Only use "specific" if a specific set of values is allowed. Limit the output for a maximum of 40 words.
-    (3) id: Boolean value that must be "True" if the parameter likely represents an identifier (e.g., names like "message_id", "gameId", "hotelIds", "locationInternalIDs" or descriptions mentioning that it represents an ID).
-    (4) api_related: Boolean value that must be "True" if the parameter relates to the API rather than user-specific data. Examples include pagination controls (e.g., page number, offset, limit, page size), sorting controls (e.g., sort order, fields), authentication tokens (e.g., api key, access token), system management fields (e.g., cache, debug, locale, encoding), and callback URLs.
-    (5) conditional: Describe a required dependency between parameters. This includes: the presence of one parameter requires another; at least one parameter must be included given a set of parameters; only one parameter must be included given a set of parameters; either all or no parameters must be included; at most one parameter must be included given a set of parameters; parameters have an arithmetic or relational constraint. Include only required dependencies.
+(1) format: Specify any required input format, such as general or standard codes (e.g., ISO 8601 date/time, currency codes, country codes, IATA codes).
+(2) values: Constraints about the values parameters can assume. This includes: 
+    - "max": for maximum numeric value, 
+    - "min": for minimum numeric value, 
+    - "specific": for a closed set of only acceptable values. Only use "specific" if a defined, closed list of possible values is allowed (e.g., ["google", "microsoft"]). Limit the content of this field to a maximum of 40 words.
+(3) id: Boolean value that must be "True" only if the parameter is an ID (identifier) (e.g., names like "message_id", "gameId", "hotelIds", "locationInternalIDs" or descriptions mentioning that it represents an ID).
+(4) api_related: Boolean value that must be "True" if the parameter relates to the API rather than user-specific data. Examples include pagination controls (e.g., page number, offset, limit, page size), sorting controls (e.g., sort order, fields), authentication tokens (e.g., api key, access token), system management fields (e.g., cache, debug, locale, encoding), and callback URLs.
+(5) conditional: Describe a required dependency between parameters. This includes: 
+    - the presence of one parameter that requires another, 
+    - at least one parameter must be included given a set of parameters, 
+    - only one parameter must be included given a set of parameters, 
+    - either all or no parameters must be included,
+    - at most one parameter must be included given a set of parameters, 
+    - parameters have an arithmetic or relational constraint.
+    - soft associations, such as parameters that are commonly used together for functionality (e.g., latitude and longitude).
 
-For the conditional constraint, list all related parameters separated by commas, followed by a textual description of the constraint. For instance. "latitude, longitude: both parameters must be included simultaneously".
-If any field is not applicable or cannot be inferred for a parameter, omit that field entirely from the output. 
+Additional guidelines:
+    * For the conditional constraint, list all related parameters separated by commas, followed by a textual description of the constraint (e.g., "latitude, longitude: both parameters must be included simultaneously".)
+    * If a parameter includes values constraints ("minimum", "maximum", "specific"), you must include them under "values".
+    * Do not create or use any constraint types that are not listed above (e.g., "require", "mandatory", "optional").
+    * If any field is not applicable or cannot be inferred for a parameter, omit that field entirely from the output. 
+
 The final output must be a JSON object where each key is the name of a parameter, and the value is a nested object with only the relevant constraint fields. Do not return anything other than the JSON.
 """
 
@@ -122,9 +136,6 @@ EXAMPLE_OUTPUT = """
     }
   },
   "page[offset]": {
-    "values": {
-      "min": 0,
-    },
     "api_related": true
   }
   "flightId": {
@@ -141,8 +152,8 @@ base_messages = [{"role": "system", "content": PROMPT_INSTRUCTION},
 # basic variables
 model="gpt-4.1-mini"
 tokenizer = tiktoken.get_encoding("cl100k_base")
-OAS_folder = '/home/vitor/Documents/phd/api constraints_3/dataset/tools'
-constraint_folder = '/home/vitor/Documents/phd/api constraints_3/dataset/GPT-4.1-mini/constraints/'
+OAS_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/tools'
+constraint_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/GPT-4.1-mini/constraints/'
 
 API_count = 0
 API_methods_count = 0

@@ -71,7 +71,10 @@
                     "default": "TX",
                     "required": false,
                     "constraints": {
-                        "format": "two-character state abbreviation"
+                        "format": "two-character state abbreviation",
+                        "values": {
+                            "specific": "Two-character US state abbreviations"
+                        }
                     }
                 },
                 {
@@ -134,7 +137,13 @@
                     "description": "The latitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for listings in a specific area",
                     "default": "",
                     "required": false,
-                    "constraints": {}
+                    "constraints": {
+                        "values": {
+                            "min": -90,
+                            "max": 90
+                        },
+                        "conditional": "latitude, longitude, radius, address: radius must be used with either latitude/longitude or address"
+                    }
                 },
                 {
                     "name": "zipCode",
@@ -160,7 +169,9 @@
                     "description": "The address of the property, in the format of 'Street, City, State, Zip'. Used to retrieve data for a specific property, or together with the `radius` parameter to search for listings in a specific area",
                     "default": "",
                     "required": false,
-                    "constraints": {}
+                    "constraints": {
+                        "conditional": "latitude, longitude, radius, address: radius must be used with either latitude/longitude or address"
+                    }
                 },
                 {
                     "name": "limit",
@@ -182,7 +193,12 @@
                     "description": "The radius of the search area, in kilometers. Use in combination with the `latitude`/`longitude` or `address` parameters to search for listings in a specific area",
                     "default": "",
                     "required": false,
-                    "constraints": {}
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        },
+                        "conditional": "latitude, longitude, radius, address: radius must be used with either latitude/longitude or address"
+                    }
                 },
                 {
                     "name": "offset",
@@ -211,7 +227,13 @@
                     "description": "The longitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for listings in a specific area",
                     "default": "",
                     "required": false,
-                    "constraints": {}
+                    "constraints": {
+                        "values": {
+                            "min": -180,
+                            "max": 180
+                        },
+                        "conditional": "latitude, longitude, radius, address: radius must be used with either latitude/longitude or address"
+                    }
                 }
             ]
         },
@@ -387,9 +409,6 @@
                     "default": "",
                     "required": false,
                     "constraints": {
-                        "values": {
-                            "min": 0
-                        },
                         "api_related": true
                     }
                 },
@@ -1322,9 +1341,6 @@
                     "default": "",
                     "required": false,
                     "constraints": {
-                        "values": {
-                            "min": 0
-                        },
                         "api_related": true
                     }
                 },
@@ -1610,9 +1626,7 @@
                     "description": "The property address, in the format of 'Street, City, State, Zip'. You need to provide either the `address` or the `latitude`/`longitude` parameters",
                     "default": "5500 Grand Lake Drive, San Antonio, TX, 78244",
                     "required": false,
-                    "constraints": {
-                        "conditional": "address, latitude, longitude: either address or both latitude and longitude must be provided"
-                    }
+                    "constraints": {}
                 },
                 {
                     "name": "maxRadius",
