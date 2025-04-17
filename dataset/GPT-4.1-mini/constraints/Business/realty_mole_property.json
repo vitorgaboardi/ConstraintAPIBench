@@ -73,7 +73,7 @@
                     "constraints": {
                         "format": "two-character state abbreviation",
                         "values": {
-                            "specific": "Two-character US state abbreviations"
+                            "specific": "two uppercase letters representing US states"
                         }
                     }
                 },
@@ -142,7 +142,7 @@
                             "min": -90,
                             "max": 90
                         },
-                        "conditional": "latitude, longitude, radius, address: radius must be used with either latitude/longitude or address"
+                        "conditional": "latitude, longitude: both parameters must be included simultaneously"
                     }
                 },
                 {
@@ -170,7 +170,7 @@
                     "default": "",
                     "required": false,
                     "constraints": {
-                        "conditional": "latitude, longitude, radius, address: radius must be used with either latitude/longitude or address"
+                        "conditional": "address, radius: if address is provided, radius must also be included"
                     }
                 },
                 {
@@ -197,7 +197,7 @@
                         "values": {
                             "min": 0
                         },
-                        "conditional": "latitude, longitude, radius, address: radius must be used with either latitude/longitude or address"
+                        "conditional": "radius, latitude, longitude: radius must be used with latitude and longitude or address"
                     }
                 },
                 {
@@ -232,7 +232,7 @@
                             "min": -180,
                             "max": 180
                         },
-                        "conditional": "latitude, longitude, radius, address: radius must be used with either latitude/longitude or address"
+                        "conditional": "latitude, longitude: both parameters must be included simultaneously"
                     }
                 }
             ]
@@ -1599,7 +1599,9 @@
                     "description": "The longitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
                     "default": "",
                     "required": false,
-                    "constraints": {}
+                    "constraints": {
+                        "conditional": "address, latitude, longitude: either address or both latitude and longitude must be provided."
+                    }
                 },
                 {
                     "name": "propertyType",
@@ -1626,7 +1628,9 @@
                     "description": "The property address, in the format of 'Street, City, State, Zip'. You need to provide either the `address` or the `latitude`/`longitude` parameters",
                     "default": "5500 Grand Lake Drive, San Antonio, TX, 78244",
                     "required": false,
-                    "constraints": {}
+                    "constraints": {
+                        "conditional": "address, latitude, longitude: either address or both latitude and longitude must be provided."
+                    }
                 },
                 {
                     "name": "maxRadius",
@@ -1675,7 +1679,9 @@
                     "description": "The latitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
                     "default": "",
                     "required": false,
-                    "constraints": {}
+                    "constraints": {
+                        "conditional": "address, latitude, longitude: either address or both latitude and longitude must be provided."
+                    }
                 }
             ]
         },
@@ -2657,9 +2663,7 @@
                     "description": "The latitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
                     "default": "",
                     "required": false,
-                    "constraints": {
-                        "conditional": "latitude, longitude, address: either address or both latitude and longitude must be provided"
-                    }
+                    "constraints": {}
                 },
                 {
                     "name": "squareFootage",
@@ -2695,9 +2699,7 @@
                     "description": "The longitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
                     "default": "",
                     "required": false,
-                    "constraints": {
-                        "conditional": "latitude, longitude, address: either address or both latitude and longitude must be provided"
-                    }
+                    "constraints": {}
                 },
                 {
                     "name": "address",
@@ -2705,9 +2707,7 @@
                     "description": "The property address, in the format of 'Street, City, State, Zip'. You need to provide either the `address` or the `latitude`/`longitude` parameters",
                     "default": "5500 Grand Lake Drive, San Antonio, TX, 78244",
                     "required": false,
-                    "constraints": {
-                        "conditional": "latitude, longitude, address: either address or both latitude and longitude must be provided"
-                    }
+                    "constraints": {}
                 },
                 {
                     "name": "compCount",

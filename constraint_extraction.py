@@ -5,7 +5,7 @@ import copy
 import os
 from openai import OpenAI
 
-client = OpenAI(api_key="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")
+client = OpenAI(api_key="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")
 
 ### PROMPT
 PROMPT_INSTRUCTION = """You are an expert in interpreting OpenAPI specification (OAS). Your task is to extract constraints for each parameter of the API method.
@@ -15,17 +15,16 @@ PROMPT_INSTRUCTION = """You are an expert in interpreting OpenAPI specification 
 (2) values: Constraints about the values parameters can assume. This includes: 
     - "max": for maximum numeric value, 
     - "min": for minimum numeric value, 
-    - "specific": for a closed set of only acceptable values. Only use "specific" if a defined, closed list of possible values is allowed (e.g., ["google", "microsoft"]). Limit the content of this field to a maximum of 40 words.
+    - "specific": for a closed set of only acceptable values. Only use "specific" if a defined, closed list of possible values is allowed (e.g., ["google", "microsoft"], ["image", "video", "audio"]). Limit the content of this field to a maximum of 40 words.
 (3) id: Boolean value that must be "True" only if the parameter is an ID (identifier) (e.g., names like "message_id", "gameId", "hotelIds", "locationInternalIDs" or descriptions mentioning that it represents an ID).
 (4) api_related: Boolean value that must be "True" if the parameter relates to the API rather than user-specific data. Examples include pagination controls (e.g., page number, offset, limit, page size), sorting controls (e.g., sort order, fields), authentication tokens (e.g., api key, access token), system management fields (e.g., cache, debug, locale, encoding), and callback URLs.
 (5) conditional: Describe a required dependency between parameters. This includes: 
-    - the presence of one parameter that requires another, 
-    - at least one parameter must be included given a set of parameters, 
-    - only one parameter must be included given a set of parameters, 
-    - either all or no parameters must be included,
-    - at most one parameter must be included given a set of parameters, 
-    - parameters have an arithmetic or relational constraint.
-    - soft associations, such as parameters that are commonly used together for functionality (e.g., latitude and longitude).
+    - the presence of one parameter that requires another (e.g., "startDate, endDate: if startDate is provided, endDate must also be included.")
+    - at least one parameter must be included given a set of parameters (e.g., "email, phone: at least one of these contact methods must be provided."), 
+    - only one parameter must be included given a set of parameters (e.g., "q, name and name_equals: only one of them must be used."), 
+    - either all or no parameters must be included (e.g., "latitude and longitude: both parameters must be included together."),
+    - at most one parameter must be included given a set of parameters (e.g., "promoCode, discountId: at most one of these can be included in a request."), 
+    - parameters have an arithmetic or relational constraint (e.g., "minPrice, maxPrice: minPrice must be less than or equal to maxPrice.").
 
 Additional guidelines:
     * For the conditional constraint, list all related parameters separated by commas, followed by a textual description of the constraint (e.g., "latitude, longitude: both parameters must be included simultaneously".)
@@ -41,7 +40,7 @@ EXAMPLE_INPUT = """
   "API Name": "Flight Search API",
   "API Description": "The Flight Search API retrieves available flights between two locations using IATA codes. It supports one-way and round-trip searches, passenger details, travel class, and paginated results ordered by departure time.",
   "API Method Name": "flightSearch",
-  "API Method Description": "Returns a list of flights for a given flight number. Minimum and/or maximum date can optionally be specified to limit the search. Results are ordered by departure date ascending. The next departure time is returned for pagination.",
+  "API Method Description": "Returns a list of flights.",
   "Parameters": [
     {
       "name": "originLocationCode",
@@ -91,7 +90,7 @@ EXAMPLE_INPUT = """
       "name": "page[offset]",
       "description": "start index of the requested page",
       "default": 0
-    }
+    },
     {
       "name": "flightId",
       "description": "A unique identifier for the flight. This can be used to retrieve specific flight details.",
@@ -105,16 +104,18 @@ EXAMPLE_INPUT = """
 EXAMPLE_OUTPUT = """
 {
   "originLocationCode": {
-    "format": "IATA code",
+    "format": "IATA code"
   },
   "destinationLocationCode": {
-    "format": "IATA code",
+    "format": "IATA code"
   },
   "departureDate": {
     "format": "ISO 8601 date",
+    "conditional": "departureDate, returnDate: departureDate must be before or equal to returnDate."
   },
   "returnDate": {
     "format": "ISO 8601 date",
+    "conditional": "departureDate, returnDate: departureDate must be before or equal to returnDate.
   },
   "adults": {
     "values": {
@@ -141,7 +142,6 @@ EXAMPLE_OUTPUT = """
   "flightId": {
     "id": true
   }
-}
 """
 
 ## structuring the prompt
@@ -158,6 +158,8 @@ constraint_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/GPT-4.
 API_count = 0
 API_methods_count = 0
 total_tokens = 0
+constraint_mistakes = 0
+conditional_found = 0
 
 # iterating over the categories
 categories = sorted(os.listdir(OAS_folder))
@@ -218,10 +220,16 @@ for category_index, category in enumerate(categories):
                                     parameter['constraints'] = constraint[name]
                             
                             data['api_list'][api_method_index]['parameters'] = api_method_parameters
+
+                            # just checking if there are many conditional found.
+                            if 'conditional' in constraint:
+                              print(constraint['conditional'])
+                              conditional_found+=1
+                              
                         
                         except:
                             print(response.choices[0].message.content)
-                            break
+                            constraint_mistakes+=1
 
                         API_methods_count+=1
 
@@ -230,8 +238,11 @@ for category_index, category in enumerate(categories):
 
             API_count+=1
                 
-    if API_count > 10:
-        break
+    # if API_count > 200:
+    #     break
 
+print('total input tokens:', total_tokens)
+print('conditional constraints:', conditional_found)
+print('number of constraint mistakes:', constraint_mistakes)
 print('number of APIs:', API_count)
 print('number of API methods:', API_methods_count)
