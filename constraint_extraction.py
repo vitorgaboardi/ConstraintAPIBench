@@ -69,16 +69,11 @@ EXAMPLE_INPUT = """
       "name": "adults",
       "description": "the number of adult travelers (age 12 or older on date of departure). The total number of seated travelers (adult and children) can not exceed 9.",
       "required": true,
-      "minimum": 1,
-      "maximum": 9,
-      "default": 1
     },
     {
       "name": "children",
       "description": "the number of child travelers (older than age 2 and younger than age 12 on date of departure) who will each have their own separate seat. If specified, this number should be greater than or equal to 0. The total number of seated travelers (adult and children) can not exceed 9.",
       "required": false,
-      "minimum": 0,
-      "maximum": 9
     },
     {
       "name": "travelClass",
@@ -166,7 +161,7 @@ categories = sorted(os.listdir(OAS_folder))
 for category_index, category in enumerate(categories):
     category_path = os.path.join(OAS_folder, category)
 
-    # save OAS now enriched with constraints information
+    # generate folder to save OAS now enriched with constraints information
     saving_new_OAS = os.path.join(constraint_folder, category)
     if not os.path.exists(saving_new_OAS):
         os.makedirs(saving_new_OAS)
