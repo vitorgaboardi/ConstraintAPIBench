@@ -8,7 +8,8 @@ from openai import OpenAI
 client = OpenAI(api_key="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")
 
 # use one prompt to generate all parameters from one API method simultaneosly. 
-# check the other work how I did. 
+# Update on 19/04: Do not use this part in the pipeline. My focus is not on creating API tests
+# or API calls. Therefore, there is no need to first generate the values. Try to do the pipeline without this part!
 
 PROMPT_INSTRUCTION = """You are an expert in understanding OpenAPI Specification (OAS). 
 I will provide you with information about an API, including descriptions of API method and its parameters.

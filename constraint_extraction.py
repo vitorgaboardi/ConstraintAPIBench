@@ -186,45 +186,47 @@ for category_index, category in enumerate(categories):
                         api_method_description = api_method['description']
                         api_method_parameters = api_method['parameters']
 
-                        # organising input
-                        input = {"API Name": api_name,
-                                    "API Description": api_description,
-                                    "API Method Name": api_method_name,
-                                    "API Method Description": api_method_description if len(api_method_description) < 4000 else '',
-                                    "Parameters": api_method_parameters}
-                        
-                        messages = base_messages + [{"role": "user", "content": str(input)}]
+                        # request for parameters constraints only if there are any parameter.
+                        if len(api_method_parameters) > 0:
+                          # organising input
+                          input = {"API Name": api_name,
+                                      "API Description": api_description,
+                                      "API Method Name": api_method_name,
+                                      "API Method Description": api_method_description if len(api_method_description) < 4000 else '',
+                                      "Parameters": api_method_parameters}
+                          
+                          messages = base_messages + [{"role": "user", "content": str(input)}]
 
-                        # counting the number of input tokens
-                        input_tokens = tokenizer.encode(str(messages))
-                        total_tokens+=len(input_tokens)
+                          # counting the number of input tokens
+                          input_tokens = tokenizer.encode(str(messages))
+                          total_tokens+=len(input_tokens)
 
-                        # calling API
-                        response = client.chat.completions.create(
-                            model=model,
-                            messages=messages,
-                            max_tokens=1000,
-                            temperature=0)
-                        
-                        # updating it in the file
-                        try:
-                            constraint = ast.literal_eval(response.choices[0].message.content.replace('false', 'False').replace('true', 'True').replace('null', 'None'))
-                            for parameter in api_method_parameters:
-                                name = parameter.get("name")
-                                if name in constraint:
-                                    parameter['constraints'] = constraint[name]
-                            
-                            data['api_list'][api_method_index]['parameters'] = api_method_parameters
-
-                            # just checking if there are many conditional found.
-                            if 'conditional' in constraint:
-                              print(constraint['conditional'])
-                              conditional_found+=1
+                          # calling API
+                          response = client.chat.completions.create(
+                              model=model,
+                              messages=messages,
+                              max_tokens=1000,
+                              temperature=0)
+                          
+                          # updating it in the file
+                          try:
+                              constraint = ast.literal_eval(response.choices[0].message.content.replace('false', 'False').replace('true', 'True').replace('null', 'None'))
+                              for parameter in api_method_parameters:
+                                  name = parameter.get("name")
+                                  if name in constraint:
+                                      parameter['constraints'] = constraint[name]
                               
-                        
-                        except:
-                            print(response.choices[0].message.content)
-                            constraint_mistakes+=1
+                              data['api_list'][api_method_index]['parameters'] = api_method_parameters
+
+                              # just checking if there are many conditional found.
+                              if 'conditional' in constraint:
+                                print(constraint['conditional'])
+                                conditional_found+=1
+                                
+                          
+                          except:
+                              print(response.choices[0].message.content)
+                              constraint_mistakes+=1
 
                         API_methods_count+=1
 
