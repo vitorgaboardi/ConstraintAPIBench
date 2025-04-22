@@ -8,29 +8,33 @@ import ast
 import copy
 import os
 import numpy as np
+import random
+import itertools
 from openai import OpenAI
 
 client = OpenAI(api_key="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")
 
-PROMPT_BASE_INSTRUCTION = """You are an expert in interpreting OpenAPI specification (OAS). 
+PROMPT_BASE_INSTRUCTION = """You are an expert in interpreting OpenAPI Specification (OAS). 
 I will provide you with the API name and description, the API method name and description, and the list of parameters, each with its name, description, and constraints.
-Your task is to generate {} utterances that users may ask that must be solved using the given API method information. 
-
-    - All required parameters must be added in all utterances.
-    - Create utterances different from each other, making sure they are lexically (rich vocabulary) and syntactically (rich syntax structures) diverse. 
-    - Do not generate new parameters. You must only use the parameters defined in the documentation provided.
-    - Generate natural utterances that represent how users would normally say when trying to fulfill the task.
+Your task is to generate {number_of_utterances} utterances that users may ask that must be solved using the given API method information. Consider the following guidelines:
+    - Generate utterances different from each other, making sure they are lexically (rich vocabulary) and syntactically (rich syntax structures) diverse. 
+    - Generate natural utterances that represent what users would normally say when trying to fulfill the task.
     - Do not add the API name or the API method name in the utterance.
-    - Do not add any other text explaining the choices that you made.
-
-    - The parameters of the generated utterances must respect to all the constraints defined under the "constraints" key for each parameter. This includes:
+    - Do not generate new parameters. You must only use the parameters defined in the documentation provided (if any).
+    - If parameters are provided, you must generate values for these parameters in such a way that all constraints defined under the "constraints" key are strictly respected. This includes:
         - Values must conform to format constraints (e.g., ISO 8601 date/time, country codes, email).
-        - Values must respect range limitations (minimum and maximum values) or respect the specific set of possible values.
+        - Values must conform range limitations (minimum and maximum values). 
+        - Values must respect the specific set of possible values.
         - If the parameter represents an ID or reference (i.e., "id = True" in the constraint option), create values representing what the IDs represent instead of actually creating an ID. For example, for a parameter like "hotelId", generate hotel names (e.g., "Hotel California", "The Grand Hyatt"), and for "signId", generate zodiac signs (e.g., "Gemini", "Pisces").
-        - Inter-parameter constraints (i.e. "conditional" key in the constraint option) describes constraints among parameters. The combination of parameters values must respect these inter-parameter constraints.
+        - Inter-parameter constraints (i.e. "conditional" key in the constraint option) describes constraints among parameters. The combination of parameters values must strictly respect these inter-parameter constraints. For instance, there are cases where two parameters must be added simultaneously in an API call or only one parameter must be included between a set of parameters.
 
-The final output must be Python list of dictionaries, where each instance have an "utterance" key (representing the generated utterance), and a "parameter" key (representing all the parameters included in the utterance).
+    {api_context}
+
+The final output must be a Python list of dictionaries, where each dictionary has two keys:
+    - "utterance": the natural language request.
+    - "parameters": a dictionary containing the name-value pairs for all parameters used in the utterance.
 """
+
 
 
 # basic variables
@@ -39,8 +43,6 @@ parameter_folder = './dataset/GPT-4.1-mini/parameter_combination'
 
 # defining variables
 number_of_utterances_per_method = 10
-number_of_utterances_only_required_parameter = 5
-number_of_utterances_both_type_parameter = number_of_utterances_per_method - number_of_utterances_only_required_parameter
 
 # auxiliary variables
 API_count = 0
@@ -52,6 +54,65 @@ number_of_methods_with_no_optional_parameters = 0
 number_of_methods_with_no_parameters = 0
 number_of_methods_with_condition_constraint = 0
 
+## It will be tough to explain. 
+# given a number of optional parameters, it keeps sampling different combination of parameters that must be used when generating utterances
+# the idea is to make sure we include utterances where we maximize the use of optional parameters, while generating a specific number of utterances 
+# we keep selecting combination of parameters using a window approach
+def defining_combination_of_parameters(parameters, conditional_constraints, only_required_parameters=False):
+    # 1: if there is any conditional constraint. we make sure that all the variables related to the constraint must be sampled together, mainly when related to 
+    # the goal is to make sure that the utterances respect the parameters constraints.
+    parameter_set_by_constraint = []
+    if len(conditional_constraints) > 0:
+        for condition in conditional_constraints:
+            param = condition.split(':')[0].replace(' ', '').split(',')
+            if param not in parameter_set_by_constraint:
+                parameter_set_by_constraint.append(param)
+    
+    parameter_set = []
+    for param in parameters:
+        is_optional_param_inside_a_conditional_constraint = False
+        for set in parameter_set_by_constraint:
+            if param in set:
+                is_optional_param_inside_a_conditional_constraint = True
+                break
+        
+        if is_optional_param_inside_a_conditional_constraint is False:
+            parameter_set.append(param)
+
+    # 2) Sampling combinations of parameters to be used when generating utterances
+    # the idea is to sample group of optional parameters that will be used together when creating a utterances
+    # we build an algorithm in such a way that all parameters are sampled at least once. 
+    # although the generation of the utterances may not include the all the parameters (it depends whether it makes sense to include them.)
+    combination_of_parameters = []
+    number_of_parameters = len(parameter_set)
+    number_of_parameters_to_be_sampled_per_utterance = int(np.floor(number_of_parameters/number_of_utterances_per_method) + 1) # the number of utterances is 10 for experiments
+
+    window_size = number_of_parameters_to_be_sampled_per_utterance
+    start_index = 0
+
+    if only_required_parameters is True:
+        combination_of_parameters.append(['use only required parameters.'])
+
+    while len(combination_of_parameters) < number_of_utterances_per_method:
+        if start_index + window_size > number_of_parameters:
+            start_index = 0
+            window_size += 1
+            if window_size > number_of_parameters:
+                window_size = number_of_parameters_to_be_sampled_per_utterance
+                if len(combination_of_parameters) < number_of_utterances_per_method:
+                    combination_of_parameters.append(['use only required parameters.'])
+
+        window = parameter_set[start_index:start_index+window_size]
+        if len(combination_of_parameters) < number_of_utterances_per_method:
+            combination_of_parameters.append(window)
+
+        start_index +=1
+    
+    return combination_of_parameters
+
+
+
+## Focusing on generating utterances
 # iterating over the categories
 categories = sorted(os.listdir(OAS_folder))
 for category_index, category in enumerate(categories):
@@ -91,43 +152,65 @@ for category_index, category in enumerate(categories):
                         optional_parameters = [param["name"] for param in api_method_parameters if 'required' in param and param['required'] is False] 
                         conditional_constraints = [param['constraints']['conditional'] for param in api_method_parameters if 'constraints' in param and 'conditional' in param['constraints']]
 
-                        #condition_count = sum(1 for param in api_method_parameters if 'constraints' in param and 'conditional' in param['constraints'])
-
+                        ### ORGANISING PROMPT
                         # 1) There is no parameter
-                        if len(required_parameters) + len(optional_parameters) == 0:
-                            sets = []
-                            # include a more general instruction
+                        if len(required_parameters) + len(optional_parameters) == 0:                            
+                            prompt = PROMPT_BASE_INSTRUCTION.format(
+                                number_of_utterances=number_of_utterances_per_method,
+                                api_context='')
+
                             number_of_methods_with_no_parameters+=1
 
                         # 2) There are only required parameters 
                         elif len(optional_parameters) == 0:
-                            print('required parameters:', required_parameters)
-                            sets = [] 
-                            # include instructions that make clear that all the required parameters must be added. 
+                            prompt = PROMPT_BASE_INSTRUCTION.format(
+                                number_of_utterances=number_of_utterances_per_method,
+                                api_context='All utterances must include the required parameters: '+ str(required_parameters))
+
                             number_of_methods_with_no_optional_parameters+=1
 
                         # 3) There are only optional parameters
                         elif len(required_parameters) == 0:
-                            print('optional parameters:', optional_parameters)
+                            combination_of_parameters = defining_combination_of_parameters(optional_parameters, conditional_constraints)
+                            
+                            text = ("Additionally, I will provide you with parameters that you should include for each utterance. "
+                                    "Try to include values for all the mentioned parameters while still keeping the utterance natural.\n")
+                            for index, parameters in enumerate(combination_of_parameters):
+                                parameter_names_as_string = [item for group in parameters for item in (group if isinstance(group, list) else [group])]
+                                result = ', '.join(parameter_names_as_string)
 
-                            # 3.1: check the constraints and group the parameters that have a common constraints as one!
-                            # COME BACK HERE!
-                            if len(conditional_constraints) > 0:
-                                print('conditional constraints:', conditional_constraints)
-
-                            # generate the code here to create the set of parameters
-                            sets = []
+                                text+= "    - Utterance " + str(index+1) + ": " + result + "\n"
+                            
+                            prompt = PROMPT_BASE_INSTRUCTION.format(
+                                number_of_utterances=number_of_utterances_per_method,
+                                api_context=text)    
 
                         # 4) There are required and optional parameters.
                         else:
-                            special_combination = "use only required parameters: "
-                            sets = []
+                            combination_of_parameters = defining_combination_of_parameters(optional_parameters, conditional_constraints, only_required_parameters=True)
+                            
+                            text = ("All utterances must include the required parameters: " + str(required_parameters) + "\n"
+                                    "Additionally, I will provide you with parameters that you should include for each utterance. "
+                                    "Try to include values for all the mentioned parameters while still keeping the utterance natural.\n")
+                            for index, parameters in enumerate(combination_of_parameters):
+                                parameter_names_as_string = [item for group in parameters for item in (group if isinstance(group, list) else [group])]
+                                result = ', '.join(parameter_names_as_string)
 
+                                text+= "    - Utterance " + str(index+1) + ": " + result + "\n"
+                            
+                            prompt = PROMPT_BASE_INSTRUCTION.format(
+                                number_of_utterances=number_of_utterances_per_method,
+                                api_context=text) 
 
                         if len(conditional_constraints) > 0:
                             number_of_methods_with_condition_constraint+=1
 
                         API_methods_count+=1
+
+                        ### MAKING THE CALL AND STORING THE RESULTS
+                        ## ORGANISE THE INPUT TO BE included
+
+                        ## MAKE THE CALL
 
                         #print(api_method['name'], required_count, optional_count)
 
