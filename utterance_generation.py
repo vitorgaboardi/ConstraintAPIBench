@@ -35,11 +35,10 @@ The final output must be a Python list of dictionaries, where each dictionary ha
     - "parameters": a dictionary containing the name-value pairs for all parameters used in the utterance.
 """
 
-
-
 # basic variables
+model="gpt-4.1-mini"
 OAS_folder = "./dataset/GPT-4.1-mini/constraints"
-parameter_folder = './dataset/GPT-4.1-mini/parameter_combination'
+parameter_folder = './dataset/GPT-4.1-mini/utterance_generation'
 
 # defining variables
 number_of_utterances_per_method = 10
@@ -117,23 +116,23 @@ def defining_combination_of_parameters(parameters, conditional_constraints, only
 categories = sorted(os.listdir(OAS_folder))
 for category_index, category in enumerate(categories):
     category_path = os.path.join(OAS_folder, category)
-    #print(category_path)
+    print(category_path)
 
     # generate folder to save OAS now enriched with constraints information
-    saving_new_OAS = os.path.join(parameter_folder, category)
-    if not os.path.exists(saving_new_OAS):
-        os.makedirs(saving_new_OAS)
+    saving_utterances_path = os.path.join(parameter_folder, category)
+    if not os.path.exists(saving_utterances_path):
+        os.makedirs(saving_utterances_path)
 
     # iterating over the OAS for each category
     for root, _, files in os.walk(category_path):
         for filename in files:
             # make sure that the file is not there
-            if not os.path.exists(saving_new_OAS+'/'+filename):
+            if not os.path.exists(saving_utterances_path+'/'+filename):
                 # read file for each API
                 file_path = os.path.join(category_path, filename)
                 with open(file_path, 'r') as f:
                     data = json.load(f)
-                    #print(category_index, category, data['tool_name'])
+                    print(category_index, category, data['tool_name'])
                     api_name = data['tool_name']
                     api_description = data['tool_description']
 
@@ -145,6 +144,8 @@ for category_index, category in enumerate(categories):
                         api_method_parameters = [
                             param for param in api_method['parameters']
                             if not ('constraints' in param and param['constraints'].get('api_related') is True)]
+                        # updating the new API method parameters
+                        api_method['parameters'] = api_method_parameters
 
                         ### ORGANISING PARAMETER INFORMATION
                         # analysing parameter information
@@ -205,17 +206,52 @@ for category_index, category in enumerate(categories):
                         if len(conditional_constraints) > 0:
                             number_of_methods_with_condition_constraint+=1
 
-                        API_methods_count+=1
-
                         ### MAKING THE CALL AND STORING THE RESULTS
                         ## ORGANISE THE INPUT TO BE included
+                        input = {"API Name": api_name,
+                                "API Description": api_description if len(api_description) < 4000 else '',
+                                "API Method Name": api_method_name,
+                                "API Method Description": api_method_description if len(api_method_description) < 4000 else '',
+                                "Parameters": api_method_parameters}
+                          
+                        messages = [{"role": "system", "content": prompt},
+                                    {"role": "user", "content": str(input)}]
 
-                        ## MAKE THE CALL
+                        print(prompt)
+                        
+                        #calling API
+                        response = client.chat.completions.create(
+                              model=model,
+                              messages=messages,
+                              max_tokens=2000,
+                              temperature=0)
 
-                        #print(api_method['name'], required_count, optional_count)
+                        print(response.choices[0].message.content)
+                        try: 
+                            content = ast.literal_eval(response.choices[0].message.content)
+                            api_method['utterances'] = content
 
-            #break
-    #break
+
+                        except Exception as e:
+                            print("Exception arised!")
+                            print(e)
+                            print(response.choices[0].message.content)
+                            api_method['utterances'] = 'error parsing the information!'
+                            mistakes+=1
+
+                        API_methods_count+=1
+                
+                with open(saving_utterances_path+'/'+filename, 'w') as json_file:
+                    json.dump(data, json_file, indent=4)
+
+                break 
+
+            if API_methods_count > 1:
+                break
+        if API_methods_count > 1:
+            break
+    if API_methods_count > 1:
+        break
 
 print('remember the results are after removing parameters that are API-centered')
 print('number of methods with conditional constraints:', number_of_methods_with_condition_constraint)
