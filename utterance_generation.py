@@ -18,15 +18,15 @@ PROMPT_BASE_INSTRUCTION = """You are an expert in interpreting OpenAPI Specifica
 I will provide you with the API name and description, the API method name and description, and the list of parameters, each with its name, description, and constraints.
 Your task is to generate {number_of_utterances} utterances that users may ask that must be solved using the given API method information. Consider the following guidelines:
     - Generate utterances different from each other, making sure they are lexically (rich vocabulary) and syntactically (rich syntax structures) diverse. 
+    - Do not reuse the same value for a parameter across different utterances. The "default" key is just an example and should not be used in all utterances. 
     - Generate natural utterances that represent what users would normally say when trying to fulfill the task.
     - Do not add the API name or the API method name in the utterance.
-    - Do not generate new parameters. You must only use the parameters defined in the documentation provided (if any).
     - If parameters are provided, you must generate values for these parameters in such a way that all constraints defined under the "constraints" key are strictly respected. This includes:
         - Values must conform to format constraints (e.g., ISO 8601 date/time, country codes, email).
         - Values must conform range limitations (minimum and maximum values). 
-        - Values must respect the specific set of possible values.
-        - If the parameter represents an ID or reference (i.e., "id = True" in the constraint option), create values representing what the IDs represent instead of actually creating an ID. For example, for a parameter like "hotelId", generate hotel names (e.g., "Hotel California", "The Grand Hyatt"), and for "signId", generate zodiac signs (e.g., "Gemini", "Pisces").
-        - Inter-parameter constraints (i.e. "conditional" key in the constraint option) describes constraints among parameters. The combination of parameters values must strictly respect these inter-parameter constraints. For instance, there are cases where two parameters must be added simultaneously in an API call or only one parameter must be included between a set of parameters.
+        - For parameters with "specific" values constraints (i.e., a fixed set of allowed values), cycle through different allowed values in different utterances.  
+        - If the "id" constraint is True, do not generate artificial IDs (e.g., "1234" or "abc_123"). Instead, create values that represent what the ID refers to. For example, for "hotelId" parameter, generate hotel names such as "Hotel California" or "The Grand Hyatt" instead of "ACPAR419". For a "language_id" parameter, generate language names such as "English" or "Portuguese" instead of "1000".
+        - Inter-parameter constraints (i.e. "conditional" key in the constraint key) describes constraints among parameters. The combination of parameters values must strictly respect these inter-parameter constraints. For instance, there are cases where two parameters must be added simultaneously in an API call or only one parameter must be included between a set of parameters.
 
     {api_context}
 
@@ -138,6 +138,7 @@ for category_index, category in enumerate(categories):
 
                     # iterating over each API method
                     for api_method_index, api_method in enumerate(data['api_list']):
+                        print('api_method:', api_method_name)
                         api_method_name = api_method['name']
                         api_method_description = api_method['description']
                         # discard the parameters that are related to the API 
@@ -174,8 +175,7 @@ for category_index, category in enumerate(categories):
                         elif len(required_parameters) == 0:
                             combination_of_parameters = defining_combination_of_parameters(optional_parameters, conditional_constraints)
                             
-                            text = ("Additionally, I will provide you with parameters that you should include for each utterance. "
-                                    "Try to include values for all the mentioned parameters while still keeping the utterance natural.\n")
+                            text = ("Additionally, I will provide a set of parameters for each utterance. You should include them if they can be naturally combined in a realistic user utterance.\n")
                             for index, parameters in enumerate(combination_of_parameters):
                                 parameter_names_as_string = [item for group in parameters for item in (group if isinstance(group, list) else [group])]
                                 result = ', '.join(parameter_names_as_string)
@@ -191,8 +191,7 @@ for category_index, category in enumerate(categories):
                             combination_of_parameters = defining_combination_of_parameters(optional_parameters, conditional_constraints, only_required_parameters=True)
                             
                             text = ("All utterances must include the required parameters: " + str(required_parameters) + "\n"
-                                    "Additionally, I will provide you with parameters that you should include for each utterance. "
-                                    "Try to include values for all the mentioned parameters while still keeping the utterance natural.\n")
+                                    "Additionally, I will provide a set of parameters for each utterance. You should include them if they can be naturally combined in a realistic user utterance.\n")
                             for index, parameters in enumerate(combination_of_parameters):
                                 parameter_names_as_string = [item for group in parameters for item in (group if isinstance(group, list) else [group])]
                                 result = ', '.join(parameter_names_as_string)
@@ -217,20 +216,19 @@ for category_index, category in enumerate(categories):
                         messages = [{"role": "system", "content": prompt},
                                     {"role": "user", "content": str(input)}]
 
-                        print(prompt)
+                        #print(prompt)
                         
                         #calling API
                         response = client.chat.completions.create(
                               model=model,
                               messages=messages,
-                              max_tokens=2000,
+                              max_tokens=3000,
                               temperature=0)
 
-                        print(response.choices[0].message.content)
                         try: 
-                            content = ast.literal_eval(response.choices[0].message.content)
+                            #content = ast.literal_eval()
+                            content = json.loads(response.choices[0].message.content)
                             api_method['utterances'] = content
-
 
                         except Exception as e:
                             print("Exception arised!")
@@ -242,15 +240,13 @@ for category_index, category in enumerate(categories):
                         API_methods_count+=1
                 
                 with open(saving_utterances_path+'/'+filename, 'w') as json_file:
-                    json.dump(data, json_file, indent=4)
+                    json.dump(data, json_file, indent=4) 
 
-                break 
-
-            if API_methods_count > 1:
+            if API_methods_count > 20:
                 break
-        if API_methods_count > 1:
+        if API_methods_count > 20:
             break
-    if API_methods_count > 1:
+    if API_methods_count > 20:
         break
 
 print('remember the results are after removing parameters that are API-centered')
