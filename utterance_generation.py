@@ -37,8 +37,8 @@ The final output must be a Python list of dictionaries, where each dictionary ha
 
 # basic variables
 model="gpt-4.1-mini"
-OAS_folder = "./dataset/GPT-4.1-mini/constraints"
-parameter_folder = './dataset/GPT-4.1-mini/utterance_generation'
+OAS_folder = "./dataset/"+model+'/constraints'
+parameter_folder = './dataset/'+model+'utterances'
 
 # defining variables
 number_of_utterances_per_method = 10
