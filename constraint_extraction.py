@@ -145,8 +145,8 @@ base_messages = [{"role": "system", "content": PROMPT_INSTRUCTION},
 
 ## variables
 # model name
-model="gpt-4.1-mini"
-#model="gpt-4.1"
+#model="gpt-4.1-mini"
+model="gpt-4.1"
 #model='deepseek-ai/DeepSeek-V3'
 
 OAS_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/tools'
@@ -169,94 +169,90 @@ else:
 # iterating over the categories
 categories = sorted(os.listdir(OAS_folder))
 for category_index, category in enumerate(categories):
-    category_path = os.path.join(OAS_folder, category)
+  category_path = os.path.join(OAS_folder, category)
 
-    # generate folder to save OAS now enriched with constraints information
-    saving_new_OAS = os.path.join(constraint_folder, category)
-    if not os.path.exists(saving_new_OAS):
-        os.makedirs(saving_new_OAS)
+  # generate folder to save OAS now enriched with constraints information
+  saving_new_OAS = os.path.join(constraint_folder, category)
+  if not os.path.exists(saving_new_OAS):
+      os.makedirs(saving_new_OAS)
 
-    # iterating over the OAS for each category
-    for root, _, files in os.walk(category_path):
-        for filename in files:
-          # make sure that the file is not there
-          if not os.path.exists(saving_new_OAS+'/'+filename):
-              # read file for each API
-              file_path = os.path.join(category_path, filename)
-              with open(file_path, 'r') as f:
-                  data = json.load(f)
-                  print(category_index, data['tool_name'])
-                  api_name = data['tool_name']
-                  api_description = data['tool_description']
+  # iterating over the OAS for each category
+  for root, _, files in os.walk(category_path):
+    for filename in files:
+      # make sure that the file is not there
+      if not os.path.exists(saving_new_OAS+'/'+filename):
+        # read file for each API
+        file_path = os.path.join(category_path, filename)
+        with open(file_path, 'r') as f:
+          data = json.load(f)
+          print(category_index, data['tool_name'])
+          api_name = data['tool_name']
+          api_description = data['tool_description']
 
-                  # iterating over each API method for the given API
-                  for api_method_index, api_method in enumerate(data['api_list']):
-                      print('api_method', api_method['name'])
-                      api_method_name = api_method['name']
-                      api_method_description = api_method['description']
-                      api_method_parameters = api_method['parameters']
+          # iterating over each API method for the given API
+          for api_method_index, api_method in enumerate(data['api_list']):
+            print('api_method', api_method['name'])
+            api_method_name = api_method['name']
+            api_method_description = api_method['description']
+            api_method_parameters = api_method['parameters']
 
-                      # request for parameters constraints only if there are any parameter.
-                      if len(api_method_parameters) > 0:
-                        # organising input
-                        input = {"API Name": api_name,
-                                    "API Description": api_description,
-                                    "API Method Name": api_method_name,
-                                    "API Method Description": api_method_description if len(api_method_description) < 4000 else '',
-                                    "Parameters": api_method_parameters}
-                        
-                        messages = base_messages + [{"role": "user", "content": str(input)}]
+            # request for parameters constraints only if there are any parameter.
+            if len(api_method_parameters) > 0:
+              # organising input
+              input = {"API Name": api_name,
+                          "API Description": api_description,
+                          "API Method Name": api_method_name,
+                          "API Method Description": api_method_description if len(api_method_description) < 4000 else '',
+                          "Parameters": api_method_parameters}
+              
+              messages = base_messages + [{"role": "user", "content": str(input)}]
 
-                        # counting the number of input tokens
-                        input_tokens = tokenizer.encode(str(messages))
-                        total_tokens+=len(input_tokens)
+              # counting the number of input tokens
+              input_tokens = tokenizer.encode(str(messages))
+              total_tokens+=len(input_tokens)
 
-                        # calling API
-                        response = client.chat.completions.create(
-                            model=model,
-                            messages=messages,
-                            max_tokens=1000,
-                            temperature=0)
-                        
-                        # updating it in the file
-                        try:
-                            #constraint = ast.literal_eval(response.choices[0].message.content.replace('false', 'False').replace('true', 'True').replace('null', 'None'))
-                            # pre-processing
-                            constraint = re.sub(r"```(json)?", "", response.choices[0].message.content).strip()
-                            constraint = re.sub(r"//.*", "", constraint)
-                            constraint = constraint.replace("'", '"')
-                            constraint = json.loads(constraint)
+              # calling API
+              response = client.chat.completions.create(
+                  model=model,
+                  messages=messages,
+                  max_tokens=1000,
+                  temperature=0)
+              
+              try:
+                  #constraint = ast.literal_eval(response.choices[0].message.content.replace('false', 'False').replace('true', 'True').replace('null', 'None'))
+                  # pre-processing
+                  constraint = re.sub(r"```(json)?", "", response.choices[0].message.content).strip()
+                  constraint = re.sub(r"//.*", "", constraint)
+                  constraint = constraint.replace("'", '"')
+                  constraint = json.loads(constraint)
 
-                            for parameter in api_method_parameters:
-                                name = parameter.get("name")
-                                if name in constraint:
-                                    parameter['constraints'] = constraint[name]
-                            
-                            data['api_list'][api_method_index]['parameters'] = api_method_parameters
+                  for parameter in api_method_parameters:
+                      name = parameter.get("name")
+                      if name in constraint:
+                          parameter['constraints'] = constraint[name]
+                  
+                  data['api_list'][api_method_index]['parameters'] = api_method_parameters
 
-                            # just checking if there are many conditional found.
-                            if 'conditional' in constraint:
-                              print(constraint['conditional'])
-                              conditional_found+=1
-                              
-                        
-                        except Exception as e:
-                            print("Exception arised!")
-                            print(e)
-                            print(response.choices[0].message.content)
-                            constraint_mistakes+=1
+                  # just checking if there are many conditional found.
+                  if 'conditional' in constraint:
+                    print(constraint['conditional'])
+                    conditional_found+=1
+                    
+              
+              except Exception as e:
+                  print("Exception arised!")
+                  print(e)
+                  print(response.choices[0].message.content)
+                  constraint_mistakes+=1
 
-                      API_methods_count+=1
+            API_methods_count+=1
 
-                  with open(saving_new_OAS+'/'+filename, 'w') as json_file:
-                      json.dump(data, json_file, indent=4) 
+          with open(saving_new_OAS+'/'+filename, 'w') as json_file:
+              json.dump(data, json_file, indent=4) 
 
-          API_count+=1
-          break
-        break
-                
-    # if API_count > 200:
-    #     break
+      API_count+=1
+      break
+    break
 
 print('total input tokens:', total_tokens)
 print('conditional constraints:', conditional_found)

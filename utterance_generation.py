@@ -10,35 +10,51 @@ import os
 import numpy as np
 import random
 import itertools
+import re
 from openai import OpenAI
 
-client = OpenAI(api_key="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")
-
 PROMPT_BASE_INSTRUCTION = """You are an expert in interpreting OpenAPI Specification (OAS). 
-I will provide you with the API name and description, the API method name and description, and the list of parameters, each with its name, description, and constraints.
-Your task is to generate {number_of_utterances} utterances that users may ask that must be solved using the given API method information. Consider the following guidelines:
-    - Generate utterances different from each other, making sure they are lexically (rich vocabulary) and syntactically (rich syntax structures) diverse. 
-    - Do not reuse the same value for a parameter across different utterances. The "default" key is just an example and should not be used in all utterances. 
+I will provide you with API name and description, API method name and description, and list of parameters, each with its name, description, and constraints.
+Your task is to generate {number_of_utterances} utterances that users may ask that must be solved using the given API method. Consider the following guidelines:
+    - Generate utterances different from each other, making sure they are lexically (rich vocabulary) and syntactically (sentence structures) diverse. 
+    - Do not repeat the same value for a parameter across different utterances. The "default" key is just an example and must not be used in all utterances. 
+    - Do not use general placeholders such as "this URL", "this link", "this name", "a candidate" for parameters. Always use actual and realistic parameter values.
     - Generate natural utterances that represent what users would normally say when trying to fulfill the task.
     - Do not add the API name or the API method name in the utterance.
-    - If parameters are provided, you must generate values for these parameters in such a way that all constraints defined under the "constraints" key are strictly respected. This includes:
+    - If parameters are provided, you must generate values for these parameters in such a way that all constraints defined under the "constraints" key are respected. This includes:
         - Values must conform to format constraints (e.g., ISO 8601 date/time, country codes, email).
         - Values must conform range limitations (minimum and maximum values). 
         - For parameters with "specific" values constraints (i.e., a fixed set of allowed values), cycle through different allowed values in different utterances.  
-        - If the "id" constraint is True, do not generate artificial IDs (e.g., "1234" or "abc_123"). Instead, create values that represent what the ID refers to. For example, for "hotelId" parameter, generate hotel names such as "Hotel California" or "The Grand Hyatt" instead of "ACPAR419". For a "language_id" parameter, generate language names such as "English" or "Portuguese" instead of "1000".
-        - Inter-parameter constraints (i.e. "conditional" key in the constraint key) describes constraints among parameters. The combination of parameters values must strictly respect these inter-parameter constraints. For instance, there are cases where two parameters must be added simultaneously in an API call or only one parameter must be included between a set of parameters.
+        - If the "id" constraint is True, do not generate artificial IDs (e.g., "1234" or "abc_123"). Instead, create values that represent what the ID refers to. For example, for "hotelId" parameter, generate hotel names such as "Hotel California" or "The Grand Hyatt" instead of "ACPAR419".
+        - Inter-parameter constraints (i.e. "inter-dependency" key in the "constraint" field) describes constraints between parameters. The combination of parameters values must strictly respect these constraints. For instance, there are cases where two parameters must be added simultaneously in an API call or only one parameter must be included between a group of parameters.
 
     {api_context}
 
-The final output must be a Python list of dictionaries, where each dictionary has two keys:
+The output must be a Python list of dictionaries, where each dictionary has two keys:
     - "utterance": the natural language request.
-    - "parameters": a dictionary containing the name-value pairs for all parameters used in the utterance.
+    - "parameters": a dictionary containing the name-value pairs for all parameters used in the utterance. 
+    
+The "parameters" dictionary must have pairs that can be infered or recognised from the generated natural utterance. 
+Finally, you must only output the Python list and do not output anything else, such as notes or explanation about the reasoning.
 """
 
 # basic variables
-model="gpt-4.1-mini"
-OAS_folder = "./dataset/"+model+'/constraints'
-parameter_folder = './dataset/'+model+'utterances'
+# model name
+#model="gpt-4.1-mini"
+#model="gpt-4.1"
+model='deepseek-ai/DeepSeek-V3'
+
+if model == "gpt-4.1-mini" or model == "gpt-4.1":
+  client = OpenAI(api_key="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")
+  constraint_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/'+model+'/constraints/'
+  utterance_folder = './dataset/'+model+'/utterances/'
+else:
+  client = client = OpenAI(api_key="0cTfrP7S4xnxVcQeMnkCvfY7nrgZs41e",
+                           base_url="https://api.deepinfra.com/v1/openai",)
+  model_name = model.split('/')[1]
+  constraint_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/'+model_name+'/constraints/'
+  utterance_folder = './dataset/'+model_name+'/utterances/'
+
 
 # defining variables
 number_of_utterances_per_method = 10
@@ -113,13 +129,13 @@ def defining_combination_of_parameters(parameters, conditional_constraints, only
 
 ## Focusing on generating utterances
 # iterating over the categories
-categories = sorted(os.listdir(OAS_folder))
+categories = sorted(os.listdir(constraint_folder))
 for category_index, category in enumerate(categories):
-    category_path = os.path.join(OAS_folder, category)
+    category_path = os.path.join(constraint_folder, category)
     print(category_path)
 
     # generate folder to save OAS now enriched with constraints information
-    saving_utterances_path = os.path.join(parameter_folder, category)
+    saving_utterances_path = os.path.join(utterance_folder, category)
     if not os.path.exists(saving_utterances_path):
         os.makedirs(saving_utterances_path)
 
@@ -138,7 +154,6 @@ for category_index, category in enumerate(categories):
 
                     # iterating over each API method
                     for api_method_index, api_method in enumerate(data['api_list']):
-                        print('api_method:', api_method_name)
                         api_method_name = api_method['name']
                         api_method_description = api_method['description']
                         # discard the parameters that are related to the API 
@@ -147,12 +162,13 @@ for category_index, category in enumerate(categories):
                             if not ('constraints' in param and param['constraints'].get('api_related') is True)]
                         # updating the new API method parameters
                         api_method['parameters'] = api_method_parameters
+                        print('api_method:', api_method_name)
 
                         ### ORGANISING PARAMETER INFORMATION
                         # analysing parameter information
                         required_parameters = [param["name"] for param in api_method_parameters if param.get('required', False)]
                         optional_parameters = [param["name"] for param in api_method_parameters if 'required' in param and param['required'] is False] 
-                        conditional_constraints = [param['constraints']['conditional'] for param in api_method_parameters if 'constraints' in param and 'conditional' in param['constraints']]
+                        conditional_constraints = [param['constraints']['inter-dependency'] for param in api_method_parameters if 'constraints' in param and 'inter-dependency' in param['constraints']]
 
                         ### ORGANISING PROMPT
                         # 1) There is no parameter
@@ -216,8 +232,6 @@ for category_index, category in enumerate(categories):
                         messages = [{"role": "system", "content": prompt},
                                     {"role": "user", "content": str(input)}]
 
-                        #print(prompt)
-                        
                         #calling API
                         response = client.chat.completions.create(
                               model=model,
@@ -226,8 +240,13 @@ for category_index, category in enumerate(categories):
                               temperature=0)
 
                         try: 
-                            #content = ast.literal_eval()
-                            content = json.loads(response.choices[0].message.content)
+                            #content = re.sub(r"```(json)?", "", response.choices[0].message.content).strip()
+                            #content = re.sub(r"//.*", "", content)
+                            content = response.choices[0].message.content
+                            content = content.replace("```python","").replace("```","")
+                            content = content.replace("True", "true").replace("False", "false").replace("None", "null")
+                            content = json.loads(content)
+
                             api_method['utterances'] = content
 
                         except Exception as e:
@@ -239,18 +258,16 @@ for category_index, category in enumerate(categories):
 
                         API_methods_count+=1
                 
+                # saving file with utterances and parameters mapping
                 with open(saving_utterances_path+'/'+filename, 'w') as json_file:
                     json.dump(data, json_file, indent=4) 
-
-            if API_methods_count > 20:
-                break
-        if API_methods_count > 20:
+            
+            API_count+=1
             break
-    if API_methods_count > 20:
         break
 
 print('remember the results are after removing parameters that are API-centered')
-print('number of methods with conditional constraints:', number_of_methods_with_condition_constraint)
+print('number of methods with inter-dependency constraints:', number_of_methods_with_condition_constraint)
 print('number of methods with no parameters:', number_of_methods_with_no_parameters)
 print('number of methods with no optional parameters:', number_of_methods_with_no_optional_parameters)
 print('number of methods:', API_methods_count)
