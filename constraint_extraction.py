@@ -3,9 +3,8 @@ import ast
 import tiktoken
 import copy
 import os
+import re
 from openai import OpenAI
-
-client = OpenAI(api_key="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")
 
 ### PROMPT
 PROMPT_INSTRUCTION = """You are an expert in interpreting OpenAPI specification (OAS). Your task is to extract constraints for each parameter of the API method.
@@ -18,8 +17,8 @@ PROMPT_INSTRUCTION = """You are an expert in interpreting OpenAPI specification 
     - "max": for maximum numeric value, 
     - "min": for minimum numeric value, 
     - "specific": for a closed set of only acceptable values. Only use "specific" if a defined, closed list of possible values is allowed (e.g., ["google", "microsoft", "bing"], ["image", "video", "audio"]). Limit the content to a maximum of 40 values.
-(3) id: Must be "True" if the parameter represents a resource identifier (ID) (e.g., parameter names like "message_id", "gameId", "hotelIds", "locationInternalIDs" or descriptions mentioning the parameter represents an ID).
-(4) api_related: Boolean value that must be "True" if the parameter relates to the API rather than user-specific data. Examples include pagination controls (e.g., page number, offset, limit, page size), authentication tokens (e.g., api key, access token), system management fields (e.g., cache, debug, locale, encoding), and callback URLs.
+(3) id: Boolean value that must be "True" if the parameter represents a resource identifier (ID) (e.g., parameter names like "message_id", "gameId", "hotelIds", "locationInternalIDs" or descriptions mentioning the parameter represents an ID).
+(4) api_related: Boolean value that must be "True" if the parameter is used to control the API's behavior or response formatting, and is typically used by developers rather than end users. Examples include pagination controls (e.g., page number, offset, limit, page size), authentication tokens (e.g., api key, access token), system management fields (e.g., cache, debug, locale, encoding), and callback URLs.
 (5) inter-dependency: Describe a required dependency between parameters. The examples mentioned are illustrative for you to understand better. Only include the constraints if stated in the description of the API method or parameter. Dependencies include: 
     - the presence of one parameter requires the presence of another parameter (e.g., "startDate, endDate: if startDate is provided, endDate must also be included.")
     - given a set of parameters, one or more of them must be included in the API call (e.g., "email, phone: at least one of these contact methods must be provided."), 
@@ -34,7 +33,8 @@ Additional guidelines:
     * Do not create or use any constraint types that are not listed above (e.g., "require", "mandatory", "optional").
     * If any field is not applicable or cannot be inferred for a parameter, omit that field entirely from the output. 
 
-The final output must be a JSON object where each key is the name of a parameter, and the value is a nested object with only the relevant constraint fields. Do not return anything other than the JSON.
+The final output must be a JSON object where each key is the name of a parameter, and the value is a nested object with only the relevant constraint fields. 
+You must strictly follow the output format and do not return anything else other than the JSON object.
 """
 
 EXAMPLE_INPUT = """ 
@@ -143,18 +143,28 @@ base_messages = [{"role": "system", "content": PROMPT_INSTRUCTION},
                  {"role": "user", "content": EXAMPLE_INPUT},
                  {"role": "assistant", "content": EXAMPLE_OUTPUT}]
 
-# basic variables
+## variables
+# model name
 model="gpt-4.1-mini"
 #model="gpt-4.1"
-tokenizer = tiktoken.get_encoding("cl100k_base")
-OAS_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/tools'
-constraint_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/'+model+'/constraints/'
+#model='deepseek-ai/DeepSeek-V3'
 
+OAS_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/tools'
+tokenizer = tiktoken.get_encoding("cl100k_base")
 API_count = 0
 API_methods_count = 0
 total_tokens = 0
 constraint_mistakes = 0
 conditional_found = 0
+
+if model == "gpt-4.1-mini" or model == "gpt-4.1":
+  client = OpenAI(api_key="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")
+  constraint_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/'+model+'/constraints/'
+else:
+  client = client = OpenAI(api_key="0cTfrP7S4xnxVcQeMnkCvfY7nrgZs41e",
+                           base_url="https://api.deepinfra.com/v1/openai",)
+  model_name = model.split('/')[1]
+  constraint_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/'+model_name+'/constraints/'
 
 # iterating over the categories
 categories = sorted(os.listdir(OAS_folder))
@@ -210,7 +220,13 @@ for category_index, category in enumerate(categories):
                         
                         # updating it in the file
                         try:
-                            constraint = ast.literal_eval(response.choices[0].message.content.replace('false', 'False').replace('true', 'True').replace('null', 'None'))
+                            #constraint = ast.literal_eval(response.choices[0].message.content.replace('false', 'False').replace('true', 'True').replace('null', 'None'))
+                            # pre-processing
+                            constraint = re.sub(r"```(json)?", "", response.choices[0].message.content).strip()
+                            constraint = re.sub(r"//.*", "", constraint)
+                            constraint = constraint.replace("'", '"')
+                            constraint = json.loads(constraint)
+
                             for parameter in api_method_parameters:
                                 name = parameter.get("name")
                                 if name in constraint:
@@ -224,7 +240,9 @@ for category_index, category in enumerate(categories):
                               conditional_found+=1
                               
                         
-                        except:
+                        except Exception as e:
+                            print("Exception arised!")
+                            print(e)
                             print(response.choices[0].message.content)
                             constraint_mistakes+=1
 
