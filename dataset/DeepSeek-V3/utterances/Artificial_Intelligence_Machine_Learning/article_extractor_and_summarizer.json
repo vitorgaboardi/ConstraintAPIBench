@@ -30,9 +30,7 @@
                     "description": "",
                     "default": "https://time.com/6266679/musk-ai-open-letter/",
                     "required": true,
-                    "constraints": {
-                        "id": true
-                    }
+                    "constraints": {}
                 },
                 {
                     "name": "lang",
@@ -40,21 +38,19 @@
                     "description": "Target language to translate summary into",
                     "default": "",
                     "required": false,
-                    "constraints": {}
+                    "constraints": {
+                        "values": {
+                            "specific": [
+                                "ENUM"
+                            ]
+                        }
+                    }
                 },
                 {
                     "name": "html",
                     "type": "BOOLEAN",
                     "description": "pass TRUE if you want to convert new line symbols in API response text with html paragraph tags ",
                     "default": "",
-                    "required": false,
-                    "constraints": {}
-                },
-                {
-                    "name": "length",
-                    "type": "NUMBER",
-                    "description": "Length in paragraphs. This parameter might be ignored for a very long articles.",
-                    "default": "3",
                     "required": false,
                     "constraints": {}
                 }
@@ -64,9 +60,6 @@
                     "use only required parameters."
                 ],
                 [
-                    "length"
-                ],
-                [
                     "lang"
                 ],
                 [
@@ -75,20 +68,22 @@
                 [
                     "html",
                     "lang"
-                ],
-                [
-                    "length"
-                ],
-                [
-                    "lang",
-                    "html",
-                    "length"
                 ],
                 [
                     "use only required parameters."
                 ],
                 [
+                    "lang"
+                ],
+                [
                     "html"
+                ],
+                [
+                    "html",
+                    "lang"
+                ],
+                [
+                    "use only required parameters."
                 ],
                 [
                     "lang"
@@ -96,74 +91,72 @@
             ],
             "utterances": [
                 {
-                    "utterance": "Can you provide a summary of the article from https://www.nytimes.com/2024/04/15/technology/ai-regulation.html?",
+                    "utterance": "Can you summarize the article from this link: https://www.nytimes.com/2023/10/15/world/middleeast/israel-hamas-war.html?",
                     "parameters": {
-                        "url": "https://www.nytimes.com/2024/04/15/technology/ai-regulation.html"
+                        "url": "https://www.nytimes.com/2023/10/15/world/middleeast/israel-hamas-war.html"
                     }
                 },
                 {
-                    "utterance": "Summarize the article at https://www.bbc.com/news/science-environment-65512345 with a summary length of 5 paragraphs.",
+                    "utterance": "Summarize the content from https://www.theguardian.com/technology/2023/oct/15/ai-ethics-debate-intensifies-as-tech-giants-face-scrutiny in French.",
                     "parameters": {
-                        "url": "https://www.bbc.com/news/science-environment-65512345",
-                        "length": 5
+                        "url": "https://www.theguardian.com/technology/2023/oct/15/ai-ethics-debate-intensifies-as-tech-giants-face-scrutiny",
+                        "lang": "FR"
                     }
                 },
                 {
-                    "utterance": "Could you summarize the content from https://www.cnn.com/2024/05/10/politics/election-updates and translate the summary into Spanish?",
+                    "utterance": "Extract and summarize the article at https://www.wired.com/story/quantum-computing-breakthrough-2023/ with HTML formatting.",
                     "parameters": {
-                        "url": "https://www.cnn.com/2024/05/10/politics/election-updates",
-                        "lang": "es"
-                    }
-                },
-                {
-                    "utterance": "Please extract and summarize the article from https://www.theguardian.com/world/2024/mar/20/climate-change-report and format the summary with HTML paragraph tags.",
-                    "parameters": {
-                        "url": "https://www.theguardian.com/world/2024/mar/20/climate-change-report",
+                        "url": "https://www.wired.com/story/quantum-computing-breakthrough-2023/",
                         "html": true
                     }
                 },
                 {
-                    "utterance": "Get me a summary of the article at https://www.nationalgeographic.com/science/article/mars-mission-update, translate it into French, and format the output with HTML paragraphs.",
+                    "utterance": "Summarize the article from https://www.bbc.com/news/world-europe-67112345 in Spanish and include HTML tags.",
                     "parameters": {
-                        "url": "https://www.nationalgeographic.com/science/article/mars-mission-update",
-                        "lang": "fr",
+                        "url": "https://www.bbc.com/news/world-europe-67112345",
+                        "lang": "ES",
                         "html": true
                     }
                 },
                 {
-                    "utterance": "I want a 4-paragraph summary of the article found at https://www.wsj.com/articles/stock-market-today-2024-06-01.",
+                    "utterance": "Provide a summary of the article at https://www.reuters.com/technology/2023/10/15/tesla-autopilot-under-scrutiny-after-crash/",
                     "parameters": {
-                        "url": "https://www.wsj.com/articles/stock-market-today-2024-06-01",
-                        "length": 4
+                        "url": "https://www.reuters.com/technology/2023/10/15/tesla-autopilot-under-scrutiny-after-crash/"
                     }
                 },
                 {
-                    "utterance": "Could you summarize the article from https://www.reuters.com/business/energy/oil-prices-rise-2024-06-05 with 6 paragraphs, translate it into German, and include HTML paragraph tags in the summary?",
+                    "utterance": "Summarize the content from https://www.cnn.com/2023/10/15/politics/us-election-2024-preview/index.html in German.",
                     "parameters": {
-                        "url": "https://www.reuters.com/business/energy/oil-prices-rise-2024-06-05",
-                        "lang": "de",
-                        "html": true,
-                        "length": 6
+                        "url": "https://www.cnn.com/2023/10/15/politics/us-election-2024-preview/index.html",
+                        "lang": "DE"
                     }
                 },
                 {
-                    "utterance": "Give me a summary of the article at https://www.aljazeera.com/news/2024/06/04/global-health-initiatives.",
+                    "utterance": "Extract and summarize the article at https://www.techcrunch.com/2023/10/15/startup-funding-trends-2023/ with HTML formatting.",
                     "parameters": {
-                        "url": "https://www.aljazeera.com/news/2024/06/04/global-health-initiatives"
-                    }
-                },
-                {
-                    "utterance": "Summarize the article from https://www.forbes.com/sites/2024/06/02/tech-startups-funding/ and present the summary with HTML paragraph formatting.",
-                    "parameters": {
-                        "url": "https://www.forbes.com/sites/2024/06/02/tech-startups-funding/",
+                        "url": "https://www.techcrunch.com/2023/10/15/startup-funding-trends-2023/",
                         "html": true
                     }
                 },
                 {
-                    "utterance": "Can you provide a summary of the article at https://www.npr.org/sections/health-shots/2024/06/03/mental-health-awareness-month translated into Italian?",
+                    "utterance": "Summarize the article from https://www.forbes.com/sites/forbestechcouncil/2023/10/15/the-future-of-ai-in-healthcare/ in Italian and include HTML tags.",
                     "parameters": {
-                        "url": "https://www.npr.org/sections/health-shots/2024/06/03/mental-health-awareness-month",
-                        "lang": "it"
+                        "url": "https://www.forbes.com/sites/forbestechcouncil/2023/10/15/the-future-of-ai-in-healthcare/",
+                        "lang": "IT",
+                        "html": true
+                    }
+                },
+                {
+                    "utterance": "Can you summarize the article from this link: https://www.bloomberg.com/news/articles/2023-10-15/global-economy-faces-new-challenges-as-inflation-rises?",
+                    "parameters": {
+                        "url": "https://www.bloomberg.com/news/articles/2023-10-15/global-economy-faces-new-challenges-as-inflation-rises"
+                    }
+                },
+                {
+                    "utterance": "Summarize the content from https://www.ft.com/content/12345678-1234-5678-1234-567812345678 in Portuguese.",
+                    "parameters": {
+                        "url": "https://www.ft.com/content/12345678-1234-5678-1234-567812345678",
+                        "lang": "PT"
                     }
                 }
             ]
@@ -191,63 +184,63 @@
             "combination_of_parameters": [],
             "utterances": [
                 {
-                    "utterance": "Can you get the full text of the article from https://www.bbc.com/news/world-us-canada-66276945?",
+                    "utterance": "Can you extract and summarize the article from this link: https://www.nytimes.com/2023/10/15/technology/ai-ethics-regulation.html?",
                     "parameters": {
-                        "url": "https://www.bbc.com/news/world-us-canada-66276945"
+                        "url": "https://www.nytimes.com/2023/10/15/technology/ai-ethics-regulation.html?"
                     }
                 },
                 {
-                    "utterance": "Please extract the main content from https://www.nytimes.com/2024/04/20/technology/ai-regulation.html.",
+                    "utterance": "I need the body and markdown version of the article at https://www.theguardian.com/technology/2023/oct/16/artificial-intelligence-future-impact-society.",
                     "parameters": {
-                        "url": "https://www.nytimes.com/2024/04/20/technology/ai-regulation.html"
+                        "url": "https://www.theguardian.com/technology/2023/oct/16/artificial-intelligence-future-impact-society"
                     }
                 },
                 {
-                    "utterance": "I need the article body from https://www.cnn.com/2024/05/10/politics/election-updates/index.html.",
+                    "utterance": "Please extract and summarize the content from https://www.wired.com/story/ai-ethics-bias-fairness/.",
                     "parameters": {
-                        "url": "https://www.cnn.com/2024/05/10/politics/election-updates/index.html"
+                        "url": "https://www.wired.com/story/ai-ethics-bias-fairness/"
                     }
                 },
                 {
-                    "utterance": "Could you pull the text content from https://www.theguardian.com/environment/2024/mar/15/climate-change-report-2024?",
+                    "utterance": "Could you get the article body and markdown from https://www.bbc.com/news/technology-66923547?",
                     "parameters": {
-                        "url": "https://www.theguardian.com/environment/2024/mar/15/climate-change-report-2024"
+                        "url": "https://www.bbc.com/news/technology-66923547"
                     }
                 },
                 {
-                    "utterance": "Extract the article text from https://www.forbes.com/sites/tech/2024/06/01/new-ai-startups-emerge/",
+                    "utterance": "Extract and summarize the article from this URL: https://www.forbes.com/sites/forbestechcouncil/2023/10/16/the-future-of-ai-in-business/?sh=6f1b1b3f5f1a.",
                     "parameters": {
-                        "url": "https://www.forbes.com/sites/tech/2024/06/01/new-ai-startups-emerge/"
+                        "url": "https://www.forbes.com/sites/forbestechcouncil/2023/10/16/the-future-of-ai-in-business/?sh=6f1b1b3f5f1a"
                     }
                 },
                 {
-                    "utterance": "Get me the full article content from https://www.washingtonpost.com/health/2024/05/22/covid-vaccine-updates/",
+                    "utterance": "I\u2019d like the body and markdown version of the article at https://www.techcrunch.com/2023/10/16/ai-startups-funding-trends/.",
                     "parameters": {
-                        "url": "https://www.washingtonpost.com/health/2024/05/22/covid-vaccine-updates/"
+                        "url": "https://www.techcrunch.com/2023/10/16/ai-startups-funding-trends/"
                     }
                 },
                 {
-                    "utterance": "Please extract the body of the news story at https://www.reuters.com/business/energy/oil-prices-rise-2024-05-30/",
+                    "utterance": "Can you extract and summarize the content from https://www.cnn.com/2023/10/16/tech/ai-robotics-future/index.html?",
                     "parameters": {
-                        "url": "https://www.reuters.com/business/energy/oil-prices-rise-2024-05-30/"
+                        "url": "https://www.cnn.com/2023/10/16/tech/ai-robotics-future/index.html"
                     }
                 },
                 {
-                    "utterance": "Can you retrieve the article text from https://www.nationalgeographic.com/science/article/mars-rover-discovery-2024",
+                    "utterance": "Please get the article body and markdown from https://www.reuters.com/technology/ai-ethics-debate-heats-up-2023-10-16/.",
                     "parameters": {
-                        "url": "https://www.nationalgeographic.com/science/article/mars-rover-discovery-2024"
+                        "url": "https://www.reuters.com/technology/ai-ethics-debate-heats-up-2023-10-16/"
                     }
                 },
                 {
-                    "utterance": "I want the full article extracted from https://www.wsj.com/articles/stock-market-today-2024-06-05",
+                    "utterance": "Extract and summarize the article from this link: https://www.bloomberg.com/news/articles/2023-10-16/ai-regulation-global-approach-needed-says-expert.",
                     "parameters": {
-                        "url": "https://www.wsj.com/articles/stock-market-today-2024-06-05"
+                        "url": "https://www.bloomberg.com/news/articles/2023-10-16/ai-regulation-global-approach-needed-says-expert"
                     }
                 },
                 {
-                    "utterance": "Could you get the main content from https://www.techcrunch.com/2024/04/28/ai-innovation-startups/",
+                    "utterance": "I need the body and markdown version of the article at https://www.axios.com/2023/10/16/ai-ethics-regulation-future.",
                     "parameters": {
-                        "url": "https://www.techcrunch.com/2024/04/28/ai-innovation-startups/"
+                        "url": "https://www.axios.com/2023/10/16/ai-ethics-regulation-future"
                     }
                 }
             ]
@@ -266,43 +259,43 @@
             "combination_of_parameters": [],
             "utterances": [
                 {
-                    "utterance": "Can you provide a concise summary of the latest article on climate change from the New York Times?",
+                    "utterance": "Can you summarize the latest article I found on climate change?",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Please extract and summarize the main points from the BBC News story about the recent space mission.",
+                    "utterance": "I need a brief summary of this long article about AI advancements.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "I need a brief overview of the article discussing electric vehicle advancements published on TechCrunch.",
+                    "utterance": "Summarize the content of this blog post on renewable energy for me.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Summarize the key findings from the recent health report featured on WebMD.",
+                    "utterance": "Could you give me a quick overview of this news piece on global economics?",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Could you give me a markdown summary of the financial news article about stock market trends from Bloomberg?",
+                    "utterance": "I\u2019d like a summary of this detailed report on healthcare innovations.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Extract the main ideas and summarize the article on renewable energy innovations from National Geographic.",
+                    "utterance": "Can you condense this article about space exploration into a few key points?",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Provide a short summary in markdown format of the recent political analysis published by The Guardian.",
+                    "utterance": "Provide me with a summary of this tech review on the latest smartphones.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Summarize the article about advancements in AI technology from Wired magazine.",
+                    "utterance": "I need a concise summary of this article discussing the future of work.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Can you give me a markdown summary of the latest sports news article from ESPN?",
+                    "utterance": "Summarize this piece on the impact of social media on mental health.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Please extract and summarize the main points from the recent article on global economic outlook by Reuters.",
+                    "utterance": "Can you give me a brief summary of this article about the history of the internet?",
                     "parameters": {}
                 }
             ]
@@ -319,43 +312,43 @@
             "combination_of_parameters": [],
             "utterances": [
                 {
-                    "utterance": "Can you provide a concise summary of the article from https://www.nytimes.com/2024/04/15/technology/ai-ethics.html in markdown format?",
+                    "utterance": "Can you summarize the content of this article for me?",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Please extract and summarize the content of the news story at https://www.bbc.com/news/world-europe-65512345 using markdown.",
+                    "utterance": "I need a brief summary of the text from this URL.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "I need a markdown summary of the article found at https://www.cnn.com/2024/05/01/health/covid-vaccine-updates/index.html.",
+                    "utterance": "Please provide a concise summary of the article.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Summarize the text from the blog post at https://techcrunch.com/2024/03/20/new-startup-raises-funding/ in markdown style.",
+                    "utterance": "Could you give me a quick overview of the content?",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Could you extract and give me a markdown summary of the article on https://www.theguardian.com/environment/2024/mar/10/climate-change-report-2024?",
+                    "utterance": "Summarize the main points from this article.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Generate a markdown formatted summary for the news article at https://www.reuters.com/business/energy/oil-prices-rise-2024-06-01/",
+                    "utterance": "I\u2019d like a summary of the text in Markdown format.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Please provide a markdown summary of the article from https://www.forbes.com/sites/2024/04/22/tech-innovations-in-ai/",
+                    "utterance": "Can you extract and summarize the body of this article?",
                     "parameters": {}
                 },
                 {
-                    "utterance": "I want a markdown summary of the content on https://www.nationalgeographic.com/science/article/mars-rover-discovery-2024",
+                    "utterance": "Provide a summary of the article content in a few sentences.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Can you extract and summarize the article at https://www.wsj.com/articles/market-trends-2024-05-15 in markdown format?",
+                    "utterance": "I need a summarized version of the text from this link.",
                     "parameters": {}
                 },
                 {
-                    "utterance": "Give me a markdown summary of the news story from https://www.aljazeera.com/news/2024/04/30/global-economy-outlook",
+                    "utterance": "Could you summarize the article and highlight the key points?",
                     "parameters": {}
                 }
             ]

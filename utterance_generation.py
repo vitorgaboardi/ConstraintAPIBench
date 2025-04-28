@@ -13,6 +13,8 @@ import itertools
 import re
 from openai import OpenAI
 
+random.seed(10)
+
 PROMPT_BASE_INSTRUCTION = """You are an expert in interpreting OpenAPI Specification (OAS). 
 I will provide you with API name and description, API method name and description, and list of parameters, each with its name, description, and constraints.
 Your task is to generate {number_of_utterances} utterances that users may ask that must be solved using the given API method. Consider the following guidelines:
@@ -40,9 +42,9 @@ Finally, you must only output the Python list and do not output anything else, s
 
 # basic variables
 # model name
-model="gpt-4.1-mini"
+#model="gpt-4.1-mini"
 #model="gpt-4.1"
-#model='deepseek-ai/DeepSeek-V3'
+model='deepseek-ai/DeepSeek-V3'
 
 if model == "gpt-4.1-mini" or model == "gpt-4.1":
   client = OpenAI(api_key="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")
@@ -73,9 +75,8 @@ number_of_methods_with_condition_constraint = 0
 # given a number of optional parameters, it keeps sampling different combination of parameters that must be used when generating utterances
 # the idea is to make sure we include utterances where we maximize the use of optional parameters, while generating a specific number of utterances 
 # we keep selecting combination of parameters using a window approach
-def defining_combination_of_parameters(parameters, conditional_constraints, only_required_parameters=False):
-    # 1: if there is any conditional constraint. we make sure that all the variables related to the constraint must be sampled together, mainly when related to 
-    # the goal is to make sure that the utterances respect the parameters constraints.
+def defining_combination_of_parameters(parameters, conditional_constraints, only_required_parameters=False, use_no_parameter=False):
+    # 1: if there is any conditional constraint. we make sure that all the variables related to the constraint are sampled together
     parameter_set_by_constraint = []
     if len(conditional_constraints) > 0:
         for condition in conditional_constraints:
@@ -83,7 +84,8 @@ def defining_combination_of_parameters(parameters, conditional_constraints, only
             if param not in parameter_set_by_constraint:
                 parameter_set_by_constraint.append(param)
     
-    parameter_set = []
+    print('1 - parameter_set_by_constraint', parameter_set_by_constraint)
+    parameter_set = copy.copy(parameter_set_by_constraint) # initiate with the grouped constraints
     for param in parameters:
         is_optional_param_inside_a_conditional_constraint = False
         for set in parameter_set_by_constraint:
@@ -94,48 +96,54 @@ def defining_combination_of_parameters(parameters, conditional_constraints, only
         if is_optional_param_inside_a_conditional_constraint is False:
             parameter_set.append(param)
 
+    print('2 - parameter_set', parameter_set)
+
     # 2) Sampling combinations of parameters to be used when generating utterances
     # the idea is to sample group of optional parameters that will be used together when creating a utterances
-    # we build an algorithm in such a way that all parameters are sampled at least once. (This is not true )
+    # we build an algorithm in such a way that all parameters are sampled at least once.     
     # although the generation of the utterances may not include the all the parameters (it depends whether it makes sense to include them.)
     combination_of_parameters = []
     number_of_parameters = len(parameter_set)
     number_of_parameters_to_be_sampled_per_utterance = int(np.floor(number_of_parameters/number_of_utterances_per_method) + 1) # the number of utterances is 10 for experiments
 
-    window_size = number_of_parameters_to_be_sampled_per_utterance
-    start_index = 0
-    count = 0
-    wrapped = False
-
-    print(number_of_parameters)
     if only_required_parameters is True:
         combination_of_parameters.append(['use only required parameters.'])
+    elif use_no_parameter is True:
+        combination_of_parameters.append(['do not include any parameter.'])
+
+    parameters_to_be_sampled = copy.copy(parameter_set)
+    k = number_of_parameters_to_be_sampled_per_utterance
 
     while len(combination_of_parameters) < number_of_utterances_per_method:
-        end_index = start_index + window_size
-        if end_index <= number_of_parameters:
-            window = parameter_set[start_index:end_index]
+        ## sampling random parameter values
+        # if there are enough parameters, sample them from the vector
+        if len(parameters_to_be_sampled) >= k:
+            parameters = random.sample(parameters_to_be_sampled, k=k)
+        # in case there is not, just use the remaining as the parameters to be sampled
         else:
-            window = parameter_set[start_index:] + parameter_set[:end_index % number_of_parameters]
-            wrapped = True
-
-        combination_of_parameters.append(window)
-        start_index = (start_index + window_size) % number_of_parameters
+            parameters = parameters_to_be_sampled
         
-        # if window size is equal to the number of parameters, it means that all the optional parameters were added together and therefore the cycle must restart.
-        if window_size == number_of_parameters:
-            window_size = number_of_parameters_to_be_sampled_per_utterance
-            wrapped = False
-            start_index = 0
-            if only_required_parameters is True:
-                combination_of_parameters.append(['use only required parameters.'])
+        # appending to sampled values to the vector
+        combination_of_parameters.append(copy.copy(parameters))
 
-        if wrapped or end_index == number_of_parameters:
-            window_size += 1
-            wrapped = False  # Reset wrapping detection after increasing window        
-        count+=1
+        # removing parameters from the vector
+        for parameter in parameters:
+            parameters_to_be_sampled.remove(parameter)
 
-    print(combination_of_parameters)
+        # if the parameter list is empty, then restart process but now sampling one more value
+        if parameters_to_be_sampled == []:            
+            # the number of samples required depends on the amount of parameters available. I can't request for random samples that exceed the number of parameters. 
+            if k == number_of_parameters:
+                if only_required_parameters is True and len(combination_of_parameters) < number_of_utterances_per_method:
+                    combination_of_parameters.append(['use only required parameters.'])
+                elif use_no_parameter is True and len(combination_of_parameters) < number_of_utterances_per_method:
+                    combination_of_parameters.append(['do not include any parameter.'])
+                k = number_of_parameters_to_be_sampled_per_utterance
+            else:
+                k+=1
+            parameters_to_be_sampled = copy.copy(parameter_set)
+    
+    print('3 - combination_of_parameters', combination_of_parameters)
     
     return combination_of_parameters
 
@@ -182,10 +190,11 @@ for category_index, category in enumerate(categories):
                         # analysing parameter information
                         required_parameters = [param["name"] for param in api_method_parameters if param.get('required', False)]
                         optional_parameters = [param["name"] for param in api_method_parameters if 'required' in param and param['required'] is False] 
-                        # I have to analyse if adding the combinations of the parameters together makes sense. This can include a further difficulty in explaining. Maybe it is better just to mention in the prompt instead of doing this part explicitly 
-                        conditional_constraints = [param['constraints']['inter-dependency'] for param in api_method_parameters if 'constraints' in param and 'inter-dependency' in param['constraints']]
-                        #conditional_constraints = []
-                        
+                        # I have to analyse if adding the combinations of the parameters together makes sense. This can include a further difficulty in explaining.
+                        # I tested with GPT-4o mini and there was no need to add the groups of constraints. Only the instruction to respect the constraints was enough! 
+                        #conditional_constraints = [param['constraints']['inter-dependency'] for param in api_method_parameters if 'constraints' in param and 'inter-dependency' in param['constraints']]
+                        conditional_constraints = []
+
                         ### ORGANISING PROMPT
                         # 1) There is no parameter
                         if len(required_parameters) + len(optional_parameters) == 0:                            
@@ -207,7 +216,7 @@ for category_index, category in enumerate(categories):
 
                         # 3) There are only optional parameters
                         elif len(required_parameters) == 0:
-                            combination_of_parameters = defining_combination_of_parameters(optional_parameters, conditional_constraints)
+                            combination_of_parameters = defining_combination_of_parameters(optional_parameters, conditional_constraints, use_no_parameter=True)
                             
                             text = ("Additionally, I will provide a set of parameters for each utterance. You should include them if they can be naturally combined in a realistic user utterance.\n")
                             for index, parameters in enumerate(combination_of_parameters):
@@ -223,7 +232,9 @@ for category_index, category in enumerate(categories):
                         # 4) There are required and optional parameters.
                         else:
                             combination_of_parameters = defining_combination_of_parameters(optional_parameters, conditional_constraints, only_required_parameters=True)
-                            
+                            #print('optional_parameters', optional_parameters)
+                            #print('conditional_constraints', conditional_constraints)
+
                             text = ("All utterances must include the required parameters: " + str(required_parameters) + "\n"
                                     "Additionally, I will provide a set of parameters for each utterance. You should include them if they can be naturally combined in a realistic user utterance.\n")
                             for index, parameters in enumerate(combination_of_parameters):
@@ -252,7 +263,7 @@ for category_index, category in enumerate(categories):
                         messages = [{"role": "system", "content": prompt},
                                     {"role": "user", "content": str(input)}]
 
-                        #calling API
+                        # calling API
                         response = client.chat.completions.create(
                               model=model,
                               messages=messages,
@@ -260,8 +271,6 @@ for category_index, category in enumerate(categories):
                               temperature=0)
 
                         try: 
-                            #content = re.sub(r"```(json)?", "", response.choices[0].message.content).strip()
-                            #content = re.sub(r"//.*", "", content)
                             content = response.choices[0].message.content
                             content = content.replace("```python","").replace("```","")
                             content = content.replace("True", "true").replace("False", "false").replace("None", "null")
@@ -276,6 +285,7 @@ for category_index, category in enumerate(categories):
                             api_method['utterances'] = 'error parsing the information!'
                             mistakes+=1
 
+                        print()
                         API_methods_count+=1
                 
                 # saving file with utterances and parameters mapping
@@ -285,7 +295,7 @@ for category_index, category in enumerate(categories):
             API_count+=1
             break
         break
-    if API_methods_count > 0:
+    if API_methods_count > 5:
         break
 
 print('remember the results are after removing parameters that are API-centered')
