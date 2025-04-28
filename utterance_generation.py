@@ -40,9 +40,9 @@ Finally, you must only output the Python list and do not output anything else, s
 
 # basic variables
 # model name
-#model="gpt-4.1-mini"
+model="gpt-4.1-mini"
 #model="gpt-4.1"
-model='deepseek-ai/DeepSeek-V3'
+#model='deepseek-ai/DeepSeek-V3'
 
 if model == "gpt-4.1-mini" or model == "gpt-4.1":
   client = OpenAI(api_key="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")
@@ -96,7 +96,7 @@ def defining_combination_of_parameters(parameters, conditional_constraints, only
 
     # 2) Sampling combinations of parameters to be used when generating utterances
     # the idea is to sample group of optional parameters that will be used together when creating a utterances
-    # we build an algorithm in such a way that all parameters are sampled at least once. 
+    # we build an algorithm in such a way that all parameters are sampled at least once. (This is not true )
     # although the generation of the utterances may not include the all the parameters (it depends whether it makes sense to include them.)
     combination_of_parameters = []
     number_of_parameters = len(parameter_set)
@@ -104,24 +104,38 @@ def defining_combination_of_parameters(parameters, conditional_constraints, only
 
     window_size = number_of_parameters_to_be_sampled_per_utterance
     start_index = 0
+    count = 0
+    wrapped = False
 
+    print(number_of_parameters)
     if only_required_parameters is True:
         combination_of_parameters.append(['use only required parameters.'])
 
     while len(combination_of_parameters) < number_of_utterances_per_method:
-        if start_index + window_size > number_of_parameters:
+        end_index = start_index + window_size
+        if end_index <= number_of_parameters:
+            window = parameter_set[start_index:end_index]
+        else:
+            window = parameter_set[start_index:] + parameter_set[:end_index % number_of_parameters]
+            wrapped = True
+
+        combination_of_parameters.append(window)
+        start_index = (start_index + window_size) % number_of_parameters
+        
+        # if window size is equal to the number of parameters, it means that all the optional parameters were added together and therefore the cycle must restart.
+        if window_size == number_of_parameters:
+            window_size = number_of_parameters_to_be_sampled_per_utterance
+            wrapped = False
             start_index = 0
+            if only_required_parameters is True:
+                combination_of_parameters.append(['use only required parameters.'])
+
+        if wrapped or end_index == number_of_parameters:
             window_size += 1
-            if window_size > number_of_parameters:
-                window_size = number_of_parameters_to_be_sampled_per_utterance
-                if len(combination_of_parameters) < number_of_utterances_per_method:
-                    combination_of_parameters.append(['use only required parameters.'])
+            wrapped = False  # Reset wrapping detection after increasing window        
+        count+=1
 
-        window = parameter_set[start_index:start_index+window_size]
-        if len(combination_of_parameters) < number_of_utterances_per_method:
-            combination_of_parameters.append(window)
-
-        start_index +=1
+    print(combination_of_parameters)
     
     return combination_of_parameters
 
@@ -168,8 +182,10 @@ for category_index, category in enumerate(categories):
                         # analysing parameter information
                         required_parameters = [param["name"] for param in api_method_parameters if param.get('required', False)]
                         optional_parameters = [param["name"] for param in api_method_parameters if 'required' in param and param['required'] is False] 
+                        # I have to analyse if adding the combinations of the parameters together makes sense. This can include a further difficulty in explaining. Maybe it is better just to mention in the prompt instead of doing this part explicitly 
                         conditional_constraints = [param['constraints']['inter-dependency'] for param in api_method_parameters if 'constraints' in param and 'inter-dependency' in param['constraints']]
-
+                        #conditional_constraints = []
+                        
                         ### ORGANISING PROMPT
                         # 1) There is no parameter
                         if len(required_parameters) + len(optional_parameters) == 0:                            
@@ -177,6 +193,7 @@ for category_index, category in enumerate(categories):
                                 number_of_utterances=number_of_utterances_per_method,
                                 api_context='')
 
+                            combination_of_parameters = []
                             number_of_methods_with_no_parameters+=1
 
                         # 2) There are only required parameters 
@@ -185,6 +202,7 @@ for category_index, category in enumerate(categories):
                                 number_of_utterances=number_of_utterances_per_method,
                                 api_context='All utterances must include the required parameters: '+ str(required_parameters))
 
+                            combination_of_parameters = []
                             number_of_methods_with_no_optional_parameters+=1
 
                         # 3) There are only optional parameters
@@ -220,6 +238,8 @@ for category_index, category in enumerate(categories):
 
                         if len(conditional_constraints) > 0:
                             number_of_methods_with_condition_constraint+=1
+
+                        api_method['combination_of_parameters'] = combination_of_parameters
 
                         ### MAKING THE CALL AND STORING THE RESULTS
                         ## ORGANISE THE INPUT TO BE included
@@ -264,6 +284,8 @@ for category_index, category in enumerate(categories):
             
             API_count+=1
             break
+        break
+    if API_methods_count > 0:
         break
 
 print('remember the results are after removing parameters that are API-centered')
