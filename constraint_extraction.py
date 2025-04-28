@@ -145,8 +145,8 @@ base_messages = [{"role": "system", "content": PROMPT_INSTRUCTION},
 
 ## variables
 # model name
-#model="gpt-4.1-mini"
-model="gpt-4.1"
+model="gpt-4.1-mini"
+#model="gpt-4.1"
 #model='deepseek-ai/DeepSeek-V3'
 
 OAS_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/tools'
@@ -232,12 +232,6 @@ for category_index, category in enumerate(categories):
                           parameter['constraints'] = constraint[name]
                   
                   data['api_list'][api_method_index]['parameters'] = api_method_parameters
-
-                  # just checking if there are many conditional found.
-                  if 'conditional' in constraint:
-                    print(constraint['conditional'])
-                    conditional_found+=1
-                    
               
               except Exception as e:
                   print("Exception arised!")

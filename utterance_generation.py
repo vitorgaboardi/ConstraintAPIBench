@@ -42,9 +42,9 @@ Finally, you must only output the Python list and do not output anything else, s
 
 # basic variables
 # model name
-#model="gpt-4.1-mini"
+model="gpt-4.1-mini"
 #model="gpt-4.1"
-model='deepseek-ai/DeepSeek-V3'
+#model='deepseek-ai/DeepSeek-V3'
 
 if model == "gpt-4.1-mini" or model == "gpt-4.1":
   client = OpenAI(api_key="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")
@@ -84,7 +84,6 @@ def defining_combination_of_parameters(parameters, conditional_constraints, only
             if param not in parameter_set_by_constraint:
                 parameter_set_by_constraint.append(param)
     
-    print('1 - parameter_set_by_constraint', parameter_set_by_constraint)
     parameter_set = copy.copy(parameter_set_by_constraint) # initiate with the grouped constraints
     for param in parameters:
         is_optional_param_inside_a_conditional_constraint = False
@@ -95,8 +94,6 @@ def defining_combination_of_parameters(parameters, conditional_constraints, only
         
         if is_optional_param_inside_a_conditional_constraint is False:
             parameter_set.append(param)
-
-    print('2 - parameter_set', parameter_set)
 
     # 2) Sampling combinations of parameters to be used when generating utterances
     # the idea is to sample group of optional parameters that will be used together when creating a utterances
@@ -142,11 +139,8 @@ def defining_combination_of_parameters(parameters, conditional_constraints, only
             else:
                 k+=1
             parameters_to_be_sampled = copy.copy(parameter_set)
-    
-    print('3 - combination_of_parameters', combination_of_parameters)
-    
+        
     return combination_of_parameters
-
 
 
 ## Focusing on generating utterances
@@ -232,8 +226,6 @@ for category_index, category in enumerate(categories):
                         # 4) There are required and optional parameters.
                         else:
                             combination_of_parameters = defining_combination_of_parameters(optional_parameters, conditional_constraints, only_required_parameters=True)
-                            #print('optional_parameters', optional_parameters)
-                            #print('conditional_constraints', conditional_constraints)
 
                             text = ("All utterances must include the required parameters: " + str(required_parameters) + "\n"
                                     "Additionally, I will provide a set of parameters for each utterance. You should include them if they can be naturally combined in a realistic user utterance.\n")
@@ -253,7 +245,6 @@ for category_index, category in enumerate(categories):
                         api_method['combination_of_parameters'] = combination_of_parameters
 
                         ### MAKING THE CALL AND STORING THE RESULTS
-                        ## ORGANISE THE INPUT TO BE included
                         input = {"API Name": api_name,
                                 "API Description": api_description if len(api_description) < 4000 else '',
                                 "API Method Name": api_method_name,
@@ -285,18 +276,18 @@ for category_index, category in enumerate(categories):
                             api_method['utterances'] = 'error parsing the information!'
                             mistakes+=1
 
-                        print()
                         API_methods_count+=1
                 
                 # saving file with utterances and parameters mapping
                 with open(saving_utterances_path+'/'+filename, 'w') as json_file:
                     json.dump(data, json_file, indent=4) 
+                print()
             
             API_count+=1
             break
         break
-    if API_methods_count > 5:
-        break
+    # if API_methods_count > 5:
+    #     break
 
 print('remember the results are after removing parameters that are API-centered')
 print('number of methods with inter-dependency constraints:', number_of_methods_with_condition_constraint)

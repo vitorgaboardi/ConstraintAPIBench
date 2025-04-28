@@ -126,14 +126,19 @@
                     "type": "ENUM",
                     "description": "Subject type",
                     "default": "",
-                    "required": true
+                    "required": true,
+                    "constraints": {}
                 },
                 {
                     "name": "subjectId",
                     "type": "string",
                     "description": "Subject ID. If `subjectType` is:\n- `FlightByNumber`, then this field must be a flight number (with or without spaces, IATA or ICAO, any case formats are acceptable, e.g. KL1395, Klm 1395);\n- `FlightByAirportIcao`, then this field must be a 4-character ICAO-code of the airport where flights are operated (e.g.: EHAM, KLAX, UUEE, etc.).",
                     "default": "KL1395",
-                    "required": true
+                    "required": true,
+                    "constraints": {
+                        "id": true,
+                        "format": "flight number or 4-character ICAO code"
+                    }
                 }
             ]
         }

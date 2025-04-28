@@ -29,42 +29,71 @@
                     "type": "STRING",
                     "description": "",
                     "default": "",
-                    "required": true
+                    "required": true,
+                    "constraints": {}
                 },
                 {
                     "name": "year",
                     "type": "NUMBER",
                     "description": "4 digit year - example 2017",
                     "default": "",
-                    "required": true
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "format": "4 digit year"
+                        }
+                    }
                 },
                 {
                     "name": "month",
                     "type": "NUMBER",
                     "description": "2 digit month, example 03 for March",
                     "default": "",
-                    "required": true
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "format": "2 digit month"
+                        }
+                    }
                 },
                 {
                     "name": "method",
                     "type": "NUMBER",
                     "description": "Any of the prayer time calculation methods specified on https://aladhan.com/calculation-methods",
                     "default": "",
-                    "required": false
+                    "required": false,
+                    "constraints": {}
                 },
                 {
                     "name": "school",
                     "type": "NUMBER",
                     "description": "1 for Hanfi. 0 for all others, including, Shafi, Hanbali, etc.",
                     "default": "",
-                    "required": false
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "specific": [
+                                0,
+                                1
+                            ]
+                        }
+                    }
                 },
                 {
                     "name": "latitudeAdjustmentMethod",
                     "type": "NUMBER",
                     "description": "Method for adjusting times higher latitudes - for instance, if you are checking timings in the UK or Sweden. 1 - Middle of the Night 2 - One Seventh 3 - Angle Based",
                     "default": "",
-                    "required": false
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "specific": [
+                                1,
+                                2,
+                                3
+                            ]
+                        }
+                    }
                 }
             ]
         }
