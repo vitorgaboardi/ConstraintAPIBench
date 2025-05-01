@@ -225,8 +225,9 @@ EXAMPLE_OUTPUT = """
 
 # models
 #model="gpt-4.1-mini"
-model="gpt-4.1"
-#model='deepseek-ai/DeepSeek-V3'
+#model="gpt-4.1"
+model='deepseek-ai/DeepSeek-V3'
+
 
 # defining paths
 OAS_folder = './dataset/tools'
@@ -247,7 +248,7 @@ API_methods_count = 0
 API_count = 0
 mistakes = 0
 
-OAS_with_all_constraints = ['weatherapi_com.json', 'visual_crossing_weather.json', 'solarenergyprediction.json', 'working_days.json', 'redline_zipcode.json', 'myhealthbox.json', 'newsdata.json', 'flightera_flight_data.json', 'unogs.json', 'webcams_travel.json', 'realty_mole_property.json', 'dezgo.json', 'nowpayments.json']
+OAS_to_create_utterances = ['foreca_weather.json-Daily', 'learn_to_read_and_write_japanese_kanji.json-Kanji grade level', 'getitsms_whatsapp_apis.json-GetIT SMS WHATSAPP API', 'streaming_availability.json-Search Basic (FREE)', 'solarenergyprediction.json-/v2.0/solar/prediction', 'nowpayments.json-3.Getestimatedprice', 'referential.json-Languages', 'covid_19_by_api_ninjas.json-/v1/covid19', 'ott_details.json-Advanced Search', 'dezgo.json-/text2image', 'veriphone.json-verify', 'working_days.json-/1.3/list_non_working_days', 'flightera_flight_data.json-airportDelayDailyStatistics', 'postal_ninja.json-createTrack', 'cricket_live_data.json-Results By Date', 'car_code.json-/obd2/{code}', 'trackingpackage.json-TrackingPackage', 'shazam.json-songs/get-count', 'axesso_amazon_data_service.json-lookupSeller', 'hotels_com_provider.json-Hotel Rooms (offers)', 'netflix_v2.json-Search', 'recipe_food_nutrition.json-Generate Shopping List', 'spotify.json-Artist albums', 'movie_database_alternative.json-By Search', 'tasty.json-tips/list', 'synwave.json-Upload a new file', 'everyearthquake.json-Earthquakes', 'flightera_flight_data.json-airlineStatistics', 'webcams_travel.json-/webcams/list/webcam={webcamid}[,{webcamid}[,...]]', 'working_days.json-/1.3/add_working_days']
 
 if include_example:
     base_messages = [{"role": "system", "content": PROMPT_INSTRUCTION},
@@ -259,10 +260,12 @@ else:
 categories = sorted(os.listdir(OAS_folder))
 for category_index, category in enumerate(categories):
     category_path = os.path.join(OAS_folder, category)
-    print(category_path)
+    #print(category_path)
 
     # generate folder to save OAS now enriched with utterances
     saving_utterances_path = os.path.join(utterance_folder, category)
+
+    # saving file with utterances and parameters mapping
     if not os.path.exists(saving_utterances_path):
         os.makedirs(saving_utterances_path)
 
@@ -270,7 +273,7 @@ for category_index, category in enumerate(categories):
     for root, _, files in os.walk(category_path):
         for filename in files:
             # make sure that the file is not there
-            if not os.path.exists(saving_utterances_path+'/'+filename): # remove the second part of this!
+            if not os.path.exists(saving_utterances_path+'/'+filename): 
                 # read file for each API
                 file_path = os.path.join(category_path, filename)
                 with open(file_path, 'r') as f:
@@ -278,67 +281,73 @@ for category_index, category in enumerate(categories):
                     api_name = data['tool_name']
                     api_description = data['tool_description']
 
-                    print(category_index, category, data['tool_name'])
+                    #print(category_index, category, data['tool_name'])
+                    call_made = False
 
                     # iterating over each API method
                     for api_method_index, api_method in enumerate(data['api_list']):
+                        # this is temporary, just to generate utterances for the APIs that will be used!
                         api_method_name = api_method['name']
-                        api_method_description = api_method['description']
-                        api_method_parameters = api_method['parameters']
-                        required_parameters = [param["name"] for param in api_method_parameters if param.get('required', False)]
+                        if filename+"-"+api_method_name in OAS_to_create_utterances:
+                            print(API_methods_count, filename+"-"+api_method_name)
+                            api_method_description = api_method['description']
+                            api_method_parameters = api_method['parameters']
+                            required_parameters = [param["name"] for param in api_method_parameters if param.get('required', False)]
 
-                        print('api_method:', api_method_name)
+                            print('api_method:', api_method_name)
 
-                        # all the parameters will be used! even the ones that were detected after the 'api_related' because that is related to the constraints part only that I decided to remove!
-                        tool_specification = {"API Name": api_name,
-                                              "API Description": api_description if len(api_description) < 4000 else '',
-                                              "API Method Name": api_method_name,
-                                              "API Method Description": api_method_description if len(api_method_description) < 4000 else '',
-                                              "Parameters": api_method_parameters}
-                        
-                        if required_parameters:
-                            input = (
-                                f"Tool Specification: \n{tool_specification}\n"
-                                f"Write {number_of_utterances_per_method} utterances that use the specified tool.\n"
-                                f"# Required parameters: {str(required_parameters).strip('[]')}."
-                                f" So, {str(required_parameters).strip('[]')} must be present in every utterance."
-                            )
-                        else:
-                            input = (
-                                f"Tool Specification: \n{tool_specification}\n"
-                                f"Write {number_of_utterances_per_method} utterances that use the specified tool."
-                            )
+                            # all the parameters will be used! even the ones that were detected after the 'api_related' because that is related to the constraints part only that I decided to remove!
+                            tool_specification = {"API Name": api_name,
+                                                "API Description": api_description if len(api_description) < 4000 else '',
+                                                "API Method Name": api_method_name,
+                                                "API Method Description": api_method_description if len(api_method_description) < 4000 else '',
+                                                "Parameters": api_method_parameters}
+                            
+                            if required_parameters:
+                                input = (
+                                    f"Tool Specification: \n{tool_specification}\n"
+                                    f"Write {number_of_utterances_per_method} utterances that use the specified tool.\n"
+                                    f"# Required parameters: {str(required_parameters).strip('[]')}."
+                                    f" So, {str(required_parameters).strip('[]')} must be present in every utterance."
+                                )
+                            else:
+                                input = (
+                                    f"Tool Specification: \n{tool_specification}\n"
+                                    f"Write {number_of_utterances_per_method} utterances that use the specified tool."
+                                )
 
-                        messages = base_messages + [{"role": "user", "content": str(input)}]
+                            messages = base_messages + [{"role": "user", "content": str(input)}]
 
-                        # calling API
-                        response = client.chat.completions.create(
-                            model=model,
-                            messages=messages,
-                            max_tokens=3000,
-                            temperature=0)
+                            # calling API
+                            call_made = True
+                            response = client.chat.completions.create(
+                                model=model,
+                                messages=messages,
+                                max_tokens=3000,
+                                temperature=0)
 
-                        try: 
-                            content = response.choices[0].message.content
-                            content = content.replace("```python","").replace("```","")
-                            content = content.replace("True", "true").replace("False", "false").replace("None", "null")
-                            content = json.loads(content)
+                            try: 
+                                content = response.choices[0].message.content
+                                content = content.replace("```python","").replace("```","")
+                                content = content.replace("True", "true").replace("False", "false").replace("None", "null")
+                                content = json.loads(content)
 
-                            api_method['utterances'] = content
+                                api_method['utterances'] = content
 
-                        except Exception as e:
-                            print("Exception arised!")
-                            print(e)
-                            print(response.choices[0].message.content)
-                            api_method['utterances'] = 'error parsing the information.'
-                            mistakes+=1
+                            except Exception as e:
+                                print("Exception arised!")
+                                print(e)
+                                print(response.choices[0].message.content)
+                                api_method['utterances'] = 'error parsing the information.'
+                                mistakes+=1
 
-                        API_methods_count+=1
+                            API_methods_count+=1
 
-                # saving file with utterances and parameters mapping
-                with open(saving_utterances_path+'/'+filename, 'w') as json_file:
-                    json.dump(data, json_file, indent=4) 
-                print()
+                # this is just for now!
+                if call_made:
+                    with open(saving_utterances_path+'/'+filename, 'w') as json_file:
+                        json.dump(data, json_file, indent=4) 
+                #print()
             
             API_count+=1
 
