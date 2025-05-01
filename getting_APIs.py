@@ -9,14 +9,7 @@ import random
 # * 1. there must be at least one parameter among all the API methods (Make sure we can extract constraints from the OAS)
 # * 2. the tool description must have at least 5 words. (We found that some OAS has poor quality and is general, without many details about what it accomplishes)
 # * 3. order by most popular APIs since they represent more commonly used APIs. (A way to check for more relevant APIs is to oder by popularity)
-# * 4. get the first 20 APIs to limit number of request and evaluate if using less APIs with more quality improves the results. (DEPRECEATED)
 # * 4. get only APIs with API methods lower than 30 methods to limit the number of requests (since we create everything per API method, we decided to limit the number of APIs)
-
-# We sort by popularity and select the 'number_tool' tools to be considered. The documentation of each individual is copied in 'new_folder'
-# It also saves the following information:
-# - "api_knowledge.json", which saves all the selected APIs into one JSON file.
-# - "api_knowledge5.json", which randomly selects 5 API methods for each tool/API
-
 
 # return a list with the tools that respect the given criteria above and sorted by popularity
 def get_top_popularity_scores(base_folder, number_APIs, max_number_API_methods=30):
@@ -218,8 +211,8 @@ def number_of_parameters(api_knowledge):
 
 
 # variables
-base_folder = '/home/vitor/Documents/phd/other works/ToolBench/data/data/toolenv/tools' 
-new_folder = '/home/vitor/Documents/phd/api constraints_3/dataset/tools'
+base_folder = '/home/vitor/Documents/phd/other works/ToolBench/data/data/toolenv/tools'         # path from the ToolBench dataset
+new_folder = './dataset/tools'
 number_of_APIs_per_category = 5    # maximum number of APIs per category
 max_number_API_methods = 30        # maximum number of API methods per API
 
@@ -227,12 +220,3 @@ max_number_API_methods = 30        # maximum number of API methods per API
 top_scores = get_top_popularity_scores(base_folder, number_of_APIs_per_category, max_number_API_methods)
 print_top_scores(top_scores)
 copy_and_modify_files(top_scores, new_folder, number_of_APIs_per_category)
-
-# # Saving documentation in a single JSON file
-# api_knowledge =  save_documentation(new_folder)
-# with open('api_knowledge.json', 'w') as output_json_file:
-#     json.dump(api_knowledge, output_json_file, indent=4)
-
-# # checking the number of methods and parameters after selecting a maximum of 5 methods per API. 
-# print('total number of methods:', number_of_methods(api_knowledge))
-# print('total number of parameters:', number_of_parameters(api_knowledge))

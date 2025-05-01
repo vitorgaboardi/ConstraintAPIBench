@@ -1,0 +1,1356 @@
+{
+    "product_id": "api_ba8e04db-a60f-491c-8801-7b8a0a0426d0",
+    "tool_description": "The API returns the number of days,  hours, working days, working hours, wages, weekend days, and the list of public holidays of the requested date period and country. You can also add any number of working days or working hours to a given date. 50 countries and over 230 regional calendars are supported and we work hard to keep our database up to date by following government announcements regarding public holidays changes. All the calendars can be fully customized from our friendly working da...",
+    "home_url": "https://rapidapi.com/joursouvres-api/api/working-days/",
+    "name": "Working days",
+    "title": "Working days",
+    "pricing": "FREEMIUM",
+    "tool_name": "Working days",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 132,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "host": "working-days.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/1.3/get_info_day",
+            "url": "https://working-days.p.rapidapi.com/1.3/get_info_day",
+            "description": "Get detailed information about a specific day.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/get_info_day\"\nquerystring = {\"configuration\": \"Federal holidays\", \"country_code\": \"US\", \"profile_id\": \"\", \"date\": \"2013-12-31\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/get_info_day\"\nquerystring = {\"configuration\": \"Federal holidays\", \"country_code\": \"US\", \"profile_id\": \"\", \"date\": \"2013-12-31\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "The ISO country code (2 letters).  See <a href=https://api.workingdays.org/1.2/api-countries.php>available countries & configurations</a>",
+                    "default": "US",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO country code (2 letters)"
+                    }
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "The date to analyze (YYYY-MM-DD)",
+                    "default": "2013-12-31",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "configuration",
+                    "type": "STRING",
+                    "description": "The name of the preset configuration to be used. See <a href=https://api.workingdays.org/1.2/api-countries.php>available countries & configurations</a>",
+                    "default": "Federal holidays",
+                    "required": false
+                },
+                {
+                    "name": "profile_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "profile_id"
+                ],
+                [
+                    "configuration"
+                ],
+                [
+                    "profile_id",
+                    "configuration"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "profile_id"
+                ],
+                [
+                    "configuration"
+                ],
+                [
+                    "configuration",
+                    "profile_id"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "profile_id"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the details for the day of July 4th, 2023 in Canada?",
+                    "parameters": {
+                        "country_code": "CA",
+                        "date": "2023-07-04"
+                    }
+                },
+                {
+                    "utterance": "I need information about October 31st, 2022 in the UK for profile ID employee_789.",
+                    "parameters": {
+                        "country_code": "GB",
+                        "date": "2022-10-31",
+                        "profile_id": "employee_789"
+                    }
+                },
+                {
+                    "utterance": "Show me the day details for March 15th, 2024 in Germany using the 'State holidays' configuration.",
+                    "parameters": {
+                        "country_code": "DE",
+                        "date": "2024-03-15",
+                        "configuration": "State holidays"
+                    }
+                },
+                {
+                    "utterance": "Get the information for November 11th, 2023 in Australia with profile ID user_456 and the 'Public holidays' configuration.",
+                    "parameters": {
+                        "country_code": "AU",
+                        "date": "2023-11-11",
+                        "profile_id": "user_456",
+                        "configuration": "Public holidays"
+                    }
+                },
+                {
+                    "utterance": "What are the working day details for September 1st, 2023 in Japan?",
+                    "parameters": {
+                        "country_code": "JP",
+                        "date": "2023-09-01"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the day info for January 1st, 2024 in France for profile ID manager_123.",
+                    "parameters": {
+                        "country_code": "FR",
+                        "date": "2024-01-01",
+                        "profile_id": "manager_123"
+                    }
+                },
+                {
+                    "utterance": "Please provide details for December 25th, 2023 in Brazil using the 'National holidays' configuration.",
+                    "parameters": {
+                        "country_code": "BR",
+                        "date": "2023-12-25",
+                        "configuration": "National holidays"
+                    }
+                },
+                {
+                    "utterance": "I want to check the day information for August 15th, 2023 in Italy with profile ID staff_321 and the 'Regional holidays' configuration.",
+                    "parameters": {
+                        "country_code": "IT",
+                        "date": "2023-08-15",
+                        "profile_id": "staff_321",
+                        "configuration": "Regional holidays"
+                    }
+                },
+                {
+                    "utterance": "Could you tell me about the working day details on February 14th, 2024 in South Africa?",
+                    "parameters": {
+                        "country_code": "ZA",
+                        "date": "2024-02-14"
+                    }
+                },
+                {
+                    "utterance": "Get the day info for June 21st, 2023 in Mexico for profile ID consultant_007.",
+                    "parameters": {
+                        "country_code": "MX",
+                        "date": "2023-06-21",
+                        "profile_id": "consultant_007"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/1.3/delete_custom_period",
+            "url": "https://working-days.p.rapidapi.com/1.3/delete_custom_period",
+            "description": "Removing a previously defined custom period",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/delete_custom_period\"\nquerystring = {\"start_date\": \"2013-01-01\", \"profile_id\": \"CB7EF3\", \"end_date\": \"2013-01-07\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/delete_custom_period\"\nquerystring = {\"start_date\": \"2013-01-01\", \"profile_id\": \"CB7EF3\", \"end_date\": \"2013-01-07\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "start_date",
+                    "type": "STRING",
+                    "description": "The start date of the custom period (YYYY-MM-DD)",
+                    "default": "2013-01-01",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "profile_id",
+                    "type": "STRING",
+                    "description": "The ID of the calendar we are customizing.",
+                    "default": "CB7EF3",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "end_date",
+                    "type": "STRING",
+                    "description": "The end date of the custom period (YYYY-MM-DD) If omitted, end date will be equal to start date (one day custom period)",
+                    "default": "2013-01-07",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "inter-dependency": "start_date, end_date: if end_date is provided, start_date must also be included."
+                    }
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "end_date"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "end_date"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "end_date"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "end_date"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "end_date"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "Please remove the custom period starting on 2023-04-15 from my calendar with ID WorkCal2023.",
+                    "parameters": {
+                        "start_date": "2023-04-15",
+                        "profile_id": "WorkCal2023"
+                    }
+                },
+                {
+                    "utterance": "I want to delete the custom period from 2022-11-01 to 2022-11-05 in the calendar named ProjectTimeline.",
+                    "parameters": {
+                        "start_date": "2022-11-01",
+                        "end_date": "2022-11-05",
+                        "profile_id": "ProjectTimeline"
+                    }
+                },
+                {
+                    "utterance": "Can you remove the custom period that starts on 2024-01-10 for the calendar ID TeamSchedule?",
+                    "parameters": {
+                        "start_date": "2024-01-10",
+                        "profile_id": "TeamSchedule"
+                    }
+                },
+                {
+                    "utterance": "Delete the custom period from 2023-07-20 to 2023-07-25 in the calendar with ID HolidayPlanner.",
+                    "parameters": {
+                        "start_date": "2023-07-20",
+                        "end_date": "2023-07-25",
+                        "profile_id": "HolidayPlanner"
+                    }
+                },
+                {
+                    "utterance": "Remove the custom period starting on 2023-09-05 from my calendar identified as OfficeHours.",
+                    "parameters": {
+                        "start_date": "2023-09-05",
+                        "profile_id": "OfficeHours"
+                    }
+                },
+                {
+                    "utterance": "Please delete the custom period between 2023-12-01 and 2023-12-10 in the calendar called YearEndSchedule.",
+                    "parameters": {
+                        "start_date": "2023-12-01",
+                        "end_date": "2023-12-10",
+                        "profile_id": "YearEndSchedule"
+                    }
+                },
+                {
+                    "utterance": "I need to remove the custom period starting on 2024-03-15 from the calendar with ID EmployeeShifts.",
+                    "parameters": {
+                        "start_date": "2024-03-15",
+                        "profile_id": "EmployeeShifts"
+                    }
+                },
+                {
+                    "utterance": "Delete the custom period from 2023-08-10 to 2023-08-15 in the calendar named SummerBreak.",
+                    "parameters": {
+                        "start_date": "2023-08-10",
+                        "end_date": "2023-08-15",
+                        "profile_id": "SummerBreak"
+                    }
+                },
+                {
+                    "utterance": "Please remove the custom period starting on 2023-05-22 from the calendar ID RemoteWork.",
+                    "parameters": {
+                        "start_date": "2023-05-22",
+                        "profile_id": "RemoteWork"
+                    }
+                },
+                {
+                    "utterance": "I want to delete the custom period from 2023-10-01 to 2023-10-07 in the calendar called ConferenceSchedule.",
+                    "parameters": {
+                        "start_date": "2023-10-01",
+                        "end_date": "2023-10-07",
+                        "profile_id": "ConferenceSchedule"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/1.3/analyse",
+            "url": "https://working-days.p.rapidapi.com/1.3/analyse",
+            "description": "Analyse a period (you provide a start_date and an end_date over a given calendar, we respond with the period analysis)",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/analyse\"\nquerystring = {\"start_date\": \"2013-01-01\", \"end_time\": \"18:15\", \"start_time\": \"09:14\", \"end_date\": \"2013-12-31\", \"country_code\": \"US\", \"profile_id\": \"\", \"configuration\": \"Federal holidays\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/analyse\"\nquerystring = {\"start_date\": \"2013-01-01\", \"end_time\": \"18:15\", \"start_time\": \"09:14\", \"end_date\": \"2013-12-31\", \"country_code\": \"US\", \"profile_id\": \"\", \"configuration\": \"Federal holidays\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "start_date",
+                    "type": "STRING",
+                    "description": "The start date (YYYY-MM-DD)",
+                    "default": "2013-01-01",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "inter-dependency": "start_date, end_date: both parameters must be included simultaneously"
+                    }
+                },
+                {
+                    "name": "end_date",
+                    "type": "STRING",
+                    "description": "The end date (YYYY-MM-DD)",
+                    "default": "2013-12-31",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "inter-dependency": "start_date, end_date: both parameters must be included simultaneously"
+                    }
+                },
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "The ISO country code (2 letters).  See <a href=https://api.workingdays.org/api-countries >available countries & configurations</a>",
+                    "default": "US",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO country code (2 letters)"
+                    }
+                },
+                {
+                    "name": "end_time",
+                    "type": "STRING",
+                    "description": "The end date's time (24 hours format, like 09:00 or 15:00, but not 3pm).If omitted, default value is 23:59.",
+                    "default": "18:15",
+                    "required": false,
+                    "constraints": {
+                        "format": "24 hours format (HH:mm)"
+                    }
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "The start date's time (24 hours format, like 09:00 or 15:00, but not 3pm).If omitted, default value is 00:00",
+                    "default": "09:14",
+                    "required": false,
+                    "constraints": {
+                        "format": "24 hours format (HH:mm)"
+                    }
+                },
+                {
+                    "name": "profile_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "configuration",
+                    "type": "STRING",
+                    "description": "The name of the preset configuration to be used. See <a href=https://api.workingdays.org/api-countries >available countries & configurations</a>",
+                    "default": "Federal holidays",
+                    "required": false
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "profile_id"
+                ],
+                [
+                    "configuration"
+                ],
+                [
+                    "start_time"
+                ],
+                [
+                    "end_time"
+                ],
+                [
+                    "configuration",
+                    "profile_id"
+                ],
+                [
+                    "start_time",
+                    "end_time"
+                ],
+                [
+                    "start_time",
+                    "end_time",
+                    "profile_id"
+                ],
+                [
+                    "configuration"
+                ],
+                [
+                    "profile_id",
+                    "end_time",
+                    "configuration",
+                    "start_time"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you analyze the working days and holidays in Canada from March 1, 2023 to March 31, 2023?",
+                    "parameters": {
+                        "start_date": "2023-03-01",
+                        "end_date": "2023-03-31",
+                        "country_code": "CA"
+                    }
+                },
+                {
+                    "utterance": "I need a report on the working days in Germany between July 10, 2024 and July 20, 2024 for profile ID employee_42.",
+                    "parameters": {
+                        "start_date": "2024-07-10",
+                        "end_date": "2024-07-20",
+                        "country_code": "DE",
+                        "profile_id": "employee_42"
+                    }
+                },
+                {
+                    "utterance": "Please provide the analysis of working days in Australia from January 5, 2022 to January 25, 2022 using the 'State holidays' configuration.",
+                    "parameters": {
+                        "start_date": "2022-01-05",
+                        "end_date": "2022-01-25",
+                        "country_code": "AU",
+                        "configuration": "State holidays"
+                    }
+                },
+                {
+                    "utterance": "Could you analyze the working days in Japan from May 1, 2023 to May 15, 2023 starting at 08:30?",
+                    "parameters": {
+                        "start_date": "2023-05-01",
+                        "end_date": "2023-05-15",
+                        "country_code": "JP",
+                        "start_time": "08:30"
+                    }
+                },
+                {
+                    "utterance": "I want to know the working days in Brazil between November 10, 2023 and November 20, 2023 ending at 17:00.",
+                    "parameters": {
+                        "start_date": "2023-11-10",
+                        "end_date": "2023-11-20",
+                        "country_code": "BR",
+                        "end_time": "17:00"
+                    }
+                },
+                {
+                    "utterance": "Get me the working days analysis for France from February 1, 2024 to February 28, 2024 with profile ID manager_7 and using the 'Regional holidays' configuration.",
+                    "parameters": {
+                        "start_date": "2024-02-01",
+                        "end_date": "2024-02-28",
+                        "country_code": "FR",
+                        "profile_id": "manager_7",
+                        "configuration": "Regional holidays"
+                    }
+                },
+                {
+                    "utterance": "Analyze the working days in Italy from June 10, 2023 09:00 to June 20, 2023 18:00.",
+                    "parameters": {
+                        "start_date": "2023-06-10",
+                        "end_date": "2023-06-20",
+                        "country_code": "IT",
+                        "start_time": "09:00",
+                        "end_time": "18:00"
+                    }
+                },
+                {
+                    "utterance": "Please provide the working days report for Spain from August 5, 2023 08:00 to August 15, 2023 17:30 for profile ID sales_team.",
+                    "parameters": {
+                        "start_date": "2023-08-05",
+                        "end_date": "2023-08-15",
+                        "country_code": "ES",
+                        "start_time": "08:00",
+                        "end_time": "17:30",
+                        "profile_id": "sales_team"
+                    }
+                },
+                {
+                    "utterance": "I want to see the working days and holidays in the UK from December 1, 2023 to December 31, 2023 using the 'Bank holidays' configuration.",
+                    "parameters": {
+                        "start_date": "2023-12-01",
+                        "end_date": "2023-12-31",
+                        "country_code": "GB",
+                        "configuration": "Bank holidays"
+                    }
+                },
+                {
+                    "utterance": "Could you analyze the working days in the Netherlands from April 1, 2024 07:45 to April 10, 2024 16:00 for profile ID dev_team using the 'Public holidays' configuration?",
+                    "parameters": {
+                        "start_date": "2024-04-01",
+                        "end_date": "2024-04-10",
+                        "country_code": "NL",
+                        "start_time": "07:45",
+                        "end_time": "16:00",
+                        "profile_id": "dev_team",
+                        "configuration": "Public holidays"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/1.3/add_working_hours",
+            "url": "https://working-days.p.rapidapi.com/1.3/add_working_hours",
+            "description": "Add an amount of working time to a given start date/time",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/add_working_hours\"\nquerystring = {\"increment_time\": 1815, \"start_date\": \"2013-12-31\", \"configuration\": \"Federal holidays\", \"profile_id\": \"\", \"country_code\": \"US\", \"start_time\": \"08:15\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/add_working_hours\"\nquerystring = {\"increment_time\": 1815, \"start_date\": \"2013-12-31\", \"configuration\": \"Federal holidays\", \"profile_id\": \"\", \"country_code\": \"US\", \"start_time\": \"08:15\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "start_date",
+                    "type": "STRING",
+                    "description": "The start date (YYYY-MM-DD)",
+                    "default": "2013-12-31",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "The ISO country code (2 letters).  See <a href=https://api.workingdays.org/api-countries >available countries & configurations</a>",
+                    "default": "US",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO country code (2 letters)"
+                    }
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "The start time in a 24 hours format with leading zeros.",
+                    "default": "08:15",
+                    "required": true,
+                    "constraints": {
+                        "format": "24 hours format with leading zeros"
+                    }
+                },
+                {
+                    "name": "increment_time",
+                    "type": "STRING",
+                    "description": "The amount of working time to be added (or removed) to the start date time. Format H:i. This amount cannot exceed 5000 hours. For example, to add one hour&#58; 1&#58;00. To add 30 hours and 15 minutes&#58; 30:15.  To remove 45 minutes&#58; -0:45",
+                    "default": 1815,
+                    "required": false,
+                    "constraints": {
+                        "format": "H:i",
+                        "values": {
+                            "max": 5000
+                        }
+                    }
+                },
+                {
+                    "name": "configuration",
+                    "type": "STRING",
+                    "description": "The name of the preset configuration to be used. See <a href=https://api.workingdays.org/api-countries >available countries & configurations</a>",
+                    "default": "Federal holidays",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "profile_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "profile_id"
+                ],
+                [
+                    "increment_time"
+                ],
+                [
+                    "configuration"
+                ],
+                [
+                    "increment_time",
+                    "configuration"
+                ],
+                [
+                    "profile_id"
+                ],
+                [
+                    "profile_id",
+                    "increment_time",
+                    "configuration"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "increment_time"
+                ],
+                [
+                    "profile_id"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you calculate the new date and time after adding working hours starting from March 15, 2024 at 09:00 in Canada?",
+                    "parameters": {
+                        "start_date": "2024-03-15",
+                        "country_code": "CA",
+                        "start_time": "09:00"
+                    }
+                },
+                {
+                    "utterance": "I need to add working hours starting on July 1, 2023 at 08:30 in Germany using my profile ID work_profile_2023.",
+                    "parameters": {
+                        "start_date": "2023-07-01",
+                        "country_code": "DE",
+                        "start_time": "08:30",
+                        "profile_id": "work_profile_2023"
+                    }
+                },
+                {
+                    "utterance": "Please add 12 hours and 45 minutes of working time starting from October 10, 2022 at 07:15 in the UK.",
+                    "parameters": {
+                        "start_date": "2022-10-10",
+                        "country_code": "GB",
+                        "start_time": "07:15",
+                        "increment_time": "12:45"
+                    }
+                },
+                {
+                    "utterance": "Calculate the end date and time starting from January 5, 2025 at 10:00 in Australia using the 'State holidays' configuration.",
+                    "parameters": {
+                        "start_date": "2025-01-05",
+                        "country_code": "AU",
+                        "start_time": "10:00",
+                        "configuration": "State holidays"
+                    }
+                },
+                {
+                    "utterance": "Add 3 hours and 30 minutes of working time starting on November 20, 2023 at 08:45 in France with the 'Regional holidays' configuration.",
+                    "parameters": {
+                        "start_date": "2023-11-20",
+                        "country_code": "FR",
+                        "start_time": "08:45",
+                        "increment_time": "3:30",
+                        "configuration": "Regional holidays"
+                    }
+                },
+                {
+                    "utterance": "Using profile ID employee_456, add working hours starting from September 12, 2024 at 09:15 in Japan.",
+                    "parameters": {
+                        "start_date": "2024-09-12",
+                        "country_code": "JP",
+                        "start_time": "09:15",
+                        "profile_id": "employee_456"
+                    }
+                },
+                {
+                    "utterance": "For profile ID team_lead_01, add 7 hours and 20 minutes of working time starting on December 1, 2023 at 08:00 in Italy with the 'National holidays' configuration.",
+                    "parameters": {
+                        "start_date": "2023-12-01",
+                        "country_code": "IT",
+                        "start_time": "08:00",
+                        "profile_id": "team_lead_01",
+                        "increment_time": "7:20",
+                        "configuration": "National holidays"
+                    }
+                },
+                {
+                    "utterance": "What will be the resulting date and time if I add working hours starting from February 28, 2024 at 07:45 in Brazil?",
+                    "parameters": {
+                        "start_date": "2024-02-28",
+                        "country_code": "BR",
+                        "start_time": "07:45"
+                    }
+                },
+                {
+                    "utterance": "Add 15 hours and 10 minutes of working time starting from May 3, 2023 at 06:30 in South Africa.",
+                    "parameters": {
+                        "start_date": "2023-05-03",
+                        "country_code": "ZA",
+                        "start_time": "06:30",
+                        "increment_time": "15:10"
+                    }
+                },
+                {
+                    "utterance": "Using profile ID consultant_789, add working hours starting on August 18, 2024 at 09:45 in Mexico.",
+                    "parameters": {
+                        "start_date": "2024-08-18",
+                        "country_code": "MX",
+                        "start_time": "09:45",
+                        "profile_id": "consultant_789"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/1.3/list_non_working_days",
+            "url": "https://working-days.p.rapidapi.com/1.3/list_non_working_days",
+            "description": "List the non working days (weekend days, public holidays and custom dates) between two dates in chronlogical order.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/list_non_working_days\"\nquerystring = {\"start_date\": \"2013-01-01\", \"end_date\": \"2013-12-31\", \"configuration\": \"Federal holidays\", \"profile_id\": \"\", \"country_code\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/list_non_working_days\"\nquerystring = {\"start_date\": \"2013-01-01\", \"end_date\": \"2013-12-31\", \"configuration\": \"Federal holidays\", \"profile_id\": \"\", \"country_code\": \"US\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "start_date",
+                    "type": "STRING",
+                    "description": "The start date (YYYY-MM-DD)",
+                    "default": "2013-01-01",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "end_date",
+                    "type": "STRING",
+                    "description": "The end date (YYYY-MM-DD)",
+                    "default": "2013-12-31",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "inter-dependency": "start_date, end_date: both parameters must be included simultaneously."
+                    }
+                },
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "The ISO country code (2 letters).  See <a href=https://api.workingdays.org/api-countries >available countries & configurations</a>",
+                    "default": "US",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO country code (2 letters)"
+                    }
+                },
+                {
+                    "name": "configuration",
+                    "type": "STRING",
+                    "description": "The name of the preset configuration to be used. See <a href=https://api.workingdays.org/api-countries >available countries & configurations</a>",
+                    "default": "Federal holidays",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "profile_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "configuration"
+                ],
+                [
+                    "profile_id"
+                ],
+                [
+                    "configuration",
+                    "profile_id"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "configuration"
+                ],
+                [
+                    "profile_id"
+                ],
+                [
+                    "profile_id",
+                    "configuration"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "configuration"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the non working days in Canada from March 1st, 2024 to March 31st, 2024?",
+                    "parameters": {
+                        "start_date": "2024-03-01",
+                        "end_date": "2024-03-31",
+                        "country_code": "CA"
+                    }
+                },
+                {
+                    "utterance": "I need a list of all non working days in Germany between July 10, 2023 and August 10, 2023 using the 'State holidays' configuration.",
+                    "parameters": {
+                        "start_date": "2023-07-10",
+                        "end_date": "2023-08-10",
+                        "country_code": "DE",
+                        "configuration": "State holidays"
+                    }
+                },
+                {
+                    "utterance": "Please provide the non working days in Japan from January 5th to January 20th, 2025 for profile ID 'tokyo_office'.",
+                    "parameters": {
+                        "start_date": "2025-01-05",
+                        "end_date": "2025-01-20",
+                        "country_code": "JP",
+                        "profile_id": "tokyo_office"
+                    }
+                },
+                {
+                    "utterance": "Could you list the non working days in Australia from December 1, 2023 to December 31, 2023 for profile ID 'sydney_branch' using the 'Public holidays' configuration?",
+                    "parameters": {
+                        "start_date": "2023-12-01",
+                        "end_date": "2023-12-31",
+                        "country_code": "AU",
+                        "configuration": "Public holidays",
+                        "profile_id": "sydney_branch"
+                    }
+                },
+                {
+                    "utterance": "What are the non working days in Brazil between May 15, 2024 and June 15, 2024?",
+                    "parameters": {
+                        "start_date": "2024-05-15",
+                        "end_date": "2024-06-15",
+                        "country_code": "BR"
+                    }
+                },
+                {
+                    "utterance": "List the non working days in France from November 1st to November 30th, 2023 using the 'National holidays' configuration.",
+                    "parameters": {
+                        "start_date": "2023-11-01",
+                        "end_date": "2023-11-30",
+                        "country_code": "FR",
+                        "configuration": "National holidays"
+                    }
+                },
+                {
+                    "utterance": "Show me the non working days in South Africa from August 10, 2023 to August 25, 2023 for profile ID 'johannesburg_office'.",
+                    "parameters": {
+                        "start_date": "2023-08-10",
+                        "end_date": "2023-08-25",
+                        "country_code": "ZA",
+                        "profile_id": "johannesburg_office"
+                    }
+                },
+                {
+                    "utterance": "I want to see the non working days in Italy between February 1 and February 28, 2024 for profile ID 'milan_team' using the 'Regional holidays' configuration.",
+                    "parameters": {
+                        "start_date": "2024-02-01",
+                        "end_date": "2024-02-28",
+                        "country_code": "IT",
+                        "profile_id": "milan_team",
+                        "configuration": "Regional holidays"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the non working days in Mexico from September 1st to September 30th, 2023?",
+                    "parameters": {
+                        "start_date": "2023-09-01",
+                        "end_date": "2023-09-30",
+                        "country_code": "MX"
+                    }
+                },
+                {
+                    "utterance": "Give me the list of non working days in the United Kingdom between April 1, 2024 and April 30, 2024 using the 'Bank holidays' configuration.",
+                    "parameters": {
+                        "start_date": "2024-04-01",
+                        "end_date": "2024-04-30",
+                        "country_code": "GB",
+                        "configuration": "Bank holidays"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/1.3/define_custom_period",
+            "url": "https://working-days.p.rapidapi.com/1.3/define_custom_period",
+            "description": "Defining a custom period (typically days of vacations of an employee or days of annual closure of a company) can be done from the working days websites user interface but can also be done programmatically from the API. A typical use case would be to retrieve the vacations of the workers out of the human ressources software and insert them into a custom calendar, then being able to query available working days.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/define_custom_period\"\nquerystring = {\"color\": \"orange\", \"description\": \"Vacations to Bahamas\", \"start_morning\": true, \"profile_id\": \"CB7EF3\", \"end_afternoon\": true, \"start_date\": \"2013-01-01\", \"end_date\": \"2013-01-07\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/define_custom_period\"\nquerystring = {\"color\": \"orange\", \"description\": \"Vacations to Bahamas\", \"start_morning\": true, \"profile_id\": \"CB7EF3\", \"end_afternoon\": true, \"start_date\": \"2013-01-01\", \"end_date\": \"2013-01-07\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "description",
+                    "type": "STRING",
+                    "description": "A textual description of the custom period (up to 30 caracters)",
+                    "default": "Vacations to Bahamas",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 30
+                        }
+                    }
+                },
+                {
+                    "name": "profile_id",
+                    "type": "STRING",
+                    "description": "The ID of the calendar we are customizing.",
+                    "default": "CB7EF3",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "start_date",
+                    "type": "STRING",
+                    "description": "The start date of the custom period (YYYY-MM-DD)",
+                    "default": "2013-01-01",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "color",
+                    "type": "STRING",
+                    "description": "The color of custom period when displayed on the calendar. Colors can be useful in order to classify custom periods. Default value is orange.",
+                    "default": "orange",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "start_morning",
+                    "type": "BOOLEAN",
+                    "description": "Does the custom period starts in the morning of the start_date? Default value is true. (This parameter can be used if you want to create half day custom periods.)",
+                    "default": true,
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "end_afternoon",
+                    "type": "BOOLEAN",
+                    "description": "Does the custom period ends in the afternoon of the end_date? Default value is true. (This parameter can be used if you want to create half day custom periods.)",
+                    "default": true,
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "end_date",
+                    "type": "STRING",
+                    "description": "The end date of the custom period (YYYY-MM-DD) If omitted, end date will be equal to start date (one day custom period)",
+                    "default": "2013-01-07",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "inter-dependency": "start_date, end_date: if end_date is provided, it must be equal to or after start_date."
+                    }
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "start_morning"
+                ],
+                [
+                    "color"
+                ],
+                [
+                    "end_date"
+                ],
+                [
+                    "end_afternoon"
+                ],
+                [
+                    "color",
+                    "end_afternoon"
+                ],
+                [
+                    "end_date",
+                    "start_morning"
+                ],
+                [
+                    "end_date",
+                    "start_morning",
+                    "end_afternoon"
+                ],
+                [
+                    "color"
+                ],
+                [
+                    "color",
+                    "end_date",
+                    "start_morning",
+                    "end_afternoon"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "I need to set a custom period called 'Team Building Retreat' for the calendar ID HR2024 starting on 2024-07-15.",
+                    "parameters": {
+                        "description": "Team Building Retreat",
+                        "profile_id": "HR2024",
+                        "start_date": "2024-07-15"
+                    }
+                },
+                {
+                    "utterance": "Please create a custom period named 'Client Workshop' for the calendar ID FINANCE01 starting on 2023-11-20 and make sure it starts in the morning.",
+                    "parameters": {
+                        "description": "Client Workshop",
+                        "profile_id": "FINANCE01",
+                        "start_date": "2023-11-20",
+                        "start_morning": true
+                    }
+                },
+                {
+                    "utterance": "Add a custom period called 'Annual Leave' to the calendar ID ENG_TEAM with a start date of 2024-05-10 and use blue as the color for this period.",
+                    "parameters": {
+                        "description": "Annual Leave",
+                        "profile_id": "ENG_TEAM",
+                        "start_date": "2024-05-10",
+                        "color": "blue"
+                    }
+                },
+                {
+                    "utterance": "Define a custom period named 'Office Renovation' for the calendar ID ADMIN123 starting on 2023-09-01 and ending on 2023-09-10.",
+                    "parameters": {
+                        "description": "Office Renovation",
+                        "profile_id": "ADMIN123",
+                        "start_date": "2023-09-01",
+                        "end_date": "2023-09-10"
+                    }
+                },
+                {
+                    "utterance": "Set up a custom period called 'Half-day Training' for the calendar ID SALES45 starting on 2024-03-15 and ending in the afternoon of the same day.",
+                    "parameters": {
+                        "description": "Half-day Training",
+                        "profile_id": "SALES45",
+                        "start_date": "2024-03-15",
+                        "end_afternoon": true
+                    }
+                },
+                {
+                    "utterance": "Create a custom period named 'Project Kickoff' for the calendar ID DEVOPS99 starting on 2024-08-01, ending in the afternoon, and mark it with green color.",
+                    "parameters": {
+                        "description": "Project Kickoff",
+                        "profile_id": "DEVOPS99",
+                        "start_date": "2024-08-01",
+                        "color": "green",
+                        "end_afternoon": true
+                    }
+                },
+                {
+                    "utterance": "I want to define a custom period called 'Holiday Break' for the calendar ID HR_LEAVE starting from 2023-12-20 morning and ending on 2023-12-27.",
+                    "parameters": {
+                        "description": "Holiday Break",
+                        "profile_id": "HR_LEAVE",
+                        "start_date": "2023-12-20",
+                        "end_date": "2023-12-27",
+                        "start_morning": true
+                    }
+                },
+                {
+                    "utterance": "Please add a custom period named 'Conference Week' for the calendar ID MARKETING2024 starting in the morning of 2024-04-10, ending on 2024-04-14, and finishing in the afternoon.",
+                    "parameters": {
+                        "description": "Conference Week",
+                        "profile_id": "MARKETING2024",
+                        "start_date": "2024-04-10",
+                        "end_date": "2024-04-14",
+                        "start_morning": true,
+                        "end_afternoon": true
+                    }
+                },
+                {
+                    "utterance": "Add a custom period called 'Sabbatical' for the calendar ID EXECUTIVE with a start date of 2023-06-01 and use purple as the color.",
+                    "parameters": {
+                        "description": "Sabbatical",
+                        "profile_id": "EXECUTIVE",
+                        "start_date": "2023-06-01",
+                        "color": "purple"
+                    }
+                },
+                {
+                    "utterance": "Define a custom period named 'Research Project' for the calendar ID SCIENCE_DEPT starting in the morning of 2024-01-15, ending on 2024-02-15, finishing in the afternoon, and highlight it in red.",
+                    "parameters": {
+                        "description": "Research Project",
+                        "profile_id": "SCIENCE_DEPT",
+                        "start_date": "2024-01-15",
+                        "end_date": "2024-02-15",
+                        "start_morning": true,
+                        "end_afternoon": true,
+                        "color": "red"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/1.3/add_working_days",
+            "url": "https://working-days.p.rapidapi.com/1.3/add_working_days",
+            "description": "Add (or remove) any number of working days to a date.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/add_working_days\"\nquerystring = {\"include_start\": true, \"country_code\": \"US\", \"configuration\": \"Federal holidays\", \"start_date\": \"2013-12-31\", \"profile_id\": \"\", \"increment\": 10}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://working-days.p.rapidapi.com/1.3/add_working_days\"\nquerystring = {\"include_start\": true, \"country_code\": \"US\", \"configuration\": \"Federal holidays\", \"start_date\": \"2013-12-31\", \"profile_id\": \"\", \"increment\": 10}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"working-days.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "The ISO country code (2 letters).  See <a href=https://api.workingdays.org/api-countries >available countries & configurations</a>",
+                    "default": "US",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO country code (2 letters)"
+                    }
+                },
+                {
+                    "name": "start_date",
+                    "type": "STRING",
+                    "description": "The start date (YYYY-MM-DD)",
+                    "default": "2013-12-31",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "increment",
+                    "type": "NUMBER",
+                    "description": "The number of working days you want to add to your start date (positive or negative integer but not zero)",
+                    "default": 10,
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": -Infinity,
+                            "max": Infinity,
+                            "specific": []
+                        },
+                        "inter-dependency": "increment: must be a non-zero integer"
+                    }
+                },
+                {
+                    "name": "include_start",
+                    "type": "BOOLEAN",
+                    "description": "Should the count include the start_date? Default value is true. If you set include_start to false (\"false\" or \"0\"), the count will start at the next working day (or previous working day, if increment is negative)",
+                    "default": true,
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "configuration",
+                    "type": "STRING",
+                    "description": "The name of the preset configuration to be used. See <a href=https://api.workingdays.org/api-countries.php>available countries & configurations</a>",
+                    "default": "Federal holidays",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "profile_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "profile_id"
+                ],
+                [
+                    "configuration"
+                ],
+                [
+                    "include_start"
+                ],
+                [
+                    "profile_id",
+                    "include_start"
+                ],
+                [
+                    "configuration"
+                ],
+                [
+                    "configuration",
+                    "profile_id",
+                    "include_start"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "profile_id"
+                ],
+                [
+                    "configuration"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you tell me the date after adding 7 working days to March 15, 2024, in Canada?",
+                    "parameters": {
+                        "country_code": "CA",
+                        "start_date": "2024-03-15",
+                        "increment": 7
+                    }
+                },
+                {
+                    "utterance": "I need to find the date 5 working days after July 1, 2023, in Germany using my profile ID work_profile_2023.",
+                    "parameters": {
+                        "country_code": "DE",
+                        "start_date": "2023-07-01",
+                        "increment": 5,
+                        "profile_id": "work_profile_2023"
+                    }
+                },
+                {
+                    "utterance": "What date do I get if I add 3 working days starting from November 20, 2022, in the UK using the 'Bank holidays' configuration?",
+                    "parameters": {
+                        "country_code": "GB",
+                        "start_date": "2022-11-20",
+                        "increment": 3,
+                        "configuration": "Bank holidays"
+                    }
+                },
+                {
+                    "utterance": "Please calculate the date 4 working days after January 10, 2025, in Australia, but do not include the start date in the count.",
+                    "parameters": {
+                        "country_code": "AU",
+                        "start_date": "2025-01-10",
+                        "increment": 4,
+                        "include_start": false
+                    }
+                },
+                {
+                    "utterance": "Using my profile ID employee_456, can you add 6 working days to September 5, 2023, in France, excluding the start date?",
+                    "parameters": {
+                        "country_code": "FR",
+                        "start_date": "2023-09-05",
+                        "increment": 6,
+                        "profile_id": "employee_456",
+                        "include_start": false
+                    }
+                },
+                {
+                    "utterance": "I want to add 8 working days to May 3, 2024, in Japan using the 'National holidays' configuration.",
+                    "parameters": {
+                        "country_code": "JP",
+                        "start_date": "2024-05-03",
+                        "increment": 8,
+                        "configuration": "National holidays"
+                    }
+                },
+                {
+                    "utterance": "For my profile ID project_team_12, please add 10 working days to February 14, 2023, in Italy using the 'Regional holidays' configuration and exclude the start date.",
+                    "parameters": {
+                        "country_code": "IT",
+                        "start_date": "2023-02-14",
+                        "increment": 10,
+                        "configuration": "Regional holidays",
+                        "profile_id": "project_team_12",
+                        "include_start": false
+                    }
+                },
+                {
+                    "utterance": "What is the date after adding 12 working days to August 1, 2023, in Brazil?",
+                    "parameters": {
+                        "country_code": "BR",
+                        "start_date": "2023-08-01",
+                        "increment": 12
+                    }
+                },
+                {
+                    "utterance": "Can you calculate the date 9 working days after October 10, 2024, in Spain using my profile ID sales_team_9?",
+                    "parameters": {
+                        "country_code": "ES",
+                        "start_date": "2024-10-10",
+                        "increment": 9,
+                        "profile_id": "sales_team_9"
+                    }
+                },
+                {
+                    "utterance": "Add 15 working days to June 7, 2023, in South Africa using the 'Public holidays' configuration.",
+                    "parameters": {
+                        "country_code": "ZA",
+                        "start_date": "2023-06-07",
+                        "increment": 15,
+                        "configuration": "Public holidays"
+                    }
+                }
+            ]
+        }
+    ],
+    "standardized_name": "working_days",
+    "category": "Events"
+}

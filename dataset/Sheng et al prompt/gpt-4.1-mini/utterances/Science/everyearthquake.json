@@ -1,0 +1,2148 @@
+{
+    "tool_name": "EveryEarthquake",
+    "tool_description": "Get every earthquake and any other event that registers on the richter scale ever catalogued by the USGS, with very detailed location data.",
+    "title": "EveryEarthquake",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 2338,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/dbarkman/api/everyearthquake/",
+    "host": "everyearthquake.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Recent Earthquakes",
+            "url": "https://everyearthquake.p.rapidapi.com/recentEarthquakes",
+            "description": "Get the 100 most recent earthquakes from all over in the world, from now to the date and time determined by the 'interval' property.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/recentEarthquakes\"\nquerystring = {\"count\": count, \"radius\": radius, \"units\": units, \"intensity\": intensity, \"magnitude\": magnitude, \"longitude\": longitude, \"start\": start, \"latitude\": latitude, \"type\": type, \"interval\": interval}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "httpStatus": 200,
+                "noun": "earthquakes",
+                "verb": "GET",
+                "errorCode": "none",
+                "errors": [],
+                "friendlyError": "",
+                "result": "success",
+                "count": 1,
+                "data": [
+                    {
+                        "id": "ci39989663",
+                        "magnitude": "1.04",
+                        "type": "earthquake",
+                        "title": "M 1.0 - 6km NW of Rialto, CA",
+                        "date": "2022-04-09T23:52:35",
+                        "time": "1649548355440",
+                        "updated": "1649548585442",
+                        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci39989663",
+                        "detailUrl": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci39989663.geojson",
+                        "felt": "0",
+                        "cdi": "0",
+                        "mmi": "0",
+                        "alert": "",
+                        "status": "automatic",
+                        "tsunami": "0",
+                        "sig": "17",
+                        "net": "ci",
+                        "code": "39989663",
+                        "ids": ",ci39989663,",
+                        "sources": ",ci,",
+                        "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                        "nst": "24",
+                        "dmin": "0.1198",
+                        "rms": "0.21",
+                        "gap": "116",
+                        "magType": "ml",
+                        "geometryType": "Point",
+                        "depth": "6.66",
+                        "latitude": "34.1412",
+                        "longitude": "-117.419",
+                        "place": "6km NW of Rialto, CA",
+                        "location": "Rialto, CA",
+                        "continent": "North America",
+                        "country": "United States of America",
+                        "subnational": "California",
+                        "city": "Rialto",
+                        "locality": "Rialto",
+                        "postcode": "92377",
+                        "what3words": "goodbye.smiling.option",
+                        "timezone": "-420",
+                        "locationDetails": [
+                            {
+                                "id": "9",
+                                "wikidataId": "Q49",
+                                "name": "North America",
+                                "description": "continent on the Earth's northwestern quadrant",
+                                "geonameId": "6255149",
+                                "adminLevel": "0"
+                            },
+                            {
+                                "id": "36",
+                                "wikidataId": "Q578170",
+                                "name": "contiguous United States",
+                                "description": "48 states of the United States apart from Alaska and Hawaii",
+                                "geonameId": "0",
+                                "adminLevel": "0"
+                            },
+                            {
+                                "id": "1242",
+                                "wikidataId": "",
+                                "name": "92377",
+                                "description": "postal code",
+                                "geonameId": "0",
+                                "adminLevel": "0"
+                            },
+                            {
+                                "id": "1",
+                                "wikidataId": "Q30",
+                                "name": "United States of America",
+                                "description": "country in North America",
+                                "geonameId": "6252001",
+                                "adminLevel": "2"
+                            },
+                            {
+                                "id": "46",
+                                "wikidataId": "Q99",
+                                "name": "California",
+                                "description": "state of the United States of America",
+                                "geonameId": "5332921",
+                                "adminLevel": "4"
+                            },
+                            {
+                                "id": "101",
+                                "wikidataId": "Q108053",
+                                "name": "San Bernardino County",
+                                "description": "county in California, United States",
+                                "geonameId": "5391726",
+                                "adminLevel": "6"
+                            },
+                            {
+                                "id": "1527",
+                                "wikidataId": "Q289661",
+                                "name": "Rialto",
+                                "description": "city in California, United States of America",
+                                "geonameId": "5387288",
+                                "adminLevel": "8"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "Get recent earthquakes from current time, back to a time based on the interval provided. Interval is an ISO8601 Duration, examples: P5D for the last 5 days, PT12H for the last 12 hours. https://en.wikipedia.org/wiki/ISO_8601#Durations",
+                    "default": "P1Y2M3W4DT1H2M3S",
+                    "required": true
+                },
+                {
+                    "name": "count",
+                    "type": "STRING",
+                    "description": "Add to any call to limit the number of earthquakes returned.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "100",
+                    "required": false
+                },
+                {
+                    "name": "radius",
+                    "type": "STRING",
+                    "description": "The length across half a circle of the search area. The latitude and longitude together make up the center of the circle, while the radius is the distance from the center to the outside of the circle. A 10 mile radius will be a circle 20 miles across with its center at the latitude/longitude point.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "1000",
+                    "required": false
+                },
+                {
+                    "name": "units",
+                    "type": "STRING",
+                    "description": "Either miles or kilometers for the radius of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "miles",
+                    "required": false
+                },
+                {
+                    "name": "intensity",
+                    "type": "STRING",
+                    "description": "Intensity can be added to limit results to only those earthquakes with at least the specified intensity or greater.",
+                    "default": "1",
+                    "required": false
+                },
+                {
+                    "name": "magnitude",
+                    "type": "STRING",
+                    "description": "Magnitude can be added to limit results to only those earthquakes with at least the specified magnitude or greater.",
+                    "default": "3",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "The longitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "-118.3706975",
+                    "required": false
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Use the 'start' parameter to retrieve more than 1000 earthquakes, up to 1000 at a time. 'Start' is the offset to start at within the overall results.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "1",
+                    "required": false
+                },
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "The latitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "33.962523",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type can be added to limit results to only those types specified, e.g.: earthquakes, quarry blasts, explosions. Use the 'types' endpoints to see all available types.",
+                    "default": "earthquake",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes from the last 5 days.",
+                    "parameters": {
+                        "interval": "P5D"
+                    }
+                },
+                {
+                    "utterance": "Get the 50 most recent earthquakes from the past 12 hours.",
+                    "parameters": {
+                        "interval": "PT12H",
+                        "count": "50"
+                    }
+                },
+                {
+                    "utterance": "Find earthquakes with a magnitude of at least 5 in the last 7 days.",
+                    "parameters": {
+                        "interval": "P7D",
+                        "magnitude": "5"
+                    }
+                },
+                {
+                    "utterance": "List earthquakes from the last 3 days within a 100 kilometer radius of latitude 34.05 and longitude -118.25.",
+                    "parameters": {
+                        "interval": "P3D",
+                        "latitude": "34.05",
+                        "longitude": "-118.25",
+                        "radius": "100",
+                        "units": "kilometers"
+                    }
+                },
+                {
+                    "utterance": "Get earthquakes with intensity 4 or greater from the last 24 hours.",
+                    "parameters": {
+                        "interval": "P1D",
+                        "intensity": "4"
+                    }
+                },
+                {
+                    "utterance": "Show me the 200 most recent earthquakes from the last 10 days.",
+                    "parameters": {
+                        "interval": "P10D",
+                        "count": "200"
+                    }
+                },
+                {
+                    "utterance": "Find explosions recorded in the last 2 days.",
+                    "parameters": {
+                        "interval": "P2D",
+                        "type": "explosions"
+                    }
+                },
+                {
+                    "utterance": "Get earthquakes from the last 6 hours near latitude 40.71 and longitude -74.01 within a 50 mile radius.",
+                    "parameters": {
+                        "interval": "PT6H",
+                        "latitude": "40.71",
+                        "longitude": "-74.01",
+                        "radius": "50",
+                        "units": "miles"
+                    }
+                },
+                {
+                    "utterance": "List earthquakes with magnitude 6 or higher from the last 30 days.",
+                    "parameters": {
+                        "interval": "P30D",
+                        "magnitude": "6"
+                    }
+                },
+                {
+                    "utterance": "Get the 1000 most recent earthquakes from the last 15 days starting from the 101st result.",
+                    "parameters": {
+                        "interval": "P15D",
+                        "count": "1000",
+                        "start": "101"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "M1.0+ Earthquakes, Past Day",
+            "url": "https://everyearthquake.p.rapidapi.com/1.0_day.json",
+            "description": "Magnitude 1.0+ Earthquakes, Past Day",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/1.0_day.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 1.0 or higher that happened in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every earthquake recorded in the last 24 hours with magnitude above 1.0.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on all magnitude 1.0 and above earthquakes from the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see all recent earthquakes of magnitude 1.0 or greater from the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List every earthquake that registered at least a 1.0 magnitude in the past 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me information on all earthquakes with magnitude 1.0+ that occurred during the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show all seismic events of magnitude 1.0 or more from the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all earthquakes with magnitude above 1.0 recorded in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Display every earthquake of magnitude 1.0 or higher that happened within the last 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get me all magnitude 1.0+ earthquakes from the past day with detailed location data.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "All Earthquakes, Past 30 Days",
+            "url": "https://everyearthquake.p.rapidapi.com/all_month.json",
+            "description": "All Earthquakes, Past Thirty Days",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/all_month.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes that have occurred in the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see every earthquake recorded by the USGS in the last month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of all seismic events from the past thirty days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide detailed location data for all earthquakes in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show all recent earthquakes catalogued by the USGS within the past month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me every earthquake event recorded in the past 30 days with detailed info.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all seismic activity from the last thirty days worldwide.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all earthquake data from the USGS for the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Display every earthquake event that happened in the last month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve all earthquake records from the past 30 days with location details.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M1.0+ Earthquakes, Past 30 Days",
+            "url": "https://everyearthquake.p.rapidapi.com/1.0_month.json",
+            "description": "Magnitude 1.0+ Earthquakes, Past Thirty Days",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/1.0_month.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 1.0 and above that occurred in the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every earthquake recorded by the USGS in the last month with magnitude 1.0 or higher.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide detailed location data for all earthquakes of magnitude 1.0+ from the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see all seismic events with magnitude 1.0 or greater that happened in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve every earthquake event catalogued by the USGS in the past month with magnitude above 1.0.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all earthquakes with magnitude 1.0 or more that have occurred over the past 30 days worldwide.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me detailed data on all magnitude 1.0+ earthquakes from the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get information on every earthquake with magnitude greater than or equal to 1.0 in the past month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide a catalog of all earthquakes of magnitude 1.0 and above recorded in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all seismic events with magnitude 1.0+ that have been recorded by the USGS in the past 30 days.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M2.5+ Earthquakes, Past 30 Days",
+            "url": "https://everyearthquake.p.rapidapi.com/2.5_month.json",
+            "description": "Magnitude 2.5+ Earthquakes, Past Thirty Days",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/2.5_month.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 2.5 or higher from the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every earthquake above magnitude 2.5 that happened in the last month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on all magnitude 2.5+ earthquakes recorded in the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see all recent earthquakes with a magnitude of at least 2.5 from the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List every earthquake of magnitude 2.5 or greater that occurred during the past month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me all seismic events with magnitude 2.5 and above from the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get information on all earthquakes magnitude 2.5+ in the past 30 days worldwide.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide a catalog of all magnitude 2.5 or higher earthquakes from the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all recent earthquakes with magnitude greater than or equal to 2.5 from the past month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me data on every earthquake above magnitude 2.5 that happened in the last 30 days.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M4.5+ Earthquakes, Past 30 Days",
+            "url": "https://everyearthquake.p.rapidapi.com/4.5_month.json",
+            "description": "Magnitude 4.5+ Earthquakes, Past Thirty Days",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/4.5_month.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 4.5 and above that occurred in the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every earthquake of magnitude 4.5 or higher from the last month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on all recent earthquakes with a magnitude of at least 4.5 in the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see all magnitude 4.5 plus earthquakes recorded in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List every earthquake with a magnitude greater than or equal to 4.5 that happened over the past month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me information on all earthquakes of magnitude 4.5 or more from the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show all seismic events with magnitude 4.5 and above that have been catalogued in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch every earthquake with a magnitude of 4.5 or higher that occurred within the past month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Display all magnitude 4.5+ earthquakes from the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get me the data on all earthquakes with magnitude 4.5 or greater in the past 30 days.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Significant Earthquakes, Past 30 Days",
+            "url": "https://everyearthquake.p.rapidapi.com/significant_month.json",
+            "description": "Significant Earthquakes, Past Thirty Days",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/significant_month.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all significant earthquakes from the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of significant earthquakes that have occurred in the last month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on all significant earthquakes recorded in the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see every significant earthquake event from the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all significant earthquakes that happened during the past month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch data on significant earthquakes from the previous 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the significant earthquake events recorded in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get information on all significant earthquakes over the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide a report of significant earthquakes from the past month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve all significant earthquake data from the last 30 days.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "All Earthquakes, Past 7 Days",
+            "url": "https://everyearthquake.p.rapidapi.com/all_week.json",
+            "description": "All Earthquakes, Past Seven Days",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/all_week.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes that have occurred in the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every earthquake recorded by the USGS in the last week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide detailed location data for all earthquakes from the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see all seismic events registered on the Richter scale in the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List every earthquake that happened worldwide during the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me all earthquake events catalogued by the USGS over the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show detailed information on all earthquakes from the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch every earthquake event recorded in the past week with location details.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Display all seismic activity registered on the Richter scale in the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get me the complete list of earthquakes from the last seven days as catalogued by USGS.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M1.0+ Earthquakes, Past 7 Days",
+            "url": "https://everyearthquake.p.rapidapi.com/1.0_week.json",
+            "description": "Magnitude 1.0+ Earthquakes, Past Seven Days",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/1.0_week.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 1.0 and above that happened in the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every earthquake recorded by the USGS in the last seven days with magnitude 1.0 or higher.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide detailed location data for all earthquakes of magnitude 1.0+ from the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see all seismic events with magnitude 1.0 or greater that occurred in the last week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve every earthquake event with magnitude above 1.0 recorded in the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all earthquakes of magnitude 1.0 or more from the last seven days with detailed location info.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me all recent earthquakes with magnitude at least 1.0 that happened during the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get data on all magnitude 1.0+ earthquakes recorded by USGS in the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide information on every earthquake with magnitude 1.0 or higher from the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all seismic events of magnitude 1.0 and above that have occurred in the past week.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M2.5+ Earthquakes, Past 7 Days",
+            "url": "https://everyearthquake.p.rapidapi.com/2.5_week.json",
+            "description": "Magnitude 2.5+ Earthquakes, Past Seven Days",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/2.5_week.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 2.5 or higher that happened in the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every earthquake above magnitude 2.5 from the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see all recent earthquakes of magnitude 2.5 or greater from the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on all magnitude 2.5 plus earthquakes that occurred in the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List every earthquake with a magnitude of at least 2.5 recorded in the past 7 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me all seismic events of magnitude 2.5 or more from the last week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get information on all earthquakes above 2.5 magnitude that happened during the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Display all magnitude 2.5+ earthquakes from the past week with detailed location data.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch every earthquake event of magnitude 2.5 or higher from the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a report of all earthquakes with magnitude 2.5 and above that occurred in the past week.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M4.5+ Earthquakes, Past 7 Days",
+            "url": "https://everyearthquake.p.rapidapi.com/4.5_week.json",
+            "description": "Magnitude 4.5+ Earthquakes, Past Seven Days",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/4.5_week.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 4.5 or higher from the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every earthquake above magnitude 4.5 that happened in the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on all recent earthquakes with a magnitude of at least 4.5 from the past 7 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see all M4.5+ earthquakes recorded in the last week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List every earthquake of magnitude 4.5 or greater that occurred during the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me information on all earthquakes with magnitude 4.5 and above from the last 7 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all seismic events of magnitude 4.5 or more that happened in the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show all earthquakes recorded by USGS with magnitude 4.5+ in the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get every earthquake event with magnitude 4.5 or higher from the past 7 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide a report of all magnitude 4.5 and above earthquakes that occurred in the last week.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Significant Earthquakes, Past 7 Days",
+            "url": "https://everyearthquake.p.rapidapi.com/significant_week.json",
+            "description": "Significant Earthquakes, Past Seven Days",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/significant_week.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all significant earthquakes from the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every significant earthquake that happened in the last week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on significant earthquakes recorded in the past 7 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see all major earthquakes from the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List significant seismic events from the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me information on all significant earthquakes in the last 7 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show significant earthquake activity from the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all significant earthquakes recorded over the last week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Display every significant earthquake event from the past 7 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get data on significant earthquakes that occurred in the last seven days.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M4.5+ Earthquakes, Past Day",
+            "url": "https://everyearthquake.p.rapidapi.com/4.5_day.json",
+            "description": "Magnitude 4.5+ Earthquakes, Past Day",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/4.5_day.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 4.5 and above that happened in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get the list of all recent earthquakes of magnitude 4.5 or higher from the last 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on every earthquake with a magnitude of at least 4.5 that occurred in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all significant earthquakes above magnitude 4.5 recorded in the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all magnitude 4.5 plus earthquakes that have been catalogued in the past 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me information on all recent earthquakes with magnitude 4.5 or greater from the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show all seismic events of magnitude 4.5 and above that occurred within the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve every earthquake with a magnitude of 4.5 or more from the past 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get data on all earthquakes measuring 4.5 magnitude or higher that happened in the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all magnitude 4.5+ earthquakes recorded by USGS in the past day.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M2.5+ Earthquakes, Past Day",
+            "url": "https://everyearthquake.p.rapidapi.com/2.5_day.json",
+            "description": "Magnitude 2.5+ Earthquakes, Past Day",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/2.5_day.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 2.5 or higher that happened in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every earthquake above magnitude 2.5 recorded in the last 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on all recent earthquakes of magnitude 2.5 or greater from the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What earthquakes with magnitude 2.5 and above have occurred in the past day?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all seismic events of magnitude 2.5 or more that were detected in the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me information on all magnitude 2.5+ earthquakes from the past 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show all recent earthquakes with a magnitude of at least 2.5 that happened within the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve every earthquake event of magnitude 2.5 or higher recorded in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get all magnitude 2.5 and above earthquakes that occurred in the last 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all seismic activity with magnitude 2.5 or greater from the past day.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M1.0+ Earthquakes, Past Hour",
+            "url": "https://everyearthquake.p.rapidapi.com/1.0_hour.json",
+            "description": "Magnitude 1.0+ Earthquakes, Past Hour",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/1.0_hour.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 1.0 or higher that happened in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get the list of all recent earthquakes above magnitude 1.0 from the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What earthquakes of magnitude 1.0 or greater have been recorded in the past hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on every earthquake with magnitude 1.0+ that occurred within the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all seismic events of magnitude 1.0 or more from the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me information on all earthquakes magnitude 1.0 and above in the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all magnitude 1.0+ earthquakes that happened during the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show recent earthquakes with magnitude at least 1.0 from the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve all seismic activity of magnitude 1.0 or higher recorded in the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get every earthquake with magnitude 1.0+ that occurred in the past hour.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "All Earthquakes, Past Day",
+            "url": "https://everyearthquake.p.rapidapi.com/all_day.json",
+            "description": "All Earthquakes, Past Day",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/all_day.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes that have happened in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every earthquake recorded in the last 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide detailed data on all earthquakes from the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see all seismic events that occurred in the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me every earthquake recorded by the USGS in the past 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all earthquakes from the past day with detailed location information.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show all seismic activity that happened in the last day worldwide.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all earthquake events from the past day catalogued by USGS.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Display every earthquake recorded in the last 24 hours with location details.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get me all the earthquakes that have been registered on the Richter scale in the past day.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Significant Earthquakes, Past Day",
+            "url": "https://everyearthquake.p.rapidapi.com/significant_day.json",
+            "description": "Significant Earthquakes, Past Day",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/significant_day.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all significant earthquakes that have occurred in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of significant earthquakes from the last 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What significant earthquakes have been recorded in the past day?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on all significant earthquakes that happened during the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List every significant earthquake from the past day with detailed location data.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all significant earthquake events recorded in the last 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me information on significant earthquakes that occurred within the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve all significant earthquakes from the past day catalogued by the USGS.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show detailed data for significant earthquakes in the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get every significant earthquake event from the past 24 hours.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "All Earthquakes, Past Hour",
+            "url": "https://everyearthquake.p.rapidapi.com/all_hour.json",
+            "description": "All Earthquakes, Past Hour",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/all_hour.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes that have occurred in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of every earthquake recorded in the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on all seismic events from the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What earthquakes have been detected in the past hour worldwide?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all recent earthquakes from the last hour with detailed location data.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch every earthquake event recorded by the USGS in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me all seismic activity from the past hour according to the USGS.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show all earthquakes and events on the Richter scale from the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve every earthquake event catalogued in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Display all recent earthquakes from the past hour with detailed location info.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M2.5+ Earthquakes, Past Hour",
+            "url": "https://everyearthquake.p.rapidapi.com/2.5_hour.json",
+            "description": "Magnitude 2.5+ Earthquakes, Past Hour",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/2.5_hour.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 2.5 or higher that happened in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get the latest earthquakes above magnitude 2.5 from the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all recent earthquakes of magnitude 2.5 or greater that occurred within the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on every earthquake with a magnitude of at least 2.5 in the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all seismic events registering 2.5 magnitude or more from the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What earthquakes of magnitude 2.5 and above have been recorded in the last hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me recent seismic activity with magnitude 2.5+ from the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get a list of all earthquakes magnitude 2.5 or higher that happened within the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide information on all magnitude 2.5+ earthquakes in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve every earthquake event with magnitude above 2.5 from the last hour.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M4.5+ Earthquakes, Past Hour",
+            "url": "https://everyearthquake.p.rapidapi.com/4.5_hour.json",
+            "description": "Magnitude 4.5+ Earthquakes, Past Hour",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/4.5_hour.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes with magnitude 4.5 or higher that happened in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get the latest M4.5+ earthquakes from the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List every earthquake above magnitude 4.5 recorded in the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on all recent earthquakes of magnitude 4.5 or greater within the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What earthquakes with magnitude 4.5 and above have occurred in the last hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all M4.5+ earthquakes that were registered in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me information on every earthquake magnitude 4.5 or higher from the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show all recent earthquakes with a magnitude of at least 4.5 that happened within the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve all earthquakes of magnitude 4.5 or more recorded in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all M4.5+ earthquakes that occurred during the last hour.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Significant Earthquakes, Past Hour",
+            "url": "https://everyearthquake.p.rapidapi.com/significant_hour.json",
+            "description": "Significant Earthquakes, Past Hour",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/significant_hour.json\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all significant earthquakes that have occurred in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get the latest significant earthquake events from the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List every significant earthquake recorded in the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide details on significant earthquakes that happened within the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What significant earthquakes have been detected in the past hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all significant earthquake events from the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me information on any significant earthquakes in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show significant earthquake activity recorded during the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve all significant earthquakes from the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List significant earthquakes that occurred within the last hour.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "API Test",
+            "url": "https://everyearthquake.p.rapidapi.com/testPass",
+            "description": "Simple call to determine if the API is available and responding.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/testPass\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "httpStatus": 200,
+                "noun": "testPass",
+                "verb": "GET",
+                "errorCode": "none",
+                "errors": [],
+                "friendlyError": "",
+                "result": "success",
+                "count": 0,
+                "data": []
+            },
+            "headers": {},
+            "schema": {},
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Check if the EveryEarthquake API is available right now.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Is the EveryEarthquake API responding?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Test the connection to the EveryEarthquake API.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Verify if the EveryEarthquake API is up and running.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Ping the EveryEarthquake API to see if it is online.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Run a simple test call to the EveryEarthquake API.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Check the status of the EveryEarthquake API service.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Is the EveryEarthquake API currently accessible?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Perform a health check on the EveryEarthquake API.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Confirm that the EveryEarthquake API is responding to requests.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Earthquakes By Date",
+            "url": "https://everyearthquake.p.rapidapi.com/earthquakesByDate",
+            "description": "Get the 100 most recent earthquakes from all over in the world, within a specified date range.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/earthquakesByDate\"\nquerystring = {\"intensity\": intensity, \"startDate\": startdate, \"longitude\": longitude, \"type\": type, \"count\": count, \"latitude\": latitude, \"units\": units, \"endDate\": enddate, \"start\": start, \"radius\": radius, \"magnitude\": magnitude}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "httpStatus": 200,
+                "noun": "earthquakes",
+                "verb": "GET",
+                "errorCode": "none",
+                "errors": [],
+                "friendlyError": "",
+                "result": "success",
+                "count": 1,
+                "data": [
+                    {
+                        "id": "ci39989663",
+                        "magnitude": "1.04",
+                        "type": "earthquake",
+                        "title": "M 1.0 - 6km NW of Rialto, CA",
+                        "date": "2022-04-09T23:52:35",
+                        "time": "1649548355440",
+                        "updated": "1649548585442",
+                        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci39989663",
+                        "detailUrl": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci39989663.geojson",
+                        "felt": "0",
+                        "cdi": "0",
+                        "mmi": "0",
+                        "alert": "",
+                        "status": "automatic",
+                        "tsunami": "0",
+                        "sig": "17",
+                        "net": "ci",
+                        "code": "39989663",
+                        "ids": ",ci39989663,",
+                        "sources": ",ci,",
+                        "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                        "nst": "24",
+                        "dmin": "0.1198",
+                        "rms": "0.21",
+                        "gap": "116",
+                        "magType": "ml",
+                        "geometryType": "Point",
+                        "depth": "6.66",
+                        "latitude": "34.1412",
+                        "longitude": "-117.419",
+                        "place": "6km NW of Rialto, CA",
+                        "location": "Rialto, CA",
+                        "continent": "North America",
+                        "country": "United States of America",
+                        "subnational": "California",
+                        "city": "Rialto",
+                        "locality": "Rialto",
+                        "postcode": "92377",
+                        "what3words": "goodbye.smiling.option",
+                        "timezone": "-420",
+                        "locationDetails": [
+                            {
+                                "id": "9",
+                                "wikidataId": "Q49",
+                                "name": "North America",
+                                "description": "continent on the Earth's northwestern quadrant",
+                                "geonameId": "6255149",
+                                "adminLevel": "0"
+                            },
+                            {
+                                "id": "36",
+                                "wikidataId": "Q578170",
+                                "name": "contiguous United States",
+                                "description": "48 states of the United States apart from Alaska and Hawaii",
+                                "geonameId": "0",
+                                "adminLevel": "0"
+                            },
+                            {
+                                "id": "1242",
+                                "wikidataId": "",
+                                "name": "92377",
+                                "description": "postal code",
+                                "geonameId": "0",
+                                "adminLevel": "0"
+                            },
+                            {
+                                "id": "1",
+                                "wikidataId": "Q30",
+                                "name": "United States of America",
+                                "description": "country in North America",
+                                "geonameId": "6252001",
+                                "adminLevel": "2"
+                            },
+                            {
+                                "id": "46",
+                                "wikidataId": "Q99",
+                                "name": "California",
+                                "description": "state of the United States of America",
+                                "geonameId": "5332921",
+                                "adminLevel": "4"
+                            },
+                            {
+                                "id": "101",
+                                "wikidataId": "Q108053",
+                                "name": "San Bernardino County",
+                                "description": "county in California, United States",
+                                "geonameId": "5391726",
+                                "adminLevel": "6"
+                            },
+                            {
+                                "id": "1527",
+                                "wikidataId": "Q289661",
+                                "name": "Rialto",
+                                "description": "city in California, United States of America",
+                                "geonameId": "5387288",
+                                "adminLevel": "8"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "startDate",
+                    "type": "STRING",
+                    "description": "The start date for the search period in YYYY-MM-DD format. All dates start and end at midnight UTC.",
+                    "default": "2021-01-27",
+                    "required": true
+                },
+                {
+                    "name": "endDate",
+                    "type": "STRING",
+                    "description": "The end date for the search period in YYYY-MM-DD format. All dates start and end at midnight UTC.",
+                    "default": "2022-01-27",
+                    "required": true
+                },
+                {
+                    "name": "intensity",
+                    "type": "STRING",
+                    "description": "Intensity can be added to limit results to only those earthquakes with at least the specified intensity or greater.",
+                    "default": "1",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "The longitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "-118.3706975",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type can be added to limit results to only those types specified, e.g.: earthquakes, quarry blasts, explosions. Use the 'types' endpoints to see all available types.",
+                    "default": "earthquake",
+                    "required": false
+                },
+                {
+                    "name": "count",
+                    "type": "STRING",
+                    "description": "Add to any call to limit the number of earthquakes returned.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "100",
+                    "required": false
+                },
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "The latitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "33.962523",
+                    "required": false
+                },
+                {
+                    "name": "units",
+                    "type": "STRING",
+                    "description": "Either miles or kilometers for the radius of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "miles",
+                    "required": false
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Use the 'start' parameter to retrieve more than 1000 earthquakes, up to 1000 at a time. 'Start' is the offset to start at within the overall results.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "1",
+                    "required": false
+                },
+                {
+                    "name": "radius",
+                    "type": "STRING",
+                    "description": "The length across half a circle of the search area. The latitude and longitude together make up the center of the circle, while the radius is the distance from the center to the outside of the circle. A 10 mile radius will be a circle 20 miles across with its center at the latitude/longitude point.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "1000",
+                    "required": false
+                },
+                {
+                    "name": "magnitude",
+                    "type": "STRING",
+                    "description": "Magnitude can be added to limit results to only those earthquakes with at least the specified magnitude or greater.",
+                    "default": "3",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes recorded between 2023-01-01 and 2023-01-31.",
+                    "parameters": {
+                        "startDate": "2023-01-01",
+                        "endDate": "2023-01-31"
+                    }
+                },
+                {
+                    "utterance": "Get earthquakes from 2022-06-01 to 2022-06-15 with a magnitude of at least 5.",
+                    "parameters": {
+                        "startDate": "2022-06-01",
+                        "endDate": "2022-06-15",
+                        "magnitude": "5"
+                    }
+                },
+                {
+                    "utterance": "List earthquakes between 2023-03-10 and 2023-03-20 with intensity 4 or greater.",
+                    "parameters": {
+                        "startDate": "2023-03-10",
+                        "endDate": "2023-03-20",
+                        "intensity": "4"
+                    }
+                },
+                {
+                    "utterance": "Find earthquakes from 2023-05-01 to 2023-05-10 near latitude 34.05 and longitude -118.25 within a 50 mile radius.",
+                    "parameters": {
+                        "startDate": "2023-05-01",
+                        "endDate": "2023-05-10",
+                        "latitude": "34.05",
+                        "longitude": "-118.25",
+                        "radius": "50",
+                        "units": "miles"
+                    }
+                },
+                {
+                    "utterance": "Retrieve up to 200 earthquakes between 2022-12-01 and 2022-12-31.",
+                    "parameters": {
+                        "startDate": "2022-12-01",
+                        "endDate": "2022-12-31",
+                        "count": "200"
+                    }
+                },
+                {
+                    "utterance": "Get earthquakes from 2023-07-01 to 2023-07-15 of type quarry blasts only.",
+                    "parameters": {
+                        "startDate": "2023-07-01",
+                        "endDate": "2023-07-15",
+                        "type": "quarry blasts"
+                    }
+                },
+                {
+                    "utterance": "Show earthquakes between 2023-02-01 and 2023-02-28 near latitude 40.71 and longitude -74.01 within 100 kilometers radius.",
+                    "parameters": {
+                        "startDate": "2023-02-01",
+                        "endDate": "2023-02-28",
+                        "latitude": "40.71",
+                        "longitude": "-74.01",
+                        "radius": "100",
+                        "units": "kilometers"
+                    }
+                },
+                {
+                    "utterance": "List earthquakes from 2023-04-01 to 2023-04-10 with magnitude 6 or greater.",
+                    "parameters": {
+                        "startDate": "2023-04-01",
+                        "endDate": "2023-04-10",
+                        "magnitude": "6"
+                    }
+                },
+                {
+                    "utterance": "Get the 50 most recent earthquakes between 2023-01-15 and 2023-01-20.",
+                    "parameters": {
+                        "startDate": "2023-01-15",
+                        "endDate": "2023-01-20",
+                        "count": "50"
+                    }
+                },
+                {
+                    "utterance": "Find earthquakes from 2023-08-01 to 2023-08-10 near latitude 37.77 and longitude -122.42 within a 30 mile radius with intensity 3 or greater.",
+                    "parameters": {
+                        "startDate": "2023-08-01",
+                        "endDate": "2023-08-10",
+                        "latitude": "37.77",
+                        "longitude": "-122.42",
+                        "radius": "30",
+                        "units": "miles",
+                        "intensity": "3"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Types",
+            "url": "https://everyearthquake.p.rapidapi.com/types",
+            "description": "Return all types of events ever recorded by the USGS, such as earthquakes, explosions, landslides and many more.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/types\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What types of events have been recorded by the USGS?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me all the different types of seismic events catalogued by the USGS.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List every type of event ever registered on the Richter scale by the USGS.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What kinds of events, including earthquakes and others, has the USGS recorded?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me all the event types that the USGS has ever documented.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me the various categories of seismic and related events tracked by the USGS.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are all the event types that have been catalogued by the USGS over time?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide a list of all event types recorded by the USGS, including earthquakes and explosions.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you show me every type of event ever recorded by the USGS on the Richter scale?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What different seismic and geological event types does the USGS database include?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Earthquakes",
+            "url": "https://everyearthquake.p.rapidapi.com/earthquakes",
+            "description": "Get the 100 most recent earthquakes from all over in the world. No parameters required.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/earthquakes\"\nquerystring = {\"units\": units, \"latitude\": latitude, \"intensity\": intensity, \"type\": type, \"magnitude\": magnitude, \"radius\": radius, \"count\": count, \"longitude\": longitude, \"start\": start}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "httpStatus": 200,
+                "noun": "earthquakes",
+                "verb": "GET",
+                "errorCode": "none",
+                "errors": [],
+                "friendlyError": "",
+                "result": "success",
+                "count": 1,
+                "data": [
+                    {
+                        "id": "ci39989663",
+                        "magnitude": "1.04",
+                        "type": "earthquake",
+                        "title": "M 1.0 - 6km NW of Rialto, CA",
+                        "date": "2022-04-09T23:52:35",
+                        "time": "1649548355440",
+                        "updated": "1649548585442",
+                        "url": "https://earthquake.usgs.gov/earthquakes/eventpage/ci39989663",
+                        "detailUrl": "https://earthquake.usgs.gov/earthquakes/feed/v1.0/detail/ci39989663.geojson",
+                        "felt": "0",
+                        "cdi": "0",
+                        "mmi": "0",
+                        "alert": "",
+                        "status": "automatic",
+                        "tsunami": "0",
+                        "sig": "17",
+                        "net": "ci",
+                        "code": "39989663",
+                        "ids": ",ci39989663,",
+                        "sources": ",ci,",
+                        "types": ",nearby-cities,origin,phase-data,scitech-link,",
+                        "nst": "24",
+                        "dmin": "0.1198",
+                        "rms": "0.21",
+                        "gap": "116",
+                        "magType": "ml",
+                        "geometryType": "Point",
+                        "depth": "6.66",
+                        "latitude": "34.1412",
+                        "longitude": "-117.419",
+                        "place": "6km NW of Rialto, CA",
+                        "location": "Rialto, CA",
+                        "continent": "North America",
+                        "country": "United States of America",
+                        "subnational": "California",
+                        "city": "Rialto",
+                        "locality": "Rialto",
+                        "postcode": "92377",
+                        "what3words": "goodbye.smiling.option",
+                        "timezone": "-420",
+                        "locationDetails": [
+                            {
+                                "id": "9",
+                                "wikidataId": "Q49",
+                                "name": "North America",
+                                "description": "continent on the Earth's northwestern quadrant",
+                                "geonameId": "6255149",
+                                "adminLevel": "0"
+                            },
+                            {
+                                "id": "36",
+                                "wikidataId": "Q578170",
+                                "name": "contiguous United States",
+                                "description": "48 states of the United States apart from Alaska and Hawaii",
+                                "geonameId": "0",
+                                "adminLevel": "0"
+                            },
+                            {
+                                "id": "1242",
+                                "wikidataId": "",
+                                "name": "92377",
+                                "description": "postal code",
+                                "geonameId": "0",
+                                "adminLevel": "0"
+                            },
+                            {
+                                "id": "1",
+                                "wikidataId": "Q30",
+                                "name": "United States of America",
+                                "description": "country in North America",
+                                "geonameId": "6252001",
+                                "adminLevel": "2"
+                            },
+                            {
+                                "id": "46",
+                                "wikidataId": "Q99",
+                                "name": "California",
+                                "description": "state of the United States of America",
+                                "geonameId": "5332921",
+                                "adminLevel": "4"
+                            },
+                            {
+                                "id": "101",
+                                "wikidataId": "Q108053",
+                                "name": "San Bernardino County",
+                                "description": "county in California, United States",
+                                "geonameId": "5391726",
+                                "adminLevel": "6"
+                            },
+                            {
+                                "id": "1527",
+                                "wikidataId": "Q289661",
+                                "name": "Rialto",
+                                "description": "city in California, United States of America",
+                                "geonameId": "5387288",
+                                "adminLevel": "8"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "units",
+                    "type": "STRING",
+                    "description": "Either miles or kilometers for the radius of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "miles",
+                    "required": false
+                },
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "The latitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "33.962523",
+                    "required": false
+                },
+                {
+                    "name": "intensity",
+                    "type": "STRING",
+                    "description": "Intensity can be added to limit results to only those earthquakes with at least the specified intensity or greater.",
+                    "default": "1",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type can be added to limit results to only those types specified, e.g.: earthquakes, quarry blasts, explosions. Use the 'types' endpoints to see all available types.",
+                    "default": "earthquake",
+                    "required": false
+                },
+                {
+                    "name": "magnitude",
+                    "type": "STRING",
+                    "description": "Magnitude can be added to limit results to only those earthquakes with at least the specified magnitude or greater.",
+                    "default": "3",
+                    "required": false
+                },
+                {
+                    "name": "radius",
+                    "type": "STRING",
+                    "description": "The length across half a circle of the search area. The latitude and longitude together make up the center of the circle, while the radius is the distance from the center to the outside of the circle. A 10 mile radius will be a circle 20 miles across with its center at the latitude/longitude point.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "1000",
+                    "required": false
+                },
+                {
+                    "name": "count",
+                    "type": "STRING",
+                    "description": "Add to any call to limit the number of earthquakes returned.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "100",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "The longitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "-118.3706975",
+                    "required": false
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Use the 'start' parameter to retrieve more than 1000 earthquakes, up to 1000 at a time. 'Start' is the offset to start at within the overall results.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "1",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the 100 most recent earthquakes worldwide.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Find earthquakes with a magnitude of at least 5.",
+                    "parameters": {
+                        "magnitude": "5"
+                    }
+                },
+                {
+                    "utterance": "Get earthquakes near latitude 34.05 and longitude -118.25 within a 50 mile radius.",
+                    "parameters": {
+                        "latitude": "34.05",
+                        "longitude": "-118.25",
+                        "radius": "50",
+                        "units": "miles"
+                    }
+                },
+                {
+                    "utterance": "List earthquakes with intensity 4 or greater near latitude 40.71 and longitude -74.01 within 100 kilometers.",
+                    "parameters": {
+                        "intensity": "4",
+                        "latitude": "40.71",
+                        "longitude": "-74.01",
+                        "radius": "100",
+                        "units": "kilometers"
+                    }
+                },
+                {
+                    "utterance": "Show me the 50 most recent quarry blasts.",
+                    "parameters": {
+                        "type": "quarry blasts",
+                        "count": "50"
+                    }
+                },
+                {
+                    "utterance": "Get explosions with magnitude 3 or higher near latitude 37.77 and longitude -122.42 within 30 miles.",
+                    "parameters": {
+                        "type": "explosions",
+                        "magnitude": "3",
+                        "latitude": "37.77",
+                        "longitude": "-122.42",
+                        "radius": "30",
+                        "units": "miles"
+                    }
+                },
+                {
+                    "utterance": "Retrieve 200 earthquakes with magnitude 4 or greater.",
+                    "parameters": {
+                        "magnitude": "4",
+                        "count": "200"
+                    }
+                },
+                {
+                    "utterance": "Find earthquakes near latitude 51.51 and longitude -0.13 within 20 kilometers with intensity at least 2.",
+                    "parameters": {
+                        "latitude": "51.51",
+                        "longitude": "-0.13",
+                        "radius": "20",
+                        "units": "kilometers",
+                        "intensity": "2"
+                    }
+                },
+                {
+                    "utterance": "Get the next 100 earthquakes starting from the 101st record.",
+                    "parameters": {
+                        "start": "101"
+                    }
+                },
+                {
+                    "utterance": "Show me the 100 most recent earthquakes with magnitude 6 or higher.",
+                    "parameters": {
+                        "magnitude": "6",
+                        "count": "100"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Latest Earthquake Near Me",
+            "url": "https://everyearthquake.p.rapidapi.com/latestEarthquakeNearMe",
+            "description": "Call this endpoint with your latitude and longitude and you'll receive a simple return for the most recent earthquake, within 100 miles, of the lat/long coordinates provided.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://everyearthquake.p.rapidapi.com/latestEarthquakeNearMe\"\nquerystring = {\"latitude\": latitude, \"longitude\": longitude}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"everyearthquake.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "key1": "value",
+                "key2": "value"
+            },
+            "headers": {},
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "33.962523",
+                    "required": true
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "-118.3706975",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the most recent earthquake near latitude 34.05 and longitude -118.25?",
+                    "parameters": {
+                        "latitude": "34.05",
+                        "longitude": "-118.25"
+                    }
+                },
+                {
+                    "utterance": "Show me the latest earthquake within 100 miles of latitude 40.7128 and longitude -74.0060.",
+                    "parameters": {
+                        "latitude": "40.7128",
+                        "longitude": "-74.0060"
+                    }
+                },
+                {
+                    "utterance": "Find the most recent earthquake near latitude 37.7749 and longitude -122.4194.",
+                    "parameters": {
+                        "latitude": "37.7749",
+                        "longitude": "-122.4194"
+                    }
+                },
+                {
+                    "utterance": "Get the latest earthquake data close to latitude 47.6062 and longitude -122.3321.",
+                    "parameters": {
+                        "latitude": "47.6062",
+                        "longitude": "-122.3321"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the newest earthquake near latitude 51.5074 and longitude -0.1278.",
+                    "parameters": {
+                        "latitude": "51.5074",
+                        "longitude": "-0.1278"
+                    }
+                },
+                {
+                    "utterance": "What was the last earthquake recorded near latitude 35.6895 and longitude 139.6917?",
+                    "parameters": {
+                        "latitude": "35.6895",
+                        "longitude": "139.6917"
+                    }
+                },
+                {
+                    "utterance": "Find the most recent earthquake event near latitude 48.8566 and longitude 2.3522.",
+                    "parameters": {
+                        "latitude": "48.8566",
+                        "longitude": "2.3522"
+                    }
+                },
+                {
+                    "utterance": "Show me the latest earthquake near latitude 55.7558 and longitude 37.6173.",
+                    "parameters": {
+                        "latitude": "55.7558",
+                        "longitude": "37.6173"
+                    }
+                },
+                {
+                    "utterance": "Get details on the newest earthquake near latitude 19.4326 and longitude -99.1332.",
+                    "parameters": {
+                        "latitude": "19.4326",
+                        "longitude": "-99.1332"
+                    }
+                },
+                {
+                    "utterance": "What is the most recent earthquake near latitude 34.0522 and longitude -118.2437?",
+                    "parameters": {
+                        "latitude": "34.0522",
+                        "longitude": "-118.2437"
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Science"
+}

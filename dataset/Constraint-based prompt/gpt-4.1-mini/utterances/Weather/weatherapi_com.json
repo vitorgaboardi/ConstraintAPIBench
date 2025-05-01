@@ -1,0 +1,1124 @@
+{
+    "tool_name": "WeatherAPI.com",
+    "tool_description": "WeatherAPI.com is a powerful fully managed free weather and geolocation API provider that provides extensive APIs that range from the weather forecast, historical weather, future weather, weather alerts, air quality data, IP lookup, and astronomy through to sports, time zone, and geolocation.",
+    "title": "WeatherAPI.com",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 151,
+        "avgSuccessRate": 95,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/weatherapi/api/weatherapi-com/",
+    "host": "weatherapi-com.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Realtime Weather API",
+            "url": "https://weatherapi-com.p.rapidapi.com/current.json",
+            "description": "Current weather or realtime weather API method allows a user to get up to date current weather information in json and xml. The data is returned as a Current Object.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://weatherapi-com.p.rapidapi.com/current.json\"\nquerystring = {\"q\": q}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"weatherapi-com.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Query parameter based on which data is sent back. It could be following:  Latitude and Longitude (Decimal degree) e.g: q=48.8567,2.3508 city name e.g.: q=Paris US zip e.g.: q=10001 UK postcode e.g: q=SW1 Canada postal code e.g: q=G2J metar:<metar code> e.g: q=metar:EGLL iata:<3 digit airport code> e.g: q=iata:DXB auto:ip IP lookup e.g: q=auto:ip IP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1",
+                    "default": "53.1,-0.13",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "specific": [
+                                "Latitude and Longitude (Decimal degree)",
+                                "city name",
+                                "US zip",
+                                "UK postcode",
+                                "Canada postal code",
+                                "metar:<metar code>",
+                                "iata:<3 digit airport code>",
+                                "auto:ip",
+                                "IP address (IPv4 and IPv6 supported)"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What's the current weather in Tokyo right now?",
+                    "parameters": {
+                        "q": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the live weather conditions at the coordinates 34.0522,-118.2437?",
+                    "parameters": {
+                        "q": "34.0522,-118.2437"
+                    }
+                },
+                {
+                    "utterance": "Give me the up-to-date weather for the US zip code 90210.",
+                    "parameters": {
+                        "q": "90210"
+                    }
+                },
+                {
+                    "utterance": "I need the current weather report for the UK postcode SW1A 1AA.",
+                    "parameters": {
+                        "q": "SW1A 1AA"
+                    }
+                },
+                {
+                    "utterance": "What's the weather like right now in the Canadian postal code H3Z?",
+                    "parameters": {
+                        "q": "H3Z"
+                    }
+                },
+                {
+                    "utterance": "Show me the real-time weather at the airport with IATA code LAX.",
+                    "parameters": {
+                        "q": "iata:LAX"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the current weather conditions from the METAR code EGLL?",
+                    "parameters": {
+                        "q": "metar:EGLL"
+                    }
+                },
+                {
+                    "utterance": "What's the weather at the IP address 172.217.3.110?",
+                    "parameters": {
+                        "q": "172.217.3.110"
+                    }
+                },
+                {
+                    "utterance": "Get me the live weather update based on my IP address.",
+                    "parameters": {
+                        "q": "auto:ip"
+                    }
+                },
+                {
+                    "utterance": "Tell me the current weather in Paris, France.",
+                    "parameters": {
+                        "q": "Paris"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Forecast Weather API",
+            "url": "https://weatherapi-com.p.rapidapi.com/forecast.json",
+            "description": "Forecast weather API method returns upto next 14 day weather forecast and weather alert as json. It contains astronomy data, day weather forecast and hourly interval weather information for a given city.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://weatherapi-com.p.rapidapi.com/forecast.json\"\nquerystring = {\"days\": days, \"q\": q}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"weatherapi-com.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Query parameter based on which data is sent back. It could be following:\n\nLatitude and Longitude (Decimal degree) e.g: q=48.8567,2.3508\ncity name e.g.: q=Paris\nUS zip e.g.: q=10001\nUK postcode e.g: q=SW1\nCanada postal code e.g: q=G2J\nmetar:<metar code> e.g: q=metar:EGLL\niata:<3 digit airport code> e.g: q=iata:DXB\nauto:ip IP lookup e.g: q=auto:ip\nIP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1",
+                    "default": "London",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "days",
+                    "type": "NUMBER",
+                    "description": "Number of days of forecast required.",
+                    "default": "3",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1,
+                            "max": 14
+                        }
+                    }
+                },
+                {
+                    "name": "dt",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "If passing 'dt', it should be between today and next 10 day in yyyy-MM-dd format.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "values": {
+                            "min": "today",
+                            "max": "today + 10 days"
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Returns 'condition:text' field in API in the desired language",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "dt"
+                ],
+                [
+                    "days"
+                ],
+                [
+                    "lang"
+                ],
+                [
+                    "dt",
+                    "days"
+                ],
+                [
+                    "lang"
+                ],
+                [
+                    "days",
+                    "dt",
+                    "lang"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "days"
+                ],
+                [
+                    "lang"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the weather forecast for Tokyo?",
+                    "parameters": {
+                        "q": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the weather forecast for New York on 2024-06-15?",
+                    "parameters": {
+                        "q": "New York",
+                        "dt": "2024-06-15"
+                    }
+                },
+                {
+                    "utterance": "I need a 5-day weather forecast for the postal code G2J in Canada.",
+                    "parameters": {
+                        "q": "G2J",
+                        "days": 5
+                    }
+                },
+                {
+                    "utterance": "Show me the weather forecast for Paris in French.",
+                    "parameters": {
+                        "q": "Paris",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "What will the weather be like in London from 2024-06-12 for 7 days?",
+                    "parameters": {
+                        "q": "London",
+                        "dt": "2024-06-12",
+                        "days": 7
+                    }
+                },
+                {
+                    "utterance": "Could you provide the weather forecast for Berlin in German?",
+                    "parameters": {
+                        "q": "Berlin",
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "Give me a 3-day weather forecast for the coordinates 34.0522,-118.2437 in Spanish starting 2024-06-14.",
+                    "parameters": {
+                        "q": "34.0522,-118.2437",
+                        "days": 3,
+                        "dt": "2024-06-14",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "What's the weather forecast for the airport code DXB?",
+                    "parameters": {
+                        "q": "iata:DXB"
+                    }
+                },
+                {
+                    "utterance": "I want a 10-day weather forecast for the UK postcode SW1.",
+                    "parameters": {
+                        "q": "SW1",
+                        "days": 10
+                    }
+                },
+                {
+                    "utterance": "Can you show me the weather forecast for Moscow in Russian?",
+                    "parameters": {
+                        "q": "Moscow",
+                        "lang": "ru"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Time Zone API",
+            "url": "https://weatherapi-com.p.rapidapi.com/timezone.json",
+            "description": "Time Zone API method allows a user to get up to date time zone and local time information in json.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://weatherapi-com.p.rapidapi.com/timezone.json\"\nquerystring = {\"q\": q}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"weatherapi-com.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Query parameter based on which data is sent back. It could be following:\n\nLatitude and Longitude (Decimal degree) e.g: q=48.8567,2.3508\ncity name e.g.: q=Paris\nUS zip e.g.: q=10001\nUK postcode e.g: q=SW1\nCanada postal code e.g: q=G2J\nmetar:<metar code> e.g: q=metar:EGLL\niata:<3 digit airport code> e.g: q=iata:DXB\nauto:ip IP lookup e.g: q=auto:ip\nIP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "specific": [
+                                "latitude and longitude (decimal degree)",
+                                "city name",
+                                "US zip",
+                                "UK postcode",
+                                "Canada postal code",
+                                "metar:<metar code>",
+                                "iata:<3 digit airport code>",
+                                "auto:ip",
+                                "IP address (IPv4 and IPv6 supported)"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you tell me the current time zone and local time for the coordinates 34.0522,-118.2437?",
+                    "parameters": {
+                        "q": "34.0522,-118.2437"
+                    }
+                },
+                {
+                    "utterance": "What's the local time and time zone in Tokyo right now?",
+                    "parameters": {
+                        "q": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "I need the time zone information for the US zip code 30301.",
+                    "parameters": {
+                        "q": "30301"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the current local time and time zone for the UK postcode SW1A?",
+                    "parameters": {
+                        "q": "SW1A"
+                    }
+                },
+                {
+                    "utterance": "Please give me the time zone details for the Canadian postal code M5V.",
+                    "parameters": {
+                        "q": "M5V"
+                    }
+                },
+                {
+                    "utterance": "What is the local time and time zone at the airport with IATA code LHR?",
+                    "parameters": {
+                        "q": "iata:LHR"
+                    }
+                },
+                {
+                    "utterance": "Can you find the time zone and local time for the METAR code KJFK?",
+                    "parameters": {
+                        "q": "metar:KJFK"
+                    }
+                },
+                {
+                    "utterance": "Show me the current time zone and local time for the IP address 192.168.1.1.",
+                    "parameters": {
+                        "q": "192.168.1.1"
+                    }
+                },
+                {
+                    "utterance": "I want to know the time zone and local time based on my current IP address.",
+                    "parameters": {
+                        "q": "auto:ip"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the time zone and local time for the coordinates 51.5074,-0.1278?",
+                    "parameters": {
+                        "q": "51.5074,-0.1278"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Future Weather API",
+            "url": "https://weatherapi-com.p.rapidapi.com/future.json",
+            "description": "Future weather API method returns weather in a 3 hourly interval in future for a date between 14 days and 300 days from today in the future.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://weatherapi-com.p.rapidapi.com/future.json\"\nquerystring = {\"dt\": dt, \"q\": q}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"weatherapi-com.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "dt",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "'dt' should be between 14 days and 300 days from today in the future in yyyy-MM-dd format (i.e. dt=2023-01-01)",
+                    "default": "2022-12-25",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "values": {
+                            "min": 14,
+                            "max": 300
+                        }
+                    }
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Query parameter based on which data is sent back. It could be following:\n\nLatitude and Longitude (Decimal degree) e.g: q=48.8567,2.3508\ncity name e.g.: q=Paris\nUS zip e.g.: q=10001\nUK postcode e.g: q=SW1\nCanada postal code e.g: q=G2J\nmetar:<metar code> e.g: q=metar:EGLL\niata:<3 digit airport code> e.g: q=iata:DXB\nauto:ip IP lookup e.g: q=auto:ip\nIP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1",
+                    "default": "London",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Returns 'condition:text' field in API in the desired language",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "lang"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "lang"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "lang"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "lang"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "lang"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the weather forecast for Tokyo on 2024-07-10?",
+                    "parameters": {
+                        "dt": "2024-07-10",
+                        "q": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "I need the future weather details for coordinates 34.0522,-118.2437 on 2024-08-05 in Spanish.",
+                    "parameters": {
+                        "dt": "2024-08-05",
+                        "q": "34.0522,-118.2437",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "What will the weather be like in the postal code G1R on 2024-09-15?",
+                    "parameters": {
+                        "dt": "2024-09-15",
+                        "q": "G1R"
+                    }
+                },
+                {
+                    "utterance": "Show me the forecast for the airport code IATA:LHR on 2024-10-20 in French.",
+                    "parameters": {
+                        "dt": "2024-10-20",
+                        "q": "iata:LHR",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Give me the weather prediction for New York City on 2024-11-25.",
+                    "parameters": {
+                        "dt": "2024-11-25",
+                        "q": "New York"
+                    }
+                },
+                {
+                    "utterance": "Could you get the weather forecast for the UK postcode SW1 on 2024-12-30 in German?",
+                    "parameters": {
+                        "dt": "2024-12-30",
+                        "q": "SW1",
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "What is the weather forecast for the IP address 192.168.1.1 on 2024-07-22?",
+                    "parameters": {
+                        "dt": "2024-07-22",
+                        "q": "192.168.1.1"
+                    }
+                },
+                {
+                    "utterance": "Please provide the weather forecast for Paris on 2024-08-18 in Italian.",
+                    "parameters": {
+                        "dt": "2024-08-18",
+                        "q": "Paris",
+                        "lang": "it"
+                    }
+                },
+                {
+                    "utterance": "I want to know the weather forecast for the US zip code 90210 on 2024-09-05.",
+                    "parameters": {
+                        "dt": "2024-09-05",
+                        "q": "90210"
+                    }
+                },
+                {
+                    "utterance": "Get me the weather forecast for the metar code EGLL on 2024-10-12 in Dutch.",
+                    "parameters": {
+                        "dt": "2024-10-12",
+                        "q": "metar:EGLL",
+                        "lang": "nl"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Sports API",
+            "url": "https://weatherapi-com.p.rapidapi.com/sports.json",
+            "description": "Sports API method allows a user to get listing of all upcoming sports events for football, cricket and golf in json.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://weatherapi-com.p.rapidapi.com/sports.json\"\nquerystring = {\"q\": q}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"weatherapi-com.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "London",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the upcoming sports events in New York?",
+                    "parameters": {
+                        "q": "New York"
+                    }
+                },
+                {
+                    "utterance": "I want to find all the scheduled football, cricket, and golf matches happening soon in Sydney.",
+                    "parameters": {
+                        "q": "Sydney"
+                    }
+                },
+                {
+                    "utterance": "List the next sports events for cricket, football, and golf around Mumbai.",
+                    "parameters": {
+                        "q": "Mumbai"
+                    }
+                },
+                {
+                    "utterance": "What are the upcoming sports fixtures in Tokyo?",
+                    "parameters": {
+                        "q": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "Give me a list of all the upcoming football, cricket, and golf events in Paris.",
+                    "parameters": {
+                        "q": "Paris"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the schedule for upcoming sports events in Cape Town?",
+                    "parameters": {
+                        "q": "Cape Town"
+                    }
+                },
+                {
+                    "utterance": "I need to see the upcoming cricket, football, and golf matches in Toronto.",
+                    "parameters": {
+                        "q": "Toronto"
+                    }
+                },
+                {
+                    "utterance": "Show me the upcoming sports events happening in Berlin.",
+                    "parameters": {
+                        "q": "Berlin"
+                    }
+                },
+                {
+                    "utterance": "Find all the upcoming football, cricket, and golf events scheduled in Dubai.",
+                    "parameters": {
+                        "q": "Dubai"
+                    }
+                },
+                {
+                    "utterance": "What upcoming sports events are planned in Rio de Janeiro?",
+                    "parameters": {
+                        "q": "Rio de Janeiro"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "History Weather API",
+            "url": "https://weatherapi-com.p.rapidapi.com/history.json",
+            "description": "History weather API method returns historical weather for a date on or after 1st Jan, 2010 (depending upon subscription level) as json.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://weatherapi-com.p.rapidapi.com/history.json\"\nquerystring = {\"dt\": dt, \"q\": q, \"lang\": lang}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"weatherapi-com.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "dt",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "For history API 'dt' should be on or after 1st Jan, 2010 in yyyy-MM-dd format",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "values": {
+                            "min": "2010-01-01"
+                        },
+                        "inter-dependency": "dt, end_dt: end_dt must be equal to or greater than dt."
+                    }
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Query parameter based on which data is sent back. It could be following:\n\nLatitude and Longitude (Decimal degree) e.g: q=48.8567,2.3508\ncity name e.g.: q=Paris\nUS zip e.g.: q=10001\nUK postcode e.g: q=SW1\nCanada postal code e.g: q=G2J\nmetar:<metar code> e.g: q=metar:EGLL\niata:<3 digit airport code> e.g: q=iata:DXB\nauto:ip IP lookup e.g: q=auto:ip\nIP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1",
+                    "default": "London",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "hour",
+                    "type": "NUMBER",
+                    "description": "Restricting history output to a specific hour in a given day.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "end_dt",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Restrict date output for History API method. Should be on or after 1st Jan, 2010. Make sure end_dt is equal to or greater than 'dt'. ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "values": {
+                            "min": "2010-01-01"
+                        },
+                        "inter-dependency": "dt, end_dt: end_dt must be equal to or greater than dt."
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Returns 'condition:text' field in API in the desired language",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "hour"
+                ],
+                [
+                    "lang"
+                ],
+                [
+                    "end_dt"
+                ],
+                [
+                    "lang",
+                    "end_dt"
+                ],
+                [
+                    "hour"
+                ],
+                [
+                    "lang",
+                    "end_dt",
+                    "hour"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "lang"
+                ],
+                [
+                    "hour"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the historical weather data for Tokyo on March 15, 2015?",
+                    "parameters": {
+                        "dt": "2015-03-15",
+                        "q": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "I need the weather history for New York on July 4, 2018 at 14:00 hours.",
+                    "parameters": {
+                        "dt": "2018-07-04",
+                        "q": "New York",
+                        "hour": 14
+                    }
+                },
+                {
+                    "utterance": "Show me the historical weather for Paris on October 10, 2012 in French.",
+                    "parameters": {
+                        "dt": "2012-10-10",
+                        "q": "Paris",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Get the weather history for Sydney from January 1, 2017 to January 5, 2017.",
+                    "parameters": {
+                        "dt": "2017-01-01",
+                        "q": "Sydney",
+                        "end_dt": "2017-01-05"
+                    }
+                },
+                {
+                    "utterance": "Please provide the weather history for Berlin between May 20, 2019 and May 25, 2019 in German.",
+                    "parameters": {
+                        "dt": "2019-05-20",
+                        "q": "Berlin",
+                        "end_dt": "2019-05-25",
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "What was the weather like in Toronto on August 15, 2016 at 9 AM?",
+                    "parameters": {
+                        "dt": "2016-08-15",
+                        "q": "Toronto",
+                        "hour": 9
+                    }
+                },
+                {
+                    "utterance": "Retrieve the historical weather data for Madrid from November 10, 2014 to November 12, 2014 at 18:00 in Spanish.",
+                    "parameters": {
+                        "dt": "2014-11-10",
+                        "q": "Madrid",
+                        "end_dt": "2014-11-12",
+                        "hour": 18,
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "I want to see the weather history for the postal code G2J on February 2, 2013.",
+                    "parameters": {
+                        "dt": "2013-02-02",
+                        "q": "G2J"
+                    }
+                },
+                {
+                    "utterance": "Could you show me the historical weather for the airport code IATA:DXB on December 25, 2011 in Arabic?",
+                    "parameters": {
+                        "dt": "2011-12-25",
+                        "q": "iata:DXB",
+                        "lang": "ar"
+                    }
+                },
+                {
+                    "utterance": "Give me the weather history for London on June 30, 2020 at 22 hours.",
+                    "parameters": {
+                        "dt": "2020-06-30",
+                        "q": "London",
+                        "hour": 22
+                    }
+                }
+            ]
+        },
+        {
+            "name": "IP Lookup API",
+            "url": "https://weatherapi-com.p.rapidapi.com/ip.json",
+            "description": "IP Lookup API method allows a user to get up to date information for an IP address in json.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://weatherapi-com.p.rapidapi.com/ip.json\"\nquerystring = {\"q\": q}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"weatherapi-com.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "e.g: q=auto:ip\n\nIP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the location details for the IP address 192.168.1.1?",
+                    "parameters": {
+                        "q": "192.168.1.1"
+                    }
+                },
+                {
+                    "utterance": "I need information about the IP 2607:f8b0:4005:805::200e, can you help?",
+                    "parameters": {
+                        "q": "2607:f8b0:4005:805::200e"
+                    }
+                },
+                {
+                    "utterance": "What is the geolocation data for the IP address 8.8.8.8?",
+                    "parameters": {
+                        "q": "8.8.8.8"
+                    }
+                },
+                {
+                    "utterance": "Please look up the IP 172.217.3.110 and tell me its current details.",
+                    "parameters": {
+                        "q": "172.217.3.110"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the IP lookup information for 54.239.28.85?",
+                    "parameters": {
+                        "q": "54.239.28.85"
+                    }
+                },
+                {
+                    "utterance": "I want to know the location and ISP for the IP address 2001:4860:4860::8888.",
+                    "parameters": {
+                        "q": "2001:4860:4860::8888"
+                    }
+                },
+                {
+                    "utterance": "Give me the details for the IP 13.107.21.200, please.",
+                    "parameters": {
+                        "q": "13.107.21.200"
+                    }
+                },
+                {
+                    "utterance": "Can you find the IP lookup info for 99.84.238.45?",
+                    "parameters": {
+                        "q": "99.84.238.45"
+                    }
+                },
+                {
+                    "utterance": "I need to get the IP address details for 185.60.216.35.",
+                    "parameters": {
+                        "q": "185.60.216.35"
+                    }
+                },
+                {
+                    "utterance": "Please provide the geolocation and network info for the IP 2400:cb00:2048:1::c629:d7a2.",
+                    "parameters": {
+                        "q": "2400:cb00:2048:1::c629:d7a2"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Astronomy API",
+            "url": "https://weatherapi-com.p.rapidapi.com/astronomy.json",
+            "description": "Astronomy API method allows a user to get up to date information for sunrise, sunset, moonrise, moonset, moon phase and illumination in json.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://weatherapi-com.p.rapidapi.com/astronomy.json\"\nquerystring = {\"q\": q}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"weatherapi-com.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Query parameter based on which data is sent back. It could be following:\n\nLatitude and Longitude (Decimal degree) e.g: q=48.8567,2.3508\ncity name e.g.: q=Paris\nUS zip e.g.: q=10001\nUK postcode e.g: q=SW1\nCanada postal code e.g: q=G2J\nmetar:<metar code> e.g: q=metar:EGLL\niata:<3 digit airport code> e.g: q=iata:DXB\nauto:ip IP lookup e.g: q=auto:ip\nIP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1",
+                    "default": "London",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "specific": [
+                                "Latitude and Longitude (Decimal degree)",
+                                "city name",
+                                "US zip",
+                                "UK postcode",
+                                "Canada postal code",
+                                "metar:<metar code>",
+                                "iata:<3 digit airport code>",
+                                "auto:ip",
+                                "IP address (IPv4 and IPv6 supported)"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "dt",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Date",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "dt"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "dt"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "dt"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "dt"
+                ],
+                [
+                    "use only required parameters."
+                ],
+                [
+                    "dt"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the astronomy details for Tokyo?",
+                    "parameters": {
+                        "q": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "What are the sunrise and moon phase details for New York on 2023-09-15?",
+                    "parameters": {
+                        "q": "New York",
+                        "dt": "2023-09-15"
+                    }
+                },
+                {
+                    "utterance": "I need the moonrise and sunset times for the postal code G1R in Canada.",
+                    "parameters": {
+                        "q": "G1R"
+                    }
+                },
+                {
+                    "utterance": "Show me the astronomy data for the coordinates 34.0522,-118.2437 on 2024-01-10.",
+                    "parameters": {
+                        "q": "34.0522,-118.2437",
+                        "dt": "2024-01-10"
+                    }
+                },
+                {
+                    "utterance": "Give me the moon illumination and moonset time for the UK postcode SW1.",
+                    "parameters": {
+                        "q": "SW1"
+                    }
+                },
+                {
+                    "utterance": "What is the sunrise and moon phase in Dubai airport (IATA code DXB) on 2023-12-25?",
+                    "parameters": {
+                        "q": "iata:DXB",
+                        "dt": "2023-12-25"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the astronomy information for the US zip code 90210.",
+                    "parameters": {
+                        "q": "90210"
+                    }
+                },
+                {
+                    "utterance": "Can you get the moonrise and sunset times for London on 2024-05-05?",
+                    "parameters": {
+                        "q": "London",
+                        "dt": "2024-05-05"
+                    }
+                },
+                {
+                    "utterance": "I want to know the moon phase and sunrise time for the IP address 192.168.1.1.",
+                    "parameters": {
+                        "q": "192.168.1.1"
+                    }
+                },
+                {
+                    "utterance": "Please provide the astronomy details for the METAR code EGLL on 2023-11-11.",
+                    "parameters": {
+                        "q": "metar:EGLL",
+                        "dt": "2023-11-11"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Search/Autocomplete API",
+            "url": "https://weatherapi-com.p.rapidapi.com/search.json",
+            "description": "Search or Autocomplete API returns matching cities and towns.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://weatherapi-com.p.rapidapi.com/search.json\"\nquerystring = {\"q\": q}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"weatherapi-com.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Query parameter based on which data is sent back. It could be following:\n\nLatitude and Longitude (Decimal degree) e.g: q=48.8567,2.3508\ncity name e.g.: q=Paris\nUS zip e.g.: q=10001\nUK postcode e.g: q=SW1\nCanada postal code e.g: q=G2J\nmetar:<metar code> e.g: q=metar:EGLL\niata:<3 digit airport code> e.g: q=iata:DXB\nauto:ip IP lookup e.g: q=auto:ip\nIP address (IPv4 and IPv6 supported) e.g: q=100.0.0.1",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "Latitude and Longitude (Decimal degree), city name, US zip, UK postcode, Canada postal code, metar code, IATA 3 digit airport code, IP address (IPv4 and IPv6)",
+                        "values": {
+                            "specific": [
+                                "Latitude and Longitude (Decimal degree)",
+                                "city name",
+                                "US zip",
+                                "UK postcode",
+                                "Canada postal code",
+                                "metar:<metar code>",
+                                "iata:<3 digit airport code>",
+                                "auto:ip",
+                                "IP address (IPv4 and IPv6)"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you find weather information for the city of Tokyo?",
+                    "parameters": {
+                        "q": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "I need the weather details for the coordinates 34.0522,-118.2437.",
+                    "parameters": {
+                        "q": "34.0522,-118.2437"
+                    }
+                },
+                {
+                    "utterance": "Show me the weather forecast for the US zip code 90210.",
+                    "parameters": {
+                        "q": "90210"
+                    }
+                },
+                {
+                    "utterance": "What's the weather like in the UK postcode SW1A?",
+                    "parameters": {
+                        "q": "SW1A"
+                    }
+                },
+                {
+                    "utterance": "Get me the weather data for the Canadian postal code M5V.",
+                    "parameters": {
+                        "q": "M5V"
+                    }
+                },
+                {
+                    "utterance": "Look up the weather using the METAR code metar:KJFK.",
+                    "parameters": {
+                        "q": "metar:KJFK"
+                    }
+                },
+                {
+                    "utterance": "Find the weather conditions at the airport with IATA code iata:LHR.",
+                    "parameters": {
+                        "q": "iata:LHR"
+                    }
+                },
+                {
+                    "utterance": "Can you provide weather info based on my IP address 203.0.113.195?",
+                    "parameters": {
+                        "q": "203.0.113.195"
+                    }
+                },
+                {
+                    "utterance": "Please get the weather for the IP address 2001:0db8:85a3:0000:0000:8a2e:0370:7334.",
+                    "parameters": {
+                        "q": "2001:0db8:85a3:0000:0000:8a2e:0370:7334"
+                    }
+                },
+                {
+                    "utterance": "Use IP lookup to find weather data for my current location.",
+                    "parameters": {
+                        "q": "auto:ip"
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Weather"
+}

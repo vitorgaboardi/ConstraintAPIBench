@@ -48,14 +48,14 @@ model="gpt-4.1-mini"
 
 if model == "gpt-4.1-mini" or model == "gpt-4.1":
   client = OpenAI(api_key="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")
-  constraint_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/'+model+'/constraints/'
-  utterance_folder = './dataset/'+model+'/utterances/'
+  constraint_folder = './dataset/Constraint-based prompt/'+model+'/constraints/'
+  utterance_folder = './dataset/Constraint-based prompt/'+model+'/utterances/'
 else:
   client = client = OpenAI(api_key="0cTfrP7S4xnxVcQeMnkCvfY7nrgZs41e",
                            base_url="https://api.deepinfra.com/v1/openai",)
   model_name = model.split('/')[1]
-  constraint_folder = '/home/vitor/Documents/phd/ConstraintAPIBench/dataset/'+model_name+'/constraints/'
-  utterance_folder = './dataset/'+model_name+'/utterances/'
+  constraint_folder = './dataset/Constraint-based prompt/'+model_name+'/constraints/'
+  utterance_folder = './dataset/Constraint-based prompt/'+model_name+'/utterances/'
 
 
 # defining variables
@@ -71,12 +71,12 @@ number_of_methods_with_no_optional_parameters = 0
 number_of_methods_with_no_parameters = 0
 number_of_methods_with_condition_constraint = 0
 
-## It will be tough to explain. 
 # given a number of optional parameters, it keeps sampling different combination of parameters that must be used when generating utterances
 # the idea is to make sure we include utterances where we maximize the use of optional parameters, while generating a specific number of utterances 
 # we keep selecting combination of parameters using a window approach
 def defining_combination_of_parameters(parameters, conditional_constraints, only_required_parameters=False, use_no_parameter=False):
     # 1: if there is any conditional constraint. we make sure that all the variables related to the constraint are sampled together
+    # THIS PART IS NOTHING BEING CONSIDERED NOW! THE CONDITIONAL_CONSTRAINTS BEING PASSED IS JUST EMPTY!
     parameter_set_by_constraint = []
     if len(conditional_constraints) > 0:
         for condition in conditional_constraints:
@@ -142,6 +142,7 @@ def defining_combination_of_parameters(parameters, conditional_constraints, only
         
     return combination_of_parameters
 
+OAS_with_all_constraints = ['weatherapi_com.json', 'visual_crossing_weather.json', 'solarenergyprediction.json', 'working_days.json', 'redline_zipcode.json', 'myhealthbox.json', 'newsdata.json', 'flightera_flight_data.json', 'unogs.json', 'webcams_travel.json', 'realty_mole_property.json', 'dezgo.json', 'nowpayments.json']
 
 ## Focusing on generating utterances
 # iterating over the categories
@@ -150,7 +151,7 @@ for category_index, category in enumerate(categories):
     category_path = os.path.join(constraint_folder, category)
     print(category_path)
 
-    # generate folder to save OAS now enriched with constraints information
+    # generate folder to save OAS now enriched with utterances
     saving_utterances_path = os.path.join(utterance_folder, category)
     if not os.path.exists(saving_utterances_path):
         os.makedirs(saving_utterances_path)
@@ -159,7 +160,7 @@ for category_index, category in enumerate(categories):
     for root, _, files in os.walk(category_path):
         for filename in files:
             # make sure that the file is not there
-            if not os.path.exists(saving_utterances_path+'/'+filename):
+            if not os.path.exists(saving_utterances_path+'/'+filename) and filename in OAS_with_all_constraints:
                 # read file for each API
                 file_path = os.path.join(category_path, filename)
                 with open(file_path, 'r') as f:
@@ -284,8 +285,8 @@ for category_index, category in enumerate(categories):
                 print()
             
             API_count+=1
-            break
-        break
+        #     break
+        # break
     # if API_methods_count > 5:
     #     break
 

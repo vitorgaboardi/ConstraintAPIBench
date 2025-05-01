@@ -1,0 +1,304 @@
+{
+    "product_id": "api_80b5609b-b6b4-4aff-a824-f9381f781377",
+    "tool_description": "Flight data API for travel, hospitality, or aviation applications, researchers, small teams, and individual developers.",
+    "home_url": "https://rapidapi.com/aedbx-aedbx/api/aerodatabox/",
+    "name": "AeroDataBox",
+    "title": "AeroDataBox",
+    "pricing": "PAID",
+    "tool_name": "AeroDataBox",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 380,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "host": "aerodatabox.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "(BETA) Aircraft image recognition",
+            "url": "https://aerodatabox.p.rapidapi.com/aircrafts/recognize/beta",
+            "description": "**What aircrafts are depicted on this photo?**\n\nThis endpoint recognizes aircrafts on uploaded image and returns information about all detected aircrafts. It is based on computer vision technology and therefore results may be imprecise. It relies on detecting aircrafts' registrations and, once detected, attempting to match these registration with records in aircrafts database.\n\nReturns: Data about found and recognized aircrafts.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/aircrafts/recognize/beta\"\nquerystring = {\"photo\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/aircrafts/recognize/beta\"\nquerystring = {\"photo\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "OK-KFN": {
+                        "type": "object",
+                        "properties": {
+                            "id": {
+                                "type": "integer"
+                            },
+                            "reg": {
+                                "type": "string"
+                            },
+                            "active": {
+                                "type": "boolean"
+                            },
+                            "serial": {
+                                "type": "string"
+                            },
+                            "hexIcao": {
+                                "type": "string"
+                            },
+                            "airlineId": {
+                                "type": "string"
+                            },
+                            "airlineName": {
+                                "type": "string"
+                            },
+                            "iataCodeShort": {
+                                "type": "string"
+                            },
+                            "iataCodeLong": {
+                                "type": "string"
+                            },
+                            "model": {
+                                "type": "string"
+                            },
+                            "modelCode": {
+                                "type": "string"
+                            },
+                            "rolloutDate": {
+                                "type": "string"
+                            },
+                            "firstFlightDate": {
+                                "type": "string"
+                            },
+                            "deliveryDate": {
+                                "type": "string"
+                            },
+                            "registrationDate": {
+                                "type": "string"
+                            },
+                            "typeName": {
+                                "type": "string"
+                            },
+                            "numEngines": {
+                                "type": "integer"
+                            },
+                            "engineType": {
+                                "type": "string"
+                            },
+                            "isFreighter": {
+                                "type": "boolean"
+                            },
+                            "ageYears": {
+                                "type": "number"
+                            },
+                            "verified": {
+                                "type": "boolean"
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "photo",
+                    "type": "BINARY",
+                    "description": "Image containing aircraft. It should be image-type file (JPEG, PNG or BMP).  To improve results:  ensure that aircraft registration is as much as possible visible on the image; other inscriptions are visible as least as possible or absent on the image (although algorithm strives to filter these out as much as possible, false results are still possible).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "JPEG, PNG or BMP"
+                    }
+                }
+            ],
+            "combination_of_parameters": [
+                [
+                    "do not include any parameter."
+                ],
+                [
+                    "photo"
+                ],
+                [
+                    "do not include any parameter."
+                ],
+                [
+                    "photo"
+                ],
+                [
+                    "do not include any parameter."
+                ],
+                [
+                    "photo"
+                ],
+                [
+                    "do not include any parameter."
+                ],
+                [
+                    "photo"
+                ],
+                [
+                    "do not include any parameter."
+                ],
+                [
+                    "photo"
+                ]
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you identify the aircrafts shown in this picture?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please analyze this photo of a plane and tell me which aircrafts are visible.",
+                    "parameters": {
+                        "photo": "image_of_boeing_747.png"
+                    }
+                },
+                {
+                    "utterance": "What types of aircrafts can you detect in the image I have?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Here is a JPEG photo of an airplane, can you recognize the aircrafts in it?",
+                    "parameters": {
+                        "photo": "aircraft_photo.jpeg"
+                    }
+                },
+                {
+                    "utterance": "Could you tell me which aircrafts appear in the uploaded image?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I have a PNG image of a jet, can you identify the aircrafts in this photo?",
+                    "parameters": {
+                        "photo": "jet_image.png"
+                    }
+                },
+                {
+                    "utterance": "Identify all aircrafts visible in the picture I want to upload.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Analyze this BMP photo and let me know what aircrafts are depicted.",
+                    "parameters": {
+                        "photo": "airport_scene.bmp"
+                    }
+                },
+                {
+                    "utterance": "Can you find out which aircrafts are shown in the image I provide?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please recognize the aircrafts in this JPEG photo I have of a runway.",
+                    "parameters": {
+                        "photo": "runway_planes.jpeg"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Create web-hook subscription",
+            "url": "https://aerodatabox.p.rapidapi.com/subscriptions/webhook/{subjectType}/KL1395",
+            "description": "Creates a webhook subscription on a subject (e.g. flight by number or by airport code). Returns information about the created subscription. Subscription ID contained in it can be used to refresh or remove it.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/subscriptions/webhook/{subjectType}/KL1395\"\nquerystring = {\"subjectType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://aerodatabox.p.rapidapi.com/subscriptions/webhook/{subjectType}/{subjectid}\"\nquerystring = {\"subjectType\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"aerodatabox.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "subjectType",
+                    "type": "ENUM",
+                    "description": "Subject type",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "subjectId",
+                    "type": "string",
+                    "description": "Subject ID. If `subjectType` is:\n- `FlightByNumber`, then this field must be a flight number (with or without spaces, IATA or ICAO, any case formats are acceptable, e.g. KL1395, Klm 1395);\n- `FlightByAirportIcao`, then this field must be a 4-character ICAO-code of the airport where flights are operated (e.g.: EHAM, KLAX, UUEE, etc.).",
+                    "default": "KL1395",
+                    "required": true,
+                    "constraints": {
+                        "id": true,
+                        "format": "flight number or 4-character ICAO code"
+                    }
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you set up a webhook for flight number BA2490?",
+                    "parameters": {
+                        "subjectType": "FlightByNumber",
+                        "subjectId": "BA2490"
+                    }
+                },
+                {
+                    "utterance": "I want to create a subscription for all flights departing from JFK airport, ICAO code KJFK.",
+                    "parameters": {
+                        "subjectType": "FlightByAirportIcao",
+                        "subjectId": "KJFK"
+                    }
+                },
+                {
+                    "utterance": "Please add a webhook subscription for flight LH400.",
+                    "parameters": {
+                        "subjectType": "FlightByNumber",
+                        "subjectId": "LH400"
+                    }
+                },
+                {
+                    "utterance": "Subscribe me to updates for flights at Los Angeles International Airport, ICAO code KLAX.",
+                    "parameters": {
+                        "subjectType": "FlightByAirportIcao",
+                        "subjectId": "KLAX"
+                    }
+                },
+                {
+                    "utterance": "Create a webhook for flight QF12 to track its status.",
+                    "parameters": {
+                        "subjectType": "FlightByNumber",
+                        "subjectId": "QF12"
+                    }
+                },
+                {
+                    "utterance": "I need a subscription for all flights at Heathrow Airport, ICAO code EGLL.",
+                    "parameters": {
+                        "subjectType": "FlightByAirportIcao",
+                        "subjectId": "EGLL"
+                    }
+                },
+                {
+                    "utterance": "Set up a webhook for flight AF1234.",
+                    "parameters": {
+                        "subjectType": "FlightByNumber",
+                        "subjectId": "AF1234"
+                    }
+                },
+                {
+                    "utterance": "Please create a subscription for flights at Dubai International Airport, ICAO code OMDB.",
+                    "parameters": {
+                        "subjectType": "FlightByAirportIcao",
+                        "subjectId": "OMDB"
+                    }
+                },
+                {
+                    "utterance": "I want to track flight EK202 with a webhook subscription.",
+                    "parameters": {
+                        "subjectType": "FlightByNumber",
+                        "subjectId": "EK202"
+                    }
+                },
+                {
+                    "utterance": "Add a webhook subscription for all flights at Tokyo Haneda Airport, ICAO code RJTT.",
+                    "parameters": {
+                        "subjectType": "FlightByAirportIcao",
+                        "subjectId": "RJTT"
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Transportation"
+}

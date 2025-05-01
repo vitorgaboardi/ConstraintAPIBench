@@ -1,0 +1,2005 @@
+{
+    "product_id": "api_50b98d42-85fb-4bbd-92f6-0b624770360a",
+    "tool_description": "Obten las oficinas, localidades y precios de tus envios en Argentina para Andreani, Oca y Correo Argentino.",
+    "home_url": "https://rapidapi.com/kijamve/api/transportistas-de-argentina/",
+    "name": "Transportistas de Argentina",
+    "title": "Transportistas de Argentina",
+    "pricing": "FREEMIUM",
+    "tool_name": "Transportistas de Argentina",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 268,
+        "avgSuccessRate": 98,
+        "popularityScore": 9.6,
+        "__typename": "Score"
+    },
+    "host": "transportistas-de-argentina.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/tracking/correo_argentino/result_task/:task_id",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/tracking/correo_argentino/result_task/{task_id}",
+            "description": "Result for one Task ID.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/tracking/correo_argentino/result_task/{task_id}\"\nquerystring = {\"task_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/tracking/correo_argentino/result_task/{task_id}\"\nquerystring = {\"task_id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": {
+                "statusCode": 404,
+                "message": "Task not found"
+            },
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string",
+                        "description": "Status of Task",
+                        "enum": [
+                            "processing",
+                            "ready",
+                            "not_found"
+                        ]
+                    },
+                    "error_detail": {
+                        "type": "object",
+                        "description": "Error status details"
+                    },
+                    "history": {
+                        "description": "List of history",
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "date": {
+                                    "type": "string",
+                                    "description": "Event date"
+                                },
+                                "office": {
+                                    "type": "string",
+                                    "description": "Office"
+                                },
+                                "detail": {
+                                    "type": "string",
+                                    "description": "Details"
+                                },
+                                "status": {
+                                    "type": "string",
+                                    "description": "Status"
+                                }
+                            },
+                            "required": [
+                                "date",
+                                "office",
+                                "detail",
+                                "status"
+                            ]
+                        }
+                    }
+                },
+                "required": [
+                    "status",
+                    "error_detail",
+                    "history"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "task_id",
+                    "type": "STRING",
+                    "description": "Task ID",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "\u00bfPodr\u00edas mostrarme el resultado del seguimiento para la tarea con ID seguimiento_20240601?",
+                    "parameters": {
+                        "task_id": "seguimiento_20240601"
+                    }
+                },
+                {
+                    "utterance": "Necesito obtener el estado del env\u00edo con el identificador tarea_envio_abril23.",
+                    "parameters": {
+                        "task_id": "tarea_envio_abril23"
+                    }
+                },
+                {
+                    "utterance": "Por favor, dame la informaci\u00f3n actualizada del paquete con el c\u00f3digo de tarea entrega_12345.",
+                    "parameters": {
+                        "task_id": "entrega_12345"
+                    }
+                },
+                {
+                    "utterance": "Consulta el resultado para la tarea con ID rastreo_paquete_buenosaires.",
+                    "parameters": {
+                        "task_id": "rastreo_paquete_buenosaires"
+                    }
+                },
+                {
+                    "utterance": "Quiero ver el estado del env\u00edo asociado a la tarea identificada como envio_2024_mayo.",
+                    "parameters": {
+                        "task_id": "envio_2024_mayo"
+                    }
+                },
+                {
+                    "utterance": "Mu\u00e9strame los detalles del seguimiento para la tarea con ID paquete_urgent_001.",
+                    "parameters": {
+                        "task_id": "paquete_urgent_001"
+                    }
+                },
+                {
+                    "utterance": "\u00bfPuedes proporcionarme el resultado del seguimiento para la tarea con c\u00f3digo entrega_express_07?",
+                    "parameters": {
+                        "task_id": "entrega_express_07"
+                    }
+                },
+                {
+                    "utterance": "Solicito la informaci\u00f3n del estado del env\u00edo con la tarea identificada como tracking_orden_5678.",
+                    "parameters": {
+                        "task_id": "tracking_orden_5678"
+                    }
+                },
+                {
+                    "utterance": "Requiero el resultado del seguimiento para la tarea con ID paquete_nacional_2024.",
+                    "parameters": {
+                        "task_id": "paquete_nacional_2024"
+                    }
+                },
+                {
+                    "utterance": "Por favor, dame el estado actual del env\u00edo con el identificador tarea_envio_caba.",
+                    "parameters": {
+                        "task_id": "tarea_envio_caba"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/cities/states/:stateIsoCode",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/cities/states/{stateIsoCode}",
+            "description": "List of city for iso state.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/cities/states/{stateIsoCode}\"\nquerystring = {\"stateIsoCode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/cities/states/{stateIsoCode}\"\nquerystring = {\"stateIsoCode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": {
+                "statusCode": 404,
+                "message": "City not found",
+                "error": "Not Found"
+            },
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "stateIsoCode",
+                    "type": "STRING",
+                    "description": "State ISO Code",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO code"
+                    }
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "\u00bfCu\u00e1les son las ciudades disponibles en la provincia de Buenos Aires?",
+                    "parameters": {
+                        "stateIsoCode": "AR-B"
+                    }
+                },
+                {
+                    "utterance": "Necesito la lista de localidades para env\u00edos en C\u00f3rdoba, Argentina.",
+                    "parameters": {
+                        "stateIsoCode": "AR-X"
+                    }
+                },
+                {
+                    "utterance": "Mu\u00e9strame las ciudades que puedo seleccionar en la provincia de Santa Fe.",
+                    "parameters": {
+                        "stateIsoCode": "AR-S"
+                    }
+                },
+                {
+                    "utterance": "\u00bfQu\u00e9 localidades est\u00e1n disponibles para env\u00edos en Mendoza?",
+                    "parameters": {
+                        "stateIsoCode": "AR-M"
+                    }
+                },
+                {
+                    "utterance": "Dame las ciudades que corresponden al estado de Tucum\u00e1n para realizar un env\u00edo.",
+                    "parameters": {
+                        "stateIsoCode": "AR-T"
+                    }
+                },
+                {
+                    "utterance": "Quiero saber las localidades en Salta para enviar un paquete.",
+                    "parameters": {
+                        "stateIsoCode": "AR-A"
+                    }
+                },
+                {
+                    "utterance": "\u00bfPuedes listar las ciudades en la provincia de Entre R\u00edos para env\u00edos?",
+                    "parameters": {
+                        "stateIsoCode": "AR-E"
+                    }
+                },
+                {
+                    "utterance": "Por favor, ind\u00edcame las localidades disponibles en Chubut para env\u00edos.",
+                    "parameters": {
+                        "stateIsoCode": "AR-U"
+                    }
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1les son las ciudades en la provincia de Neuqu\u00e9n para realizar env\u00edos?",
+                    "parameters": {
+                        "stateIsoCode": "AR-Q"
+                    }
+                },
+                {
+                    "utterance": "Necesito conocer las localidades en la provincia de Corrientes para un env\u00edo urgente.",
+                    "parameters": {
+                        "stateIsoCode": "AR-W"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/cities/postcode/:stateIsoCode/:postCode",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/cities/postcode/{stateIsoCode}/{postCode}",
+            "description": "List of city for iso state and postcode.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/cities/postcode/{stateIsoCode}/{postCode}\"\nquerystring = {\"stateIsoCode\": \"\", \"postCode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/cities/postcode/{stateIsoCode}/{postCode}\"\nquerystring = {\"stateIsoCode\": \"\", \"postCode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": {
+                "statusCode": 404,
+                "message": "City not found",
+                "error": "Not Found"
+            },
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "city_name_normalize": {
+                            "type": "string",
+                            "description": "Normalized city name in upper case, without accents or \u00d1."
+                        },
+                        "city_name": {
+                            "type": "string",
+                            "description": "City name"
+                        },
+                        "iso_state": {
+                            "type": "string",
+                            "description": "ISO State"
+                        },
+                        "postcode": {
+                            "type": "number",
+                            "description": "Primary postcode",
+                            "minimum": 1000,
+                            "maximum": 9999
+                        },
+                        "other_postcode": {
+                            "description": "Others postcodes linked to this city",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "required": [
+                        "city_name_normalize",
+                        "city_name",
+                        "iso_state",
+                        "postcode"
+                    ]
+                }
+            },
+            "parameters": [
+                {
+                    "name": "stateIsoCode",
+                    "type": "STRING",
+                    "description": "State ISO Code",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO code"
+                    }
+                },
+                {
+                    "name": "postCode",
+                    "type": "STRING",
+                    "description": "Postcode",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "\u00bfCu\u00e1les son las ciudades correspondientes al c\u00f3digo postal 5000 en la provincia de AR-SF?",
+                    "parameters": {
+                        "stateIsoCode": "AR-SF",
+                        "postCode": "5000"
+                    }
+                },
+                {
+                    "utterance": "Necesito saber qu\u00e9 localidades est\u00e1n en el c\u00f3digo postal 1600 del estado AR-B.",
+                    "parameters": {
+                        "stateIsoCode": "AR-B",
+                        "postCode": "1600"
+                    }
+                },
+                {
+                    "utterance": "Dime las ciudades que pertenecen al c\u00f3digo postal 5500 en la provincia AR-C.",
+                    "parameters": {
+                        "stateIsoCode": "AR-C",
+                        "postCode": "5500"
+                    }
+                },
+                {
+                    "utterance": "\u00bfQu\u00e9 localidades corresponden al c\u00f3digo postal 8000 en la provincia AR-T?",
+                    "parameters": {
+                        "stateIsoCode": "AR-T",
+                        "postCode": "8000"
+                    }
+                },
+                {
+                    "utterance": "Quisiera conocer las ciudades del c\u00f3digo postal 4000 en el estado AR-N.",
+                    "parameters": {
+                        "stateIsoCode": "AR-N",
+                        "postCode": "4000"
+                    }
+                },
+                {
+                    "utterance": "Por favor, ind\u00edcame las localidades que se encuentran en el c\u00f3digo postal 2000 de AR-BU.",
+                    "parameters": {
+                        "stateIsoCode": "AR-BU",
+                        "postCode": "2000"
+                    }
+                },
+                {
+                    "utterance": "\u00bfPuedes listar las ciudades para el c\u00f3digo postal 3000 en la provincia AR-S?",
+                    "parameters": {
+                        "stateIsoCode": "AR-S",
+                        "postCode": "3000"
+                    }
+                },
+                {
+                    "utterance": "Me gustar\u00eda saber qu\u00e9 localidades est\u00e1n en el c\u00f3digo postal 6000 del estado AR-M.",
+                    "parameters": {
+                        "stateIsoCode": "AR-M",
+                        "postCode": "6000"
+                    }
+                },
+                {
+                    "utterance": "Consulta las ciudades que corresponden al c\u00f3digo postal 7000 en la provincia AR-J.",
+                    "parameters": {
+                        "stateIsoCode": "AR-J",
+                        "postCode": "7000"
+                    }
+                },
+                {
+                    "utterance": "\u00bfQu\u00e9 localidades hay en el c\u00f3digo postal 1000 de la provincia AR-CF?",
+                    "parameters": {
+                        "stateIsoCode": "AR-CF",
+                        "postCode": "1000"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/cities/search/:stateIsoCode/:keyword",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/cities/search/{stateIsoCode}/{keyword}",
+            "description": "Search city for iso state and keyword name.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/cities/search/{stateIsoCode}/{keyword}\"\nquerystring = {\"stateIsoCode\": \"\", \"keyword\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/cities/search/{stateIsoCode}/{keyword}\"\nquerystring = {\"stateIsoCode\": \"\", \"keyword\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": {
+                "statusCode": 404,
+                "message": "City not found",
+                "error": "Not Found"
+            },
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "city_name_normalize": {
+                            "type": "string",
+                            "description": "Normalized city name in upper case, without accents or \u00d1."
+                        },
+                        "city_name": {
+                            "type": "string",
+                            "description": "City name"
+                        },
+                        "iso_state": {
+                            "type": "string",
+                            "description": "ISO State"
+                        },
+                        "postcode": {
+                            "type": "number",
+                            "description": "Primary postcode",
+                            "minimum": 1000,
+                            "maximum": 9999
+                        },
+                        "other_postcode": {
+                            "description": "Others postcodes linked to this city",
+                            "type": "array",
+                            "items": {
+                                "type": "number"
+                            }
+                        }
+                    },
+                    "required": [
+                        "city_name_normalize",
+                        "city_name",
+                        "iso_state",
+                        "postcode"
+                    ]
+                }
+            },
+            "parameters": [
+                {
+                    "name": "stateIsoCode",
+                    "type": "STRING",
+                    "description": "State ISO Code",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO code"
+                    }
+                },
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "Keyword to search, example: Caballito",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "\u00bfPuedes buscar ciudades en la provincia de Buenos Aires que contengan la palabra 'La Plata'?",
+                    "parameters": {
+                        "stateIsoCode": "AR-B",
+                        "keyword": "La Plata"
+                    }
+                },
+                {
+                    "utterance": "Necesito encontrar localidades en C\u00f3rdoba que tengan 'Villa' en su nombre.",
+                    "parameters": {
+                        "stateIsoCode": "AR-X",
+                        "keyword": "Villa"
+                    }
+                },
+                {
+                    "utterance": "Mu\u00e9strame las ciudades en Santa Fe que incluyan 'Rosario' en el nombre.",
+                    "parameters": {
+                        "stateIsoCode": "AR-S",
+                        "keyword": "Rosario"
+                    }
+                },
+                {
+                    "utterance": "Quiero buscar localidades en Mendoza que contengan la palabra 'Godoy'.",
+                    "parameters": {
+                        "stateIsoCode": "AR-M",
+                        "keyword": "Godoy"
+                    }
+                },
+                {
+                    "utterance": "\u00bfPuedes encontrar ciudades en Tucum\u00e1n que tengan 'San Miguel' en su nombre?",
+                    "parameters": {
+                        "stateIsoCode": "AR-T",
+                        "keyword": "San Miguel"
+                    }
+                },
+                {
+                    "utterance": "Busca localidades en Salta que incluyan 'Cerrillos' en el nombre.",
+                    "parameters": {
+                        "stateIsoCode": "AR-A",
+                        "keyword": "Cerrillos"
+                    }
+                },
+                {
+                    "utterance": "Quisiera ver ciudades en Entre R\u00edos que contengan 'Paran\u00e1' en su nombre.",
+                    "parameters": {
+                        "stateIsoCode": "AR-E",
+                        "keyword": "Paran\u00e1"
+                    }
+                },
+                {
+                    "utterance": "Encuentra localidades en Chubut que tengan 'Comodoro' en el nombre.",
+                    "parameters": {
+                        "stateIsoCode": "AR-U",
+                        "keyword": "Comodoro"
+                    }
+                },
+                {
+                    "utterance": "Por favor, busca ciudades en Mendoza que incluyan 'Luj\u00e1n' en su nombre.",
+                    "parameters": {
+                        "stateIsoCode": "AR-M",
+                        "keyword": "Luj\u00e1n"
+                    }
+                },
+                {
+                    "utterance": "\u00bfPuedes mostrarme localidades en Neuqu\u00e9n que contengan 'Centenario'?",
+                    "parameters": {
+                        "stateIsoCode": "AR-Q",
+                        "keyword": "Centenario"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/cities/states",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/cities/states",
+            "description": "List of states for Argentina with iso code.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/cities/states\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/cities/states\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": [
+                {
+                    "name": "Capital Federal",
+                    "iso_code": "C"
+                },
+                {
+                    "name": "Buenos Aires",
+                    "iso_code": "B"
+                },
+                {
+                    "name": "Catamarca",
+                    "iso_code": "K"
+                },
+                {
+                    "name": "Chaco",
+                    "iso_code": "H"
+                },
+                {
+                    "name": "Chubut",
+                    "iso_code": "U"
+                },
+                {
+                    "name": "C\u00f3rdoba",
+                    "iso_code": "X"
+                },
+                {
+                    "name": "Corrientes",
+                    "iso_code": "W"
+                },
+                {
+                    "name": "Entre R\u00edos",
+                    "iso_code": "E"
+                },
+                {
+                    "name": "Formosa",
+                    "iso_code": "P"
+                },
+                {
+                    "name": "Jujuy",
+                    "iso_code": "Y"
+                },
+                {
+                    "name": "La Pampa",
+                    "iso_code": "L"
+                },
+                {
+                    "name": "La Rioja",
+                    "iso_code": "F"
+                },
+                {
+                    "name": "Mendoza",
+                    "iso_code": "M"
+                },
+                {
+                    "name": "Misiones",
+                    "iso_code": "N"
+                },
+                {
+                    "name": "Neuqu\u00e9n",
+                    "iso_code": "Q"
+                },
+                {
+                    "name": "R\u00edo Negro",
+                    "iso_code": "R"
+                },
+                {
+                    "name": "Salta",
+                    "iso_code": "A"
+                },
+                {
+                    "name": "San Juan",
+                    "iso_code": "J"
+                },
+                {
+                    "name": "San Luis",
+                    "iso_code": "D"
+                },
+                {
+                    "name": "Santa Cruz",
+                    "iso_code": "Z"
+                },
+                {
+                    "name": "Santa Fe",
+                    "iso_code": "S"
+                },
+                {
+                    "name": "Santiago del Estero",
+                    "iso_code": "G"
+                },
+                {
+                    "name": "Tierra del Fuego",
+                    "iso_code": "V"
+                },
+                {
+                    "name": "Tucum\u00e1n",
+                    "iso_code": "T"
+                }
+            ],
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "name": {
+                            "type": "string",
+                            "description": "State name"
+                        },
+                        "iso_code": {
+                            "type": "string",
+                            "description": "ISO Code for this state"
+                        }
+                    },
+                    "required": [
+                        "name",
+                        "iso_code"
+                    ]
+                }
+            },
+            "parameters": [],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "\u00bfMe puedes mostrar la lista de provincias argentinas con sus c\u00f3digos ISO?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Quisiera obtener todos los estados de Argentina junto con sus c\u00f3digos ISO correspondientes.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Dame un listado de las provincias argentinas y sus c\u00f3digos ISO oficiales.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1les son los estados de Argentina y cu\u00e1les son sus c\u00f3digos ISO?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Necesito la lista completa de provincias argentinas con sus c\u00f3digos ISO para un env\u00edo.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Por favor, proporciona los estados de Argentina con sus c\u00f3digos ISO para referencia.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "\u00bfPuedes facilitarme los nombres de las provincias argentinas junto con sus c\u00f3digos ISO?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Solicito un listado de todos los estados argentinos con sus respectivos c\u00f3digos ISO.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Mu\u00e9strame las provincias de Argentina y sus c\u00f3digos ISO para verificar destinos de env\u00edo.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "\u00bfPodr\u00edas darme la relaci\u00f3n de estados en Argentina con sus c\u00f3digos ISO oficiales?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/quotes/city/correo_argentino/:weight/:stateIsoCodeSrc/:normalizeCityNameSrc/:stateIsoCodeDst/:normalizeCityNameDst",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/quotes/city/correo_argentino/{weight}/{stateIsoCodeSrc}/{normalizeCityNameSrc}/{stateIsoCodeDst}/{normalizeCityNameDst}",
+            "description": "List of quote for iso state and city keyword name in Correo Argentino.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/quotes/city/correo_argentino/{weight}/{stateIsoCodeSrc}/{normalizeCityNameSrc}/{stateIsoCodeDst}/{normalizeCityNameDst}\"\nquerystring = {\"normalizeCityNameSrc\": \"\", \"stateIsoCodeDst\": \"\", \"normalizeCityNameDst\": \"\", \"weight\": \"\", \"stateIsoCodeSrc\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/quotes/city/correo_argentino/{weight}/{stateIsoCodeSrc}/{normalizeCityNameSrc}/{stateIsoCodeDst}/{normalizeCityNameDst}\"\nquerystring = {\"normalizeCityNameSrc\": \"\", \"stateIsoCodeDst\": \"\", \"normalizeCityNameDst\": \"\", \"weight\": \"\", \"stateIsoCodeSrc\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": {
+                "statusCode": 404,
+                "message": "City not found",
+                "error": "Not Found"
+            },
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "normalizeCityNameSrc",
+                    "type": "STRING",
+                    "description": "Normalize City Name of Source",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "stateIsoCodeDst",
+                    "type": "STRING",
+                    "description": "State ISO Code of Destination",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "normalizeCityNameDst",
+                    "type": "STRING",
+                    "description": "Normalize City Name of Destination",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "weight",
+                    "type": "NUMBER",
+                    "description": "Weight in KG",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "stateIsoCodeSrc",
+                    "type": "STRING",
+                    "description": "State ISO Code of Source",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "\u00bfCu\u00e1nto cuesta enviar un paquete de 3.5 kg desde Rosario en Santa Fe a Mendoza en Mendoza con Correo Argentino?",
+                    "parameters": {
+                        "normalizeCityNameSrc": "rosario",
+                        "stateIsoCodeSrc": "SF",
+                        "normalizeCityNameDst": "mendoza",
+                        "stateIsoCodeDst": "MZ",
+                        "weight": 3.5
+                    }
+                },
+                {
+                    "utterance": "Necesito saber la tarifa para un env\u00edo de 1.2 kilogramos desde La Plata, Buenos Aires hacia Bariloche, R\u00edo Negro usando Correo Argentino.",
+                    "parameters": {
+                        "normalizeCityNameSrc": "la plata",
+                        "stateIsoCodeSrc": "BA",
+                        "normalizeCityNameDst": "bariloche",
+                        "stateIsoCodeDst": "RN",
+                        "weight": 1.2
+                    }
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1l es el precio para mandar un paquete de 5 kg desde C\u00f3rdoba en C\u00f3rdoba a Salta en Salta con Correo Argentino?",
+                    "parameters": {
+                        "normalizeCityNameSrc": "cordoba",
+                        "stateIsoCodeSrc": "CB",
+                        "normalizeCityNameDst": "salta",
+                        "stateIsoCodeDst": "SA",
+                        "weight": 5
+                    }
+                },
+                {
+                    "utterance": "Quiero enviar un paquete de 0.75 kilos desde Mar del Plata, Buenos Aires hasta Ushuaia, Tierra del Fuego. \u00bfCu\u00e1nto me costar\u00eda con Correo Argentino?",
+                    "parameters": {
+                        "normalizeCityNameSrc": "mar del plata",
+                        "stateIsoCodeSrc": "BA",
+                        "normalizeCityNameDst": "ushuaia",
+                        "stateIsoCodeDst": "TF",
+                        "weight": 0.75
+                    }
+                },
+                {
+                    "utterance": "Consulta de precio para un env\u00edo de 2.3 kg desde San Miguel de Tucum\u00e1n en Tucum\u00e1n hacia Neuqu\u00e9n en Neuqu\u00e9n con Correo Argentino.",
+                    "parameters": {
+                        "normalizeCityNameSrc": "san miguel de tucuman",
+                        "stateIsoCodeSrc": "TU",
+                        "normalizeCityNameDst": "neuquen",
+                        "stateIsoCodeDst": "NE",
+                        "weight": 2.3
+                    }
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1nto vale enviar un paquete de 4.8 kilos desde Santa Rosa, La Pampa a Corrientes, Corrientes con Correo Argentino?",
+                    "parameters": {
+                        "normalizeCityNameSrc": "santa rosa",
+                        "stateIsoCodeSrc": "LP",
+                        "normalizeCityNameDst": "corrientes",
+                        "stateIsoCodeDst": "CO",
+                        "weight": 4.8
+                    }
+                },
+                {
+                    "utterance": "Necesito el costo para un paquete de 6 kg que va desde Posadas en Misiones hasta San Juan en San Juan con Correo Argentino.",
+                    "parameters": {
+                        "normalizeCityNameSrc": "posadas",
+                        "stateIsoCodeSrc": "MI",
+                        "normalizeCityNameDst": "san juan",
+                        "stateIsoCodeDst": "SJ",
+                        "weight": 6
+                    }
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1l es la tarifa para enviar un paquete de 0.5 kg desde Paran\u00e1, Entre R\u00edos a La Rioja, La Rioja con Correo Argentino?",
+                    "parameters": {
+                        "normalizeCityNameSrc": "parana",
+                        "stateIsoCodeSrc": "ER",
+                        "normalizeCityNameDst": "la rioja",
+                        "stateIsoCodeDst": "LR",
+                        "weight": 0.5
+                    }
+                },
+                {
+                    "utterance": "Quisiera saber el precio para un env\u00edo de 7.1 kilos desde San Luis en San Luis hacia Catamarca en Catamarca con Correo Argentino.",
+                    "parameters": {
+                        "normalizeCityNameSrc": "san luis",
+                        "stateIsoCodeSrc": "SL",
+                        "normalizeCityNameDst": "catamarca",
+                        "stateIsoCodeDst": "CT",
+                        "weight": 7.1
+                    }
+                },
+                {
+                    "utterance": "Consulta de costo para mandar un paquete de 3 kg desde R\u00edo Gallegos, Santa Cruz a Trelew, Chubut con Correo Argentino.",
+                    "parameters": {
+                        "normalizeCityNameSrc": "rio gallegos",
+                        "stateIsoCodeSrc": "SC",
+                        "normalizeCityNameDst": "trelew",
+                        "stateIsoCodeDst": "CH",
+                        "weight": 3
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/quotes/postcode/oca/:cuit/:operativa/:cost/:weight/:volume/:postCodeSrc/:postCodeDst",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/quotes/postcode/oca/{cuit}/{operativa}/{cost}/{weight}/{volume}/{postCodeSrc}/{postCodeDst}",
+            "description": "Quote for postcode in OCA e-Pack.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/quotes/postcode/oca/{cuit}/{operativa}/{cost}/{weight}/{volume}/{postCodeSrc}/{postCodeDst}\"\nquerystring = {\"postCodeDst\": \"\", \"cuit\": \"\", \"operativa\": \"\", \"cost\": \"\", \"postCodeSrc\": \"\", \"volume\": \"\", \"weight\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/quotes/postcode/oca/{cuit}/{operativa}/{cost}/{weight}/{volume}/{postCodeSrc}/{postCodeDst}\"\nquerystring = {\"postCodeDst\": \"\", \"cuit\": \"\", \"operativa\": \"\", \"cost\": \"\", \"postCodeSrc\": \"\", \"volume\": \"\", \"weight\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": {
+                "statusCode": 404,
+                "message": "Quote not found",
+                "error": "Not Found"
+            },
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "postCodeDst",
+                    "type": "NUMBER",
+                    "description": "Postcode Destination",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "cuit",
+                    "type": "STRING",
+                    "description": "CUIT of your account in OCA e-Pack",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "operativa",
+                    "type": "STRING",
+                    "description": "Operativa number of your account in OCA e-Pack",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "cost",
+                    "type": "NUMBER",
+                    "description": "Cost of products in ARS",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "postCodeSrc",
+                    "type": "NUMBER",
+                    "description": "Postcode Source",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "volume",
+                    "type": "NUMBER",
+                    "description": "Volume in cm3",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "weight",
+                    "type": "NUMBER",
+                    "description": "Weight in KG",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "\u00bfCu\u00e1nto cuesta enviar un paquete de 3 kg y 1500 cm3 desde el c\u00f3digo postal 2000 hasta el 5000 con mi cuenta CUIT 30-12345678-9 y operativa 001, considerando un valor de producto de 1200 pesos?",
+                    "parameters": {
+                        "postCodeDst": 5000,
+                        "cuit": "30-12345678-9",
+                        "operativa": "001",
+                        "cost": 1200,
+                        "postCodeSrc": 2000,
+                        "volume": 1500,
+                        "weight": 3
+                    }
+                },
+                {
+                    "utterance": "Necesito una cotizaci\u00f3n para enviar un paquete que pesa 0.5 kg y tiene un volumen de 800 cm3 desde 1001 a 4000, con CUIT 27-87654321-0 y operativa 002, valor declarado 500 pesos.",
+                    "parameters": {
+                        "postCodeDst": 4000,
+                        "cuit": "27-87654321-0",
+                        "operativa": "002",
+                        "cost": 500,
+                        "postCodeSrc": 1001,
+                        "volume": 800,
+                        "weight": 0.5
+                    }
+                },
+                {
+                    "utterance": "Quiero saber el precio para enviar un paquete de 10 kg y 3000 cm3 desde el c\u00f3digo postal 1425 hasta el 7000, con CUIT 20-11223344-5, operativa 003 y un costo de producto de 2500 pesos.",
+                    "parameters": {
+                        "postCodeDst": 7000,
+                        "cuit": "20-11223344-5",
+                        "operativa": "003",
+                        "cost": 2500,
+                        "postCodeSrc": 1425,
+                        "volume": 3000,
+                        "weight": 10
+                    }
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1l es la tarifa para un env\u00edo de 1.2 kg y 1200 cm3 desde 500 hasta 3500 con CUIT 23-99887766-1, operativa 004 y un valor de producto de 800 pesos?",
+                    "parameters": {
+                        "postCodeDst": 3500,
+                        "cuit": "23-99887766-1",
+                        "operativa": "004",
+                        "cost": 800,
+                        "postCodeSrc": 500,
+                        "volume": 1200,
+                        "weight": 1.2
+                    }
+                },
+                {
+                    "utterance": "Solicito cotizaci\u00f3n para un paquete con peso de 5 kg y volumen de 2500 cm3 desde el c\u00f3digo postal 3000 al 6000, con CUIT 33-44556677-2, operativa 005 y costo declarado de 1800 pesos.",
+                    "parameters": {
+                        "postCodeDst": 6000,
+                        "cuit": "33-44556677-2",
+                        "operativa": "005",
+                        "cost": 1800,
+                        "postCodeSrc": 3000,
+                        "volume": 2500,
+                        "weight": 5
+                    }
+                },
+                {
+                    "utterance": "\u00bfMe puedes dar el precio para enviar un paquete de 0.8 kg y 900 cm3 desde 1100 a 4500 con CUIT 24-55667788-3, operativa 006 y un valor de producto de 650 pesos?",
+                    "parameters": {
+                        "postCodeDst": 4500,
+                        "cuit": "24-55667788-3",
+                        "operativa": "006",
+                        "cost": 650,
+                        "postCodeSrc": 1100,
+                        "volume": 900,
+                        "weight": 0.8
+                    }
+                },
+                {
+                    "utterance": "Necesito saber el costo para un env\u00edo de 7 kg y 2800 cm3 desde el c\u00f3digo postal 2500 hasta el 8000, con CUIT 30-33445566-7, operativa 007 y un costo de producto de 2200 pesos.",
+                    "parameters": {
+                        "postCodeDst": 8000,
+                        "cuit": "30-33445566-7",
+                        "operativa": "007",
+                        "cost": 2200,
+                        "postCodeSrc": 2500,
+                        "volume": 2800,
+                        "weight": 7
+                    }
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1l es la cotizaci\u00f3n para enviar un paquete de 2.5 kg y 1600 cm3 desde 1300 a 5200 con CUIT 26-77889900-4, operativa 008 y un valor declarado de 1100 pesos?",
+                    "parameters": {
+                        "postCodeDst": 5200,
+                        "cuit": "26-77889900-4",
+                        "operativa": "008",
+                        "cost": 1100,
+                        "postCodeSrc": 1300,
+                        "volume": 1600,
+                        "weight": 2.5
+                    }
+                },
+                {
+                    "utterance": "Por favor, dame el precio para un paquete que pesa 4 kg y tiene un volumen de 2000 cm3 desde el c\u00f3digo postal 1800 hasta el 4700, con CUIT 29-66778899-5, operativa 009 y un costo de producto de 1500 pesos.",
+                    "parameters": {
+                        "postCodeDst": 4700,
+                        "cuit": "29-66778899-5",
+                        "operativa": "009",
+                        "cost": 1500,
+                        "postCodeSrc": 1800,
+                        "volume": 2000,
+                        "weight": 4
+                    }
+                },
+                {
+                    "utterance": "Quisiera una cotizaci\u00f3n para enviar un paquete de 6.5 kg y 2700 cm3 desde 2100 a 5300 con CUIT 25-88990011-6, operativa 010 y un valor de producto de 1950 pesos.",
+                    "parameters": {
+                        "postCodeDst": 5300,
+                        "cuit": "25-88990011-6",
+                        "operativa": "010",
+                        "cost": 1950,
+                        "postCodeSrc": 2100,
+                        "volume": 2700,
+                        "weight": 6.5
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/quotes/postcode/correo_argentino/:weight/:postCodeSrc/:postCodeDst",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/quotes/postcode/correo_argentino/{weight}/{postCodeSrc}/{postCodeDst}",
+            "description": "List of quote for postcode in Correo Argentino.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/quotes/postcode/correo_argentino/{weight}/{postCodeSrc}/{postCodeDst}\"\nquerystring = {\"postCodeDst\": \"\", \"postCodeSrc\": \"\", \"weight\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/quotes/postcode/correo_argentino/{weight}/{postCodeSrc}/{postCodeDst}\"\nquerystring = {\"postCodeDst\": \"\", \"postCodeSrc\": \"\", \"weight\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": {
+                "statusCode": 404,
+                "message": "City not found",
+                "error": "Not Found"
+            },
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "fiscalType": {
+                            "type": "string",
+                            "description": "Fiscal Type -> py: Responsable Inscripto. / cf: Monotributista y Consumidor Final.",
+                            "enum": [
+                                "cf",
+                                "py"
+                            ]
+                        },
+                        "quotes": {
+                            "description": "List of Quote",
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string",
+                                        "description": "Service name",
+                                        "enum": [
+                                            "classic",
+                                            "express"
+                                        ]
+                                    },
+                                    "door": {
+                                        "type": "number",
+                                        "description": "Door cost without taxes."
+                                    },
+                                    "office": {
+                                        "type": "number",
+                                        "description": "Office cost without taxes."
+                                    }
+                                },
+                                "required": [
+                                    "name",
+                                    "door",
+                                    "office"
+                                ]
+                            }
+                        },
+                        "last_sync": {
+                            "type": "number",
+                            "description": "Last time the price was synchronized with Correo Argentino"
+                        }
+                    },
+                    "required": [
+                        "fiscalType",
+                        "quotes",
+                        "last_sync"
+                    ]
+                }
+            },
+            "parameters": [
+                {
+                    "name": "postCodeDst",
+                    "type": "NUMBER",
+                    "description": "Postcode Destination",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "postCodeSrc",
+                    "type": "NUMBER",
+                    "description": "Postcode Source",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "weight",
+                    "type": "NUMBER",
+                    "description": "Weight in KG",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "\u00bfCu\u00e1nto cuesta enviar un paquete de 3.5 kg desde el c\u00f3digo postal 1001 hasta el 2000 con Correo Argentino?",
+                    "parameters": {
+                        "postCodeSrc": 1001,
+                        "postCodeDst": 2000,
+                        "weight": 3.5
+                    }
+                },
+                {
+                    "utterance": "Necesito saber la tarifa para un env\u00edo de 1.2 kilogramos desde 5000 a 6000 por Correo Argentino.",
+                    "parameters": {
+                        "postCodeSrc": 5000,
+                        "postCodeDst": 6000,
+                        "weight": 1.2
+                    }
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1l es el precio para mandar un paquete de 7 kg desde el c\u00f3digo postal 1425 hacia el 3000 usando Correo Argentino?",
+                    "parameters": {
+                        "postCodeSrc": 1425,
+                        "postCodeDst": 3000,
+                        "weight": 7
+                    }
+                },
+                {
+                    "utterance": "Quiero cotizar el env\u00edo de un paquete que pesa 0.8 kg desde 4000 hasta 8000 con Correo Argentino.",
+                    "parameters": {
+                        "postCodeSrc": 4000,
+                        "postCodeDst": 8000,
+                        "weight": 0.8
+                    }
+                },
+                {
+                    "utterance": "\u00bfMe puedes dar el costo para enviar un paquete de 5 kilogramos desde el c\u00f3digo postal 2200 al 3500 por Correo Argentino?",
+                    "parameters": {
+                        "postCodeSrc": 2200,
+                        "postCodeDst": 3500,
+                        "weight": 5
+                    }
+                },
+                {
+                    "utterance": "Consulta de precio para un paquete de 2.3 kg que va desde 6001 hasta 7000 con Correo Argentino.",
+                    "parameters": {
+                        "postCodeSrc": 6001,
+                        "postCodeDst": 7000,
+                        "weight": 2.3
+                    }
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1nto me costar\u00eda enviar un paquete de 10 kilogramos desde el c\u00f3digo postal 1800 hacia el 2500 con Correo Argentino?",
+                    "parameters": {
+                        "postCodeSrc": 1800,
+                        "postCodeDst": 2500,
+                        "weight": 10
+                    }
+                },
+                {
+                    "utterance": "Necesito el precio para un env\u00edo de 4.7 kg desde 3200 hasta 4500 usando Correo Argentino.",
+                    "parameters": {
+                        "postCodeSrc": 3200,
+                        "postCodeDst": 4500,
+                        "weight": 4.7
+                    }
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1l es la tarifa para mandar un paquete de 6.1 kilogramos desde el c\u00f3digo postal 1100 al 2100 con Correo Argentino?",
+                    "parameters": {
+                        "postCodeSrc": 1100,
+                        "postCodeDst": 2100,
+                        "weight": 6.1
+                    }
+                },
+                {
+                    "utterance": "Quiero saber el costo de env\u00edo para un paquete de 0.5 kg desde 9000 hasta 9500 con Correo Argentino.",
+                    "parameters": {
+                        "postCodeSrc": 9000,
+                        "postCodeDst": 9500,
+                        "weight": 0.5
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/tracking/correo_argentino/create_task/:service/:tracking_code",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/tracking/correo_argentino/create_task/ecommerce/{tracking_code}",
+            "description": "Create task to get the history.\nThe result of the trace can be obtained after approximately 20-60 seconds by calling the endpoint: /tracking/correo_argentino/result_task/:task_id\n**IMPORTANT: ** The result will only be stored for approx 1 hour.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/tracking/correo_argentino/create_task/ecommerce/{tracking_code}\"\nquerystring = {\"tracking_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/tracking/correo_argentino/create_task/{service}/{tracking_code}\"\nquerystring = {\"tracking_code\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": {
+                "message": "You have exceeded the rate limit per minute for your plan, BASIC, by the API provider"
+            },
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "task_id": {
+                        "type": "string",
+                        "description": "Task ID"
+                    }
+                },
+                "required": [
+                    "task_id"
+                ]
+            },
+            "parameters": [
+                {
+                    "name": "service",
+                    "type": "STRING",
+                    "description": "Service: ecommerce, mercadolibre, national, national-plus or national-international",
+                    "default": "ecommerce",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "specific": [
+                                "ecommerce",
+                                "mercadolibre",
+                                "national",
+                                "national-plus",
+                                "national-international"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "tracking_code",
+                    "type": "STRING",
+                    "description": "Tracking code",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you track my package with the ecommerce service using tracking code EA123456789AR?",
+                    "parameters": {
+                        "service": "ecommerce",
+                        "tracking_code": "EA123456789AR"
+                    }
+                },
+                {
+                    "utterance": "I need to check the status of my shipment on Mercadolibre with tracking number ML987654321AR.",
+                    "parameters": {
+                        "service": "mercadolibre",
+                        "tracking_code": "ML987654321AR"
+                    }
+                },
+                {
+                    "utterance": "Please create a tracking task for my national delivery with code NA20230415XYZ.",
+                    "parameters": {
+                        "service": "national",
+                        "tracking_code": "NA20230415XYZ"
+                    }
+                },
+                {
+                    "utterance": "Could you help me track a package sent via national-plus service? The tracking code is NP5566778899AR.",
+                    "parameters": {
+                        "service": "national-plus",
+                        "tracking_code": "NP5566778899AR"
+                    }
+                },
+                {
+                    "utterance": "I want to track an international shipment using the national-international service with tracking code NI2023INT0001.",
+                    "parameters": {
+                        "service": "national-international",
+                        "tracking_code": "NI2023INT0001"
+                    }
+                },
+                {
+                    "utterance": "Track my ecommerce parcel with the code EC2023ARG0005, please.",
+                    "parameters": {
+                        "service": "ecommerce",
+                        "tracking_code": "EC2023ARG0005"
+                    }
+                },
+                {
+                    "utterance": "Can you create a tracking task for a Mercadolibre order with tracking ID ML2023ORD12345?",
+                    "parameters": {
+                        "service": "mercadolibre",
+                        "tracking_code": "ML2023ORD12345"
+                    }
+                },
+                {
+                    "utterance": "I have a national shipment with tracking code NA555888777, can you track it?",
+                    "parameters": {
+                        "service": "national",
+                        "tracking_code": "NA555888777"
+                    }
+                },
+                {
+                    "utterance": "Please track my package sent through national-plus service, tracking number NP2023PLUS999.",
+                    "parameters": {
+                        "service": "national-plus",
+                        "tracking_code": "NP2023PLUS999"
+                    }
+                },
+                {
+                    "utterance": "I want to check the delivery status of my international shipment with code NIINT20230401AR.",
+                    "parameters": {
+                        "service": "national-international",
+                        "tracking_code": "NIINT20230401AR"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/offices/postcode/:service/:postCode",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/offices/postcode/{service}/{postCode}",
+            "description": "List of offices for iso state and postcode.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/offices/postcode/{service}/{postCode}\"\nquerystring = {\"service\": \"\", \"postCode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/offices/postcode/{service}/{postCode}\"\nquerystring = {\"service\": \"\", \"postCode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": {
+                "message": "You have exceeded the rate limit per minute for your plan, BASIC, by the API provider"
+            },
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "id": {
+                            "type": "string",
+                            "description": "ID of office in Correo Argentino"
+                        },
+                        "iso": {
+                            "type": "string",
+                            "description": "ISO of office in Correo Argentino"
+                        },
+                        "address": {
+                            "type": "string",
+                            "description": "Address of office"
+                        },
+                        "hours": {
+                            "type": "string",
+                            "description": "Office hours"
+                        },
+                        "lat": {
+                            "type": "string",
+                            "description": "Office gps coordinate latitude"
+                        },
+                        "lng": {
+                            "type": "string",
+                            "description": "Office gps coordinate longitude"
+                        },
+                        "iso_state": {
+                            "type": "string",
+                            "description": "ISO State"
+                        },
+                        "description": {
+                            "type": "string",
+                            "description": "Office name or other characteristics"
+                        },
+                        "city": {
+                            "description": "Office City Location",
+                            "allOf": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "city_name_normalize": {
+                                            "type": "string",
+                                            "description": "Normalized city name in upper case, without accents or \u00d1."
+                                        },
+                                        "city_name": {
+                                            "type": "string",
+                                            "description": "City name"
+                                        },
+                                        "iso_state": {
+                                            "type": "string",
+                                            "description": "ISO State"
+                                        },
+                                        "postcode": {
+                                            "type": "number",
+                                            "description": "Primary postcode",
+                                            "minimum": 1000,
+                                            "maximum": 9999
+                                        },
+                                        "other_postcode": {
+                                            "description": "Others postcodes linked to this city",
+                                            "type": "array",
+                                            "items": {
+                                                "type": "number"
+                                            }
+                                        }
+                                    },
+                                    "required": [
+                                        "city_name_normalize",
+                                        "city_name",
+                                        "iso_state",
+                                        "postcode"
+                                    ]
+                                }
+                            ]
+                        },
+                        "is_sender": {
+                            "type": "object",
+                            "description": "Office is sender"
+                        },
+                        "is_receiver": {
+                            "type": "object",
+                            "description": "Office is receiver"
+                        }
+                    },
+                    "required": [
+                        "id",
+                        "iso",
+                        "address",
+                        "hours",
+                        "lat",
+                        "lng",
+                        "iso_state",
+                        "description",
+                        "city",
+                        "is_sender",
+                        "is_receiver"
+                    ]
+                }
+            },
+            "parameters": [
+                {
+                    "name": "service",
+                    "type": "STRING",
+                    "description": "Service Name: correo_argentino, oca, andreani",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "specific": [
+                                "correo_argentino",
+                                "oca",
+                                "andreani"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "postCode",
+                    "type": "NUMBER",
+                    "description": "Postcode",
+                    "default": "",
+                    "required": true
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "\u00bfPodr\u00edas mostrarme las oficinas de Andreani en el c\u00f3digo postal 1407?",
+                    "parameters": {
+                        "service": "andreani",
+                        "postCode": 1407
+                    }
+                },
+                {
+                    "utterance": "Necesito encontrar las sucursales de Oca en el \u00e1rea con c\u00f3digo postal 5000.",
+                    "parameters": {
+                        "service": "oca",
+                        "postCode": 5000
+                    }
+                },
+                {
+                    "utterance": "\u00bfD\u00f3nde est\u00e1n las oficinas de Correo Argentino para el c\u00f3digo postal 2000?",
+                    "parameters": {
+                        "service": "correo_argentino",
+                        "postCode": 2000
+                    }
+                },
+                {
+                    "utterance": "Mu\u00e9strame las ubicaciones de Andreani en la zona postal 6000, por favor.",
+                    "parameters": {
+                        "service": "andreani",
+                        "postCode": 6000
+                    }
+                },
+                {
+                    "utterance": "Quisiera saber las oficinas de Oca disponibles en el c\u00f3digo postal 8000.",
+                    "parameters": {
+                        "service": "oca",
+                        "postCode": 8000
+                    }
+                },
+                {
+                    "utterance": "\u00bfPuedes indicarme las oficinas de Correo Argentino en el c\u00f3digo postal 1001?",
+                    "parameters": {
+                        "service": "correo_argentino",
+                        "postCode": 1001
+                    }
+                },
+                {
+                    "utterance": "Estoy buscando las oficinas de Andreani en el c\u00f3digo postal 5500, \u00bfme ayudas?",
+                    "parameters": {
+                        "service": "andreani",
+                        "postCode": 5500
+                    }
+                },
+                {
+                    "utterance": "Por favor, dame la lista de oficinas de Oca en el c\u00f3digo postal 3000.",
+                    "parameters": {
+                        "service": "oca",
+                        "postCode": 3000
+                    }
+                },
+                {
+                    "utterance": "\u00bfD\u00f3nde puedo encontrar las oficinas de Correo Argentino en el c\u00f3digo postal 4000?",
+                    "parameters": {
+                        "service": "correo_argentino",
+                        "postCode": 4000
+                    }
+                },
+                {
+                    "utterance": "Me gustar\u00eda saber las oficinas de Andreani que est\u00e1n en el c\u00f3digo postal 7000.",
+                    "parameters": {
+                        "service": "andreani",
+                        "postCode": 7000
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/offices/search/:service/:stateIsoCode/:keyword",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/offices/search/{service}/{stateIsoCode}/{keyword}",
+            "description": "List of offices for iso state and postcode.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/offices/search/{service}/{stateIsoCode}/{keyword}\"\nquerystring = {\"keyword\": \"\", \"service\": \"\", \"stateIsoCode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/offices/search/{service}/{stateIsoCode}/{keyword}\"\nquerystring = {\"keyword\": \"\", \"service\": \"\", \"stateIsoCode\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": {
+                "message": "You have exceeded the rate limit per minute for your plan, BASIC, by the API provider"
+            },
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "Keyword to search, example: Caballito",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "service",
+                    "type": "STRING",
+                    "description": "Service Name: correo_argentino, oca, andreani",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "specific": [
+                                "correo_argentino",
+                                "oca",
+                                "andreani"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "stateIsoCode",
+                    "type": "STRING",
+                    "description": "State ISO Code",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "\u00bfPodr\u00edas mostrarme las oficinas de Andreani en la ciudad de Rosario, provincia de Santa Fe?",
+                    "parameters": {
+                        "keyword": "Rosario",
+                        "service": "andreani",
+                        "stateIsoCode": "SF"
+                    }
+                },
+                {
+                    "utterance": "Necesito encontrar las sucursales de Oca en el barrio de Palermo, Buenos Aires.",
+                    "parameters": {
+                        "keyword": "Palermo",
+                        "service": "oca",
+                        "stateIsoCode": "BA"
+                    }
+                },
+                {
+                    "utterance": "\u00bfD\u00f3nde est\u00e1n las oficinas de Correo Argentino en la localidad de Mendoza, Mendoza?",
+                    "parameters": {
+                        "keyword": "Mendoza",
+                        "service": "correo_argentino",
+                        "stateIsoCode": "MZ"
+                    }
+                },
+                {
+                    "utterance": "Quiero saber las oficinas de Andreani en la ciudad de C\u00f3rdoba, C\u00f3rdoba.",
+                    "parameters": {
+                        "keyword": "C\u00f3rdoba",
+                        "service": "andreani",
+                        "stateIsoCode": "CB"
+                    }
+                },
+                {
+                    "utterance": "Mu\u00e9strame las sucursales de Oca en el barrio de Caballito, Buenos Aires.",
+                    "parameters": {
+                        "keyword": "Caballito",
+                        "service": "oca",
+                        "stateIsoCode": "BA"
+                    }
+                },
+                {
+                    "utterance": "Estoy buscando oficinas de Correo Argentino en la ciudad de La Plata, Buenos Aires.",
+                    "parameters": {
+                        "keyword": "La Plata",
+                        "service": "correo_argentino",
+                        "stateIsoCode": "BA"
+                    }
+                },
+                {
+                    "utterance": "\u00bfPuedes indicarme las oficinas de Andreani en la localidad de San Miguel de Tucum\u00e1n, Tucum\u00e1n?",
+                    "parameters": {
+                        "keyword": "San Miguel de Tucum\u00e1n",
+                        "service": "andreani",
+                        "stateIsoCode": "TU"
+                    }
+                },
+                {
+                    "utterance": "Quisiera encontrar las sucursales de Oca en el barrio de Recoleta, Buenos Aires.",
+                    "parameters": {
+                        "keyword": "Recoleta",
+                        "service": "oca",
+                        "stateIsoCode": "BA"
+                    }
+                },
+                {
+                    "utterance": "\u00bfD\u00f3nde puedo localizar oficinas de Correo Argentino en la ciudad de Mar del Plata, Buenos Aires?",
+                    "parameters": {
+                        "keyword": "Mar del Plata",
+                        "service": "correo_argentino",
+                        "stateIsoCode": "BA"
+                    }
+                },
+                {
+                    "utterance": "Por favor, mu\u00e9strame las oficinas de Andreani en la ciudad de Neuqu\u00e9n, Neuqu\u00e9n.",
+                    "parameters": {
+                        "keyword": "Neuqu\u00e9n",
+                        "service": "andreani",
+                        "stateIsoCode": "NQ"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/bins/calculate",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/bins/calculate",
+            "description": "Calculate box from one list of products and boxes.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/bins/calculate\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/bins/calculate\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "box": {
+                            "description": "Box",
+                            "allOf": [
+                                {
+                                    "type": "object",
+                                    "properties": {
+                                        "width": {
+                                            "type": "number",
+                                            "description": "Width of this box"
+                                        },
+                                        "height": {
+                                            "type": "number",
+                                            "description": "Height of this box"
+                                        },
+                                        "depth": {
+                                            "type": "number",
+                                            "description": "Depth of this box"
+                                        },
+                                        "maxWeight": {
+                                            "type": "number",
+                                            "description": "Max weight of this box"
+                                        }
+                                    },
+                                    "required": [
+                                        "width",
+                                        "height",
+                                        "depth",
+                                        "maxWeight"
+                                    ]
+                                }
+                            ]
+                        },
+                        "products": {
+                            "description": "List of SKU products",
+                            "type": "array",
+                            "items": {
+                                "type": "string"
+                            }
+                        },
+                        "weight": {
+                            "type": "number",
+                            "description": "Weight of this bin"
+                        }
+                    },
+                    "required": [
+                        "box",
+                        "products",
+                        "weight"
+                    ]
+                }
+            },
+            "parameters": [],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Could you help me figure out the best box size for my shipment with these products?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to calculate the appropriate box dimensions for a list of items I want to send.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you determine the right packaging box based on my product list?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please calculate the box size required for shipping my products.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I have a list of products; can you find the suitable box to pack them?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What box should I use to ship these items together?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Help me calculate the box dimensions for my shipment items.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know the best box to fit all my products for shipping.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you assist me in selecting the correct box size for my product list?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Determine the appropriate box for packing my shipment based on the products I have.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/quotes/postcode/andreani/:clientNumber/:contractNumber/:officeIsoSrc/:postCodeDst",
+            "url": "https://transportistas-de-argentina.p.rapidapi.com/quotes/postcode/andreani/{clientNumber}/{contractNumber}/{officeIsoSrc}/{postCodeDst}",
+            "description": "Quote for postcode in Andreani.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/quotes/postcode/andreani/{clientNumber}/{contractNumber}/{officeIsoSrc}/{postCodeDst}\"\nquerystring = {\"officeIsoSrc\": \"\", \"postCodeDst\": \"\", \"clientNumber\": \"\", \"contractNumber\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://transportistas-de-argentina.p.rapidapi.com/quotes/postcode/andreani/{clientNumber}/{contractNumber}/{officeIsoSrc}/{postCodeDst}\"\nquerystring = {\"officeIsoSrc\": \"\", \"postCodeDst\": \"\", \"clientNumber\": \"\", \"contractNumber\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"transportistas-de-argentina.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "officeIsoSrc",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "postCodeDst",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "clientNumber",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "contractNumber",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "combination_of_parameters": [],
+            "utterances": [
+                {
+                    "utterance": "\u00bfCu\u00e1nto cuesta enviar un paquete desde la oficina de Buenos Aires a la zona postal 2000? Mi n\u00famero de cliente es CL12345 y el contrato es CN67890.",
+                    "parameters": {
+                        "officeIsoSrc": "Buenos Aires",
+                        "postCodeDst": 2000,
+                        "clientNumber": "CL12345",
+                        "contractNumber": "CN67890"
+                    }
+                },
+                {
+                    "utterance": "Necesito una cotizaci\u00f3n para un env\u00edo desde C\u00f3rdoba a la localidad con c\u00f3digo postal 5000. Mi cliente es CL54321 y el contrato es CN09876.",
+                    "parameters": {
+                        "officeIsoSrc": "C\u00f3rdoba",
+                        "postCodeDst": 5000,
+                        "clientNumber": "CL54321",
+                        "contractNumber": "CN09876"
+                    }
+                },
+                {
+                    "utterance": "Por favor, dame el precio para enviar desde la oficina de Rosario al c\u00f3digo postal 3000. Mi n\u00famero de cliente es CL11223 y contrato CN33445.",
+                    "parameters": {
+                        "officeIsoSrc": "Rosario",
+                        "postCodeDst": 3000,
+                        "clientNumber": "CL11223",
+                        "contractNumber": "CN33445"
+                    }
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1l es la tarifa para un env\u00edo desde Mendoza a la zona postal 5500? Mi cliente es CL99887 y el contrato CN77665.",
+                    "parameters": {
+                        "officeIsoSrc": "Mendoza",
+                        "postCodeDst": 5500,
+                        "clientNumber": "CL99887",
+                        "contractNumber": "CN77665"
+                    }
+                },
+                {
+                    "utterance": "Quiero saber el costo de env\u00edo desde La Plata hacia el c\u00f3digo postal 1900. Mi n\u00famero de cliente es CL55667 y contrato CN88990.",
+                    "parameters": {
+                        "officeIsoSrc": "La Plata",
+                        "postCodeDst": 1900,
+                        "clientNumber": "CL55667",
+                        "contractNumber": "CN88990"
+                    }
+                },
+                {
+                    "utterance": "Solicito una cotizaci\u00f3n para enviar desde Salta a la localidad con c\u00f3digo postal 4400. Mi cliente es CL33445 y contrato CN22334.",
+                    "parameters": {
+                        "officeIsoSrc": "Salta",
+                        "postCodeDst": 4400,
+                        "clientNumber": "CL33445",
+                        "contractNumber": "CN22334"
+                    }
+                },
+                {
+                    "utterance": "\u00bfMe puedes informar el precio para un env\u00edo desde Tucum\u00e1n al c\u00f3digo postal 4100? Mi n\u00famero de cliente es CL77889 y contrato CN66554.",
+                    "parameters": {
+                        "officeIsoSrc": "Tucum\u00e1n",
+                        "postCodeDst": 4100,
+                        "clientNumber": "CL77889",
+                        "contractNumber": "CN66554"
+                    }
+                },
+                {
+                    "utterance": "Necesito el costo para enviar un paquete desde Mar del Plata a la zona postal 7600. Mi cliente es CL99001 y contrato CN11223.",
+                    "parameters": {
+                        "officeIsoSrc": "Mar del Plata",
+                        "postCodeDst": 7600,
+                        "clientNumber": "CL99001",
+                        "contractNumber": "CN11223"
+                    }
+                },
+                {
+                    "utterance": "\u00bfCu\u00e1l es la cotizaci\u00f3n para un env\u00edo desde Neuqu\u00e9n al c\u00f3digo postal 8300? Mi n\u00famero de cliente es CL44556 y contrato CN77889.",
+                    "parameters": {
+                        "officeIsoSrc": "Neuqu\u00e9n",
+                        "postCodeDst": 8300,
+                        "clientNumber": "CL44556",
+                        "contractNumber": "CN77889"
+                    }
+                },
+                {
+                    "utterance": "Por favor, dame el precio para enviar desde Santa Fe a la localidad con c\u00f3digo postal 3002. Mi cliente es CL66778 y contrato CN33456.",
+                    "parameters": {
+                        "officeIsoSrc": "Santa Fe",
+                        "postCodeDst": 3002,
+                        "clientNumber": "CL66778",
+                        "contractNumber": "CN33456"
+                    }
+                }
+            ]
+        }
+    ],
+    "standardized_name": "transportistas_de_argentina",
+    "category": "Logistics"
+}
