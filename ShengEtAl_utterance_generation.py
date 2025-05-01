@@ -330,7 +330,7 @@ for category_index, category in enumerate(categories):
                             print("Exception arised!")
                             print(e)
                             print(response.choices[0].message.content)
-                            api_method['utterances'] = 'error parsing the information!'
+                            api_method['utterances'] = 'error parsing the information.'
                             mistakes+=1
 
                         API_methods_count+=1
@@ -341,7 +341,7 @@ for category_index, category in enumerate(categories):
                 print()
             
             API_count+=1
-    #         break
-    #     break
-    # if API_methods_count > 40:
-    #     break
+
+print('number of methods:', API_methods_count)
+print('mistakes:', mistakes)
+print('APIs:', API_count)
