@@ -1,0 +1,207 @@
+{
+    "name": "Flightera Flight Data",
+    "description": "Flight status, on-time performance and statistics by Flightera",
+    "url": "https://rapidapi.com/flightera/api/flightera-flight-data/",
+    "api_methods": [
+        {
+            "name": "airlineStatistics",
+            "description": "Returns detailed airline statistics for airlines identified by the provided identifiers. In most cases the list should contain only one entry, unless the ident is ambiguous.\nIf searched by ident, only one airline is returned.\nOne of ident, iata, icao must be provided.\nStatistics are calculated overnight and represent the current day's data.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/statistics",
+            "parameters": [
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airline, must have a length of 4",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airline, as returned by /airline/search",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airline, must have a length of 3",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the latest statistics for Delta Air Lines using its IATA code DAL.",
+                    "parameters": {
+                        "iata": "DAL"
+                    }
+                },
+                {
+                    "utterance": "Can you provide airline statistics for Lufthansa with ICAO code DLH?",
+                    "parameters": {
+                        "icao": "DLH"
+                    }
+                },
+                {
+                    "utterance": "Get me the current day's performance data for American Airlines using its ident AAL.",
+                    "parameters": {
+                        "ident": "AAL"
+                    }
+                },
+                {
+                    "utterance": "I want to see the on-time performance for Emirates, IATA code EK.",
+                    "parameters": {
+                        "iata": "EK"
+                    }
+                },
+                {
+                    "utterance": "Give me detailed statistics for British Airways with ICAO code BAW.",
+                    "parameters": {
+                        "icao": "BAW"
+                    }
+                },
+                {
+                    "utterance": "Fetch the airline statistics for Air France using ident AFR.",
+                    "parameters": {
+                        "ident": "AFR"
+                    }
+                },
+                {
+                    "utterance": "Show me today's statistics for United Airlines, IATA code UA.",
+                    "parameters": {
+                        "iata": "UA"
+                    }
+                },
+                {
+                    "utterance": "Provide the latest performance data for Qantas with ICAO code QFA.",
+                    "parameters": {
+                        "icao": "QFA"
+                    }
+                },
+                {
+                    "utterance": "Can I get the airline statistics for Singapore Airlines using ident SIA?",
+                    "parameters": {
+                        "ident": "SIA"
+                    }
+                },
+                {
+                    "utterance": "What are the current statistics for Southwest Airlines, IATA code WN?",
+                    "parameters": {
+                        "iata": "WN"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportDelayDailyStatistics",
+            "description": "Returns detailed daily delay statistics for an airport identified by the provided identifiers. If searched by ident, only one airport is returned.\nOne of ident, iata, icao, localID must be provided. Additionally, `dt` and `isDeparture` are required.\nStatistics are calculated overnight and represent the data for the specific date.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/delays_by_day",
+            "parameters": [
+                {
+                    "name": "isDeparture",
+                    "type": "BOOLEAN",
+                    "description": "Flag indicating if the desired statistics are for departures (true) or arrivals (false)",
+                    "default": true,
+                    "required": true
+                },
+                {
+                    "name": "dt",
+                    "type": "STRING",
+                    "description": "The date for which delay statistics are desired, formatted as \"YYYY-MM-DD\"",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airport, as returned by /airport/search",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What were the departure delay statistics for JFK airport on 2023-06-15?",
+                    "parameters": {
+                        "isDeparture": true,
+                        "dt": "2023-06-15",
+                        "ident": "JFK"
+                    }
+                },
+                {
+                    "utterance": "Show me the arrival delay stats for LAX on March 1st, 2024.",
+                    "parameters": {
+                        "isDeparture": false,
+                        "dt": "2024-03-01",
+                        "ident": "LAX"
+                    }
+                },
+                {
+                    "utterance": "How many departing flights were delayed at ORD on 2022-12-20?",
+                    "parameters": {
+                        "isDeparture": true,
+                        "dt": "2022-12-20",
+                        "ident": "ORD"
+                    }
+                },
+                {
+                    "utterance": "Give me the arrival delay statistics for ATL on 2023-11-05.",
+                    "parameters": {
+                        "isDeparture": false,
+                        "dt": "2023-11-05",
+                        "ident": "ATL"
+                    }
+                },
+                {
+                    "utterance": "What was the departure delay performance at SFO on July 4, 2023?",
+                    "parameters": {
+                        "isDeparture": true,
+                        "dt": "2023-07-04",
+                        "ident": "SFO"
+                    }
+                },
+                {
+                    "utterance": "Show arrival delays for DFW on 2023-08-10.",
+                    "parameters": {
+                        "isDeparture": false,
+                        "dt": "2023-08-10",
+                        "ident": "DFW"
+                    }
+                },
+                {
+                    "utterance": "Can you provide departure delay stats for SEA on 2024-01-15?",
+                    "parameters": {
+                        "isDeparture": true,
+                        "dt": "2024-01-15",
+                        "ident": "SEA"
+                    }
+                },
+                {
+                    "utterance": "What were the arrival delay statistics for BOS on 2023-09-30?",
+                    "parameters": {
+                        "isDeparture": false,
+                        "dt": "2023-09-30",
+                        "ident": "BOS"
+                    }
+                },
+                {
+                    "utterance": "Give me the departure delay data for MIA on 2023-10-12.",
+                    "parameters": {
+                        "isDeparture": true,
+                        "dt": "2023-10-12",
+                        "ident": "MIA"
+                    }
+                },
+                {
+                    "utterance": "How did arrivals perform at DEN on 2023-05-22 in terms of delays?",
+                    "parameters": {
+                        "isDeparture": false,
+                        "dt": "2023-05-22",
+                        "ident": "DEN"
+                    }
+                }
+            ]
+        }
+    ]
+}

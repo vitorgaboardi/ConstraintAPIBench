@@ -1,0 +1,126 @@
+{
+    "API name": "working_days.json",
+    "API description": "The API returns the number of days,  hours, working days, working hours, wages, weekend days, and the list of public holidays of the requested date period and country. You can also add any number of working days or working hours to a given date. 50 countries and over 230 regional calendars are supported and we work hard to keep our database up to date by following government announcements regarding public holidays changes. All the calendars can be fully customized from our friendly working da...",
+    "API method": [
+        {
+            "API method name": "/1.3/list_non_working_days",
+            "API method description": "List the non working days (weekend days, public holidays and custom dates) between two dates in chronlogical order.",
+            "API method parameters": [
+                {
+                    "name": "start_date",
+                    "type": "STRING",
+                    "description": "The start date (YYYY-MM-DD)",
+                    "default": "2013-01-01",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "end_date",
+                    "type": "STRING",
+                    "description": "The end date (YYYY-MM-DD)",
+                    "default": "2013-12-31",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "inter-dependency": "start_date, end_date: both parameters must be included simultaneously."
+                    }
+                },
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "The ISO country code (2 letters).  See <a href=https://api.workingdays.org/api-countries >available countries & configurations</a>",
+                    "default": "US",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO country code (2 letters)"
+                    }
+                },
+                {
+                    "name": "configuration",
+                    "type": "STRING",
+                    "description": "The name of the preset configuration to be used. See <a href=https://api.workingdays.org/api-countries >available countries & configurations</a>",
+                    "default": "Federal holidays",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "profile_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "API method name": "/1.3/add_working_days",
+            "API method description": "Add (or remove) any number of working days to a date.",
+            "API method parameters": [
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "The ISO country code (2 letters).  See <a href=https://api.workingdays.org/api-countries >available countries & configurations</a>",
+                    "default": "US",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO country code (2 letters)"
+                    }
+                },
+                {
+                    "name": "start_date",
+                    "type": "STRING",
+                    "description": "The start date (YYYY-MM-DD)",
+                    "default": "2013-12-31",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "increment",
+                    "type": "NUMBER",
+                    "description": "The number of working days you want to add to your start date (positive or negative integer but not zero)",
+                    "default": 10,
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": -Infinity,
+                            "max": Infinity,
+                            "specific": []
+                        },
+                        "inter-dependency": "increment: must be a non-zero integer"
+                    }
+                },
+                {
+                    "name": "include_start",
+                    "type": "BOOLEAN",
+                    "description": "Should the count include the start_date? Default value is true. If you set include_start to false (\"false\" or \"0\"), the count will start at the next working day (or previous working day, if increment is negative)",
+                    "default": true,
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "configuration",
+                    "type": "STRING",
+                    "description": "The name of the preset configuration to be used. See <a href=https://api.workingdays.org/api-countries.php>available countries & configurations</a>",
+                    "default": "Federal holidays",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "profile_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        }
+    ]
+}

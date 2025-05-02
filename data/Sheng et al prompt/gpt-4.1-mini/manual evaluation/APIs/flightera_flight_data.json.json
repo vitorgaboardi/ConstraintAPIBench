@@ -1,0 +1,84 @@
+{
+    "API name": "flightera_flight_data.json",
+    "API description": "Flight status, on-time performance and statistics by Flightera",
+    "API method": [
+        {
+            "API method name": "airlineStatistics",
+            "API method description": "Returns detailed airline statistics for airlines identified by the provided identifiers. In most cases the list should contain only one entry, unless the ident is ambiguous.\nIf searched by ident, only one airline is returned.\nOne of ident, iata, icao must be provided.\nStatistics are calculated overnight and represent the current day's data.",
+            "API method parameters": [
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airline, must have a length of 4",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "specific": []
+                        },
+                        "inter-dependency": "icao, ident, iata: one of ident, iata, or icao must be provided."
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airline, as returned by /airline/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true,
+                        "inter-dependency": "icao, ident, iata: one of ident, iata, or icao must be provided."
+                    }
+                },
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airline, must have a length of 3",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "specific": []
+                        },
+                        "inter-dependency": "icao, ident, iata: one of ident, iata, or icao must be provided."
+                    }
+                }
+            ]
+        },
+        {
+            "API method name": "airportDelayDailyStatistics",
+            "API method description": "Returns detailed daily delay statistics for an airport identified by the provided identifiers. If searched by ident, only one airport is returned.\nOne of ident, iata, icao, localID must be provided. Additionally, `dt` and `isDeparture` are required.\nStatistics are calculated overnight and represent the data for the specific date.",
+            "API method parameters": [
+                {
+                    "name": "isDeparture",
+                    "type": "BOOLEAN",
+                    "description": "Flag indicating if the desired statistics are for departures (true) or arrivals (false)",
+                    "default": true,
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "dt",
+                    "type": "STRING",
+                    "description": "The date for which delay statistics are desired, formatted as \"YYYY-MM-DD\"",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airport, as returned by /airport/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true,
+                        "inter-dependency": "ident, iata, icao, localID: one of these parameters must be provided."
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,193 @@
+{
+    "product_id": "api_d46f3b25-3d88-4b3a-90a5-836f1636ac67",
+    "tool_description": "Official Postal Ninja tracking API for developers",
+    "home_url": "https://rapidapi.com/PostalNinja/api/postal-ninja/",
+    "name": "Postal Ninja",
+    "title": "Postal Ninja",
+    "pricing": "FREEMIUM",
+    "tool_name": "Postal Ninja",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 151,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "host": "postal-ninja.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "createTrack",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track",
+            "description": "Returns ID of newly created package (status=CREATED) or stored ID if this tracking number already exists (status=FOUND).",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://postal-ninja.p.rapidapi.com/v1/track\"\nquerystring = {\"ds\": \"\", \"trackCode\": \"\", \"destCountry\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"postal-ninja.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://postal-ninja.p.rapidapi.com/v1/track\"\nquerystring = {\"ds\": \"\", \"trackCode\": \"\", \"destCountry\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"postal-ninja.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "trackCode",
+                    "type": "STRING",
+                    "description": "Tracking number",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "ds",
+                    "type": "STRING",
+                    "description": "Carrier ID (optional)",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "destCountry",
+                    "type": "STRING",
+                    "description": "Optional destination country code (ISO 3166-1 alpha-2)",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Track the package with the tracking number 123456789.",
+                    "parameters": {
+                        "trackCode": "123456789"
+                    }
+                },
+                {
+                    "utterance": "Can you create a tracking entry for the package with the code ABC123XYZ?",
+                    "parameters": {
+                        "trackCode": "ABC123XYZ"
+                    }
+                },
+                {
+                    "utterance": "I need to track a package using the tracking number 987654321 and the carrier ID USPS.",
+                    "parameters": {
+                        "trackCode": "987654321",
+                        "ds": "USPS"
+                    }
+                },
+                {
+                    "utterance": "Please track the package with the number XYZ987654 and the destination country code US.",
+                    "parameters": {
+                        "trackCode": "XYZ987654",
+                        "destCountry": "US"
+                    }
+                },
+                {
+                    "utterance": "Create a tracking entry for the package with the tracking number 1122334455 and the carrier ID FedEx.",
+                    "parameters": {
+                        "trackCode": "1122334455",
+                        "ds": "FedEx"
+                    }
+                },
+                {
+                    "utterance": "Track the package with the code 9988776655 and the destination country code CA.",
+                    "parameters": {
+                        "trackCode": "9988776655",
+                        "destCountry": "CA"
+                    }
+                },
+                {
+                    "utterance": "I need to track a package with the tracking number 5544332211, the carrier ID DHL, and the destination country code DE.",
+                    "parameters": {
+                        "trackCode": "5544332211",
+                        "ds": "DHL",
+                        "destCountry": "DE"
+                    }
+                },
+                {
+                    "utterance": "Please create a tracking entry for the package with the number 6677889900.",
+                    "parameters": {
+                        "trackCode": "6677889900"
+                    }
+                },
+                {
+                    "utterance": "Track the package with the tracking number 3344556677 and the carrier ID UPS.",
+                    "parameters": {
+                        "trackCode": "3344556677",
+                        "ds": "UPS"
+                    }
+                },
+                {
+                    "utterance": "I need to track a package with the code 7788990011 and the destination country code GB.",
+                    "parameters": {
+                        "trackCode": "7788990011",
+                        "destCountry": "GB"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "refreshTrack",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track/{id}/refresh",
+            "description": "Submits on-demand refresh request to tracking engine for package with given ID. Please note, that packages in ACTIVE list are auto-tracked regularly so you don't need to do this for such packages.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://postal-ninja.p.rapidapi.com/v1/track/{id}/refresh\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"postal-ninja.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://postal-ninja.p.rapidapi.com/v1/track/{id}/refresh\"\nquerystring = {\"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"postal-ninja.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Package ID",
+                    "default": "",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "moveTrack",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track/{id}/move",
+            "description": "Moves package with given ID to ARCHIVED, TRASHED or back to ACTIVE list.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://postal-ninja.p.rapidapi.com/v1/track/{id}/move\"\nquerystring = {\"list\": \"\\\"ACTIVE\\\"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"postal-ninja.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://postal-ninja.p.rapidapi.com/v1/track/{id}/move\"\nquerystring = {\"list\": \"\\\"ACTIVE\\\"\", \"id\": \"\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"postal-ninja.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "get": {
+                        "type": "string"
+                    },
+                    "parameters": {
+                        "type": "array"
+                    },
+                    "errors": {
+                        "type": "array"
+                    },
+                    "results": {
+                        "type": "integer"
+                    },
+                    "response": {
+                        "type": "array",
+                        "items": {
+                            "type": "object"
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "List to move package to",
+                    "default": "\"ACTIVE\"",
+                    "required": true
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Package ID",
+                    "default": "",
+                    "required": true
+                }
+            ]
+        }
+    ],
+    "category": "Logistics"
+}
