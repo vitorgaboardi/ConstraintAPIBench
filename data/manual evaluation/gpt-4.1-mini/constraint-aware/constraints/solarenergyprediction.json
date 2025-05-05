@@ -1,0 +1,126 @@
+{
+    "name": "SolarEnergyPrediction",
+    "description": "AI-based photovoltaic power prediction for PV plants. Powered by our industry-leading irradiance and real-time weather data. \n[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1c42c9f6baae1a51ad9a)",
+    "api_methods": [
+        {
+            "name": "/v2.0/solar/prediction",
+            "description": "## Solar Power Forecasting \nThe PV generation forecast for unmetered PV systems makes it possible to predict production of a PV system on an hourly basis for the next 4 days without having your own metering equipment or system-specific generation data. \n\n**Key Features**\n- based on quality weather forecast\n- solar irradiance prediction based on real-time satellite data\n- support of multiple strings, slopes, system losses and azimuths\n- hourly forecast up to 96 hours (4 days)\n- No AI training required. \n- Ready for usage in Energy Management Systems \n\n\n**Usage**\nSpecify all individual parameters of a pv-plant with query parameters. The result will give a unique plant ID, that might be used in future requests to reference parameters using `plant` query parameter.\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/15081091-0b194e23-bda0-408d-b732-03239a67af4e?action=collection%2Ffork&collection-url=entityId%3D15081091-0b194e23-bda0-408d-b732-03239a67af4e%26entityType%3Dcollection%26workspaceId%3D62346650-ac84-4b89-9975-fb61337ec7de#?env%5BRapidAPI%5D=W3sia2V5IjoiWC1SYXBpZEFQSS1LZXkiLCJ2YWx1ZSI6ImQ0MGQyZTA0MWJtc2g5ZGZmN2ZmZThmOTMxOTVwMWRiNjU2anNuYTMyN2Y0NzljMGMxIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6ImQ0MGQyZTA0MWJtc2g5ZGZmN2ZmZThmOTMxOTVwMWRiNjU2anNuYTMyN2Y0NzljMGMxIiwic2Vzc2lvbkluZGV4IjowfV0=)",
+            "parameters": [
+                {
+                    "name": "tech",
+                    "type": "ENUM",
+                    "description": "Panel technology used (for compatibility with PVGIS).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "Geocode longitude part of pv plant  (required if parameter plant or zip is not given).",
+                    "default": "8.8006813",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "lon, lat, plant, zip: lon is required if plant or zip is not given."
+                    }
+                },
+                {
+                    "name": "plant",
+                    "type": "STRING",
+                    "description": "If specified all other query parameters will be taken from the stored  value and must not be given with the query string. \n\nUse as comma separated list of IDs to retrieve a forecast for multiple specifications.",
+                    "default": "0xAb425D74eA0113d11c3092E47a4C0542C25973db",
+                    "required": false,
+                    "constraints": {
+                        "id": true,
+                        "inter-dependency": "plant, lon, lat, zip: if plant is specified, lon, lat, and zip must not be given."
+                    }
+                },
+                {
+                    "name": "az",
+                    "type": "NUMBER",
+                    "description": "plane azimuth, -180 \u2026 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north)",
+                    "default": "45",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": -180,
+                            "max": 180
+                        }
+                    }
+                },
+                {
+                    "name": "deg",
+                    "type": "NUMBER",
+                    "description": "plane declination degrees, 0 (horizontal) \u2026 90 (vertical)",
+                    "default": "32",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0,
+                            "max": 90
+                        }
+                    }
+                },
+                {
+                    "name": "decoration",
+                    "type": "STRING",
+                    "description": "Allows to use SolarPredictionAPI as a plug-in replacement for other APIs.\n\nSupported decorations:\n| `default`  | Output will be formatted as shown in example response |\n| `forecast.solar` | Output will be formatted like [https://forecast.solar](http://doc.forecast.solar/doku.php?id=api:estimate#example) |\n|----|----|",
+                    "default": "default",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "specific": [
+                                "default",
+                                "forecast.solar"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "inverter",
+                    "type": "NUMBER",
+                    "description": "Maximum inverter capacity in Watt. \n\nIf specified, the prediction will be limited to this amount.",
+                    "default": "4500",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "wp",
+                    "type": "NUMBER",
+                    "description": "Installed Watt-Peak  (eq. kWp/1000)",
+                    "default": "6442",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "(required if parameter plant or zip is not given).",
+                    "default": "49.3418836",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "lat, lon, plant, zip: lat is required if plant or zip is not given."
+                    }
+                },
+                {
+                    "name": "zip",
+                    "type": "STRING",
+                    "description": "Postalcode (only in Germany) - Might be used instead of lat/lon geolocation.",
+                    "default": "69256",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "zip, lat, lon, plant: zip might be used instead of lat/lon geolocation."
+                    }
+                },
+                {
+                    "name": "loss",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "14",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        }
+    ]
+}

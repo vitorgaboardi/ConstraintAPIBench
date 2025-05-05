@@ -1,0 +1,55 @@
+{
+    "name": "SynWave",
+    "description": "A data storage management API offering the following features:\n\n",
+    "api_methods": [
+        {
+            "name": "Upload a new file",
+            "description": "Upload a new file.",
+            "parameters": [
+                {
+                    "name": "file",
+                    "type": "BINARY",
+                    "description": "",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "auth_password",
+                    "type": "STRING",
+                    "description": "Password to protect this file. auth_username parameter is required if auth_password is set.\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "auth_password, auth_username: auth_username parameter is required if auth_password is set."
+                    }
+                },
+                {
+                    "name": "expiration_seconds",
+                    "type": "NUMBER",
+                    "description": "Number of seconds before the file becomes unavailable.\n",
+                    "default": 3600,
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "auth_username",
+                    "type": "STRING",
+                    "description": "Username to protect this file. auth_password parameter is required if auth_username is set.\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "auth_username, auth_password: auth_password parameter is required if auth_username is set."
+                    }
+                },
+                {
+                    "name": "download_limit",
+                    "type": "NUMBER",
+                    "description": "Number of downloads before the file becomes unavailable.\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        }
+    ]
+}

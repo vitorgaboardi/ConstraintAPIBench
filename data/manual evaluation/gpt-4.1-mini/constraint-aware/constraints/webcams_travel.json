@@ -1,0 +1,50 @@
+{
+    "name": "webcams.travel",
+    "description": "The World's Largest Landscape Webcam API ***** Get webcams by categories, country, region or just nearby your location ***** Get timelapse slideshows for every webcam ***** Get an uncluttered webcam layer for your map",
+    "api_methods": [
+        {
+            "name": "/webcams/list/webcam={webcamid}[,{webcamid}[,...]]",
+            "description": "This is a modifier. Returns a list of webcams according to the listed {webcamid}s. Multiple {webcamid}s must be separated by comma. Required: at least one {webcamid}.",
+            "parameters": [
+                {
+                    "name": "webcamid",
+                    "type": "STRING",
+                    "description": "Comma separated list of webcamids that are in the initial list. If this modifier ist not applied, all available webcams will be in the initial list.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true,
+                        "inter-dependency": "webcamid: at least one webcamid must be provided."
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "specific": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

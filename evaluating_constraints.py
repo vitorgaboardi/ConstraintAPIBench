@@ -78,12 +78,53 @@ for endpoint in selected_endpoints:
         if endpoint in items:
             constraint_counts[constraint] += 1
 
+
 print("\nSelected Endpoints:")
 print(len(selected_endpoints))
 print(selected_endpoints)
 print("\nSelected Count per Constraint:")
 print(dict(constraint_counts))
 
+
+# Step 3: Copying the constraings to the folder:
+constraint_folder = f'./data/dataset/{model_name}/constraint-aware/constraints/'
+save_path = f'./data/manual evaluation/{model_name}/constraint-aware/constraints/'
+
+selected_by_api = defaultdict(list)
+for endpoint in selected_endpoints:
+    api_name, method_name = endpoint.split("+++")
+    selected_by_api[api_name].append(method_name)
+
+
+for filename, method_names in selected_by_api.items():
+    file_path = os.path.join(constraint_folder, filename)
+
+    with open(file_path, 'r') as f:
+        data = json.load(f)
+        api_name = data['tool_name']
+        api_description = data['tool_description']
+        
+        methods_to_save = []
+        seen_methods = []
+        for endpoint in data['api_list']:
+            if endpoint['name'] in method_names and endpoint['name'] not in seen_methods:
+                api_method_name = endpoint['name']
+                api_method_description = endpoint['description']
+                api_method_parameters = endpoint['parameters']
+
+                methods_to_save.append({"name": api_method_name,
+                                        "description": api_method_description,
+                                        "parameters": api_method_parameters})
+                seen_methods.append(api_method_name)
+
+        documentation = {"name": api_name,
+                         "description": api_description,
+                         "api_methods": methods_to_save}
+
+        # saving documentation
+        output_file = os.path.join(save_path, filename)
+        with open(output_file, 'w') as out_f:
+            json.dump(documentation, out_f, indent=4)
 
 
 ## 2. Extracting the endpoints for each of the solutions.
