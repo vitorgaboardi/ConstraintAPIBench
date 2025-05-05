@@ -7,14 +7,16 @@
 import os
 import json
 import random
+import pandas as pd
 from collections import defaultdict
 
 random.seed(29)
 
+## 1. Selecting endpoints for extracting constraints (change later based on the new organization of this information)
 # Model selection and path setup
 model = "gpt-4.1-mini"
 model_name = model.split("/")[1] if "/" in model else model
-constraint_folder = f'./dataset/Constraint-based prompt/{model_name}/constraints/'
+constraint_folder = f'./data/Constraint-based prompt/{model_name}/constraints/'
 
 # Initialize constraint categories
 constraint_types = ["values", "specific", "format", "id", "api_related", "inter_dependency"]
@@ -77,15 +79,22 @@ for endpoint in selected_endpoints:
             constraint_counts[constraint] += 1
 
 print("\nSelected Endpoints:")
+print(len(selected_endpoints))
 print(selected_endpoints)
 print("\nSelected Count per Constraint:")
 print(dict(constraint_counts))
 
 
-# Step 3: Save selected endpoint documentation
-prompts = ['Sheng et al prompt']
+
+## 2. Extracting the endpoints for each of the solutions.
+# Step 1. Only copying the information to the folder.
+model = "deepseek-ai/DeepSeek-V3"  # deepseek-ai/DeepSeek-V3    # gpt-4.1
+model_name = model.split("/")[1].lower() if "/" in model else model
+
+prompts = ['sheng et al', 'toolalpaca']
 for prompt in prompts:
-    save_path = f'./dataset/{prompt}/{model}/manual evaluation/APIs/'
+    api_path = f'./data/dataset/{model_name}/{prompt}/'
+    save_path = f'./data/manual evaluation/{model_name}/{prompt}/'
     os.makedirs(save_path, exist_ok=True)
 
     # Group selected methods by API file
@@ -94,30 +103,70 @@ for prompt in prompts:
         api_name, method_name = endpoint.split("+++")
         selected_by_api[api_name].append(method_name)
 
+    # Get information
     for api_name, method_names in selected_by_api.items():
-        data = api_data[api_name]
-        api_description = data['tool_description']
+        file_path = os.path.join(api_path, api_name)
 
-        methods_to_save = []
-        seen_methods = set()
-        for api_method in data["api_list"]:
-            if api_method["name"] in method_names and api_method["name"] not in seen_methods:
-                seen_methods.add(api_method["name"])
-                methods_to_save.append({
-                    "API method name": api_method["name"],
-                    "API method description": api_method["description"],
-                    "API method parameters": api_method["parameters"]
-                })
+        with open(file_path, 'r') as f:
+            data = json.load(f)
+            
+            methods_to_save = []
+            seen_methods = []
+            for endpoint in data['api_methods']:
+                if endpoint['name'] in method_names and endpoint['name'] not in seen_methods:
+                    methods_to_save.append(endpoint)
+                    seen_methods.append(endpoint['name'])
 
-        documentation = {
-            "API name": api_name,
-            "API description": api_description,
-            "API method": methods_to_save
-        }
+            data['api_methods'] = methods_to_save
 
-        output_file = os.path.join(save_path, filename)
-        with open(output_file, 'w') as out_f:
-            json.dump(documentation, out_f, indent=4)
+            # saving documentation
+            output_file = os.path.join(save_path, api_name)
+            with open(output_file, 'w') as out_f:
+                json.dump(data, out_f, indent=4)
 
+    print()
 
-# Step 4: Save utterances generated 
+# Step 2. Organising everything in a CSV file_path
+prompts = ['sheng et al', 'toolalpaca']
+save_path = f'./data/manual evaluation/{model_name}/'
+
+for prompt in prompts:
+    api_path = f'./data/manual evaluation/{model_name}/{prompt}/'
+    number_of_endpoints = 1
+
+    rows = []
+    for root, _, files in os.walk(api_path):
+        for filename in sorted(files):
+            #print(filename)
+            file_path = os.path.join(root, filename)
+            with open(file_path, 'r') as f:
+                data = json.load(f)
+                api_name = data["name"]
+                
+                for endpoint in data['api_methods']:
+                    api_method_name = endpoint['name']
+
+                    for utterance in endpoint['utterances']:
+                        utt = utterance['utterance']
+                        par = utterance['parameters']
+
+                        rows.append({
+                            'index': number_of_endpoints,
+                            'API name': api_name,
+                            'API method name': api_method_name,
+                            'utterance': utterance['utterance'],
+                            'parameters': utterance['parameters'],
+                            'REQUIRED PARAMETERS': '',
+                            'VALUES': '',
+                            'FORMAT': '',
+                            'ID': '',
+                            'TECHNICAL': '',
+                            'INTER-DEPENDENCY': '',
+                            'SEMANTIC RELEVANT': ''
+                        })
+                    number_of_endpoints+=1
+
+    df = pd.DataFrame(rows)
+    file_name = prompt + '.csv'
+    file_path = os.path.join(save_path, file_name)
+    df.to_csv(file_path, index=False)

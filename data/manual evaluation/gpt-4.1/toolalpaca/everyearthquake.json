@@ -1,0 +1,177 @@
+{
+    "name": "EveryEarthquake",
+    "description": "Get every earthquake and any other event that registers on the richter scale ever catalogued by the USGS, with very detailed location data.",
+    "url": "https://rapidapi.com/dbarkman/api/everyearthquake/",
+    "api_methods": [
+        {
+            "name": "Earthquakes",
+            "description": "Get the 100 most recent earthquakes from all over in the world. No parameters required.",
+            "url": "https://everyearthquake.p.rapidapi.com/earthquakes",
+            "parameters": [
+                {
+                    "name": "units",
+                    "type": "STRING",
+                    "description": "Either miles or kilometers for the radius of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "miles",
+                    "required": false
+                },
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "The latitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "33.962523",
+                    "required": false
+                },
+                {
+                    "name": "intensity",
+                    "type": "STRING",
+                    "description": "Intensity can be added to limit results to only those earthquakes with at least the specified intensity or greater.",
+                    "default": "1",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type can be added to limit results to only those types specified, e.g.: earthquakes, quarry blasts, explosions. Use the 'types' endpoints to see all available types.",
+                    "default": "earthquake",
+                    "required": false
+                },
+                {
+                    "name": "magnitude",
+                    "type": "STRING",
+                    "description": "Magnitude can be added to limit results to only those earthquakes with at least the specified magnitude or greater.",
+                    "default": "3",
+                    "required": false
+                },
+                {
+                    "name": "radius",
+                    "type": "STRING",
+                    "description": "The length across half a circle of the search area. The latitude and longitude together make up the center of the circle, while the radius is the distance from the center to the outside of the circle. A 10 mile radius will be a circle 20 miles across with its center at the latitude/longitude point.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "1000",
+                    "required": false
+                },
+                {
+                    "name": "count",
+                    "type": "STRING",
+                    "description": "Add to any call to limit the number of earthquakes returned.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "100",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "The longitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "-118.3706975",
+                    "required": false
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Use the 'start' parameter to retrieve more than 1000 earthquakes, up to 1000 at a time. 'Start' is the offset to start at within the overall results.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "1",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the 50 most recent earthquakes with a magnitude of at least 5 near Tokyo, Japan, within a 200 kilometer radius.",
+                    "parameters": {
+                        "latitude": "35.6895",
+                        "longitude": "139.6917",
+                        "radius": "200",
+                        "units": "kilometers",
+                        "magnitude": "5",
+                        "count": "50"
+                    }
+                },
+                {
+                    "utterance": "Can you list all quarry blasts that happened within 100 miles of Denver, Colorado?",
+                    "parameters": {
+                        "latitude": "39.7392",
+                        "longitude": "-104.9903",
+                        "radius": "100",
+                        "units": "miles",
+                        "type": "quarry blast"
+                    }
+                },
+                {
+                    "utterance": "I want to see the 10 most recent earthquakes in the San Francisco Bay Area with an intensity of at least 4.",
+                    "parameters": {
+                        "latitude": "37.7749",
+                        "longitude": "-122.4194",
+                        "radius": "50",
+                        "units": "miles",
+                        "intensity": "4",
+                        "count": "10"
+                    }
+                },
+                {
+                    "utterance": "Give me a list of all explosions recorded within 300 kilometers of Berlin, Germany.",
+                    "parameters": {
+                        "latitude": "52.5200",
+                        "longitude": "13.4050",
+                        "radius": "300",
+                        "units": "kilometers",
+                        "type": "explosion"
+                    }
+                },
+                {
+                    "utterance": "Fetch the 100 most recent earthquakes worldwide.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Are there any earthquakes with a magnitude above 6 that occurred within 500 miles of Santiago, Chile?",
+                    "parameters": {
+                        "latitude": "-33.4489",
+                        "longitude": "-70.6693",
+                        "radius": "500",
+                        "units": "miles",
+                        "magnitude": "6"
+                    }
+                },
+                {
+                    "utterance": "List the 20 most recent seismic events near Anchorage, Alaska, regardless of type, within a 150 mile radius.",
+                    "parameters": {
+                        "latitude": "61.2181",
+                        "longitude": "-149.9003",
+                        "radius": "150",
+                        "units": "miles",
+                        "count": "20",
+                        "type": ""
+                    }
+                },
+                {
+                    "utterance": "Could you provide all earthquakes with an intensity of at least 3 that happened within 75 kilometers of Naples, Italy?",
+                    "parameters": {
+                        "latitude": "40.8518",
+                        "longitude": "14.2681",
+                        "radius": "75",
+                        "units": "kilometers",
+                        "intensity": "3"
+                    }
+                },
+                {
+                    "utterance": "Show me the 5 most recent earthquakes near Wellington, New Zealand, with a magnitude of at least 4.5.",
+                    "parameters": {
+                        "latitude": "-41.2865",
+                        "longitude": "174.7762",
+                        "radius": "100",
+                        "units": "kilometers",
+                        "magnitude": "4.5",
+                        "count": "5"
+                    }
+                },
+                {
+                    "utterance": "Retrieve all seismic events, including explosions and quarry blasts, within 250 miles of Istanbul, Turkey.",
+                    "parameters": {
+                        "latitude": "41.0082",
+                        "longitude": "28.9784",
+                        "radius": "250",
+                        "units": "miles",
+                        "type": ""
+                    }
+                }
+            ]
+        }
+    ]
+}

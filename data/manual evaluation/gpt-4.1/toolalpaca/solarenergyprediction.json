@@ -1,0 +1,198 @@
+{
+    "name": "SolarEnergyPrediction",
+    "description": "AI-based photovoltaic power prediction for PV plants. Powered by our industry-leading irradiance and real-time weather data. \n[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/1c42c9f6baae1a51ad9a)",
+    "url": "https://rapidapi.com/stromdao-stromdao-default/api/solarenergyprediction/",
+    "api_methods": [
+        {
+            "name": "/v2.0/solar/prediction",
+            "description": "## Solar Power Forecasting \nThe PV generation forecast for unmetered PV systems makes it possible to predict production of a PV system on an hourly basis for the next 4 days without having your own metering equipment or system-specific generation data. \n\n**Key Features**\n- based on quality weather forecast\n- solar irradiance prediction based on real-time satellite data\n- support of multiple strings, slopes, system losses and azimuths\n- hourly forecast up to 96 hours (4 days)\n- No AI training required. \n- Ready for usage in Energy Management Systems \n\n\n**Usage**\nSpecify all individual parameters of a pv-plant with query parameters. The result will give a unique plant ID, that might be used in future requests to reference parameters using `plant` query parameter.\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/15081091-0b194e23-bda0-408d-b732-03239a67af4e?action=collection%2Ffork&collection-url=entityId%3D15081091-0b194e23-bda0-408d-b732-03239a67af4e%26entityType%3Dcollection%26workspaceId%3D62346650-ac84-4b89-9975-fb61337ec7de#?env%5BRapidAPI%5D=W3sia2V5IjoiWC1SYXBpZEFQSS1LZXkiLCJ2YWx1ZSI6ImQ0MGQyZTA0MWJtc2g5ZGZmN2ZmZThmOTMxOTVwMWRiNjU2anNuYTMyN2Y0NzljMGMxIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6ImQ0MGQyZTA0MWJtc2g5ZGZmN2ZmZThmOTMxOTVwMWRiNjU2anNuYTMyN2Y0NzljMGMxIiwic2Vzc2lvbkluZGV4IjowfV0=)",
+            "url": "https://solarenergyprediction.p.rapidapi.com/v2.0/solar/prediction",
+            "parameters": [
+                {
+                    "name": "tech",
+                    "type": "ENUM",
+                    "description": "Panel technology used (for compatibility with PVGIS).",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "Geocode longitude part of pv plant  (required if parameter plant or zip is not given).",
+                    "default": "8.8006813",
+                    "required": false
+                },
+                {
+                    "name": "plant",
+                    "type": "STRING",
+                    "description": "If specified all other query parameters will be taken from the stored  value and must not be given with the query string. \n\nUse as comma separated list of IDs to retrieve a forecast for multiple specifications.",
+                    "default": "0xAb425D74eA0113d11c3092E47a4C0542C25973db",
+                    "required": false
+                },
+                {
+                    "name": "az",
+                    "type": "NUMBER",
+                    "description": "plane azimuth, -180 \u2026 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north)",
+                    "default": "45",
+                    "required": false
+                },
+                {
+                    "name": "deg",
+                    "type": "NUMBER",
+                    "description": "plane declination degrees, 0 (horizontal) \u2026 90 (vertical)",
+                    "default": "32",
+                    "required": false
+                },
+                {
+                    "name": "decoration",
+                    "type": "STRING",
+                    "description": "Allows to use SolarPredictionAPI as a plug-in replacement for other APIs.\n\nSupported decorations:\n| `default`  | Output will be formatted as shown in example response |\n| `forecast.solar` | Output will be formatted like [https://forecast.solar](http://doc.forecast.solar/doku.php?id=api:estimate#example) |\n|----|----|",
+                    "default": "default",
+                    "required": false
+                },
+                {
+                    "name": "inverter",
+                    "type": "NUMBER",
+                    "description": "Maximum inverter capacity in Watt. \n\nIf specified, the prediction will be limited to this amount.",
+                    "default": "4500",
+                    "required": false
+                },
+                {
+                    "name": "wp",
+                    "type": "NUMBER",
+                    "description": "Installed Watt-Peak  (eq. kWp/1000)",
+                    "default": "6442",
+                    "required": false
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "(required if parameter plant or zip is not given).",
+                    "default": "49.3418836",
+                    "required": false
+                },
+                {
+                    "name": "zip",
+                    "type": "STRING",
+                    "description": "Postalcode (only in Germany) - Might be used instead of lat/lon geolocation.",
+                    "default": "69256",
+                    "required": false
+                },
+                {
+                    "name": "loss",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "14",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you tell me the expected solar power output for a PV system in San Jose, California, with 6,000 Watt-Peak capacity and an azimuth of 0 degrees for the next four days?",
+                    "parameters": {
+                        "lat": 37.3382,
+                        "lon": -121.8863,
+                        "wp": 6000,
+                        "az": 0
+                    }
+                },
+                {
+                    "utterance": "I want to know the hourly photovoltaic generation forecast for a rooftop system in Berlin with a 5,000W inverter, 10% system losses, and panels facing 90 degrees east.",
+                    "parameters": {
+                        "lat": 52.52,
+                        "lon": 13.405,
+                        "inverter": 5000,
+                        "loss": 10,
+                        "az": -90
+                    }
+                },
+                {
+                    "utterance": "Show me the predicted solar energy production for the next 48 hours for a PV plant in Munich using monocrystalline panels, 7,500 Watt-Peak, and a 30-degree slope.",
+                    "parameters": {
+                        "lat": 48.1351,
+                        "lon": 11.582,
+                        "tech": "mono",
+                        "wp": 7500,
+                        "deg": 30
+                    }
+                },
+                {
+                    "utterance": "How much solar power can I expect from my installation in Austin, Texas, with a 4,200W inverter and 12% losses, if the panels are tilted at 25 degrees and face south?",
+                    "parameters": {
+                        "lat": 30.2672,
+                        "lon": -97.7431,
+                        "inverter": 4200,
+                        "loss": 12,
+                        "deg": 25,
+                        "az": 0
+                    }
+                },
+                {
+                    "utterance": "Give me the solar generation forecast for the next three days for a PV system in Stuttgart, Germany, using the postal code 70173 and a 6,500 Watt-Peak capacity.",
+                    "parameters": {
+                        "zip": "70173",
+                        "wp": 6500
+                    }
+                },
+                {
+                    "utterance": "I'd like to compare the predicted output for two PV plants: one in Madrid with 8,000W capacity and another in Valencia with 7,000W, both facing west.",
+                    "parameters": {
+                        "lat": [
+                            40.4168,
+                            39.4699
+                        ],
+                        "lon": [
+                            -3.7038,
+                            -0.3763
+                        ],
+                        "wp": [
+                            8000,
+                            7000
+                        ],
+                        "az": [
+                            90,
+                            90
+                        ]
+                    }
+                },
+                {
+                    "utterance": "Estimate the solar power production for a commercial PV system in Phoenix, Arizona, with 10,000 Watt-Peak, 15% losses, and a 35-degree tilt for the upcoming weekend.",
+                    "parameters": {
+                        "lat": 33.4484,
+                        "lon": -112.074,
+                        "wp": 10000,
+                        "loss": 15,
+                        "deg": 35
+                    }
+                },
+                {
+                    "utterance": "What is the hourly forecast for a photovoltaic array in Paris, France, with 5,500W capacity, 20% system losses, and panels oriented 45 degrees southeast?",
+                    "parameters": {
+                        "lat": 48.8566,
+                        "lon": 2.3522,
+                        "wp": 5500,
+                        "loss": 20,
+                        "az": -45
+                    }
+                },
+                {
+                    "utterance": "Please provide the predicted solar output for my plant with ID '0xAb425D74eA0113d11c3092E47a4C0542C25973db' for the next 96 hours.",
+                    "parameters": {
+                        "plant": "0xAb425D74eA0113d11c3092E47a4C0542C25973db"
+                    }
+                },
+                {
+                    "utterance": "Can you forecast the PV generation for a system in Rome with 6,800 Watt-Peak, 13% losses, and a 20-degree tilt, formatted like forecast.solar?",
+                    "parameters": {
+                        "lat": 41.9028,
+                        "lon": 12.4964,
+                        "wp": 6800,
+                        "loss": 13,
+                        "deg": 20,
+                        "decoration": "forecast.solar"
+                    }
+                }
+            ]
+        }
+    ]
+}

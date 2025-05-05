@@ -1,0 +1,107 @@
+{
+    "name": "webcams.travel",
+    "description": "The World's Largest Landscape Webcam API ***** Get webcams by categories, country, region or just nearby your location ***** Get timelapse slideshows for every webcam ***** Get an uncluttered webcam layer for your map",
+    "api_methods": [
+        {
+            "name": "/webcams/list/webcam={webcamid}[,{webcamid}[,...]]",
+            "description": "This is a modifier. Returns a list of webcams according to the listed {webcamid}s. Multiple {webcamid}s must be separated by comma. Required: at least one {webcamid}.",
+            "parameters": [
+                {
+                    "name": "webcamid",
+                    "type": "STRING",
+                    "description": "Comma separated list of webcamids that are in the initial list. If this modifier ist not applied, all available webcams will be in the initial list.",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the live views from the webcams with IDs 12345 and 67890 in English?",
+                    "parameters": {
+                        "webcamid": "12345,67890",
+                        "lang": "en"
+                    }
+                },
+                {
+                    "utterance": "I want to see the current images and locations of webcams 54321 and 98765, please.",
+                    "parameters": {
+                        "webcamid": "54321,98765",
+                        "show": "webcams:image,location"
+                    }
+                },
+                {
+                    "utterance": "Fetch the webcam feeds for IDs 11111,22222, and 33333 with descriptions in Spanish.",
+                    "parameters": {
+                        "webcamid": "11111,22222,33333",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "List the webcams with IDs 44444 and 55555 and include their categories and locations.",
+                    "parameters": {
+                        "webcamid": "44444,55555",
+                        "show": "webcams:categories,location"
+                    }
+                },
+                {
+                    "utterance": "Please get me the images from webcams 77777 and 88888 along with their geographic coordinates.",
+                    "parameters": {
+                        "webcamid": "77777,88888",
+                        "show": "webcams:image,location"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the webcam details for 13579 and 24680 in French?",
+                    "parameters": {
+                        "webcamid": "13579,24680",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Show me the webcams 11223 and 44556 with their categories and images in German.",
+                    "parameters": {
+                        "webcamid": "11223,44556",
+                        "lang": "de",
+                        "show": "webcams:categories,image"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the live webcam streams for IDs 99887 and 77665 and display their locations.",
+                    "parameters": {
+                        "webcamid": "99887,77665",
+                        "show": "webcams:location"
+                    }
+                },
+                {
+                    "utterance": "I need the images and categories of webcams 33445 and 66778, please.",
+                    "parameters": {
+                        "webcamid": "33445,66778",
+                        "show": "webcams:image,categories"
+                    }
+                },
+                {
+                    "utterance": "Get me the webcam info for 12121 and 34343 with all details in Italian.",
+                    "parameters": {
+                        "webcamid": "12121,34343",
+                        "lang": "it",
+                        "show": "webcams"
+                    }
+                }
+            ]
+        }
+    ]
+}

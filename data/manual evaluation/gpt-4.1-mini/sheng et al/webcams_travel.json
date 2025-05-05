@@ -1,0 +1,108 @@
+{
+    "name": "webcams.travel",
+    "description": "The World's Largest Landscape Webcam API ***** Get webcams by categories, country, region or just nearby your location ***** Get timelapse slideshows for every webcam ***** Get an uncluttered webcam layer for your map",
+    "api_methods": [
+        {
+            "name": "/webcams/list/webcam={webcamid}[,{webcamid}[,...]]",
+            "description": "This is a modifier. Returns a list of webcams according to the listed {webcamid}s. Multiple {webcamid}s must be separated by comma. Required: at least one {webcamid}.",
+            "parameters": [
+                {
+                    "name": "webcamid",
+                    "type": "STRING",
+                    "description": "Comma separated list of webcamids that are in the initial list. If this modifier ist not applied, all available webcams will be in the initial list.",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the webcam feed for webcamid 12345.",
+                    "parameters": {
+                        "webcamid": "12345"
+                    }
+                },
+                {
+                    "utterance": "I want to see webcams with IDs 67890 and 54321 in English.",
+                    "parameters": {
+                        "webcamid": "67890,54321",
+                        "lang": "en"
+                    }
+                },
+                {
+                    "utterance": "Get the webcam images and locations for webcamid 98765.",
+                    "parameters": {
+                        "webcamid": "98765",
+                        "show": "webcams:image,location"
+                    }
+                },
+                {
+                    "utterance": "List the categories for webcamid 11223 in French.",
+                    "parameters": {
+                        "webcamid": "11223",
+                        "lang": "fr",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "Provide the webcam details for webcamid 33445 with images only.",
+                    "parameters": {
+                        "webcamid": "33445",
+                        "show": "webcams:image"
+                    }
+                },
+                {
+                    "utterance": "I want to see the continents related to webcamid 55667.",
+                    "parameters": {
+                        "webcamid": "55667",
+                        "show": "continents"
+                    }
+                },
+                {
+                    "utterance": "Get the countries information for webcamid 77889 in Spanish.",
+                    "parameters": {
+                        "webcamid": "77889",
+                        "lang": "es",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "Show me the regions for webcamid 99001 with location data.",
+                    "parameters": {
+                        "webcamid": "99001",
+                        "show": "regions,location"
+                    }
+                },
+                {
+                    "utterance": "List the properties of webcamid 22334 in German.",
+                    "parameters": {
+                        "webcamid": "22334",
+                        "lang": "de",
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "Get webcam images and location for webcamid 44556 and 66778 in Italian.",
+                    "parameters": {
+                        "webcamid": "44556,66778",
+                        "lang": "it",
+                        "show": "webcams:image,location"
+                    }
+                }
+            ]
+        }
+    ]
+}
