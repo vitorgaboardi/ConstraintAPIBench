@@ -129,7 +129,7 @@ for filename, method_names in selected_by_api.items():
 
 ## 2. Extracting the endpoints for each of the solutions.
 # Step 1. Only copying the information to the folder.
-model = "deepseek-ai/DeepSeek-V3"  # deepseek-ai/DeepSeek-V3    # gpt-4.1
+model = "gpt-4o"  # deepseek-ai/DeepSeek-V3    # gpt-4.1
 model_name = model.split("/")[1].lower() if "/" in model else model
 
 prompts = ['sheng et al', 'toolalpaca']
