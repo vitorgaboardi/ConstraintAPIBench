@@ -4,6 +4,105 @@
     "url": "https://rapidapi.com/referential/api/referential/",
     "api_methods": [
         {
+            "name": "Country by iso code",
+            "description": "Get country by 2 letter iso code localized to a given language",
+            "url": "https://referential.p.rapidapi.com/v1/country/{iso_code}",
+            "parameters": [
+                {
+                    "name": "iso_code",
+                    "type": "string",
+                    "description": "2 letter iso country code. ",
+                    "default": "US",
+                    "required": true
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Comma deliminated list of fields to return in response",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "2 letter iso language code to localize country name",
+                    "default": "en",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the country name for the ISO code 'FR' in French?",
+                    "parameters": {
+                        "iso_code": "FR",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Can you provide details for the country with ISO code 'JP'?",
+                    "parameters": {
+                        "iso_code": "JP"
+                    }
+                },
+                {
+                    "utterance": "Get the country information for 'DE' in German.",
+                    "parameters": {
+                        "iso_code": "DE",
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "What is the localized name of the country with ISO code 'ES' in Spanish?",
+                    "parameters": {
+                        "iso_code": "ES",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "Fetch the country data for 'IT' with fields 'name, population'.",
+                    "parameters": {
+                        "iso_code": "IT",
+                        "fields": "name, population"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the country name for ISO code 'CN' in Chinese.",
+                    "parameters": {
+                        "iso_code": "CN",
+                        "lang": "zh"
+                    }
+                },
+                {
+                    "utterance": "What is the country name for 'BR' in Portuguese?",
+                    "parameters": {
+                        "iso_code": "BR",
+                        "lang": "pt"
+                    }
+                },
+                {
+                    "utterance": "Get the country details for 'IN' with fields 'name, capital'.",
+                    "parameters": {
+                        "iso_code": "IN",
+                        "fields": "name, capital"
+                    }
+                },
+                {
+                    "utterance": "Provide the country information for 'RU' in Russian.",
+                    "parameters": {
+                        "iso_code": "RU",
+                        "lang": "ru"
+                    }
+                },
+                {
+                    "utterance": "What is the localized name of the country with ISO code 'KR' in Korean?",
+                    "parameters": {
+                        "iso_code": "KR",
+                        "lang": "ko"
+                    }
+                }
+            ]
+        },
+        {
             "name": "Languages",
             "description": "List the world's languages translated into 20 languages",
             "url": "https://referential.p.rapidapi.com/v1/lang",
@@ -57,35 +156,33 @@
                     }
                 },
                 {
-                    "utterance": "List the languages with their flags.",
+                    "utterance": "List the languages with their 3-letter ISO codes.",
                     "parameters": {
-                        "fields": "flag,lang"
+                        "fields": "lang_3,lang"
                     }
                 },
                 {
-                    "utterance": "Provide the languages in Japan with their ISO codes.",
+                    "utterance": "Provide the list of languages in Japanese.",
                     "parameters": {
-                        "iso_a2": "JP",
-                        "fields": "iso_a2,lang_3"
+                        "lang": "ja"
                     }
                 },
                 {
-                    "utterance": "Can I get the list of languages in Italian?",
+                    "utterance": "Can you give me the languages spoken in Canada?",
+                    "parameters": {
+                        "iso_a2": "CA"
+                    }
+                },
+                {
+                    "utterance": "Show languages with their flags and 2-letter country codes.",
+                    "parameters": {
+                        "fields": "flag,iso_a2,lang"
+                    }
+                },
+                {
+                    "utterance": "List all languages in Italian.",
                     "parameters": {
                         "lang": "it"
-                    }
-                },
-                {
-                    "utterance": "Show languages in the United States with their flags.",
-                    "parameters": {
-                        "iso_a2": "US",
-                        "fields": "flag,lang"
-                    }
-                },
-                {
-                    "utterance": "List all languages in the world in German.",
-                    "parameters": {
-                        "lang": "de"
                     }
                 },
                 {
@@ -95,10 +192,9 @@
                     }
                 },
                 {
-                    "utterance": "Give me the languages in China with their 3-letter codes.",
+                    "utterance": "Can you list the languages in Russian?",
                     "parameters": {
-                        "iso_a2": "CN",
-                        "fields": "lang_3"
+                        "lang": "ru"
                     }
                 }
             ]

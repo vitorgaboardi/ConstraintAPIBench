@@ -1,0 +1,189 @@
+{
+    "name": "Real-Time Product Search",
+    "description": "Extremely Fast and Simple API for searching product offers and reviews across multiple major sources. With just one API, users can access comprehensive and real-time product information, simplifying the search process and improving efficiency.",
+    "url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-product-search/",
+    "api_methods": [
+        {
+            "name": "Search",
+            "description": "Search for product offers - both free-form queries and GTIN/EAN are supported. Each page contains up to 30 product offers. Infinite pagination/scrolling is supported using the *page* parameter.",
+            "url": "https://real-time-product-search.p.rapidapi.com/search",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Free-form search query or a GTIN/EAN (e.g. *0194252014233*).",
+                    "default": "Nike shoes",
+                    "required": true
+                },
+                {
+                    "name": "min_rating",
+                    "type": "ENUM",
+                    "description": "Return products with rating greater than the specified value.\nPossible values: `1`, `2`, `3`, `4`.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "product_condition",
+                    "type": "ENUM",
+                    "description": "Only return products with a specific condition.\nPossible values: `NEW`, `USED`, `REFURBISHED`.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "max_shipping_days",
+                    "type": "NUMBER",
+                    "description": "Only return product offers that offer shipping/delivery of up to specific number of days (i.e. shipping speed).",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "store_id",
+                    "type": "STRING",
+                    "description": "Only return product offers from specific stores (comma separated list of store id's). Store IDs can be obtained from the Google Shopping URL after using the **Seller** filter by taking the part after the `merchagg:` variable within the `tbs` parameter.\n\nWhen filtering for a certain Seller / Store on Google Shopping, a URL similar to the following is shown on the address bar: `https://www.google.com/search?gl=us&tbm=shop&q=shoes&tbs=mr:1,merchagg:m100456214|m114373355`, in that case, the Store IDs are **m100456214** and **m114373355** - to filter for these stores, set store_id=m100456214,m114373355.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "on_sale",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that are currently on sale.\nDefault: `false`.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "free_returns",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that offer free returns.\nDefault: `false`.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "free_shipping",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that offer free shipping/delivery.\nDefault: `false`.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "max_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price lower than a certain value.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en",
+                    "required": false
+                },
+                {
+                    "name": "sort_by",
+                    "type": "ENUM",
+                    "description": "Sort product offers by best match, top rated, lowest or highest price.\nPossible values: `BEST_MATCH`, `TOP_RATED`, `LOWEST_PRICE`, `HIGHEST_PRICE`.\nDefault: `BEST_MATCH`.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country to return offers for.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us",
+                    "required": false
+                },
+                {
+                    "name": "min_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price greater than a certain value.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Results page to return.\nDefault: `1`.",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find the best deals for Nike shoes.",
+                    "parameters": {
+                        "q": "Nike shoes"
+                    }
+                },
+                {
+                    "utterance": "Search for Adidas sneakers with a minimum rating of 4.",
+                    "parameters": {
+                        "q": "Adidas sneakers",
+                        "min_rating": 4
+                    }
+                },
+                {
+                    "utterance": "Look for refurbished iPhones.",
+                    "parameters": {
+                        "q": "iPhone",
+                        "product_condition": "REFURBISHED"
+                    }
+                },
+                {
+                    "utterance": "Find laptops with free shipping and free returns.",
+                    "parameters": {
+                        "q": "laptops",
+                        "free_shipping": true,
+                        "free_returns": true
+                    }
+                },
+                {
+                    "utterance": "Search for coffee makers that are on sale and have a maximum price of $50.",
+                    "parameters": {
+                        "q": "coffee makers",
+                        "on_sale": true,
+                        "max_price": 50
+                    }
+                },
+                {
+                    "utterance": "Find the top-rated headphones in Canada.",
+                    "parameters": {
+                        "q": "headphones",
+                        "sort_by": "TOP_RATED",
+                        "country": "ca"
+                    }
+                },
+                {
+                    "utterance": "Search for new cameras with a minimum price of $200 and a maximum price of $500.",
+                    "parameters": {
+                        "q": "cameras",
+                        "product_condition": "NEW",
+                        "min_price": 200,
+                        "max_price": 500
+                    }
+                },
+                {
+                    "utterance": "Find products from store IDs m100456214 and m114373355.",
+                    "parameters": {
+                        "q": "products",
+                        "store_id": "m100456214,m114373355"
+                    }
+                },
+                {
+                    "utterance": "Search for shoes with a maximum shipping time of 3 days.",
+                    "parameters": {
+                        "q": "shoes",
+                        "max_shipping_days": 3
+                    }
+                },
+                {
+                    "utterance": "Find the lowest price for Samsung TVs in the UK.",
+                    "parameters": {
+                        "q": "Samsung TVs",
+                        "sort_by": "LOWEST_PRICE",
+                        "country": "gb"
+                    }
+                }
+            ]
+        }
+    ]
+}

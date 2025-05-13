@@ -1,0 +1,938 @@
+{
+    "name": "MoviesDatabase",
+    "description": "MoviesDatabase provides complete and updated data for over 9 million titles ( movies, series and episodes) and 11 million actors / crew and cast members",
+    "url": "https://rapidapi.com/SAdrian/api/moviesdatabase/",
+    "api_methods": [
+        {
+            "name": "/titles/utils/genres",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/utils/genres",
+            "parameters": []
+        },
+        {
+            "name": "/titles/utils/lists",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/utils/lists",
+            "parameters": []
+        },
+        {
+            "name": "/titles/search/akas/{aka}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/search/akas/{aka}",
+            "parameters": [
+                {
+                    "name": "aka",
+                    "type": "STRING",
+                    "description": "Title of  the Movie/Series",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image /...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "base_info",
+                                "mini_info",
+                                "image"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2020",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr /year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "year.incr",
+                                "year.decr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        }
+                    }
+                },
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "/titles/search/keyword/{keyword}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/search/keyword/{keyword}",
+            "parameters": [
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "Keyword",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "base_info",
+                                "mini_info",
+                                "image"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: If startYear is provided, endYear must also be included."
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr /year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "year.incr",
+                                "year.decr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        }
+                    }
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: If endYear is provided, startYear must also be included."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/search/title/{title}",
+            "description": "Search by Title",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/search/title/{title}",
+            "parameters": [
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Title of  the Movie/Series",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "exact",
+                    "type": "BOOLEAN",
+                    "description": "Search by exact title",
+                    "default": "true",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image /...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "base_info",
+                                "mini_info",
+                                "image"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr /year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "year.incr",
+                                "year.decr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        },
+                        "inter-dependency": "startYear, endYear: startYear and endYear can be used together to define a range."
+                    }
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        },
+                        "inter-dependency": "startYear, endYear: startYear and endYear can be used together to define a range."
+                    }
+                },
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "movie",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "series",
+                                "episode"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "Selected list -> most_pop_movies / most_pop_series / top_rated_series_250 / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "most_pop_movies",
+                                "most_pop_series",
+                                "top_rated_series_250"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/actors/random",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/actors/random",
+            "parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/actors/{id}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/actors/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Actor imdb id",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/utils/titleTypes",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/utils/titleTypes",
+            "parameters": []
+        },
+        {
+            "name": "/actors",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/actors",
+            "parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/series/{seriesId}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/series/{seriesId}",
+            "parameters": [
+                {
+                    "name": "seriesId",
+                    "type": "STRING",
+                    "description": "Series Imdb Id",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/x/upcoming",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/x/upcoming",
+            "parameters": [
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2022",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "genre",
+                    "type": "STRING",
+                    "description": "Year filter ex: ?genre=Drama",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: If one is provided, the other must also be included."
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        }
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr / year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "year.incr",
+                                "year.decr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: If one is provided, the other must also be included."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/{id}/ratings",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/{id}/ratings",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Imdb Id of title ex: tt0000002",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/{id}/crew",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/{id}/crew",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Imdb Id of title ex: tt0000002",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/series/{seriesId}/{season}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/series/{seriesId}/{season}",
+            "parameters": [
+                {
+                    "name": "season",
+                    "type": "STRING",
+                    "description": "Season number",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "seriesId",
+                    "type": "STRING",
+                    "description": "Series Imdb Id",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/episode/{id}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/episode/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Episode Imdb Id",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "base_info",
+                                "mini_info",
+                                "image"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/{id}/main_actors",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/{id}/main_actors",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Imdb Id of title ex: tt0000002",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/x/titles-by-ids",
+            "description": "Titles by ids list",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids",
+            "parameters": [
+                {
+                    "name": "idsList",
+                    "type": "STRING",
+                    "description": "Imdb id's comma separated -> tt0001702,tt0001856,tt0001856 ...",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "Selected list -> most_pop_movies / most_pop_series / top_rated_series_250 / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "/titles/{id}/aka",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/{id}/aka",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Imdb Id of title ex: tt0000002",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/random",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/random",
+            "parameters": [
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "genre",
+                    "type": "STRING",
+                    "description": "Year filter ex: ?genre=Drama",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr /year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "year.incr",
+                                "year.decr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        }
+                    }
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "Selected list -> most_pop_movies / most_pop_series / top_rated_series_250 / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "/titles/{id}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Imdb Id of title ex: tt0000002",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: base-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "base_info",
+                                "mini_info",
+                                "image"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles",
+            "parameters": [
+                {
+                    "name": "genre",
+                    "type": "STRING",
+                    "description": "Year filter ex: ?genre=Drama",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "Selected list -> most_pop_movies / most_pop_series / top_rated_series_250 / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr /year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/seasons/{seriesId}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/seasons/{seriesId}",
+            "parameters": [
+                {
+                    "name": "seriesId",
+                    "type": "STRING",
+                    "description": "Series Imdb Id",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        }
+    ]
+}

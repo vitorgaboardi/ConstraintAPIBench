@@ -1,0 +1,746 @@
+{
+    "name": "Horse Racing",
+    "description": "Horse racing API - UK & Ireland races. Racecards, results, stats, Odds comparator and more. ",
+    "url": "https://rapidapi.com/ortegalex/api/horse-racing/",
+    "api_methods": [
+        {
+            "name": "Race detail info",
+            "description": "**Get racecard detailed info** and **Odds comparator**\nHorses, Jockeys, Trainers, Form, OR, Owner, Sire, Dam, Age, Weight and more information.",
+            "url": "https://horse-racing.p.rapidapi.com/race/{id_race}",
+            "parameters": [
+                {
+                    "name": "id_race",
+                    "type": "string",
+                    "description": "",
+                    "default": "207660",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the detailed information for the race at Ascot today?",
+                    "parameters": {
+                        "id_race": "Ascot"
+                    }
+                },
+                {
+                    "utterance": "What are the details for the Cheltenham race this weekend?",
+                    "parameters": {
+                        "id_race": "Cheltenham"
+                    }
+                },
+                {
+                    "utterance": "I need the racecard and odds for the Grand National.",
+                    "parameters": {
+                        "id_race": "Grand National"
+                    }
+                },
+                {
+                    "utterance": "Show me the detailed stats for the Epsom Derby race.",
+                    "parameters": {
+                        "id_race": "Epsom Derby"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the race details for the York race happening next week?",
+                    "parameters": {
+                        "id_race": "York"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the form and odds for the horses in the Goodwood race?",
+                    "parameters": {
+                        "id_race": "Goodwood"
+                    }
+                },
+                {
+                    "utterance": "Give me the detailed information about the Newmarket race.",
+                    "parameters": {
+                        "id_race": "Newmarket"
+                    }
+                },
+                {
+                    "utterance": "I\u2019m looking for the racecard and jockey details for the Aintree race.",
+                    "parameters": {
+                        "id_race": "Aintree"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the trainer and horse details for the Doncaster race?",
+                    "parameters": {
+                        "id_race": "Doncaster"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the detailed info for the Sandown Park race this Friday?",
+                    "parameters": {
+                        "id_race": "Sandown Park"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Query races",
+            "description": "The best way to search races.",
+            "url": "https://horse-racing.p.rapidapi.com/query-races",
+            "parameters": [
+                {
+                    "name": "order_by_date",
+                    "type": "ENUM",
+                    "description": "Results ordered by date race ascending or descending.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ascending",
+                                "descending"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "date_to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "class_to",
+                    "type": "NUMBER",
+                    "description": "Maximum race class.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "distance_to",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": []
+                        }
+                    }
+                },
+                {
+                    "name": "distance_from",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": []
+                        }
+                    }
+                },
+                {
+                    "name": "id_horse",
+                    "type": "NUMBER",
+                    "description": "Horse id. If you populate this field the query search races where this horse run.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "course",
+                    "type": "STRING",
+                    "description": "Like Cheltenham, Ascot, Newmarket ....",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "class_from",
+                    "type": "NUMBER",
+                    "description": "Minimum race class.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "date_from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Race name or a text on the race name. Like \\\"Novice\\\", \\\"Handicap chase\\\", \\\"Hurdle\\\", ....",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me races at Ascot ordered by date in descending order.",
+                    "parameters": {
+                        "course": "Ascot",
+                        "order_by_date": "descending"
+                    }
+                },
+                {
+                    "utterance": "Find all races from 2023-10-01 to 2023-10-15 with a minimum class of 2.",
+                    "parameters": {
+                        "date_from": "2023-10-01",
+                        "date_to": "2023-10-15",
+                        "class_from": 2
+                    }
+                },
+                {
+                    "utterance": "Can you list races where the horse named Thunderbolt has run?",
+                    "parameters": {
+                        "id_horse": 12345
+                    }
+                },
+                {
+                    "utterance": "Search for races at Newmarket with a maximum class of 3.",
+                    "parameters": {
+                        "course": "Newmarket",
+                        "class_to": 3
+                    }
+                },
+                {
+                    "utterance": "Show me all handicap chase races ordered by date ascending.",
+                    "parameters": {
+                        "name": "Handicap chase",
+                        "order_by_date": "ascending"
+                    }
+                },
+                {
+                    "utterance": "Find races at Cheltenham from 2023-09-01 to 2023-09-30.",
+                    "parameters": {
+                        "course": "Cheltenham",
+                        "date_from": "2023-09-01",
+                        "date_to": "2023-09-30"
+                    }
+                },
+                {
+                    "utterance": "List all novice races with a minimum class of 1.",
+                    "parameters": {
+                        "name": "Novice",
+                        "class_from": 1
+                    }
+                },
+                {
+                    "utterance": "Can you find races at Ascot with a maximum class of 4?",
+                    "parameters": {
+                        "course": "Ascot",
+                        "class_to": 4
+                    }
+                },
+                {
+                    "utterance": "Show me hurdle races from 2023-08-01 to 2023-08-31.",
+                    "parameters": {
+                        "name": "Hurdle",
+                        "date_from": "2023-08-01",
+                        "date_to": "2023-08-31"
+                    }
+                },
+                {
+                    "utterance": "Find all races where the horse named Lightning has run, ordered by date descending.",
+                    "parameters": {
+                        "id_horse": 67890,
+                        "order_by_date": "descending"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Horse Stats",
+            "description": "Get horse results history.",
+            "url": "https://horse-racing.p.rapidapi.com/horse-stats/{id_horse}",
+            "parameters": [
+                {
+                    "name": "id_horse",
+                    "type": "string",
+                    "description": "",
+                    "default": "230380",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the racing history for the horse named Thunderbolt?",
+                    "parameters": {
+                        "id_horse": "Thunderbolt"
+                    }
+                },
+                {
+                    "utterance": "What are the past results for the horse called Silver Shadow?",
+                    "parameters": {
+                        "id_horse": "Silver Shadow"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the stats for the horse known as Midnight Runner.",
+                    "parameters": {
+                        "id_horse": "Midnight Runner"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the racing history for the horse named Golden Hoof?",
+                    "parameters": {
+                        "id_horse": "Golden Hoof"
+                    }
+                },
+                {
+                    "utterance": "Show me the results for the horse called Desert Storm.",
+                    "parameters": {
+                        "id_horse": "Desert Storm"
+                    }
+                },
+                {
+                    "utterance": "What's the performance history of the horse named Ocean Breeze?",
+                    "parameters": {
+                        "id_horse": "Ocean Breeze"
+                    }
+                },
+                {
+                    "utterance": "Can you get me the stats for the horse known as Firefly?",
+                    "parameters": {
+                        "id_horse": "Firefly"
+                    }
+                },
+                {
+                    "utterance": "I need the racing history for the horse called Mountain King.",
+                    "parameters": {
+                        "id_horse": "Mountain King"
+                    }
+                },
+                {
+                    "utterance": "What are the past performances of the horse named Star Gazer?",
+                    "parameters": {
+                        "id_horse": "Star Gazer"
+                    }
+                },
+                {
+                    "utterance": "Could you show me the results for the horse called Wind Dancer?",
+                    "parameters": {
+                        "id_horse": "Wind Dancer"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Query horses",
+            "description": "Search horses by name. \nOnce you get \"*id_horse*\" from this query, you can get horses stats from \"**Horse stats**\" endpoint.",
+            "url": "https://horse-racing.p.rapidapi.com/query-horses",
+            "parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Minimum 3 characters",
+                    "default": "ZANAHIYR",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 3
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find information about the horse named Thunderbolt?",
+                    "parameters": {
+                        "name": "Thunderbolt"
+                    }
+                },
+                {
+                    "utterance": "I'm looking for details on a horse called Silver Shadow.",
+                    "parameters": {
+                        "name": "Silver Shadow"
+                    }
+                },
+                {
+                    "utterance": "Do you have any data on the horse known as Midnight Star?",
+                    "parameters": {
+                        "name": "Midnight Star"
+                    }
+                },
+                {
+                    "utterance": "Please search for the horse named Golden Hoof.",
+                    "parameters": {
+                        "name": "Golden Hoof"
+                    }
+                },
+                {
+                    "utterance": "Could you look up the horse called Desert Wind?",
+                    "parameters": {
+                        "name": "Desert Wind"
+                    }
+                },
+                {
+                    "utterance": "I need information on a horse named Ocean Wave.",
+                    "parameters": {
+                        "name": "Ocean Wave"
+                    }
+                },
+                {
+                    "utterance": "Find me details about the horse called Mountain Peak.",
+                    "parameters": {
+                        "name": "Mountain Peak"
+                    }
+                },
+                {
+                    "utterance": "Is there any record for the horse named Firefly?",
+                    "parameters": {
+                        "name": "Firefly"
+                    }
+                },
+                {
+                    "utterance": "Can you check for the horse known as Lightning Strike?",
+                    "parameters": {
+                        "name": "Lightning Strike"
+                    }
+                },
+                {
+                    "utterance": "Search for the horse named Arctic Blaze.",
+                    "parameters": {
+                        "name": "Arctic Blaze"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Racecards",
+            "description": "Get races list.",
+            "url": "https://horse-racing.p.rapidapi.com/racecards",
+            "parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2020-03-12",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the racecards for today?",
+                    "parameters": {
+                        "date": "2023-10-05"
+                    }
+                },
+                {
+                    "utterance": "What races are happening on October 10th?",
+                    "parameters": {
+                        "date": "2023-10-10"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the race list for this Saturday.",
+                    "parameters": {
+                        "date": "2023-10-07"
+                    }
+                },
+                {
+                    "utterance": "Are there any races scheduled for next Monday?",
+                    "parameters": {
+                        "date": "2023-10-09"
+                    }
+                },
+                {
+                    "utterance": "Show me the racecards for November 1st.",
+                    "parameters": {
+                        "date": "2023-11-01"
+                    }
+                },
+                {
+                    "utterance": "What's on the race schedule for December 25th?",
+                    "parameters": {
+                        "date": "2023-12-25"
+                    }
+                },
+                {
+                    "utterance": "Can you list the races for next Friday?",
+                    "parameters": {
+                        "date": "2023-10-13"
+                    }
+                },
+                {
+                    "utterance": "I want to check the racecards for September 30th.",
+                    "parameters": {
+                        "date": "2023-09-30"
+                    }
+                },
+                {
+                    "utterance": "Are there any races on January 1st next year?",
+                    "parameters": {
+                        "date": "2024-01-01"
+                    }
+                },
+                {
+                    "utterance": "Show me the races happening on March 15th.",
+                    "parameters": {
+                        "date": "2024-03-15"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Results",
+            "description": "Get results by date.",
+            "url": "https://horse-racing.p.rapidapi.com/results",
+            "parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2020-03-13",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the horse racing results from yesterday?",
+                    "parameters": {
+                        "date": "2023-10-04"
+                    }
+                },
+                {
+                    "utterance": "What were the results of the races on October 1st?",
+                    "parameters": {
+                        "date": "2023-10-01"
+                    }
+                },
+                {
+                    "utterance": "I need the horse racing results for last Saturday.",
+                    "parameters": {
+                        "date": "2023-09-30"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the race results from September 25th?",
+                    "parameters": {
+                        "date": "2023-09-25"
+                    }
+                },
+                {
+                    "utterance": "Show me the results of the races that happened on September 20th.",
+                    "parameters": {
+                        "date": "2023-09-20"
+                    }
+                },
+                {
+                    "utterance": "What were the outcomes of the horse races on September 15th?",
+                    "parameters": {
+                        "date": "2023-09-15"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the horse racing results for September 10th?",
+                    "parameters": {
+                        "date": "2023-09-10"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the race results from September 5th.",
+                    "parameters": {
+                        "date": "2023-09-05"
+                    }
+                },
+                {
+                    "utterance": "What were the results of the races on August 30th?",
+                    "parameters": {
+                        "date": "2023-08-30"
+                    }
+                },
+                {
+                    "utterance": "Could you get me the horse racing results from August 25th?",
+                    "parameters": {
+                        "date": "2023-08-25"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Jockeys win rate",
+            "description": "Get Jockeys stats in the last days.\nRuns, Wins and Win Rate in %.",
+            "url": "https://horse-racing.p.rapidapi.com/jockeys-win-rate",
+            "parameters": [
+                {
+                    "name": "last_days",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "7",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the win rates for jockeys over the past week?",
+                    "parameters": {
+                        "last_days": 7
+                    }
+                },
+                {
+                    "utterance": "Can you show me the jockeys' performance in the last 10 days?",
+                    "parameters": {
+                        "last_days": 10
+                    }
+                },
+                {
+                    "utterance": "How have jockeys been performing in the last 3 days?",
+                    "parameters": {
+                        "last_days": 3
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the win rates for jockeys over the past fortnight.",
+                    "parameters": {
+                        "last_days": 14
+                    }
+                },
+                {
+                    "utterance": "What's the win rate for jockeys in the last 5 days?",
+                    "parameters": {
+                        "last_days": 5
+                    }
+                },
+                {
+                    "utterance": "Show me the jockeys' stats from the last month.",
+                    "parameters": {
+                        "last_days": 30
+                    }
+                },
+                {
+                    "utterance": "Can you provide the win rates for jockeys over the last 2 days?",
+                    "parameters": {
+                        "last_days": 2
+                    }
+                },
+                {
+                    "utterance": "What are the jockeys' win rates in the last 15 days?",
+                    "parameters": {
+                        "last_days": 15
+                    }
+                },
+                {
+                    "utterance": "I need the jockeys' performance stats for the last 20 days.",
+                    "parameters": {
+                        "last_days": 20
+                    }
+                },
+                {
+                    "utterance": "How have jockeys performed in the last week?",
+                    "parameters": {
+                        "last_days": 7
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Trainers win rate",
+            "description": "Get Trainers stats in the last days.\nRuns, Wins and Win Rate in %.",
+            "url": "https://horse-racing.p.rapidapi.com/trainers-win-rate",
+            "parameters": [
+                {
+                    "name": "last_days",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "7",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the win rates for trainers in the past week?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you show me the trainers' stats from the last 10 days?",
+                    "parameters": {
+                        "last_days": 10
+                    }
+                },
+                {
+                    "utterance": "I need the win rates of trainers over the last 5 days.",
+                    "parameters": {
+                        "last_days": 5
+                    }
+                },
+                {
+                    "utterance": "How have trainers performed in the last 3 days?",
+                    "parameters": {
+                        "last_days": 3
+                    }
+                },
+                {
+                    "utterance": "Get me the trainers' win rates for the past 14 days.",
+                    "parameters": {
+                        "last_days": 14
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the win rate for trainers in the last month?",
+                    "parameters": {
+                        "last_days": 30
+                    }
+                },
+                {
+                    "utterance": "Show me the trainers' stats from the last 2 days.",
+                    "parameters": {
+                        "last_days": 2
+                    }
+                },
+                {
+                    "utterance": "Can you provide the win rates of trainers over the last 7 days?",
+                    "parameters": {
+                        "last_days": 7
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the trainers' performance in the last 21 days.",
+                    "parameters": {
+                        "last_days": 21
+                    }
+                },
+                {
+                    "utterance": "What are the trainers' stats for the past 4 days?",
+                    "parameters": {
+                        "last_days": 4
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1003 @@
+{
+    "name": "NOWPayments",
+    "description": "NOWPayments is a non-custodial cryptocurrency payment processing platform. Accept payments in a wide range of cryptos and get them instantly converted into a coin of your choice and sent to your wallet.  NOWPayments' API allows you to integrate crypto payments in 200+ assets into any platform.",
+    "url": "https://rapidapi.com/pauline.l/api/nowpayments/",
+    "api_methods": [
+        {
+            "name": "8.Createinvoice",
+            "description": "Creates invoice with url where you can complete the payment.\nRequest fields:\n- price_amount (required) - the amount that users have to pay for the order stated in fiat currency. In case you do not indicate the price in crypto, our system will automatically convert this fiat amount into its crypto equivalent.\n- price_currency (required) - the fiat currency in which the price_amount is specified (usd, eur, etc).\n- pay_currency (optional) - the crypto currency in which the pay_amount is specified (btc, eth, etc).If not specified, can be chosen on the invoice_url\n- ipn_callback_url (optional) - url to receive callbacks, should contain \"http\" or \"https\", eg. \"https://nowpayments.io\"\n- order_id (optional) - inner store order ID, e.g. \"RGDBP-21314\"\n- order_description (optional) - inner store order description, e.g. \"Apple Macbook Pro 2019 x 1\" \n- success_url(optional) - url where the customer will be redirected after successful payment.\n- cancel_url(optional) - url where the customer will be redirected after failed payment.",
+            "url": "https://nowpayments.p.rapidapi.com/v1/invoice",
+            "parameters": [
+                {
+                    "name": "x-api-key",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "<your_api_key>",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "I need to create an invoice for a payment of 150 USD.",
+                    "parameters": {
+                        "price_amount": 150,
+                        "price_currency": "usd"
+                    }
+                },
+                {
+                    "utterance": "Generate an invoice for 200 EUR and let the customer pay in Bitcoin.",
+                    "parameters": {
+                        "price_amount": 200,
+                        "price_currency": "eur",
+                        "pay_currency": "btc"
+                    }
+                },
+                {
+                    "utterance": "Create an invoice for 50 GBP with a callback URL at https://myshop.com/callback.",
+                    "parameters": {
+                        "price_amount": 50,
+                        "price_currency": "gbp",
+                        "ipn_callback_url": "https://myshop.com/callback"
+                    }
+                },
+                {
+                    "utterance": "I want an invoice for 300 CAD with order ID ORD-12345 and description 'Gaming Laptop'.",
+                    "parameters": {
+                        "price_amount": 300,
+                        "price_currency": "cad",
+                        "order_id": "ORD-12345",
+                        "order_description": "Gaming Laptop"
+                    }
+                },
+                {
+                    "utterance": "Please create an invoice for 75 AUD and redirect to https://success.com on success.",
+                    "parameters": {
+                        "price_amount": 75,
+                        "price_currency": "aud",
+                        "success_url": "https://success.com"
+                    }
+                },
+                {
+                    "utterance": "Set up an invoice for 500 JPY with a cancel URL at https://cancel.com.",
+                    "parameters": {
+                        "price_amount": 500,
+                        "price_currency": "jpy",
+                        "cancel_url": "https://cancel.com"
+                    }
+                },
+                {
+                    "utterance": "I need an invoice for 100 CHF, and the customer can choose the crypto to pay.",
+                    "parameters": {
+                        "price_amount": 100,
+                        "price_currency": "chf"
+                    }
+                },
+                {
+                    "utterance": "Create an invoice for 250 SEK with a callback URL at https://notify.me and pay in Ethereum.",
+                    "parameters": {
+                        "price_amount": 250,
+                        "price_currency": "sek",
+                        "ipn_callback_url": "https://notify.me",
+                        "pay_currency": "eth"
+                    }
+                },
+                {
+                    "utterance": "Generate an invoice for 400 NOK with order ID INV-67890 and redirect to https://complete.com on success.",
+                    "parameters": {
+                        "price_amount": 400,
+                        "price_currency": "nok",
+                        "order_id": "INV-67890",
+                        "success_url": "https://complete.com"
+                    }
+                },
+                {
+                    "utterance": "I want to create an invoice for 600 DKK with a description 'Office Chair' and cancel URL at https://fail.com.",
+                    "parameters": {
+                        "price_amount": 600,
+                        "price_currency": "dkk",
+                        "order_description": "Office Chair",
+                        "cancel_url": "https://fail.com"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "7.Getlistofpayments",
+            "description": "Returns the entire list of all transactions, created with certain API key.\nThe list of optional parameters:\n- limit - number of records in one page. (possible values: from 1 to 500)\n- page - the page number you want to get (possible values: from 0 to **page count - 1**)\n- sortBy - sort the received list by a paramenter. Set to **created_at** by default (possible values: payment_id, payment_status, pay_address, price_amount, price_currency, pay_amount, actually_paid, pay_currency, order_id, order_description, purchase_id, outcome_amount, outcome_currency)\n- orderBy - display the list in ascending or descending order. Set to **asc** by default (possible values: asc, desc)\n- dateFrom - select the displayed period start date (date format: YYYY-MM-DD or yy-MM-ddTHH:mm:ss.SSSZ).\n- dateTo - select the displayed period end date (date format: YYYY-MM-DD or yy-MM-ddTHH:mm:ss.SSSZ).",
+            "url": "https://nowpayments.p.rapidapi.com/v1/payment/",
+            "parameters": [
+                {
+                    "name": "x-api-key",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "<your_api_key>",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "dateFrom",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2020-01-01",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD or yy-MM-ddTHH:mm:ss.SSSZ"
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 10,
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 1,
+                            "max": 500
+                        }
+                    }
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "created_at",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "payment_id",
+                                "payment_status",
+                                "pay_address",
+                                "price_amount",
+                                "price_currency",
+                                "pay_amount",
+                                "actually_paid",
+                                "pay_currency",
+                                "order_id",
+                                "order_description",
+                                "purchase_id",
+                                "outcome_amount",
+                                "outcome_currency"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "orderBy",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "asc",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "asc",
+                                "desc"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "dateTo",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2021-01-01",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD or yy-MM-ddTHH:mm:ss.SSSZ"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me all transactions from January 1, 2022, sorted by payment status in descending order, with a limit of 50 records.",
+                    "parameters": {
+                        "dateFrom": "2022-01-01",
+                        "limit": 50,
+                        "sortBy": "payment_status",
+                        "orderBy": "desc",
+                        "dateTo": "2022-12-31"
+                    }
+                },
+                {
+                    "utterance": "I need a list of payments from March 15, 2023, sorted by order ID in ascending order, limited to 100 entries.",
+                    "parameters": {
+                        "dateFrom": "2023-03-15",
+                        "limit": 100,
+                        "sortBy": "order_id",
+                        "orderBy": "asc",
+                        "dateTo": "2023-04-15"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the transactions from July 1, 2021, sorted by price amount in ascending order, with a maximum of 200 records?",
+                    "parameters": {
+                        "dateFrom": "2021-07-01",
+                        "limit": 200,
+                        "sortBy": "price_amount",
+                        "orderBy": "asc",
+                        "dateTo": "2021-07-31"
+                    }
+                },
+                {
+                    "utterance": "List all payments from February 1, 2020, sorted by pay address in descending order, with a limit of 300.",
+                    "parameters": {
+                        "dateFrom": "2020-02-01",
+                        "limit": 300,
+                        "sortBy": "pay_address",
+                        "orderBy": "desc",
+                        "dateTo": "2020-02-29"
+                    }
+                },
+                {
+                    "utterance": "Retrieve transactions from May 10, 2022, sorted by purchase ID in ascending order, with a cap of 150 records.",
+                    "parameters": {
+                        "dateFrom": "2022-05-10",
+                        "limit": 150,
+                        "sortBy": "purchase_id",
+                        "orderBy": "asc",
+                        "dateTo": "2022-06-10"
+                    }
+                },
+                {
+                    "utterance": "Get me the list of payments from November 1, 2021, sorted by outcome amount in descending order, limited to 75 entries.",
+                    "parameters": {
+                        "dateFrom": "2021-11-01",
+                        "limit": 75,
+                        "sortBy": "outcome_amount",
+                        "orderBy": "desc",
+                        "dateTo": "2021-11-30"
+                    }
+                },
+                {
+                    "utterance": "Fetch all transactions from August 1, 2023, sorted by pay currency in ascending order, with a limit of 250 records.",
+                    "parameters": {
+                        "dateFrom": "2023-08-01",
+                        "limit": 250,
+                        "sortBy": "pay_currency",
+                        "orderBy": "asc",
+                        "dateTo": "2023-08-31"
+                    }
+                },
+                {
+                    "utterance": "I want to see payments from September 1, 2020, sorted by actually paid in descending order, with a maximum of 400 records.",
+                    "parameters": {
+                        "dateFrom": "2020-09-01",
+                        "limit": 400,
+                        "sortBy": "actually_paid",
+                        "orderBy": "desc",
+                        "dateTo": "2020-09-30"
+                    }
+                },
+                {
+                    "utterance": "Provide the list of transactions from December 1, 2022, sorted by price currency in ascending order, with a limit of 500.",
+                    "parameters": {
+                        "dateFrom": "2022-12-01",
+                        "limit": 500,
+                        "sortBy": "price_currency",
+                        "orderBy": "asc",
+                        "dateTo": "2022-12-31"
+                    }
+                },
+                {
+                    "utterance": "Show me payments from April 1, 2021, sorted by order description in descending order, with a cap of 350 records.",
+                    "parameters": {
+                        "dateFrom": "2021-04-01",
+                        "limit": 350,
+                        "sortBy": "order_description",
+                        "orderBy": "desc",
+                        "dateTo": "2021-04-30"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "1.GetAPIstatus",
+            "description": "This is a method to get information about the current state of the API. If everything is OK, you will receive an \"OK\" message. Otherwise, you'll see some error.",
+            "url": "https://nowpayments.p.rapidapi.com/v1/status",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "4.Createpayment",
+            "description": "This is the method to create a payment. You need to provide your data as a JSON-object payload. Next is a description of the required request fields:\n\n- price_amount (required) - the fiat equivalent of the price to be paid in crypto. If the pay_amount parameter is left empty, our system will automatically convert this fiat price into its crypto equivalent. Please note that this does not enable fiat payments, only provides a fiat price for yours and the customer\u2019s convenience and information.\n- price_currency (required) - the fiat currency in which the price_amount is specified (usd, eur, etc).\n- pay_amount (optional) - the amount that users have to pay for the order stated in crypto. You can either specify  it yourself,  or we will automatically convert the amount you indicated in price_amount.\n- pay_currency (required) - the crypto currency in which the pay_amount is specified (btc, eth, etc).\n- ipn_callback_url (optional) - url to receive callbacks, should contain \"http\" or \"https\", eg. \"https://nowpayments.io\"\n- order_id (optional) - inner store order ID, e.g. \"RGDBP-21314\"\n- order_description (optional) - inner store order description, e.g. \"Apple Macbook Pro 2019 x 1\" \n- purchase_id (optional) - id of purchase for which you want to create aother payment, only used for several payments for one order\n- payout_address (optional) - usually the funds will go to the address you specify in your Personal account. In case you want to receive funds on another address, you can specify it in this parameter.\n- payout_currency (optional) - currency of your external payout_address, required when payout_adress is specified.\n- payout_extra_id(optional) - extra id or memo or tag for external payout_address.\n- fixed_rate(optional) - boolean, can be **true** or **false**. Required for fixed-rate exchanges.\n\nHere the list of avalable statuses of payment:\n- waiting - waiting for the customer to send the payment. The initial status of each payment.\n- confirming - the transaction is being processed on the blockchain. Appears when NOWPayments detect the funds from the user on the blockchain.\n- confirmed -  the process is confirmed by the blockchain. Customer\u2019s funds have accumulated enough confirmations.\n- sending - the funds are being sent to your personal wallet. We are in the process of sending the funds to you.\n- partially_paid -  it shows that the customer sent the less than the actual price. Appears when the funds have arrived in your wallet.\n- finished - the funds have reached your personal address and the payment is finished.\n- failed -  the payment wasn't completed due to the error of some kind.\n- refunded -  the funds were refunded back to the user.\n- expired - the user didn't send the funds to the specified address in the 24 hour time window.",
+            "url": "https://nowpayments.p.rapidapi.com/v1/payment",
+            "parameters": [
+                {
+                    "name": "x-api-key",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "<your_key>",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "Content-Type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "application/json",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "I need to create a payment of 100 USD in Bitcoin.",
+                    "parameters": {
+                        "price_amount": 100,
+                        "price_currency": "usd",
+                        "pay_currency": "btc"
+                    }
+                },
+                {
+                    "utterance": "Can you set up a payment for 250 euros in Ethereum?",
+                    "parameters": {
+                        "price_amount": 250,
+                        "price_currency": "eur",
+                        "pay_currency": "eth"
+                    }
+                },
+                {
+                    "utterance": "I'd like to make a payment of 500 USD in Litecoin with a fixed rate.",
+                    "parameters": {
+                        "price_amount": 500,
+                        "price_currency": "usd",
+                        "pay_currency": "ltc",
+                        "fixed_rate": true
+                    }
+                },
+                {
+                    "utterance": "Create a payment of 75 GBP in Ripple and send callbacks to https://myshop.com/callback.",
+                    "parameters": {
+                        "price_amount": 75,
+                        "price_currency": "gbp",
+                        "pay_currency": "xrp",
+                        "ipn_callback_url": "https://myshop.com/callback"
+                    }
+                },
+                {
+                    "utterance": "I want to pay 300 USD in Dogecoin for order RGDBP-21314.",
+                    "parameters": {
+                        "price_amount": 300,
+                        "price_currency": "usd",
+                        "pay_currency": "doge",
+                        "order_id": "RGDBP-21314"
+                    }
+                },
+                {
+                    "utterance": "Set up a payment of 150 CAD in Bitcoin Cash with the description 'Apple Macbook Pro 2019 x 1'.",
+                    "parameters": {
+                        "price_amount": 150,
+                        "price_currency": "cad",
+                        "pay_currency": "bch",
+                        "order_description": "Apple Macbook Pro 2019 x 1"
+                    }
+                },
+                {
+                    "utterance": "Please create a payment of 200 AUD in Tether for purchase ID 98765.",
+                    "parameters": {
+                        "price_amount": 200,
+                        "price_currency": "aud",
+                        "pay_currency": "usdt",
+                        "purchase_id": "98765"
+                    }
+                },
+                {
+                    "utterance": "I need to make a payment of 400 USD in Bitcoin and send the funds to a different address.",
+                    "parameters": {
+                        "price_amount": 400,
+                        "price_currency": "usd",
+                        "pay_currency": "btc",
+                        "payout_address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa",
+                        "payout_currency": "btc"
+                    }
+                },
+                {
+                    "utterance": "Create a payment of 50 EUR in Ethereum with an extra ID for the payout address.",
+                    "parameters": {
+                        "price_amount": 50,
+                        "price_currency": "eur",
+                        "pay_currency": "eth",
+                        "payout_address": "0x32Be343B94f860124dC4fEe278FDCBD38C102D88",
+                        "payout_currency": "eth",
+                        "payout_extra_id": "123456"
+                    }
+                },
+                {
+                    "utterance": "I'd like to pay 600 USD in Bitcoin with a fixed rate and receive callbacks at https://example.com/notify.",
+                    "parameters": {
+                        "price_amount": 600,
+                        "price_currency": "usd",
+                        "pay_currency": "btc",
+                        "fixed_rate": true,
+                        "ipn_callback_url": "https://example.com/notify"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "2.Getavailablecurrencies",
+            "description": "This is a method for obtaining information about the cryptocurrencies available for payments. This depends on the cryptocurrency you choose for your particular store.\nOptional parameters:\n- fixed_rate(optional) - boolean, can be **true** or **false**. Returns avaliable currencies with minimum and maximum amount of the exchange.",
+            "url": "https://nowpayments.p.rapidapi.com/v1/currencies",
+            "parameters": [
+                {
+                    "name": "x-api-key",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "<your_api_key>",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me all the cryptocurrencies I can use for payments?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What cryptocurrencies are available for transactions on my store?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the crypto options I have for accepting payments.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide the available cryptocurrencies for payments?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to know which cryptocurrencies I can accept as payment.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the available cryptocurrencies for my store's transactions?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me the cryptocurrencies I can use for payment processing?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the list of cryptocurrencies available for payments.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What crypto options do I have for accepting payments on my platform?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you list the cryptocurrencies I can use for payment transactions?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "3.Getestimatedprice",
+            "description": "This is a method for calculating the approximate price in cryptocurrency for a given value in Fiat currency. You will need to provide the initial cost in the Fiat currency (amount, currency_from) and the necessary cryptocurrency (currency_to)\nCurrently following fiat currencies are available: usd, eur, nzd, brl, gbp.",
+            "url": "https://nowpayments.p.rapidapi.com/v1/estimate",
+            "parameters": [
+                {
+                    "name": "x-api-key",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "<your_api_key>",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "currency_to",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "btc",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "currency_from",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "usd",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "usd",
+                                "eur",
+                                "nzd",
+                                "brl",
+                                "gbp"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "amount",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 3999.5,
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "How much Bitcoin can I get for 1000 USD?",
+                    "parameters": {
+                        "currency_to": "btc",
+                        "currency_from": "usd",
+                        "amount": 1000
+                    }
+                },
+                {
+                    "utterance": "Convert 500 EUR to Ethereum.",
+                    "parameters": {
+                        "currency_to": "eth",
+                        "currency_from": "eur",
+                        "amount": 500
+                    }
+                },
+                {
+                    "utterance": "What's the equivalent of 750 NZD in Litecoin?",
+                    "parameters": {
+                        "currency_to": "ltc",
+                        "currency_from": "nzd",
+                        "amount": 750
+                    }
+                },
+                {
+                    "utterance": "I need to know how much Ripple I can get for 2000 BRL.",
+                    "parameters": {
+                        "currency_to": "xrp",
+                        "currency_from": "brl",
+                        "amount": 2000
+                    }
+                },
+                {
+                    "utterance": "Calculate the amount of Dogecoin for 150 GBP.",
+                    "parameters": {
+                        "currency_to": "doge",
+                        "currency_from": "gbp",
+                        "amount": 150
+                    }
+                },
+                {
+                    "utterance": "If I have 3000 USD, how much Cardano can I buy?",
+                    "parameters": {
+                        "currency_to": "ada",
+                        "currency_from": "usd",
+                        "amount": 3000
+                    }
+                },
+                {
+                    "utterance": "Exchange 1200 EUR to Binance Coin.",
+                    "parameters": {
+                        "currency_to": "bnb",
+                        "currency_from": "eur",
+                        "amount": 1200
+                    }
+                },
+                {
+                    "utterance": "How many Polkadot can I get for 2500 NZD?",
+                    "parameters": {
+                        "currency_to": "dot",
+                        "currency_from": "nzd",
+                        "amount": 2500
+                    }
+                },
+                {
+                    "utterance": "What's the conversion of 1800 BRL to Solana?",
+                    "parameters": {
+                        "currency_to": "sol",
+                        "currency_from": "brl",
+                        "amount": 1800
+                    }
+                },
+                {
+                    "utterance": "Tell me the amount of Chainlink I can receive for 400 GBP.",
+                    "parameters": {
+                        "currency_to": "link",
+                        "currency_from": "gbp",
+                        "amount": 400
+                    }
+                }
+            ]
+        },
+        {
+            "name": "6.Gettheminimumpaymentamount",
+            "description": "Get the minimum payment amount for a specific pair.\n\nYou can provide both currencies in the pair or just currency_from, and we will calculate the minimum payment amount for currency_from and currency which you have specified as the outcome in the Store Settings.\n\nIn the case of several outcome wallets we will calculate the minimum amount in the same way we route your payment to a specific wallet.",
+            "url": "https://nowpayments.p.rapidapi.com/v1/min-amount",
+            "parameters": [
+                {
+                    "name": "x-api-key",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "<your_api_key>",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "currency_from",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "eth",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "currency_to",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "trx",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the minimum amount I need to pay in Bitcoin to receive Ethereum?",
+                    "parameters": {
+                        "currency_from": "btc",
+                        "currency_to": "eth"
+                    }
+                },
+                {
+                    "utterance": "How much do I need to send in Litecoin to get Dogecoin?",
+                    "parameters": {
+                        "currency_from": "ltc",
+                        "currency_to": "doge"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the minimum payment amount if I'm sending USDT and want to receive BNB?",
+                    "parameters": {
+                        "currency_from": "usdt",
+                        "currency_to": "bnb"
+                    }
+                },
+                {
+                    "utterance": "I want to know the least amount of Ripple I need to send to get Solana.",
+                    "parameters": {
+                        "currency_from": "xrp",
+                        "currency_to": "sol"
+                    }
+                },
+                {
+                    "utterance": "What's the minimum I can send in Cardano to receive Polkadot?",
+                    "parameters": {
+                        "currency_from": "ada",
+                        "currency_to": "dot"
+                    }
+                },
+                {
+                    "utterance": "If I'm paying in Ethereum, what's the minimum amount to receive Bitcoin Cash?",
+                    "parameters": {
+                        "currency_from": "eth",
+                        "currency_to": "bch"
+                    }
+                },
+                {
+                    "utterance": "How much Monero do I need to send to get Chainlink?",
+                    "parameters": {
+                        "currency_from": "xmr",
+                        "currency_to": "link"
+                    }
+                },
+                {
+                    "utterance": "Tell me the minimum amount of Stellar I need to send to receive Tezos.",
+                    "parameters": {
+                        "currency_from": "xlm",
+                        "currency_to": "xtz"
+                    }
+                },
+                {
+                    "utterance": "What's the least amount of Bitcoin Cash I need to send to get Litecoin?",
+                    "parameters": {
+                        "currency_from": "bch",
+                        "currency_to": "ltc"
+                    }
+                },
+                {
+                    "utterance": "How much do I need to send in Dogecoin to receive USDT?",
+                    "parameters": {
+                        "currency_from": "doge",
+                        "currency_to": "usdt"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "5.Getpaymentstatus",
+            "description": "Get the actual information about the payment. You need to provide the ID of the payment in the request.\n\nNOTE! You should make the get payment status request with the same API key that you used in the create payment request.\nHere is the list of avalable statuses:\n- waiting - waiting for the customer to send the payment. The initial status of each payment.\n- confirming - the transaction is being processed on the blockchain. Appears when NOWPayments detect the funds from the user on the blockchain.\n- confirmed -  the process is confirmed by the blockchain. Customer\u2019s funds have accumulated enough confirmations.\n- sending - the funds are being sent to your personal wallet. We are in the process of sending the funds to you.\n- partially_paid -  it shows that the customer sent the less than the actual price. Appears when the funds have arrived in your wallet.\n- finished - the funds have reached your personal address and the payment is finished.\n- failed -  the payment wasn't completed due to the error of some kind.\n- refunded -  the funds were refunded back to the user.\n- expired - the user didn't send the funds to the specified address in the 24 hour time window.",
+            "url": "https://nowpayments.p.rapidapi.com/v1/payment/<your_payment_id>",
+            "parameters": [
+                {
+                    "name": "x-api-key",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "<your_api_key>",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you check the status of my payment with ID 98765?",
+                    "parameters": {
+                        "paymentId": "98765"
+                    }
+                },
+                {
+                    "utterance": "I need to know the current status of the payment identified by 12345.",
+                    "parameters": {
+                        "paymentId": "12345"
+                    }
+                },
+                {
+                    "utterance": "What's happening with the payment ID 54321?",
+                    "parameters": {
+                        "paymentId": "54321"
+                    }
+                },
+                {
+                    "utterance": "Could you tell me the status of the transaction with ID 67890?",
+                    "parameters": {
+                        "paymentId": "67890"
+                    }
+                },
+                {
+                    "utterance": "Please provide the status update for payment ID 11223.",
+                    "parameters": {
+                        "paymentId": "11223"
+                    }
+                },
+                {
+                    "utterance": "I want to know the status of my payment, the ID is 33445.",
+                    "parameters": {
+                        "paymentId": "33445"
+                    }
+                },
+                {
+                    "utterance": "Is the payment with ID 55667 completed?",
+                    "parameters": {
+                        "paymentId": "55667"
+                    }
+                },
+                {
+                    "utterance": "Check the payment status for ID 77889.",
+                    "parameters": {
+                        "paymentId": "77889"
+                    }
+                },
+                {
+                    "utterance": "What is the current status of the payment with ID 99001?",
+                    "parameters": {
+                        "paymentId": "99001"
+                    }
+                },
+                {
+                    "utterance": "Can you update me on the status of payment ID 22334?",
+                    "parameters": {
+                        "paymentId": "22334"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "8.Createinvoice",
+            "description": "Creates invoice with url where you can complete the payment.\nRequest fields:\n- price_amount (required) - the amount that users have to pay for the order stated in fiat currency. In case you do not indicate the price in crypto, our system will automatically convert this fiat amount into its crypto equivalent.\n- price_currency (required) - the fiat currency in which the price_amount is specified (usd, eur, etc).\n- pay_currency (optional) - the crypto currency in which the pay_amount is specified (btc, eth, etc).If not specified, can be chosen on the invoice_url\n- ipn_callback_url (optional) - url to receive callbacks, should contain \"http\" or \"https\", eg. \"https://nowpayments.io\"\n- order_id (optional) - inner store order ID, e.g. \"RGDBP-21314\"\n- order_description (optional) - inner store order description, e.g. \"Apple Macbook Pro 2019 x 1\" \n- success_url(optional) - url where the customer will be redirected after successful payment.\n- cancel_url(optional) - url where the customer will be redirected after failed payment.",
+            "url": "https://nowpayments.p.rapidapi.com/v1/invoice",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "I need to create an invoice for a payment of 150 USD.",
+                    "parameters": {
+                        "price_amount": 150,
+                        "price_currency": "usd"
+                    }
+                },
+                {
+                    "utterance": "Generate an invoice for 200 EUR and let the customer pay in Bitcoin.",
+                    "parameters": {
+                        "price_amount": 200,
+                        "price_currency": "eur",
+                        "pay_currency": "btc"
+                    }
+                },
+                {
+                    "utterance": "Create an invoice for 50 GBP with a callback URL at https://myshop.com/callback.",
+                    "parameters": {
+                        "price_amount": 50,
+                        "price_currency": "gbp",
+                        "ipn_callback_url": "https://myshop.com/callback"
+                    }
+                },
+                {
+                    "utterance": "I want an invoice for 300 CAD with order ID ORD-12345 and description 'Gaming Laptop'.",
+                    "parameters": {
+                        "price_amount": 300,
+                        "price_currency": "cad",
+                        "order_id": "ORD-12345",
+                        "order_description": "Gaming Laptop"
+                    }
+                },
+                {
+                    "utterance": "Please create an invoice for 75 AUD and redirect to https://success.com on success.",
+                    "parameters": {
+                        "price_amount": 75,
+                        "price_currency": "aud",
+                        "success_url": "https://success.com"
+                    }
+                },
+                {
+                    "utterance": "Set up an invoice for 500 JPY with a cancel URL at https://cancel.com.",
+                    "parameters": {
+                        "price_amount": 500,
+                        "price_currency": "jpy",
+                        "cancel_url": "https://cancel.com"
+                    }
+                },
+                {
+                    "utterance": "I need an invoice for 100 CHF, and the customer can choose the crypto to pay.",
+                    "parameters": {
+                        "price_amount": 100,
+                        "price_currency": "chf"
+                    }
+                },
+                {
+                    "utterance": "Create an invoice for 250 SEK with a callback URL at https://notify.me and pay in Ethereum.",
+                    "parameters": {
+                        "price_amount": 250,
+                        "price_currency": "sek",
+                        "ipn_callback_url": "https://notify.me",
+                        "pay_currency": "eth"
+                    }
+                },
+                {
+                    "utterance": "Generate an invoice for 400 NOK with order ID INV-67890 and redirect to https://complete.com on success.",
+                    "parameters": {
+                        "price_amount": 400,
+                        "price_currency": "nok",
+                        "order_id": "INV-67890",
+                        "success_url": "https://complete.com"
+                    }
+                },
+                {
+                    "utterance": "I want to create an invoice for 600 DKK with a description 'Office Chair' and cancel URL at https://fail.com.",
+                    "parameters": {
+                        "price_amount": 600,
+                        "price_currency": "dkk",
+                        "order_description": "Office Chair",
+                        "cancel_url": "https://fail.com"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "4.Createpayment",
+            "description": "This is the method to create a payment. You need to provide your data as a JSON-object payload. Next is a description of the required request fields:\n\n- price_amount (required) - the fiat equivalent of the price to be paid in crypto. If the pay_amount parameter is left empty, our system will automatically convert this fiat price into its crypto equivalent. Please note that this does not enable fiat payments, only provides a fiat price for yours and the customer\u2019s convenience and information.\n- price_currency (required) - the fiat currency in which the price_amount is specified (usd, eur, etc).\n- pay_amount (optional) - the amount that users have to pay for the order stated in crypto. You can either specify  it yourself,  or we will automatically convert the amount you indicated in price_amount.\n- pay_currency (required) - the crypto currency in which the pay_amount is specified (btc, eth, etc).\n- ipn_callback_url (optional) - url to receive callbacks, should contain \"http\" or \"https\", eg. \"https://nowpayments.io\"\n- order_id (optional) - inner store order ID, e.g. \"RGDBP-21314\"\n- order_description (optional) - inner store order description, e.g. \"Apple Macbook Pro 2019 x 1\" \n- purchase_id (optional) - id of purchase for which you want to create aother payment, only used for several payments for one order\n- payout_address (optional) - usually the funds will go to the address you specify in your Personal account. In case you want to receive funds on another address, you can specify it in this parameter.\n- payout_currency (optional) - currency of your external payout_address, required when payout_adress is specified.\n- payout_extra_id(optional) - extra id or memo or tag for external payout_address.\n- fixed_rate(optional) - boolean, can be **true** or **false**. Required for fixed-rate exchanges.\n\nHere the list of avalable statuses of payment:\n- waiting - waiting for the customer to send the payment. The initial status of each payment.\n- confirming - the transaction is being processed on the blockchain. Appears when NOWPayments detect the funds from the user on the blockchain.\n- confirmed -  the process is confirmed by the blockchain. Customer\u2019s funds have accumulated enough confirmations.\n- sending - the funds are being sent to your personal wallet. We are in the process of sending the funds to you.\n- partially_paid -  it shows that the customer sent the less than the actual price. Appears when the funds have arrived in your wallet.\n- finished - the funds have reached your personal address and the payment is finished.\n- failed -  the payment wasn't completed due to the error of some kind.\n- refunded -  the funds were refunded back to the user.\n- expired - the user didn't send the funds to the specified address in the 24 hour time window.",
+            "url": "https://nowpayments.p.rapidapi.com/v1/payment",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "I need to create a payment of 100 USD in Bitcoin.",
+                    "parameters": {
+                        "price_amount": 100,
+                        "price_currency": "usd",
+                        "pay_currency": "btc"
+                    }
+                },
+                {
+                    "utterance": "Can you set up a payment for 250 euros in Ethereum?",
+                    "parameters": {
+                        "price_amount": 250,
+                        "price_currency": "eur",
+                        "pay_currency": "eth"
+                    }
+                },
+                {
+                    "utterance": "Create a payment of 50 GBP in Litecoin with a fixed rate.",
+                    "parameters": {
+                        "price_amount": 50,
+                        "price_currency": "gbp",
+                        "pay_currency": "ltc",
+                        "fixed_rate": true
+                    }
+                },
+                {
+                    "utterance": "I want to pay 0.005 BTC for an order with ID RGDBP-21314.",
+                    "parameters": {
+                        "pay_amount": 0.005,
+                        "pay_currency": "btc",
+                        "order_id": "RGDBP-21314"
+                    }
+                },
+                {
+                    "utterance": "Set up a payment of 300 CAD in Dogecoin and send callbacks to https://myshop.com/callback.",
+                    "parameters": {
+                        "price_amount": 300,
+                        "price_currency": "cad",
+                        "pay_currency": "doge",
+                        "ipn_callback_url": "https://myshop.com/callback"
+                    }
+                },
+                {
+                    "utterance": "I need to create a payment of 150 AUD in Ripple for the order 'Apple Macbook Pro 2019 x 1'.",
+                    "parameters": {
+                        "price_amount": 150,
+                        "price_currency": "aud",
+                        "pay_currency": "xrp",
+                        "order_description": "Apple Macbook Pro 2019 x 1"
+                    }
+                },
+                {
+                    "utterance": "Create a payment of 200 JPY in Bitcoin Cash with a payout address of 1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa.",
+                    "parameters": {
+                        "price_amount": 200,
+                        "price_currency": "jpy",
+                        "pay_currency": "bch",
+                        "payout_address": "1A1zP1eP5QGefi2DMPTfTL5SLmv7DivfNa"
+                    }
+                },
+                {
+                    "utterance": "I want to pay 0.1 ETH for a purchase with ID 12345 and receive funds in a different address.",
+                    "parameters": {
+                        "pay_amount": 0.1,
+                        "pay_currency": "eth",
+                        "purchase_id": "12345",
+                        "payout_address": "0x742d35Cc6634C0532925a3b844Bc454e4438f44e"
+                    }
+                },
+                {
+                    "utterance": "Set up a payment of 500 INR in Tether with a payout currency of USDT.",
+                    "parameters": {
+                        "price_amount": 500,
+                        "price_currency": "inr",
+                        "pay_currency": "usdt",
+                        "payout_currency": "usdt"
+                    }
+                },
+                {
+                    "utterance": "Create a payment of 75 CHF in Monero with a memo tag 'Payment for services'.",
+                    "parameters": {
+                        "price_amount": 75,
+                        "price_currency": "chf",
+                        "pay_currency": "xmr",
+                        "payout_extra_id": "Payment for services"
+                    }
+                }
+            ]
+        }
+    ]
+}

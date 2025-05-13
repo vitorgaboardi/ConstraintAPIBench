@@ -1,0 +1,1674 @@
+{
+    "name": "Flightera Flight Data",
+    "description": "Flight status, on-time performance and statistics by Flightera",
+    "url": "https://rapidapi.com/flightera/api/flightera-flight-data/",
+    "api_methods": [
+        {
+            "name": "flightSearch",
+            "description": "Returns a list of flights for a given flight number. Minimum and/or maximum date can optionally be specified to limit the search. Results are ordered by departure date ascending. The next departure time is returned for pagination.\nWill return a 400 if the date range requested is outside the subscription level",
+            "url": "https://flightera-flight-data.p.rapidapi.com/flight/search",
+            "parameters": [
+                {
+                    "name": "flnr",
+                    "type": "STRING",
+                    "description": "The flight number to request",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "dtFrom",
+                    "type": "STRING",
+                    "description": "The minimum date to request",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "dtTo",
+                    "type": "STRING",
+                    "description": "The maximum date to request",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the flight details for flight number AA123?",
+                    "parameters": {
+                        "flnr": "AA123"
+                    }
+                },
+                {
+                    "utterance": "I need the flight information for flight number BA456 starting from October 1st.",
+                    "parameters": {
+                        "flnr": "BA456",
+                        "dtFrom": "2023-10-01"
+                    }
+                },
+                {
+                    "utterance": "What's the schedule for flight number DL789 until the end of this month?",
+                    "parameters": {
+                        "flnr": "DL789",
+                        "dtTo": "2023-10-31"
+                    }
+                },
+                {
+                    "utterance": "Please provide the flight status for flight number UA321 between September 15th and September 20th.",
+                    "parameters": {
+                        "flnr": "UA321",
+                        "dtFrom": "2023-09-15",
+                        "dtTo": "2023-09-20"
+                    }
+                },
+                {
+                    "utterance": "Find the upcoming flights for flight number QF987.",
+                    "parameters": {
+                        "flnr": "QF987"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the flight details for flight number LH654 from September 10th?",
+                    "parameters": {
+                        "flnr": "LH654",
+                        "dtFrom": "2023-09-10"
+                    }
+                },
+                {
+                    "utterance": "I want to know the flight schedule for flight number EK432 up to October 15th.",
+                    "parameters": {
+                        "flnr": "EK432",
+                        "dtTo": "2023-10-15"
+                    }
+                },
+                {
+                    "utterance": "Show me the flights for flight number AF111 from September 1st to September 5th.",
+                    "parameters": {
+                        "flnr": "AF111",
+                        "dtFrom": "2023-09-01",
+                        "dtTo": "2023-09-05"
+                    }
+                },
+                {
+                    "utterance": "What are the details for flight number SQ222?",
+                    "parameters": {
+                        "flnr": "SQ222"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the flight information for flight number AC333 starting from October 20th.",
+                    "parameters": {
+                        "flnr": "AC333",
+                        "dtFrom": "2023-10-20"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airlineSearch",
+            "description": "Returns a list of airlines for a given country, identifiers or name search pattern. Multiple arguments can be specified to limit the search.\nEither one of the arguments must be specified.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/search",
+            "parameters": [
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airline",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "IATA code"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The name or part of the name of the airline, case insensitive",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airline",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ICAO code"
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The ISO 3166-1 alpha-2 code country code to request",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2 code"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find airlines in the United States?",
+                    "parameters": {
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "Show me airlines with the IATA code AA.",
+                    "parameters": {
+                        "iata": "AA"
+                    }
+                },
+                {
+                    "utterance": "I'm looking for airlines with the ICAO code DAL.",
+                    "parameters": {
+                        "icao": "DAL"
+                    }
+                },
+                {
+                    "utterance": "Find airlines that have 'Airways' in their name.",
+                    "parameters": {
+                        "name": "Airways"
+                    }
+                },
+                {
+                    "utterance": "List airlines in Canada with the name 'Air Canada'.",
+                    "parameters": {
+                        "country": "CA",
+                        "name": "Air Canada"
+                    }
+                },
+                {
+                    "utterance": "What airlines are there in Germany with the ICAO code DLH?",
+                    "parameters": {
+                        "country": "DE",
+                        "icao": "DLH"
+                    }
+                },
+                {
+                    "utterance": "Can you give me airlines in Japan with the IATA code NH?",
+                    "parameters": {
+                        "country": "JP",
+                        "iata": "NH"
+                    }
+                },
+                {
+                    "utterance": "Search for airlines in France.",
+                    "parameters": {
+                        "country": "FR"
+                    }
+                },
+                {
+                    "utterance": "Find airlines with the name 'Lufthansa'.",
+                    "parameters": {
+                        "name": "Lufthansa"
+                    }
+                },
+                {
+                    "utterance": "Show airlines in Australia with the ICAO code QFA.",
+                    "parameters": {
+                        "country": "AU",
+                        "icao": "QFA"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "aircraftSearch",
+            "description": "A list of plane registrations for a given search criteria.\nCan search by airline ident, country, model\nIf multiple arguments are provided, they will be chained as AND\nReturns only currently active aircraft",
+            "url": "https://flightera-flight-data.p.rapidapi.com/aircraft/search",
+            "parameters": [
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "Model ICAO code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ICAO code"
+                    }
+                },
+                {
+                    "name": "airline_ident",
+                    "type": "STRING",
+                    "description": "The ident of the airline, as returned by /airline/search",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Two letter country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "Two letter country code"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me all active aircraft from Delta Airlines.",
+                    "parameters": {
+                        "airline_ident": "Delta Airlines"
+                    }
+                },
+                {
+                    "utterance": "Can you find active planes in the United States?",
+                    "parameters": {
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "List all active Boeing 737 aircraft.",
+                    "parameters": {
+                        "model": "B737"
+                    }
+                },
+                {
+                    "utterance": "I need a list of active aircraft from Lufthansa in Germany.",
+                    "parameters": {
+                        "airline_ident": "Lufthansa",
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "Find active Airbus A320 planes operated by American Airlines.",
+                    "parameters": {
+                        "model": "A320",
+                        "airline_ident": "American Airlines"
+                    }
+                },
+                {
+                    "utterance": "What active aircraft are there in Canada?",
+                    "parameters": {
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "Show me active planes from British Airways.",
+                    "parameters": {
+                        "airline_ident": "British Airways"
+                    }
+                },
+                {
+                    "utterance": "List all active Embraer 190 aircraft in Brazil.",
+                    "parameters": {
+                        "model": "E190",
+                        "country": "BR"
+                    }
+                },
+                {
+                    "utterance": "Can you find active aircraft from Air France?",
+                    "parameters": {
+                        "airline_ident": "Air France"
+                    }
+                },
+                {
+                    "utterance": "I want to see active Boeing 777 planes in Australia.",
+                    "parameters": {
+                        "model": "B777",
+                        "country": "AU"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportSearch",
+            "description": "Returns a list of airports for a given country, bbox or timezone. Multiple arguments can be specified to limit the search.\nEither one of country, bbox or timezone must be specified.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/search",
+            "parameters": [
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "The timezone of the airport (e.g. Europe/Berlin)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "country, bbox, timezone: Either one of country, bbox, or timezone must be specified."
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The ISO 3166-1 alpha-2 code country code to request",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2 code",
+                        "inter-dependency": "country, bbox, timezone: Either one of country, bbox, or timezone must be specified."
+                    }
+                },
+                {
+                    "name": "bbox",
+                    "type": "STRING",
+                    "description": "A bbox (min Longitude , min Latitude , max Longitude , max Latitude), will restrict results to airports within that box",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "country, bbox, timezone: Either one of country, bbox, or timezone must be specified."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you list all airports in Germany?",
+                    "parameters": {
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "Show me airports located in the timezone of Europe/London.",
+                    "parameters": {
+                        "timezone": "Europe/London"
+                    }
+                },
+                {
+                    "utterance": "Find airports within the bounding box defined by coordinates: -74.1, 40.7, -73.9, 40.8.",
+                    "parameters": {
+                        "bbox": "-74.1,40.7,-73.9,40.8"
+                    }
+                },
+                {
+                    "utterance": "What airports are there in France?",
+                    "parameters": {
+                        "country": "FR"
+                    }
+                },
+                {
+                    "utterance": "List airports in the timezone of America/New_York.",
+                    "parameters": {
+                        "timezone": "America/New_York"
+                    }
+                },
+                {
+                    "utterance": "Give me a list of airports in the bounding box: 2.3, 48.8, 2.4, 48.9.",
+                    "parameters": {
+                        "bbox": "2.3,48.8,2.4,48.9"
+                    }
+                },
+                {
+                    "utterance": "Could you provide airports in the United States?",
+                    "parameters": {
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "I need to know the airports in the timezone Asia/Tokyo.",
+                    "parameters": {
+                        "timezone": "Asia/Tokyo"
+                    }
+                },
+                {
+                    "utterance": "Find airports in the bounding box: 139.6, 35.6, 139.8, 35.7.",
+                    "parameters": {
+                        "bbox": "139.6,35.6,139.8,35.7"
+                    }
+                },
+                {
+                    "utterance": "Can you show me airports in Italy?",
+                    "parameters": {
+                        "country": "IT"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportInfo",
+            "description": "Returns detailed airport information for airports identified by the provided identifiers. In most cases the list should contain only one entry.\nHowever, due to the nature of the data, it is possible that multiple entries are returned.\nIf searched by ident, only one airport is returned.\nOne of ident, iata, icao, localID must be provided.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/info",
+            "parameters": [
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airport, must have a length of 4",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 4,
+                            "max": 4
+                        }
+                    }
+                },
+                {
+                    "name": "localID",
+                    "type": "STRING",
+                    "description": "Local identifiers of the airport, currently mostly available for the US & CA (FAA-ID). Max length is 6",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 6
+                        }
+                    }
+                },
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airport, must have a length of 3",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 3,
+                            "max": 3
+                        }
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airport, as returned by /airport/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details about the airport with ICAO code KJFK?",
+                    "parameters": {
+                        "icao": "KJFK"
+                    }
+                },
+                {
+                    "utterance": "I need information on the airport with IATA code LAX.",
+                    "parameters": {
+                        "iata": "LAX"
+                    }
+                },
+                {
+                    "utterance": "What's the status of the airport identified by the local ID ORD?",
+                    "parameters": {
+                        "localID": "ORD"
+                    }
+                },
+                {
+                    "utterance": "Give me the details for the airport with ident ATL.",
+                    "parameters": {
+                        "ident": "ATL"
+                    }
+                },
+                {
+                    "utterance": "Could you tell me more about the airport with ICAO code EGLL?",
+                    "parameters": {
+                        "icao": "EGLL"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know about the airport with IATA code JFK.",
+                    "parameters": {
+                        "iata": "JFK"
+                    }
+                },
+                {
+                    "utterance": "Please provide information on the airport with local ID SFO.",
+                    "parameters": {
+                        "localID": "SFO"
+                    }
+                },
+                {
+                    "utterance": "What are the details for the airport identified by the ICAO code CYYZ?",
+                    "parameters": {
+                        "icao": "CYYZ"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the airport information for the IATA code CDG?",
+                    "parameters": {
+                        "iata": "CDG"
+                    }
+                },
+                {
+                    "utterance": "I need the airport details for the ident LHR.",
+                    "parameters": {
+                        "ident": "LHR"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airlineAircrafts",
+            "description": "A list of plane registrations for a given airline. Can search by ident only.\nOnly returns currently active aircraft",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/aircrafts",
+            "parameters": [
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airline, as returned by /airline/search",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the active aircrafts for Delta Airlines?",
+                    "parameters": {
+                        "ident": "Delta Airlines"
+                    }
+                },
+                {
+                    "utterance": "List all currently active planes for American Airlines.",
+                    "parameters": {
+                        "ident": "American Airlines"
+                    }
+                },
+                {
+                    "utterance": "What are the active aircrafts for Lufthansa?",
+                    "parameters": {
+                        "ident": "Lufthansa"
+                    }
+                },
+                {
+                    "utterance": "Give me the list of active planes for Emirates.",
+                    "parameters": {
+                        "ident": "Emirates"
+                    }
+                },
+                {
+                    "utterance": "I need to know the active aircrafts for British Airways.",
+                    "parameters": {
+                        "ident": "British Airways"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the active aircraft list for Air France?",
+                    "parameters": {
+                        "ident": "Air France"
+                    }
+                },
+                {
+                    "utterance": "Show me the active planes for Singapore Airlines.",
+                    "parameters": {
+                        "ident": "Singapore Airlines"
+                    }
+                },
+                {
+                    "utterance": "What are the currently active aircrafts for Qatar Airways?",
+                    "parameters": {
+                        "ident": "Qatar Airways"
+                    }
+                },
+                {
+                    "utterance": "List the active aircrafts for Qantas.",
+                    "parameters": {
+                        "ident": "Qantas"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me which aircrafts are active for KLM?",
+                    "parameters": {
+                        "ident": "KLM"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "flightStatistics",
+            "description": "Returns statistics for a flight number with one entry per route flown. Statistics are updated daily.\nThe query can be filtered by route.\nStatistics are always as of today, please contact us if you require historical statistics.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/flight/statistics",
+            "parameters": [
+                {
+                    "name": "flnr",
+                    "type": "STRING",
+                    "description": "The flight number to request",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "aptFrom",
+                    "type": "STRING",
+                    "description": "Departure airport ident",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "aptTo",
+                    "type": "STRING",
+                    "description": "Arrival airport ident",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the statistics for flight number AA123?",
+                    "parameters": {
+                        "flnr": "AA123"
+                    }
+                },
+                {
+                    "utterance": "I need the flight stats for flight DL456 from JFK.",
+                    "parameters": {
+                        "flnr": "DL456",
+                        "aptFrom": "JFK"
+                    }
+                },
+                {
+                    "utterance": "What's the performance data for flight BA789 arriving at LAX?",
+                    "parameters": {
+                        "flnr": "BA789",
+                        "aptTo": "LAX"
+                    }
+                },
+                {
+                    "utterance": "Show me the statistics for flight LH101 from FRA to SFO.",
+                    "parameters": {
+                        "flnr": "LH101",
+                        "aptFrom": "FRA",
+                        "aptTo": "SFO"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the stats for flight EK202?",
+                    "parameters": {
+                        "flnr": "EK202"
+                    }
+                },
+                {
+                    "utterance": "I want to know the statistics for flight QF303 departing from SYD.",
+                    "parameters": {
+                        "flnr": "QF303",
+                        "aptFrom": "SYD"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the flight statistics for flight AF404 arriving at CDG.",
+                    "parameters": {
+                        "flnr": "AF404",
+                        "aptTo": "CDG"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the stats for flight UA505 from ORD to LHR?",
+                    "parameters": {
+                        "flnr": "UA505",
+                        "aptFrom": "ORD",
+                        "aptTo": "LHR"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the performance data for flight SQ606.",
+                    "parameters": {
+                        "flnr": "SQ606"
+                    }
+                },
+                {
+                    "utterance": "Get me the statistics for flight CX707 departing from HKG.",
+                    "parameters": {
+                        "flnr": "CX707",
+                        "aptFrom": "HKG"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airlineStatistics",
+            "description": "Returns detailed airline statistics for airlines identified by the provided identifiers. In most cases the list should contain only one entry, unless the ident is ambiguous.\nIf searched by ident, only one airline is returned.\nOne of ident, iata, icao must be provided.\nStatistics are calculated overnight and represent the current day's data.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/statistics",
+            "parameters": [
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airline, must have a length of 4",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ICAO code",
+                        "values": {
+                            "min": 4,
+                            "max": 4
+                        },
+                        "inter-dependency": "ident, iata, icao: One of ident, iata, or icao must be provided."
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airline, as returned by /airline/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "ident, iata, icao: One of ident, iata, or icao must be provided."
+                    }
+                },
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airline, must have a length of 3",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "IATA code",
+                        "values": {
+                            "min": 3,
+                            "max": 3
+                        },
+                        "inter-dependency": "ident, iata, icao: One of ident, iata, or icao must be provided."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the latest statistics for the airline with ICAO code 'AALR'?",
+                    "parameters": {
+                        "icao": "AALR"
+                    }
+                },
+                {
+                    "utterance": "I need the current day's statistics for the airline identified by 'Delta123'.",
+                    "parameters": {
+                        "ident": "Delta123"
+                    }
+                },
+                {
+                    "utterance": "What's the on-time performance for the airline with IATA code 'BA' today?",
+                    "parameters": {
+                        "iata": "BA"
+                    }
+                },
+                {
+                    "utterance": "Give me the detailed statistics for the airline with ICAO code 'DLTA'.",
+                    "parameters": {
+                        "icao": "DLTA"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the airline statistics for 'UnitedAir'?",
+                    "parameters": {
+                        "ident": "UnitedAir"
+                    }
+                },
+                {
+                    "utterance": "Please provide today's statistics for the airline with IATA code 'LH'.",
+                    "parameters": {
+                        "iata": "LH"
+                    }
+                },
+                {
+                    "utterance": "I want to know the performance stats for the airline with ICAO code 'AFRL'.",
+                    "parameters": {
+                        "icao": "AFRL"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the statistics for the airline identified as 'JetBlue123'?",
+                    "parameters": {
+                        "ident": "JetBlue123"
+                    }
+                },
+                {
+                    "utterance": "What are the current statistics for the airline with IATA code 'AA'?",
+                    "parameters": {
+                        "iata": "AA"
+                    }
+                },
+                {
+                    "utterance": "Fetch the detailed statistics for the airline with ICAO code 'UALR'.",
+                    "parameters": {
+                        "icao": "UALR"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "flightInfo",
+            "description": "Returns the info for a flight on a specified date, or the current flight if date is omitted. Will return a 400 if the date requested is outside the subscription level",
+            "url": "https://flightera-flight-data.p.rapidapi.com/flight/info",
+            "parameters": [
+                {
+                    "name": "flnr",
+                    "type": "STRING",
+                    "description": "The flight number to request",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "The date, if omitted the current flight will be returned",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 8601 date format"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the details for flight AA123?",
+                    "parameters": {
+                        "flnr": "AA123"
+                    }
+                },
+                {
+                    "utterance": "What's the status of flight BA456 today?",
+                    "parameters": {
+                        "flnr": "BA456"
+                    }
+                },
+                {
+                    "utterance": "I need the flight information for Delta flight DL789 on September 15, 2023.",
+                    "parameters": {
+                        "flnr": "DL789",
+                        "date": "2023-09-15"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the current status of flight LH101.",
+                    "parameters": {
+                        "flnr": "LH101"
+                    }
+                },
+                {
+                    "utterance": "Could you check the flight details for Emirates flight EK202 on October 1, 2023?",
+                    "parameters": {
+                        "flnr": "EK202",
+                        "date": "2023-10-01"
+                    }
+                },
+                {
+                    "utterance": "What's the on-time performance for flight QF303?",
+                    "parameters": {
+                        "flnr": "QF303"
+                    }
+                },
+                {
+                    "utterance": "I want to know the status of flight AF404 on August 20, 2023.",
+                    "parameters": {
+                        "flnr": "AF404",
+                        "date": "2023-08-20"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the flight info for Singapore Airlines flight SQ505?",
+                    "parameters": {
+                        "flnr": "SQ505"
+                    }
+                },
+                {
+                    "utterance": "Please give me the details for flight UA606 on July 10, 2023.",
+                    "parameters": {
+                        "flnr": "UA606",
+                        "date": "2023-07-10"
+                    }
+                },
+                {
+                    "utterance": "What's the current flight status for Qatar Airways flight QR707?",
+                    "parameters": {
+                        "flnr": "QR707"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportMetar",
+            "description": "Returns the most recent METAR for an airport specified by the given ident.\nIncludes a parsed version of the METAR.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/metar",
+            "parameters": [
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airport (e.g. as returned by /airport/search)",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the latest METAR report for JFK Airport?",
+                    "parameters": {
+                        "ident": "JFK"
+                    }
+                },
+                {
+                    "utterance": "What's the current METAR for Los Angeles International Airport?",
+                    "parameters": {
+                        "ident": "LAX"
+                    }
+                },
+                {
+                    "utterance": "I need the METAR data for Heathrow Airport.",
+                    "parameters": {
+                        "ident": "LHR"
+                    }
+                },
+                {
+                    "utterance": "Fetch the METAR report for Charles de Gaulle Airport.",
+                    "parameters": {
+                        "ident": "CDG"
+                    }
+                },
+                {
+                    "utterance": "Give me the latest METAR for Dubai International Airport.",
+                    "parameters": {
+                        "ident": "DXB"
+                    }
+                },
+                {
+                    "utterance": "Could you get the METAR information for Tokyo Haneda Airport?",
+                    "parameters": {
+                        "ident": "HND"
+                    }
+                },
+                {
+                    "utterance": "Show me the METAR for Sydney Airport.",
+                    "parameters": {
+                        "ident": "SYD"
+                    }
+                },
+                {
+                    "utterance": "I want to see the METAR report for Frankfurt Airport.",
+                    "parameters": {
+                        "ident": "FRA"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the METAR for Singapore Changi Airport.",
+                    "parameters": {
+                        "ident": "SIN"
+                    }
+                },
+                {
+                    "utterance": "What's the METAR for Hong Kong International Airport right now?",
+                    "parameters": {
+                        "ident": "HKG"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportDelayDailyStatistics",
+            "description": "Returns detailed daily delay statistics for an airport identified by the provided identifiers. If searched by ident, only one airport is returned.\nOne of ident, iata, icao, localID must be provided. Additionally, `dt` and `isDeparture` are required.\nStatistics are calculated overnight and represent the data for the specific date.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/delays_by_day",
+            "parameters": [
+                {
+                    "name": "isDeparture",
+                    "type": "BOOLEAN",
+                    "description": "Flag indicating if the desired statistics are for departures (true) or arrivals (false)",
+                    "default": true,
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "dt",
+                    "type": "STRING",
+                    "description": "The date for which delay statistics are desired, formatted as \"YYYY-MM-DD\"",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airport, as returned by /airport/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true,
+                        "inter-dependency": "ident, iata, icao, localID: One of these must be provided."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the departure delay statistics for JFK airport on 2023-10-15?",
+                    "parameters": {
+                        "isDeparture": true,
+                        "dt": "2023-10-15",
+                        "ident": "JFK"
+                    }
+                },
+                {
+                    "utterance": "I need the arrival delay stats for LAX on October 1st, 2023.",
+                    "parameters": {
+                        "isDeparture": false,
+                        "dt": "2023-10-01",
+                        "ident": "LAX"
+                    }
+                },
+                {
+                    "utterance": "What's the departure delay information for Heathrow on 2023-09-30?",
+                    "parameters": {
+                        "isDeparture": true,
+                        "dt": "2023-09-30",
+                        "ident": "Heathrow"
+                    }
+                },
+                {
+                    "utterance": "Show me the arrival delay statistics for Charles de Gaulle airport for the date 2023-11-05.",
+                    "parameters": {
+                        "isDeparture": false,
+                        "dt": "2023-11-05",
+                        "ident": "Charles de Gaulle"
+                    }
+                },
+                {
+                    "utterance": "Get the departure delay data for Frankfurt airport on 2023-12-01.",
+                    "parameters": {
+                        "isDeparture": true,
+                        "dt": "2023-12-01",
+                        "ident": "Frankfurt"
+                    }
+                },
+                {
+                    "utterance": "I want to know the arrival delay stats for Changi airport on 2023-08-20.",
+                    "parameters": {
+                        "isDeparture": false,
+                        "dt": "2023-08-20",
+                        "ident": "Changi"
+                    }
+                },
+                {
+                    "utterance": "Provide the departure delay statistics for Sydney airport on 2023-07-15.",
+                    "parameters": {
+                        "isDeparture": true,
+                        "dt": "2023-07-15",
+                        "ident": "Sydney"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the arrival delay information for Dubai airport on 2023-06-10?",
+                    "parameters": {
+                        "isDeparture": false,
+                        "dt": "2023-06-10",
+                        "ident": "Dubai"
+                    }
+                },
+                {
+                    "utterance": "What's the departure delay data for Narita airport on 2023-05-25?",
+                    "parameters": {
+                        "isDeparture": true,
+                        "dt": "2023-05-25",
+                        "ident": "Narita"
+                    }
+                },
+                {
+                    "utterance": "I need the arrival delay statistics for Incheon airport on 2023-04-18.",
+                    "parameters": {
+                        "isDeparture": false,
+                        "dt": "2023-04-18",
+                        "ident": "Incheon"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportFlights",
+            "description": "Returns a list of flights for an airport, direction and time. The list is sorted ascending by scheduled departure time for direction==\"departure\" and sorted descending by scheduled arrival time for direction==\"arrival\".\nThe next departure/arrival time is returned for pagination.\nThe dates returned for each flight represent the scheduled departure date in local time and can be used to query flight data via /flight/info.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/flights",
+            "parameters": [
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "Direction, one of \"arrival\", \"departure\"",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "arrival",
+                                "departure"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "Ident of the airport to request. Ident is the unique identifier as returned by /airport/search or /airport/info endpoints.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "time",
+                    "type": "STRING",
+                    "description": "Timestamp in UTC. If direction is \"arrival\", show flights with scheduled arrival time prior to this timestamp. If direction is \"departure\", show flights with scheduled departure time after this timestamp. Expected in any valid format, such as 2022-01-01T12:00:00.000Z. Maximum range of flights returned is 30 days.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "Timestamp in UTC"
+                    }
+                },
+                {
+                    "name": "counterpart_ident",
+                    "type": "STRING",
+                    "description": "Ident of the counterpart airport (destination if direction=arrival, otherwise arrival). Used to query connections on a defined route. Ident is the unique identifier as returned by /airport/search or /airport/info endpoints.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me all flights arriving at JFK airport before October 10, 2023.",
+                    "parameters": {
+                        "direction": "arrival",
+                        "ident": "JFK",
+                        "time": "2023-10-10T00:00:00.000Z"
+                    }
+                },
+                {
+                    "utterance": "List the flights departing from LAX airport after November 1, 2023.",
+                    "parameters": {
+                        "direction": "departure",
+                        "ident": "LAX",
+                        "time": "2023-11-01T00:00:00.000Z"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the flights arriving at Heathrow before September 15, 2023?",
+                    "parameters": {
+                        "direction": "arrival",
+                        "ident": "LHR",
+                        "time": "2023-09-15T00:00:00.000Z"
+                    }
+                },
+                {
+                    "utterance": "I need the list of flights departing from Dubai International after December 5, 2023.",
+                    "parameters": {
+                        "direction": "departure",
+                        "ident": "DXB",
+                        "time": "2023-12-05T00:00:00.000Z"
+                    }
+                },
+                {
+                    "utterance": "What flights are arriving at Sydney Airport before August 20, 2023, from Los Angeles?",
+                    "parameters": {
+                        "direction": "arrival",
+                        "ident": "SYD",
+                        "time": "2023-08-20T00:00:00.000Z",
+                        "counterpart_ident": "LAX"
+                    }
+                },
+                {
+                    "utterance": "Give me the flights departing from Tokyo Narita after July 25, 2023, heading to San Francisco.",
+                    "parameters": {
+                        "direction": "departure",
+                        "ident": "NRT",
+                        "time": "2023-07-25T00:00:00.000Z",
+                        "counterpart_ident": "SFO"
+                    }
+                },
+                {
+                    "utterance": "Find flights arriving at Frankfurt before June 30, 2023, from New York.",
+                    "parameters": {
+                        "direction": "arrival",
+                        "ident": "FRA",
+                        "time": "2023-06-30T00:00:00.000Z",
+                        "counterpart_ident": "JFK"
+                    }
+                },
+                {
+                    "utterance": "Show flights departing from Paris Charles de Gaulle after May 10, 2023.",
+                    "parameters": {
+                        "direction": "departure",
+                        "ident": "CDG",
+                        "time": "2023-05-10T00:00:00.000Z"
+                    }
+                },
+                {
+                    "utterance": "List the flights arriving at Singapore Changi before April 5, 2023.",
+                    "parameters": {
+                        "direction": "arrival",
+                        "ident": "SIN",
+                        "time": "2023-04-05T00:00:00.000Z"
+                    }
+                },
+                {
+                    "utterance": "Can you show me flights departing from Hong Kong International after March 15, 2023, to London Heathrow?",
+                    "parameters": {
+                        "direction": "departure",
+                        "ident": "HKG",
+                        "time": "2023-03-15T00:00:00.000Z",
+                        "counterpart_ident": "LHR"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "aircraftInfo",
+            "description": "Returns detailed aircraft information for an aircraft identified by registration.\nOnly works for currently active aircraft",
+            "url": "https://flightera-flight-data.p.rapidapi.com/aircraft/info",
+            "parameters": [
+                {
+                    "name": "reg",
+                    "type": "STRING",
+                    "description": "The registration of the aircraft, as returned by /airline/aircraft or /aircraft/search",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details about the aircraft with registration N12345?",
+                    "parameters": {
+                        "reg": "N12345"
+                    }
+                },
+                {
+                    "utterance": "I need information on the aircraft registered as G-ABCD.",
+                    "parameters": {
+                        "reg": "G-ABCD"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the aircraft with the registration code D-EFGH.",
+                    "parameters": {
+                        "reg": "D-EFGH"
+                    }
+                },
+                {
+                    "utterance": "What are the details for the aircraft with registration JA123A?",
+                    "parameters": {
+                        "reg": "JA123A"
+                    }
+                },
+                {
+                    "utterance": "Give me the information for the aircraft registered under VH-XYZ.",
+                    "parameters": {
+                        "reg": "VH-XYZ"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know more about the aircraft with registration F-GHIJ.",
+                    "parameters": {
+                        "reg": "F-GHIJ"
+                    }
+                },
+                {
+                    "utterance": "Please provide the details of the aircraft with registration C-FGHI.",
+                    "parameters": {
+                        "reg": "C-FGHI"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me about the aircraft registered as B-1234?",
+                    "parameters": {
+                        "reg": "B-1234"
+                    }
+                },
+                {
+                    "utterance": "I want to know the details of the aircraft with registration ZK-ABC.",
+                    "parameters": {
+                        "reg": "ZK-ABC"
+                    }
+                },
+                {
+                    "utterance": "Fetch the information for the aircraft with registration code LN-WXY.",
+                    "parameters": {
+                        "reg": "LN-WXY"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airlineFlights",
+            "description": "Returns a list of flights for an airline given a start time. The list is sorted ascending by scheduled departure time.\nThe next departure/ time is returned for pagination (use start times to paginate).\nThe dates returned for each flight represent the scheduled departure date in local time and can be used to query flight data via /flight/info.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/flights",
+            "parameters": [
+                {
+                    "name": "time",
+                    "type": "STRING",
+                    "description": "Timestamp in UTC. Shows flights with scheduled departure time after this timestamp. Expected in any valid format, such as 2022-01-01T12:00:00.000Z. Maximum range of flights returned is 30 days.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": "30 days"
+                        }
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "Ident of the airline to request. Ident is the unique identifier as returned by /airline/search or /airline/info endpoints.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the upcoming flights for Delta Airlines starting from January 1st, 2023.",
+                    "parameters": {
+                        "time": "2023-01-01T00:00:00.000Z",
+                        "ident": "Delta Airlines"
+                    }
+                },
+                {
+                    "utterance": "Can you list the flights for American Airlines after March 15th, 2023?",
+                    "parameters": {
+                        "time": "2023-03-15T00:00:00.000Z",
+                        "ident": "American Airlines"
+                    }
+                },
+                {
+                    "utterance": "I need the flight schedule for Lufthansa from February 10th, 2023.",
+                    "parameters": {
+                        "time": "2023-02-10T00:00:00.000Z",
+                        "ident": "Lufthansa"
+                    }
+                },
+                {
+                    "utterance": "What are the flights available for Emirates starting on April 5th, 2023?",
+                    "parameters": {
+                        "time": "2023-04-05T00:00:00.000Z",
+                        "ident": "Emirates"
+                    }
+                },
+                {
+                    "utterance": "Give me the list of flights for British Airways from March 1st, 2023.",
+                    "parameters": {
+                        "time": "2023-03-01T00:00:00.000Z",
+                        "ident": "British Airways"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the flights for Air France starting from February 20th, 2023.",
+                    "parameters": {
+                        "time": "2023-02-20T00:00:00.000Z",
+                        "ident": "Air France"
+                    }
+                },
+                {
+                    "utterance": "Please provide the flight details for Qatar Airways after January 25th, 2023.",
+                    "parameters": {
+                        "time": "2023-01-25T00:00:00.000Z",
+                        "ident": "Qatar Airways"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the flights for Singapore Airlines starting on March 10th, 2023?",
+                    "parameters": {
+                        "time": "2023-03-10T00:00:00.000Z",
+                        "ident": "Singapore Airlines"
+                    }
+                },
+                {
+                    "utterance": "List the flights for United Airlines from February 5th, 2023.",
+                    "parameters": {
+                        "time": "2023-02-05T00:00:00.000Z",
+                        "ident": "United Airlines"
+                    }
+                },
+                {
+                    "utterance": "What flights are scheduled for KLM starting from April 1st, 2023?",
+                    "parameters": {
+                        "time": "2023-04-01T00:00:00.000Z",
+                        "ident": "KLM"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airlineInfo",
+            "description": "Returns detailed airline information for airlines identified by the provided identifiers. In most cases the list should contain only one entry.\nHowever, due to the nature of the data, it is possible that multiple entries are returned.\nIf searched by ident, only one airline is returned.\nOne of ident, iata, icao, name must be provided.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/info",
+            "parameters": [
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airline, must have a length of 4",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ICAO code",
+                        "values": {
+                            "min": 4,
+                            "max": 4
+                        }
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The name of the airline. Not case sensitive",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airline, must have a length of 3",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "IATA code",
+                        "values": {
+                            "min": 3,
+                            "max": 3
+                        }
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airline, as returned by /airline/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide information about the airline with ICAO code 'AALF'?",
+                    "parameters": {
+                        "icao": "AALF"
+                    }
+                },
+                {
+                    "utterance": "I need details on the airline named 'Delta Air Lines'.",
+                    "parameters": {
+                        "name": "Delta Air Lines"
+                    }
+                },
+                {
+                    "utterance": "What's the status of the airline with IATA code 'BAW'?",
+                    "parameters": {
+                        "iata": "BAW"
+                    }
+                },
+                {
+                    "utterance": "Give me the airline information for the ident 'DL123'.",
+                    "parameters": {
+                        "ident": "DL123"
+                    }
+                },
+                {
+                    "utterance": "Could you tell me about the airline with ICAO code 'UALA'?",
+                    "parameters": {
+                        "icao": "UALA"
+                    }
+                },
+                {
+                    "utterance": "Find the airline details for 'American Airlines'.",
+                    "parameters": {
+                        "name": "American Airlines"
+                    }
+                },
+                {
+                    "utterance": "I want to know more about the airline with IATA code 'AFR'.",
+                    "parameters": {
+                        "iata": "AFR"
+                    }
+                },
+                {
+                    "utterance": "Please provide the airline information for ident 'LH456'.",
+                    "parameters": {
+                        "ident": "LH456"
+                    }
+                },
+                {
+                    "utterance": "Can you get me the details of the airline with ICAO code 'QTRF'?",
+                    "parameters": {
+                        "icao": "QTRF"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know about the airline called 'Lufthansa'.",
+                    "parameters": {
+                        "name": "Lufthansa"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportStatistics",
+            "description": "Returns detailed airport statistics for airports identified by the provided identifiers. In most cases the list should contain only one entry, unless the ident is ambiguous.\nIf searched by ident, only one airport is returned.\nOne of ident, iata, icao, localID must be provided.\nStatistics are calculated overnight and represent the current day's data.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/statistics",
+            "parameters": [
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airport, as returned by /airport/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true,
+                        "inter-dependency": "ident, iata, icao, localID: One of these must be provided."
+                    }
+                },
+                {
+                    "name": "localID",
+                    "type": "STRING",
+                    "description": "Local identifiers of the airport, currently mostly available for the US & CA (FAA-ID). Max length is 6",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 6
+                        },
+                        "inter-dependency": "ident, iata, icao, localID: One of these must be provided."
+                    }
+                },
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airport, must have a length of 3",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "IATA code",
+                        "values": {
+                            "max": 3,
+                            "min": 3
+                        },
+                        "inter-dependency": "ident, iata, icao, localID: One of these must be provided."
+                    }
+                },
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airport, must have a length of 4",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ICAO code",
+                        "values": {
+                            "max": 4,
+                            "min": 4
+                        },
+                        "inter-dependency": "ident, iata, icao, localID: One of these must be provided."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the current statistics for the airport with IATA code LAX?",
+                    "parameters": {
+                        "iata": "LAX"
+                    }
+                },
+                {
+                    "utterance": "I need the airport statistics for the ICAO code EGLL.",
+                    "parameters": {
+                        "icao": "EGLL"
+                    }
+                },
+                {
+                    "utterance": "What's the latest data for the airport identified by the local ID JFK?",
+                    "parameters": {
+                        "localID": "JFK"
+                    }
+                },
+                {
+                    "utterance": "Give me the airport statistics for the ident ORD.",
+                    "parameters": {
+                        "ident": "ORD"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the statistics for the airport with IATA code CDG?",
+                    "parameters": {
+                        "iata": "CDG"
+                    }
+                },
+                {
+                    "utterance": "Please provide the airport statistics for the ICAO code KATL.",
+                    "parameters": {
+                        "icao": "KATL"
+                    }
+                },
+                {
+                    "utterance": "I want to know the statistics for the airport with the local ID YYZ.",
+                    "parameters": {
+                        "localID": "YYZ"
+                    }
+                },
+                {
+                    "utterance": "Can you get the airport statistics for the ident SFO?",
+                    "parameters": {
+                        "ident": "SFO"
+                    }
+                },
+                {
+                    "utterance": "What are the current statistics for the airport with IATA code NRT?",
+                    "parameters": {
+                        "iata": "NRT"
+                    }
+                },
+                {
+                    "utterance": "Show me the airport statistics for the ICAO code LFPG.",
+                    "parameters": {
+                        "icao": "LFPG"
+                    }
+                }
+            ]
+        }
+    ]
+}

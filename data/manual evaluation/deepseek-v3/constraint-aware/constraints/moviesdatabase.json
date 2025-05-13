@@ -1,0 +1,104 @@
+{
+    "name": "MoviesDatabase",
+    "description": "MoviesDatabase provides complete and updated data for over 9 million titles ( movies, series and episodes) and 11 million actors / crew and cast members",
+    "url": "https://rapidapi.com/SAdrian/api/moviesdatabase/",
+    "api_methods": [
+        {
+            "name": "/titles/x/upcoming",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/x/upcoming",
+            "parameters": [
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2022",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "genre",
+                    "type": "STRING",
+                    "description": "Year filter ex: ?genre=Drama",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: both parameters must be included together."
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr / year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "year.incr",
+                                "year.decr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: both parameters must be included together."
+                    }
+                }
+            ]
+        }
+    ]
+}

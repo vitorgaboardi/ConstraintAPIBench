@@ -1,0 +1,128 @@
+{
+    "name": "Workout Planner",
+    "description": "Get workout plans based on time duration, target muscle, fitness level, fitness goals, and equipment available.",
+    "url": "https://rapidapi.com/nabeeldev1340/api/workout-planner1/",
+    "api_methods": [
+        {
+            "name": "Get Customized Plan",
+            "description": "The /customized endpoint provides a way for users to generate personalized workout plans based on their preferences. It takes various parameters into account to create a workout plan tailored to the user's needs. \nHere's an explanation of the parameters and how to use them:\n1. time: This parameter represents the duration of the workout plan in minutes. By default, if not provided, it is set to 30 minutes. You can customize this parameter to specify the desired duration of your workout.\n2. equipment : This parameter allows you to specify the equipment available for your workout. If you don't have any equipment, you can set it to \"none\". However, if you have specific equipment available, you can provide the details in this parameter.\n3. muscle: This parameter represents the target muscle group for your workout plan. You can specify the muscle group you want to focus on, such as \"legs\", \"chest\", \"back\", etc. If you don't have a specific target muscle group, you can set it to \"none\".\n4. fitness_level: This parameter enables you to define your fitness level. You can choose from options like \"beginner\", \"intermediate\", or \"advanced\" to indicate your current fitness level. The workout plan generated will be adjusted based on this level. \n5. fitness_goals: This parameter allows you to specify your fitness goals, such as \"weight_loss\", \"muscle_gain\", \"strength_training\", \"cardiovascular_endurance\", \"flexibility\", or \"general_fitness\". By indicating your goals, the generated workout plan will align with your specific objectives.",
+            "url": "https://workout-planner1.p.rapidapi.com/customized",
+            "parameters": [
+                {
+                    "name": "fitness_goals",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "strength",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "weight_loss",
+                                "muscle_gain",
+                                "strength_training",
+                                "cardiovascular_endurance",
+                                "flexibility",
+                                "general_fitness"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "fitness_level",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "beginner",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "beginner",
+                                "intermediate",
+                                "advanced"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "muscle",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "biceps",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "legs",
+                                "chest",
+                                "back",
+                                "biceps"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "equipment",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "dumbbells",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "none",
+                                "dumbbells"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "time",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "30",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get Workout Plan",
+            "description": "Get Workout Plans\n\nThis api request can be used to get Workout plan based on:\n\n- Time duration\n- Target Muscle\n- Location\n- Equipment\n\nHence api call takes 4 query parameters:\n\n- time\n- muscle\n- location\n- equipment",
+            "url": "https://workout-planner1.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "time",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "30",
+                    "required": true
+                },
+                {
+                    "name": "equipment",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "dumbbells",
+                    "required": true
+                },
+                {
+                    "name": "muscle",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "biceps",
+                    "required": true
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "gym",
+                    "required": true
+                }
+            ]
+        }
+    ]
+}

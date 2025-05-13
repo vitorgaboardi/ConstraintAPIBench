@@ -1,0 +1,128 @@
+{
+    "name": "Sportspage Feeds",
+    "description": "Real-time scores, schedules, and betting odds for US leagues.  Unbeatable value.  Documentation: https://sportspagefeeds.com/documentation",
+    "url": "https://rapidapi.com/SportspageFeeds/api/sportspage-feeds/",
+    "api_methods": [
+        {
+            "name": "Teams",
+            "description": "Returns a list of teams within a specified league, conference, or division.",
+            "url": "https://sportspage-feeds.p.rapidapi.com/teams",
+            "parameters": [
+                {
+                    "name": "league",
+                    "type": "STRING",
+                    "description": "A valid league code (i.e., NFL, NBA, MLB, NHL, NCAAF, or NCAAB)",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "NFL",
+                                "NBA",
+                                "MLB",
+                                "NHL",
+                                "NCAAF",
+                                "NCAAB"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "conference",
+                    "type": "STRING",
+                    "description": "A conference within the specified league",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "league, conference: conference must be within the specified league."
+                    }
+                },
+                {
+                    "name": "division",
+                    "type": "STRING",
+                    "description": "A division within the specified conference",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "league, conference, division: division must be within the specified conference and league."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the teams in the NFL?",
+                    "parameters": {
+                        "league": "NFL"
+                    }
+                },
+                {
+                    "utterance": "What are the teams in the NBA's Eastern Conference?",
+                    "parameters": {
+                        "league": "NBA",
+                        "conference": "Eastern"
+                    }
+                },
+                {
+                    "utterance": "List all the teams in the NHL's Atlantic Division.",
+                    "parameters": {
+                        "league": "NHL",
+                        "conference": "Eastern",
+                        "division": "Atlantic"
+                    }
+                },
+                {
+                    "utterance": "Which teams are in the MLB's National League?",
+                    "parameters": {
+                        "league": "MLB",
+                        "conference": "National"
+                    }
+                },
+                {
+                    "utterance": "Show me the teams in the NCAAF's Big Ten Conference.",
+                    "parameters": {
+                        "league": "NCAAF",
+                        "conference": "Big Ten"
+                    }
+                },
+                {
+                    "utterance": "What teams are in the NCAAB's ACC Conference?",
+                    "parameters": {
+                        "league": "NCAAB",
+                        "conference": "ACC"
+                    }
+                },
+                {
+                    "utterance": "Can you list the teams in the NFL's AFC North Division?",
+                    "parameters": {
+                        "league": "NFL",
+                        "conference": "AFC",
+                        "division": "North"
+                    }
+                },
+                {
+                    "utterance": "Show me the teams in the NBA's Western Conference.",
+                    "parameters": {
+                        "league": "NBA",
+                        "conference": "Western"
+                    }
+                },
+                {
+                    "utterance": "What are the teams in the MLB's American League Central Division?",
+                    "parameters": {
+                        "league": "MLB",
+                        "conference": "American",
+                        "division": "Central"
+                    }
+                },
+                {
+                    "utterance": "List all the teams in the NHL's Metropolitan Division.",
+                    "parameters": {
+                        "league": "NHL",
+                        "conference": "Eastern",
+                        "division": "Metropolitan"
+                    }
+                }
+            ]
+        }
+    ]
+}

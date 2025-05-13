@@ -1,0 +1,805 @@
+{
+    "name": "Realty Mole Property",
+    "description": "Get instant access to 140+ million property records, owner details, home value and rent estimates, active listings and rental market statistics with the Realty Mole real estate data API. Available nationwide in the US.",
+    "url": "https://rapidapi.com/realtymole/api/realty-mole-property-api/",
+    "api_methods": [
+        {
+            "name": "Property Rental Listings",
+            "description": "Search for rental listings in a geographical area or around a specific location. Returns the listed rent, date, property features, and other listing information. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/rentalListings",
+            "parameters": [
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "The two-character state abbreviation, used to search for listings in a specific state",
+                    "default": "TX",
+                    "required": false,
+                    "constraints": {
+                        "format": "two-character state abbreviation"
+                    }
+                },
+                {
+                    "name": "status",
+                    "type": "STRING",
+                    "description": "The current listing status, used to search for listings matching this criteria. Supported values are: `Active`, `Inactive`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Active",
+                                "Inactive"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "daysOld",
+                    "type": "NUMBER",
+                    "description": "The maximum number of days since a property was listed on the market, with a minimum of 1",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "bedrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bedrooms, used to search for listings matching this criteria",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "The type of the property, used to search for listings matching this criteria. Supported values are: `Single Family`, `Condo`, `Townhouse`, `Manufactured`, `Duplex-Triplex`, `Apartment`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Single Family",
+                                "Condo",
+                                "Townhouse",
+                                "Manufactured",
+                                "Duplex-Triplex",
+                                "Apartment"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "The latitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius: Use latitude, longitude, and radius together to search for listings in a specific area."
+                    }
+                },
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "The 5-digit zip code, used to search for listings in a specific zip code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "5-digit zip code"
+                    }
+                },
+                {
+                    "name": "bathrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The address of the property, in the format of 'Street, City, State, Zip'. Used to retrieve data for a specific property, or together with the `radius` parameter to search for listings in a specific area",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "address, radius: Use address and radius together to search for listings in a specific area."
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The maximum number of listings to return, between 1 and 500. Defaults to 50 if not provided",
+                    "default": "10",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 500,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "The radius of the search area, in kilometers. Use in combination with the `latitude`/`longitude` or `address` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius: Use latitude, longitude, and radius together to search for listings in a specific area. address, radius: Use address and radius together to search for listings in a specific area."
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The index of the first listing to return, used to paginate through large lists of results. Defaults to 0 if not provided",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "The name of the city, used to search for listings in a specific city",
+                    "default": "Austin",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "The longitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius: Use latitude, longitude, and radius together to search for listings in a specific area."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Sale Listings",
+            "description": "Search for sale listings in a geographical area or around a specific location. Returns the listed price, date, property features, and other listing information. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/saleListings",
+            "parameters": [
+                {
+                    "name": "daysOld",
+                    "type": "NUMBER",
+                    "description": "The maximum number of days since a property was listed on the market, with a minimum of 1",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "status",
+                    "type": "STRING",
+                    "description": "The current listing status, used to search for listings matching this criteria. Supported values are: `Active`, `Inactive`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Active",
+                                "Inactive"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "The type of the property, used to search for listings matching this criteria. Supported values are: `Single Family`, `Condo`, `Townhouse`, `Manufactured`, `Duplex-Triplex`, `Apartment`, `Land`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Single Family",
+                                "Condo",
+                                "Townhouse",
+                                "Manufactured",
+                                "Duplex-Triplex",
+                                "Apartment",
+                                "Land"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "bathrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "The 5-digit zip code, used to search for listings in a specific zip code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "5-digit zip code"
+                    }
+                },
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "The two-character state abbreviation, used to search for listings in a specific state",
+                    "default": "TX",
+                    "required": false,
+                    "constraints": {
+                        "format": "two-character state abbreviation"
+                    }
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "The latitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius: latitude and longitude must be used together with radius to search for listings in a specific area."
+                    }
+                },
+                {
+                    "name": "bedrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bedrooms, used to search for listings matching this criteria",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "The radius of the search area, in kilometers. Use in combination with the `latitude`/`longitude` or `address` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius: radius must be used together with latitude and longitude to search for listings in a specific area."
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The maximum number of listings to return, between 1 and 500. Defaults to 50 if not provided",
+                    "default": "10",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 500,
+                            "min": 1
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The index of the first listing to return, used to paginate through large lists of results. Defaults to 0 if not provided",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "The name of the city, used to search for listings in a specific city",
+                    "default": "Austin",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "The longitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius: longitude must be used together with latitude and radius to search for listings in a specific area."
+                    }
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The address of the property, in the format of 'Street, City, State, Zip'. Used to retrieve data for a specific property, or together with the `radius` parameter to search for listings in a specific area",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "address, radius: address can be used together with radius to search for listings in a specific area."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Rental Listing by Id",
+            "description": "Returns a single property rental listing matching the specified id, if it exists. Property ids can be obtained via the `/properties`, `/saleListings` or `/rentalListings` endpoints. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/rentalListings/{propertyid}",
+            "parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "string",
+                    "description": "The id of the property listing to return",
+                    "default": "1702-Cherry-Orchard-Dr,-Austin,-TX-78745",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Sale Listing by Id",
+            "description": "Returns a single property sale listing matching the specified id, if it exists. Property ids can be obtained via the `/properties`, `/saleListings` or `/rentalListings` endpoints. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/saleListings/{propertyid}",
+            "parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "string",
+                    "description": "The id of the property listing to return",
+                    "default": "1702-Cherry-Orchard-Dr,-Austin,-TX-78745",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Record by Id",
+            "description": "Returns a single property record matching the specified id, if it exists. Property ids can be obtained via the `/properties`, `/saleListings` or `/rentalListings` endpoints. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/properties/{propertyid}",
+            "parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "The id of the property record to return",
+                    "default": "5500-Grand-Lake-Dr,-San-Antonio,-TX-78244",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Records",
+            "description": "Search for property records in a geographical area, or around a specific address. Returns the property features, owner details, tax assessment, and other property information. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/properties",
+            "parameters": [
+                {
+                    "name": "bathrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bathrooms, used to search for properties matching this criteria. Supports fractions to indicate partial bathrooms",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "The type of the property, used to search for properties matching this criteria. Supported values are: `Single Family`, `Condo`, `Townhouse`, `Manufactured`, `Duplex-Triplex`, `Apartment`, `Land`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Single Family",
+                                "Condo",
+                                "Townhouse",
+                                "Manufactured",
+                                "Duplex-Triplex",
+                                "Apartment",
+                                "Land"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "The latitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for properties in a specific area",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius: Use latitude, longitude, and radius together to search for properties in a specific area."
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The index of the first property record to return, used to paginate through large lists of results. Defaults to 0 if not provided",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "The name of the city, used to search for properties in a specific city",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "The 2-character state abbreviation, used to search for properties in a specific state",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "2-character state abbreviation"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The maximum number of property records to return, between 1 and 500. Defaults to 50 if not provided",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 500,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "The 5-digit zip code, used to search for properties in a specific zip code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "5-digit zip code"
+                    }
+                },
+                {
+                    "name": "bedrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bedrooms, used to search for properties matching this criteria",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "The longitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for properties in a specific area",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius: Use latitude, longitude, and radius together to search for properties in a specific area."
+                    }
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The address of the property, in the format of 'Street, City, State, Zip'. Used to retrieve data for a specific property, or together with the `radius` parameter to search for properties in a specific area",
+                    "default": "5500 Grand Lake Dr, San Antonio, TX, 78244",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "address, radius: Use address and radius together to search for properties in a specific area."
+                    }
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "The radius of the search area, in kilometers. Use in combination with the `latitude`/`longitude` or `address` parameters to search for properties in a specific area",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius: Use latitude, longitude, and radius together to search for properties in a specific area. address, radius: Use address and radius together to search for properties in a specific area."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Rent Estimate",
+            "description": "Returns a rent estimate and comparable rental listings for an address or lat/long coordinate. Providing property feature parameters will improve the estimate accuracy. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/rentalPrice",
+            "parameters": [
+                {
+                    "name": "squareFootage",
+                    "type": "NUMBER",
+                    "description": "The total living area size of the property, in square feet",
+                    "default": "1600",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "bedrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bedrooms in the property",
+                    "default": "4",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "The longitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, address: Either latitude and longitude or address must be provided."
+                    }
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "The type of the property. Supported values are: `Single Family`, `Condo`, `Townhouse`, `Manufactured`, `Duplex-Triplex`, `Apartment`",
+                    "default": "Single Family",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Single Family",
+                                "Condo",
+                                "Townhouse",
+                                "Manufactured",
+                                "Duplex-Triplex",
+                                "Apartment"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The property address, in the format of 'Street, City, State, Zip'. You need to provide either the `address` or the `latitude`/`longitude` parameters",
+                    "default": "5500 Grand Lake Drive, San Antonio, TX, 78244",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, address: Either latitude and longitude or address must be provided."
+                    }
+                },
+                {
+                    "name": "maxRadius",
+                    "type": "NUMBER",
+                    "description": "The maximum distance between comparable listings and the subject property, in kilometers. Defaults to 50 if not provided",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "bathrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bathrooms in the property. Supports fractions to indicate partial bathrooms",
+                    "default": "2",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "daysOld",
+                    "type": "NUMBER",
+                    "description": "The maximum number of days since comparable listings were last seen on the market, with a minimum of 1",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "compCount",
+                    "type": "NUMBER",
+                    "description": "The number of comparable listings returned by the API, between 5 and 25. Defaults to 10 if not provided",
+                    "default": "5",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 5,
+                            "max": 25
+                        }
+                    }
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "The latitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, address: Either latitude and longitude or address must be provided."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Random Property Records",
+            "description": "Returns a list of property records selected at random up to the specified limit, to facilitate applications requiring samples of randomly selected property data. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/randomProperties",
+            "parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of records to return, between 1 and 500. Defaults to 10 if not provided",
+                    "default": "5",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 500,
+                            "min": 1
+                        },
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Rental Market Data",
+            "description": "Returns rental data for a single US zip code, including rent averages, rental listing composition, and historical rent trends. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/zipCodes/{zipcode}",
+            "parameters": [
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "A valid 5-digit US zip code",
+                    "default": "29611",
+                    "required": true,
+                    "constraints": {
+                        "format": "5-digit US zip code"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Value Estimate",
+            "description": "Returns a property value estimate and comparable sale listings for an address or lat/long coordinate. Providing property feature parameters will improve the estimate accuracy. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/salePrice",
+            "parameters": [
+                {
+                    "name": "bedrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bedrooms in the property",
+                    "default": "4",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "daysOld",
+                    "type": "NUMBER",
+                    "description": "The maximum number of days since comparable listings were last seen on the market, with a minimum of 1",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "bathrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bathrooms in the property. Supports fractions to indicate partial bathrooms",
+                    "default": "2",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "maxRadius",
+                    "type": "NUMBER",
+                    "description": "The maximum distance between comparable listings and the subject property, in kilometers. Defaults to 50 if not provided",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "The latitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, address: Either latitude and longitude or address must be provided."
+                    }
+                },
+                {
+                    "name": "squareFootage",
+                    "type": "NUMBER",
+                    "description": "The total living area size of the property, in square feet",
+                    "default": "1600",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "The type of the property. Supported values are: `Single Family`, `Condo`, `Townhouse`, `Manufactured`, `Duplex-Triplex`, `Apartment`, `Land`",
+                    "default": "Single Family",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Single Family",
+                                "Condo",
+                                "Townhouse",
+                                "Manufactured",
+                                "Duplex-Triplex",
+                                "Apartment",
+                                "Land"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "The longitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, address: Either latitude and longitude or address must be provided."
+                    }
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The property address, in the format of 'Street, City, State, Zip'. You need to provide either the `address` or the `latitude`/`longitude` parameters",
+                    "default": "5500 Grand Lake Drive, San Antonio, TX, 78244",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, address: Either latitude and longitude or address must be provided."
+                    }
+                },
+                {
+                    "name": "compCount",
+                    "type": "NUMBER",
+                    "description": "The number of comparable listings returned by the API, between 5 and 25. Defaults to 10 if not provided",
+                    "default": "5",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 5,
+                            "max": 25
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

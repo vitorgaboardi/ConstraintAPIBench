@@ -1,0 +1,168 @@
+{
+    "name": "ecoweather",
+    "description": "Economically relevant meteorological data like heat degree days, average temperature. ",
+    "url": "https://rapidapi.com/stromdao-stromdao-default/api/ecoweather/",
+    "api_methods": [
+        {
+            "name": "Schneetage",
+            "description": "Beantwortet die Frage, wie viel Schnee und an wie viel Tagen innerhalb eines Zeitraums vorhanden gewesen ist. Wird verwendet zum Beispiel bei der Einsatzplanung im Winterdienst und Hausmeisterservice sowie im Tourismus.",
+            "url": "https://ecoweather.p.rapidapi.com/ucSNOW",
+            "parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2021-01-01",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "8.79",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "49.34",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2021-09-21",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Heizgradtage",
+            "description": "Beantwortet die Frage, wie viele Heizgradtage innerhalb eines Zeitraums vorhanden gewesen sind. Wird verwendet zum Beispiel bei der unterj\u00e4hrigen Abgrenzung von Heizkosten bei der Nebenkostenabrechnung.",
+            "url": "https://ecoweather.p.rapidapi.com/ucHDD",
+            "parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2021-01-01",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "8.79",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "49.34",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2021-09-21",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Niederschlag",
+            "description": "Beantwortet die Frage, wie viel Niederschlag innerhalb eines Zeitraums vorhanden gewesen ist. Wird verwendet zum Beispiel bei der Dimensionierung von Regenwassernutzung (Zisterne) oder bei der Planung von G\u00e4rten .",
+            "url": "https://ecoweather.p.rapidapi.com/ucPREC",
+            "parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2021-01-01",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "8.79",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "49.34",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2021-09-21",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "ecoweather",
+            "description": "Retrieve historical weather data for a location. Dataset lasts back until year 2016. Results are limited to 366 days (1 year)  per request.",
+            "url": "https://ecoweather.p.rapidapi.com/ecoweather",
+            "parameters": [
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "Longitude of a geo-location in degrees. ",
+                    "default": "8.80282",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "Latitude of a geo-location in degrees. ",
+                    "default": "49.3427818",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Start date in YYYY-MM-DD format.",
+                    "default": "2021-12-31",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "End date in YYYY-MM-DD format. \n\nNote: if time period relative to `from` is more than 366 days it will automatically be replaced with this date.",
+                    "default": "2022-09-31",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "inter-dependency": "from, to: The time period between 'from' and 'to' must not exceed 366 days."
+                    }
+                }
+            ]
+        }
+    ]
+}

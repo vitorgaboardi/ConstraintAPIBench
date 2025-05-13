@@ -1,0 +1,486 @@
+{
+    "name": "MDBList",
+    "description": "Get Movies and TV Shows data with ratings from multiple providers in JSON format",
+    "url": "https://rapidapi.com/linaspurinis/api/mdblist/",
+    "api_methods": [
+        {
+            "name": "Search by Title",
+            "description": "Search for Movies or TV Shows by title, include option year or mediatype filter to narrow your results",
+            "url": "https://mdblist.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "s",
+                    "type": "STRING",
+                    "description": "Movie or TV Show Title to search",
+                    "default": "jaws",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "l",
+                    "type": "NUMBER",
+                    "description": "Limit returned items.\nYou can use numbes from 1 to 100 (default is 50)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100,
+                            "min": 1
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "y",
+                    "type": "NUMBER",
+                    "description": "Year (format YYYY, for example 2020) to limit title search (would also include previous and next year movies)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY"
+                    }
+                },
+                {
+                    "name": "m",
+                    "type": "ENUM",
+                    "description": "Search for only movie or tv show, leave empty for both",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "tv show"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find information about the movie Inception?",
+                    "parameters": {
+                        "s": "Inception"
+                    }
+                },
+                {
+                    "utterance": "Search for the TV show Breaking Bad from 2008.",
+                    "parameters": {
+                        "s": "Breaking Bad",
+                        "y": 2008
+                    }
+                },
+                {
+                    "utterance": "I'm looking for details on The Matrix. Can you help?",
+                    "parameters": {
+                        "s": "The Matrix"
+                    }
+                },
+                {
+                    "utterance": "Find me the movie Titanic released in 1997.",
+                    "parameters": {
+                        "s": "Titanic",
+                        "y": 1997
+                    }
+                },
+                {
+                    "utterance": "Could you search for the TV show Friends?",
+                    "parameters": {
+                        "s": "Friends",
+                        "m": "tv show"
+                    }
+                },
+                {
+                    "utterance": "I need information about the movie The Dark Knight from 2008.",
+                    "parameters": {
+                        "s": "The Dark Knight",
+                        "y": 2008
+                    }
+                },
+                {
+                    "utterance": "Search for the TV show Stranger Things.",
+                    "parameters": {
+                        "s": "Stranger Things",
+                        "m": "tv show"
+                    }
+                },
+                {
+                    "utterance": "Can you find details on the movie Avatar released in 2009?",
+                    "parameters": {
+                        "s": "Avatar",
+                        "y": 2009
+                    }
+                },
+                {
+                    "utterance": "I'm looking for the TV show Game of Thrones.",
+                    "parameters": {
+                        "s": "Game of Thrones",
+                        "m": "tv show"
+                    }
+                },
+                {
+                    "utterance": "Find me information about the movie Jurassic Park.",
+                    "parameters": {
+                        "s": "Jurassic Park"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get by Trakt.tv ID",
+            "description": "Returns movie or TV Show info",
+            "url": "https://mdblist.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "t",
+                    "type": "STRING",
+                    "description": "A valid Trakt.tv ID",
+                    "default": "457",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "m",
+                    "type": "ENUM",
+                    "description": "Mediatype *movie* or *show* (default *movie*)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "show"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the details for the movie with Trakt.tv ID 12345?",
+                    "parameters": {
+                        "t": "12345"
+                    }
+                },
+                {
+                    "utterance": "What information is available for the TV show with Trakt.tv ID 67890?",
+                    "parameters": {
+                        "t": "67890",
+                        "m": "show"
+                    }
+                },
+                {
+                    "utterance": "Find the movie details for Trakt.tv ID 54321.",
+                    "parameters": {
+                        "t": "54321"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the data for the show with Trakt.tv ID 98765?",
+                    "parameters": {
+                        "t": "98765",
+                        "m": "show"
+                    }
+                },
+                {
+                    "utterance": "I need the information for the movie with Trakt.tv ID 11223.",
+                    "parameters": {
+                        "t": "11223"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the info for the TV show with Trakt.tv ID 33445?",
+                    "parameters": {
+                        "t": "33445",
+                        "m": "show"
+                    }
+                },
+                {
+                    "utterance": "Get the details for the movie with Trakt.tv ID 55667.",
+                    "parameters": {
+                        "t": "55667"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the data for the show with Trakt.tv ID 77889?",
+                    "parameters": {
+                        "t": "77889",
+                        "m": "show"
+                    }
+                },
+                {
+                    "utterance": "Find the movie details for Trakt.tv ID 99001.",
+                    "parameters": {
+                        "t": "99001"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the information for the TV show with Trakt.tv ID 22334?",
+                    "parameters": {
+                        "t": "22334",
+                        "m": "show"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get by IMDb ID",
+            "description": "Returns movie or TV Show info by IMDb ID",
+            "url": "https://mdblist.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "i",
+                    "type": "STRING",
+                    "description": "A valid IMDb ID",
+                    "default": "tt0073195",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get me the details for the movie with IMDb ID tt0111161?",
+                    "parameters": {
+                        "i": "tt0111161"
+                    }
+                },
+                {
+                    "utterance": "What information do you have on the TV show with IMDb ID tt0944947?",
+                    "parameters": {
+                        "i": "tt0944947"
+                    }
+                },
+                {
+                    "utterance": "I need the ratings and details for the movie with IMDb ID tt1375666.",
+                    "parameters": {
+                        "i": "tt1375666"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the data for the TV show with IMDb ID tt0903747?",
+                    "parameters": {
+                        "i": "tt0903747"
+                    }
+                },
+                {
+                    "utterance": "Please provide the information for the movie with IMDb ID tt0133093.",
+                    "parameters": {
+                        "i": "tt0133093"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the rating and details for the movie with IMDb ID tt0816692?",
+                    "parameters": {
+                        "i": "tt0816692"
+                    }
+                },
+                {
+                    "utterance": "Can you look up the TV show with IMDb ID tt0460649?",
+                    "parameters": {
+                        "i": "tt0460649"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the details for the movie with IMDb ID tt0120737.",
+                    "parameters": {
+                        "i": "tt0120737"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the info on the TV show with IMDb ID tt0386676?",
+                    "parameters": {
+                        "i": "tt0386676"
+                    }
+                },
+                {
+                    "utterance": "Could you get the ratings and details for the movie with IMDb ID tt0167260?",
+                    "parameters": {
+                        "i": "tt0167260"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get by TMDb ID",
+            "description": "Returns movie or TV Show info",
+            "url": "https://mdblist.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "tm",
+                    "type": "NUMBER",
+                    "description": "A valid TMDb ID",
+                    "default": "578",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "m",
+                    "type": "ENUM",
+                    "description": "Mediatype *movie* or *show* (default *movie*)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "show"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get me the details for the movie with TMDb ID 12345?",
+                    "parameters": {
+                        "tm": 12345
+                    }
+                },
+                {
+                    "utterance": "What information do you have on the TV show with TMDb ID 67890?",
+                    "parameters": {
+                        "tm": 67890,
+                        "m": "show"
+                    }
+                },
+                {
+                    "utterance": "I need the data for the movie with TMDb ID 54321.",
+                    "parameters": {
+                        "tm": 54321
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the details for the TV show with TMDb ID 98765?",
+                    "parameters": {
+                        "tm": 98765,
+                        "m": "show"
+                    }
+                },
+                {
+                    "utterance": "Get me the info for the movie with TMDb ID 11223.",
+                    "parameters": {
+                        "tm": 11223
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the information on the TV show with TMDb ID 33445?",
+                    "parameters": {
+                        "tm": 33445,
+                        "m": "show"
+                    }
+                },
+                {
+                    "utterance": "Can you retrieve the details for the movie with TMDb ID 55667?",
+                    "parameters": {
+                        "tm": 55667
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the data for the TV show with TMDb ID 77889.",
+                    "parameters": {
+                        "tm": 77889,
+                        "m": "show"
+                    }
+                },
+                {
+                    "utterance": "Fetch the information for the movie with TMDb ID 99001.",
+                    "parameters": {
+                        "tm": 99001
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the info on the TV show with TMDb ID 22334?",
+                    "parameters": {
+                        "tm": 22334,
+                        "m": "show"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get by TVDB ID",
+            "description": "Returns TV Show info",
+            "url": "https://mdblist.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "tv",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "273181",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get me the details for the TV show with ID 273181?",
+                    "parameters": {
+                        "tv": 273181
+                    }
+                },
+                {
+                    "utterance": "What information do you have on the TV show identified by 12345?",
+                    "parameters": {
+                        "tv": 12345
+                    }
+                },
+                {
+                    "utterance": "I need the data for the TV series with ID 67890.",
+                    "parameters": {
+                        "tv": 67890
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the info for the TV show with ID 98765?",
+                    "parameters": {
+                        "tv": 98765
+                    }
+                },
+                {
+                    "utterance": "Please provide details for the TV show identified by 54321.",
+                    "parameters": {
+                        "tv": 54321
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the information on the TV series with ID 11223?",
+                    "parameters": {
+                        "tv": 11223
+                    }
+                },
+                {
+                    "utterance": "Can you retrieve the data for the TV show with ID 33445?",
+                    "parameters": {
+                        "tv": 33445
+                    }
+                },
+                {
+                    "utterance": "I\u2019m looking for the details of the TV show with ID 55667.",
+                    "parameters": {
+                        "tv": 55667
+                    }
+                },
+                {
+                    "utterance": "Could you give me the info for the TV series with ID 77889?",
+                    "parameters": {
+                        "tv": 77889
+                    }
+                },
+                {
+                    "utterance": "What can you tell me about the TV show with ID 99001?",
+                    "parameters": {
+                        "tv": 99001
+                    }
+                }
+            ]
+        }
+    ]
+}

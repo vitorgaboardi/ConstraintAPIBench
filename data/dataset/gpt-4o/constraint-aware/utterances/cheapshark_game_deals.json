@@ -1,0 +1,871 @@
+{
+    "name": "CheapShark - Game Deals",
+    "description": "CheapShark is a price comparison website for digital PC Games. We keep track of prices across multiple stores including Steam, GreenManGaming, Fanatical, and many others.",
+    "url": "https://rapidapi.com/CheapShark/api/cheapshark-game-deals/",
+    "api_methods": [
+        {
+            "name": "Stores Info",
+            "description": "Returns a full list of store IDs and names, a flag specifying if store is active, and an array of image/logo sizes (relative URLs)",
+            "url": "https://cheapshark-game-deals.p.rapidapi.com/stores",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "Multiple Game Lookup",
+            "description": "Allows lookup of a list of games. Includes list of all deals for each game. Maximum of 25 games.",
+            "url": "https://cheapshark-game-deals.p.rapidapi.com/games",
+            "parameters": [
+                {
+                    "name": "ids",
+                    "type": "ARRAY",
+                    "description": "A comma seperated list of GameID's",
+                    "default": "128,129,130",
+                    "required": true,
+                    "constraints": {
+                        "id": true,
+                        "values": {
+                            "max": 25
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the deals for 'Cyberpunk 2077', 'The Witcher 3', and 'Red Dead Redemption 2'?",
+                    "parameters": {
+                        "ids": "cyberpunk2077,witcher3,reddeadredemption2"
+                    }
+                },
+                {
+                    "utterance": "I want to see the current offers for 'Assassin's Creed Valhalla', 'Far Cry 6', and 'Halo Infinite'.",
+                    "parameters": {
+                        "ids": "assassinscreedvalhalla,farcry6,haloinfinite"
+                    }
+                },
+                {
+                    "utterance": "What are the latest discounts available for 'Doom Eternal', 'Resident Evil Village', and 'FIFA 22'?",
+                    "parameters": {
+                        "ids": "doometernal,residentevilvillage,fifa22"
+                    }
+                },
+                {
+                    "utterance": "Please provide the price comparison for 'Call of Duty: Modern Warfare', 'Battlefield 2042', and 'Forza Horizon 5'.",
+                    "parameters": {
+                        "ids": "callofdutymodernwarfare,battlefield2042,forzahorizon5"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the deals for 'Minecraft', 'Fortnite', and 'Apex Legends'.",
+                    "parameters": {
+                        "ids": "minecraft,fortnite,apexlegends"
+                    }
+                },
+                {
+                    "utterance": "Can you find the best prices for 'Grand Theft Auto V', 'Elden Ring', and 'Hades'?",
+                    "parameters": {
+                        "ids": "grandtheftautov,eldenring,hades"
+                    }
+                },
+                {
+                    "utterance": "Show me the current deals for 'Cyberpunk 2077', 'Hollow Knight', and 'Stardew Valley'.",
+                    "parameters": {
+                        "ids": "cyberpunk2077,hollowknight,stardewvalley"
+                    }
+                },
+                {
+                    "utterance": "I need the price details for 'The Sims 4', 'Among Us', and 'Terraria'.",
+                    "parameters": {
+                        "ids": "thesims4,amongus,terraria"
+                    }
+                },
+                {
+                    "utterance": "What are the available discounts for 'Overwatch', 'Valorant', and 'League of Legends'?",
+                    "parameters": {
+                        "ids": "overwatch,valorant,leagueoflegends"
+                    }
+                },
+                {
+                    "utterance": "Please list the deals for 'World of Warcraft', 'Diablo III', and 'StarCraft II'.",
+                    "parameters": {
+                        "ids": "worldofwarcraft,diabloiii,starcraftii"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Manage Alerts",
+            "description": "Send an email containing a link to manage your alerts.",
+            "url": "https://cheapshark-game-deals.p.rapidapi.com/alerts",
+            "parameters": [
+                {
+                    "name": "email",
+                    "type": "STRING",
+                    "description": "Any valid email address",
+                    "default": "someone@example.org",
+                    "required": true,
+                    "constraints": {
+                        "format": "valid email address"
+                    }
+                },
+                {
+                    "name": "action",
+                    "type": "STRING",
+                    "description": "The action to take on the price alert, set to `manage`",
+                    "default": "manage",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "manage"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you send me a link to manage my game alerts at john.doe@gmail.com?",
+                    "parameters": {
+                        "email": "john.doe@gmail.com",
+                        "action": "manage"
+                    }
+                },
+                {
+                    "utterance": "I need to update my alert settings. Please email the link to jane.smith@outlook.com.",
+                    "parameters": {
+                        "email": "jane.smith@outlook.com",
+                        "action": "manage"
+                    }
+                },
+                {
+                    "utterance": "Could you provide me with a link to manage my alerts? Send it to alex.brown@yahoo.com.",
+                    "parameters": {
+                        "email": "alex.brown@yahoo.com",
+                        "action": "manage"
+                    }
+                },
+                {
+                    "utterance": "Please email me the link to manage my alerts at emily.white@icloud.com.",
+                    "parameters": {
+                        "email": "emily.white@icloud.com",
+                        "action": "manage"
+                    }
+                },
+                {
+                    "utterance": "I want to change my alert preferences. Can you send the management link to michael.green@hotmail.com?",
+                    "parameters": {
+                        "email": "michael.green@hotmail.com",
+                        "action": "manage"
+                    }
+                },
+                {
+                    "utterance": "Send me the link to manage my alerts to sarah.jones@aol.com.",
+                    "parameters": {
+                        "email": "sarah.jones@aol.com",
+                        "action": "manage"
+                    }
+                },
+                {
+                    "utterance": "I need the alert management link. Please email it to david.miller@protonmail.com.",
+                    "parameters": {
+                        "email": "david.miller@protonmail.com",
+                        "action": "manage"
+                    }
+                },
+                {
+                    "utterance": "Can you email me the link to manage my alerts at laura.wilson@live.com?",
+                    "parameters": {
+                        "email": "laura.wilson@live.com",
+                        "action": "manage"
+                    }
+                },
+                {
+                    "utterance": "Please send the alert management link to my email, robert.moore@gmail.com.",
+                    "parameters": {
+                        "email": "robert.moore@gmail.com",
+                        "action": "manage"
+                    }
+                },
+                {
+                    "utterance": "I want to manage my alerts. Could you email the link to linda.taylor@me.com?",
+                    "parameters": {
+                        "email": "linda.taylor@me.com",
+                        "action": "manage"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "List of Games",
+            "description": "Get a list of games that contain a given title or matches steamAppID. Response includes the cheapest current deal for each game.",
+            "url": "https://cheapshark-game-deals.p.rapidapi.com/games",
+            "parameters": [
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Search for a game by title",
+                    "default": "batman",
+                    "required": false
+                },
+                {
+                    "name": "exact",
+                    "type": "NUMBER",
+                    "description": "Default `0`\n\nFlag to allow only exact string match for `title` parameter",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                0,
+                                1
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Default `60`\n\nThe maximum number of games to return, up to `60`",
+                    "default": "60",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 60
+                        }
+                    }
+                },
+                {
+                    "name": "steamAppID",
+                    "type": "NUMBER",
+                    "description": "Search for a game by Steam\u2019s AppID - e.g. http://store.steampowered.com/app/35140/",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find the cheapest deals for the game 'Cyberpunk 2077'?",
+                    "parameters": {
+                        "title": "Cyberpunk 2077"
+                    }
+                },
+                {
+                    "utterance": "Show me the best price for the game with Steam App ID 570.",
+                    "parameters": {
+                        "steamAppID": 570
+                    }
+                },
+                {
+                    "utterance": "I want to see the cheapest offers for 'The Witcher 3' with an exact match.",
+                    "parameters": {
+                        "title": "The Witcher 3",
+                        "exact": 1
+                    }
+                },
+                {
+                    "utterance": "List the top 10 cheapest deals for 'Assassin's Creed'.",
+                    "parameters": {
+                        "title": "Assassin's Creed",
+                        "limit": 10
+                    }
+                },
+                {
+                    "utterance": "Find the best price for the game 'Doom Eternal' with a limit of 5 results.",
+                    "parameters": {
+                        "title": "Doom Eternal",
+                        "limit": 5
+                    }
+                },
+                {
+                    "utterance": "What are the cheapest deals for 'Red Dead Redemption 2'?",
+                    "parameters": {
+                        "title": "Red Dead Redemption 2"
+                    }
+                },
+                {
+                    "utterance": "Get me the cheapest deal for the game with Steam App ID 730.",
+                    "parameters": {
+                        "steamAppID": 730
+                    }
+                },
+                {
+                    "utterance": "Show the cheapest offers for 'Halo Infinite' with an exact title match.",
+                    "parameters": {
+                        "title": "Halo Infinite",
+                        "exact": 1
+                    }
+                },
+                {
+                    "utterance": "I want to see up to 20 cheapest deals for 'Final Fantasy XV'.",
+                    "parameters": {
+                        "title": "Final Fantasy XV",
+                        "limit": 20
+                    }
+                },
+                {
+                    "utterance": "Find the best price for 'Resident Evil Village' with a maximum of 15 results.",
+                    "parameters": {
+                        "title": "Resident Evil Village",
+                        "limit": 15
+                    }
+                }
+            ]
+        },
+        {
+            "name": "List of Deals",
+            "description": "Get a paged list of deals matching any number of criteria, all the filtering parameters are optional.\n\nThe deal object is what drives most of what you see on the site. They are price + metadata properties for games for a given store. All dealID\u2019s are encoded on the server. On your website/app, you will use the redirect page to link users to a specific deal:\n\n> https://www.cheapshark.com/redirect?dealID={id}\n\n**Important Note**: The redirect page is not an API endpoint and is not designed for automated access. It is purely a way to link your end users to deals.\n\nThe deal rating property provides a quick way to compare how 'good' a deal is. It is normalized on a scale from 0 to 10.",
+            "url": "https://cheapshark-game-deals.p.rapidapi.com/deals",
+            "parameters": [
+                {
+                    "name": "lowerPrice",
+                    "type": "NUMBER",
+                    "description": "Default `0`\n\nOnly returns deals with a price *greater than* this value",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "steamRating",
+                    "type": "NUMBER",
+                    "description": "Minimum Steam reviews rating for a game",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Looks for the string contained anywhere in the game name",
+                    "default": "batman",
+                    "required": false
+                },
+                {
+                    "name": "steamAppID",
+                    "type": "ARRAY",
+                    "description": "Look for deals on specific games, comma separated list of Steam App ID",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "desc",
+                    "type": "BOOLEAN",
+                    "description": "Default `0`\n\nDetermines sort direction",
+                    "default": "0",
+                    "required": false
+                },
+                {
+                    "name": "output",
+                    "type": "STRING",
+                    "description": "Option to output deals in `RSS` format (overrides page number/size to `0`/`100`)",
+                    "default": "json",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "json",
+                                "RSS"
+                            ]
+                        },
+                        "inter-dependency": "output, pageNumber, pageSize: If output is 'RSS', pageNumber is set to 0 and pageSize is set to 100."
+                    }
+                },
+                {
+                    "name": "steamworks",
+                    "type": "BOOLEAN",
+                    "description": "Default `0`\n\nFlag to include only deals that redeem on Steam (best guess, depends on store support)",
+                    "default": "0",
+                    "required": false
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "Criteria to sort the list by, possible values -\n\n- Deal Rating\n- Title\n- Savings\n- Price\n- Metacritic\n- Reviews\n- Release\n- Store\n- recent",
+                    "default": "Deal Rating",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Deal Rating",
+                                "Title",
+                                "Savings",
+                                "Price",
+                                "Metacritic",
+                                "Reviews",
+                                "Release",
+                                "Store",
+                                "recent"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "AAA",
+                    "type": "BOOLEAN",
+                    "description": "Default `0`\n\nFlag to include only deals with retail price > `$29`",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 29
+                        }
+                    }
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "The size of pages returned, default and maximum value is `60`",
+                    "default": "60",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 60
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "exact",
+                    "type": "BOOLEAN",
+                    "description": "Default `0`\n\nFlag to allow only exact string match for `title` parameter",
+                    "default": "0",
+                    "required": false
+                },
+                {
+                    "name": "upperPrice",
+                    "type": "NUMBER",
+                    "description": "Only returns deals with a price* less than or equal to` this value (`50` acts the same as no limit)",
+                    "default": "50",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 50
+                        }
+                    }
+                },
+                {
+                    "name": "pageNumber",
+                    "type": "NUMBER",
+                    "description": "The requested page number, 0 indexed, default of `0`",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "onSale",
+                    "type": "BOOLEAN",
+                    "description": "Default `0`\n\nFlag to include only games that are currently on sale",
+                    "default": "0",
+                    "required": false
+                },
+                {
+                    "name": "metacritic",
+                    "type": "NUMBER",
+                    "description": "Minimum Metacritic rating for a game",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "storeID",
+                    "type": "ARRAY",
+                    "description": "Comma separated list of store ID's to filter on, omit for deals from any store",
+                    "default": "1,2,3",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me deals for games with a Metacritic rating of at least 80.",
+                    "parameters": {
+                        "metacritic": 80
+                    }
+                },
+                {
+                    "utterance": "Find deals for games under $20 that are currently on sale.",
+                    "parameters": {
+                        "upperPrice": 20,
+                        "onSale": true
+                    }
+                },
+                {
+                    "utterance": "List the best deals for AAA games sorted by savings.",
+                    "parameters": {
+                        "AAA": true,
+                        "sortBy": "Savings"
+                    }
+                },
+                {
+                    "utterance": "Can you find deals for the game 'Cyberpunk 2077' with a Steam rating of at least 70?",
+                    "parameters": {
+                        "title": "Cyberpunk 2077",
+                        "steamRating": 70
+                    }
+                },
+                {
+                    "utterance": "I want to see deals for games that can be redeemed on Steam.",
+                    "parameters": {
+                        "steamworks": true
+                    }
+                },
+                {
+                    "utterance": "Show me deals for games from the store with ID 1 and 2, sorted by release date.",
+                    "parameters": {
+                        "storeID": [
+                            "1",
+                            "2"
+                        ],
+                        "sortBy": "Release"
+                    }
+                },
+                {
+                    "utterance": "Find deals for games with a price greater than $10 and less than $30.",
+                    "parameters": {
+                        "lowerPrice": 10,
+                        "upperPrice": 30
+                    }
+                },
+                {
+                    "utterance": "List deals for the game with Steam App ID 12345 in RSS format.",
+                    "parameters": {
+                        "steamAppID": [
+                            "12345"
+                        ],
+                        "output": "RSS"
+                    }
+                },
+                {
+                    "utterance": "Show me deals for games with the exact title 'The Witcher 3'.",
+                    "parameters": {
+                        "title": "The Witcher 3",
+                        "exact": true
+                    }
+                },
+                {
+                    "utterance": "Find deals for games with a Metacritic rating of at least 85 and sort them by deal rating.",
+                    "parameters": {
+                        "metacritic": 85,
+                        "sortBy": "Deal Rating"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Game Lookup",
+            "description": "Gets info for a specific game. Response includes a list of all deals associated with the game.",
+            "url": "https://cheapshark-game-deals.p.rapidapi.com/games",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "An existing gameID",
+                    "default": "612",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the deals for the game with ID 612?",
+                    "parameters": {
+                        "id": 612
+                    }
+                },
+                {
+                    "utterance": "I want to know the current offers for the game identified by ID 745.",
+                    "parameters": {
+                        "id": 745
+                    }
+                },
+                {
+                    "utterance": "What are the available discounts for the game with the ID 890?",
+                    "parameters": {
+                        "id": 890
+                    }
+                },
+                {
+                    "utterance": "Find the best prices for the game that has the ID 1023.",
+                    "parameters": {
+                        "id": 1023
+                    }
+                },
+                {
+                    "utterance": "Could you provide the deal information for the game with ID 567?",
+                    "parameters": {
+                        "id": 567
+                    }
+                },
+                {
+                    "utterance": "Show me the price comparison for the game with ID 234.",
+                    "parameters": {
+                        "id": 234
+                    }
+                },
+                {
+                    "utterance": "I need the list of deals for the game identified by ID 678.",
+                    "parameters": {
+                        "id": 678
+                    }
+                },
+                {
+                    "utterance": "What are the current deals for the game with the ID 345?",
+                    "parameters": {
+                        "id": 345
+                    }
+                },
+                {
+                    "utterance": "Can you get the offers for the game with ID 456?",
+                    "parameters": {
+                        "id": 456
+                    }
+                },
+                {
+                    "utterance": "Please find the deals for the game that has the ID 789.",
+                    "parameters": {
+                        "id": 789
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Edit Alert",
+            "description": "Set or remove a price alert.",
+            "url": "https://cheapshark-game-deals.p.rapidapi.com/alerts",
+            "parameters": [
+                {
+                    "name": "action",
+                    "type": "STRING",
+                    "description": "The action to take on the price alert (`set` or `delete`)",
+                    "default": "set",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "set",
+                                "delete"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "email",
+                    "type": "STRING",
+                    "description": "Any valid email address",
+                    "default": "someone@example.org",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "gameID",
+                    "type": "NUMBER",
+                    "description": "An existing gameID",
+                    "default": "34",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "price",
+                    "type": "NUMBER",
+                    "description": "The price to wait for, only required when using `set` value for `action` parameter",
+                    "default": "14.99",
+                    "required": true,
+                    "constraints": {
+                        "inter-dependency": "action, price: The price parameter is only required when the action is set to 'set'."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Please set a price alert for the game with ID 45 to notify me at john.doe@example.com when it drops to $19.99.",
+                    "parameters": {
+                        "action": "set",
+                        "email": "john.doe@example.com",
+                        "gameID": 45,
+                        "price": 19.99
+                    }
+                },
+                {
+                    "utterance": "I want to delete the price alert for the game with ID 78. My email is jane.smith@example.com.",
+                    "parameters": {
+                        "action": "delete",
+                        "email": "jane.smith@example.com",
+                        "gameID": 78
+                    }
+                },
+                {
+                    "utterance": "Can you set a price alert for the game ID 102 to notify me at alex.brown@example.com when it reaches $9.99?",
+                    "parameters": {
+                        "action": "set",
+                        "email": "alex.brown@example.com",
+                        "gameID": 102,
+                        "price": 9.99
+                    }
+                },
+                {
+                    "utterance": "Remove the price alert for game ID 56. My contact email is emily.jones@example.com.",
+                    "parameters": {
+                        "action": "delete",
+                        "email": "emily.jones@example.com",
+                        "gameID": 56
+                    }
+                },
+                {
+                    "utterance": "I'd like to set a price alert for the game with ID 89 to notify me at michael.wilson@example.com when the price hits $5.49.",
+                    "parameters": {
+                        "action": "set",
+                        "email": "michael.wilson@example.com",
+                        "gameID": 89,
+                        "price": 5.49
+                    }
+                },
+                {
+                    "utterance": "Please delete my price alert for the game ID 23. You can reach me at sarah.davis@example.com.",
+                    "parameters": {
+                        "action": "delete",
+                        "email": "sarah.davis@example.com",
+                        "gameID": 23
+                    }
+                },
+                {
+                    "utterance": "Set a price alert for game ID 67 to notify me at chris.martin@example.com when it falls to $12.00.",
+                    "parameters": {
+                        "action": "set",
+                        "email": "chris.martin@example.com",
+                        "gameID": 67,
+                        "price": 12.0
+                    }
+                },
+                {
+                    "utterance": "I need to remove the price alert for the game with ID 90. My email is laura.taylor@example.com.",
+                    "parameters": {
+                        "action": "delete",
+                        "email": "laura.taylor@example.com",
+                        "gameID": 90
+                    }
+                },
+                {
+                    "utterance": "Could you set a price alert for the game ID 12 to notify me at david.anderson@example.com when it drops to $7.75?",
+                    "parameters": {
+                        "action": "set",
+                        "email": "david.anderson@example.com",
+                        "gameID": 12,
+                        "price": 7.75
+                    }
+                },
+                {
+                    "utterance": "Delete the price alert for game ID 34. My email is olivia.moore@example.com.",
+                    "parameters": {
+                        "action": "delete",
+                        "email": "olivia.moore@example.com",
+                        "gameID": 34
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Deal Lookup",
+            "description": "Get info for a specific deal. Response includes game info, any cheaper current deals, and the cheapest historical price. As elsewhere, dealID is encoded",
+            "url": "https://cheapshark-game-deals.p.rapidapi.com/deals",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "An Encoded Deal ID",
+                    "default": "X8sebHhbc1Ga0dTkgg59WgyM506af9oNZZJLU9uSrX8=",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the details for the deal with ID X8sebHhbc1Ga0dTkgg59WgyM506af9oNZZJLU9uSrX8=?",
+                    "parameters": {
+                        "id": "X8sebHhbc1Ga0dTkgg59WgyM506af9oNZZJLU9uSrX8="
+                    }
+                },
+                {
+                    "utterance": "I need information on the game deal with the ID 9f8e7d6c5b4a3f2g1h0i9j8k7l6m5n4o3p2q1r0s9t8u7v6w5x4y3z2a1b0c9d8e7f.",
+                    "parameters": {
+                        "id": "9f8e7d6c5b4a3f2g1h0i9j8k7l6m5n4o3p2q1r0s9t8u7v6w5x4y3z2a1b0c9d8e7f"
+                    }
+                },
+                {
+                    "utterance": "What's the current status of the deal with ID 7g6f5e4d3c2b1a0z9y8x7w6v5u4t3s2r1q0p9o8n7m6l5k4j3i2h1g0f9e8d7c6b5a?",
+                    "parameters": {
+                        "id": "7g6f5e4d3c2b1a0z9y8x7w6v5u4t3s2r1q0p9o8n7m6l5k4j3i2h1g0f9e8d7c6b5a"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the details for the deal identified by ID 5a4b3c2d1e0f9g8h7i6j5k4l3m2n1o0p9q8r7s6t5u4v3w2x1y0z9a8b7c6d5e4f?",
+                    "parameters": {
+                        "id": "5a4b3c2d1e0f9g8h7i6j5k4l3m2n1o0p9q8r7s6t5u4v3w2x1y0z9a8b7c6d5e4f"
+                    }
+                },
+                {
+                    "utterance": "Tell me more about the game deal with the ID 3f2e1d0c9b8a7z6y5x4w3v2u1t0s9r8q7p6o5n4m3l2k1j0i9h8g7f6e5d4c3b2a1.",
+                    "parameters": {
+                        "id": "3f2e1d0c9b8a7z6y5x4w3v2u1t0s9r8q7p6o5n4m3l2k1j0i9h8g7f6e5d4c3b2a1"
+                    }
+                },
+                {
+                    "utterance": "I want to know the specifics of the deal with ID 1a0b9c8d7e6f5g4h3i2j1k0l9m8n7o6p5q4r3s2t1u0v9w8x7y6z5a4b3c2d1e0f.",
+                    "parameters": {
+                        "id": "1a0b9c8d7e6f5g4h3i2j1k0l9m8n7o6p5q4r3s2t1u0v9w8x7y6z5a4b3c2d1e0f"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the details for the deal with the ID 0f9e8d7c6b5a4z3y2x1w0v9u8t7s6r5q4p3o2n1m0l9k8j7i6h5g4f3e2d1c0b9a8?",
+                    "parameters": {
+                        "id": "0f9e8d7c6b5a4z3y2x1w0v9u8t7s6r5q4p3o2n1m0l9k8j7i6h5g4f3e2d1c0b9a8"
+                    }
+                },
+                {
+                    "utterance": "I'd like to get the information for the deal with ID 8g7f6e5d4c3b2a1z0y9x8w7v6u5t4s3r2q1p0o9n8m7l6k5j4i3h2g1f0e9d8c7b.",
+                    "parameters": {
+                        "id": "8g7f6e5d4c3b2a1z0y9x8w7v6u5t4s3r2q1p0o9n8m7l6k5j4i3h2g1f0e9d8c7b"
+                    }
+                },
+                {
+                    "utterance": "Please provide the details for the deal with the ID 6b5a4c3d2e1f0g9h8i7j6k5l4m3n2o1p0q9r8s7t6u5v4w3x2y1z0a9b8c7d6e5f.",
+                    "parameters": {
+                        "id": "6b5a4c3d2e1f0g9h8i7j6k5l4m3n2o1p0q9r8s7t6u5v4w3x2y1z0a9b8c7d6e5f"
+                    }
+                },
+                {
+                    "utterance": "What are the details for the game deal with ID 4f3e2d1c0b9a8z7y6x5w4v3u2t1s0r9q8p7o6n5m4l3k2j1i0h9g8f7e6d5c4b3a?",
+                    "parameters": {
+                        "id": "4f3e2d1c0b9a8z7y6x5w4v3u2t1s0r9q8p7o6n5m4l3k2j1i0h9g8f7e6d5c4b3a"
+                    }
+                }
+            ]
+        }
+    ]
+}

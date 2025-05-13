@@ -4,9 +4,9 @@
     "url": "https://rapidapi.com/foreca-ltd-foreca-ltd-default/api/foreca-weather/",
     "api_methods": [
         {
-            "name": "Daily",
-            "description": "Daily forecast.",
-            "url": "https://foreca-weather.p.rapidapi.com/forecast/daily/{location}",
+            "name": "Hourly",
+            "description": "Hourly forecast.",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/hourly/{location}",
             "parameters": [
                 {
                     "name": "location",
@@ -23,6 +23,13 @@
                     "required": false
                 },
                 {
+                    "name": "history",
+                    "type": "BOOLEAN",
+                    "description": "Whether to include 24 hours of past data.",
+                    "default": "0",
+                    "required": false
+                },
+                {
                     "name": "dataset",
                     "type": "STRING",
                     "description": "Variable set",
@@ -30,10 +37,17 @@
                     "required": false
                 },
                 {
-                    "name": "tempunit",
+                    "name": "tz",
                     "type": "STRING",
-                    "description": "Temperature unit in response",
-                    "default": "C",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London",
+                    "required": false
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8",
                     "required": false
                 },
                 {
@@ -44,81 +58,81 @@
                     "required": false
                 },
                 {
-                    "name": "periods",
-                    "type": "NUMBER",
-                    "description": "Number of time steps (default 8, maximum 12)",
-                    "default": "8",
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
                     "required": false
                 }
             ],
             "utterances": [
                 {
-                    "utterance": "What is the daily weather forecast for New York?",
+                    "utterance": "What is the hourly weather forecast for New York?",
                     "parameters": {
                         "location": "New York"
                     }
                 },
                 {
-                    "utterance": "Can you provide the daily weather forecast for London in Fahrenheit?",
+                    "utterance": "Get the hourly weather forecast for London with temperature in Fahrenheit.",
                     "parameters": {
                         "location": "London",
                         "tempunit": "F"
                     }
                 },
                 {
-                    "utterance": "What is the daily weather forecast for Paris with wind speed in kilometers per hour?",
+                    "utterance": "What is the hourly weather forecast for Paris including past 24 hours of data?",
                     "parameters": {
                         "location": "Paris",
-                        "windunit": "KMH"
+                        "history": true
                     }
                 },
                 {
-                    "utterance": "Get the daily weather forecast for Tokyo for the next 10 days.",
-                    "parameters": {
-                        "location": "Tokyo",
-                        "periods": 10
-                    }
-                },
-                {
-                    "utterance": "What is the daily weather forecast for Berlin at an altitude of 50 meters?",
+                    "utterance": "Get the hourly weather forecast for Berlin with wind speed in knots.",
                     "parameters": {
                         "location": "Berlin",
-                        "alt": 50
+                        "windunit": "KT"
                     }
                 },
                 {
-                    "utterance": "Can you provide the daily weather forecast for Sydney with the full dataset?",
+                    "utterance": "What is the hourly weather forecast for Tokyo for the next 12 hours?",
                     "parameters": {
-                        "location": "Sydney",
-                        "dataset": "full"
-                    }
-                },
-                {
-                    "utterance": "What is the daily weather forecast for Los Angeles with wind speed in miles per hour?",
-                    "parameters": {
-                        "location": "Los Angeles",
-                        "windunit": "MPH"
-                    }
-                },
-                {
-                    "utterance": "Get the daily weather forecast for Chicago for the next 12 days.",
-                    "parameters": {
-                        "location": "Chicago",
+                        "location": "Tokyo",
                         "periods": 12
                     }
                 },
                 {
-                    "utterance": "What is the daily weather forecast for Toronto in Celsius?",
+                    "utterance": "Get the hourly weather forecast for Sydney in the Australia/Sydney time zone.",
                     "parameters": {
-                        "location": "Toronto",
-                        "tempunit": "C"
+                        "location": "Sydney",
+                        "tz": "Australia/Sydney"
                     }
                 },
                 {
-                    "utterance": "Can you provide the daily weather forecast for Mumbai at an altitude of 100 meters?",
+                    "utterance": "What is the hourly weather forecast for Los Angeles at an altitude of 100 meters?",
                     "parameters": {
-                        "location": "Mumbai",
+                        "location": "Los Angeles",
                         "alt": 100
+                    }
+                },
+                {
+                    "utterance": "Get the hourly weather forecast for Moscow with the full dataset.",
+                    "parameters": {
+                        "location": "Moscow",
+                        "dataset": "full"
+                    }
+                },
+                {
+                    "utterance": "What is the hourly weather forecast for Dubai for the next 8 hours?",
+                    "parameters": {
+                        "location": "Dubai",
+                        "periods": 8
+                    }
+                },
+                {
+                    "utterance": "Get the hourly weather forecast for Toronto with temperature in Celsius.",
+                    "parameters": {
+                        "location": "Toronto",
+                        "tempunit": "C"
                     }
                 }
             ]

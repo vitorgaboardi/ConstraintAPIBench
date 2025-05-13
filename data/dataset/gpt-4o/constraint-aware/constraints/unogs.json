@@ -1,0 +1,447 @@
+{
+    "name": "uNoGS",
+    "description": "uNoGS (unofficial Netflix online Global Search) allows anyone to  search the global Netflix catalog.",
+    "url": "https://rapidapi.com/unogs/api/unogs/",
+    "api_methods": [
+        {
+            "name": "/static/genres",
+            "description": "Get Static list of Genres (updated daily)",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/static/genres",
+            "parameters": []
+        },
+        {
+            "name": "/title/genres",
+            "description": "All Genres Associated with a Title",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/title/genres",
+            "parameters": [
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/title/images",
+            "description": "All Images associated with a Title",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/title/images",
+            "parameters": [
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/title/details",
+            "description": "General Details associated with a Title",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/title/details",
+            "parameters": [
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/title/episodes",
+            "description": "All Episodes associated with a Title",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/title/episodes",
+            "parameters": [
+                {
+                    "name": "season_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix season ID e.g. 70105286 for Breaking Bad season 1",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/title/countries",
+            "description": "All Country/Language information associated with a Title",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/title/countries",
+            "parameters": [
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/search/titles",
+            "description": "Parameter Notes:\nnew_date will either take a single date and check for all titles added after that date or it will take 2 dates separated by a comma to check titles added between them.",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/search/titles",
+            "parameters": [
+                {
+                    "name": "end_rating",
+                    "type": "STRING",
+                    "description": "number between 1 and 10, aligns with imdb rating, if there is one",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1,
+                            "max": 10
+                        }
+                    }
+                },
+                {
+                    "name": "country_list",
+                    "type": "STRING",
+                    "description": "CSV list of country IDs e.g. 46,78",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "CSV list of country IDs"
+                    }
+                },
+                {
+                    "name": "start_year",
+                    "type": "NUMBER",
+                    "description": "year date > 1900",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1901
+                        }
+                    }
+                },
+                {
+                    "name": "person",
+                    "type": "STRING",
+                    "description": "name of person in title",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "where you want the response to start e.g. 10 starts with the 10th element",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "order_by",
+                    "type": "STRING",
+                    "description": "Order of Response",
+                    "default": "date",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "limit of object returned",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "end_year",
+                    "type": "NUMBER",
+                    "description": "year date > 1900",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1901
+                        }
+                    }
+                },
+                {
+                    "name": "top250",
+                    "type": "NUMBER",
+                    "description": "IMDB top 250 Movies number 0-250",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0,
+                            "max": 250
+                        }
+                    }
+                },
+                {
+                    "name": "start_rating",
+                    "type": "STRING",
+                    "description": "number between 1 and 10, aligns with imdb rating, if there is one",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1,
+                            "max": 10
+                        }
+                    }
+                },
+                {
+                    "name": "new_date",
+                    "type": "STRING",
+                    "description": "2018-01-01 or 2010-01-01,2012-01-01 see Parameter Notes",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "new_date: can take a single date or two dates separated by a comma."
+                    }
+                },
+                {
+                    "name": "top250tv",
+                    "type": "NUMBER",
+                    "description": "IMDB top 250 Series number 0-250",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0,
+                            "max": 250
+                        }
+                    }
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "search all titles by name",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "expiring",
+                    "type": "STRING",
+                    "description": "if 'true' show all titles set to expire",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "true"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "subtitle",
+                    "type": "STRING",
+                    "description": "name of subtitle language e.g. english",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "movie or series",
+                    "default": "movie",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "series"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "genre_list",
+                    "type": "STRING",
+                    "description": "CSV list of genres, see misc/genre endpoint",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "audio",
+                    "type": "STRING",
+                    "description": "name of audio language e.g english",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "audio_sub_andor",
+                    "type": "STRING",
+                    "description": "and=language in bot audio and sub, or=language in either audio or sub",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "and",
+                                "or"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "country_andorunique",
+                    "type": "STRING",
+                    "description": "and=titles in all countries, or=any title in these countries, unique=unique titles in chosen countries",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "and",
+                                "or",
+                                "unique"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/search/people",
+            "description": "Search for people by title name, person name, or netflix_id",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/search/people",
+            "parameters": [
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "person_type",
+                    "type": "STRING",
+                    "description": "what the person did on the project",
+                    "default": "Actor",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "limit of object returned",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "search all titles by name",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "where you want the response to start e.g. 10 starts with the 10th element",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/search/deleted",
+            "description": "Search for Deleted Titles by Country or Title Name\ndelete_date will either take a single date and check for all titles added after that date or it will take 2 dates separated by a comma to check titles added between them.",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/search/deleted",
+            "parameters": [
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "search all titles by name",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "delete_date",
+                    "type": "STRING",
+                    "description": "2018-01-01 or 2010-01-01,2012-01-01 see Parameter Notes",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "delete_date: Can take a single date or two dates separated by a comma."
+                    }
+                },
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "limit of object returned",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "where you want the response to start e.g. 10 starts with the 10th element",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "country_list",
+                    "type": "STRING",
+                    "description": "CSV list of country IDs e.g. 46,78",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "/static/countries",
+            "description": "Get Static list of Supported Countries",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/static/countries",
+            "parameters": []
+        }
+    ]
+}

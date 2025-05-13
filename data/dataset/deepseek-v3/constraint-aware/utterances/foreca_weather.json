@@ -1,0 +1,1023 @@
+{
+    "name": "Foreca Weather",
+    "description": "Everything you need to build a weather app",
+    "url": "https://rapidapi.com/foreca-ltd-foreca-ltd-default/api/foreca-weather/",
+    "api_methods": [
+        {
+            "name": "Nowcast",
+            "description": "3-hour forecast in 15-minute time steps.",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/15minutely/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London",
+                    "required": false,
+                    "constraints": {
+                        "format": "IANA time zone database names"
+                    }
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 12,
+                            "min": 1
+                        },
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the weather like in New York City right now?",
+                    "parameters": {
+                        "location": "New York City"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the 3-hour forecast for Paris with wind speed in knots?",
+                    "parameters": {
+                        "location": "Paris",
+                        "windunit": "KT"
+                    }
+                },
+                {
+                    "utterance": "I need the weather forecast for Tokyo in Fahrenheit.",
+                    "parameters": {
+                        "location": "Tokyo",
+                        "tempunit": "F"
+                    }
+                },
+                {
+                    "utterance": "Show me the weather in Berlin with the full dataset.",
+                    "parameters": {
+                        "location": "Berlin",
+                        "dataset": "full"
+                    }
+                },
+                {
+                    "utterance": "What's the weather in Sydney at an altitude of 50 meters?",
+                    "parameters": {
+                        "location": "Sydney",
+                        "alt": 50
+                    }
+                },
+                {
+                    "utterance": "Give me the weather forecast for London in the Europe/London time zone.",
+                    "parameters": {
+                        "location": "London",
+                        "tz": "Europe/London"
+                    }
+                },
+                {
+                    "utterance": "Can I get the weather in Dubai with wind speed in miles per hour?",
+                    "parameters": {
+                        "location": "Dubai",
+                        "windunit": "MPH"
+                    }
+                },
+                {
+                    "utterance": "What's the weather in San Francisco using the Celsius scale?",
+                    "parameters": {
+                        "location": "San Francisco",
+                        "tempunit": "C"
+                    }
+                },
+                {
+                    "utterance": "Show me the weather in Mumbai with the basic dataset.",
+                    "parameters": {
+                        "location": "Mumbai",
+                        "dataset": "basic"
+                    }
+                },
+                {
+                    "utterance": "What's the weather in Toronto at an altitude of 100 meters in the America/Toronto time zone?",
+                    "parameters": {
+                        "location": "Toronto",
+                        "alt": 100,
+                        "tz": "America/Toronto"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Three-hourly",
+            "description": "A longer three-hourly forecast up to 14 days.",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/3hourly/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "history",
+                    "type": "BOOLEAN",
+                    "description": "Whether to include 24 hours of past data.",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London",
+                    "required": false,
+                    "constraints": {
+                        "format": "IANA time zone database names",
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 12,
+                            "min": 1
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the three-hourly weather forecast for New York City?",
+                    "parameters": {
+                        "location": "New York City"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the three-hourly weather updates for London?",
+                    "parameters": {
+                        "location": "London"
+                    }
+                },
+                {
+                    "utterance": "I need the three-hourly forecast for Paris.",
+                    "parameters": {
+                        "location": "Paris"
+                    }
+                },
+                {
+                    "utterance": "Show me the three-hourly weather predictions for Tokyo.",
+                    "parameters": {
+                        "location": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "What will the weather be like in Berlin over the next three hours?",
+                    "parameters": {
+                        "location": "Berlin"
+                    }
+                },
+                {
+                    "utterance": "Provide the three-hourly weather forecast for Sydney.",
+                    "parameters": {
+                        "location": "Sydney"
+                    }
+                },
+                {
+                    "utterance": "Can I get the three-hourly weather details for San Francisco?",
+                    "parameters": {
+                        "location": "San Francisco"
+                    }
+                },
+                {
+                    "utterance": "What's the three-hourly weather outlook for Dubai?",
+                    "parameters": {
+                        "location": "Dubai"
+                    }
+                },
+                {
+                    "utterance": "Give me the three-hourly weather forecast for Mumbai.",
+                    "parameters": {
+                        "location": "Mumbai"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the three-hourly weather forecast for Toronto.",
+                    "parameters": {
+                        "location": "Toronto"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Daily",
+            "description": "Daily forecast.",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/daily/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 12,
+                            "min": 1
+                        },
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the weather forecast for New York City today?",
+                    "parameters": {
+                        "location": "New York City"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the daily forecast for Paris?",
+                    "parameters": {
+                        "location": "Paris"
+                    }
+                },
+                {
+                    "utterance": "I need the weather details for Tokyo tomorrow.",
+                    "parameters": {
+                        "location": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "Show me the forecast for London this week.",
+                    "parameters": {
+                        "location": "London"
+                    }
+                },
+                {
+                    "utterance": "What's the weather like in Sydney today?",
+                    "parameters": {
+                        "location": "Sydney"
+                    }
+                },
+                {
+                    "utterance": "Get me the daily weather report for Berlin.",
+                    "parameters": {
+                        "location": "Berlin"
+                    }
+                },
+                {
+                    "utterance": "Can you check the forecast for San Francisco?",
+                    "parameters": {
+                        "location": "San Francisco"
+                    }
+                },
+                {
+                    "utterance": "What's the weather going to be like in Dubai tomorrow?",
+                    "parameters": {
+                        "location": "Dubai"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the daily forecast for Mumbai.",
+                    "parameters": {
+                        "location": "Mumbai"
+                    }
+                },
+                {
+                    "utterance": "Tell me the weather forecast for Toronto this week.",
+                    "parameters": {
+                        "location": "Toronto"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Location info",
+            "description": "Metadata for location.",
+            "url": "https://foreca-weather.p.rapidapi.com/location/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "101275339",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the weather details for New York City?",
+                    "parameters": {
+                        "location": "New York City"
+                    }
+                },
+                {
+                    "utterance": "What's the weather like in Paris today?",
+                    "parameters": {
+                        "location": "Paris"
+                    }
+                },
+                {
+                    "utterance": "I need the weather forecast for Tokyo.",
+                    "parameters": {
+                        "location": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the weather information for London?",
+                    "parameters": {
+                        "location": "London"
+                    }
+                },
+                {
+                    "utterance": "Tell me the current weather in Sydney.",
+                    "parameters": {
+                        "location": "Sydney"
+                    }
+                },
+                {
+                    "utterance": "What's the weather forecast for Berlin?",
+                    "parameters": {
+                        "location": "Berlin"
+                    }
+                },
+                {
+                    "utterance": "Can you check the weather in San Francisco?",
+                    "parameters": {
+                        "location": "San Francisco"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the weather in Dubai.",
+                    "parameters": {
+                        "location": "Dubai"
+                    }
+                },
+                {
+                    "utterance": "What's the weather like in Mumbai right now?",
+                    "parameters": {
+                        "location": "Mumbai"
+                    }
+                },
+                {
+                    "utterance": "Could you tell me the weather conditions in Toronto?",
+                    "parameters": {
+                        "location": "Toronto"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Current",
+            "description": "Current weather estimate for location.",
+            "url": "https://foreca-weather.p.rapidapi.com/current/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "MS"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language (ISO 639-1 codes). Options: de, en, es, fr, it, pl, ru, fi, sv, nl, ko, pt, th, tr, zh, zh_TW (Chinese in Taiwan), zh_CN (Chinese in China). (default en)",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "de",
+                                "en",
+                                "es",
+                                "fr",
+                                "it",
+                                "pl",
+                                "ru",
+                                "fi",
+                                "sv",
+                                "nl",
+                                "ko",
+                                "pt",
+                                "th",
+                                "tr",
+                                "zh",
+                                "zh_TW",
+                                "zh_CN"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London",
+                    "required": false,
+                    "constraints": {
+                        "format": "IANA time zone database names"
+                    }
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "C"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the current weather in New York City?",
+                    "parameters": {
+                        "location": "New York City"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the weather in Paris with wind speed in meters per second?",
+                    "parameters": {
+                        "location": "Paris",
+                        "windunit": "MS"
+                    }
+                },
+                {
+                    "utterance": "What's the temperature in Tokyo at an altitude of 500 meters?",
+                    "parameters": {
+                        "location": "Tokyo",
+                        "alt": 500
+                    }
+                },
+                {
+                    "utterance": "Get the current weather in Berlin in German.",
+                    "parameters": {
+                        "location": "Berlin",
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "What's the weather in Sydney with the time zone set to Australia/Sydney?",
+                    "parameters": {
+                        "location": "Sydney",
+                        "tz": "Australia/Sydney"
+                    }
+                },
+                {
+                    "utterance": "Tell me the current temperature in Celsius in London.",
+                    "parameters": {
+                        "location": "London",
+                        "tempunit": "C"
+                    }
+                },
+                {
+                    "utterance": "What's the weather in Rome with wind speed in meters per second and temperature in Celsius?",
+                    "parameters": {
+                        "location": "Rome",
+                        "windunit": "MS",
+                        "tempunit": "C"
+                    }
+                },
+                {
+                    "utterance": "Get the current weather in Beijing in Chinese.",
+                    "parameters": {
+                        "location": "Beijing",
+                        "lang": "zh_CN"
+                    }
+                },
+                {
+                    "utterance": "What's the weather in San Francisco at an altitude of 1000 meters with the time zone set to America/Los_Angeles?",
+                    "parameters": {
+                        "location": "San Francisco",
+                        "alt": 1000,
+                        "tz": "America/Los_Angeles"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the weather in Moscow in Russian with wind speed in meters per second?",
+                    "parameters": {
+                        "location": "Moscow",
+                        "lang": "ru",
+                        "windunit": "MS"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Latest observations",
+            "description": "Observations from nearby representative weather stations.",
+            "url": "https://foreca-weather.p.rapidapi.com/observation/latest/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the latest weather observation for New York City?",
+                    "parameters": {
+                        "location": "New York City"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the current weather conditions in Paris?",
+                    "parameters": {
+                        "location": "Paris"
+                    }
+                },
+                {
+                    "utterance": "Show me the latest weather data for Tokyo.",
+                    "parameters": {
+                        "location": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "What's the weather like in London right now?",
+                    "parameters": {
+                        "location": "London"
+                    }
+                },
+                {
+                    "utterance": "Get the most recent weather observations for Berlin in German.",
+                    "parameters": {
+                        "location": "Berlin",
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "What are the current weather conditions in Sydney?",
+                    "parameters": {
+                        "location": "Sydney"
+                    }
+                },
+                {
+                    "utterance": "Provide the latest weather updates for San Francisco.",
+                    "parameters": {
+                        "location": "San Francisco"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the weather observations for Moscow in Russian?",
+                    "parameters": {
+                        "location": "Moscow",
+                        "lang": "ru"
+                    }
+                },
+                {
+                    "utterance": "What's the weather like in Toronto today?",
+                    "parameters": {
+                        "location": "Toronto"
+                    }
+                },
+                {
+                    "utterance": "Give me the latest weather data for Beijing in Chinese.",
+                    "parameters": {
+                        "location": "Beijing",
+                        "lang": "zh"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Location search",
+            "description": "Search for locations by name.",
+            "url": "https://foreca-weather.p.rapidapi.com/location/search/{query}",
+            "parameters": [
+                {
+                    "name": "query",
+                    "type": "string",
+                    "description": "",
+                    "default": "mumbai",
+                    "required": true
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "in",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the weather like in Paris?",
+                    "parameters": {
+                        "query": "Paris"
+                    }
+                },
+                {
+                    "utterance": "Can you find the location for New York City?",
+                    "parameters": {
+                        "query": "New York City"
+                    }
+                },
+                {
+                    "utterance": "Search for the weather in Tokyo, Japan.",
+                    "parameters": {
+                        "query": "Tokyo",
+                        "country": "jp"
+                    }
+                },
+                {
+                    "utterance": "Find the location of Berlin in German.",
+                    "parameters": {
+                        "query": "Berlin",
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "What's the forecast for Sydney, Australia?",
+                    "parameters": {
+                        "query": "Sydney",
+                        "country": "au"
+                    }
+                },
+                {
+                    "utterance": "Look up the weather in Madrid, Spain.",
+                    "parameters": {
+                        "query": "Madrid",
+                        "country": "es"
+                    }
+                },
+                {
+                    "utterance": "Can you search for the location of Rome in Italian?",
+                    "parameters": {
+                        "query": "Rome",
+                        "lang": "it"
+                    }
+                },
+                {
+                    "utterance": "Find the weather in London, UK.",
+                    "parameters": {
+                        "query": "London",
+                        "country": "gb"
+                    }
+                },
+                {
+                    "utterance": "Search for the location of Beijing in Chinese.",
+                    "parameters": {
+                        "query": "Beijing",
+                        "lang": "zh"
+                    }
+                },
+                {
+                    "utterance": "What's the weather like in Toronto, Canada?",
+                    "parameters": {
+                        "query": "Toronto",
+                        "country": "ca"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Hourly",
+            "description": "Hourly forecast.",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/hourly/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "history",
+                    "type": "BOOLEAN",
+                    "description": "Whether to include 24 hours of past data.",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London",
+                    "required": false,
+                    "constraints": {
+                        "format": "IANA time zone database names",
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 12,
+                            "min": 1
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the hourly forecast for New York City?",
+                    "parameters": {
+                        "location": "New York City"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the hourly weather updates for London?",
+                    "parameters": {
+                        "location": "London"
+                    }
+                },
+                {
+                    "utterance": "I need the hourly weather forecast for Paris.",
+                    "parameters": {
+                        "location": "Paris"
+                    }
+                },
+                {
+                    "utterance": "What will the weather be like in Tokyo for the next few hours?",
+                    "parameters": {
+                        "location": "Tokyo"
+                    }
+                },
+                {
+                    "utterance": "Show me the hourly forecast for Sydney.",
+                    "parameters": {
+                        "location": "Sydney"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the hourly weather details for Berlin?",
+                    "parameters": {
+                        "location": "Berlin"
+                    }
+                },
+                {
+                    "utterance": "What's the hourly weather prediction for San Francisco?",
+                    "parameters": {
+                        "location": "San Francisco"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the hourly forecast for Dubai.",
+                    "parameters": {
+                        "location": "Dubai"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the hourly weather for Mumbai?",
+                    "parameters": {
+                        "location": "Mumbai"
+                    }
+                },
+                {
+                    "utterance": "What's the hourly weather outlook for Toronto?",
+                    "parameters": {
+                        "location": "Toronto"
+                    }
+                }
+            ]
+        }
+    ]
+}

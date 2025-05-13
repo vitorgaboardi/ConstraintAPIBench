@@ -1,0 +1,69 @@
+{
+    "name": "TrueWay Matrix",
+    "description": "Calculate distances and durations between a set of origins and destinations.",
+    "url": "https://rapidapi.com/trueway/api/trueway-matrix/",
+    "api_methods": [
+        {
+            "name": "CalculateDrivingDistanceMatrix",
+            "description": "Calculate distances and durations between a set of origins and destinations.",
+            "url": "https://trueway-matrix.p.rapidapi.com/CalculateDrivingMatrix",
+            "parameters": [
+                {
+                    "name": "origins",
+                    "type": "STRING",
+                    "description": "List of origins described as semicolon-delimited coordinate pairs with latitudes and longitudes. Max: 25",
+                    "default": "40.629041,-74.025606;40.630099,-73.993521;40.644895,-74.013818;40.627177,-73.980853",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 25
+                        }
+                    }
+                },
+                {
+                    "name": "destinations",
+                    "type": "STRING",
+                    "description": "List of destinations described as semicolon-delimited coordinate pairs with latitudes and longitudes. If not specified, an n x n matrix will be generated using the origins. Max: 25",
+                    "default": "40.629041,-74.025606;40.630099,-73.993521;40.644895,-74.013818;40.627177,-73.980853",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 25
+                        }
+                    }
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Time when travel is expected to start. You can specify the time as an integer in seconds since midnight, January 1, 1970 UTC or you can use \\\"now\\\" to specify the current time.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "seconds since midnight, January 1, 1970 UTC or 'now'"
+                    }
+                },
+                {
+                    "name": "avoid_tolls",
+                    "type": "BOOLEAN",
+                    "description": "avoid toll roads",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "avoid_highways",
+                    "type": "BOOLEAN",
+                    "description": "avoid highways",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "avoid_ferries",
+                    "type": "BOOLEAN",
+                    "description": "avoid ferries",
+                    "default": "",
+                    "required": false
+                }
+            ]
+        }
+    ]
+}

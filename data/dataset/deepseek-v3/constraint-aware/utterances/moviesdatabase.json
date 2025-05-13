@@ -1,0 +1,2300 @@
+{
+    "name": "MoviesDatabase",
+    "description": "MoviesDatabase provides complete and updated data for over 9 million titles ( movies, series and episodes) and 11 million actors / crew and cast members",
+    "url": "https://rapidapi.com/SAdrian/api/moviesdatabase/",
+    "api_methods": [
+        {
+            "name": "/titles/utils/genres",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/utils/genres",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What are the different genres available in the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list all the movie genres in the database?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the genres of movies and series in the MoviesDatabase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What types of genres are included in the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide a list of all the genres for movies and TV shows?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to see the complete list of genres available in the MoviesDatabase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the categories of movies and series in the database?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you give me an overview of the genres in the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the genres for movies, series, and episodes in the database.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the different types of genres supported by the MoviesDatabase?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/titles/utils/lists",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/utils/lists",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you show me a list of the latest movie releases?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the top-rated TV series right now?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a list of the most popular movies from the 90s.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide a list of award-winning films from last year?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me a list of the best sci-fi movies of all time.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the most-watched episodes of the current season?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you give me a list of classic black and white movies?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I\u2019m looking for a list of the highest-grossing movies in history.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the most critically acclaimed indie films?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me a list of the most popular action movies from the last decade.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/titles/search/akas/{aka}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/search/akas/{aka}",
+            "parameters": [
+                {
+                    "name": "aka",
+                    "type": "STRING",
+                    "description": "Title of  the Movie/Series",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image /...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr /year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: if startYear is provided, endYear must also be included."
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find information about the movie 'Inception' released in 2010?",
+                    "parameters": {
+                        "aka": "Inception",
+                        "year": 2010
+                    }
+                },
+                {
+                    "utterance": "Show me details of the series 'Breaking Bad' with base info.",
+                    "parameters": {
+                        "aka": "Breaking Bad",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "What are the titles similar to 'The Matrix' from the year 1999?",
+                    "parameters": {
+                        "aka": "The Matrix",
+                        "year": 1999
+                    }
+                },
+                {
+                    "utterance": "List movies titled 'Avatar' released between 2009 and 2010.",
+                    "parameters": {
+                        "aka": "Avatar",
+                        "startYear": 2009,
+                        "endYear": 2010
+                    }
+                },
+                {
+                    "utterance": "Find the series 'Friends' and sort the results by year in descending order.",
+                    "parameters": {
+                        "aka": "Friends",
+                        "sort": "year.decr"
+                    }
+                },
+                {
+                    "utterance": "Give me the image details for the movie 'Titanic'.",
+                    "parameters": {
+                        "aka": "Titanic",
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "Search for the title 'The Dark Knight' and filter by movie type.",
+                    "parameters": {
+                        "aka": "The Dark Knight",
+                        "titleType": "movie"
+                    }
+                },
+                {
+                    "utterance": "What are the mini info details for the series 'Game of Thrones'?",
+                    "parameters": {
+                        "aka": "Game of Thrones",
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "Find movies titled 'Jurassic Park' released in 1993.",
+                    "parameters": {
+                        "aka": "Jurassic Park",
+                        "year": 1993
+                    }
+                },
+                {
+                    "utterance": "Show me all titles similar to 'Star Wars' from 1977 to 1983.",
+                    "parameters": {
+                        "aka": "Star Wars",
+                        "startYear": 1977,
+                        "endYear": 1983
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/search/keyword/{keyword}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/search/keyword/{keyword}",
+            "parameters": [
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "Keyword",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: both parameters must be included together."
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr /year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: both parameters must be included together."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find movies with the keyword 'adventure' from 2015.",
+                    "parameters": {
+                        "keyword": "adventure",
+                        "year": 2015
+                    }
+                },
+                {
+                    "utterance": "Search for series related to 'mystery' with base information.",
+                    "parameters": {
+                        "keyword": "mystery",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "Show me all titles with the keyword 'comedy' sorted by year in descending order.",
+                    "parameters": {
+                        "keyword": "comedy",
+                        "sort": "year.decr"
+                    }
+                },
+                {
+                    "utterance": "Look up movies with the keyword 'sci-fi' released between 2010 and 2020.",
+                    "parameters": {
+                        "keyword": "sci-fi",
+                        "startYear": 2010,
+                        "endYear": 2020
+                    }
+                },
+                {
+                    "utterance": "Find all titles with the keyword 'drama' and include images.",
+                    "parameters": {
+                        "keyword": "drama",
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "Search for movies with the keyword 'action' from 2018.",
+                    "parameters": {
+                        "keyword": "action",
+                        "year": 2018
+                    }
+                },
+                {
+                    "utterance": "Show me all 'horror' series with mini information.",
+                    "parameters": {
+                        "keyword": "horror",
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "Find titles with the keyword 'romance' released between 2000 and 2010 sorted by year in ascending order.",
+                    "parameters": {
+                        "keyword": "romance",
+                        "startYear": 2000,
+                        "endYear": 2010,
+                        "sort": "year.incr"
+                    }
+                },
+                {
+                    "utterance": "Search for 'documentary' titles with base information.",
+                    "parameters": {
+                        "keyword": "documentary",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "Find all 'animation' movies with the keyword 'Pixar' from 2015.",
+                    "parameters": {
+                        "keyword": "Pixar",
+                        "titleType": "animation",
+                        "year": 2015
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/search/title/{title}",
+            "description": "Search by Title",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/search/title/{title}",
+            "parameters": [
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Title of  the Movie/Series",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "exact",
+                    "type": "BOOLEAN",
+                    "description": "Search by exact title",
+                    "default": "true",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image /...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr /year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: endYear must be greater than or equal to startYear."
+                    }
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: endYear must be greater than or equal to startYear."
+                    }
+                },
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "movie",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "Selected list -> most_pop_movies / most_pop_series / top_rated_series_250 / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "most_pop_movies",
+                                "most_pop_series",
+                                "top_rated_series_250"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find the movie 'Inception' for me?",
+                    "parameters": {
+                        "title": "Inception"
+                    }
+                },
+                {
+                    "utterance": "Search for the exact title 'The Dark Knight' and provide the base info.",
+                    "parameters": {
+                        "title": "The Dark Knight",
+                        "exact": true,
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "Find movies titled 'Avatar' released in 2009.",
+                    "parameters": {
+                        "title": "Avatar",
+                        "year": 2009
+                    }
+                },
+                {
+                    "utterance": "Show me the most popular series with the title 'Breaking Bad'.",
+                    "parameters": {
+                        "title": "Breaking Bad",
+                        "list": "most_pop_series"
+                    }
+                },
+                {
+                    "utterance": "Search for the title 'Titanic' and sort the results by year in descending order.",
+                    "parameters": {
+                        "title": "Titanic",
+                        "sort": "year.decr"
+                    }
+                },
+                {
+                    "utterance": "Find all movies titled 'Star Wars' released between 1977 and 1983.",
+                    "parameters": {
+                        "title": "Star Wars",
+                        "startYear": 1977,
+                        "endYear": 1983
+                    }
+                },
+                {
+                    "utterance": "Can you search for the exact title 'The Matrix' and provide the image info?",
+                    "parameters": {
+                        "title": "The Matrix",
+                        "exact": true,
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "Show me the top-rated series with the title 'Game of Thrones'.",
+                    "parameters": {
+                        "title": "Game of Thrones",
+                        "list": "top_rated_series_250"
+                    }
+                },
+                {
+                    "utterance": "Find the movie 'Jurassic Park' and filter by the year 1993.",
+                    "parameters": {
+                        "title": "Jurassic Park",
+                        "year": 1993
+                    }
+                },
+                {
+                    "utterance": "Search for the title 'The Godfather' and provide the mini info.",
+                    "parameters": {
+                        "title": "The Godfather",
+                        "info": "mini_info"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/actors/random",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/actors/random",
+            "parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        },
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me a random actor?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Who is a random actor in the database?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me a random actor's details.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me a random actor from the MoviesDatabase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Who is a random actor in the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you pick a random actor for me?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to see a random actor's information.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Who is a random actor in the movie industry?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me a random actor from the database.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you display a random actor's profile?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/actors/{id}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/actors/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Actor imdb id",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the details for Tom Hanks?",
+                    "parameters": {
+                        "id": "nm0000158"
+                    }
+                },
+                {
+                    "utterance": "What information do you have on Meryl Streep?",
+                    "parameters": {
+                        "id": "nm0000658"
+                    }
+                },
+                {
+                    "utterance": "I need the profile of Leonardo DiCaprio.",
+                    "parameters": {
+                        "id": "nm0000138"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the data for Scarlett Johansson?",
+                    "parameters": {
+                        "id": "nm0424060"
+                    }
+                },
+                {
+                    "utterance": "Tell me about Brad Pitt's career.",
+                    "parameters": {
+                        "id": "nm0000093"
+                    }
+                },
+                {
+                    "utterance": "What's the background of Angelina Jolie?",
+                    "parameters": {
+                        "id": "nm0001401"
+                    }
+                },
+                {
+                    "utterance": "I want to see the details for Robert Downey Jr.",
+                    "parameters": {
+                        "id": "nm0000375"
+                    }
+                },
+                {
+                    "utterance": "Can you provide information on Emma Watson?",
+                    "parameters": {
+                        "id": "nm0914612"
+                    }
+                },
+                {
+                    "utterance": "Show me the profile of Johnny Depp.",
+                    "parameters": {
+                        "id": "nm0000136"
+                    }
+                },
+                {
+                    "utterance": "What do you know about Jennifer Lawrence?",
+                    "parameters": {
+                        "id": "nm2225369"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/utils/titleTypes",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/utils/titleTypes",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What types of titles are available in the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list all the different title types in the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the categories of titles supported by the MoviesDatabase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the various title types I can search for in the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide a list of all title types in the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to know the different types of titles available in the MoviesDatabase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the title types that the MoviesDatabase includes?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me the types of titles that are part of the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the title types that the MoviesDatabase covers.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What kinds of titles does the MoviesDatabase have?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/actors",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/actors",
+            "parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        },
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me a list of actors?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Who are some famous actors in the database?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need information about actors in the MoviesDatabase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide details about actors available in the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the actors listed in the MoviesDatabase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Who are the actors featured in the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list all the actors in the MoviesDatabase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see the actors included in the MoviesDatabase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide me with a list of actors from the MoviesDatabase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Who are the actors recorded in the MoviesDatabase?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/titles/series/{seriesId}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/series/{seriesId}",
+            "parameters": [
+                {
+                    "name": "seriesId",
+                    "type": "STRING",
+                    "description": "Series Imdb Id",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get me the details for the series with the IMDb ID tt0903747?",
+                    "parameters": {
+                        "seriesId": "tt0903747"
+                    }
+                },
+                {
+                    "utterance": "What information do you have on the series identified by tt0944947?",
+                    "parameters": {
+                        "seriesId": "tt0944947"
+                    }
+                },
+                {
+                    "utterance": "I need the data for the series with IMDb ID tt2861424.",
+                    "parameters": {
+                        "seriesId": "tt2861424"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the details for the series with the IMDb ID tt0386676?",
+                    "parameters": {
+                        "seriesId": "tt0386676"
+                    }
+                },
+                {
+                    "utterance": "Please provide the information for the series identified by tt1475582.",
+                    "parameters": {
+                        "seriesId": "tt1475582"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the data for the series with IMDb ID tt0460649?",
+                    "parameters": {
+                        "seriesId": "tt0460649"
+                    }
+                },
+                {
+                    "utterance": "Can you retrieve the details for the series with IMDb ID tt0108778?",
+                    "parameters": {
+                        "seriesId": "tt0108778"
+                    }
+                },
+                {
+                    "utterance": "I\u2019m looking for the information on the series with IMDb ID tt0413573.",
+                    "parameters": {
+                        "seriesId": "tt0413573"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s available for the series with IMDb ID tt0098904?",
+                    "parameters": {
+                        "seriesId": "tt0098904"
+                    }
+                },
+                {
+                    "utterance": "Could you get me the details for the series identified by tt0306414?",
+                    "parameters": {
+                        "seriesId": "tt0306414"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/x/upcoming",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/x/upcoming",
+            "parameters": [
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2022",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "genre",
+                    "type": "STRING",
+                    "description": "Year filter ex: ?genre=Drama",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: both parameters must be included together."
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr / year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "year.incr",
+                                "year.decr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: both parameters must be included together."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What upcoming movies are releasing in 2023?",
+                    "parameters": {
+                        "year": 2023
+                    }
+                },
+                {
+                    "utterance": "Can you show me the upcoming drama series sorted by year in ascending order?",
+                    "parameters": {
+                        "genre": "Drama",
+                        "sort": "year.incr"
+                    }
+                },
+                {
+                    "utterance": "What are the upcoming action movies between 2022 and 2024?",
+                    "parameters": {
+                        "titleType": "movie",
+                        "genre": "Action",
+                        "startYear": 2022,
+                        "endYear": 2024
+                    }
+                },
+                {
+                    "utterance": "Show me the upcoming titles with detailed information.",
+                    "parameters": {
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "What are the upcoming comedy movies releasing in 2025?",
+                    "parameters": {
+                        "titleType": "movie",
+                        "genre": "Comedy",
+                        "year": 2025
+                    }
+                },
+                {
+                    "utterance": "Can you list the upcoming titles from 2021 to 2023 sorted by year in descending order?",
+                    "parameters": {
+                        "startYear": 2021,
+                        "endYear": 2023,
+                        "sort": "year.decr"
+                    }
+                },
+                {
+                    "utterance": "What are the upcoming horror movies?",
+                    "parameters": {
+                        "titleType": "movie",
+                        "genre": "Horror"
+                    }
+                },
+                {
+                    "utterance": "Show me the upcoming titles with images.",
+                    "parameters": {
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "What are the upcoming sci-fi series releasing in 2024?",
+                    "parameters": {
+                        "titleType": "series",
+                        "genre": "Sci-Fi",
+                        "year": 2024
+                    }
+                },
+                {
+                    "utterance": "Can you list the upcoming titles between 2020 and 2022?",
+                    "parameters": {
+                        "startYear": 2020,
+                        "endYear": 2022
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/{id}/ratings",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/{id}/ratings",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Imdb Id of title ex: tt0000002",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the ratings for the movie with IMDb ID tt1234567?",
+                    "parameters": {
+                        "id": "tt1234567"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the ratings for the series with IMDb ID tt2345678?",
+                    "parameters": {
+                        "id": "tt2345678"
+                    }
+                },
+                {
+                    "utterance": "I need the ratings for the episode with IMDb ID tt3456789.",
+                    "parameters": {
+                        "id": "tt3456789"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the ratings for the movie with IMDb ID tt4567890?",
+                    "parameters": {
+                        "id": "tt4567890"
+                    }
+                },
+                {
+                    "utterance": "What's the rating for the series with IMDb ID tt5678901?",
+                    "parameters": {
+                        "id": "tt5678901"
+                    }
+                },
+                {
+                    "utterance": "Please provide the ratings for the episode with IMDb ID tt6789012.",
+                    "parameters": {
+                        "id": "tt6789012"
+                    }
+                },
+                {
+                    "utterance": "Can you get the ratings for the movie with IMDb ID tt7890123?",
+                    "parameters": {
+                        "id": "tt7890123"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the ratings for the series with IMDb ID tt8901234.",
+                    "parameters": {
+                        "id": "tt8901234"
+                    }
+                },
+                {
+                    "utterance": "What are the ratings for the episode with IMDb ID tt9012345?",
+                    "parameters": {
+                        "id": "tt9012345"
+                    }
+                },
+                {
+                    "utterance": "Could you check the ratings for the movie with IMDb ID tt0123456?",
+                    "parameters": {
+                        "id": "tt0123456"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/{id}/crew",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/{id}/crew",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Imdb Id of title ex: tt0000002",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Who are the crew members for the movie with IMDb ID tt1234567?",
+                    "parameters": {
+                        "id": "tt1234567"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the cast and crew for the series with IMDb ID tt2345678?",
+                    "parameters": {
+                        "id": "tt2345678"
+                    }
+                },
+                {
+                    "utterance": "I need the crew details for the film with IMDb ID tt3456789.",
+                    "parameters": {
+                        "id": "tt3456789"
+                    }
+                },
+                {
+                    "utterance": "What is the crew information for the episode with IMDb ID tt4567890?",
+                    "parameters": {
+                        "id": "tt4567890"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the crew list for the movie with IMDb ID tt5678901?",
+                    "parameters": {
+                        "id": "tt5678901"
+                    }
+                },
+                {
+                    "utterance": "Show me the crew members for the series with IMDb ID tt6789012.",
+                    "parameters": {
+                        "id": "tt6789012"
+                    }
+                },
+                {
+                    "utterance": "Who worked on the film with IMDb ID tt7890123?",
+                    "parameters": {
+                        "id": "tt7890123"
+                    }
+                },
+                {
+                    "utterance": "I\u2019m looking for the crew details of the episode with IMDb ID tt8901234.",
+                    "parameters": {
+                        "id": "tt8901234"
+                    }
+                },
+                {
+                    "utterance": "Can you list the crew for the movie with IMDb ID tt9012345?",
+                    "parameters": {
+                        "id": "tt9012345"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the crew information for the series with IMDb ID tt0123456?",
+                    "parameters": {
+                        "id": "tt0123456"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/series/{seriesId}/{season}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/series/{seriesId}/{season}",
+            "parameters": [
+                {
+                    "name": "season",
+                    "type": "STRING",
+                    "description": "Season number",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "seriesId",
+                    "type": "STRING",
+                    "description": "Series Imdb Id",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What episodes are in season 3 of Breaking Bad?",
+                    "parameters": {
+                        "season": "3",
+                        "seriesId": "tt0903747"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the details for season 1 of Game of Thrones?",
+                    "parameters": {
+                        "season": "1",
+                        "seriesId": "tt0944947"
+                    }
+                },
+                {
+                    "utterance": "I need information about season 2 of Stranger Things.",
+                    "parameters": {
+                        "season": "2",
+                        "seriesId": "tt4574334"
+                    }
+                },
+                {
+                    "utterance": "Tell me about season 4 of The Office.",
+                    "parameters": {
+                        "season": "4",
+                        "seriesId": "tt0386676"
+                    }
+                },
+                {
+                    "utterance": "What's in season 5 of Friends?",
+                    "parameters": {
+                        "season": "5",
+                        "seriesId": "tt0108778"
+                    }
+                },
+                {
+                    "utterance": "Can you provide details for season 6 of Grey's Anatomy?",
+                    "parameters": {
+                        "season": "6",
+                        "seriesId": "tt0413573"
+                    }
+                },
+                {
+                    "utterance": "Show me the episodes in season 7 of The Walking Dead.",
+                    "parameters": {
+                        "season": "7",
+                        "seriesId": "tt1520211"
+                    }
+                },
+                {
+                    "utterance": "I want to know about season 8 of House of Cards.",
+                    "parameters": {
+                        "season": "8",
+                        "seriesId": "tt1856010"
+                    }
+                },
+                {
+                    "utterance": "What does season 9 of The Big Bang Theory include?",
+                    "parameters": {
+                        "season": "9",
+                        "seriesId": "tt0898266"
+                    }
+                },
+                {
+                    "utterance": "Give me the details for season 10 of Modern Family.",
+                    "parameters": {
+                        "season": "10",
+                        "seriesId": "tt1442437"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/episode/{id}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/episode/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Episode Imdb Id",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "base_info",
+                                "mini_info",
+                                "image"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get me the base information for the episode with IMDb ID tt1234567?",
+                    "parameters": {
+                        "id": "tt1234567",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "What's the mini info for the episode titled 'The Final Showdown' with IMDb ID tt2345678?",
+                    "parameters": {
+                        "id": "tt2345678",
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "Show me the image for the episode with IMDb ID tt3456789.",
+                    "parameters": {
+                        "id": "tt3456789",
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "I need the base details for the episode with IMDb ID tt4567890.",
+                    "parameters": {
+                        "id": "tt4567890",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the mini info for the episode with IMDb ID tt5678901?",
+                    "parameters": {
+                        "id": "tt5678901",
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "Get me the image for the episode with IMDb ID tt6789012.",
+                    "parameters": {
+                        "id": "tt6789012",
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the base information for the episode with IMDb ID tt7890123?",
+                    "parameters": {
+                        "id": "tt7890123",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the mini info for the episode with IMDb ID tt8901234?",
+                    "parameters": {
+                        "id": "tt8901234",
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "Show the image for the episode with IMDb ID tt9012345.",
+                    "parameters": {
+                        "id": "tt9012345",
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like the base info for the episode with IMDb ID tt0123456.",
+                    "parameters": {
+                        "id": "tt0123456",
+                        "info": "base_info"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/{id}/main_actors",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/{id}/main_actors",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Imdb Id of title ex: tt0000002",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Who are the main actors in the movie with IMDb ID tt1234567?",
+                    "parameters": {
+                        "id": "tt1234567"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the cast of the film identified by tt2345678?",
+                    "parameters": {
+                        "id": "tt2345678"
+                    }
+                },
+                {
+                    "utterance": "I need the list of main actors for the series with IMDb ID tt3456789.",
+                    "parameters": {
+                        "id": "tt3456789"
+                    }
+                },
+                {
+                    "utterance": "Who starred in the movie that has the IMDb ID tt4567890?",
+                    "parameters": {
+                        "id": "tt4567890"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the main actors for the title with IMDb ID tt5678901?",
+                    "parameters": {
+                        "id": "tt5678901"
+                    }
+                },
+                {
+                    "utterance": "What are the names of the main actors in the film with IMDb ID tt6789012?",
+                    "parameters": {
+                        "id": "tt6789012"
+                    }
+                },
+                {
+                    "utterance": "Please list the main actors for the movie identified by tt7890123.",
+                    "parameters": {
+                        "id": "tt7890123"
+                    }
+                },
+                {
+                    "utterance": "Who are the lead actors in the series with IMDb ID tt8901234?",
+                    "parameters": {
+                        "id": "tt8901234"
+                    }
+                },
+                {
+                    "utterance": "Can you find the main cast for the title with IMDb ID tt9012345?",
+                    "parameters": {
+                        "id": "tt9012345"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to know the main actors in the movie with IMDb ID tt0123456.",
+                    "parameters": {
+                        "id": "tt0123456"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/x/titles-by-ids",
+            "description": "Titles by ids list",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/x/titles-by-ids",
+            "parameters": [
+                {
+                    "name": "idsList",
+                    "type": "STRING",
+                    "description": "Imdb id's comma separated -> tt0001702,tt0001856,tt0001856 ...",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "Imdb id's comma separated"
+                    }
+                },
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "Selected list -> most_pop_movies / most_pop_series / top_rated_series_250 / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "most_pop_movies",
+                                "most_pop_series",
+                                "top_rated_series_250"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "base_info",
+                                "mini_info",
+                                "image"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get me the details for the movies with IMDb IDs tt0001702 and tt0001856?",
+                    "parameters": {
+                        "idsList": "tt0001702,tt0001856"
+                    }
+                },
+                {
+                    "utterance": "What are the most popular movies in the database?",
+                    "parameters": {
+                        "idsList": "tt0001702,tt0001856",
+                        "list": "most_pop_movies"
+                    }
+                },
+                {
+                    "utterance": "Show me the base information for the series with IMDb ID tt0001856.",
+                    "parameters": {
+                        "idsList": "tt0001856",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the mini info for the top-rated series with IMDb ID tt0001702?",
+                    "parameters": {
+                        "idsList": "tt0001702",
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "What are the most popular series available?",
+                    "parameters": {
+                        "idsList": "tt0001702,tt0001856",
+                        "list": "most_pop_series"
+                    }
+                },
+                {
+                    "utterance": "Get me the image details for the movie with IMDb ID tt0001856.",
+                    "parameters": {
+                        "idsList": "tt0001856",
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the top-rated series list with IMDb IDs tt0001702 and tt0001856?",
+                    "parameters": {
+                        "idsList": "tt0001702,tt0001856",
+                        "list": "top_rated_series_250"
+                    }
+                },
+                {
+                    "utterance": "Show me the base info for the most popular movies with IMDb ID tt0001702.",
+                    "parameters": {
+                        "idsList": "tt0001702",
+                        "list": "most_pop_movies",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the mini info for the series with IMDb ID tt0001856?",
+                    "parameters": {
+                        "idsList": "tt0001856",
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the image details for the top-rated series with IMDb ID tt0001702?",
+                    "parameters": {
+                        "idsList": "tt0001702",
+                        "list": "top_rated_series_250",
+                        "info": "image"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/{id}/aka",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/{id}/aka",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Imdb Id of title ex: tt0000002",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the alternative titles for the movie with IMDb ID tt1234567?",
+                    "parameters": {
+                        "id": "tt1234567"
+                    }
+                },
+                {
+                    "utterance": "What are the other names for the series with IMDb ID tt2345678?",
+                    "parameters": {
+                        "id": "tt2345678"
+                    }
+                },
+                {
+                    "utterance": "I need the AKA titles for the film with IMDb ID tt3456789.",
+                    "parameters": {
+                        "id": "tt3456789"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the alternative titles for the episode with IMDb ID tt4567890?",
+                    "parameters": {
+                        "id": "tt4567890"
+                    }
+                },
+                {
+                    "utterance": "Show me the different titles used for the movie with IMDb ID tt5678901.",
+                    "parameters": {
+                        "id": "tt5678901"
+                    }
+                },
+                {
+                    "utterance": "What are the known alternative titles for the series with IMDb ID tt6789012?",
+                    "parameters": {
+                        "id": "tt6789012"
+                    }
+                },
+                {
+                    "utterance": "Can you list the AKA titles for the film with IMDb ID tt7890123?",
+                    "parameters": {
+                        "id": "tt7890123"
+                    }
+                },
+                {
+                    "utterance": "I\u2019m looking for the other names of the episode with IMDb ID tt8901234.",
+                    "parameters": {
+                        "id": "tt8901234"
+                    }
+                },
+                {
+                    "utterance": "What are the alternative titles for the movie with IMDb ID tt9012345?",
+                    "parameters": {
+                        "id": "tt9012345"
+                    }
+                },
+                {
+                    "utterance": "Could you show me the AKA titles for the series with IMDb ID tt0123456?",
+                    "parameters": {
+                        "id": "tt0123456"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/random",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/random",
+            "parameters": [
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "genre",
+                    "type": "STRING",
+                    "description": "Year filter ex: ?genre=Drama",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr /year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        }
+                    }
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "Selected list -> most_pop_movies / most_pop_series / top_rated_series_250 / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you recommend a random movie from the 1990s?",
+                    "parameters": {
+                        "startYear": 1990,
+                        "endYear": 1999
+                    }
+                },
+                {
+                    "utterance": "Find me a random comedy series from the most popular list.",
+                    "parameters": {
+                        "genre": "Comedy",
+                        "list": "most_pop_series"
+                    }
+                },
+                {
+                    "utterance": "Show me a random title from 2015 with base information.",
+                    "parameters": {
+                        "year": 2015,
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "Get me a random drama movie sorted by year in ascending order.",
+                    "parameters": {
+                        "genre": "Drama",
+                        "titleType": "movie",
+                        "sort": "year.incr"
+                    }
+                },
+                {
+                    "utterance": "Suggest a random title from the top-rated series list.",
+                    "parameters": {
+                        "list": "top_rated_series_250"
+                    }
+                },
+                {
+                    "utterance": "Find a random title from 2020 with image details.",
+                    "parameters": {
+                        "year": 2020,
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "Show me 5 random movies from the 1980s.",
+                    "parameters": {
+                        "startYear": 1980,
+                        "endYear": 1989,
+                        "limit": 5,
+                        "titleType": "movie"
+                    }
+                },
+                {
+                    "utterance": "Recommend a random action movie from the most popular movies list.",
+                    "parameters": {
+                        "genre": "Action",
+                        "list": "most_pop_movies"
+                    }
+                },
+                {
+                    "utterance": "Get me a random title from 2005 with mini information.",
+                    "parameters": {
+                        "year": 2005,
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "Find a random series from 2010 sorted by year in descending order.",
+                    "parameters": {
+                        "year": 2010,
+                        "titleType": "series",
+                        "sort": "year.decr"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/{id}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Imdb Id of title ex: tt0000002",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: base-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the base information for the movie with IMDb ID tt0000002?",
+                    "parameters": {
+                        "id": "tt0000002",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "What are the mini details for the title identified by tt0000003?",
+                    "parameters": {
+                        "id": "tt0000003",
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "Show me the image for the movie with IMDb ID tt0000004.",
+                    "parameters": {
+                        "id": "tt0000004",
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "I need the full details for the title with IMDb ID tt0000005.",
+                    "parameters": {
+                        "id": "tt0000005"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the base information for the series identified by tt0000006?",
+                    "parameters": {
+                        "id": "tt0000006",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the mini info for the episode with IMDb ID tt0000007?",
+                    "parameters": {
+                        "id": "tt0000007",
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "Get the image for the movie with IMDb ID tt0000008.",
+                    "parameters": {
+                        "id": "tt0000008",
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "Provide the base information for the title with IMDb ID tt0000009.",
+                    "parameters": {
+                        "id": "tt0000009",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "Can you show the mini details for the series with IMDb ID tt0000010?",
+                    "parameters": {
+                        "id": "tt0000010",
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the image for the movie with IMDb ID tt0000011.",
+                    "parameters": {
+                        "id": "tt0000011",
+                        "info": "image"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles",
+            "parameters": [
+                {
+                    "name": "genre",
+                    "type": "STRING",
+                    "description": "Year filter ex: ?genre=Drama",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: startYear must be less than or equal to endYear."
+                    }
+                },
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "most_pop_movies",
+                                "most_pop_series",
+                                "top_rated_series_250"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "Selected list -> most_pop_movies / most_pop_series / top_rated_series_250 / ...",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2020",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr /year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "year.incr",
+                                "year.decr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "base_info",
+                                "mini_info",
+                                "image"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: startYear must be less than or equal to endYear."
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        },
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the most popular movies from 2020?",
+                    "parameters": {
+                        "list": "most_pop_movies",
+                        "year": 2020
+                    }
+                },
+                {
+                    "utterance": "What are the top-rated series from 2015 to 2020?",
+                    "parameters": {
+                        "titleType": "top_rated_series_250",
+                        "startYear": 2015,
+                        "endYear": 2020
+                    }
+                },
+                {
+                    "utterance": "List drama movies sorted by year in ascending order.",
+                    "parameters": {
+                        "genre": "Drama",
+                        "sort": "year.incr"
+                    }
+                },
+                {
+                    "utterance": "Show me the base information for the most popular series.",
+                    "parameters": {
+                        "list": "most_pop_series",
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "What are the most popular movies from 2018 with images?",
+                    "parameters": {
+                        "list": "most_pop_movies",
+                        "year": 2018,
+                        "info": "image"
+                    }
+                },
+                {
+                    "utterance": "Can you list the top-rated series from 2010 to 2015 sorted by year in descending order?",
+                    "parameters": {
+                        "titleType": "top_rated_series_250",
+                        "startYear": 2010,
+                        "endYear": 2015,
+                        "sort": "year.decr"
+                    }
+                },
+                {
+                    "utterance": "Show me the mini information for drama movies from 2019.",
+                    "parameters": {
+                        "genre": "Drama",
+                        "year": 2019,
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "What are the most popular series from 2017?",
+                    "parameters": {
+                        "list": "most_pop_series",
+                        "year": 2017
+                    }
+                },
+                {
+                    "utterance": "List the most popular movies from 2016 to 2020 with base information.",
+                    "parameters": {
+                        "list": "most_pop_movies",
+                        "startYear": 2016,
+                        "endYear": 2020,
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the top-rated series from 2014 sorted by year in ascending order?",
+                    "parameters": {
+                        "titleType": "top_rated_series_250",
+                        "year": 2014,
+                        "sort": "year.incr"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/titles/seasons/{seriesId}",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/seasons/{seriesId}",
+            "parameters": [
+                {
+                    "name": "seriesId",
+                    "type": "STRING",
+                    "description": "Series Imdb Id",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the seasons for the series with IMDb ID tt0903747?",
+                    "parameters": {
+                        "seriesId": "tt0903747"
+                    }
+                },
+                {
+                    "utterance": "What are the available seasons for the series identified by tt0944947?",
+                    "parameters": {
+                        "seriesId": "tt0944947"
+                    }
+                },
+                {
+                    "utterance": "I need the list of seasons for the series with IMDb ID tt2861424.",
+                    "parameters": {
+                        "seriesId": "tt2861424"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the seasons for the series with IMDb ID tt0386676?",
+                    "parameters": {
+                        "seriesId": "tt0386676"
+                    }
+                },
+                {
+                    "utterance": "Show me the seasons for the series identified by tt0460649.",
+                    "parameters": {
+                        "seriesId": "tt0460649"
+                    }
+                },
+                {
+                    "utterance": "What seasons are available for the series with IMDb ID tt0108778?",
+                    "parameters": {
+                        "seriesId": "tt0108778"
+                    }
+                },
+                {
+                    "utterance": "Can you list the seasons for the series with IMDb ID tt1475582?",
+                    "parameters": {
+                        "seriesId": "tt1475582"
+                    }
+                },
+                {
+                    "utterance": "I want to see the seasons for the series identified by tt0413573.",
+                    "parameters": {
+                        "seriesId": "tt0413573"
+                    }
+                },
+                {
+                    "utterance": "Fetch the seasons for the series with IMDb ID tt0096697.",
+                    "parameters": {
+                        "seriesId": "tt0096697"
+                    }
+                },
+                {
+                    "utterance": "What are the seasons for the series with IMDb ID tt3032476?",
+                    "parameters": {
+                        "seriesId": "tt3032476"
+                    }
+                }
+            ]
+        }
+    ]
+}

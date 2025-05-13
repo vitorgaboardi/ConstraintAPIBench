@@ -1,0 +1,232 @@
+{
+    "name": "Sportspage Feeds",
+    "description": "Real-time scores, schedules, and betting odds for US leagues.  Unbeatable value.  Documentation: https://sportspagefeeds.com/documentation",
+    "url": "https://rapidapi.com/SportspageFeeds/api/sportspage-feeds/",
+    "api_methods": [
+        {
+            "name": "Teams",
+            "description": "Returns a list of teams within a specified league, conference, or division.",
+            "url": "https://sportspage-feeds.p.rapidapi.com/teams",
+            "parameters": [
+                {
+                    "name": "league",
+                    "type": "STRING",
+                    "description": "A valid league code (i.e., NFL, NBA, MLB, NHL, NCAAF, or NCAAB)",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "NFL",
+                                "NBA",
+                                "MLB",
+                                "NHL",
+                                "NCAAF",
+                                "NCAAB"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "conference",
+                    "type": "STRING",
+                    "description": "A conference within the specified league",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "league, conference: conference must be within the specified league."
+                    }
+                },
+                {
+                    "name": "division",
+                    "type": "STRING",
+                    "description": "A division within the specified conference",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "league, conference, division: division must be within the specified conference and league."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Game By ID",
+            "description": "Returns a specific game based on its ID.",
+            "url": "https://sportspage-feeds.p.rapidapi.com/gameById",
+            "parameters": [
+                {
+                    "name": "gameId",
+                    "type": "STRING",
+                    "description": "A unique game identifier",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Games",
+            "description": "Returns a list of games.",
+            "url": "https://sportspage-feeds.p.rapidapi.com/games",
+            "parameters": [
+                {
+                    "name": "odds",
+                    "type": "STRING",
+                    "description": "A comma-separated filter to select games with one or more of the following odds types: \\\\\\\\\\\\\\\"spread\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"moneyline\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"total\\\\\\\\\\\\\\\", or \\\\\\\\\\\\\\\"any\\\\\\\\\\\\\\\"",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "spread",
+                                "moneyline",
+                                "total",
+                                "any"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "team",
+                    "type": "STRING",
+                    "description": "A team participating in one or more games",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "division",
+                    "type": "STRING",
+                    "description": "A division within the specified conference",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "One or two (comma-separated) YYYY-MM-DD- or ISO-formatted dates",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD or ISO format"
+                    }
+                },
+                {
+                    "name": "skip",
+                    "type": "STRING",
+                    "description": "The number of game results to skip, which is required to access results beyond the first 100",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "status",
+                    "type": "STRING",
+                    "description": "A valid status of one of the following: \\\\\\\\\\\\\\\"scheduled\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"in progress\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"final\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"canceled\\\\\\\\\\\\\\\", or \\\\\\\\\\\\\\\"delayed\\\\\\\\\\\\\\\"",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "scheduled",
+                                "in progress",
+                                "final",
+                                "canceled",
+                                "delayed"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "league",
+                    "type": "STRING",
+                    "description": "A valid league code (i.e., NFL, NBA, MLB, NHL, NCAAF, or NCAAB)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "NFL",
+                                "NBA",
+                                "MLB",
+                                "NHL",
+                                "NCAAF",
+                                "NCAAB"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "conference",
+                    "type": "STRING",
+                    "description": "A conference within the specified league",
+                    "default": "",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Conferences",
+            "description": "Returns a list of conferences and divisions within the specified league. Use this endpoint to obtain conference and division names to be used as parameters for other requests.",
+            "url": "https://sportspage-feeds.p.rapidapi.com/conferences",
+            "parameters": [
+                {
+                    "name": "league",
+                    "type": "STRING",
+                    "description": "A valid league code (i.e., NFL, NBA, MLB, NHL, NCAAF, or NCAAB)",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "NFL",
+                                "NBA",
+                                "MLB",
+                                "NHL",
+                                "NCAAF",
+                                "NCAAB"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Odds",
+            "description": "Returns the odds history for a game by type.",
+            "url": "https://sportspage-feeds.p.rapidapi.com/odds",
+            "parameters": [
+                {
+                    "name": "gameId",
+                    "type": "STRING",
+                    "description": "A unique game identifier",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "An odds type of one of the following: \\\\\\\"spread\\\\\\\", \\\\\\\"moneyline\\\\\\\", \\\\\\\"total\\\\\\\", or \\\\\\\"any\\\\\\\"",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "spread",
+                                "moneyline",
+                                "total",
+                                "any"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

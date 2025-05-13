@@ -1,0 +1,240 @@
+{
+    "name": "Horse Racing",
+    "description": "Horse racing API - UK & Ireland races. Racecards, results, stats, Odds comparator and more. ",
+    "url": "https://rapidapi.com/ortegalex/api/horse-racing/",
+    "api_methods": [
+        {
+            "name": "Race detail info",
+            "description": "**Get racecard detailed info** and **Odds comparator**\nHorses, Jockeys, Trainers, Form, OR, Owner, Sire, Dam, Age, Weight and more information.",
+            "url": "https://horse-racing.p.rapidapi.com/race/{id_race}",
+            "parameters": [
+                {
+                    "name": "id_race",
+                    "type": "string",
+                    "description": "",
+                    "default": "207660",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Query races",
+            "description": "The best way to search races.",
+            "url": "https://horse-racing.p.rapidapi.com/query-races",
+            "parameters": [
+                {
+                    "name": "order_by_date",
+                    "type": "ENUM",
+                    "description": "Results ordered by date race ascending or descending.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ascending",
+                                "descending"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "date_to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "class_to",
+                    "type": "NUMBER",
+                    "description": "Maximum race class.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "distance_to",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": []
+                        }
+                    }
+                },
+                {
+                    "name": "distance_from",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": []
+                        }
+                    }
+                },
+                {
+                    "name": "id_horse",
+                    "type": "NUMBER",
+                    "description": "Horse id. If you populate this field the query search races where this horse run.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "course",
+                    "type": "STRING",
+                    "description": "Like Cheltenham, Ascot, Newmarket ....",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "class_from",
+                    "type": "NUMBER",
+                    "description": "Minimum race class.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "date_from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Race name or a text on the race name. Like \\\"Novice\\\", \\\"Handicap chase\\\", \\\"Hurdle\\\", ....",
+                    "default": "",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Horse Stats",
+            "description": "Get horse results history.",
+            "url": "https://horse-racing.p.rapidapi.com/horse-stats/{id_horse}",
+            "parameters": [
+                {
+                    "name": "id_horse",
+                    "type": "string",
+                    "description": "",
+                    "default": "230380",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Query horses",
+            "description": "Search horses by name. \nOnce you get \"*id_horse*\" from this query, you can get horses stats from \"**Horse stats**\" endpoint.",
+            "url": "https://horse-racing.p.rapidapi.com/query-horses",
+            "parameters": [
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Minimum 3 characters",
+                    "default": "ZANAHIYR",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 3
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Racecards",
+            "description": "Get races list.",
+            "url": "https://horse-racing.p.rapidapi.com/racecards",
+            "parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2020-03-12",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Results",
+            "description": "Get results by date.",
+            "url": "https://horse-racing.p.rapidapi.com/results",
+            "parameters": [
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "2020-03-13",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Jockeys win rate",
+            "description": "Get Jockeys stats in the last days.\nRuns, Wins and Win Rate in %.",
+            "url": "https://horse-racing.p.rapidapi.com/jockeys-win-rate",
+            "parameters": [
+                {
+                    "name": "last_days",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "7",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Trainers win rate",
+            "description": "Get Trainers stats in the last days.\nRuns, Wins and Win Rate in %.",
+            "url": "https://horse-racing.p.rapidapi.com/trainers-win-rate",
+            "parameters": [
+                {
+                    "name": "last_days",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "7",
+                    "required": false
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,236 @@
+{
+    "name": "Referential",
+    "description": "The fastest API to access countries, states, cities, continents, dial and zip codes in up to 20 languages. A collection of data APIs to support forms, signups, search and lookup. Our endpoints are optimized for speed and size. Our data is regularly maintained and comes from International Standardization bodies, the United Nations, government surveys and GIS datasets. We do not scrape WikiPedia etc",
+    "url": "https://rapidapi.com/referential/api/referential/",
+    "api_methods": [
+        {
+            "name": "Country by iso code",
+            "description": "Get country by 2 letter iso code localized to a given language",
+            "url": "https://referential.p.rapidapi.com/v1/country/{iso_code}",
+            "parameters": [
+                {
+                    "name": "iso_code",
+                    "type": "string",
+                    "description": "2 letter iso country code. ",
+                    "default": "US",
+                    "required": true,
+                    "constraints": {
+                        "format": "2 letter iso country code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Comma deliminated list of fields to return in response",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "2 letter iso language code to localize country name",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter iso language code"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details about the country with the ISO code FR?",
+                    "parameters": {
+                        "iso_code": "FR"
+                    }
+                },
+                {
+                    "utterance": "What information can you give me about Germany in Spanish?",
+                    "parameters": {
+                        "iso_code": "DE",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "I need the population and capital of Japan.",
+                    "parameters": {
+                        "iso_code": "JP",
+                        "fields": "population,capital"
+                    }
+                },
+                {
+                    "utterance": "Tell me about Italy in French.",
+                    "parameters": {
+                        "iso_code": "IT",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the currency and timezone for Brazil?",
+                    "parameters": {
+                        "iso_code": "BR",
+                        "fields": "currency,timezone"
+                    }
+                },
+                {
+                    "utterance": "What are the main details about Canada in English?",
+                    "parameters": {
+                        "iso_code": "CA",
+                        "lang": "en"
+                    }
+                },
+                {
+                    "utterance": "I need the area and language of Australia.",
+                    "parameters": {
+                        "iso_code": "AU",
+                        "fields": "area,language"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the flag and region of India in Hindi?",
+                    "parameters": {
+                        "iso_code": "IN",
+                        "fields": "flag,region",
+                        "lang": "hi"
+                    }
+                },
+                {
+                    "utterance": "What is the capital and population of Mexico in Spanish?",
+                    "parameters": {
+                        "iso_code": "MX",
+                        "fields": "capital,population",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the United Kingdom in German.",
+                    "parameters": {
+                        "iso_code": "GB",
+                        "lang": "de"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Languages",
+            "description": "List the world's languages translated into 20 languages",
+            "url": "https://referential.p.rapidapi.com/v1/lang",
+            "parameters": [
+                {
+                    "name": "lang_3",
+                    "type": "STRING",
+                    "description": "Filter by 3 letter ISO language code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "3 letter ISO language code"
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter country code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [flag,iso_a2,lang_3,lang]",
+                    "default": "iso_a2,lang_3,flag",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "flag",
+                                "iso_a2",
+                                "lang_3",
+                                "lang"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Returns a language translated into lang language",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "language code"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you list all languages in French?",
+                    "parameters": {
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "What are the languages spoken in Germany?",
+                    "parameters": {
+                        "iso_a2": "DE"
+                    }
+                },
+                {
+                    "utterance": "Show me the languages with their flags and ISO codes.",
+                    "parameters": {
+                        "fields": "flag,iso_a2,lang_3"
+                    }
+                },
+                {
+                    "utterance": "List all languages in Spanish, including their flags.",
+                    "parameters": {
+                        "lang": "es",
+                        "fields": "flag,lang"
+                    }
+                },
+                {
+                    "utterance": "What languages are associated with the ISO code 'fr'?",
+                    "parameters": {
+                        "lang_3": "fra"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the list of languages in Japanese for Canada?",
+                    "parameters": {
+                        "iso_a2": "CA",
+                        "lang": "ja"
+                    }
+                },
+                {
+                    "utterance": "Show me the languages in Italian, including their 3-letter ISO codes.",
+                    "parameters": {
+                        "lang": "it",
+                        "fields": "lang_3,lang"
+                    }
+                },
+                {
+                    "utterance": "What are the languages in Brazil with their flags?",
+                    "parameters": {
+                        "iso_a2": "BR",
+                        "fields": "flag,lang"
+                    }
+                },
+                {
+                    "utterance": "List all languages in German, including their 2-letter country codes.",
+                    "parameters": {
+                        "lang": "de",
+                        "fields": "iso_a2,lang"
+                    }
+                },
+                {
+                    "utterance": "Can you show the languages for the ISO code 'eng' in Chinese?",
+                    "parameters": {
+                        "lang_3": "eng",
+                        "lang": "zh"
+                    }
+                }
+            ]
+        }
+    ]
+}

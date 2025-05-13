@@ -1,0 +1,2207 @@
+{
+    "name": "Reddio NFT, Token and IPFS",
+    "description": "Reddio APIs provide the layer 2 zkRollup APIs powered by StarkEx from StarkWare, enabling 0 gas fee on layer 2 and 10k TPS. This new zkRollup technology is being widely use by many NFT marketplaces, GameFi , Defi projects etc.",
+    "url": "https://rapidapi.com/reddio-reddio-default/api/reddio-nft-token-and-ipfs/",
+    "api_methods": [
+        {
+            "name": "GetAssetsbycontractinformation",
+            "description": "This request will return asset_id wrapped with return code and error code",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/assetid",
+            "parameters": [
+                {
+                    "name": "token_id",
+                    "type": "STRING",
+                    "description": "TokenID of NFT(ERC721/ERC721M need this field)",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "contract_address",
+                    "type": "STRING",
+                    "description": "Contract address of token (when type is ERC20/ERC721/ERC721M need this field, if type is ETH, then it can be ignore)",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type of token, Possible enum values is ETH, ERC20, ERC721, ERC721M",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Get the asset ID for the NFT with token ID 12345.",
+                    "parameters": {
+                        "token_id": "12345"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the asset information for the ERC20 token with contract address 0x1234567890abcdef.",
+                    "parameters": {
+                        "contract_address": "0x1234567890abcdef",
+                        "type": "ERC20"
+                    }
+                },
+                {
+                    "utterance": "What is the asset ID for the ERC721 token with contract address 0xabcdef1234567890 and token ID 67890?",
+                    "parameters": {
+                        "contract_address": "0xabcdef1234567890",
+                        "token_id": "67890",
+                        "type": "ERC721"
+                    }
+                },
+                {
+                    "utterance": "Find the asset details for the ETH token.",
+                    "parameters": {
+                        "type": "ETH"
+                    }
+                },
+                {
+                    "utterance": "Get the asset ID for the ERC721M token with contract address 0x0987654321fedcba and token ID 54321.",
+                    "parameters": {
+                        "contract_address": "0x0987654321fedcba",
+                        "token_id": "54321",
+                        "type": "ERC721M"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the asset information for the ERC721 token with contract address 0xabcdef1234567890.",
+                    "parameters": {
+                        "contract_address": "0xabcdef1234567890",
+                        "type": "ERC721"
+                    }
+                },
+                {
+                    "utterance": "What is the asset ID for the ERC20 token with contract address 0x1234567890abcdef?",
+                    "parameters": {
+                        "contract_address": "0x1234567890abcdef",
+                        "type": "ERC20"
+                    }
+                },
+                {
+                    "utterance": "Get the asset details for the ERC721M token with token ID 98765.",
+                    "parameters": {
+                        "token_id": "98765",
+                        "type": "ERC721M"
+                    }
+                },
+                {
+                    "utterance": "Find the asset ID for the ETH token.",
+                    "parameters": {
+                        "type": "ETH"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the asset information for the ERC721 token with token ID 11223.",
+                    "parameters": {
+                        "token_id": "11223",
+                        "type": "ERC721"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "GetAssetsdetailbyassetid",
+            "description": "The API can query every asset_id that exists on reddio's system, if the FT/NFT is not on reddio's system, then the API will not work well\n\nThe API returns assets detail including contract_address, type, token_id(if type is ERC721 or ERC721M), quantum and token owners(owns by who)",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/assetid/{asset_id}",
+            "parameters": [
+                {
+                    "name": "asset_id",
+                    "type": "STRING",
+                    "description": "The asset id you want to retrieve information",
+                    "default": "",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the details for the asset with ID 12345?",
+                    "parameters": {
+                        "asset_id": "12345"
+                    }
+                },
+                {
+                    "utterance": "What information is available for the asset ID abcdef?",
+                    "parameters": {
+                        "asset_id": "abcdef"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the details of the asset with ID xyz789.",
+                    "parameters": {
+                        "asset_id": "xyz789"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the asset details for ID 98765?",
+                    "parameters": {
+                        "asset_id": "98765"
+                    }
+                },
+                {
+                    "utterance": "What are the details of the asset with ID qwerty?",
+                    "parameters": {
+                        "asset_id": "qwerty"
+                    }
+                },
+                {
+                    "utterance": "Get the information for the asset ID asdf1234.",
+                    "parameters": {
+                        "asset_id": "asdf1234"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the details for the asset ID zxcv5678?",
+                    "parameters": {
+                        "asset_id": "zxcv5678"
+                    }
+                },
+                {
+                    "utterance": "What does the asset with ID 11223344 contain?",
+                    "parameters": {
+                        "asset_id": "11223344"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the details for the asset ID 99887766.",
+                    "parameters": {
+                        "asset_id": "99887766"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the asset details for ID 55443322?",
+                    "parameters": {
+                        "asset_id": "55443322"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Getvaultsdetailbyvaultid",
+            "description": " ",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/vaults/{vault_id}",
+            "parameters": [
+                {
+                    "name": "vault_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details for the vault with ID 12345?",
+                    "parameters": {
+                        "vault_id": "12345"
+                    }
+                },
+                {
+                    "utterance": "I need information about the vault identified by 67890.",
+                    "parameters": {
+                        "vault_id": "67890"
+                    }
+                },
+                {
+                    "utterance": "What are the details for vault ID 98765?",
+                    "parameters": {
+                        "vault_id": "98765"
+                    }
+                },
+                {
+                    "utterance": "Please fetch the details for the vault with ID 54321.",
+                    "parameters": {
+                        "vault_id": "54321"
+                    }
+                },
+                {
+                    "utterance": "Could you retrieve information for vault ID 11223?",
+                    "parameters": {
+                        "vault_id": "11223"
+                    }
+                },
+                {
+                    "utterance": "I want to know more about the vault with ID 33445.",
+                    "parameters": {
+                        "vault_id": "33445"
+                    }
+                },
+                {
+                    "utterance": "Get the details for vault ID 55667.",
+                    "parameters": {
+                        "vault_id": "55667"
+                    }
+                },
+                {
+                    "utterance": "What is the information for the vault identified by 77889?",
+                    "parameters": {
+                        "vault_id": "77889"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the details for vault ID 99001?",
+                    "parameters": {
+                        "vault_id": "99001"
+                    }
+                },
+                {
+                    "utterance": "I need the details for the vault with ID 22334.",
+                    "parameters": {
+                        "vault_id": "22334"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Getvaultsbystark_keyandasset_id",
+            "description": " ",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/vaults",
+            "parameters": [
+                {
+                    "name": "stark_keys",
+                    "type": "STRING",
+                    "description": "stark_keys can be multi stark_key, separated by \",\"",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "asset_id",
+                    "type": "STRING",
+                    "description": "the asset id",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the vaults for the stark key 0x12345?",
+                    "parameters": {
+                        "stark_keys": "0x12345"
+                    }
+                },
+                {
+                    "utterance": "What are the vaults associated with the asset ID 67890?",
+                    "parameters": {
+                        "asset_id": "67890"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the vaults for the stark keys 0x12345 and 0x67890.",
+                    "parameters": {
+                        "stark_keys": "0x12345,0x67890"
+                    }
+                },
+                {
+                    "utterance": "Get the vaults for the asset ID 54321 and the stark key 0xABCDE.",
+                    "parameters": {
+                        "stark_keys": "0xABCDE",
+                        "asset_id": "54321"
+                    }
+                },
+                {
+                    "utterance": "What vaults are linked to the stark key 0x1A2B3C?",
+                    "parameters": {
+                        "stark_keys": "0x1A2B3C"
+                    }
+                },
+                {
+                    "utterance": "Find the vaults for the asset ID 98765.",
+                    "parameters": {
+                        "asset_id": "98765"
+                    }
+                },
+                {
+                    "utterance": "Can you retrieve the vaults for the stark keys 0x11111 and 0x22222?",
+                    "parameters": {
+                        "stark_keys": "0x11111,0x22222"
+                    }
+                },
+                {
+                    "utterance": "Get the vaults associated with the asset ID 11223 and the stark key 0x33445.",
+                    "parameters": {
+                        "stark_keys": "0x33445",
+                        "asset_id": "11223"
+                    }
+                },
+                {
+                    "utterance": "What are the vaults for the stark key 0x55667?",
+                    "parameters": {
+                        "stark_keys": "0x55667"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the vaults for the asset ID 99887.",
+                    "parameters": {
+                        "asset_id": "99887"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "GetOrderbyOrderID",
+            "description": "The API will return the order related to the order id\n\nThere are many informations it returns\n\n| **field** | **description** |\n| --- | --- |\n| order_id | the id of the order, it is the same value as sequence id |\n| stark_key | the stark_key of who place the order |\n| price | the price of the NFT, when need a human-readable value, display_price is the human-readable value |\n| display_price | the price that human-readable |\n| direction | 0 for sell, 1 for buy |\n| amount | the amount to buy or sell |\n| un_filled | how many tokens are unfilled |\n| symbol | a structure contains base and quota token, also have token id in it |\n| fee_rate | the fee_rate |\n| token_type | the token type |\n| token_id | the token ID |\n| order_state | the state of the order |\n| resp | if there has some error, the field will be set |\n\nThe enum value of order_state is\n\n| Status | Value |\n| --- | --- |\n| Placed | 0 |\n| Canceled | 1 |\n| Filled | 2 |\n| PartiallyFilled | 3 |\n| ConditionallyCanceled | 4 |",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/order",
+            "parameters": [
+                {
+                    "name": "order_id",
+                    "type": "STRING",
+                    "description": "the order id you want to query",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the details for order ID 12345?",
+                    "parameters": {
+                        "order_id": "12345"
+                    }
+                },
+                {
+                    "utterance": "What is the status of the order with ID 67890?",
+                    "parameters": {
+                        "order_id": "67890"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the information for order ID 54321.",
+                    "parameters": {
+                        "order_id": "54321"
+                    }
+                },
+                {
+                    "utterance": "Can you check the details of order ID 98765?",
+                    "parameters": {
+                        "order_id": "98765"
+                    }
+                },
+                {
+                    "utterance": "What is the current state of order ID 11223?",
+                    "parameters": {
+                        "order_id": "11223"
+                    }
+                },
+                {
+                    "utterance": "Get the order details for ID 33445.",
+                    "parameters": {
+                        "order_id": "33445"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the information for order ID 55667?",
+                    "parameters": {
+                        "order_id": "55667"
+                    }
+                },
+                {
+                    "utterance": "What is the status of the order with ID 77889?",
+                    "parameters": {
+                        "order_id": "77889"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the details for order ID 99001.",
+                    "parameters": {
+                        "order_id": "99001"
+                    }
+                },
+                {
+                    "utterance": "Can you get the order information for ID 22334?",
+                    "parameters": {
+                        "order_id": "22334"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ListOrders",
+            "description": " ",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/orders",
+            "parameters": [
+                {
+                    "name": "contract_address",
+                    "type": "STRING",
+                    "description": "the contract address of order you want to list",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you list the orders for the contract address 0x1234567890abcdef?",
+                    "parameters": {
+                        "contract_address": "0x1234567890abcdef"
+                    }
+                },
+                {
+                    "utterance": "Show me the orders associated with the contract address 0xabcdef1234567890.",
+                    "parameters": {
+                        "contract_address": "0xabcdef1234567890"
+                    }
+                },
+                {
+                    "utterance": "List all orders for the contract address 0x9876543210fedcba.",
+                    "parameters": {
+                        "contract_address": "0x9876543210fedcba"
+                    }
+                },
+                {
+                    "utterance": "What are the orders for the contract address 0xabcdef9876543210?",
+                    "parameters": {
+                        "contract_address": "0xabcdef9876543210"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the orders for the contract address 0x1234567890fedcba.",
+                    "parameters": {
+                        "contract_address": "0x1234567890fedcba"
+                    }
+                },
+                {
+                    "utterance": "Can you list the orders for the contract address 0xabcdef1234567890?",
+                    "parameters": {
+                        "contract_address": "0xabcdef1234567890"
+                    }
+                },
+                {
+                    "utterance": "Show me the orders for the contract address 0x9876543210abcdef.",
+                    "parameters": {
+                        "contract_address": "0x9876543210abcdef"
+                    }
+                },
+                {
+                    "utterance": "List the orders associated with the contract address 0xabcdef9876543210.",
+                    "parameters": {
+                        "contract_address": "0xabcdef9876543210"
+                    }
+                },
+                {
+                    "utterance": "What are the orders for the contract address 0x1234567890abcdef?",
+                    "parameters": {
+                        "contract_address": "0x1234567890abcdef"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the orders for the contract address 0xabcdef1234567890.",
+                    "parameters": {
+                        "contract_address": "0xabcdef1234567890"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Getwallets",
+            "description": "The return field as following\n\n| **field** | **description** |\n| --- | --- |\n| stark_key | the stark public key |\n| stark_private_key | the stark private key |",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/wallets",
+            "parameters": [
+                {
+                    "name": "count",
+                    "type": "STRING",
+                    "description": "how many wallets you want to generated",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Generate 5 wallets using the Reddio API.",
+                    "parameters": {
+                        "count": "5"
+                    }
+                },
+                {
+                    "utterance": "Can you create 10 wallets for me?",
+                    "parameters": {
+                        "count": "10"
+                    }
+                },
+                {
+                    "utterance": "I need 3 wallets generated with the Reddio API.",
+                    "parameters": {
+                        "count": "3"
+                    }
+                },
+                {
+                    "utterance": "Please generate 7 wallets for my project.",
+                    "parameters": {
+                        "count": "7"
+                    }
+                },
+                {
+                    "utterance": "How do I generate 2 wallets using Reddio?",
+                    "parameters": {
+                        "count": "2"
+                    }
+                },
+                {
+                    "utterance": "I want to create 15 wallets with the Reddio API.",
+                    "parameters": {
+                        "count": "15"
+                    }
+                },
+                {
+                    "utterance": "Generate 1 wallet for testing purposes.",
+                    "parameters": {
+                        "count": "1"
+                    }
+                },
+                {
+                    "utterance": "Can you generate 20 wallets for my application?",
+                    "parameters": {
+                        "count": "20"
+                    }
+                },
+                {
+                    "utterance": "I need 4 wallets created using Reddio.",
+                    "parameters": {
+                        "count": "4"
+                    }
+                },
+                {
+                    "utterance": "Please generate 8 wallets for my team.",
+                    "parameters": {
+                        "count": "8"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Getrecordbysignature",
+            "description": " ",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/record/by/signature",
+            "parameters": [
+                {
+                    "name": "s",
+                    "type": "STRING",
+                    "description": "signature S",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "r",
+                    "type": "STRING",
+                    "description": "signature R",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you retrieve the record using signature S 'abc123' and signature R 'xyz456'?",
+                    "parameters": {
+                        "s": "abc123",
+                        "r": "xyz456"
+                    }
+                },
+                {
+                    "utterance": "Get the record associated with signature S 'def789' and signature R 'uvw101'.",
+                    "parameters": {
+                        "s": "def789",
+                        "r": "uvw101"
+                    }
+                },
+                {
+                    "utterance": "Find the record using signature S 'ghi112' and signature R 'jkl131'.",
+                    "parameters": {
+                        "s": "ghi112",
+                        "r": "jkl131"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the record with signature S 'mno415' and signature R 'pqr161'.",
+                    "parameters": {
+                        "s": "mno415",
+                        "r": "pqr161"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the record using signature S 'stu718' and signature R 'vwx192'?",
+                    "parameters": {
+                        "s": "stu718",
+                        "r": "vwx192"
+                    }
+                },
+                {
+                    "utterance": "Get the record associated with signature S 'yza021' and signature R 'bcd223'.",
+                    "parameters": {
+                        "s": "yza021",
+                        "r": "bcd223"
+                    }
+                },
+                {
+                    "utterance": "Find the record using signature S 'efg324' and signature R 'hij425'.",
+                    "parameters": {
+                        "s": "efg324",
+                        "r": "hij425"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the record with signature S 'klm526' and signature R 'nop627'.",
+                    "parameters": {
+                        "s": "klm526",
+                        "r": "nop627"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the record using signature S 'qrs728' and signature R 'tuv829'?",
+                    "parameters": {
+                        "s": "qrs728",
+                        "r": "tuv829"
+                    }
+                },
+                {
+                    "utterance": "Get the record associated with signature S 'wxy930' and signature R 'zab031'.",
+                    "parameters": {
+                        "s": "wxy930",
+                        "r": "zab031"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Getrecordbysequenceid",
+            "description": " ",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/record",
+            "parameters": [
+                {
+                    "name": "sequence_id",
+                    "type": "STRING",
+                    "description": "The sequence id you want to query",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the record for sequence id 12345?",
+                    "parameters": {
+                        "sequence_id": "12345"
+                    }
+                },
+                {
+                    "utterance": "What is the record associated with sequence id ABCDE?",
+                    "parameters": {
+                        "sequence_id": "ABCDE"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the details for sequence id 67890.",
+                    "parameters": {
+                        "sequence_id": "67890"
+                    }
+                },
+                {
+                    "utterance": "Find the record for sequence id XYZ123.",
+                    "parameters": {
+                        "sequence_id": "XYZ123"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the record for sequence id QWERTY?",
+                    "parameters": {
+                        "sequence_id": "QWERTY"
+                    }
+                },
+                {
+                    "utterance": "What does the record for sequence id 98765 show?",
+                    "parameters": {
+                        "sequence_id": "98765"
+                    }
+                },
+                {
+                    "utterance": "Get the record for sequence id POIUYT.",
+                    "parameters": {
+                        "sequence_id": "POIUYT"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the information for sequence id LKJHGF.",
+                    "parameters": {
+                        "sequence_id": "LKJHGF"
+                    }
+                },
+                {
+                    "utterance": "Can you find the record for sequence id MNBVCD?",
+                    "parameters": {
+                        "sequence_id": "MNBVCD"
+                    }
+                },
+                {
+                    "utterance": "What is the record for sequence id 54321?",
+                    "parameters": {
+                        "sequence_id": "54321"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "GetRecordsbystark_key",
+            "description": " ",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/records",
+            "parameters": [
+                {
+                    "name": "stark_key",
+                    "type": "STRING",
+                    "description": "Which stark_key's record you want to query",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the records for the stark key 0x1234567890abcdef?",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef"
+                    }
+                },
+                {
+                    "utterance": "What are the records associated with the stark key 0xabcdef1234567890?",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the records for the stark key 0x9876543210fedcba.",
+                    "parameters": {
+                        "stark_key": "0x9876543210fedcba"
+                    }
+                },
+                {
+                    "utterance": "Show me the records linked to the stark key 0x1a2b3c4d5e6f7g8h.",
+                    "parameters": {
+                        "stark_key": "0x1a2b3c4d5e6f7g8h"
+                    }
+                },
+                {
+                    "utterance": "Fetch the records for the stark key 0x9a8b7c6d5e4f3g2h.",
+                    "parameters": {
+                        "stark_key": "0x9a8b7c6d5e4f3g2h"
+                    }
+                },
+                {
+                    "utterance": "What records are associated with the stark key 0x5f6e7d8c9b0a1e2f?",
+                    "parameters": {
+                        "stark_key": "0x5f6e7d8c9b0a1e2f"
+                    }
+                },
+                {
+                    "utterance": "Get the records for the stark key 0x3e4d5c6b7a8f9e0d.",
+                    "parameters": {
+                        "stark_key": "0x3e4d5c6b7a8f9e0d"
+                    }
+                },
+                {
+                    "utterance": "Can you retrieve the records for the stark key 0x0a1b2c3d4e5f6g7h?",
+                    "parameters": {
+                        "stark_key": "0x0a1b2c3d4e5f6g7h"
+                    }
+                },
+                {
+                    "utterance": "What are the records for the stark key 0x7h8i9j0k1l2m3n4o?",
+                    "parameters": {
+                        "stark_key": "0x7h8i9j0k1l2m3n4o"
+                    }
+                },
+                {
+                    "utterance": "Show the records associated with the stark key 0x4o5p6q7r8s9t0u1v.",
+                    "parameters": {
+                        "stark_key": "0x4o5p6q7r8s9t0u1v"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Aggregationbalanceofastark_keybycontractaddress",
+            "description": "The API aggregation balances by contract address, for previous API, each NFT have an asset_id, but in this API. NFT do not have asset_id when return, but has token id",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v2/balances",
+            "parameters": [
+                {
+                    "name": "stark_key",
+                    "type": "STRING",
+                    "description": "The stark_key you want to check balance",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the balance of the stark_key 0x1234567890abcdef?",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef"
+                    }
+                },
+                {
+                    "utterance": "Can you check the balance for the stark_key 0xabcdef1234567890?",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890"
+                    }
+                },
+                {
+                    "utterance": "Get the balance for the stark_key 0x9876543210fedcba.",
+                    "parameters": {
+                        "stark_key": "0x9876543210fedcba"
+                    }
+                },
+                {
+                    "utterance": "What is the aggregated balance for the stark_key 0xabcdef0987654321?",
+                    "parameters": {
+                        "stark_key": "0xabcdef0987654321"
+                    }
+                },
+                {
+                    "utterance": "Check the balance of the stark_key 0x1234567890abcdef1234567890abcdef.",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef1234567890abcdef"
+                    }
+                },
+                {
+                    "utterance": "What is the balance for the stark_key 0xabcdef1234567890abcdef1234567890?",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890abcdef1234567890"
+                    }
+                },
+                {
+                    "utterance": "Get the aggregated balance for the stark_key 0x1234567890abcdef0987654321fedcba.",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef0987654321fedcba"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the balance for the stark_key 0xabcdef1234567890fedcba0987654321?",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890fedcba0987654321"
+                    }
+                },
+                {
+                    "utterance": "What is the balance of the stark_key 0x1234567890abcdef1234567890abcdef1234567890abcdef?",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef1234567890abcdef1234567890abcdef"
+                    }
+                },
+                {
+                    "utterance": "Check the aggregated balance for the stark_key 0xabcdef1234567890abcdef1234567890abcdef1234567890.",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890abcdef1234567890abcdef1234567890"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Listallcollections",
+            "description": "The API lists all collections on Reddio's layer2 system.\n\nThe return field is like the following descrption\n\n| **field** | **description** |\n| --- | --- |\n| contract_address | The contract address |\n| symbol | The symbol of |\n| type | ERC721 or ERC721M |\n| total_supply | Total Supply of the token |\n| base_uri | The base uri of NFT |\n| asset_type | The asset type is calculated by reddio, the definition is [here](https://docs.starkware.co/starkex/spot/shared/starkex-specific-concepts.html#computing_asset_info_asset_type_asset_id) |",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/collections",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you list all the collections available on Reddio's layer2 system?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the details of all collections on Reddio's layer2?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me all the NFT collections on Reddio's layer2 platform.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide a list of all collections including their contract addresses and symbols on Reddio's layer2.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you retrieve all the collections with their total supply and base URI on Reddio's layer2?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the ERC721 and ERC721M collections on Reddio's layer2 system.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the asset types for all collections on Reddio's layer2?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you display all the collections along with their contract addresses and asset types on Reddio's layer2?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the total supply and base URI for all collections on Reddio's layer2.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the collections on Reddio's layer2, including their symbols and types.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Getnoncebystark_key",
+            "description": " ",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/nonce",
+            "parameters": [
+                {
+                    "name": "stark_key",
+                    "type": "STRING",
+                    "description": "which stark_key's nonce you want to get",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the nonce for the stark key 0x1234567890abcdef?",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef"
+                    }
+                },
+                {
+                    "utterance": "Can you retrieve the nonce associated with the stark key 0xabcdef1234567890?",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890"
+                    }
+                },
+                {
+                    "utterance": "Get the nonce for the stark key 0x9876543210fedcba.",
+                    "parameters": {
+                        "stark_key": "0x9876543210fedcba"
+                    }
+                },
+                {
+                    "utterance": "I need the nonce for the stark key 0x1a2b3c4d5e6f7g8h.",
+                    "parameters": {
+                        "stark_key": "0x1a2b3c4d5e6f7g8h"
+                    }
+                },
+                {
+                    "utterance": "Fetch the nonce for the stark key 0x9a8b7c6d5e4f3g2h.",
+                    "parameters": {
+                        "stark_key": "0x9a8b7c6d5e4f3g2h"
+                    }
+                },
+                {
+                    "utterance": "What nonce is associated with the stark key 0x5e6f7g8h9a2b3c4d?",
+                    "parameters": {
+                        "stark_key": "0x5e6f7g8h9a2b3c4d"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the nonce for the stark key 0x3g2h1a4b5c6d7e8f.",
+                    "parameters": {
+                        "stark_key": "0x3g2h1a4b5c6d7e8f"
+                    }
+                },
+                {
+                    "utterance": "Can you get the nonce for the stark key 0x7e8f9a1b2c3d4e5f?",
+                    "parameters": {
+                        "stark_key": "0x7e8f9a1b2c3d4e5f"
+                    }
+                },
+                {
+                    "utterance": "What is the nonce value for the stark key 0x2c3d4e5f6g7h8a9b?",
+                    "parameters": {
+                        "stark_key": "0x2c3d4e5f6g7h8a9b"
+                    }
+                },
+                {
+                    "utterance": "I need to know the nonce for the stark key 0x6g7h8a9b1c2d3e4f.",
+                    "parameters": {
+                        "stark_key": "0x6g7h8a9b1c2d3e4f"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Balancesofstark_key",
+            "description": "The API retrieves the balance of a stark_key, each return value are as the previous field",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/balances",
+            "parameters": [
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "set limit per page",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "stark_key",
+                    "type": "STRING",
+                    "description": "The stark key",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "contract_address",
+                    "type": "STRING",
+                    "description": "filter balance by contract address",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "which page(starts by 1)",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the balance for the stark key 0x1234567890abcdef?",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the balance for the stark key 0xabcdef1234567890 on page 2?",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890",
+                        "page": "2"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the balance for the stark key 0x9876543210fedcba with a limit of 10 results per page.",
+                    "parameters": {
+                        "stark_key": "0x9876543210fedcba",
+                        "limit": "10"
+                    }
+                },
+                {
+                    "utterance": "What is the balance for the stark key 0xabcdef1234567890 filtered by the contract address 0x1234567890abcdef?",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890",
+                        "contract_address": "0x1234567890abcdef"
+                    }
+                },
+                {
+                    "utterance": "Show me the balance for the stark key 0x1234567890abcdef on page 3 with a limit of 5 results per page.",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef",
+                        "page": "3",
+                        "limit": "5"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the balance for the stark key 0xabcdef1234567890 filtered by the contract address 0x9876543210fedcba on page 1.",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890",
+                        "contract_address": "0x9876543210fedcba",
+                        "page": "1"
+                    }
+                },
+                {
+                    "utterance": "What is the balance for the stark key 0x1234567890abcdef with a limit of 20 results per page?",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef",
+                        "limit": "20"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the balance for the stark key 0xabcdef1234567890 on page 4?",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890",
+                        "page": "4"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the balance for the stark key 0x9876543210fedcba filtered by the contract address 0xabcdef1234567890 with a limit of 15 results per page.",
+                    "parameters": {
+                        "stark_key": "0x9876543210fedcba",
+                        "contract_address": "0xabcdef1234567890",
+                        "limit": "15"
+                    }
+                },
+                {
+                    "utterance": "What is the balance for the stark key 0x1234567890abcdef filtered by the contract address 0x9876543210fedcba on page 2 with a limit of 10 results per page?",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef",
+                        "contract_address": "0x9876543210fedcba",
+                        "page": "2",
+                        "limit": "10"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "GetMarketplaces",
+            "description": " ",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/project/eeda297e-4d35-4f11-915a-58e1a8873f17/marketplace",
+            "parameters": [
+                {
+                    "name": "project_uuid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "eeda297e-4d35-4f11-915a-58e1a8873f17",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the marketplaces for the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17?",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "What are the marketplaces associated with project UUID eeda297e-4d35-4f11-915a-58e1a8873f17?",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the marketplaces for the project identified by UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "List the marketplaces for the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Fetch the marketplaces for the project UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Provide the marketplaces for the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Show the marketplaces for the project identified by UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Get the list of marketplaces for the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "What marketplaces are available for the project UUID eeda297e-4d35-4f11-915a-58e1a8873f17?",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the available marketplaces for the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Balanceofstark_keyandasset_id",
+            "description": "This API retrieves the balance of a stark_key and asset_id\n\nThe return values description\n\n| **key** | **description** |\n| --- | --- |\n| asset_id | The asset's id |\n| contract_address | The contract address of ERC20/ERC721/ERC721, if the asset_id's type is ETH, it will return \"eth\" as a placeholder |\n| token_id | The NFT token ID(this field is set when type is ERC721 or ERC721M) |\n| base_uri | The NFT base uri(this field is set when type is ERC721 or ERC721M) |\n| available | The available balance on layer 2. |\n| frozen | The frozen balance on layer 2. |\n| type | Type of token, Possible enum values is ETH, ERC20, ERC721, ERC721M |\n| symbol | The symbol of ERC721/ERC721M or ERC20(\"ETH\" for ETH) |\n| decimals | The decimals of asset, for ETH is 18, ERC721/ERC721M is 1, and for ERC20, it is based the contracts, [here](https://medium.com/@jgm.orinoco/understanding-erc-20-token-contracts-a809a7310aa5) is more explain about decimals on Ethernum |\n| quantum | quantum is a starkex concept, it is auto-set when the contract is registered to reddio. [here](https://docs.starkware.co/starkex/spot/shared/starkex-specific-concepts.html) is more explain about quantum |\n| display_value | deprecated,use `available` instead |\n| display_frozen | deprecated,use `frozen` instead |\n| balance_available | The available balance represents on layer 2. Keep attention that it need to be converted with quantum and decimals if you need to use this field. All SDK hands this value, so most of the time you do not need to care about it. |\n| balance_frozen | The frozen balance represents on layer 2. Keep attention that it need to be converted with quantum and decimals if you need to use this field. All SDK hands this value, so most of the time you do not need to care about it. |",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/balance",
+            "parameters": [
+                {
+                    "name": "stark_key",
+                    "type": "STRING",
+                    "description": "The stark_key which you want to check balance",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "asset_id",
+                    "type": "STRING",
+                    "description": "Which asset you want to check, you can get asset id in prevous assets APIs",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the balance for the stark_key '0x123abc' and asset_id 'ETH'?",
+                    "parameters": {
+                        "stark_key": "0x123abc",
+                        "asset_id": "ETH"
+                    }
+                },
+                {
+                    "utterance": "Can you check the balance for asset_id 'ERC20_456' with stark_key '0x789def'?",
+                    "parameters": {
+                        "stark_key": "0x789def",
+                        "asset_id": "ERC20_456"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the balance for stark_key '0xabc123' and asset_id 'ERC721_789'.",
+                    "parameters": {
+                        "stark_key": "0xabc123",
+                        "asset_id": "ERC721_789"
+                    }
+                },
+                {
+                    "utterance": "What is the available balance for asset_id 'ERC721M_101' and stark_key '0xdef456'?",
+                    "parameters": {
+                        "stark_key": "0xdef456",
+                        "asset_id": "ERC721M_101"
+                    }
+                },
+                {
+                    "utterance": "Check the frozen balance for stark_key '0x123456' and asset_id 'ETH'.",
+                    "parameters": {
+                        "stark_key": "0x123456",
+                        "asset_id": "ETH"
+                    }
+                },
+                {
+                    "utterance": "Get the balance details for asset_id 'ERC20_789' with stark_key '0xabc789'.",
+                    "parameters": {
+                        "stark_key": "0xabc789",
+                        "asset_id": "ERC20_789"
+                    }
+                },
+                {
+                    "utterance": "What is the balance for stark_key '0xdef123' and asset_id 'ERC721_456'?",
+                    "parameters": {
+                        "stark_key": "0xdef123",
+                        "asset_id": "ERC721_456"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the available and frozen balance for asset_id 'ERC721M_202' and stark_key '0x123def'.",
+                    "parameters": {
+                        "stark_key": "0x123def",
+                        "asset_id": "ERC721M_202"
+                    }
+                },
+                {
+                    "utterance": "Can you check the balance for stark_key '0x456abc' and asset_id 'ETH'?",
+                    "parameters": {
+                        "stark_key": "0x456abc",
+                        "asset_id": "ETH"
+                    }
+                },
+                {
+                    "utterance": "What is the balance for asset_id 'ERC20_303' with stark_key '0x789abc'?",
+                    "parameters": {
+                        "stark_key": "0x789abc",
+                        "asset_id": "ERC20_303"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "GetOrderInfo",
+            "description": "This API is to get order related information, such as the asset id of base/quota tokens. nonce and vaults related to stark_key\n\n**If you use SDKs(including java/unity/js), you do not need to care about the order info interface, it is already handled by SDK internally**\n\nthe contract1 and contract2 values are like\n\n{type}:{contract_address}:{token_id}\n\nThere are many informations it returns\n\n| **field** | **description** |\n| --- | --- |\n| fee_rate | the upper fee_rate allowed by reddio and marketplace. that is, if reddio & marketplace charge's more then the rate, the order will fail |\n| base_token | base token asset id, in general, if you trade using ETH for NFT, then the base token is ETH's asset id |\n| fee_token | which token as a fee, in general, it is the same as base_token |\n| lower_limit | the lower price of the NFT |\n| nonce | the nonce of the stark_key |\n| contracts | the contracts info of contract1 and contract2 |\n| asset_ids | the asset ids of contract1 and contract2 |\n| vault_ids | first vault id is generated by the stark_key and first asset id, the second vault id is generated by the stark_key and second asset id(you can see the asset_ids above) |",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/order/info",
+            "parameters": [
+                {
+                    "name": "stark_key",
+                    "type": "STRING",
+                    "description": "the stark_key that want to buy or sell NFT",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "contract2",
+                    "type": "STRING",
+                    "description": "the quota contract and token id, the vaule can like ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "contract1",
+                    "type": "STRING",
+                    "description": "the base contract info, if sell using ETH, then the vaule should be ETH:eth:1",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the order information for the stark_key 0x1234567890abcdef?",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef"
+                    }
+                },
+                {
+                    "utterance": "What is the order info for the contract ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28?",
+                    "parameters": {
+                        "contract2": "ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28"
+                    }
+                },
+                {
+                    "utterance": "Get the order details for the base contract ETH:eth:1.",
+                    "parameters": {
+                        "contract1": "ETH:eth:1"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the order information for stark_key 0xabcdef1234567890 and contract ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28.",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890",
+                        "contract2": "ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28"
+                    }
+                },
+                {
+                    "utterance": "What are the order details for the base contract ETH:eth:1 and the stark_key 0x1234567890abcdef?",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef",
+                        "contract1": "ETH:eth:1"
+                    }
+                },
+                {
+                    "utterance": "Get the order info for the contract ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28 and the base contract ETH:eth:1.",
+                    "parameters": {
+                        "contract1": "ETH:eth:1",
+                        "contract2": "ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the order information for stark_key 0xabcdef1234567890, base contract ETH:eth:1, and contract ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28.",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890",
+                        "contract1": "ETH:eth:1",
+                        "contract2": "ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28"
+                    }
+                },
+                {
+                    "utterance": "Can you get the order details for the stark_key 0x1234567890abcdef and the contract ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28?",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef",
+                        "contract2": "ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28"
+                    }
+                },
+                {
+                    "utterance": "What is the order info for the base contract ETH:eth:1 and the stark_key 0xabcdef1234567890?",
+                    "parameters": {
+                        "stark_key": "0xabcdef1234567890",
+                        "contract1": "ETH:eth:1"
+                    }
+                },
+                {
+                    "utterance": "Get the order information for the contract ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28, base contract ETH:eth:1, and stark_key 0x1234567890abcdef.",
+                    "parameters": {
+                        "stark_key": "0x1234567890abcdef",
+                        "contract1": "ETH:eth:1",
+                        "contract2": "ERC721:0xA21B04B6dbd1174155E242434B3Df2EeD74BaFb2:28"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Listcolloction'snftowners",
+            "description": "The api returns a collection's nft owners.\n\nThe response field description\n\n| **field** | **description** |\n| --- | --- |\n| contract_address | the contract_address of the collection |\n| token_id | the NFT token id |\n| owner | the owner of the NFT |\n| symbol | the NFT's symbol |\n| asset_id | the token's asset id |",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/nfts/0x6b4f24fd500bedb945fc8b93882766bb5e7cf620",
+            "parameters": [
+                {
+                    "name": "contract_address",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x6b4f24fd500bedb945fc8b93882766bb5e7cf620",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Who owns the NFTs in the collection with contract address 0x6b4f24fd500bedb945fc8b93882766bb5e7cf620?",
+                    "parameters": {
+                        "contract_address": "0x6b4f24fd500bedb945fc8b93882766bb5e7cf620"
+                    }
+                },
+                {
+                    "utterance": "Can you list the owners of the NFTs in the collection at contract address 0x6b4f24fd500bedb945fc8b93882766bb5e7cf620?",
+                    "parameters": {
+                        "contract_address": "0x6b4f24fd500bedb945fc8b93882766bb5e7cf620"
+                    }
+                },
+                {
+                    "utterance": "What are the token IDs and owners for the NFT collection with contract address 0x6b4f24fd500bedb945fc8b93882766bb5e7cf620?",
+                    "parameters": {
+                        "contract_address": "0x6b4f24fd500bedb945fc8b93882766bb5e7cf620"
+                    }
+                },
+                {
+                    "utterance": "Show me the owners of the NFTs in the collection with contract address 0x6b4f24fd500bedb945fc8b93882766bb5e7cf620.",
+                    "parameters": {
+                        "contract_address": "0x6b4f24fd500bedb945fc8b93882766bb5e7cf620"
+                    }
+                },
+                {
+                    "utterance": "Get the list of NFT owners for the collection at contract address 0x6b4f24fd500bedb945fc8b93882766bb5e7cf620.",
+                    "parameters": {
+                        "contract_address": "0x6b4f24fd500bedb945fc8b93882766bb5e7cf620"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the owners of the NFTs in the collection with contract address 0x6b4f24fd500bedb945fc8b93882766bb5e7cf620.",
+                    "parameters": {
+                        "contract_address": "0x6b4f24fd500bedb945fc8b93882766bb5e7cf620"
+                    }
+                },
+                {
+                    "utterance": "List all the NFT owners for the collection at contract address 0x6b4f24fd500bedb945fc8b93882766bb5e7cf620.",
+                    "parameters": {
+                        "contract_address": "0x6b4f24fd500bedb945fc8b93882766bb5e7cf620"
+                    }
+                },
+                {
+                    "utterance": "Provide the details of the NFT owners in the collection with contract address 0x6b4f24fd500bedb945fc8b93882766bb5e7cf620.",
+                    "parameters": {
+                        "contract_address": "0x6b4f24fd500bedb945fc8b93882766bb5e7cf620"
+                    }
+                },
+                {
+                    "utterance": "Fetch the NFT owners for the collection at contract address 0x6b4f24fd500bedb945fc8b93882766bb5e7cf620.",
+                    "parameters": {
+                        "contract_address": "0x6b4f24fd500bedb945fc8b93882766bb5e7cf620"
+                    }
+                },
+                {
+                    "utterance": "Display the owners of the NFTs in the collection with contract address 0x6b4f24fd500bedb945fc8b93882766bb5e7cf620.",
+                    "parameters": {
+                        "contract_address": "0x6b4f24fd500bedb945fc8b93882766bb5e7cf620"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Listfilesunderproject",
+            "description": "It will list files under the project, the response item like\n\n| **field** | **description** |\n| --- | --- |\n| cid | [Content Identifiers](https://docs.ipfs.tech/concepts/content-addressing/#what-is-a-cid) |\n| filename | The stored file name |\n| created_at | first create time |\n| filesize | file size(in byte) |\n| endpoints | the endpoints you can view the file |",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/project/eeda297e-4d35-4f11-915a-58e1a8873f17/storage",
+            "parameters": [
+                {
+                    "name": "project_uuid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "eeda297e-4d35-4f11-915a-58e1a8873f17",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "List all files under the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the files associated with project UUID eeda297e-4d35-4f11-915a-58e1a8873f17?",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "What files are stored under the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17?",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the list of files for project UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Get all the files under the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Show me the files in the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "List the files for the project identified by UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "What are the files under the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17?",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Fetch the files for the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Display the files under the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "SellanNFT",
+            "description": "Sell an NFT sells an NFT\n\nBody parameters\n\n| **field** | **description** |\n| --- | --- |\n| amount | the amount to sell |\n| price | the price of the NFT |\n| stark_key | the stark_key of the seller |\n| amount_buy | the amount token to buy, the same value as price |\n| amount_sell | 1 for NFT |\n| token_buy | the base token's asset_id |\n| token_sell | the NFT's asset_id |\n| vault_id_buy | the vault id of base token |\n| vault_id_sell | the vault id of quota token |\n| expiration_timestamp | the expiration time, count in hour |\n| base_token | base token's asset id |\n| quote_token | quota token's asset id |\n| nonce | the nonce of the seller |\n| signature | the transaction's signature, can refer [here](https://github.com/reddio-com/red-py-sdk/blob/main/redpysdk/starkex_utils.py#L38-L41) to generate signature. In SDK it handled by sdk |\n| fee_info | fee information(which fee will be taken and how much) |\n| direction | 0 for sell, 1 for buy |\n| marketplace_uuid | the uuid of marketplace(is used to charge fee) |",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/order",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Sell an NFT with a price of 0.5 ETH using my stark key 0x12345.",
+                    "parameters": {
+                        "price": "0.5 ETH",
+                        "stark_key": "0x12345"
+                    }
+                },
+                {
+                    "utterance": "List my NFT for sale at 1.2 ETH with the base token asset ID 0x67890.",
+                    "parameters": {
+                        "price": "1.2 ETH",
+                        "base_token": "0x67890"
+                    }
+                },
+                {
+                    "utterance": "Sell my NFT with the asset ID 0xABCDE for 0.8 ETH, expiring in 24 hours.",
+                    "parameters": {
+                        "price": "0.8 ETH",
+                        "token_sell": "0xABCDE",
+                        "expiration_timestamp": "24"
+                    }
+                },
+                {
+                    "utterance": "Put my NFT on sale for 2 ETH using vault ID 123 for the base token and vault ID 456 for the NFT.",
+                    "parameters": {
+                        "price": "2 ETH",
+                        "vault_id_buy": "123",
+                        "vault_id_sell": "456"
+                    }
+                },
+                {
+                    "utterance": "Sell my NFT with the asset ID 0x11111 for 1 ETH, using the marketplace UUID 0x99999.",
+                    "parameters": {
+                        "price": "1 ETH",
+                        "token_sell": "0x11111",
+                        "marketplace_uuid": "0x99999"
+                    }
+                },
+                {
+                    "utterance": "List my NFT for sale at 0.75 ETH with the base token asset ID 0x22222 and the quote token asset ID 0x33333.",
+                    "parameters": {
+                        "price": "0.75 ETH",
+                        "base_token": "0x22222",
+                        "quote_token": "0x33333"
+                    }
+                },
+                {
+                    "utterance": "Sell my NFT for 1.5 ETH with the stark key 0x44444 and a nonce of 123456.",
+                    "parameters": {
+                        "price": "1.5 ETH",
+                        "stark_key": "0x44444",
+                        "nonce": "123456"
+                    }
+                },
+                {
+                    "utterance": "Put my NFT on sale for 0.9 ETH with the base token asset ID 0x55555 and an expiration time of 12 hours.",
+                    "parameters": {
+                        "price": "0.9 ETH",
+                        "base_token": "0x55555",
+                        "expiration_timestamp": "12"
+                    }
+                },
+                {
+                    "utterance": "Sell my NFT with the asset ID 0x66666 for 1.1 ETH, using vault ID 789 for the base token and vault ID 101 for the NFT.",
+                    "parameters": {
+                        "price": "1.1 ETH",
+                        "token_sell": "0x66666",
+                        "vault_id_buy": "789",
+                        "vault_id_sell": "101"
+                    }
+                },
+                {
+                    "utterance": "List my NFT for sale at 0.6 ETH with the stark key 0x77777 and the marketplace UUID 0x88888.",
+                    "parameters": {
+                        "price": "0.6 ETH",
+                        "stark_key": "0x77777",
+                        "marketplace_uuid": "0x88888"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "CreateMarketplace",
+            "description": " ",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/marketplace",
+            "parameters": [
+                {
+                    "name": "marketplace_name",
+                    "type": "STRING",
+                    "description": "Marketplace name",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "marketplace_payee_address",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "marketplace_fee",
+                    "type": "STRING",
+                    "description": "The fee rate paid for marketplace, it can be 0.015(that means 1.5% on the seller\u2019s side.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "project_uuid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Create a marketplace named 'ArtHub' with a fee rate of 0.02.",
+                    "parameters": {
+                        "marketplace_name": "ArtHub",
+                        "marketplace_fee": "0.02"
+                    }
+                },
+                {
+                    "utterance": "Set up a marketplace called 'GameWorld' with a payee address '0x1234567890abcdef' and a fee rate of 0.01.",
+                    "parameters": {
+                        "marketplace_name": "GameWorld",
+                        "marketplace_payee_address": "0x1234567890abcdef",
+                        "marketplace_fee": "0.01"
+                    }
+                },
+                {
+                    "utterance": "Create a marketplace named 'CryptoCollectibles' with a fee rate of 0.015.",
+                    "parameters": {
+                        "marketplace_name": "CryptoCollectibles",
+                        "marketplace_fee": "0.015"
+                    }
+                },
+                {
+                    "utterance": "Set up a marketplace called 'NFTGallery' with a payee address '0xabcdef1234567890' and a fee rate of 0.03.",
+                    "parameters": {
+                        "marketplace_name": "NFTGallery",
+                        "marketplace_payee_address": "0xabcdef1234567890",
+                        "marketplace_fee": "0.03"
+                    }
+                },
+                {
+                    "utterance": "Create a marketplace named 'DeFiMarket' with a fee rate of 0.005.",
+                    "parameters": {
+                        "marketplace_name": "DeFiMarket",
+                        "marketplace_fee": "0.005"
+                    }
+                },
+                {
+                    "utterance": "Set up a marketplace called 'TokenTrade' with a payee address '0x7890abcdef123456' and a fee rate of 0.02.",
+                    "parameters": {
+                        "marketplace_name": "TokenTrade",
+                        "marketplace_payee_address": "0x7890abcdef123456",
+                        "marketplace_fee": "0.02"
+                    }
+                },
+                {
+                    "utterance": "Create a marketplace named 'ArtMarket' with a fee rate of 0.01.",
+                    "parameters": {
+                        "marketplace_name": "ArtMarket",
+                        "marketplace_fee": "0.01"
+                    }
+                },
+                {
+                    "utterance": "Set up a marketplace called 'GameFiHub' with a payee address '0x4567890abcdef123' and a fee rate of 0.015.",
+                    "parameters": {
+                        "marketplace_name": "GameFiHub",
+                        "marketplace_payee_address": "0x4567890abcdef123",
+                        "marketplace_fee": "0.015"
+                    }
+                },
+                {
+                    "utterance": "Create a marketplace named 'CryptoArt' with a fee rate of 0.025.",
+                    "parameters": {
+                        "marketplace_name": "CryptoArt",
+                        "marketplace_fee": "0.025"
+                    }
+                },
+                {
+                    "utterance": "Set up a marketplace called 'NFTMarket' with a payee address '0x1234567890abcdef' and a fee rate of 0.01.",
+                    "parameters": {
+                        "marketplace_name": "NFTMarket",
+                        "marketplace_payee_address": "0x1234567890abcdef",
+                        "marketplace_fee": "0.01"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "RemoveMarketplace",
+            "description": " ",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/marketplace/remove_marketplace",
+            "parameters": [
+                {
+                    "name": "marketplace_uuid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Remove the marketplace with UUID 123e4567-e89b-12d3-a456-426614174000.",
+                    "parameters": {
+                        "marketplace_uuid": "123e4567-e89b-12d3-a456-426614174000"
+                    }
+                },
+                {
+                    "utterance": "Delete the marketplace associated with UUID abcdef12-3456-7890-abcd-ef1234567890.",
+                    "parameters": {
+                        "marketplace_uuid": "abcdef12-3456-7890-abcd-ef1234567890"
+                    }
+                },
+                {
+                    "utterance": "Remove the marketplace identified by UUID 98765432-10ab-cdef-1234-567890abcdef.",
+                    "parameters": {
+                        "marketplace_uuid": "98765432-10ab-cdef-1234-567890abcdef"
+                    }
+                },
+                {
+                    "utterance": "Take down the marketplace with UUID 11112222-3333-4444-5555-666677778888.",
+                    "parameters": {
+                        "marketplace_uuid": "11112222-3333-4444-5555-666677778888"
+                    }
+                },
+                {
+                    "utterance": "Remove the marketplace using UUID a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6.",
+                    "parameters": {
+                        "marketplace_uuid": "a1b2c3d4-e5f6-g7h8-i9j0-k1l2m3n4o5p6"
+                    }
+                },
+                {
+                    "utterance": "Delete the marketplace with UUID 00001111-2222-3333-4444-555566667777.",
+                    "parameters": {
+                        "marketplace_uuid": "00001111-2222-3333-4444-555566667777"
+                    }
+                },
+                {
+                    "utterance": "Remove the marketplace identified by UUID 99998888-7777-6666-5555-444433332222.",
+                    "parameters": {
+                        "marketplace_uuid": "99998888-7777-6666-5555-444433332222"
+                    }
+                },
+                {
+                    "utterance": "Take down the marketplace with UUID 12345678-9abc-def0-1234-56789abcdef0.",
+                    "parameters": {
+                        "marketplace_uuid": "12345678-9abc-def0-1234-56789abcdef0"
+                    }
+                },
+                {
+                    "utterance": "Remove the marketplace using UUID 0a1b2c3d-4e5f-6g7h-8i9j-0k1l2m3n4o5p.",
+                    "parameters": {
+                        "marketplace_uuid": "0a1b2c3d-4e5f-6g7h-8i9j-0k1l2m3n4o5p"
+                    }
+                },
+                {
+                    "utterance": "Delete the marketplace with UUID 11223344-5566-7788-9900-aabbccddeeff.",
+                    "parameters": {
+                        "marketplace_uuid": "11223344-5566-7788-9900-aabbccddeeff"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Mintsometokens",
+            "description": "Body parameters\n\n| **item** | **description** |\n| --- | --- |\n| contract_address | the contract address you registered and want to mint |\n| stark_key | the stark_key you want to mint to |\n| amount | how many token you want to mint(max 100) |",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/mints",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Mint 50 tokens to the stark_key 0x12345 using the contract address 0x67890.",
+                    "parameters": {
+                        "contract_address": "0x67890",
+                        "stark_key": "0x12345",
+                        "amount": 50
+                    }
+                },
+                {
+                    "utterance": "Can you mint 10 tokens to stark_key 0xabcde with the contract address 0xfghij?",
+                    "parameters": {
+                        "contract_address": "0xfghij",
+                        "stark_key": "0xabcde",
+                        "amount": 10
+                    }
+                },
+                {
+                    "utterance": "I need to mint 75 tokens to stark_key 0xklmno using contract address 0pqrst.",
+                    "parameters": {
+                        "contract_address": "0pqrst",
+                        "stark_key": "0xklmno",
+                        "amount": 75
+                    }
+                },
+                {
+                    "utterance": "Please mint 20 tokens to stark_key 0xuvwxy with the contract address 0zabcd.",
+                    "parameters": {
+                        "contract_address": "0zabcd",
+                        "stark_key": "0xuvwxy",
+                        "amount": 20
+                    }
+                },
+                {
+                    "utterance": "Mint 100 tokens to stark_key 0xefghi using the contract address 0jklmn.",
+                    "parameters": {
+                        "contract_address": "0jklmn",
+                        "stark_key": "0xefghi",
+                        "amount": 100
+                    }
+                },
+                {
+                    "utterance": "Can you mint 5 tokens to stark_key 0xopqrs with the contract address 0tuvwx?",
+                    "parameters": {
+                        "contract_address": "0tuvwx",
+                        "stark_key": "0xopqrs",
+                        "amount": 5
+                    }
+                },
+                {
+                    "utterance": "I want to mint 30 tokens to stark_key 0xyzab using contract address 0cdefg.",
+                    "parameters": {
+                        "contract_address": "0cdefg",
+                        "stark_key": "0xyzab",
+                        "amount": 30
+                    }
+                },
+                {
+                    "utterance": "Please mint 15 tokens to stark_key 0hijkl with the contract address 0mnopq.",
+                    "parameters": {
+                        "contract_address": "0mnopq",
+                        "stark_key": "0hijkl",
+                        "amount": 15
+                    }
+                },
+                {
+                    "utterance": "Mint 60 tokens to stark_key 0rstuv using the contract address 0wxyza.",
+                    "parameters": {
+                        "contract_address": "0wxyza",
+                        "stark_key": "0rstuv",
+                        "amount": 60
+                    }
+                },
+                {
+                    "utterance": "Can you mint 25 tokens to stark_key 0bcdef with the contract address 0ghijk?",
+                    "parameters": {
+                        "contract_address": "0ghijk",
+                        "stark_key": "0bcdef",
+                        "amount": 25
+                    }
+                }
+            ]
+        },
+        {
+            "name": "UploadFiles",
+            "description": "Upload files will return [cid](https://docs.ipfs.tech/concepts/content-addressing/#what-is-a-cid) and endpoints",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/project/eeda297e-4d35-4f11-915a-58e1a8873f17/storage",
+            "parameters": [
+                {
+                    "name": "file",
+                    "type": "BINARY",
+                    "description": "",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "project_uuid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "eeda297e-4d35-4f11-915a-58e1a8873f17",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Upload this image file to the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "file": "image_file",
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Please upload the document file to the project identified by eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "file": "document_file",
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "I need to upload this video file to the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "file": "video_file",
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Upload the audio file to the project eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "file": "audio_file",
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Can you upload this PDF file to the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17?",
+                    "parameters": {
+                        "file": "pdf_file",
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Upload the spreadsheet file to the project identified by eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "file": "spreadsheet_file",
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "I want to upload this presentation file to the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "file": "presentation_file",
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Please upload the text file to the project eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "file": "text_file",
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Upload the archive file to the project with UUID eeda297e-4d35-4f11-915a-58e1a8873f17.",
+                    "parameters": {
+                        "file": "archive_file",
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                },
+                {
+                    "utterance": "Can you upload this dataset file to the project identified by eeda297e-4d35-4f11-915a-58e1a8873f17?",
+                    "parameters": {
+                        "file": "dataset_file",
+                        "project_uuid": "eeda297e-4d35-4f11-915a-58e1a8873f17"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "TransferNFT",
+            "description": "Body parameters\n\nTransfer transfers tokens(asset_id) from stark_key to receiver\n\n| **field** | **description** |\n| --- | --- |\n| amount | the amount to be transferred. |\n| nonce | the nonce of sender's stark_key |\n| vault_id | the vault id of the sender with asset_id |\n| receiver_vault_id | the vault id of the receiver with asset_id |\n| stark_key | the sender's stark_key |\n| receiver | the receiver's stark_key |\n| signature | the transaction's signature, can refer [here](https://github.com/reddio-com/red-py-sdk/blob/main/redpysdk/starkex_utils.py#L46-L51) to generate signature. In SDK it handled by sdk |\n| expiration_timestamp | the expiration time, count in hour |",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/transfers",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Transfer 5 tokens from my stark_key to the receiver's stark_key.",
+                    "parameters": {
+                        "amount": 5,
+                        "stark_key": "my stark_key",
+                        "receiver": "receiver's stark_key"
+                    }
+                },
+                {
+                    "utterance": "Move 10 tokens from vault_id 123 to receiver_vault_id 456.",
+                    "parameters": {
+                        "amount": 10,
+                        "vault_id": 123,
+                        "receiver_vault_id": 456
+                    }
+                },
+                {
+                    "utterance": "Send 3 tokens with nonce 789 from my stark_key to the receiver's stark_key.",
+                    "parameters": {
+                        "amount": 3,
+                        "nonce": 789,
+                        "stark_key": "my stark_key",
+                        "receiver": "receiver's stark_key"
+                    }
+                },
+                {
+                    "utterance": "Transfer 7 tokens from vault_id 101 to receiver_vault_id 202 with a 24-hour expiration.",
+                    "parameters": {
+                        "amount": 7,
+                        "vault_id": 101,
+                        "receiver_vault_id": 202,
+                        "expiration_timestamp": 24
+                    }
+                },
+                {
+                    "utterance": "Send 2 tokens from my stark_key to the receiver's stark_key with a signature.",
+                    "parameters": {
+                        "amount": 2,
+                        "stark_key": "my stark_key",
+                        "receiver": "receiver's stark_key",
+                        "signature": "signature"
+                    }
+                },
+                {
+                    "utterance": "Transfer 8 tokens from vault_id 303 to receiver_vault_id 404 with nonce 555.",
+                    "parameters": {
+                        "amount": 8,
+                        "vault_id": 303,
+                        "receiver_vault_id": 404,
+                        "nonce": 555
+                    }
+                },
+                {
+                    "utterance": "Move 1 token from my stark_key to the receiver's stark_key with a 12-hour expiration.",
+                    "parameters": {
+                        "amount": 1,
+                        "stark_key": "my stark_key",
+                        "receiver": "receiver's stark_key",
+                        "expiration_timestamp": 12
+                    }
+                },
+                {
+                    "utterance": "Transfer 4 tokens from vault_id 505 to receiver_vault_id 606 with a signature and nonce 777.",
+                    "parameters": {
+                        "amount": 4,
+                        "vault_id": 505,
+                        "receiver_vault_id": 606,
+                        "signature": "signature",
+                        "nonce": 777
+                    }
+                },
+                {
+                    "utterance": "Send 6 tokens from my stark_key to the receiver's stark_key with a 48-hour expiration and nonce 999.",
+                    "parameters": {
+                        "amount": 6,
+                        "stark_key": "my stark_key",
+                        "receiver": "receiver's stark_key",
+                        "expiration_timestamp": 48,
+                        "nonce": 999
+                    }
+                },
+                {
+                    "utterance": "Transfer 9 tokens from vault_id 707 to receiver_vault_id 808 with a signature, nonce 111, and 36-hour expiration.",
+                    "parameters": {
+                        "amount": 9,
+                        "vault_id": 707,
+                        "receiver_vault_id": 808,
+                        "signature": "signature",
+                        "nonce": 111,
+                        "expiration_timestamp": 36
+                    }
+                }
+            ]
+        },
+        {
+            "name": "WithdrawalaNFT",
+            "description": "Withdrawal withdraw tokens(asset_id) from stark_key to receiver\n\n| **field** | **description** |\n| --- | --- |\n| amount | the amount to be transferred. |\n| nonce | the nonce of sender's stark_key |\n| vault_id | the vault id of the sender with asset_id |\n| receiver_vault_id | the vault id of the receiver with asset_id |\n| stark_key | the sender's stark_key |\n| receiver | which eth address to withdraw |\n| signature | the transaction's signature, can refer [here](https://github.com/reddio-com/red-py-sdk/blob/main/redpysdk/starkex_utils.py#L46-L51) to generate signature. In SDK it handled by sdk |\n| expiration_timestamp | the expiration time, count in hour |",
+            "url": "https://reddio-nft-token-and-ipfs.p.rapidapi.com/v1/withdrawalto",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Withdraw 5 tokens from my stark_key to the receiver's vault.",
+                    "parameters": {
+                        "amount": 5,
+                        "stark_key": "my stark_key",
+                        "receiver": "receiver's vault"
+                    }
+                },
+                {
+                    "utterance": "Transfer 10 tokens from my vault to the receiver's vault using my stark_key.",
+                    "parameters": {
+                        "amount": 10,
+                        "vault_id": "my vault",
+                        "receiver_vault_id": "receiver's vault",
+                        "stark_key": "my stark_key"
+                    }
+                },
+                {
+                    "utterance": "Withdraw 3 tokens from my stark_key to the receiver's address with a nonce of 12345.",
+                    "parameters": {
+                        "amount": 3,
+                        "stark_key": "my stark_key",
+                        "receiver": "receiver's address",
+                        "nonce": 12345
+                    }
+                },
+                {
+                    "utterance": "Initiate a withdrawal of 7 tokens from my stark_key to the receiver's vault with an expiration timestamp of 24 hours.",
+                    "parameters": {
+                        "amount": 7,
+                        "stark_key": "my stark_key",
+                        "receiver_vault_id": "receiver's vault",
+                        "expiration_timestamp": 24
+                    }
+                },
+                {
+                    "utterance": "Withdraw 2 tokens from my vault to the receiver's address using my stark_key and a nonce of 67890.",
+                    "parameters": {
+                        "amount": 2,
+                        "vault_id": "my vault",
+                        "receiver": "receiver's address",
+                        "stark_key": "my stark_key",
+                        "nonce": 67890
+                    }
+                },
+                {
+                    "utterance": "Transfer 8 tokens from my stark_key to the receiver's vault with a signature and an expiration timestamp of 12 hours.",
+                    "parameters": {
+                        "amount": 8,
+                        "stark_key": "my stark_key",
+                        "receiver_vault_id": "receiver's vault",
+                        "signature": "transaction's signature",
+                        "expiration_timestamp": 12
+                    }
+                },
+                {
+                    "utterance": "Withdraw 4 tokens from my vault to the receiver's address using my stark_key and a nonce of 54321.",
+                    "parameters": {
+                        "amount": 4,
+                        "vault_id": "my vault",
+                        "receiver": "receiver's address",
+                        "stark_key": "my stark_key",
+                        "nonce": 54321
+                    }
+                },
+                {
+                    "utterance": "Initiate a withdrawal of 6 tokens from my stark_key to the receiver's vault with a nonce of 98765 and an expiration timestamp of 48 hours.",
+                    "parameters": {
+                        "amount": 6,
+                        "stark_key": "my stark_key",
+                        "receiver_vault_id": "receiver's vault",
+                        "nonce": 98765,
+                        "expiration_timestamp": 48
+                    }
+                },
+                {
+                    "utterance": "Withdraw 1 token from my stark_key to the receiver's address with a signature and a nonce of 11223.",
+                    "parameters": {
+                        "amount": 1,
+                        "stark_key": "my stark_key",
+                        "receiver": "receiver's address",
+                        "signature": "transaction's signature",
+                        "nonce": 11223
+                    }
+                },
+                {
+                    "utterance": "Transfer 9 tokens from my vault to the receiver's vault using my stark_key, a nonce of 33445, and an expiration timestamp of 36 hours.",
+                    "parameters": {
+                        "amount": 9,
+                        "vault_id": "my vault",
+                        "receiver_vault_id": "receiver's vault",
+                        "stark_key": "my stark_key",
+                        "nonce": 33445,
+                        "expiration_timestamp": 36
+                    }
+                }
+            ]
+        }
+    ]
+}

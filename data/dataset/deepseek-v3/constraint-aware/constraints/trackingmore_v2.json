@@ -1,0 +1,88 @@
+{
+    "name": "TrackingMore_v2",
+    "description": "All-in-one global package tracking tool. Support track and trace international 472 couriers.",
+    "url": "https://rapidapi.com/apidojo/api/trackingmore/",
+    "api_methods": [
+        {
+            "name": "carriers/list",
+            "description": "List all supported carriers",
+            "url": "https://trackingmore.p.rapidapi.com/carriers/list",
+            "parameters": []
+        },
+        {
+            "name": "packages/track (Deprecated)",
+            "description": "Get tracking information of specific package",
+            "url": "https://trackingmore.p.rapidapi.com/packages/track",
+            "parameters": [
+                {
+                    "name": "carrierCode",
+                    "type": "STRING",
+                    "description": "Carrier code gotten from .../carriers/list or carriers/detect endpoint",
+                    "default": "yunexpress",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "trackingNumber",
+                    "type": "STRING",
+                    "description": "Tracking number of package",
+                    "default": "YT2003521266065328",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "One of the following : en|cn|es|it|ru",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "cn",
+                                "es",
+                                "it",
+                                "ru"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "packages/v2/track",
+            "description": "Get tracking information of specific package",
+            "url": "https://trackingmore.p.rapidapi.com/packages/v2/track",
+            "parameters": [
+                {
+                    "name": "trackingNumber",
+                    "type": "STRING",
+                    "description": "Tracking number of package",
+                    "default": "NY323068698GB",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "carriers/detect",
+            "description": "Detect carrier by providing tracking number",
+            "url": "https://trackingmore.p.rapidapi.com/carriers/detect",
+            "parameters": [
+                {
+                    "name": "trackingNumber",
+                    "type": "STRING",
+                    "description": "The tracking number of parcel",
+                    "default": "YT2003521266065328",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        }
+    ]
+}

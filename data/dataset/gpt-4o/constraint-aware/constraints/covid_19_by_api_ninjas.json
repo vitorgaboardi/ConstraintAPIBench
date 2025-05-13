@@ -1,0 +1,70 @@
+{
+    "name": "Covid-19 by API-Ninjas",
+    "description": "Covid-19 case count and death data for every country in the world. See more info at https://api-ninjas.com/api/covid19.",
+    "url": "https://rapidapi.com/apininjas/api/covid-19-by-api-ninjas/",
+    "api_methods": [
+        {
+            "name": "/v1/covid19",
+            "description": "API Ninjas Covid19 API endpoint. Either **date** or **country** must be set.",
+            "url": "https://covid-19-by-api-ninjas.p.rapidapi.com/v1/covid19",
+            "parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "type of data to retrieve. Must be either cases or deaths. If not set, cases will be used by default.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "cases",
+                                "deaths"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "country name (case insensitive).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "date, country: Either date or country must be set."
+                    }
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "date to retrieve single-day snapshot. Must be in the form of YYYY-MM-DD (e.g. 2022-01-01)",
+                    "default": "2022-01-01",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "inter-dependency": "date, country: Either date or country must be set."
+                    }
+                },
+                {
+                    "name": "county",
+                    "type": "STRING",
+                    "description": "county name for US states (case insensitive). For United States data only. Must be used in conjunction with country (United States) and region (e.g. California).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "county, country, region: county must be used in conjunction with country (United States) and region."
+                    }
+                },
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "administrative region (also known as state or province in many countries) name (case insensitive). Must be used in conjunction with country. If not set, countries with data broken down by administrative regions will return separate data for each region.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "region, country: region must be used in conjunction with country."
+                    }
+                }
+            ]
+        }
+    ]
+}

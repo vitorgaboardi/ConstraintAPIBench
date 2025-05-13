@@ -1,0 +1,865 @@
+{
+    "name": "Referential",
+    "description": "The fastest API to access countries, states, cities, continents, dial and zip codes in up to 20 languages. A collection of data APIs to support forms, signups, search and lookup. Our endpoints are optimized for speed and size. Our data is regularly maintained and comes from International Standardization bodies, the United Nations, government surveys and GIS datasets. We do not scrape WikiPedia etc",
+    "url": "https://rapidapi.com/referential/api/referential/",
+    "api_methods": [
+        {
+            "name": "City by IP address (Geo IP)",
+            "description": "Find a city, state, country and continent by IP address. For some results, the closest result within 10 miles will be provided.",
+            "url": "https://referential.p.rapidapi.com/v1/city",
+            "parameters": [
+                {
+                    "name": "ip",
+                    "type": "STRING",
+                    "description": "ip4 pr ip6 formatted IP address",
+                    "default": "128.218.229.26",
+                    "required": true,
+                    "constraints": {
+                        "format": "ip4 or ip6 formatted IP address"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [geonameid, timezone,state_code,iso_a2]",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "geonameid",
+                                "timezone",
+                                "state_code",
+                                "iso_a2"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Countries",
+            "description": "List or search countries of the world in different languages.. Get iso a2, a3 country code and localized country name",
+            "url": "https://referential.p.rapidapi.com/v1/country",
+            "parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Filter on currency name in chosen lang",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "dial_code",
+                    "type": "NUMBER",
+                    "description": "Filter on country dial code",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "currency_code",
+                    "type": "STRING",
+                    "description": "Filter on 3 letter currency code (ISO)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 4217"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return for each country [iso_a2, iso_a3, continent_code, dial_code, currency_code, currency_num_code, currency]",
+                    "default": "currency,currency_num_code,currency_code,continent_code,currency,iso_a3,dial_code",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "iso_a2",
+                                "iso_a3",
+                                "continent_code",
+                                "dial_code",
+                                "currency_code",
+                                "currency_num_code",
+                                "currency"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter iso country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Country name search string. Can be partial contains...",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "250",
+                    "required": false
+                },
+                {
+                    "name": "continent_code",
+                    "type": "STRING",
+                    "description": "Two letter region/continent code (eu, na, sa, as, af, oc, an). Lookup at /v1/continent.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "eu",
+                                "na",
+                                "sa",
+                                "as",
+                                "af",
+                                "oc",
+                                "an"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "iso_a3",
+                    "type": "STRING",
+                    "description": "Filter on 3 letter iso country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-3"
+                    }
+                },
+                {
+                    "name": "currency_num_code",
+                    "type": "STRING",
+                    "description": "Filter on 3 digit numeric currency code (ISO)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 4217 numeric"
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Cities",
+            "description": "List and search over 75,000 world cities in 20 languages.",
+            "url": "https://referential.p.rapidapi.com/v1/city",
+            "parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit results to N results",
+                    "default": "250",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "state_hasc",
+                    "type": "STRING",
+                    "description": "Filter on state's HASC code. List at /v1/state.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "Filter on timezone name. List at /v1/timezone.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "geonameid",
+                    "type": "STRING",
+                    "description": "Filter on geonameid",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "prefix",
+                    "type": "STRING",
+                    "description": "Search by names starting with prefix. See also limit, order and sort fields.",
+                    "default": "san fr",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "timezone_offset",
+                    "type": "NUMBER",
+                    "description": "Filter on timezone offset in hours",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sort on field [population, state_code, name, timezone, state_hasc, iso_a2]. Please see limit and order fields.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "population",
+                                "state_code",
+                                "name",
+                                "timezone",
+                                "state_hasc",
+                                "iso_a2"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 letter code"
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter country code",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter country code"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Search as \\\"contains\\\" on city name in chosen lang",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "state_code",
+                    "type": "STRING",
+                    "description": "Filter on state's ISO-3166-2 letter code. List at /v1/state",
+                    "default": "US-CA",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO-3166-2 letter code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [iso_a2,state_code,timezone,timezone_offset,state_hasc,geonameid]",
+                    "default": "iso_a2,state_code,state_hasc,timezone,timezone_offset",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "iso_a2",
+                                "state_code",
+                                "timezone",
+                                "timezone_offset",
+                                "state_hasc",
+                                "geonameid"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "Sort order [asc | desc]",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "asc",
+                                "desc"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "State",
+            "description": "List the sub-regions/states/provinces/departments of the world's countries",
+            "url": "https://referential.p.rapidapi.com/v1/state",
+            "parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "250",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter country code",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "iso_3166_2",
+                    "type": "STRING",
+                    "description": "Filter on Subregion's ISO-3166-2 letter code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-2"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to select in the result [iso_a2]",
+                    "default": "iso_a2",
+                    "required": false
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Filter as \\\"contains\\\" on the states's name in chosen lang",
+                    "default": "tex",
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Timezones",
+            "description": "List the world's time zones in 20 languages",
+            "url": "https://referential.p.rapidapi.com/v1/timezone",
+            "parameters": [
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "Filter on non daylights savings offset in hours",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Filter as \"contains\" on timezone name in chosen lang",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "Filter on 3 letter non daylight savings timezone code (not unique)",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "Filter on timezone name in english",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "daylights_offset",
+                    "type": "STRING",
+                    "description": "Filter on daylights savings offset in hours",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "de",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 letter code"
+                    }
+                },
+                {
+                    "name": "daylights_code",
+                    "type": "STRING",
+                    "description": "Filter on daylights savings letter code (not unique)",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [code,timezone,daylights_code,daylights_offset,daylights,hours_offset,offset]",
+                    "default": "offset,daylights_offset,daylights,daylights_code,timezone",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "code",
+                                "timezone",
+                                "daylights_code",
+                                "daylights_offset",
+                                "daylights",
+                                "hours_offset",
+                                "offset"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "daylights",
+                    "type": "STRING",
+                    "description": "Filter on daylights savings/non daylight savings timezones (true,false)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "City by id",
+            "description": "Direct lookup of over 75,000 cities by id. See the v1/city API to search for city ids.",
+            "url": "https://referential.p.rapidapi.com/v1/city/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "Lookup at /v1/city.",
+                    "default": "DULUTH|US-GA",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 letter code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [iso_a2,state_code,timezone,timezone_offset,state_hasc]",
+                    "default": "iso_a2,state_code,state_hasc,timezone, timezone_offset",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "iso_a2",
+                                "state_code",
+                                "timezone",
+                                "timezone_offset",
+                                "state_hasc"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Country by iso code",
+            "description": "Get country by 2 letter iso code localized to a given language",
+            "url": "https://referential.p.rapidapi.com/v1/country/{iso_code}",
+            "parameters": [
+                {
+                    "name": "iso_code",
+                    "type": "string",
+                    "description": "2 letter iso country code. ",
+                    "default": "US",
+                    "required": true,
+                    "constraints": {
+                        "format": "2 letter ISO country code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Comma deliminated list of fields to return in response",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "2 letter iso language code to localize country name",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter ISO language code"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "State by id",
+            "description": "Lookup sub-regions/states/provinces/departments by iso 3166-2 code",
+            "url": "https://referential.p.rapidapi.com/v1/state/{code}",
+            "parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "ISO 3166-2 state/province/deparm",
+                    "default": "US-MN",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 3166-2 code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [iso_a2]",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 letter code"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Continent by id",
+            "description": "Lookup a continent by id",
+            "url": "https://referential.p.rapidapi.com/v1/continent/{code}",
+            "parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "Two letter iso continent code. Lookup /v1/continent.",
+                    "default": "NA",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2 code"
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Two letter iso 639-2 language code (i.e. en, sv, pl etc). Lookup /v1/lang.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 code"
+                    }
+                },
+                {
+                    "name": "continent_code",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter continent code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2 code"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Filter on continent name (value field) as \\\"contains\\\"",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return for each continent [iso_a2, iso_a3, continent_code, dial_code, currency_code, currency_num_code, currency]",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "iso_a2",
+                                "iso_a3",
+                                "continent_code",
+                                "dial_code",
+                                "currency_code",
+                                "currency_num_code",
+                                "currency"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Continents",
+            "description": "List continents of the world localized to requested language",
+            "url": "https://referential.p.rapidapi.com/v1/continent",
+            "parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return for each continent [iso_a2, iso_a3, continent_code, dial_code, currency_code, currency_num_code, currency]",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "iso_a2",
+                                "iso_a3",
+                                "continent_code",
+                                "dial_code",
+                                "currency_code",
+                                "currency_num_code",
+                                "currency"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "continent_code",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter continent code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter continent code"
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Two letter iso 639-2 language code (i.e. en, sv, pl etc). Lookup /v1/lang.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 language code"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Filter as \"contains\" on continent name in chosen lang",
+                    "default": "",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Languages",
+            "description": "List the world's languages translated into 20 languages",
+            "url": "https://referential.p.rapidapi.com/v1/lang",
+            "parameters": [
+                {
+                    "name": "lang_3",
+                    "type": "STRING",
+                    "description": "Filter by 3 letter ISO language code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "3 letter ISO language code"
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter country code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [flag,iso_a2,lang_3,lang]",
+                    "default": "iso_a2,lang_3,flag",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "flag",
+                                "iso_a2",
+                                "lang_3",
+                                "lang"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Returns a language translated into lang language",
+                    "default": "en",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Language by id",
+            "description": "Find language by id translated into 20 languages",
+            "url": "https://referential.p.rapidapi.com/v1/lang/{lang}",
+            "parameters": [
+                {
+                    "name": "lang",
+                    "type": "string",
+                    "description": "2 letter iso language code. Lookup at /v1/lang.",
+                    "default": "es",
+                    "required": true,
+                    "constraints": {
+                        "format": "2 letter ISO language code"
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Returns a language translated into lang language",
+                    "default": "sv",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter ISO language code"
+                    }
+                },
+                {
+                    "name": "lang_3",
+                    "type": "STRING",
+                    "description": "Filter by 3 letter ISO language code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "3 letter ISO language code"
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter country code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [flag,iso_a2,lang_3,lang]",
+                    "default": "iso_a2,lang_3,flag",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "flag",
+                                "iso_a2",
+                                "lang_3",
+                                "lang"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Timezone by id",
+            "description": "Lookup a time zone",
+            "url": "https://referential.p.rapidapi.com/v1/timezone/{timezone}",
+            "parameters": [
+                {
+                    "name": "timezone",
+                    "type": "string",
+                    "description": "Timezone",
+                    "default": "Afrika/Dakar",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [code,timezone,daylights_code,daylights_offset,daylights,hours_offset,offset]",
+                    "default": "offset,daylights_offset,daylights,daylights_code,timezone",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "code",
+                                "timezone",
+                                "daylights_code",
+                                "daylights_offset",
+                                "daylights",
+                                "hours_offset",
+                                "offset"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "de",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 letter code"
+                    }
+                }
+            ]
+        }
+    ]
+}

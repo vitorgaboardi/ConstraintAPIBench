@@ -1,0 +1,159 @@
+{
+    "name": "MDBList",
+    "description": "Get Movies and TV Shows data with ratings from multiple providers in JSON format",
+    "url": "https://rapidapi.com/linaspurinis/api/mdblist/",
+    "api_methods": [
+        {
+            "name": "Search by Title",
+            "description": "Search for Movies or TV Shows by title, include option year or mediatype filter to narrow your results",
+            "url": "https://mdblist.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "s",
+                    "type": "STRING",
+                    "description": "Movie or TV Show Title to search",
+                    "default": "jaws",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "l",
+                    "type": "NUMBER",
+                    "description": "Limit returned items.\nYou can use numbes from 1 to 100 (default is 50)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100,
+                            "min": 1
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "y",
+                    "type": "NUMBER",
+                    "description": "Year (format YYYY, for example 2020) to limit title search (would also include previous and next year movies)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY"
+                    }
+                },
+                {
+                    "name": "m",
+                    "type": "ENUM",
+                    "description": "Search for only movie or tv show, leave empty for both",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "tv show"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get by Trakt.tv ID",
+            "description": "Returns movie or TV Show info",
+            "url": "https://mdblist.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "t",
+                    "type": "STRING",
+                    "description": "A valid Trakt.tv ID",
+                    "default": "457",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "m",
+                    "type": "ENUM",
+                    "description": "Mediatype *movie* or *show* (default *movie*)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "show"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get by IMDb ID",
+            "description": "Returns movie or TV Show info by IMDb ID",
+            "url": "https://mdblist.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "i",
+                    "type": "STRING",
+                    "description": "A valid IMDb ID",
+                    "default": "tt0073195",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get by TMDb ID",
+            "description": "Returns movie or TV Show info",
+            "url": "https://mdblist.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "tm",
+                    "type": "NUMBER",
+                    "description": "A valid TMDb ID",
+                    "default": "578",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "m",
+                    "type": "ENUM",
+                    "description": "Mediatype *movie* or *show* (default *movie*)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "show"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get by TVDB ID",
+            "description": "Returns TV Show info",
+            "url": "https://mdblist.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "tv",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "273181",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        }
+    ]
+}

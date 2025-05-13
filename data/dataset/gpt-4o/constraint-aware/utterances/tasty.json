@@ -1,0 +1,846 @@
+{
+    "name": "Tasty",
+    "description": "API to query data about recipe, plan, ingredients, etc... as on official site",
+    "url": "https://rapidapi.com/apidojo/api/tasty/",
+    "api_methods": [
+        {
+            "name": "recipes/list",
+            "description": "List recipes by option filters or name",
+            "url": "https://tasty.p.rapidapi.com/recipes/list",
+            "parameters": [
+                {
+                    "name": "size",
+                    "type": "NUMBER",
+                    "description": "Number of items returned per response",
+                    "default": "20",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "The offset of items to be ignored in response for paging",
+                    "default": "0",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Leave empty to sort by popular as default OR one of the following : approved_at:desc|approved_at:asc",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "approved_at:desc",
+                                "approved_at:asc"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Name of food or, ingredients to search by",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "tags",
+                    "type": "STRING",
+                    "description": "Get suitable values from /tags/list API",
+                    "default": "under_30_minutes",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me some popular recipes?",
+                    "parameters": {
+                        "sort": ""
+                    }
+                },
+                {
+                    "utterance": "Find recipes for chocolate cake.",
+                    "parameters": {
+                        "q": "chocolate cake"
+                    }
+                },
+                {
+                    "utterance": "What are some quick recipes under 30 minutes?",
+                    "parameters": {
+                        "tags": "under_30_minutes"
+                    }
+                },
+                {
+                    "utterance": "List the latest approved recipes.",
+                    "parameters": {
+                        "sort": "approved_at:desc"
+                    }
+                },
+                {
+                    "utterance": "Do you have any vegan recipes?",
+                    "parameters": {
+                        "tags": "vegan"
+                    }
+                },
+                {
+                    "utterance": "Show me recipes for pasta sorted by the oldest approval date.",
+                    "parameters": {
+                        "q": "pasta",
+                        "sort": "approved_at:asc"
+                    }
+                },
+                {
+                    "utterance": "Find some dessert recipes.",
+                    "parameters": {
+                        "tags": "dessert"
+                    }
+                },
+                {
+                    "utterance": "Can you list recipes for chicken curry?",
+                    "parameters": {
+                        "q": "chicken curry"
+                    }
+                },
+                {
+                    "utterance": "What are some recipes for a quick breakfast?",
+                    "parameters": {
+                        "tags": "breakfast",
+                        "sort": ""
+                    }
+                },
+                {
+                    "utterance": "Show me the most recently approved vegetarian recipes.",
+                    "parameters": {
+                        "tags": "vegetarian",
+                        "sort": "approved_at:desc"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "tips/list",
+            "description": "This endpoint is used to load tips (reviews)",
+            "url": "https://tasty.p.rapidapi.com/tips/list",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The value of recipe id returned in .../recipes/list .../feeds/list .../recipes/list-similarities endpoints",
+                    "default": "3562",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "size",
+                    "type": "NUMBER",
+                    "description": "Number of items returned per response",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "The offset of items to be ignored in response for paging",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the tips for the Spaghetti Carbonara recipe?",
+                    "parameters": {
+                        "id": "Spaghetti Carbonara"
+                    }
+                },
+                {
+                    "utterance": "I need some reviews for the Chocolate Cake recipe.",
+                    "parameters": {
+                        "id": "Chocolate Cake"
+                    }
+                },
+                {
+                    "utterance": "What are the tips for making the best Chicken Alfredo?",
+                    "parameters": {
+                        "id": "Chicken Alfredo"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the reviews for the Vegan Tacos recipe?",
+                    "parameters": {
+                        "id": "Vegan Tacos"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the tips for the Beef Stroganoff recipe.",
+                    "parameters": {
+                        "id": "Beef Stroganoff"
+                    }
+                },
+                {
+                    "utterance": "What do people say about the Margherita Pizza recipe?",
+                    "parameters": {
+                        "id": "Margherita Pizza"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the reviews for the Lemon Drizzle Cake?",
+                    "parameters": {
+                        "id": "Lemon Drizzle Cake"
+                    }
+                },
+                {
+                    "utterance": "I want to know the tips for the Pad Thai recipe.",
+                    "parameters": {
+                        "id": "Pad Thai"
+                    }
+                },
+                {
+                    "utterance": "Show me the reviews for the French Onion Soup recipe.",
+                    "parameters": {
+                        "id": "French Onion Soup"
+                    }
+                },
+                {
+                    "utterance": "What are the tips for the best way to make Ratatouille?",
+                    "parameters": {
+                        "id": "Ratatouille"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "recipes/detail (Deprecated)",
+            "description": "Get  more information of recipe if available, such as : ingredients, nutrition info, preparation, etc...",
+            "url": "https://tasty.p.rapidapi.com/recipes/detail",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The id value of any recipe returned in recipes/list API",
+                    "default": "5586",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me more details about the recipe with ID 5586?",
+                    "parameters": {
+                        "id": 5586
+                    }
+                },
+                {
+                    "utterance": "I need the full recipe information for the dish with ID 1024.",
+                    "parameters": {
+                        "id": 1024
+                    }
+                },
+                {
+                    "utterance": "What are the ingredients for the recipe with ID 3456?",
+                    "parameters": {
+                        "id": 3456
+                    }
+                },
+                {
+                    "utterance": "Please provide the nutritional info for the recipe with ID 7890.",
+                    "parameters": {
+                        "id": 7890
+                    }
+                },
+                {
+                    "utterance": "Tell me the preparation steps for the recipe with ID 2345.",
+                    "parameters": {
+                        "id": 2345
+                    }
+                },
+                {
+                    "utterance": "I'd like to know more about the recipe with ID 6789.",
+                    "parameters": {
+                        "id": 6789
+                    }
+                },
+                {
+                    "utterance": "Can you show me the detailed recipe for the dish with ID 9876?",
+                    "parameters": {
+                        "id": 9876
+                    }
+                },
+                {
+                    "utterance": "What is the full recipe for the meal with ID 4321?",
+                    "parameters": {
+                        "id": 4321
+                    }
+                },
+                {
+                    "utterance": "Give me the complete recipe details for the ID 1234.",
+                    "parameters": {
+                        "id": 1234
+                    }
+                },
+                {
+                    "utterance": "I want to see the recipe information for the ID 5678.",
+                    "parameters": {
+                        "id": 5678
+                    }
+                }
+            ]
+        },
+        {
+            "name": "feeds/list",
+            "description": "List latest feeds about new food, recipes,etc...",
+            "url": "https://tasty.p.rapidapi.com/feeds/list",
+            "parameters": [
+                {
+                    "name": "vegetarian",
+                    "type": "BOOLEAN",
+                    "description": "List vegetarian food only",
+                    "default": "false",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                true,
+                                false
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "The timezone of your location in format of +/- hhmm",
+                    "default": "+0700",
+                    "required": true,
+                    "constraints": {
+                        "format": "+/- hhmm"
+                    }
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "The offset of items to be ignored in response for paging",
+                    "default": "0",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "size",
+                    "type": "NUMBER",
+                    "description": "Number of items returned per response",
+                    "default": "5",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the latest vegetarian recipes in the timezone +0530.",
+                    "parameters": {
+                        "vegetarian": true,
+                        "timezone": "+0530"
+                    }
+                },
+                {
+                    "utterance": "Can you list the newest food feeds for non-vegetarians in the timezone -0400?",
+                    "parameters": {
+                        "vegetarian": false,
+                        "timezone": "-0400"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the latest vegetarian food updates in the timezone +0200.",
+                    "parameters": {
+                        "vegetarian": true,
+                        "timezone": "+0200"
+                    }
+                },
+                {
+                    "utterance": "What are the new recipes available for non-vegetarians in the timezone +0000?",
+                    "parameters": {
+                        "vegetarian": false,
+                        "timezone": "+0000"
+                    }
+                },
+                {
+                    "utterance": "Give me the latest vegetarian food feeds in the timezone -0700.",
+                    "parameters": {
+                        "vegetarian": true,
+                        "timezone": "-0700"
+                    }
+                },
+                {
+                    "utterance": "List the newest non-vegetarian recipes in the timezone +0800.",
+                    "parameters": {
+                        "vegetarian": false,
+                        "timezone": "+0800"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the latest vegetarian recipes in the timezone -0500?",
+                    "parameters": {
+                        "vegetarian": true,
+                        "timezone": "-0500"
+                    }
+                },
+                {
+                    "utterance": "Show the latest non-vegetarian food updates in the timezone +0300.",
+                    "parameters": {
+                        "vegetarian": false,
+                        "timezone": "+0300"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the newest vegetarian food feeds in the timezone +0600.",
+                    "parameters": {
+                        "vegetarian": true,
+                        "timezone": "+0600"
+                    }
+                },
+                {
+                    "utterance": "What are the latest non-vegetarian recipes in the timezone -0300?",
+                    "parameters": {
+                        "vegetarian": false,
+                        "timezone": "-0300"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "feeds/list",
+            "description": "List latest feeds about new food, recipes,etc...",
+            "url": "https://tasty.p.rapidapi.com/feeds/list",
+            "parameters": [
+                {
+                    "name": "vegetarian",
+                    "type": "BOOLEAN",
+                    "description": "List vegetarian food only",
+                    "default": "false",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                true,
+                                false
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "The timezone of your location in format of +/- hhmm",
+                    "default": "+0700",
+                    "required": true,
+                    "constraints": {
+                        "format": "+/- hhmm"
+                    }
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "The offset of items to be ignored in response for paging",
+                    "default": "0",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "size",
+                    "type": "NUMBER",
+                    "description": "Number of items returned per response",
+                    "default": "5",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the latest vegetarian recipes in the timezone +0530.",
+                    "parameters": {
+                        "vegetarian": true,
+                        "timezone": "+0530"
+                    }
+                },
+                {
+                    "utterance": "Can you list the newest food feeds for non-vegetarians in the timezone -0400?",
+                    "parameters": {
+                        "vegetarian": false,
+                        "timezone": "-0400"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the latest vegetarian food updates for timezone +0200.",
+                    "parameters": {
+                        "vegetarian": true,
+                        "timezone": "+0200"
+                    }
+                },
+                {
+                    "utterance": "What are the new recipes available for non-vegetarians in the timezone +0000?",
+                    "parameters": {
+                        "vegetarian": false,
+                        "timezone": "+0000"
+                    }
+                },
+                {
+                    "utterance": "Give me the latest vegetarian food feeds in the timezone -0700.",
+                    "parameters": {
+                        "vegetarian": true,
+                        "timezone": "-0700"
+                    }
+                },
+                {
+                    "utterance": "List the newest non-vegetarian recipes for the timezone +0800.",
+                    "parameters": {
+                        "vegetarian": false,
+                        "timezone": "+0800"
+                    }
+                },
+                {
+                    "utterance": "I want to see the latest vegetarian recipes in the timezone -0500.",
+                    "parameters": {
+                        "vegetarian": true,
+                        "timezone": "-0500"
+                    }
+                },
+                {
+                    "utterance": "Could you show me the latest non-vegetarian food updates for timezone +0300?",
+                    "parameters": {
+                        "vegetarian": false,
+                        "timezone": "+0300"
+                    }
+                },
+                {
+                    "utterance": "Please list the latest vegetarian food options in the timezone +0600.",
+                    "parameters": {
+                        "vegetarian": true,
+                        "timezone": "+0600"
+                    }
+                },
+                {
+                    "utterance": "What are the new non-vegetarian recipes available in the timezone -0300?",
+                    "parameters": {
+                        "vegetarian": false,
+                        "timezone": "-0300"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "tags/list",
+            "description": "List supported tags name for filtering in recipes/list API",
+            "url": "https://tasty.p.rapidapi.com/tags/list",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "tags/list",
+            "description": "List supported tags name for filtering in recipes/list API",
+            "url": "https://tasty.p.rapidapi.com/tags/list",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the list of tags available for filtering recipes?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What tags can I use to filter my recipe search?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to know the supported tags for recipe filtering.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide the available tags for filtering recipes?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the tags I can use to filter recipes.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the tags available for filtering in the recipe search?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me the list of tags that can be used for filtering recipes.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see the tags supported for recipe filtering.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the tags that are available for filtering recipes?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the supported tags for filtering recipes?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "recipes/list-similarities",
+            "description": "List similar recipes by specific recipe id",
+            "url": "https://tasty.p.rapidapi.com/recipes/list-similarities",
+            "parameters": [
+                {
+                    "name": "recipe_id",
+                    "type": "NUMBER",
+                    "description": "The id value of any recipe returned in recipes/list API",
+                    "default": "8138",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find recipes similar to the Chocolate Lava Cake?",
+                    "parameters": {
+                        "recipe_id": "Chocolate Lava Cake"
+                    }
+                },
+                {
+                    "utterance": "Show me dishes that are like the Spaghetti Carbonara.",
+                    "parameters": {
+                        "recipe_id": "Spaghetti Carbonara"
+                    }
+                },
+                {
+                    "utterance": "What recipes are similar to the Vegan Tacos?",
+                    "parameters": {
+                        "recipe_id": "Vegan Tacos"
+                    }
+                },
+                {
+                    "utterance": "Find recipes that resemble the Chicken Alfredo.",
+                    "parameters": {
+                        "recipe_id": "Chicken Alfredo"
+                    }
+                },
+                {
+                    "utterance": "I need recipes similar to the Beef Stroganoff.",
+                    "parameters": {
+                        "recipe_id": "Beef Stroganoff"
+                    }
+                },
+                {
+                    "utterance": "Could you list recipes like the Margherita Pizza?",
+                    "parameters": {
+                        "recipe_id": "Margherita Pizza"
+                    }
+                },
+                {
+                    "utterance": "What are some recipes similar to the Caesar Salad?",
+                    "parameters": {
+                        "recipe_id": "Caesar Salad"
+                    }
+                },
+                {
+                    "utterance": "Show recipes that are similar to the Pad Thai.",
+                    "parameters": {
+                        "recipe_id": "Pad Thai"
+                    }
+                },
+                {
+                    "utterance": "Find dishes that are like the French Onion Soup.",
+                    "parameters": {
+                        "recipe_id": "French Onion Soup"
+                    }
+                },
+                {
+                    "utterance": "Can you list recipes similar to the Apple Pie?",
+                    "parameters": {
+                        "recipe_id": "Apple Pie"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "recipes/auto-complete",
+            "description": "Get auto complete suggestions by name or ingredients",
+            "url": "https://tasty.p.rapidapi.com/recipes/auto-complete",
+            "parameters": [
+                {
+                    "name": "prefix",
+                    "type": "STRING",
+                    "description": "Food name or ingredient",
+                    "default": "chicken soup",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you suggest some recipes starting with 'pasta'?",
+                    "parameters": {
+                        "prefix": "pasta"
+                    }
+                },
+                {
+                    "utterance": "I'm looking for dishes that begin with 'avocado'.",
+                    "parameters": {
+                        "prefix": "avocado"
+                    }
+                },
+                {
+                    "utterance": "What recipes can you find that start with 'banana'?",
+                    "parameters": {
+                        "prefix": "banana"
+                    }
+                },
+                {
+                    "utterance": "Show me some meal ideas with the prefix 'quinoa'.",
+                    "parameters": {
+                        "prefix": "quinoa"
+                    }
+                },
+                {
+                    "utterance": "Do you have any suggestions for recipes that start with 'salmon'?",
+                    "parameters": {
+                        "prefix": "salmon"
+                    }
+                },
+                {
+                    "utterance": "Find recipes that begin with 'broccoli'.",
+                    "parameters": {
+                        "prefix": "broccoli"
+                    }
+                },
+                {
+                    "utterance": "I'm interested in dishes starting with 'tofu'.",
+                    "parameters": {
+                        "prefix": "tofu"
+                    }
+                },
+                {
+                    "utterance": "Can you list some recipes with the prefix 'mango'?",
+                    "parameters": {
+                        "prefix": "mango"
+                    }
+                },
+                {
+                    "utterance": "What are some recipe ideas that start with 'beef'?",
+                    "parameters": {
+                        "prefix": "beef"
+                    }
+                },
+                {
+                    "utterance": "Give me some suggestions for meals starting with 'spinach'.",
+                    "parameters": {
+                        "prefix": "spinach"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "recipes/get-more-info",
+            "description": "Get  more information of recipe if available, such as : ingredients, nutrition info, preparation, etc... This endpoint returns 404 status code, it means there is no more information to obtain.\n* .../recipes/list already returns ingredients, nutrition info, preparation, etc...",
+            "url": "https://tasty.p.rapidapi.com/recipes/get-more-info",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The id value of any recipe returned in recipes/list API",
+                    "default": "8138",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me more details about the recipe with ID 8138?",
+                    "parameters": {
+                        "id": 8138
+                    }
+                },
+                {
+                    "utterance": "I need additional information on the recipe identified by ID 1024.",
+                    "parameters": {
+                        "id": 1024
+                    }
+                },
+                {
+                    "utterance": "What are the extra details for the recipe with the ID 5678?",
+                    "parameters": {
+                        "id": 5678
+                    }
+                },
+                {
+                    "utterance": "Could you provide more info on the recipe with ID 3456?",
+                    "parameters": {
+                        "id": 3456
+                    }
+                },
+                {
+                    "utterance": "Tell me more about the recipe that has the ID 7890.",
+                    "parameters": {
+                        "id": 7890
+                    }
+                },
+                {
+                    "utterance": "I'd like to know more about the recipe with ID 2345.",
+                    "parameters": {
+                        "id": 2345
+                    }
+                },
+                {
+                    "utterance": "Please fetch additional details for the recipe with ID 6789.",
+                    "parameters": {
+                        "id": 6789
+                    }
+                },
+                {
+                    "utterance": "Can you show me more information about the recipe with ID 4567?",
+                    "parameters": {
+                        "id": 4567
+                    }
+                },
+                {
+                    "utterance": "I want to see more details for the recipe identified by ID 8901.",
+                    "parameters": {
+                        "id": 8901
+                    }
+                },
+                {
+                    "utterance": "Get me more information on the recipe with the ID 1234.",
+                    "parameters": {
+                        "id": 1234
+                    }
+                }
+            ]
+        }
+    ]
+}

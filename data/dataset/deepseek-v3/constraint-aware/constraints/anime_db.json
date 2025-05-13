@@ -1,0 +1,130 @@
+{
+    "name": "Anime DB",
+    "description": "Complete anime data. Ranking, synopsis, genre, search by title. Over 20k data updated everyday",
+    "url": "https://rapidapi.com/brian.rofiq/api/anime-db/",
+    "api_methods": [
+        {
+            "name": "Get All",
+            "description": "Get List of anime. You can search, sort an specify genre",
+            "url": "https://anime-db.p.rapidapi.com/anime",
+            "parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "10",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "types",
+                    "type": "STRING",
+                    "description": "Anime type, separated by comma",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "genres",
+                    "type": "STRING",
+                    "description": "genres separated by comma",
+                    "default": "Fantasy,Drama",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "ranking or title",
+                    "default": "ranking",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ranking",
+                                "title"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "sortOrder",
+                    "type": "STRING",
+                    "description": "asc or desc",
+                    "default": "asc",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "asc",
+                                "desc"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Search by title or alternative titles. Search will ignore sort",
+                    "default": "Fullmetal",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "search, sortBy, sortOrder: If search is provided, sortBy and sortOrder are ignored."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get by id",
+            "description": "Get anime by its corresponding ID.\n\nID is got from 'Get All' endpoint",
+            "url": "https://anime-db.p.rapidapi.com/anime/by-id/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get Genres",
+            "description": "Get Genres",
+            "url": "https://anime-db.p.rapidapi.com/genre",
+            "parameters": []
+        },
+        {
+            "name": "Get one anime by ranking",
+            "description": "Get anime by ranking",
+            "url": "https://anime-db.p.rapidapi.com/anime/by-ranking/{rank}",
+            "parameters": [
+                {
+                    "name": "rank",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        }
+    ]
+}

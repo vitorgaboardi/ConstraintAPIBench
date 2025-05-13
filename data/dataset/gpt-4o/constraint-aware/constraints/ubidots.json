@@ -1,0 +1,133 @@
+{
+    "name": "Ubidots",
+    "description": "Build your own sensor application.  Ubidots simplifies the making of Internet of Things applications for data capturing, real-time remote monitoring and getting insights from sensor data.",
+    "url": "https://rapidapi.com/ubidots/api/ubidots-1/",
+    "api_methods": [
+        {
+            "name": "GET /datasources/{datasource_id}/variables",
+            "description": "This resource list the variables of a specified data source, showing all the fields of the variables.",
+            "url": "https://community-ubidots.p.rapidapi.com/datasources/{datasource_id}/variables",
+            "parameters": [
+                {
+                    "name": "datasource_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "GET /variables/{variable_id}",
+            "description": "This resource returns a variable and its details. It shows additional fields than the ones required during the creation of the variable:  last_value: Shows the last value written to the variable.",
+            "url": "https://community-ubidots.p.rapidapi.com/variables/{variable_id}",
+            "parameters": [
+                {
+                    "name": "variable_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "GET /variables",
+            "description": "Retrieves the list of all the variables owned by a user. The header X-Auth-Token is needed to have the permissions for this endpoint.",
+            "url": "https://community-ubidots.p.rapidapi.com/variables",
+            "parameters": []
+        },
+        {
+            "name": "GET /datasources",
+            "description": "This resource lists all the existing data sources of a user.",
+            "url": "https://community-ubidots.p.rapidapi.com/datasources",
+            "parameters": []
+        },
+        {
+            "name": "GET /datasources/{datasource_id}",
+            "description": "This resource obtains an existing data source and its details. Also, it returns additional fields besides the ones required during the creation of the data source:  number_of_variables: Shows the number of variables contained by the data source. last_activity: Returns the date of the last activity",
+            "url": "https://community-ubidots.p.rapidapi.com/datasources/{datasource_id}",
+            "parameters": [
+                {
+                    "name": "datasource_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "GET /variables/{variable_id}/values",
+            "description": "This resource returns the values of the specified variable.  Every value will have a timestamp which is a value in milliseconds according to the POSIX standard.",
+            "url": "https://community-ubidots.p.rapidapi.com/variables/{variable_id}/values",
+            "parameters": [
+                {
+                    "name": "variable_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "POST /variables/{variable_id}/values",
+            "description": "This resource creates a new value within the specified variable. Every value has a timestamp that can be either specified manually by the device, or automatically by the server.",
+            "url": "https://community-ubidots.p.rapidapi.com/variables/{variable_id}/values",
+            "parameters": [
+                {
+                    "name": "variable_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "POST /datasources",
+            "description": "This resource creates a new data source. Every data source owns a number of variables, and has a context with different attributes. For example, a data source called \u201cDelivery Truck\u201d can have a attributes like {\u201cCity\u201d: \u201cBoston\u201d} or {\u201cType\u201d: \u201cTruck\u201d}.  Attributes are not meant to change dynamically over time, but to add a \u201crelational\u201d layer to your data sources.",
+            "url": "https://community-ubidots.p.rapidapi.com/datasources",
+            "parameters": []
+        },
+        {
+            "name": "POST /datasources/{datasource_id}/variables",
+            "description": "This resource creates a new variable within the specified data source. You can assign tags to variables (i.e. \u201croom\u201d, \u201cyard\u201d), and also properties with atributes, for example: {\u201cColor\u201d: \u201cBlue\u201d} or {\u201cStatus\u201d: \u201cOFF\u201d}",
+            "url": "https://community-ubidots.p.rapidapi.com/datasources/{datasource_id}/variables",
+            "parameters": [
+                {
+                    "name": "datasource_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "POST /collections/values",
+            "description": "This resource allow the create a value for multiple variables. Every value has a timestamp that can be either specified manually by the device, or automatically by the server.",
+            "url": "https://community-ubidots.p.rapidapi.com/collections/values",
+            "parameters": []
+        }
+    ]
+}

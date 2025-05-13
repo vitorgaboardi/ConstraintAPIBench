@@ -1,0 +1,48 @@
+{
+    "name": "Air Cargo CO2 Track And Trace",
+    "description": "Track your Air Cargo shipments and measure CO2 with more than 190 airlines",
+    "url": "https://rapidapi.com/cargoai-cargoai-default/api/air-cargo-co2-track-and-trace/",
+    "api_methods": [
+        {
+            "name": "PULL (track)",
+            "description": "By providing a valid AWB, you can get tracking information for the shipment.\n\nAnswers are 10s in average. However, it takes between 1s to 5min to get the information from the airline system but the API has to answer in 30s which generating timeouts errors.\nIn such case, you have to build the logic to try again 10mins after a timeout to avoid this or to use the subscription method.",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track",
+            "parameters": [
+                {
+                    "name": "awb",
+                    "type": "STRING",
+                    "description": "provide valid AWB number",
+                    "default": "000-99999970",
+                    "required": true,
+                    "constraints": {
+                        "format": "AWB number"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PUSH (unsubscribe)",
+            "description": "Provided valid callback URL and AWB to unsubscribe from receiving tracking updates.",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/unsubscribe",
+            "parameters": []
+        },
+        {
+            "name": "PUSH (subscribe)",
+            "description": "Provided valid callback URL, AWB and/or email(s), you can receive tracking event updates automatically when they're available.",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/subscribe",
+            "parameters": []
+        },
+        {
+            "name": "PUSH (unsubscribe)",
+            "description": "Provided valid callback URL and AWB to unsubscribe from receiving tracking updates.",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/unsubscribe",
+            "parameters": []
+        },
+        {
+            "name": "PUSH (subscribe)",
+            "description": "Provided valid callback URL, AWB and/or email(s), you can receive tracking event updates automatically when they're available.",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/subscribe",
+            "parameters": []
+        }
+    ]
+}

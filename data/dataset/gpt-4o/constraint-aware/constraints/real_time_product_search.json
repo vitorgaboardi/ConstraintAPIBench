@@ -1,0 +1,311 @@
+{
+    "name": "Real-Time Product Search",
+    "description": "Extremely Fast and Simple API for searching product offers and reviews across multiple major sources. With just one API, users can access comprehensive and real-time product information, simplifying the search process and improving efficiency.",
+    "url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-product-search/",
+    "api_methods": [
+        {
+            "name": "Search",
+            "description": "Search for product offers - both free-form queries and GTIN/EAN are supported. Each page contains up to 30 product offers. Infinite pagination/scrolling is supported using the *page* parameter.",
+            "url": "https://real-time-product-search.p.rapidapi.com/search",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Free-form search query or a GTIN/EAN (e.g. *0194252014233*).",
+                    "default": "Nike shoes",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "min_rating",
+                    "type": "ENUM",
+                    "description": "Return products with rating greater than the specified value.\nPossible values: `1`, `2`, `3`, `4`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                1,
+                                2,
+                                3,
+                                4
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "product_condition",
+                    "type": "ENUM",
+                    "description": "Only return products with a specific condition.\nPossible values: `NEW`, `USED`, `REFURBISHED`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "NEW",
+                                "USED",
+                                "REFURBISHED"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "max_shipping_days",
+                    "type": "NUMBER",
+                    "description": "Only return product offers that offer shipping/delivery of up to specific number of days (i.e. shipping speed).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "store_id",
+                    "type": "STRING",
+                    "description": "Only return product offers from specific stores (comma separated list of store id's). Store IDs can be obtained from the Google Shopping URL after using the **Seller** filter by taking the part after the `merchagg:` variable within the `tbs` parameter.\n\nWhen filtering for a certain Seller / Store on Google Shopping, a URL similar to the following is shown on the address bar: `https://www.google.com/search?gl=us&tbm=shop&q=shoes&tbs=mr:1,merchagg:m100456214|m114373355`, in that case, the Store IDs are **m100456214** and **m114373355** - to filter for these stores, set store_id=m100456214,m114373355.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "on_sale",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that are currently on sale.\nDefault: `false`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "free_returns",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that offer free returns.\nDefault: `false`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "free_shipping",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that offer free shipping/delivery.\nDefault: `false`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "max_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price lower than a certain value.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1 code"
+                    }
+                },
+                {
+                    "name": "sort_by",
+                    "type": "ENUM",
+                    "description": "Sort product offers by best match, top rated, lowest or highest price.\nPossible values: `BEST_MATCH`, `TOP_RATED`, `LOWEST_PRICE`, `HIGHEST_PRICE`.\nDefault: `BEST_MATCH`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "BEST_MATCH",
+                                "TOP_RATED",
+                                "LOWEST_PRICE",
+                                "HIGHEST_PRICE"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country to return offers for.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "min_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price greater than a certain value.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Results page to return.\nDefault: `1`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Offers",
+            "description": "Get all offers available for a product.",
+            "url": "https://real-time-product-search.p.rapidapi.com/product-offers",
+            "parameters": [
+                {
+                    "name": "product_id",
+                    "type": "STRING",
+                    "description": "Product id of the product for which to fetch offers.",
+                    "default": "11577822456427762145",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country to return offers for.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Reviews",
+            "description": "Get all product reviews. Infinite pagination/scrolling is supported using the *limit* and *offset* parameters.",
+            "url": "https://real-time-product-search.p.rapidapi.com/product-reviews",
+            "parameters": [
+                {
+                    "name": "product_id",
+                    "type": "STRING",
+                    "description": "Product id of the product for which to fetch reviews.",
+                    "default": "11577822456427762145",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "Number of reviews to skip.\nValid values: integers from 0-30000\nDefault: `0`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0,
+                            "max": 30000
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "rating",
+                    "type": "STRING",
+                    "description": "Only return reviews with user rating greater than the specified value.\nValid values: 1-5.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1,
+                            "max": 5
+                        }
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Maximum number of product reviews to return.\nValid values: integers from 0-100.\nDefault: `10`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0,
+                            "max": 100
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Details",
+            "description": "Get the details of a specific product by product id. Returns the full product details in addition to reviews sample, photos, product specs and more information.",
+            "url": "https://real-time-product-search.p.rapidapi.com/product-details",
+            "parameters": [
+                {
+                    "name": "product_id",
+                    "type": "STRING",
+                    "description": "Product id of the product for which to get full details.",
+                    "default": "11577822456427762145",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country to return offers for.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                }
+            ]
+        }
+    ]
+}

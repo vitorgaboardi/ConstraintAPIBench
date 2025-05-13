@@ -1,0 +1,108 @@
+{
+    "name": "Flightera Flight Data",
+    "description": "Flight status, on-time performance and statistics by Flightera",
+    "url": "https://rapidapi.com/flightera/api/flightera-flight-data/",
+    "api_methods": [
+        {
+            "name": "airlineStatistics",
+            "description": "Returns detailed airline statistics for airlines identified by the provided identifiers. In most cases the list should contain only one entry, unless the ident is ambiguous.\nIf searched by ident, only one airline is returned.\nOne of ident, iata, icao must be provided.\nStatistics are calculated overnight and represent the current day's data.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/statistics",
+            "parameters": [
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airline, must have a length of 4",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ICAO code",
+                        "inter-dependency": "icao, ident, iata: One of these parameters must be provided."
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airline, as returned by /airline/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "icao, ident, iata: One of these parameters must be provided."
+                    }
+                },
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airline, must have a length of 3",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "IATA code",
+                        "inter-dependency": "icao, ident, iata: One of these parameters must be provided."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the statistics for the airline with the ICAO code AAL?",
+                    "parameters": {
+                        "icao": "AAL"
+                    }
+                },
+                {
+                    "utterance": "What are the current statistics for the airline identified as Delta Air Lines?",
+                    "parameters": {
+                        "ident": "Delta Air Lines"
+                    }
+                },
+                {
+                    "utterance": "I need the on-time performance data for the airline with the IATA code DL.",
+                    "parameters": {
+                        "iata": "DL"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the airline statistics for the ICAO code BAW?",
+                    "parameters": {
+                        "icao": "BAW"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the status of the airline identified as American Airlines?",
+                    "parameters": {
+                        "ident": "American Airlines"
+                    }
+                },
+                {
+                    "utterance": "Please get me the statistics for the airline with the IATA code AA.",
+                    "parameters": {
+                        "iata": "AA"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the airline statistics for the ICAO code UAL?",
+                    "parameters": {
+                        "icao": "UAL"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the on-time performance for the airline identified as United Airlines?",
+                    "parameters": {
+                        "ident": "United Airlines"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the statistics for the airline with the IATA code UA.",
+                    "parameters": {
+                        "iata": "UA"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the airline statistics for the ICAO code SWA?",
+                    "parameters": {
+                        "icao": "SWA"
+                    }
+                }
+            ]
+        }
+    ]
+}

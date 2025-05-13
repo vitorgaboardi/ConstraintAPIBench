@@ -1,0 +1,177 @@
+{
+    "name": "MoviesDatabase",
+    "description": "MoviesDatabase provides complete and updated data for over 9 million titles ( movies, series and episodes) and 11 million actors / crew and cast members",
+    "url": "https://rapidapi.com/SAdrian/api/moviesdatabase/",
+    "api_methods": [
+        {
+            "name": "/titles/x/upcoming",
+            "description": " ",
+            "url": "https://moviesdatabase.p.rapidapi.com/titles/x/upcoming",
+            "parameters": [
+                {
+                    "name": "titleType",
+                    "type": "STRING",
+                    "description": "Filter by type of title",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year filter ex: ?year=2022",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "genre",
+                    "type": "STRING",
+                    "description": "Year filter ex: ?genre=Drama",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "info",
+                    "type": "STRING",
+                    "description": "Info type structure (default: mini-info) -> base_info / mini_info / image / ...",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "endYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -to- ex: ?endYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: If one is provided, the other must also be included."
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Number of titles per page (default: 10) -> 10 max ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        }
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Add sorting (incr, decr) -> year.incr / year.decr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "year.incr",
+                                "year.decr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Page number",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "startYear",
+                    "type": "NUMBER",
+                    "description": "Year range filter -from- ex: ?startYear=2020",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "startYear, endYear: If one is provided, the other must also be included."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me upcoming drama movies from 2023.",
+                    "parameters": {
+                        "titleType": "movie",
+                        "year": 2023,
+                        "genre": "Drama"
+                    }
+                },
+                {
+                    "utterance": "List the upcoming series sorted by year in descending order.",
+                    "parameters": {
+                        "titleType": "series",
+                        "sort": "year.decr"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the upcoming titles with mini-info for 2024?",
+                    "parameters": {
+                        "year": 2024,
+                        "info": "mini_info"
+                    }
+                },
+                {
+                    "utterance": "What are the upcoming action movies between 2022 and 2025?",
+                    "parameters": {
+                        "titleType": "movie",
+                        "genre": "Action",
+                        "startYear": 2022,
+                        "endYear": 2025
+                    }
+                },
+                {
+                    "utterance": "Give me a list of upcoming titles with images, limited to 5 per page.",
+                    "parameters": {
+                        "info": "image",
+                        "limit": 5
+                    }
+                },
+                {
+                    "utterance": "Find upcoming comedy series from 2021 to 2023.",
+                    "parameters": {
+                        "titleType": "series",
+                        "genre": "Comedy",
+                        "startYear": 2021,
+                        "endYear": 2023
+                    }
+                },
+                {
+                    "utterance": "Show upcoming titles sorted by year in ascending order.",
+                    "parameters": {
+                        "sort": "year.incr"
+                    }
+                },
+                {
+                    "utterance": "What are the upcoming horror movies for 2025?",
+                    "parameters": {
+                        "titleType": "movie",
+                        "year": 2025,
+                        "genre": "Horror"
+                    }
+                },
+                {
+                    "utterance": "List upcoming titles with base info for the year 2022.",
+                    "parameters": {
+                        "year": 2022,
+                        "info": "base_info"
+                    }
+                },
+                {
+                    "utterance": "Can you show me upcoming documentaries from 2020 to 2024?",
+                    "parameters": {
+                        "titleType": "documentary",
+                        "startYear": 2020,
+                        "endYear": 2024
+                    }
+                }
+            ]
+        }
+    ]
+}

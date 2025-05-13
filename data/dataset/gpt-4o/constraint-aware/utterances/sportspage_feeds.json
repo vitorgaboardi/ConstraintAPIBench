@@ -1,0 +1,567 @@
+{
+    "name": "Sportspage Feeds",
+    "description": "Real-time scores, schedules, and betting odds for US leagues.  Unbeatable value.  Documentation: https://sportspagefeeds.com/documentation",
+    "url": "https://rapidapi.com/SportspageFeeds/api/sportspage-feeds/",
+    "api_methods": [
+        {
+            "name": "Teams",
+            "description": "Returns a list of teams within a specified league, conference, or division.",
+            "url": "https://sportspage-feeds.p.rapidapi.com/teams",
+            "parameters": [
+                {
+                    "name": "league",
+                    "type": "STRING",
+                    "description": "A valid league code (i.e., NFL, NBA, MLB, NHL, NCAAF, or NCAAB)",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "NFL",
+                                "NBA",
+                                "MLB",
+                                "NHL",
+                                "NCAAF",
+                                "NCAAB"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "conference",
+                    "type": "STRING",
+                    "description": "A conference within the specified league",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "division",
+                    "type": "STRING",
+                    "description": "A division within the specified conference",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you list all the teams in the NFL?",
+                    "parameters": {
+                        "league": "NFL"
+                    }
+                },
+                {
+                    "utterance": "Show me the teams in the NBA's Eastern Conference.",
+                    "parameters": {
+                        "league": "NBA",
+                        "conference": "Eastern"
+                    }
+                },
+                {
+                    "utterance": "Which teams are in the MLB's American League West division?",
+                    "parameters": {
+                        "league": "MLB",
+                        "conference": "American League",
+                        "division": "West"
+                    }
+                },
+                {
+                    "utterance": "Give me a list of NHL teams.",
+                    "parameters": {
+                        "league": "NHL"
+                    }
+                },
+                {
+                    "utterance": "What teams are in the NCAAF's SEC conference?",
+                    "parameters": {
+                        "league": "NCAAF",
+                        "conference": "SEC"
+                    }
+                },
+                {
+                    "utterance": "List the teams in the NCAAB's Big Ten conference.",
+                    "parameters": {
+                        "league": "NCAAB",
+                        "conference": "Big Ten"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the teams in the NFL's NFC East division?",
+                    "parameters": {
+                        "league": "NFL",
+                        "conference": "NFC",
+                        "division": "East"
+                    }
+                },
+                {
+                    "utterance": "Show me all the teams in the NBA.",
+                    "parameters": {
+                        "league": "NBA"
+                    }
+                },
+                {
+                    "utterance": "Which teams are part of the NHL's Western Conference?",
+                    "parameters": {
+                        "league": "NHL",
+                        "conference": "Western"
+                    }
+                },
+                {
+                    "utterance": "Give me the list of teams in the MLB's National League Central division.",
+                    "parameters": {
+                        "league": "MLB",
+                        "conference": "National League",
+                        "division": "Central"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Game By ID",
+            "description": "Returns a specific game based on its ID.",
+            "url": "https://sportspage-feeds.p.rapidapi.com/gameById",
+            "parameters": [
+                {
+                    "name": "gameId",
+                    "type": "STRING",
+                    "description": "A unique game identifier",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the details for the game with ID G12345?",
+                    "parameters": {
+                        "gameId": "G12345"
+                    }
+                },
+                {
+                    "utterance": "I need the score for the match identified by game ID M98765.",
+                    "parameters": {
+                        "gameId": "M98765"
+                    }
+                },
+                {
+                    "utterance": "What's the status of the game with the ID F45678?",
+                    "parameters": {
+                        "gameId": "F45678"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the schedule for the game with ID B23456?",
+                    "parameters": {
+                        "gameId": "B23456"
+                    }
+                },
+                {
+                    "utterance": "Tell me the betting odds for the game with ID S34567.",
+                    "parameters": {
+                        "gameId": "S34567"
+                    }
+                },
+                {
+                    "utterance": "I want to know the real-time score for the game with ID H67890.",
+                    "parameters": {
+                        "gameId": "H67890"
+                    }
+                },
+                {
+                    "utterance": "Fetch the game details for the match with ID C78901.",
+                    "parameters": {
+                        "gameId": "C78901"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the results for the game with ID D89012?",
+                    "parameters": {
+                        "gameId": "D89012"
+                    }
+                },
+                {
+                    "utterance": "I need information on the game with ID E90123.",
+                    "parameters": {
+                        "gameId": "E90123"
+                    }
+                },
+                {
+                    "utterance": "What's happening in the game with ID A01234?",
+                    "parameters": {
+                        "gameId": "A01234"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Games",
+            "description": "Returns a list of games.",
+            "url": "https://sportspage-feeds.p.rapidapi.com/games",
+            "parameters": [
+                {
+                    "name": "odds",
+                    "type": "STRING",
+                    "description": "A comma-separated filter to select games with one or more of the following odds types: \\\\\\\\\\\\\\\"spread\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"moneyline\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"total\\\\\\\\\\\\\\\", or \\\\\\\\\\\\\\\"any\\\\\\\\\\\\\\\"",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "spread",
+                                "moneyline",
+                                "total",
+                                "any"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "team",
+                    "type": "STRING",
+                    "description": "A team participating in one or more games",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "division",
+                    "type": "STRING",
+                    "description": "A division within the specified conference",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "One or two (comma-separated) YYYY-MM-DD- or ISO-formatted dates",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD or ISO format"
+                    }
+                },
+                {
+                    "name": "skip",
+                    "type": "STRING",
+                    "description": "The number of game results to skip, which is required to access results beyond the first 100",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "status",
+                    "type": "STRING",
+                    "description": "A valid status of one of the following: \\\\\\\\\\\\\\\"scheduled\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"in progress\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"final\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"canceled\\\\\\\\\\\\\\\", or \\\\\\\\\\\\\\\"delayed\\\\\\\\\\\\\\\"",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "scheduled",
+                                "in progress",
+                                "final",
+                                "canceled",
+                                "delayed"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "league",
+                    "type": "STRING",
+                    "description": "A valid league code (i.e., NFL, NBA, MLB, NHL, NCAAF, or NCAAB)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "NFL",
+                                "NBA",
+                                "MLB",
+                                "NHL",
+                                "NCAAF",
+                                "NCAAB"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "conference",
+                    "type": "STRING",
+                    "description": "A conference within the specified league",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the NBA games scheduled for today?",
+                    "parameters": {
+                        "league": "NBA",
+                        "status": "scheduled",
+                        "date": "2023-10-05"
+                    }
+                },
+                {
+                    "utterance": "What are the final scores for the NFL games from last weekend?",
+                    "parameters": {
+                        "league": "NFL",
+                        "status": "final",
+                        "date": "2023-09-30,2023-10-01"
+                    }
+                },
+                {
+                    "utterance": "List the MLB games that are currently in progress.",
+                    "parameters": {
+                        "league": "MLB",
+                        "status": "in progress"
+                    }
+                },
+                {
+                    "utterance": "I want to see the games where the Lakers are playing with moneyline odds.",
+                    "parameters": {
+                        "team": "Lakers",
+                        "odds": "moneyline"
+                    }
+                },
+                {
+                    "utterance": "Are there any NHL games that have been canceled?",
+                    "parameters": {
+                        "league": "NHL",
+                        "status": "canceled"
+                    }
+                },
+                {
+                    "utterance": "Show me the NCAAF games in the SEC conference.",
+                    "parameters": {
+                        "league": "NCAAF",
+                        "conference": "SEC"
+                    }
+                },
+                {
+                    "utterance": "What games are happening in the Atlantic division of the NBA?",
+                    "parameters": {
+                        "league": "NBA",
+                        "division": "Atlantic"
+                    }
+                },
+                {
+                    "utterance": "Find the NCAAB games with spread odds.",
+                    "parameters": {
+                        "league": "NCAAB",
+                        "odds": "spread"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the list of games for the Yankees?",
+                    "parameters": {
+                        "team": "Yankees"
+                    }
+                },
+                {
+                    "utterance": "What are the upcoming games in the Big Ten conference?",
+                    "parameters": {
+                        "conference": "Big Ten",
+                        "status": "scheduled"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Conferences",
+            "description": "Returns a list of conferences and divisions within the specified league. Use this endpoint to obtain conference and division names to be used as parameters for other requests.",
+            "url": "https://sportspage-feeds.p.rapidapi.com/conferences",
+            "parameters": [
+                {
+                    "name": "league",
+                    "type": "STRING",
+                    "description": "A valid league code (i.e., NFL, NBA, MLB, NHL, NCAAF, or NCAAB)",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "NFL",
+                                "NBA",
+                                "MLB",
+                                "NHL",
+                                "NCAAF",
+                                "NCAAB"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the conferences and divisions in the NFL?",
+                    "parameters": {
+                        "league": "NFL"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the divisions within the NBA.",
+                    "parameters": {
+                        "league": "NBA"
+                    }
+                },
+                {
+                    "utterance": "What are the conferences in the MLB?",
+                    "parameters": {
+                        "league": "MLB"
+                    }
+                },
+                {
+                    "utterance": "Give me the list of divisions in the NHL.",
+                    "parameters": {
+                        "league": "NHL"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the conferences for the NCAAF?",
+                    "parameters": {
+                        "league": "NCAAF"
+                    }
+                },
+                {
+                    "utterance": "I need to see the divisions in the NCAAB.",
+                    "parameters": {
+                        "league": "NCAAB"
+                    }
+                },
+                {
+                    "utterance": "What divisions are there in the NFL?",
+                    "parameters": {
+                        "league": "NFL"
+                    }
+                },
+                {
+                    "utterance": "List the NBA conferences for me.",
+                    "parameters": {
+                        "league": "NBA"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me about the MLB divisions?",
+                    "parameters": {
+                        "league": "MLB"
+                    }
+                },
+                {
+                    "utterance": "I'd like information on the NHL conferences.",
+                    "parameters": {
+                        "league": "NHL"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Odds",
+            "description": "Returns the odds history for a game by type.",
+            "url": "https://sportspage-feeds.p.rapidapi.com/odds",
+            "parameters": [
+                {
+                    "name": "gameId",
+                    "type": "STRING",
+                    "description": "A unique game identifier",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "An odds type of one of the following: \\\\\\\"spread\\\\\\\", \\\\\\\"moneyline\\\\\\\", \\\\\\\"total\\\\\\\", or \\\\\\\"any\\\\\\\"",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "spread",
+                                "moneyline",
+                                "total",
+                                "any"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the odds history for the Lakers vs. Celtics game?",
+                    "parameters": {
+                        "gameId": "Lakers vs. Celtics"
+                    }
+                },
+                {
+                    "utterance": "I need the moneyline odds for the Yankees vs. Red Sox game.",
+                    "parameters": {
+                        "gameId": "Yankees vs. Red Sox",
+                        "type": "moneyline"
+                    }
+                },
+                {
+                    "utterance": "What's the spread odds history for the Packers vs. Bears game?",
+                    "parameters": {
+                        "gameId": "Packers vs. Bears",
+                        "type": "spread"
+                    }
+                },
+                {
+                    "utterance": "Give me the total odds for the Warriors vs. Nets game.",
+                    "parameters": {
+                        "gameId": "Warriors vs. Nets",
+                        "type": "total"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see any odds available for the Dodgers vs. Giants game.",
+                    "parameters": {
+                        "gameId": "Dodgers vs. Giants",
+                        "type": "any"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the odds history for the Eagles vs. Cowboys game?",
+                    "parameters": {
+                        "gameId": "Eagles vs. Cowboys"
+                    }
+                },
+                {
+                    "utterance": "What are the spread odds for the Heat vs. Bulls game?",
+                    "parameters": {
+                        "gameId": "Heat vs. Bulls",
+                        "type": "spread"
+                    }
+                },
+                {
+                    "utterance": "Show me the moneyline odds for the Mets vs. Braves game.",
+                    "parameters": {
+                        "gameId": "Mets vs. Braves",
+                        "type": "moneyline"
+                    }
+                },
+                {
+                    "utterance": "I want to know the total odds for the Seahawks vs. 49ers game.",
+                    "parameters": {
+                        "gameId": "Seahawks vs. 49ers",
+                        "type": "total"
+                    }
+                },
+                {
+                    "utterance": "Could you get me any odds for the Knicks vs. Raptors game?",
+                    "parameters": {
+                        "gameId": "Knicks vs. Raptors",
+                        "type": "any"
+                    }
+                }
+            ]
+        }
+    ]
+}

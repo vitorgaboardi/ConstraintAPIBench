@@ -1,0 +1,250 @@
+{
+    "name": "\u20bf Crypto Whale Tracker \ud83d\ude80",
+    "description": "Portfolio  & whales  multi-chain tracker. Get Net worth, Coins  & NFTs on wallets, History, Trade signals (short/long) and Pools/Staking and more",
+    "url": "https://rapidapi.com/emir12/api/crypto-whale-tracker/",
+    "api_methods": [
+        {
+            "name": "Address history",
+            "description": "Get activity history of specific address\n\nSupported chains:\neth, bsc, arb, op, matic, avax, ftm, xdai",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/history/list",
+            "parameters": [
+                {
+                    "name": "chain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "eth",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "eth",
+                                "bsc",
+                                "arb",
+                                "op",
+                                "matic",
+                                "avax",
+                                "ftm",
+                                "xdai"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "user_addr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "page_count",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Address projects",
+            "description": "Get projects for specific address\n\nSupported chains:\neth, bsc, arb, op, matic, avax, ftm, xdai",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/portfolio/project_list",
+            "parameters": [
+                {
+                    "name": "chain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "eth",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "eth",
+                                "bsc",
+                                "arb",
+                                "op",
+                                "matic",
+                                "avax",
+                                "ftm",
+                                "xdai"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "user_addr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Address balance",
+            "description": "Get balance for specific address\n\nSupported chains:\neth, bsc, arb, op, matic, avax, ftm, xdai",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/token/balance_list",
+            "parameters": [
+                {
+                    "name": "user_addr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "chain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "eth",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "eth",
+                                "bsc",
+                                "arb",
+                                "op",
+                                "matic",
+                                "avax",
+                                "ftm",
+                                "xdai"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Address net worth sparklines",
+            "description": "Get sparklines 24h data for specific address to render chart",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/asset/net_curve_24h",
+            "parameters": [
+                {
+                    "name": "user_addr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Address info",
+            "description": "Get info about specific address",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/user/addr",
+            "parameters": [
+                {
+                    "name": "addr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Whale portfolios",
+            "description": "Get huge whale portfolios\npagination example: ?start=0&limit=20",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/whale/list",
+            "parameters": [
+                {
+                    "name": "order_by",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "usd_value",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Trade signals",
+            "description": "Parameters:\nsort_by: usd_value, time_at",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/activity/list",
+            "parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "is_whale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "true",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "order_by",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "time_at",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "usd_value",
+                                "time_at"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

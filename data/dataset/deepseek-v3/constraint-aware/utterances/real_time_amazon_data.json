@@ -1,0 +1,791 @@
+{
+    "name": "Real-Time Amazon Data",
+    "description": "Fast and Simple product searches, data and reviews on Amazon.com in real-time.",
+    "url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-amazon-data/",
+    "api_methods": [
+        {
+            "name": "Search",
+            "description": "Search for product offers on Amazon with support for multiple filters and options.",
+            "url": "https://real-time-amazon-data.p.rapidapi.com/search",
+            "parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Search query. Supports both free-form text queries or a product asin.",
+                    "default": "Phone",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "brand",
+                    "type": "STRING",
+                    "description": "Find products with a specific brand. Multiple brands can be specified as a comma (,) separated list. The brand values can be seen from Amazon's search left filters panel, as seen [here](https://www.amazon.com/s?k=phone).\n\n**e.g.** `SAMSUNG`\n**e.g.** `Google,Apple`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "min_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price greater than a certain value. Specified in the currency of the selected country. For example, in case country=US, a value of *105.34* means *$105.34*.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_price, max_price: min_price must be less than or equal to max_price."
+                    }
+                },
+                {
+                    "name": "max_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price lower than a certain value. Specified in the currency of the selected country. For example, in case country=US, a value of *105.34* means *$105.34*.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_price, max_price: min_price must be less than or equal to max_price."
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Sets the marketplace country, language and currency. \n\n**Default:** `US`\n\n**Allowed values:**  `US, AU, BR, CA, CN, FR, DE, IN, IT, MX, NL, SG, ES, TR, AE, GB, JP`\n",
+                    "default": "US",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "US",
+                                "AU",
+                                "BR",
+                                "CA",
+                                "CN",
+                                "FR",
+                                "DE",
+                                "IN",
+                                "IT",
+                                "MX",
+                                "NL",
+                                "SG",
+                                "ES",
+                                "TR",
+                                "AE",
+                                "GB",
+                                "JP"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "category_id",
+                    "type": "STRING",
+                    "description": "Find products in a specific category / department. Use the **Product Category List** endpoint to get a list of valid categories and their ids for the country specified in the request.\n\n**Default:** `aps` (All Departments)",
+                    "default": "aps",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "sort_by",
+                    "type": "ENUM",
+                    "description": "Return the results in a specific sort order.\n\n**Default:** `RELEVANCE`\n\n**Allowed values:** `RELEVANCE, LOWEST_PRICE, HIGHEST_PRICE, REVIEWS, NEWEST`\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "RELEVANCE",
+                                "LOWEST_PRICE",
+                                "HIGHEST_PRICE",
+                                "REVIEWS",
+                                "NEWEST"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Results page to return.\n\n**Default:** `1`",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find laptops from Dell and HP under $1000 in the US.",
+                    "parameters": {
+                        "query": "laptops",
+                        "brand": "Dell,HP",
+                        "max_price": 1000,
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "Show me the newest smartphones from Apple in Canada.",
+                    "parameters": {
+                        "query": "smartphones",
+                        "brand": "Apple",
+                        "country": "CA",
+                        "sort_by": "NEWEST"
+                    }
+                },
+                {
+                    "utterance": "Search for headphones priced between $50 and $200 in the UK.",
+                    "parameters": {
+                        "query": "headphones",
+                        "min_price": 50,
+                        "max_price": 200,
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "What are the highest-rated cameras in Japan?",
+                    "parameters": {
+                        "query": "cameras",
+                        "country": "JP",
+                        "sort_by": "REVIEWS"
+                    }
+                },
+                {
+                    "utterance": "Find kitchen appliances from Bosch in Germany.",
+                    "parameters": {
+                        "query": "kitchen appliances",
+                        "brand": "Bosch",
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "Show me the lowest-priced tablets in the electronics category in France.",
+                    "parameters": {
+                        "query": "tablets",
+                        "category_id": "electronics",
+                        "sort_by": "LOWEST_PRICE",
+                        "country": "FR"
+                    }
+                },
+                {
+                    "utterance": "Search for books by J.K. Rowling in Australia.",
+                    "parameters": {
+                        "query": "books by J.K. Rowling",
+                        "country": "AU"
+                    }
+                },
+                {
+                    "utterance": "Find the most relevant results for gaming chairs in the US.",
+                    "parameters": {
+                        "query": "gaming chairs",
+                        "country": "US",
+                        "sort_by": "RELEVANCE"
+                    }
+                },
+                {
+                    "utterance": "Show me the highest-priced watches in the luxury category in the UAE.",
+                    "parameters": {
+                        "query": "watches",
+                        "category_id": "luxury",
+                        "sort_by": "HIGHEST_PRICE",
+                        "country": "AE"
+                    }
+                },
+                {
+                    "utterance": "Find fitness equipment priced over $500 in India.",
+                    "parameters": {
+                        "query": "fitness equipment",
+                        "min_price": 500,
+                        "country": "IN"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Details",
+            "description": "Get additional product information / details such as description, about, rating distribution and specs.",
+            "url": "https://real-time-amazon-data.p.rapidapi.com/product-details",
+            "parameters": [
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "Product ASIN for which to get details. Supports batching of up to 10 ASINs in a single request, separated by comma (e.g. *B08PPDJWC8,B07ZPKBL9V, B08BHXG144*).\n\nNote that each ASIN in a batch request is counted as a single request against the plan quota.",
+                    "default": "B07ZPKBL9V",
+                    "required": true,
+                    "constraints": {
+                        "format": "ASIN"
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Sets the marketplace country, language and currency. \n\n**Default:** `US`\n\n**Allowed values:**  `US, AU, BR, CA, CN, FR, DE, IN, IT, MX, NL, SG, ES, TR, AE, GB, JP`\n",
+                    "default": "US",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "US",
+                                "AU",
+                                "BR",
+                                "CA",
+                                "CN",
+                                "FR",
+                                "DE",
+                                "IN",
+                                "IT",
+                                "MX",
+                                "NL",
+                                "SG",
+                                "ES",
+                                "TR",
+                                "AE",
+                                "GB",
+                                "JP"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the details for the product with ASIN B08PPDJWC8?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8"
+                    }
+                },
+                {
+                    "utterance": "I need more information about the product B07ZPKBL9V available in Canada.",
+                    "parameters": {
+                        "asin": "B07ZPKBL9V",
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "What are the specs for the product B08BHXG144 in the UK?",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the description for the product B08PPDJWC8 in Japan?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "country": "JP"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the product B07ZPKBL9V available in Germany.",
+                    "parameters": {
+                        "asin": "B07ZPKBL9V",
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "I\u2019m looking for details on the product B08BHXG144 in Australia.",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "country": "AU"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the product details for B08PPDJWC8 in France?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "country": "FR"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the rating distribution for the product B07ZPKBL9V in India?",
+                    "parameters": {
+                        "asin": "B07ZPKBL9V",
+                        "country": "IN"
+                    }
+                },
+                {
+                    "utterance": "I need the product details for B08BHXG144 in Mexico.",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "country": "MX"
+                    }
+                },
+                {
+                    "utterance": "Can you get me the information for the product B08PPDJWC8 in the United States?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "country": "US"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Reviews",
+            "description": "Get and paginate through all product reviews on Amazon.",
+            "url": "https://real-time-amazon-data.p.rapidapi.com/product-reviews",
+            "parameters": [
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "Product asin for which to get reviews.",
+                    "default": "B07ZPKN6YR",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Find reviews matching a search query.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "sort_by",
+                    "type": "ENUM",
+                    "description": "Return reviews in a specific sort order.\n\n**Default:** `TOP_REVIEWS`\n\n**Allowed values:** `TOP_REVIEWS, MOST_RECENT`\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "TOP_REVIEWS",
+                                "MOST_RECENT"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "verified_purchases_only",
+                    "type": "BOOLEAN",
+                    "description": "Only return reviews by reviewers who made a verified purchase.",
+                    "default": "false",
+                    "required": false
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "Results page size.\n\n**Allowed values:** `1-20`\n\n**Default:** `10`",
+                    "default": "10",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 20,
+                            "min": 1
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Results page to return.\n\n**Default:** `1`",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "star_rating",
+                    "type": "ENUM",
+                    "description": "Only return reviews with a specific star rating.\n\n**Default:** `ALL`\n\n**Allowed values:** `ALL, 5_STARS, 4_STARS, 3_STARS, 2_STARS, 1_STARS, POSITIVE, CRITICAL`\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ALL",
+                                "5_STARS",
+                                "4_STARS",
+                                "3_STARS",
+                                "2_STARS",
+                                "1_STARS",
+                                "POSITIVE",
+                                "CRITICAL"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "images_or_videos_only",
+                    "type": "BOOLEAN",
+                    "description": "Only return reviews containing images and / or videos.",
+                    "default": "false",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Sets the marketplace country, language and currency. \n\n**Default:** `US`\n\n**Allowed values:**  `US, AU, BR, CA, CN, FR, DE, IN, IT, MX, NL, SG, ES, TR, AE, GB, JP`\n",
+                    "default": "US",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "US",
+                                "AU",
+                                "BR",
+                                "CA",
+                                "CN",
+                                "FR",
+                                "DE",
+                                "IN",
+                                "IT",
+                                "MX",
+                                "NL",
+                                "SG",
+                                "ES",
+                                "TR",
+                                "AE",
+                                "GB",
+                                "JP"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the reviews for the Kindle Paperwhite?",
+                    "parameters": {
+                        "asin": "B07ZPKN6YR"
+                    }
+                },
+                {
+                    "utterance": "Find reviews for the Echo Dot that mention sound quality.",
+                    "parameters": {
+                        "asin": "B07ZPKN6YR",
+                        "query": "sound quality"
+                    }
+                },
+                {
+                    "utterance": "Show me the most recent reviews for the Fire TV Stick.",
+                    "parameters": {
+                        "asin": "B07ZPKN6YR",
+                        "sort_by": "MOST_RECENT"
+                    }
+                },
+                {
+                    "utterance": "I want to see verified purchase reviews for the AmazonBasics Microwave.",
+                    "parameters": {
+                        "asin": "B07ZPKN6YR",
+                        "verified_purchases_only": true
+                    }
+                },
+                {
+                    "utterance": "Can you filter the reviews for the Instant Pot to only show 5-star ratings?",
+                    "parameters": {
+                        "asin": "B07ZPKN6YR",
+                        "star_rating": "5_STARS"
+                    }
+                },
+                {
+                    "utterance": "Show me reviews for the Sony Headphones that include images or videos.",
+                    "parameters": {
+                        "asin": "B07ZPKN6YR",
+                        "images_or_videos_only": true
+                    }
+                },
+                {
+                    "utterance": "Find reviews for the Fitbit Charge 4 in the UK marketplace.",
+                    "parameters": {
+                        "asin": "B07ZPKN6YR",
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the top reviews for the Ninja Blender that mention durability?",
+                    "parameters": {
+                        "asin": "B07ZPKN6YR",
+                        "query": "durability",
+                        "sort_by": "TOP_REVIEWS"
+                    }
+                },
+                {
+                    "utterance": "I want to see critical reviews for the Samsung Galaxy Watch.",
+                    "parameters": {
+                        "asin": "B07ZPKN6YR",
+                        "star_rating": "CRITICAL"
+                    }
+                },
+                {
+                    "utterance": "Show me verified purchase reviews for the Apple Watch in the Canadian marketplace.",
+                    "parameters": {
+                        "asin": "B07ZPKN6YR",
+                        "verified_purchases_only": true,
+                        "country": "CA"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Category List",
+            "description": "Get Amazon product categories (per country / marketplace).",
+            "url": "https://real-time-amazon-data.p.rapidapi.com/product-category-list",
+            "parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Sets the marketplace country, language and currency. \n\n**Default:** `US`\n\n**Allowed values:**  `US, AU, BR, CA, CN, FR, DE, IN, IT, MX, NL, SG, ES, TR, AE, GB, JP`\n",
+                    "default": "US",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "US",
+                                "AU",
+                                "BR",
+                                "CA",
+                                "CN",
+                                "FR",
+                                "DE",
+                                "IN",
+                                "IT",
+                                "MX",
+                                "NL",
+                                "SG",
+                                "ES",
+                                "TR",
+                                "AE",
+                                "GB",
+                                "JP"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the product categories available on Amazon in the United States?",
+                    "parameters": {
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the product categories for Amazon in Canada?",
+                    "parameters": {
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "List the Amazon product categories for the UK marketplace.",
+                    "parameters": {
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "What product categories does Amazon offer in Japan?",
+                    "parameters": {
+                        "country": "JP"
+                    }
+                },
+                {
+                    "utterance": "Show me the Amazon product categories available in Germany.",
+                    "parameters": {
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "What are the product categories on Amazon in France?",
+                    "parameters": {
+                        "country": "FR"
+                    }
+                },
+                {
+                    "utterance": "Can you list the Amazon product categories for Australia?",
+                    "parameters": {
+                        "country": "AU"
+                    }
+                },
+                {
+                    "utterance": "What are the product categories on Amazon in India?",
+                    "parameters": {
+                        "country": "IN"
+                    }
+                },
+                {
+                    "utterance": "Show me the Amazon product categories for the United Arab Emirates.",
+                    "parameters": {
+                        "country": "AE"
+                    }
+                },
+                {
+                    "utterance": "What product categories are available on Amazon in Mexico?",
+                    "parameters": {
+                        "country": "MX"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Offers",
+            "description": "Get top 10 offers of a specific product on Amazon by its asin, the first offer in the list is the pinned offer returned by the **Search** endpoint. Supports filtering by product condition.",
+            "url": "https://real-time-amazon-data.p.rapidapi.com/product-offers",
+            "parameters": [
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "Product ASIN for which to get offers. Supports batching of up to 10 ASINs in a single request, separated by comma (e.g. *B08PPDJWC8,B07ZPKBL9V, B08BHXG144*).\n\nNote that each ASIN in a batch request is counted as a single request against the plan quota.",
+                    "default": "B07ZPKBL9V",
+                    "required": true,
+                    "constraints": {
+                        "format": "ASIN"
+                    }
+                },
+                {
+                    "name": "delivery",
+                    "type": "STRING",
+                    "description": "[EXPERIMENTAL]\nFind products with specific delivery option, specified as a comma delimited list of the following values: `PRIME_ELIGIBLE,FREE_DELIVERY`.\n\n**e.g.** `FREE_DELIVERY`\n**e.g.** `PRIME_ELIGIBLE,FREE_DELIVERY`\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "PRIME_ELIGIBLE",
+                                "FREE_DELIVERY"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of offers to return.\n\n**Default:** `100`",
+                    "default": "100",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100
+                        }
+                    }
+                },
+                {
+                    "name": "product_condition",
+                    "type": "STRING",
+                    "description": "Find products in specific conditions, specified as a comma delimited list of the following values: `NEW, USED_LIKE_NEW, USED_VERY_GOOD, USED_GOOD, USED_ACCEPTABLE`.\n\n**e.g.** `NEW,USED_LIKE_NEW`\n**e.g.** `USED_VERY_GOOD,USED_GOOD,USED_LIKE_NEW`\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "NEW",
+                                "USED_LIKE_NEW",
+                                "USED_VERY_GOOD",
+                                "USED_GOOD",
+                                "USED_ACCEPTABLE"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Sets the marketplace country, language and currency. \n\n**Default:** `US`\n\n**Allowed values:**  `US, AU, BR, CA, CN, FR, DE, IN, IT, MX, NL, SG, ES, TR, AE, GB, JP`\n",
+                    "default": "US",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "US",
+                                "AU",
+                                "BR",
+                                "CA",
+                                "CN",
+                                "FR",
+                                "DE",
+                                "IN",
+                                "IT",
+                                "MX",
+                                "NL",
+                                "SG",
+                                "ES",
+                                "TR",
+                                "AE",
+                                "GB",
+                                "JP"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the top 5 offers for the product with ASIN B08PPDJWC8 in the US?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "limit": 5,
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the best deals for ASIN B07ZPKBL9V with free delivery?",
+                    "parameters": {
+                        "asin": "B07ZPKBL9V",
+                        "delivery": "FREE_DELIVERY"
+                    }
+                },
+                {
+                    "utterance": "Find the top 10 offers for ASIN B08BHXG144 in new or like-new condition.",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "product_condition": "NEW,USED_LIKE_NEW"
+                    }
+                },
+                {
+                    "utterance": "What are the top offers for ASIN B08PPDJWC8 in Canada with prime eligibility?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "delivery": "PRIME_ELIGIBLE",
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "Show me the top 3 offers for ASIN B07ZPKBL9V in Japan.",
+                    "parameters": {
+                        "asin": "B07ZPKBL9V",
+                        "limit": 3,
+                        "country": "JP"
+                    }
+                },
+                {
+                    "utterance": "Get the best deals for ASIN B08BHXG144 with free delivery and prime eligibility in the UK.",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "delivery": "PRIME_ELIGIBLE,FREE_DELIVERY",
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "What are the top offers for ASIN B08PPDJWC8 in used very good or acceptable condition?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "product_condition": "USED_VERY_GOOD,USED_ACCEPTABLE"
+                    }
+                },
+                {
+                    "utterance": "Find the top 7 offers for ASIN B07ZPKBL9V in Germany.",
+                    "parameters": {
+                        "asin": "B07ZPKBL9V",
+                        "limit": 7,
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "Show me the best deals for ASIN B08BHXG144 with free delivery in France.",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "delivery": "FREE_DELIVERY",
+                        "country": "FR"
+                    }
+                },
+                {
+                    "utterance": "What are the top offers for ASIN B08PPDJWC8 in new condition in Australia?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "product_condition": "NEW",
+                        "country": "AU"
+                    }
+                }
+            ]
+        }
+    ]
+}

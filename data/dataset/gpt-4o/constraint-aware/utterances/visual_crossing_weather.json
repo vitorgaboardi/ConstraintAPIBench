@@ -1,0 +1,406 @@
+{
+    "name": "Visual Crossing Weather",
+    "description": "Visual Crossing Weather API provides instant access to both historical weather records and weather forecast data",
+    "url": "https://rapidapi.com/visual-crossing-corporation-visual-crossing-corporation-default/api/visual-crossing-weather/",
+    "api_methods": [
+        {
+            "name": "Weather forecast data",
+            "description": "Provides access to weather forecast information. The forecast is available for up to seven days at the hourly, 12 hour and daily summary level.",
+            "url": "https://visual-crossing-weather.p.rapidapi.com/forecast",
+            "parameters": [
+                {
+                    "name": "aggregateHours",
+                    "type": "NUMBER",
+                    "description": "The interval between weather forecast data in the output. 1 represents an hourly forecast, 24 represents a daily forecast. As the source data is calculated at the hourly level, records calculated at 12 or 24 hours are aggregated to indicate the predominant weather condition during that time period. For example the maximum temperature, total precipitation, maximum windspeed etc.  Supported values 1,12 or 24.",
+                    "default": "24",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                1,
+                                12,
+                                24
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "he address or latitude or longitude of the location. Addresses can be specified as full addresses. The system will also attempt to match partial addresses such as city, state, zip code, postal code and other common formats. When specify a point based on longitude, latitude, the format must be specifed as latitude,longitude where both latitude and longitude are in decimal degrees. latitude should run from -90 to 90 and longitude from -180 to 180 (with 0 being at the prime meridian through London, UK).",
+                    "default": "Washington,DC,USA",
+                    "required": true,
+                    "constraints": {
+                        "format": "latitude,longitude in decimal degrees",
+                        "values": {
+                            "min": {
+                                "latitude": -90,
+                                "longitude": -180
+                            },
+                            "max": {
+                                "latitude": 90,
+                                "longitude": 180
+                            }
+                        }
+                    }
+                },
+                {
+                    "name": "contentType",
+                    "type": "STRING",
+                    "description": "When present, choose between json or csv output",
+                    "default": "csv",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "json",
+                                "csv"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "unitGroup",
+                    "type": "STRING",
+                    "description": "unitGroup - The system of units used for the output data.  Supported values are us,uk,metric.",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "us",
+                                "uk",
+                                "metric"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "shortColumnNames",
+                    "type": "BOOLEAN",
+                    "description": " When false, the returned dataset includes descriptive column names. When true, returns shorter, abbreviated column names with only alphanumeric characters. The short names are useful for programmatic use of the data.",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the weather forecast for the next 24 hours in New York City?",
+                    "parameters": {
+                        "aggregateHours": 24,
+                        "location": "New York,NY,USA"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the hourly weather forecast for Los Angeles in JSON format?",
+                    "parameters": {
+                        "aggregateHours": 1,
+                        "location": "Los Angeles,CA,USA",
+                        "contentType": "json"
+                    }
+                },
+                {
+                    "utterance": "I need the 12-hour weather forecast for Paris with metric units.",
+                    "parameters": {
+                        "aggregateHours": 12,
+                        "location": "Paris,France",
+                        "unitGroup": "metric"
+                    }
+                },
+                {
+                    "utterance": "Show me the daily weather forecast for Tokyo with short column names.",
+                    "parameters": {
+                        "aggregateHours": 24,
+                        "location": "Tokyo,Japan",
+                        "shortColumnNames": true
+                    }
+                },
+                {
+                    "utterance": "What's the weather like in Sydney for the next 12 hours in UK units?",
+                    "parameters": {
+                        "aggregateHours": 12,
+                        "location": "Sydney,Australia",
+                        "unitGroup": "uk"
+                    }
+                },
+                {
+                    "utterance": "Provide the hourly weather forecast for Berlin in CSV format.",
+                    "parameters": {
+                        "aggregateHours": 1,
+                        "location": "Berlin,Germany",
+                        "contentType": "csv"
+                    }
+                },
+                {
+                    "utterance": "Can I get the 24-hour weather forecast for Rio de Janeiro with detailed column names?",
+                    "parameters": {
+                        "aggregateHours": 24,
+                        "location": "Rio de Janeiro,Brazil",
+                        "shortColumnNames": false
+                    }
+                },
+                {
+                    "utterance": "What's the weather forecast for the next 12 hours in Moscow using US units?",
+                    "parameters": {
+                        "aggregateHours": 12,
+                        "location": "Moscow,Russia",
+                        "unitGroup": "us"
+                    }
+                },
+                {
+                    "utterance": "Give me the daily weather forecast for Cape Town in JSON format with short column names.",
+                    "parameters": {
+                        "aggregateHours": 24,
+                        "location": "Cape Town,South Africa",
+                        "contentType": "json",
+                        "shortColumnNames": true
+                    }
+                },
+                {
+                    "utterance": "I need the hourly weather forecast for Mumbai with metric units and detailed column names.",
+                    "parameters": {
+                        "aggregateHours": 1,
+                        "location": "Mumbai,India",
+                        "unitGroup": "metric",
+                        "shortColumnNames": false
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Historical weather record",
+            "description": "The weather history data is suitable for retrieving hourly or daily historical weather records.",
+            "url": "https://visual-crossing-weather.p.rapidapi.com/history",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "The address or latitude or longitude of the location. Addresses can be specified as full addresses. The system will also attempt to match partial addresses such as city, state, zip code, postal code and other common formats. When specify a point based on longitude, latitude, the format must be specifed as latitude,longitude where both latitude and longitude are in decimal degrees. latitude should run from -90 to 90 and longitude from -180 to 180 (with 0 being at the prime meridian through London, UK).",
+                    "default": "Washington,DC,USA",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": -90,
+                            "max": 90
+                        }
+                    }
+                },
+                {
+                    "name": "endDateTime",
+                    "type": "STRING",
+                    "description": "The date time for the start of the data request using the time zone of the location. In the ISO format: yyyy-MM-ddTHH:mm:ss. Hours should be specified in 24 hour clock format.",
+                    "default": "2019-01-03T00:00:00",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO yyyy-MM-ddTHH:mm:ss"
+                    }
+                },
+                {
+                    "name": "startDateTime",
+                    "type": "STRING",
+                    "description": "The date time for the start of the data request using the time zone of the location. In the ISO format: yyyy-MM-ddTHH:mm:ss. Hours should be specified in 24 hour clock format.",
+                    "default": "2019-01-01T00:00:00",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO yyyy-MM-ddTHH:mm:ss"
+                    }
+                },
+                {
+                    "name": "aggregateHours",
+                    "type": "NUMBER",
+                    "description": "The interval between weather history data in the output. 1 represent hourly records, 24 represents a daily forecast. As the source data is recorded at the hourly level, 24 hour records are aggregated to indicate the predominant weather conditions during that time period.  Supported values 1 or 24.",
+                    "default": "24",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                1,
+                                24
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "unitGroup",
+                    "type": "STRING",
+                    "description": "The system of units used for the output data.  Supported values are us,uk,metric",
+                    "default": "us",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "us",
+                                "uk",
+                                "metric"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "contentType",
+                    "type": "STRING",
+                    "description": "When present, choose between json or csv output",
+                    "default": "csv",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "json",
+                                "csv"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "dayEndTime",
+                    "type": "STRING",
+                    "description": "When present and not set to the same as the dayEndTime, filters the output to records that between the specified day times.",
+                    "default": "17:00:00",
+                    "required": false,
+                    "constraints": {
+                        "format": "h:m:ss"
+                    }
+                },
+                {
+                    "name": "dayStartTime",
+                    "type": "STRING",
+                    "description": "When present and not set to the same as the dayEndTime, filters the output to records that between the specified day times. This is useful for setting filters for business hours. Format h:m:ss (eg 9:00:00 woudl be 9am).",
+                    "default": "8:00:00",
+                    "required": false,
+                    "constraints": {
+                        "format": "h:m:ss"
+                    }
+                },
+                {
+                    "name": "shortColumnNames",
+                    "type": "BOOLEAN",
+                    "description": "When false, the returned dataset includes descriptive column names. When true, returns shorter, abbreviated column names with only alphanumeric characters. The short names are useful for programmatic use of the data.",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                true,
+                                false
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the daily weather history for New York City from January 1st to January 3rd, 2019, in metric units?",
+                    "parameters": {
+                        "location": "New York City",
+                        "startDateTime": "2019-01-01T00:00:00",
+                        "endDateTime": "2019-01-03T00:00:00",
+                        "aggregateHours": 24,
+                        "unitGroup": "metric"
+                    }
+                },
+                {
+                    "utterance": "I need the hourly weather data for Los Angeles from March 5th to March 6th, 2020, in UK units, and please give it to me in JSON format.",
+                    "parameters": {
+                        "location": "Los Angeles",
+                        "startDateTime": "2020-03-05T00:00:00",
+                        "endDateTime": "2020-03-06T00:00:00",
+                        "aggregateHours": 1,
+                        "unitGroup": "uk",
+                        "contentType": "json"
+                    }
+                },
+                {
+                    "utterance": "Get me the weather history for Paris from February 10th to February 12th, 2021, using US units and only during business hours.",
+                    "parameters": {
+                        "location": "Paris",
+                        "startDateTime": "2021-02-10T00:00:00",
+                        "endDateTime": "2021-02-12T00:00:00",
+                        "aggregateHours": 24,
+                        "unitGroup": "us",
+                        "dayStartTime": "09:00:00",
+                        "dayEndTime": "17:00:00"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the daily weather records for Tokyo from April 1st to April 3rd, 2022, in metric units with short column names?",
+                    "parameters": {
+                        "location": "Tokyo",
+                        "startDateTime": "2022-04-01T00:00:00",
+                        "endDateTime": "2022-04-03T00:00:00",
+                        "aggregateHours": 24,
+                        "unitGroup": "metric",
+                        "shortColumnNames": true
+                    }
+                },
+                {
+                    "utterance": "Please provide the hourly weather data for Sydney from June 15th to June 16th, 2023, in UK units.",
+                    "parameters": {
+                        "location": "Sydney",
+                        "startDateTime": "2023-06-15T00:00:00",
+                        "endDateTime": "2023-06-16T00:00:00",
+                        "aggregateHours": 1,
+                        "unitGroup": "uk"
+                    }
+                },
+                {
+                    "utterance": "I want the weather history for Berlin from July 20th to July 22nd, 2018, in US units, and make sure it's in CSV format.",
+                    "parameters": {
+                        "location": "Berlin",
+                        "startDateTime": "2018-07-20T00:00:00",
+                        "endDateTime": "2018-07-22T00:00:00",
+                        "aggregateHours": 24,
+                        "unitGroup": "us",
+                        "contentType": "csv"
+                    }
+                },
+                {
+                    "utterance": "Can you get the daily weather history for Rio de Janeiro from August 5th to August 7th, 2017, in metric units, but only between 10 AM and 4 PM?",
+                    "parameters": {
+                        "location": "Rio de Janeiro",
+                        "startDateTime": "2017-08-05T00:00:00",
+                        "endDateTime": "2017-08-07T00:00:00",
+                        "aggregateHours": 24,
+                        "unitGroup": "metric",
+                        "dayStartTime": "10:00:00",
+                        "dayEndTime": "16:00:00"
+                    }
+                },
+                {
+                    "utterance": "Fetch the hourly weather data for Cape Town from September 1st to September 2nd, 2016, using UK units and short column names.",
+                    "parameters": {
+                        "location": "Cape Town",
+                        "startDateTime": "2016-09-01T00:00:00",
+                        "endDateTime": "2016-09-02T00:00:00",
+                        "aggregateHours": 1,
+                        "unitGroup": "uk",
+                        "shortColumnNames": true
+                    }
+                },
+                {
+                    "utterance": "Retrieve the weather history for Moscow from October 10th to October 12th, 2015, in US units, and only show data from 8 AM to 6 PM.",
+                    "parameters": {
+                        "location": "Moscow",
+                        "startDateTime": "2015-10-10T00:00:00",
+                        "endDateTime": "2015-10-12T00:00:00",
+                        "aggregateHours": 24,
+                        "unitGroup": "us",
+                        "dayStartTime": "08:00:00",
+                        "dayEndTime": "18:00:00"
+                    }
+                },
+                {
+                    "utterance": "I need the daily weather records for Dubai from November 15th to November 17th, 2014, in metric units, and please provide it in JSON format.",
+                    "parameters": {
+                        "location": "Dubai",
+                        "startDateTime": "2014-11-15T00:00:00",
+                        "endDateTime": "2014-11-17T00:00:00",
+                        "aggregateHours": 24,
+                        "unitGroup": "metric",
+                        "contentType": "json"
+                    }
+                }
+            ]
+        }
+    ]
+}

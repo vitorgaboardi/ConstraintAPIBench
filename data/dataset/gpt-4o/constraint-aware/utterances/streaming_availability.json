@@ -1,0 +1,1095 @@
+{
+    "name": "Streaming Availability",
+    "description": "Netflix, Prime, Disney, HBO, Hulu and many others. Lookup which shows are available on streaming services across 60 countries",
+    "url": "https://rapidapi.com/movie-of-the-night-movie-of-the-night-default/api/streaming-availability/",
+    "api_methods": [
+        {
+            "name": "Search Ultra",
+            "description": "Search through the catalog of the given services in the given country. Provides filters such as show language, genre and keyword. Items per page is 25. Output includes all the information about the shows, such as title, IMDb ID, TMDb ID, IMDb rating, link to shows' pages in streaming services (including individual season/episode links), cast, runtime, poster and many more! Apart from the info about the given country-service combinations, output also includes information about availability in the other services for the given country.",
+            "url": "https://streaming-availability.p.rapidapi.com/v2/search/ultra",
+            "parameters": [
+                {
+                    "name": "services",
+                    "type": "STRING",
+                    "description": "A comma separated list of up to 16 services to search in. See `/v2/services` endpoint to get the supported services and their ids/names.\n\nSyntax of the values supplied in the list can be as the followings:\n\n`<sevice_id>`: Searches in the entire catalog of that service, including (if applicable) rentable, buyable shows or shows available through addons i.e. `netflix`, `prime`, `apple`\n\n`<sevice_id>.<offer_type>`: Only returns the shows that are available in that service with the given offer type. Valid offer type values are `subscription`, `free`, `rent`, `buy` and `addon`  i.e. `peacock.free` only returns the shows on Peacock that are free to watch, `prime.subscription` only returns the shows on Prime Video that are available to watch with a Prime subscription. `hulu.addon` only returns the shows on Hulu that are available via an addon,  `prime.rent` only returns the shows on Prime Video that are rentable.\n\n`<sevice_id>.addon.<addon_id>`: Only returns the shows that are available in that service with the given addon. Check `/v2/services` endpoint to fetch the available addons for a service. Some sample values are: `hulu.addon.hbo`,  `prime.addon.hbomaxus`.\n\nIf a service supports both `free` and `subscription`, then results included under `subscription` will always include the `free` shows as well.\n\nWhen multiple values are passed as a comma separated list, any show that satisfies at least one of the values will be included in the result.\n\nSome sample list values:\n\n`prime.rent,prime.buy,apple.rent,apple.buy`: Returns all the buyable/rentable shows on Amazon Prime Video and Apple TV.\n\n`prime.addon,prime.subscription`: Returns all the shows on Amazon Prime Video that are available through either a Prime Video subscription or a Prime Video Channel subscription.",
+                    "default": "netflix,prime.buy,hulu.addon.hbo,peacock.free",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 16
+                        }
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "2 letter ISO 3166-1 alpha-2 country code of the country to search in. See the about page to check the supported countries.",
+                    "default": "us",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "max_imdb_vote_count",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1000000",
+                    "required": false
+                },
+                {
+                    "name": "order_by",
+                    "type": "STRING",
+                    "description": "Determines the ordering of the results.\n\nPossible values are `original_title`, `imdb_vote_count`, `imdb_rating` and `year`. Default value is `original_title`",
+                    "default": "year",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "original_title",
+                                "imdb_vote_count",
+                                "imdb_rating",
+                                "year"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "max_imdb_rating",
+                    "type": "NUMBER",
+                    "description": "Out of 100",
+                    "default": "90",
+                    "required": false
+                },
+                {
+                    "name": "min_imdb_rating",
+                    "type": "NUMBER",
+                    "description": "Out of 100",
+                    "default": "70",
+                    "required": false
+                },
+                {
+                    "name": "desc",
+                    "type": "BOOLEAN",
+                    "description": "Use descending order?\n\nPossible values are `true` and `false`. Default value is `false`.",
+                    "default": "true",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "A keyword to only search within the shows have that keyword in their overview or title.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "cursor",
+                    "type": "STRING",
+                    "description": "Cursor is used for pagination. After each request, the response includes a `hasMore` boolean field to tell if there are more results that did not fit the returned list size. If it is set as true, to get the rest of the result set, send a new request (with the same parameters for other fields such as show_type, services etc.), and set the cursor parameter as the `nextCursor` value of the previous request response. Do not forget to escape the cursor value before putting it into the query as it might contain characters such as `?`, `&`.\n\nThe first request naturally does not require a `cursor` parameter.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "year_max",
+                    "type": "NUMBER",
+                    "description": "Maximum release/air year of the show.",
+                    "default": "2025",
+                    "required": false
+                },
+                {
+                    "name": "min_imdb_vote_count",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10000",
+                    "required": false
+                },
+                {
+                    "name": "year_min",
+                    "type": "NUMBER",
+                    "description": "Minimum release/air year of the show.",
+                    "default": "2000",
+                    "required": false
+                },
+                {
+                    "name": "show_original_language",
+                    "type": "STRING",
+                    "description": "A 2 letter ISO 639-1 language code to only search within the shows whose original language matches with the provided language.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                },
+                {
+                    "name": "genres_relation",
+                    "type": "STRING",
+                    "description": "When more than one genre is supplied in `genres` parameter, `genres_relation` chooses the matching style against\n\nWhen `or`, the endpoint returns any show that has at least one of the given genres.\nWhen `and`, it only returns the shows that have all of the given genres.\n\nDefault value is `and`.",
+                    "default": "or",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "or",
+                                "and"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "genres",
+                    "type": "STRING",
+                    "description": "Comma separated list of genre ids to only search within the shows in those genres. See `/v2/genres` endpoint to see available genres and ids.\n\nWhen more than one genre supplied, set `genres_relation` parameter to specify between returning shows that have at least one of the given genres or returning shows that have all of the given genres",
+                    "default": "18,80",
+                    "required": false
+                },
+                {
+                    "name": "output_language",
+                    "type": "STRING",
+                    "description": "2 letter iso code of the output language. Default is `en`. See the about page to see the list of languages supported.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                },
+                {
+                    "name": "show_type",
+                    "type": "STRING",
+                    "description": "Type of shows to search in. Accepted values are `movie`, `series` or `all`. The default value is `all`.",
+                    "default": "movie",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "series",
+                                "all"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find movies available on Netflix and Prime Video in Canada with an IMDb rating between 80 and 90?",
+                    "parameters": {
+                        "services": "netflix,prime",
+                        "country": "CA",
+                        "min_imdb_rating": 80,
+                        "max_imdb_rating": 90,
+                        "show_type": "movie"
+                    }
+                },
+                {
+                    "utterance": "Show me series available for rent on Apple TV in the UK, ordered by IMDb rating.",
+                    "parameters": {
+                        "services": "apple.rent",
+                        "country": "GB",
+                        "order_by": "imdb_rating",
+                        "show_type": "series"
+                    }
+                },
+                {
+                    "utterance": "Find all shows on Hulu with the HBO addon in Australia that have a minimum of 50,000 IMDb votes.",
+                    "parameters": {
+                        "services": "hulu.addon.hbo",
+                        "country": "AU",
+                        "min_imdb_vote_count": 50000
+                    }
+                },
+                {
+                    "utterance": "What are the top-rated shows on Disney+ in Germany with a release year between 2010 and 2020?",
+                    "parameters": {
+                        "services": "disney",
+                        "country": "DE",
+                        "year_min": 2010,
+                        "year_max": 2020,
+                        "order_by": "imdb_rating",
+                        "desc": "true"
+                    }
+                },
+                {
+                    "utterance": "List all free shows on Peacock in France that are in French.",
+                    "parameters": {
+                        "services": "peacock.free",
+                        "country": "FR",
+                        "show_original_language": "fr"
+                    }
+                },
+                {
+                    "utterance": "Find action and comedy movies on Netflix in Japan, sorted by original title.",
+                    "parameters": {
+                        "services": "netflix",
+                        "country": "JP",
+                        "genres": "28,35",
+                        "genres_relation": "or",
+                        "order_by": "original_title",
+                        "show_type": "movie"
+                    }
+                },
+                {
+                    "utterance": "Are there any series on Prime Video in India with the keyword 'thriller' and an IMDb rating above 85?",
+                    "parameters": {
+                        "services": "prime",
+                        "country": "IN",
+                        "keyword": "thriller",
+                        "min_imdb_rating": 85,
+                        "show_type": "series"
+                    }
+                },
+                {
+                    "utterance": "Show me all shows available on HBO Max in Brazil with a maximum IMDb vote count of 200,000.",
+                    "parameters": {
+                        "services": "hbo",
+                        "country": "BR",
+                        "max_imdb_vote_count": 200000
+                    }
+                },
+                {
+                    "utterance": "Find movies on Hulu in Mexico that are available via an addon and have an IMDb rating between 70 and 85.",
+                    "parameters": {
+                        "services": "hulu.addon",
+                        "country": "MX",
+                        "min_imdb_rating": 70,
+                        "max_imdb_rating": 85,
+                        "show_type": "movie"
+                    }
+                },
+                {
+                    "utterance": "What are the latest shows on Amazon Prime in Italy with a release year after 2015?",
+                    "parameters": {
+                        "services": "prime",
+                        "country": "IT",
+                        "year_min": 2015,
+                        "order_by": "year",
+                        "desc": "true"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Search Basic (FREE)",
+            "description": "Search through the catalog of the given services in the given country. Provides filters such as show language, genre and keyword. Items per page is 8. Output includes all the information about the shows, such as title, IMDb ID, TMDb ID, IMDb rating, link to shows' pages in streaming services (including individual season/episode links), cast, runtime, poster and many more! Apart from the info about the given country-service combinations, output also includes information about availability in the other services for the given country.",
+            "url": "https://streaming-availability.p.rapidapi.com/v2/search/basic",
+            "parameters": [
+                {
+                    "name": "services",
+                    "type": "STRING",
+                    "description": "A comma separated list of up to 4 services to search in. See `/v2/services` endpoint to get the supported services and their ids/names.\n\nSyntax of the values supplied in the list can be as the followings:\n\n`<sevice_id>`: Searches in the entire catalog of that service, including (if applicable) rentable, buyable shows or shows available through addons i.e. `netflix`, `prime`, `apple`\n\n`<sevice_id>.<offer_type>`: Only returns the shows that are available in that service with the given offer type. Valid offer type values are `subscription`, `free`, `rent`, `buy` and `addon`  i.e. `peacock.free` only returns the shows on Peacock that are free to watch, `prime.subscription` only returns the shows on Prime Video that are available to watch with a Prime subscription. `hulu.addon` only returns the shows on Hulu that are available via an addon,  `prime.rent` only returns the shows on Prime Video that are rentable.\n\n`<sevice_id>.addon.<addon_id>`: Only returns the shows that are available in that service with the given addon. Check `/v2/services` endpoint to fetch the available addons for a service. Some sample values are: `hulu.addon.hbo`,  `prime.addon.hbomaxus`.\n\nIf a service supports both `free` and `subscription`, then results included under `subscription` will always include the `free` shows as well.\n\nWhen multiple values are passed as a comma separated list, any show that satisfies at least one of the values will be included in the result.\n\nSome sample list values:\n\n`prime.rent,prime.buy,apple.rent,apple.buy`: Returns all the buyable/rentable shows on Amazon Prime Video and Apple TV.\n\n`prime.addon,prime.subscription`: Returns all the shows on Amazon Prime Video that are available through either a Prime Video subscription or a Prime Video Channel subscription.",
+                    "default": "netflix,prime.buy,hulu.addon.hbo,peacock.free",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "netflix",
+                                "prime",
+                                "apple",
+                                "peacock.free",
+                                "prime.subscription",
+                                "hulu.addon",
+                                "prime.rent",
+                                "prime.buy",
+                                "hulu.addon.hbo",
+                                "prime.addon.hbomaxus"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "2 letter ISO 3166-1 alpha-2 country code of the country to search in. See the about page to check the supported countries.",
+                    "default": "us",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "cursor",
+                    "type": "STRING",
+                    "description": "Cursor is used for pagination. After each request, the response includes a `hasMore` boolean field to tell if there are more results that did not fit the returned list size. If it is set as true, to get the rest of the result set, send a new request (with the same parameters for other fields such as show_type, services etc.), and set the cursor parameter as the `nextCursor` value of the previous request response. Do not forget to escape the cursor value before putting it into the query as it might contain characters such as `?`, `&`.\n\nThe first request naturally does not require a `cursor` parameter.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "show_original_language",
+                    "type": "STRING",
+                    "description": "A 2 letter ISO 639-1 language code to only search within the shows whose original language matches with the provided language.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                },
+                {
+                    "name": "genre",
+                    "type": "STRING",
+                    "description": "A genre id to only search within the shows in that genre. See `/v2/genres` endpoint to see available genres and ids.",
+                    "default": "18",
+                    "required": false
+                },
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "A keyword to only search within the shows have that keyword in their overview or title.",
+                    "default": "zombie",
+                    "required": false
+                },
+                {
+                    "name": "output_language",
+                    "type": "STRING",
+                    "description": "2 letter iso code of the output language. Default is `en`. See the about page to see the list of languages supported.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                },
+                {
+                    "name": "show_type",
+                    "type": "STRING",
+                    "description": "Type of shows to search in. Accepted values are `movie`, `series` or `all`. The default value is `all`.",
+                    "default": "movie",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "series",
+                                "all"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find movies available on Netflix and Prime Video in the US?",
+                    "parameters": {
+                        "services": "netflix,prime",
+                        "country": "us",
+                        "show_type": "movie"
+                    }
+                },
+                {
+                    "utterance": "Show me series available on Hulu with the HBO addon in Canada.",
+                    "parameters": {
+                        "services": "hulu.addon.hbo",
+                        "country": "ca",
+                        "show_type": "series"
+                    }
+                },
+                {
+                    "utterance": "I'm looking for Spanish language shows on Apple TV in Spain.",
+                    "parameters": {
+                        "services": "apple",
+                        "country": "es",
+                        "show_original_language": "es"
+                    }
+                },
+                {
+                    "utterance": "Find all the horror genre shows on Peacock that are free to watch in the UK.",
+                    "parameters": {
+                        "services": "peacock.free",
+                        "country": "gb",
+                        "genre": "27"
+                    }
+                },
+                {
+                    "utterance": "What are the available shows on Prime Video that I can rent in Australia?",
+                    "parameters": {
+                        "services": "prime.rent",
+                        "country": "au"
+                    }
+                },
+                {
+                    "utterance": "Search for comedy shows on Netflix in Germany.",
+                    "parameters": {
+                        "services": "netflix",
+                        "country": "de",
+                        "genre": "35"
+                    }
+                },
+                {
+                    "utterance": "Are there any action movies on Prime Video with a subscription in India?",
+                    "parameters": {
+                        "services": "prime.subscription",
+                        "country": "in",
+                        "genre": "28",
+                        "show_type": "movie"
+                    }
+                },
+                {
+                    "utterance": "Find shows with the keyword 'space' on Hulu in Japan.",
+                    "parameters": {
+                        "services": "hulu.addon",
+                        "country": "jp",
+                        "keyword": "space"
+                    }
+                },
+                {
+                    "utterance": "Can you list all the shows available on Prime Video with the HBO Max addon in Brazil?",
+                    "parameters": {
+                        "services": "prime.addon.hbomaxus",
+                        "country": "br"
+                    }
+                },
+                {
+                    "utterance": "I'm interested in French language series on Netflix in France.",
+                    "parameters": {
+                        "services": "netflix",
+                        "country": "fr",
+                        "show_original_language": "fr",
+                        "show_type": "series"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Services (FREE)",
+            "description": "Get the list of supported services and details about them",
+            "url": "https://streaming-availability.p.rapidapi.com/v2/services",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "Get Basic (FREE)",
+            "description": "Get the details of a show via IMDb or TMDb id, including the streaming availability info in the given country.",
+            "url": "https://streaming-availability.p.rapidapi.com/v2/get/basic",
+            "parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "us",
+                    "required": true,
+                    "constraints": {
+                        "default": "us"
+                    }
+                },
+                {
+                    "name": "imdb_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "tt1877830",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "output_language",
+                    "type": "STRING",
+                    "description": "2 letter iso code of the output language. Default is `en`. See the about page to see the list of languages supported.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter ISO code",
+                        "default": "en"
+                    }
+                },
+                {
+                    "name": "tmdb_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you check if 'Breaking Bad' is available for streaming in the US?",
+                    "parameters": {
+                        "country": "us",
+                        "imdb_id": "tt0903747"
+                    }
+                },
+                {
+                    "utterance": "I want to know where I can watch 'The Crown' in the UK.",
+                    "parameters": {
+                        "country": "uk",
+                        "tmdb_id": "69050"
+                    }
+                },
+                {
+                    "utterance": "Is 'Stranger Things' available on any streaming service in Canada?",
+                    "parameters": {
+                        "country": "ca",
+                        "imdb_id": "tt4574334"
+                    }
+                },
+                {
+                    "utterance": "Find out if 'The Mandalorian' is streaming in Germany.",
+                    "parameters": {
+                        "country": "de",
+                        "tmdb_id": "82856"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me if 'The Witcher' is available in Spanish in Spain?",
+                    "parameters": {
+                        "country": "es",
+                        "imdb_id": "tt5180504",
+                        "output_language": "es"
+                    }
+                },
+                {
+                    "utterance": "Where can I stream 'Game of Thrones' in Australia?",
+                    "parameters": {
+                        "country": "au",
+                        "tmdb_id": "1399"
+                    }
+                },
+                {
+                    "utterance": "Is 'The Office' available for streaming in India?",
+                    "parameters": {
+                        "country": "in",
+                        "imdb_id": "tt0386676"
+                    }
+                },
+                {
+                    "utterance": "Check if 'Friends' is available in French in France.",
+                    "parameters": {
+                        "country": "fr",
+                        "imdb_id": "tt0108778",
+                        "output_language": "fr"
+                    }
+                },
+                {
+                    "utterance": "Can you see if 'The Boys' is streaming in Japan?",
+                    "parameters": {
+                        "country": "jp",
+                        "tmdb_id": "76479"
+                    }
+                },
+                {
+                    "utterance": "Is 'The Handmaid's Tale' available in Italy?",
+                    "parameters": {
+                        "country": "it",
+                        "imdb_id": "tt5834204"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Search Pro",
+            "description": "Search through the catalog of the given services in the given country. Provides filters such as show language, genre and keyword. Items per page is 10. Output includes all the information about the shows, such as title, IMDb ID, TMDb ID, IMDb rating, link to shows' pages in streaming services (including individual season/episode links), cast, runtime, poster and many more! Apart from the info about the given country-service combinations, output also includes information about availability in the other services for the given country.",
+            "url": "https://streaming-availability.p.rapidapi.com/v2/search/pro",
+            "parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "2 letter ISO 3166-1 alpha-2 country code of the country to search in. See the about page to check the supported countries.",
+                    "default": "us",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "services",
+                    "type": "STRING",
+                    "description": "A comma separated list of up to 8 services to search in. See `/v2/services` endpoint to get the supported services and their ids/names.\n\nSyntax of the values supplied in the list can be as the followings:\n\n`<sevice_id>`: Searches in the entire catalog of that service, including (if applicable) rentable, buyable shows or shows available through addons i.e. `netflix`, `prime`, `apple`\n\n`<sevice_id>.<offer_type>`: Only returns the shows that are available in that service with the given offer type. Valid offer type values are `subscription`, `free`, `rent`, `buy` and `addon`  i.e. `peacock.free` only returns the shows on Peacock that are free to watch, `prime.subscription` only returns the shows on Prime Video that are available to watch with a Prime subscription. `hulu.addon` only returns the shows on Hulu that are available via an addon,  `prime.rent` only returns the shows on Prime Video that are rentable.\n\n`<sevice_id>.addon.<addon_id>`: Only returns the shows that are available in that service with the given addon. Check `/v2/services` endpoint to fetch the available addons for a service. Some sample values are: `hulu.addon.hbo`,  `prime.addon.hbomaxus`.\n\nIf a service supports both `free` and `subscription`, then results included under `subscription` will always include the `free` shows as well.\n\nWhen multiple values are passed as a comma separated list, any show that satisfies at least one of the values will be included in the result.\n\nSome sample list values:\n\n`prime.rent,prime.buy,apple.rent,apple.buy`: Returns all the buyable/rentable shows on Amazon Prime Video and Apple TV.\n\n`prime.addon,prime.subscription`: Returns all the shows on Amazon Prime Video that are available through either a Prime Video subscription or a Prime Video Channel subscription.",
+                    "default": "netflix,prime.buy,hulu.addon.hbo,peacock.free",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "netflix",
+                                "prime",
+                                "apple",
+                                "peacock",
+                                "hulu",
+                                "prime.subscription",
+                                "peacock.free",
+                                "hulu.addon.hbo",
+                                "prime.addon.hbomaxus",
+                                "prime.rent",
+                                "prime.buy",
+                                "apple.rent",
+                                "apple.buy"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "year_max",
+                    "type": "NUMBER",
+                    "description": "Maximum release/air year of the show.",
+                    "default": "2025",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 2025
+                        }
+                    }
+                },
+                {
+                    "name": "cursor",
+                    "type": "STRING",
+                    "description": "Cursor is used for pagination. After each request, the response includes a `hasMore` boolean field to tell if there are more results that did not fit the returned list size. If it is set as true, to get the rest of the result set, send a new request (with the same parameters for other fields such as show_type, services etc.), and set the cursor parameter as the `nextCursor` value of the previous request response. Do not forget to escape the cursor value before putting it into the query as it might contain characters such as `?`, `&`.\n\nThe first request naturally does not require a `cursor` parameter.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "desc",
+                    "type": "BOOLEAN",
+                    "description": "Use descending order?\n\nPossible values are `true` and `false`. Default value is `false`.",
+                    "default": "true",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "genres_relation",
+                    "type": "STRING",
+                    "description": "When more than one genre is supplied in `genres` parameter, `genres_relation` chooses the matching style against\n\nWhen `or`, the endpoint returns any show that has at least one of the given genres.\nWhen `and`, it only returns the shows that have all of the given genres.\n\nDefault value is `and`.",
+                    "default": "or",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "or",
+                                "and"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "year_min",
+                    "type": "NUMBER",
+                    "description": "Minimum release/air year of the show.",
+                    "default": "2000",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 2000
+                        }
+                    }
+                },
+                {
+                    "name": "show_original_language",
+                    "type": "STRING",
+                    "description": "A 2 letter ISO 639-1 language code to only search within the shows whose original language matches with the provided language.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                },
+                {
+                    "name": "genres",
+                    "type": "STRING",
+                    "description": "Comma separated list of genre ids to only search within the shows in those genres. See `/v2/genres` endpoint to see available genres and ids.\n\nWhen more than one genre supplied, set `genres_relation` parameter to specify between returning shows that have at least one of the given genres or returning shows that have all of the given genres",
+                    "default": "18,80",
+                    "required": false
+                },
+                {
+                    "name": "show_type",
+                    "type": "STRING",
+                    "description": "Type of shows to search in. Accepted values are `movie`, `series` or `all`. The default value is `all`.",
+                    "default": "movie",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "series",
+                                "all"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "order_by",
+                    "type": "STRING",
+                    "description": "Determines the ordering of the results.\n\nPossible values are `original_title` and `year`. Default value is `original_title`",
+                    "default": "year",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "original_title",
+                                "year"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "output_language",
+                    "type": "STRING",
+                    "description": "2 letter iso code of the output language. Default is `en`. See the about page to see the list of languages supported.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                },
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "A keyword to only search within the shows have that keyword in their overview or title.",
+                    "default": "zombie",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find movies available on Netflix and Hulu in the US released after 2010?",
+                    "parameters": {
+                        "country": "US",
+                        "services": "netflix,hulu",
+                        "year_min": 2010,
+                        "show_type": "movie"
+                    }
+                },
+                {
+                    "utterance": "Show me series on Prime Video and Apple TV in Canada that are available for rent.",
+                    "parameters": {
+                        "country": "CA",
+                        "services": "prime.rent,apple.rent",
+                        "show_type": "series"
+                    }
+                },
+                {
+                    "utterance": "Find all action and thriller shows on Peacock in the UK, sorted by year.",
+                    "parameters": {
+                        "country": "GB",
+                        "services": "peacock",
+                        "genres": "28,53",
+                        "order_by": "year"
+                    }
+                },
+                {
+                    "utterance": "What are the top-rated shows on HBO Max in Australia with English as the original language?",
+                    "parameters": {
+                        "country": "AU",
+                        "services": "hulu.addon.hbo",
+                        "show_original_language": "en",
+                        "order_by": "original_title"
+                    }
+                },
+                {
+                    "utterance": "List all free shows on Peacock in Germany that are comedies or dramas.",
+                    "parameters": {
+                        "country": "DE",
+                        "services": "peacock.free",
+                        "genres": "35,18",
+                        "genres_relation": "or"
+                    }
+                },
+                {
+                    "utterance": "Find movies on Netflix in France with a keyword 'romance' released before 2020.",
+                    "parameters": {
+                        "country": "FR",
+                        "services": "netflix",
+                        "keyword": "romance",
+                        "year_max": 2020,
+                        "show_type": "movie"
+                    }
+                },
+                {
+                    "utterance": "Are there any series on Prime Video in Japan available through an HBO Max addon?",
+                    "parameters": {
+                        "country": "JP",
+                        "services": "prime.addon.hbomaxus",
+                        "show_type": "series"
+                    }
+                },
+                {
+                    "utterance": "Show me all shows on Apple TV in Italy with a keyword 'sci-fi' in descending order.",
+                    "parameters": {
+                        "country": "IT",
+                        "services": "apple",
+                        "keyword": "sci-fi",
+                        "desc": "true"
+                    }
+                },
+                {
+                    "utterance": "Find all shows on Hulu in Spain that are available via an addon and released after 2015.",
+                    "parameters": {
+                        "country": "ES",
+                        "services": "hulu.addon.hbo",
+                        "year_min": 2015
+                    }
+                },
+                {
+                    "utterance": "Can you list all series on Prime Video in India with Hindi as the original language?",
+                    "parameters": {
+                        "country": "IN",
+                        "services": "prime",
+                        "show_type": "series",
+                        "show_original_language": "hi"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get Ultra",
+            "description": "Get the details of a show via IMDb or TMDb id, including the global streaming availability info",
+            "url": "https://streaming-availability.p.rapidapi.com/v2/get/ultra",
+            "parameters": [
+                {
+                    "name": "output_language",
+                    "type": "STRING",
+                    "description": "2 letter iso code of the output language. Default is `en`. See the about page to see the list of languages supported.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter ISO code"
+                    }
+                },
+                {
+                    "name": "tmdb_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "imdb_id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "tt1877830",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you tell me where I can stream 'Breaking Bad'?",
+                    "parameters": {
+                        "imdb_id": "tt0903747"
+                    }
+                },
+                {
+                    "utterance": "I want to know the streaming options for 'The Mandalorian' in Spanish.",
+                    "parameters": {
+                        "tmdb_id": "82856",
+                        "output_language": "es"
+                    }
+                },
+                {
+                    "utterance": "Where is 'Stranger Things' available to watch?",
+                    "parameters": {
+                        "imdb_id": "tt4574334"
+                    }
+                },
+                {
+                    "utterance": "Can you find out if 'The Crown' is on any streaming service in French?",
+                    "parameters": {
+                        "imdb_id": "tt4786824",
+                        "output_language": "fr"
+                    }
+                },
+                {
+                    "utterance": "Is 'The Witcher' available on any streaming platforms?",
+                    "parameters": {
+                        "tmdb_id": "71912"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know where I can watch 'Game of Thrones' in German.",
+                    "parameters": {
+                        "imdb_id": "tt0944947",
+                        "output_language": "de"
+                    }
+                },
+                {
+                    "utterance": "Can you check the streaming availability for 'The Office'?",
+                    "parameters": {
+                        "tmdb_id": "2316"
+                    }
+                },
+                {
+                    "utterance": "Where can I stream 'Friends' in Italian?",
+                    "parameters": {
+                        "imdb_id": "tt0108778",
+                        "output_language": "it"
+                    }
+                },
+                {
+                    "utterance": "Is 'The Boys' available on any streaming service?",
+                    "parameters": {
+                        "tmdb_id": "76479"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me if 'The Handmaid's Tale' is available to stream in Japanese?",
+                    "parameters": {
+                        "imdb_id": "tt5834204",
+                        "output_language": "ja"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Search By Title (FREE)",
+            "description": "Search movies and series by title. Maximum amount of items returned are 20, unless there are more than 20 shows with the exact given title input. In that case all the items have 100% match with the title will be returned.\n\nNo pagination is supported.",
+            "url": "https://streaming-availability.p.rapidapi.com/v2/search/title",
+            "parameters": [
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Title to search for.",
+                    "default": "batman",
+                    "required": true
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Regardless of this value, the given title is searched across all the platforms and all the countries. This parameter determines according to which country the streamingInfo field will be populated. Thus even if a show is not available in this country, It will be included in the results if it resembles with the given title, but the streaming information will not be available.",
+                    "default": "us",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2 code"
+                    }
+                },
+                {
+                    "name": "show_type",
+                    "type": "STRING",
+                    "description": "Type of shows to include in the results. Either `movie`, `series` or `all`. Default is `all`.",
+                    "default": "movie",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "series",
+                                "all"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "output_language",
+                    "type": "STRING",
+                    "description": "2 letter iso code of the output language. Default is `en`. See the about page to see the list of languages supported.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1 code"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find out if 'The Crown' is available in the UK?",
+                    "parameters": {
+                        "title": "The Crown",
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "I want to know if the movie 'Inception' is streaming in Canada.",
+                    "parameters": {
+                        "title": "Inception",
+                        "country": "CA",
+                        "show_type": "movie"
+                    }
+                },
+                {
+                    "utterance": "Check if the series 'Friends' is available in Germany and provide the information in German.",
+                    "parameters": {
+                        "title": "Friends",
+                        "country": "DE",
+                        "show_type": "series",
+                        "output_language": "de"
+                    }
+                },
+                {
+                    "utterance": "Is 'The Mandalorian' available for streaming in Australia?",
+                    "parameters": {
+                        "title": "The Mandalorian",
+                        "country": "AU"
+                    }
+                },
+                {
+                    "utterance": "Find out if 'Breaking Bad' is available in France, and I want the results in French.",
+                    "parameters": {
+                        "title": "Breaking Bad",
+                        "country": "FR",
+                        "output_language": "fr"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me if 'The Office' is streaming in Japan?",
+                    "parameters": {
+                        "title": "The Office",
+                        "country": "JP"
+                    }
+                },
+                {
+                    "utterance": "Look up if the series 'Stranger Things' is available in Brazil.",
+                    "parameters": {
+                        "title": "Stranger Things",
+                        "country": "BR",
+                        "show_type": "series"
+                    }
+                },
+                {
+                    "utterance": "Is the movie 'Parasite' available in South Korea?",
+                    "parameters": {
+                        "title": "Parasite",
+                        "country": "KR",
+                        "show_type": "movie"
+                    }
+                },
+                {
+                    "utterance": "Check if 'Game of Thrones' is available in Italy and provide the results in Italian.",
+                    "parameters": {
+                        "title": "Game of Thrones",
+                        "country": "IT",
+                        "output_language": "it"
+                    }
+                },
+                {
+                    "utterance": "I want to know if 'The Witcher' is streaming in Spain.",
+                    "parameters": {
+                        "title": "The Witcher",
+                        "country": "ES"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Genres (FREE)",
+            "description": "Get the id to name mapping of supported genres.",
+            "url": "https://streaming-availability.p.rapidapi.com/v2/genres",
+            "parameters": [],
+            "utterances": []
+        }
+    ]
+}

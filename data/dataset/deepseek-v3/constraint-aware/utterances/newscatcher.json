@@ -1,0 +1,1561 @@
+{
+    "name": "Newscatcher",
+    "description": "API to find news articles by any topic, country, language, website, or keyword",
+    "url": "https://rapidapi.com/newscatcher-api-newscatcher-api-default/api/newscatcher/",
+    "api_methods": [
+        {
+            "name": "/v1/aggregation",
+            "description": "Searches as `/v1/search` but returns the articles count per hour or day instead of articles' data",
+            "url": "https://newscatcher.p.rapidapi.com/v1/aggregation",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "String to search for. Has to be [URL-encoded](https://en.wikipedia.org/wiki/Percent-encoding). ",
+                    "default": "Apple",
+                    "required": true,
+                    "constraints": {
+                        "format": "URL-encoded"
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The country to which you want to narrow your search. This parameter is [experimental]. We advise you to use it in conjunction with the `lang` parameter. Accepts any [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "topic",
+                    "type": "STRING",
+                    "description": "The topic to which you want to restrict the articles of your choice. This parameter is [experimental]. Accepted values are `news`, `sport`, `tech`, `world`, `finance`, `politics`, `business`, `economics`, `entertainment`,`beauty`,`travel`,`music`,`food`,`science`\n- `news` usually means a general news feed (main headlines of a website).\n> Important: this parameter is [experimental]. Not all news articles are assigned with a `topic`, therefore, we cannot guarantee that 100% of topics talking about technology will be assigned a `tech` label.\n> One topic at a time, for example, `topic=sport`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "news",
+                                "sport",
+                                "tech",
+                                "world",
+                                "finance",
+                                "politics",
+                                "business",
+                                "economics",
+                                "entertainment",
+                                "beauty",
+                                "travel",
+                                "music",
+                                "food",
+                                "science"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "sources",
+                    "type": "STRING",
+                    "description": "One or more news resources to filter your search. It should be the normal form of the URL, for example, **[nytimes.com](http://nytimes.com/)**, **[theguardian.com](http://theguardian.com/)**\n> Comma separated string, for example `sources=nytimes.com,cnn.com,wsj.com`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "Comma-separated string of URLs"
+                    }
+                },
+                {
+                    "name": "agg_by",
+                    "type": "STRING",
+                    "description": "- `day` \u2014 default option. Aggregate results by day. No more than 100 days \n- `hour` \u2014 Aggregate results by hour. No more than 100 hours",
+                    "default": "day",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "day",
+                                "hour"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "to_rank",
+                    "type": "NUMBER",
+                    "description": "Upper boundary of the rank of news website to filter by",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "media",
+                    "type": "STRING",
+                    "description": "Adds to the output of the call two more variables: `media` and `media_content`\n\nMedia - the main image published with an article \n\nmedia_content  - a comma-separated string of all images used in an article",
+                    "default": "True",
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Specifies the language of the search.  Allowed values are:\n`af`, `ar`, `bg`, `bn`, `ca`,`cn`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `fa`, `fi`, `fr`, `gu`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mr`, `ne`, `nl`, `no`, `pa`, `pl`, `pt`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`,`tw`, `uk`, `ur`, `vi`. \nSpecifying the language will make your search more relevant",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "af",
+                                "ar",
+                                "bg",
+                                "bn",
+                                "ca",
+                                "cn",
+                                "cs",
+                                "cy",
+                                "da",
+                                "de",
+                                "el",
+                                "en",
+                                "es",
+                                "et",
+                                "fa",
+                                "fi",
+                                "fr",
+                                "gu",
+                                "he",
+                                "hi",
+                                "hr",
+                                "hu",
+                                "id",
+                                "it",
+                                "ja",
+                                "kn",
+                                "ko",
+                                "lt",
+                                "lv",
+                                "mk",
+                                "ml",
+                                "mr",
+                                "ne",
+                                "nl",
+                                "no",
+                                "pa",
+                                "pl",
+                                "pt",
+                                "ro",
+                                "ru",
+                                "sk",
+                                "sl",
+                                "so",
+                                "sq",
+                                "sv",
+                                "sw",
+                                "ta",
+                                "te",
+                                "th",
+                                "tl",
+                                "tr",
+                                "tw",
+                                "uk",
+                                "ur",
+                                "vi"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "not_sources",
+                    "type": "STRING",
+                    "description": "One or more sources to be excluded from the search. \n> Comma separated string, for example, `not_sources=nytimes.com,cnn.com,wsj.com`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "Comma-separated string of URLs"
+                    }
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Until which point in time to search for. The default timezone is UTC",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "ranked_only",
+                    "type": "STRING",
+                    "description": "Limit the search only for the sources which are in top 1 million online websites. Defaults to `True` (`False` if you want to turn it off). Unranked sources are assigned a rank that equals to `999999`",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "From which point in time to start the search. No specific format is required. E.g. (`2020/05/01`, `2020-05-01` ,`2020-05-01 12:54:14`, `2020-05-01 4:15am`, `yesterday 2:02 am`, `2020/05/01 12:55 EST`) Default timezone is UTC. **\nThe default is set to one week ago at midnight UTC.** ",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "search_in",
+                    "type": "STRING",
+                    "description": "By default, we search what you specified in `q` in both `title` and `summary` of the article. However, you can limit this to either `title` or `summary`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "title",
+                                "summary"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "from_rank",
+                    "type": "NUMBER",
+                    "description": "Lowest boundary of the rank of news website to filter by. **Important**: lower rank means that a source is more popular",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the daily count of articles about climate change in the US?",
+                    "parameters": {
+                        "q": "climate%20change",
+                        "country": "US",
+                        "agg_by": "day"
+                    }
+                },
+                {
+                    "utterance": "What's the hourly count of tech news from BBC and CNN?",
+                    "parameters": {
+                        "q": "tech",
+                        "sources": "bbc.com,cnn.com",
+                        "agg_by": "hour"
+                    }
+                },
+                {
+                    "utterance": "Find the number of articles about politics in French from the last week.",
+                    "parameters": {
+                        "q": "politics",
+                        "lang": "fr",
+                        "from": "2023-10-01"
+                    }
+                },
+                {
+                    "utterance": "Show me the daily count of business articles from Forbes, excluding The Guardian.",
+                    "parameters": {
+                        "q": "business",
+                        "sources": "forbes.com",
+                        "not_sources": "theguardian.com",
+                        "agg_by": "day"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the count of articles about travel in Italy from the last month?",
+                    "parameters": {
+                        "q": "travel",
+                        "country": "IT",
+                        "from": "2023-09-01"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the hourly count of science articles in Spanish?",
+                    "parameters": {
+                        "q": "science",
+                        "lang": "es",
+                        "agg_by": "hour"
+                    }
+                },
+                {
+                    "utterance": "Find the daily count of articles about economics from top-ranked sources.",
+                    "parameters": {
+                        "q": "economics",
+                        "ranked_only": "true",
+                        "agg_by": "day"
+                    }
+                },
+                {
+                    "utterance": "Show me the count of articles about food in Japan from the last two weeks.",
+                    "parameters": {
+                        "q": "food",
+                        "country": "JP",
+                        "from": "2023-09-15"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the hourly count of entertainment news from last night?",
+                    "parameters": {
+                        "q": "entertainment",
+                        "agg_by": "hour",
+                        "from": "2023-10-07 20:00:00"
+                    }
+                },
+                {
+                    "utterance": "Find the daily count of articles about music in German, excluding Spotify.",
+                    "parameters": {
+                        "q": "music",
+                        "lang": "de",
+                        "not_sources": "spotify.com",
+                        "agg_by": "day"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/v1/latest_headlines",
+            "description": "Always returns the latest 100 articles for any `topic`, `country`, `lang`, or any of those combined",
+            "url": "https://newscatcher.p.rapidapi.com/v1/latest_headlines",
+            "parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Specifies the language of the search.  Allowed values are:\n`af`, `ar`, `bg`, `bn`, `ca`,`cn`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `fa`, `fi`, `fr`, `gu`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mr`, `ne`, `nl`, `no`, `pa`, `pl`, `pt`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`,`tw`, `uk`, `ur`, `vi`. \n Specifying the language will make your search more relevant",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "af",
+                                "ar",
+                                "bg",
+                                "bn",
+                                "ca",
+                                "cn",
+                                "cs",
+                                "cy",
+                                "da",
+                                "de",
+                                "el",
+                                "en",
+                                "es",
+                                "et",
+                                "fa",
+                                "fi",
+                                "fr",
+                                "gu",
+                                "he",
+                                "hi",
+                                "hr",
+                                "hu",
+                                "id",
+                                "it",
+                                "ja",
+                                "kn",
+                                "ko",
+                                "lt",
+                                "lv",
+                                "mk",
+                                "ml",
+                                "mr",
+                                "ne",
+                                "nl",
+                                "no",
+                                "pa",
+                                "pl",
+                                "pt",
+                                "ro",
+                                "ru",
+                                "sk",
+                                "sl",
+                                "so",
+                                "sq",
+                                "sv",
+                                "sw",
+                                "ta",
+                                "te",
+                                "th",
+                                "tl",
+                                "tr",
+                                "tw",
+                                "uk",
+                                "ur",
+                                "vi"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "topic",
+                    "type": "STRING",
+                    "description": "The topic to which you want to restrict the articles of your choice. This parameter is [experimental]. Accepted values are `news`, `sport`, `tech`, `world`, `finance`, `politics`, `business`, `economics`, `entertainment`,`beauty`,`travel`,`music`,`food`,`science`\n- `news` usually means a general news feed (main headlines of a website).\n> Important: this parameter is [experimental]. Not all news articles are assigned with a `topic`, therefore, we cannot guarantee that 100% of topics talking about technology will be assigned a `tech` label.\n> One topic at a time, for example `topic=sport`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "news",
+                                "sport",
+                                "tech",
+                                "world",
+                                "finance",
+                                "politics",
+                                "business",
+                                "economics",
+                                "entertainment",
+                                "beauty",
+                                "travel",
+                                "music",
+                                "food",
+                                "science"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The country to which you want to narrow your search. This parameter is [experimental]. We advise you to use it in conjunction with the `lang` parameter. Accepts any [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "media",
+                    "type": "STRING",
+                    "description": "Adds to the output of the call two more variables: `media` and `media_content`\n\nMedia - the main image published with an article \n\nmedia_content  - a comma-separated string of all images used in an article",
+                    "default": "True",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the latest headlines in Spanish?",
+                    "parameters": {
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "Show me the most recent tech news from Japan.",
+                    "parameters": {
+                        "topic": "tech",
+                        "lang": "ja"
+                    }
+                },
+                {
+                    "utterance": "Can you get me the latest sports articles from Brazil?",
+                    "parameters": {
+                        "topic": "sport",
+                        "country": "BR"
+                    }
+                },
+                {
+                    "utterance": "I want to see the newest entertainment news in French.",
+                    "parameters": {
+                        "topic": "entertainment",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "What are the top headlines in Germany today?",
+                    "parameters": {
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "Give me the latest finance news in English.",
+                    "parameters": {
+                        "topic": "finance",
+                        "lang": "en"
+                    }
+                },
+                {
+                    "utterance": "Show me the most recent articles about politics in India.",
+                    "parameters": {
+                        "topic": "politics",
+                        "country": "IN"
+                    }
+                },
+                {
+                    "utterance": "What are the latest travel news in Italian?",
+                    "parameters": {
+                        "topic": "travel",
+                        "lang": "it"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the newest science articles from Canada?",
+                    "parameters": {
+                        "topic": "science",
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the latest headlines in Arabic.",
+                    "parameters": {
+                        "lang": "ar"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/v1/search_free",
+            "description": "**Up to 100 articles per 1 API call even with free Basic Plan.**\nFree search. Only the language filter is allowed.",
+            "url": "https://newscatcher.p.rapidapi.com/v1/search_free",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "String to search for. Has to be [URL-encoded](https://en.wikipedia.org/wiki/Percent-encoding)",
+                    "default": "Elon Musk",
+                    "required": true,
+                    "constraints": {
+                        "format": "URL-encoded"
+                    }
+                },
+                {
+                    "name": "media",
+                    "type": "STRING",
+                    "description": "Adds to the output of the call two more variables: `media` and `media_content`\n\nMedia - the main image published with an article \n\nmedia_content  - a comma-separated string of all images used in an article",
+                    "default": "True",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "The number of the page. Use it to scroll through the results. Defaults to 1",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "ranked_only",
+                    "type": "STRING",
+                    "description": "Limit the search only for the sources which are in top 1 million online websites. Defaults to `True` (`False` if you want to turn it off). Unranked sources are assigned a rank that equals to `999999`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "page_size",
+                    "type": "STRING",
+                    "description": "How many articles to return per page. Defaults to 50, max is 100",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true,
+                        "values": {
+                            "max": 100
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Specifies the language of the search.  Allowed values are:\n`af`, `ar`, `bg`, `bn`, `ca`,`cn`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `fa`, `fi`, `fr`, `gu`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mr`, `ne`, `nl`, `no`, `pa`, `pl`, `pt`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`,`tw`, `uk`, `ur`, `vi`. \nSpecifying the language will make your search more relevant",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "af",
+                                "ar",
+                                "bg",
+                                "bn",
+                                "ca",
+                                "cn",
+                                "cs",
+                                "cy",
+                                "da",
+                                "de",
+                                "el",
+                                "en",
+                                "es",
+                                "et",
+                                "fa",
+                                "fi",
+                                "fr",
+                                "gu",
+                                "he",
+                                "hi",
+                                "hr",
+                                "hu",
+                                "id",
+                                "it",
+                                "ja",
+                                "kn",
+                                "ko",
+                                "lt",
+                                "lv",
+                                "mk",
+                                "ml",
+                                "mr",
+                                "ne",
+                                "nl",
+                                "no",
+                                "pa",
+                                "pl",
+                                "pt",
+                                "ro",
+                                "ru",
+                                "sk",
+                                "sl",
+                                "so",
+                                "sq",
+                                "sv",
+                                "sw",
+                                "ta",
+                                "te",
+                                "th",
+                                "tl",
+                                "tr",
+                                "tw",
+                                "uk",
+                                "ur",
+                                "vi"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find recent news articles about climate change.",
+                    "parameters": {
+                        "q": "climate%20change"
+                    }
+                },
+                {
+                    "utterance": "Search for articles on artificial intelligence in French.",
+                    "parameters": {
+                        "q": "artificial%20intelligence",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Get news about the latest tech innovations with images.",
+                    "parameters": {
+                        "q": "tech%20innovations",
+                        "media": "true"
+                    }
+                },
+                {
+                    "utterance": "Look up articles on global warming in Spanish.",
+                    "parameters": {
+                        "q": "global%20warming",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "Find news about space exploration in German.",
+                    "parameters": {
+                        "q": "space%20exploration",
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "Search for articles on renewable energy with media content.",
+                    "parameters": {
+                        "q": "renewable%20energy",
+                        "media": "true"
+                    }
+                },
+                {
+                    "utterance": "Get the latest news on COVID-19 in Italian.",
+                    "parameters": {
+                        "q": "COVID-19",
+                        "lang": "it"
+                    }
+                },
+                {
+                    "utterance": "Find articles about blockchain technology in Japanese.",
+                    "parameters": {
+                        "q": "blockchain%20technology",
+                        "lang": "ja"
+                    }
+                },
+                {
+                    "utterance": "Search for news on electric vehicles with images.",
+                    "parameters": {
+                        "q": "electric%20vehicles",
+                        "media": "true"
+                    }
+                },
+                {
+                    "utterance": "Look up articles about quantum computing in Russian.",
+                    "parameters": {
+                        "q": "quantum%20computing",
+                        "lang": "ru"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/v1/search",
+            "description": "Highly customizable search through our database. All filters and sorting options are allowed.",
+            "url": "https://newscatcher.p.rapidapi.com/v1/search",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "String to search for. Has to be [URL-encoded](https://en.wikipedia.org/wiki/Percent-encoding)",
+                    "default": "Elon Musk",
+                    "required": true,
+                    "constraints": {
+                        "format": "URL-encoded"
+                    }
+                },
+                {
+                    "name": "not_sources",
+                    "type": "STRING",
+                    "description": "One or more sources to be excluded from the search. \n> Comma separated string, for example `not_sources=nytimes.com,cnn.com,wsj.com`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "Comma-separated string"
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Specifies the language of the search.  Allowed values are:\n`af`, `ar`, `bg`, `bn`, `ca`,`cn`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `fa`, `fi`, `fr`, `gu`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mr`, `ne`, `nl`, `no`, `pa`, `pl`, `pt`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`,`tw`, `uk`, `ur`, `vi`. \nSpecifying the language will make your search more relevant",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "af",
+                                "ar",
+                                "bg",
+                                "bn",
+                                "ca",
+                                "cn",
+                                "cs",
+                                "cy",
+                                "da",
+                                "de",
+                                "el",
+                                "en",
+                                "es",
+                                "et",
+                                "fa",
+                                "fi",
+                                "fr",
+                                "gu",
+                                "he",
+                                "hi",
+                                "hr",
+                                "hu",
+                                "id",
+                                "it",
+                                "ja",
+                                "kn",
+                                "ko",
+                                "lt",
+                                "lv",
+                                "mk",
+                                "ml",
+                                "mr",
+                                "ne",
+                                "nl",
+                                "no",
+                                "pa",
+                                "pl",
+                                "pt",
+                                "ro",
+                                "ru",
+                                "sk",
+                                "sl",
+                                "so",
+                                "sq",
+                                "sv",
+                                "sw",
+                                "ta",
+                                "te",
+                                "th",
+                                "tl",
+                                "tr",
+                                "tw",
+                                "uk",
+                                "ur",
+                                "vi"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "search_in",
+                    "type": "STRING",
+                    "description": "By default, we search what you specified in `q` in both `title` and `summary` of the article. However, you can limit this to either `title` or `summary`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "title",
+                                "summary"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "sort_by",
+                    "type": "STRING",
+                    "description": "- `relevancy` \u2014 the most relevant results first, \n- `date` \u2014 the most recently published results first, \n- `rank` \u2014 the results from the highest-ranked sources first",
+                    "default": "relevancy",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "relevancy",
+                                "date",
+                                "rank"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "sources",
+                    "type": "STRING",
+                    "description": "One or more news resources to filter your search. It should be the normal form of the URL, for example, **[nytimes.com](http://nytimes.com/)**, **[theguardian.com](http://theguardian.com/)**\n> Comma separated string, for example `sources=nytimes.com,cnn.com,wsj.com`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "Comma-separated string"
+                    }
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Until which point in time to search for. The default timezone is UTC",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The country to which you want to narrow your search. This parameter is [experimental]. We advise you to use it in conjunction with the `lang` parameter. Accepts any [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "media",
+                    "type": "STRING",
+                    "description": "Adds to the output of the call two more variables: `media` and `media_content`\n\nMedia - the main image published with an article \n\nmedia_content  - a comma-separated string of all images used in an article",
+                    "default": "True",
+                    "required": false
+                },
+                {
+                    "name": "topic",
+                    "type": "STRING",
+                    "description": "The topic to which you want to restrict the articles of your choice. This parameter is [experimental]. Accepted values are `news`, `sport`, `tech`, `world`, `finance`, `politics`, `business`, `economics`, `entertainment`,`beauty`,`travel`,`music`,`food`,`science`\n`news` usually means a general news feed (main headlines of a website).\n> Important: this parameter is [experimental]. Not all news articles are assigned with a `topic`, therefore, we cannot guarantee that 100% of topics talking about technology will be assigned a `tech` label.\n> One topic at a time, for example `topic=sport`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "news",
+                                "sport",
+                                "tech",
+                                "world",
+                                "finance",
+                                "politics",
+                                "business",
+                                "economics",
+                                "entertainment",
+                                "beauty",
+                                "travel",
+                                "music",
+                                "food",
+                                "science"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "from_rank",
+                    "type": "NUMBER",
+                    "description": "Lowest boundary of the rank of news website to filter by. **Important**: lower rank means that a source is more popular",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "to_rank",
+                    "type": "NUMBER",
+                    "description": "Upper boundary of the rank of news website to filter by",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "How many articles to return per page. Defaults to 50, max is 100. Not included in Basic plan. ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100,
+                            "min": 1
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The number of the page. Use it to scroll through the results. Defaults to 1",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "ranked_only",
+                    "type": "STRING",
+                    "description": "Limit the search only for the sources which are in top 1 million online websites. Defaults to `True` (`False` if you want to turn it off). Unranked sources are assigned a rank that equals to `999999`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "True",
+                                "False"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "From which point in time to start the search. No specific format is required. \nE.g. (`2020/05/01`, `2020-05-01` ,`2020-05-01 12:54:14`, `2020-05-01 4:15am`, `yesterday 2:02 am`, `2020/05/01 12:55 EST`) .\nThe default timezone is UTC. **Defaults to one week ago at midnight UTC.**",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find recent news articles about climate change published in Spanish.",
+                    "parameters": {
+                        "q": "climate%20change",
+                        "lang": "es",
+                        "sort_by": "date"
+                    }
+                },
+                {
+                    "utterance": "Search for articles on artificial intelligence from BBC and The Guardian, excluding TechCrunch.",
+                    "parameters": {
+                        "q": "artificial%20intelligence",
+                        "sources": "bbc.com,theguardian.com",
+                        "not_sources": "techcrunch.com"
+                    }
+                },
+                {
+                    "utterance": "Show me the most relevant news about the Olympics in Japanese.",
+                    "parameters": {
+                        "q": "Olympics",
+                        "lang": "ja",
+                        "sort_by": "relevancy"
+                    }
+                },
+                {
+                    "utterance": "Get articles about space exploration from the last month, focusing on the title only.",
+                    "parameters": {
+                        "q": "space%20exploration",
+                        "search_in": "title",
+                        "from": "2023-09-01"
+                    }
+                },
+                {
+                    "utterance": "Find finance-related news from Germany in English, ranked by source popularity.",
+                    "parameters": {
+                        "q": "finance",
+                        "country": "DE",
+                        "lang": "en",
+                        "sort_by": "rank"
+                    }
+                },
+                {
+                    "utterance": "Search for tech articles from sources ranked between 1 and 100, including media content.",
+                    "parameters": {
+                        "q": "tech",
+                        "from_rank": 1,
+                        "to_rank": 100,
+                        "media": "true",
+                        "topic": "tech"
+                    }
+                },
+                {
+                    "utterance": "Show me the latest news about COVID-19 in French, excluding Le Monde.",
+                    "parameters": {
+                        "q": "COVID-19",
+                        "lang": "fr",
+                        "not_sources": "lemonde.fr",
+                        "sort_by": "date"
+                    }
+                },
+                {
+                    "utterance": "Find articles about renewable energy from the past week, sorted by date.",
+                    "parameters": {
+                        "q": "renewable%20energy",
+                        "sort_by": "date",
+                        "from": "2023-10-01"
+                    }
+                },
+                {
+                    "utterance": "Search for business news in Italian from sources ranked in the top 1000.",
+                    "parameters": {
+                        "q": "business",
+                        "lang": "it",
+                        "from_rank": 1,
+                        "to_rank": 1000,
+                        "topic": "business"
+                    }
+                },
+                {
+                    "utterance": "Get articles about travel in Spanish, excluding articles from El Pa\u00eds.",
+                    "parameters": {
+                        "q": "travel",
+                        "lang": "es",
+                        "not_sources": "elpais.com",
+                        "topic": "travel"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/v1/search_enterprise",
+            "description": "Highly customizable search through our database. All filters and sorting options are allowed.",
+            "url": "https://newscatcher.p.rapidapi.com/v1/search_enterprise",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "String to search for. Has to be [URL-encoded](https://en.wikipedia.org/wiki/Percent-encoding)",
+                    "default": "Elon Musk",
+                    "required": true,
+                    "constraints": {
+                        "format": "URL-encoded"
+                    }
+                },
+                {
+                    "name": "link_begins_with",
+                    "type": "STRING",
+                    "description": "Filter on the prefix of the URL. \nFor example: `https://www.nytimes.com/2020/12/25/business` will give you all the articles for the exact date for **business** subject. \nBe aware that every news website has its own structure. Use this parameter only if you want to be precise in your search. In all other cases, use parameters that we provide you for deep search like `topic`, `from`, `to` etc.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "sort_by",
+                    "type": "STRING",
+                    "description": "- `relevancy` \u2014 the most relevant results first, \n- `date` \u2014 the most recently published results first, \n- `rank` \u2014 the results from the highest-ranked sources first",
+                    "default": "relevancy",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "relevancy",
+                                "date",
+                                "rank"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "topic",
+                    "type": "STRING",
+                    "description": "The topic to which you want to restrict the articles of your choice. This parameter is [experimental]. Accepted values are `news`, `sport`, `tech`, `world`, `finance`, `politics`, `business`, `economics`, `entertainment`,`beauty`,`travel`,`music`,`food`,`science`\n`news` usually means a general news feed (main headlines of a website).\n> Important: this parameter is [experimental]. Not all news articles are assigned with a `topic`, therefore, we cannot guarantee that 100% of topics talking about technology will be assigned a `tech` label.\n> One topic at a time, for example `topic=sport`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "news",
+                                "sport",
+                                "tech",
+                                "world",
+                                "finance",
+                                "politics",
+                                "business",
+                                "economics",
+                                "entertainment",
+                                "beauty",
+                                "travel",
+                                "music",
+                                "food",
+                                "science"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Until which point in time to search for. The default timezone is UTC",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "to_rank",
+                    "type": "NUMBER",
+                    "description": "Upper boundary of the rank of news website to filter by",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "from_rank",
+                    "type": "NUMBER",
+                    "description": "Lowest boundary of the rank of news website to filter by. **Important**: lower rank means that a source is more popular",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Specifies the language of the search.  Allowed values are:\n`af`, `ar`, `bg`, `bn`, `ca`,`cn`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `fa`, `fi`, `fr`, `gu`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mr`, `ne`, `nl`, `no`, `pa`, `pl`, `pt`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`,`tw`, `uk`, `ur`, `vi`. \nSpecifying the language will make your search more relevant",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "af",
+                                "ar",
+                                "bg",
+                                "bn",
+                                "ca",
+                                "cn",
+                                "cs",
+                                "cy",
+                                "da",
+                                "de",
+                                "el",
+                                "en",
+                                "es",
+                                "et",
+                                "fa",
+                                "fi",
+                                "fr",
+                                "gu",
+                                "he",
+                                "hi",
+                                "hr",
+                                "hu",
+                                "id",
+                                "it",
+                                "ja",
+                                "kn",
+                                "ko",
+                                "lt",
+                                "lv",
+                                "mk",
+                                "ml",
+                                "mr",
+                                "ne",
+                                "nl",
+                                "no",
+                                "pa",
+                                "pl",
+                                "pt",
+                                "ro",
+                                "ru",
+                                "sk",
+                                "sl",
+                                "so",
+                                "sq",
+                                "sv",
+                                "sw",
+                                "ta",
+                                "te",
+                                "th",
+                                "tl",
+                                "tr",
+                                "tw",
+                                "uk",
+                                "ur",
+                                "vi"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "How many articles to return per page. Defaults to 50, max is 100. Not included in Basic plan. ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100,
+                            "min": 1
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "ranked_only",
+                    "type": "STRING",
+                    "description": "Limit the search only for the sources which are in top 1 million online websites. Defaults to `True` (`False` if you want to turn it off). Unranked sources are assigned a rank that equals to `999999`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "True",
+                                "False"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "sources",
+                    "type": "STRING",
+                    "description": "One or more news resources to filter your search. It should be the normal form of the URL, for example, **[nytimes.com](http://nytimes.com/)**, **[theguardian.com](http://theguardian.com/)**\n> Comma separated string, for example `sources=nytimes.com,cnn.com,wsj.com`",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "search_in",
+                    "type": "STRING",
+                    "description": "By default, we search what you specified in `q` in both `title` and `summary` of the article. However, you can limit this to either `title` or `summary`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "title",
+                                "summary"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "media",
+                    "type": "STRING",
+                    "description": "Adds to the output of the call two more variables: `media` and `media_content`\n\nMedia - the main image published with an article \n\nmedia_content  - a comma-separated string of all images used in an article",
+                    "default": "True",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "True",
+                                "False"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "From which point in time to start the search. No specific format is required. \nE.g. (`2020/05/01`, `2020-05-01` ,`2020-05-01 12:54:14`, `2020-05-01 4:15am`, `yesterday 2:02 am`, `2020/05/01 12:55 EST`) .\nThe default timezone is UTC. **Defaults to one week ago at midnight UTC.**",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The country to which you want to narrow your search. This parameter is [experimental]. We advise you to use it in conjunction with the `lang` parameter. Accepts any [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "not_sources",
+                    "type": "STRING",
+                    "description": "One or more sources to be excluded from the search. \n> Comma separated string, for example `not_sources=nytimes.com,cnn.com,wsj.com`",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "The number of the page. Use it to scroll through the results. Defaults to 1",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find recent articles about climate change published in Spanish.",
+                    "parameters": {
+                        "q": "climate%20change",
+                        "lang": "es",
+                        "sort_by": "date"
+                    }
+                },
+                {
+                    "utterance": "Show me tech articles from The Verge and TechCrunch about artificial intelligence.",
+                    "parameters": {
+                        "q": "artificial%20intelligence",
+                        "sources": "theverge.com,techcrunch.com",
+                        "topic": "tech"
+                    }
+                },
+                {
+                    "utterance": "Search for news articles about the Olympics in Japan, sorted by relevance.",
+                    "parameters": {
+                        "q": "Olympics",
+                        "country": "JP",
+                        "sort_by": "relevancy"
+                    }
+                },
+                {
+                    "utterance": "Find articles about travel in Italy from last month, excluding articles from CNN.",
+                    "parameters": {
+                        "q": "travel",
+                        "country": "IT",
+                        "from": "2023-09-01",
+                        "not_sources": "cnn.com"
+                    }
+                },
+                {
+                    "utterance": "Get the latest finance news from top-ranked sources.",
+                    "parameters": {
+                        "q": "finance",
+                        "sort_by": "rank",
+                        "ranked_only": "true"
+                    }
+                },
+                {
+                    "utterance": "Search for articles about space exploration in the title only, published in the last week.",
+                    "parameters": {
+                        "q": "space%20exploration",
+                        "search_in": "title",
+                        "from": "2023-10-01"
+                    }
+                },
+                {
+                    "utterance": "Find articles about health from sources ranked between 100 and 500.",
+                    "parameters": {
+                        "q": "health",
+                        "from_rank": 100,
+                        "to_rank": 500
+                    }
+                },
+                {
+                    "utterance": "Show me articles about music festivals in France, including media content.",
+                    "parameters": {
+                        "q": "music%20festivals",
+                        "country": "FR",
+                        "media": "true"
+                    }
+                },
+                {
+                    "utterance": "Search for articles about renewable energy from German sources, sorted by date.",
+                    "parameters": {
+                        "q": "renewable%20energy",
+                        "lang": "de",
+                        "sort_by": "date"
+                    }
+                },
+                {
+                    "utterance": "Find articles about politics from the New York Times and The Guardian, excluding opinion pieces.",
+                    "parameters": {
+                        "q": "politics",
+                        "sources": "nytimes.com,theguardian.com",
+                        "topic": "politics"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/v1/sources",
+            "description": "Returns a list of supported news websites for any topic, country, language, or any of those combined",
+            "url": "https://newscatcher.p.rapidapi.com/v1/sources",
+            "parameters": [
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Specifies the language of the search.  Allowed values are:\n`af`, `ar`, `bg`, `bn`, `ca`,`cn`, `cs`, `cy`, `da`, `de`, `el`, `en`, `es`, `et`, `fa`, `fi`, `fr`, `gu`, `he`, `hi`, `hr`, `hu`, `id`, `it`, `ja`, `kn`, `ko`, `lt`, `lv`, `mk`, `ml`, `mr`, `ne`, `nl`, `no`, `pa`, `pl`, `pt`, `ro`, `ru`, `sk`, `sl`, `so`, `sq`, `sv`, `sw`, `ta`, `te`, `th`, `tl`, `tr`,`tw`, `uk`, `ur`, `vi`. \n Specifying the language will make your search more relevant",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "af",
+                                "ar",
+                                "bg",
+                                "bn",
+                                "ca",
+                                "cn",
+                                "cs",
+                                "cy",
+                                "da",
+                                "de",
+                                "el",
+                                "en",
+                                "es",
+                                "et",
+                                "fa",
+                                "fi",
+                                "fr",
+                                "gu",
+                                "he",
+                                "hi",
+                                "hr",
+                                "hu",
+                                "id",
+                                "it",
+                                "ja",
+                                "kn",
+                                "ko",
+                                "lt",
+                                "lv",
+                                "mk",
+                                "ml",
+                                "mr",
+                                "ne",
+                                "nl",
+                                "no",
+                                "pa",
+                                "pl",
+                                "pt",
+                                "ro",
+                                "ru",
+                                "sk",
+                                "sl",
+                                "so",
+                                "sq",
+                                "sv",
+                                "sw",
+                                "ta",
+                                "te",
+                                "th",
+                                "tl",
+                                "tr",
+                                "tw",
+                                "uk",
+                                "ur",
+                                "vi"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "topic",
+                    "type": "STRING",
+                    "description": "The topic to which you want to restrict the articles of your choice. This parameter is [experimental]. Accepted values are `news`, `sport`, `tech`, `world`, `finance`, `politics`, `business`, `economics`, `entertainment`,`beauty`,`travel`,`music`,`food`,`science`\n- `news` usually means a general news feed (main headlines of a website).\n> Important: this parameter is [experimental]. Not all news articles are assigned with a `topic`, therefore, we cannot guarantee that 100% of topics talking about technology will be assigned a `tech` label.\n> One topic at a time, for example, `topic=sport`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "news",
+                                "sport",
+                                "tech",
+                                "world",
+                                "finance",
+                                "politics",
+                                "business",
+                                "economics",
+                                "entertainment",
+                                "beauty",
+                                "travel",
+                                "music",
+                                "food",
+                                "science"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The country to which you want to narrow your search. This parameter is [experimental]. We advise you to use it in conjunction with the `lang` parameter. Accepts any [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) codes",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me news websites in Spanish?",
+                    "parameters": {
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "What are some sports news sources in Germany?",
+                    "parameters": {
+                        "lang": "de",
+                        "topic": "sport",
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "Find me technology-related news websites in Japan.",
+                    "parameters": {
+                        "lang": "ja",
+                        "topic": "tech",
+                        "country": "JP"
+                    }
+                },
+                {
+                    "utterance": "I need a list of French news websites.",
+                    "parameters": {
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Show me travel news sources in Italy.",
+                    "parameters": {
+                        "topic": "travel",
+                        "country": "IT"
+                    }
+                },
+                {
+                    "utterance": "What are the top business news websites in the United States?",
+                    "parameters": {
+                        "topic": "business",
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "Can you find me entertainment news sources in India?",
+                    "parameters": {
+                        "topic": "entertainment",
+                        "country": "IN"
+                    }
+                },
+                {
+                    "utterance": "I\u2019m looking for science news websites in Russian.",
+                    "parameters": {
+                        "lang": "ru",
+                        "topic": "science"
+                    }
+                },
+                {
+                    "utterance": "Find me news sources in Brazil.",
+                    "parameters": {
+                        "country": "BR"
+                    }
+                },
+                {
+                    "utterance": "What are some food-related news websites in French?",
+                    "parameters": {
+                        "lang": "fr",
+                        "topic": "food"
+                    }
+                }
+            ]
+        }
+    ]
+}

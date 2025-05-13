@@ -1,0 +1,151 @@
+{
+    "name": "Covid-19 by API-Ninjas",
+    "description": "Covid-19 case count and death data for every country in the world. See more info at https://api-ninjas.com/api/covid19.",
+    "url": "https://rapidapi.com/apininjas/api/covid-19-by-api-ninjas/",
+    "api_methods": [
+        {
+            "name": "/v1/covid19",
+            "description": "API Ninjas Covid19 API endpoint. Either **date** or **country** must be set.",
+            "url": "https://covid-19-by-api-ninjas.p.rapidapi.com/v1/covid19",
+            "parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "type of data to retrieve. Must be either cases or deaths. If not set, cases will be used by default.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "cases",
+                                "deaths"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "country name (case insensitive).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "date, country: Either date or country must be set."
+                    }
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "date to retrieve single-day snapshot. Must be in the form of YYYY-MM-DD (e.g. 2022-01-01)",
+                    "default": "2022-01-01",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD",
+                        "inter-dependency": "date, country: Either date or country must be set."
+                    }
+                },
+                {
+                    "name": "county",
+                    "type": "STRING",
+                    "description": "county name for US states (case insensitive). For United States data only. Must be used in conjunction with country (United States) and region (e.g. California).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "county, country, region: county must be used in conjunction with country (United States) and region."
+                    }
+                },
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "administrative region (also known as state or province in many countries) name (case insensitive). Must be used in conjunction with country. If not set, countries with data broken down by administrative regions will return separate data for each region.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "region, country: region must be used in conjunction with country."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "How many Covid-19 cases were reported in Italy on March 15, 2023?",
+                    "parameters": {
+                        "type": "cases",
+                        "country": "Italy",
+                        "date": "2023-03-15"
+                    }
+                },
+                {
+                    "utterance": "Show me the Covid-19 death count for the United States.",
+                    "parameters": {
+                        "type": "deaths",
+                        "country": "United States"
+                    }
+                },
+                {
+                    "utterance": "What were the Covid-19 cases in Brazil on April 10, 2023?",
+                    "parameters": {
+                        "type": "cases",
+                        "country": "Brazil",
+                        "date": "2023-04-10"
+                    }
+                },
+                {
+                    "utterance": "Give me the Covid-19 death statistics for Germany.",
+                    "parameters": {
+                        "type": "deaths",
+                        "country": "Germany"
+                    }
+                },
+                {
+                    "utterance": "How many Covid-19 cases were there in California on January 5, 2023?",
+                    "parameters": {
+                        "type": "cases",
+                        "country": "United States",
+                        "region": "California",
+                        "date": "2023-01-05"
+                    }
+                },
+                {
+                    "utterance": "What is the Covid-19 death count for New York County in New York?",
+                    "parameters": {
+                        "type": "deaths",
+                        "country": "United States",
+                        "region": "New York",
+                        "county": "New York"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the Covid-19 cases for France?",
+                    "parameters": {
+                        "type": "cases",
+                        "country": "France"
+                    }
+                },
+                {
+                    "utterance": "I need the Covid-19 death data for India on February 20, 2023.",
+                    "parameters": {
+                        "type": "deaths",
+                        "country": "India",
+                        "date": "2023-02-20"
+                    }
+                },
+                {
+                    "utterance": "What were the Covid-19 cases in Japan on May 1, 2023?",
+                    "parameters": {
+                        "type": "cases",
+                        "country": "Japan",
+                        "date": "2023-05-01"
+                    }
+                },
+                {
+                    "utterance": "Tell me the Covid-19 death numbers for Texas.",
+                    "parameters": {
+                        "type": "deaths",
+                        "country": "United States",
+                        "region": "Texas"
+                    }
+                }
+            ]
+        }
+    ]
+}

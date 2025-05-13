@@ -1,0 +1,611 @@
+{
+    "name": "Real-Time Product Search",
+    "description": "Extremely Fast and Simple API for searching product offers and reviews across multiple major sources. With just one API, users can access comprehensive and real-time product information, simplifying the search process and improving efficiency.",
+    "url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-product-search/",
+    "api_methods": [
+        {
+            "name": "Search",
+            "description": "Search for product offers - both free-form queries and GTIN/EAN are supported. Each page contains up to 30 product offers. Infinite pagination/scrolling is supported using the *page* parameter.",
+            "url": "https://real-time-product-search.p.rapidapi.com/search",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Free-form search query or a GTIN/EAN (e.g. *0194252014233*).",
+                    "default": "Nike shoes",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "min_rating",
+                    "type": "ENUM",
+                    "description": "Return products with rating greater than the specified value.\nPossible values: `1`, `2`, `3`, `4`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "1",
+                                "2",
+                                "3",
+                                "4"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "product_condition",
+                    "type": "ENUM",
+                    "description": "Only return products with a specific condition.\nPossible values: `NEW`, `USED`, `REFURBISHED`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "NEW",
+                                "USED",
+                                "REFURBISHED"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "max_shipping_days",
+                    "type": "NUMBER",
+                    "description": "Only return product offers that offer shipping/delivery of up to specific number of days (i.e. shipping speed).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "store_id",
+                    "type": "STRING",
+                    "description": "Only return product offers from specific stores (comma separated list of store id's). Store IDs can be obtained from the Google Shopping URL after using the **Seller** filter by taking the part after the `merchagg:` variable within the `tbs` parameter.\n\nWhen filtering for a certain Seller / Store on Google Shopping, a URL similar to the following is shown on the address bar: `https://www.google.com/search?gl=us&tbm=shop&q=shoes&tbs=mr:1,merchagg:m100456214|m114373355`, in that case, the Store IDs are **m100456214** and **m114373355** - to filter for these stores, set store_id=m100456214,m114373355.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "on_sale",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that are currently on sale.\nDefault: `false`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "free_returns",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that offer free returns.\nDefault: `false`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "free_shipping",
+                    "type": "BOOLEAN",
+                    "description": "Only return product offers that offer free shipping/delivery.\nDefault: `false`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "max_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price lower than a certain value.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1 code"
+                    }
+                },
+                {
+                    "name": "sort_by",
+                    "type": "ENUM",
+                    "description": "Sort product offers by best match, top rated, lowest or highest price.\nPossible values: `BEST_MATCH`, `TOP_RATED`, `LOWEST_PRICE`, `HIGHEST_PRICE`.\nDefault: `BEST_MATCH`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "BEST_MATCH",
+                                "TOP_RATED",
+                                "LOWEST_PRICE",
+                                "HIGHEST_PRICE"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country to return offers for.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2 code"
+                    }
+                },
+                {
+                    "name": "min_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price greater than a certain value.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Results page to return.\nDefault: `1`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find me the best deals on wireless headphones with a rating of at least 4 stars.",
+                    "parameters": {
+                        "q": "wireless headphones",
+                        "min_rating": "4"
+                    }
+                },
+                {
+                    "utterance": "Show me new laptops available in Germany with free shipping.",
+                    "parameters": {
+                        "q": "laptops",
+                        "product_condition": "NEW",
+                        "free_shipping": true,
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "Search for refurbished smartphones under $300 that offer free returns.",
+                    "parameters": {
+                        "q": "smartphones",
+                        "product_condition": "REFURBISHED",
+                        "max_price": 300,
+                        "free_returns": true
+                    }
+                },
+                {
+                    "utterance": "Can you find me running shoes from specific stores with a maximum shipping time of 3 days?",
+                    "parameters": {
+                        "q": "running shoes",
+                        "store_id": "m100456214,m114373355",
+                        "max_shipping_days": 3
+                    }
+                },
+                {
+                    "utterance": "I'm looking for coffee machines on sale in France, sorted by lowest price.",
+                    "parameters": {
+                        "q": "coffee machines",
+                        "on_sale": true,
+                        "sort_by": "LOWEST_PRICE",
+                        "country": "FR"
+                    }
+                },
+                {
+                    "utterance": "Find me the top-rated blenders with a minimum price of $50.",
+                    "parameters": {
+                        "q": "blenders",
+                        "min_rating": "4",
+                        "min_price": 50,
+                        "sort_by": "TOP_RATED"
+                    }
+                },
+                {
+                    "utterance": "Show me used cameras available in Canada with free shipping and free returns.",
+                    "parameters": {
+                        "q": "cameras",
+                        "product_condition": "USED",
+                        "free_shipping": true,
+                        "free_returns": true,
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "Search for gaming chairs with a maximum price of $200 and a rating of at least 3 stars.",
+                    "parameters": {
+                        "q": "gaming chairs",
+                        "max_price": 200,
+                        "min_rating": "3"
+                    }
+                },
+                {
+                    "utterance": "Find me the best match for smartwatches in Spanish.",
+                    "parameters": {
+                        "q": "smartwatches",
+                        "language": "es"
+                    }
+                },
+                {
+                    "utterance": "Show me the highest-priced designer handbags available in Italy.",
+                    "parameters": {
+                        "q": "designer handbags",
+                        "sort_by": "HIGHEST_PRICE",
+                        "country": "IT"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Offers",
+            "description": "Get all offers available for a product.",
+            "url": "https://real-time-product-search.p.rapidapi.com/product-offers",
+            "parameters": [
+                {
+                    "name": "product_id",
+                    "type": "STRING",
+                    "description": "Product id of the product for which to fetch offers.",
+                    "default": "11577822456427762145",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country to return offers for.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the offers for the iPhone 13 Pro Max.",
+                    "parameters": {
+                        "product_id": "iPhone 13 Pro Max"
+                    }
+                },
+                {
+                    "utterance": "What are the available deals for the Sony WH-1000XM4 in Canada?",
+                    "parameters": {
+                        "product_id": "Sony WH-1000XM4",
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "Can you find the best prices for the Samsung Galaxy S21 in French?",
+                    "parameters": {
+                        "product_id": "Samsung Galaxy S21",
+                        "language": "fr"
+                    }
+                },
+                {
+                    "utterance": "I need to see the offers for the MacBook Air M1 in Germany.",
+                    "parameters": {
+                        "product_id": "MacBook Air M1",
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "Find the latest deals for the Bose QuietComfort 45 in Spanish.",
+                    "parameters": {
+                        "product_id": "Bose QuietComfort 45",
+                        "language": "es"
+                    }
+                },
+                {
+                    "utterance": "What are the current offers for the Google Pixel 6 in the UK?",
+                    "parameters": {
+                        "product_id": "Google Pixel 6",
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "Show me the best prices for the Dell XPS 13 in Italian.",
+                    "parameters": {
+                        "product_id": "Dell XPS 13",
+                        "language": "it"
+                    }
+                },
+                {
+                    "utterance": "Can you find the offers for the Apple Watch Series 7 in Japan?",
+                    "parameters": {
+                        "product_id": "Apple Watch Series 7",
+                        "country": "JP"
+                    }
+                },
+                {
+                    "utterance": "I want to see the deals for the LG OLED C1 in Portuguese.",
+                    "parameters": {
+                        "product_id": "LG OLED C1",
+                        "language": "pt"
+                    }
+                },
+                {
+                    "utterance": "What are the available offers for the Microsoft Surface Laptop 4 in Australia?",
+                    "parameters": {
+                        "product_id": "Microsoft Surface Laptop 4",
+                        "country": "AU"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Reviews",
+            "description": "Get all product reviews. Infinite pagination/scrolling is supported using the *limit* and *offset* parameters.",
+            "url": "https://real-time-product-search.p.rapidapi.com/product-reviews",
+            "parameters": [
+                {
+                    "name": "product_id",
+                    "type": "STRING",
+                    "description": "Product id of the product for which to fetch reviews.",
+                    "default": "11577822456427762145",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "Number of reviews to skip.\nValid values: integers from 0-30000\nDefault: `0`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 30000,
+                            "min": 0
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "rating",
+                    "type": "STRING",
+                    "description": "Only return reviews with user rating greater than the specified value.\nValid values: 1-5.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 5,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "Maximum number of product reviews to return.\nValid values: integers from 0-100.\nDefault: `10`.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100,
+                            "min": 0
+                        },
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me reviews for the iPhone 13 Pro Max?",
+                    "parameters": {
+                        "product_id": "iPhone 13 Pro Max"
+                    }
+                },
+                {
+                    "utterance": "What are the reviews for the Sony WH-1000XM4 headphones in Japan?",
+                    "parameters": {
+                        "product_id": "Sony WH-1000XM4",
+                        "country": "JP"
+                    }
+                },
+                {
+                    "utterance": "Find reviews for the Samsung Galaxy S21 in French.",
+                    "parameters": {
+                        "product_id": "Samsung Galaxy S21",
+                        "language": "fr"
+                    }
+                },
+                {
+                    "utterance": "Show me reviews with a rating above 4 for the MacBook Air M1.",
+                    "parameters": {
+                        "product_id": "MacBook Air M1",
+                        "rating": "4"
+                    }
+                },
+                {
+                    "utterance": "Get reviews for the Canon EOS R5 in Germany.",
+                    "parameters": {
+                        "product_id": "Canon EOS R5",
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "What are the reviews for the Bose QuietComfort 45 in Spanish?",
+                    "parameters": {
+                        "product_id": "Bose QuietComfort 45",
+                        "language": "es"
+                    }
+                },
+                {
+                    "utterance": "Find reviews with a rating above 3 for the Google Pixel 6 in Canada.",
+                    "parameters": {
+                        "product_id": "Google Pixel 6",
+                        "country": "CA",
+                        "rating": "3"
+                    }
+                },
+                {
+                    "utterance": "Show me reviews for the LG OLED C1 TV in Italian.",
+                    "parameters": {
+                        "product_id": "LG OLED C1 TV",
+                        "language": "it"
+                    }
+                },
+                {
+                    "utterance": "What are the reviews for the Dyson V11 vacuum cleaner in the UK?",
+                    "parameters": {
+                        "product_id": "Dyson V11",
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "Find reviews with a rating above 2 for the Amazon Echo Dot in French.",
+                    "parameters": {
+                        "product_id": "Amazon Echo Dot",
+                        "language": "fr",
+                        "rating": "2"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Details",
+            "description": "Get the details of a specific product by product id. Returns the full product details in addition to reviews sample, photos, product specs and more information.",
+            "url": "https://real-time-product-search.p.rapidapi.com/product-details",
+            "parameters": [
+                {
+                    "name": "product_id",
+                    "type": "STRING",
+                    "description": "Product id of the product for which to get full details.",
+                    "default": "11577822456427762145",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Country code of the region/country to return offers for.\nValid values: see https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2\nDefault: `us`.",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language of the results.\nValid values: see https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\nDefault: `en`.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the details for the iPhone 13 Pro Max?",
+                    "parameters": {
+                        "product_id": "iPhone 13 Pro Max"
+                    }
+                },
+                {
+                    "utterance": "I need the full details for the Sony WH-1000XM4 headphones in Canada.",
+                    "parameters": {
+                        "product_id": "Sony WH-1000XM4",
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "What are the specifications for the Samsung Galaxy S21 Ultra in French?",
+                    "parameters": {
+                        "product_id": "Samsung Galaxy S21 Ultra",
+                        "language": "fr"
+                    }
+                },
+                {
+                    "utterance": "Please provide the product details for the Dyson V11 vacuum cleaner in Germany.",
+                    "parameters": {
+                        "product_id": "Dyson V11",
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the reviews and photos for the Apple Watch Series 7 in Spanish?",
+                    "parameters": {
+                        "product_id": "Apple Watch Series 7",
+                        "language": "es"
+                    }
+                },
+                {
+                    "utterance": "I want to see the full details for the Bose QuietComfort 45 headphones in the UK.",
+                    "parameters": {
+                        "product_id": "Bose QuietComfort 45",
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "What are the product specs for the Canon EOS R5 in Japanese?",
+                    "parameters": {
+                        "product_id": "Canon EOS R5",
+                        "language": "ja"
+                    }
+                },
+                {
+                    "utterance": "Show me the details for the LG OLED C1 TV in Australia.",
+                    "parameters": {
+                        "product_id": "LG OLED C1",
+                        "country": "AU"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the product information for the Microsoft Surface Laptop 4 in German?",
+                    "parameters": {
+                        "product_id": "Microsoft Surface Laptop 4",
+                        "language": "de"
+                    }
+                },
+                {
+                    "utterance": "I need the full details for the Google Pixel 6 Pro in France.",
+                    "parameters": {
+                        "product_id": "Google Pixel 6 Pro",
+                        "country": "FR"
+                    }
+                }
+            ]
+        }
+    ]
+}

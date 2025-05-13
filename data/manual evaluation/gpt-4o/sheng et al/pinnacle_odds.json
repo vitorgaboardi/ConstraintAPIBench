@@ -1,0 +1,129 @@
+{
+    "name": "Pinnacle Odds",
+    "description": "Pinnacle Sport API is a RESTful service for getting pre-match and live odds. Historical odds, score and results. Updates without delay. Sports: Soccer, tennis, basketball, hockey, american football, MMA, baseball. **Support**:  [tipsters@rapi.one](mailto:tipsters@rapi.one) / t.me/api_tipsters **Other sports api:** https://rapi.one",
+    "url": "https://rapidapi.com/tipsters/api/pinnacle-odds/",
+    "api_methods": [
+        {
+            "name": "List of special markets",
+            "description": "Get a list of special markets. Always first issue a snapshot call and continue with the delta calls. Calls return changes since the provided `since` value. You must always use the since parameter, after the first call. Please note that prematch and live events are different",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/special-markets",
+            "parameters": [
+                {
+                    "name": "sport_id",
+                    "type": "NUMBER",
+                    "description": "Sport id",
+                    "default": 1,
+                    "required": true
+                },
+                {
+                    "name": "is_have_odds",
+                    "type": "BOOLEAN",
+                    "description": "`1` or `0`. You can only get matches for which there are already open odds, or matches that will be given odds in the future",
+                    "default": true,
+                    "required": false
+                },
+                {
+                    "name": "league_ids",
+                    "type": "NUMBER",
+                    "description": "League id",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "event_type",
+                    "type": "STRING",
+                    "description": "Status: `prematch`, `live`  Please note that prematch and live events are different",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "since",
+                    "type": "NUMBER",
+                    "description": "Since UTC time. Calls return changes since the provided `since` value.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "event_ids",
+                    "type": "NUMBER",
+                    "description": "Event id",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the special markets for soccer with open odds?",
+                    "parameters": {
+                        "sport_id": 1,
+                        "is_have_odds": true
+                    }
+                },
+                {
+                    "utterance": "I need the list of special markets for basketball events that are live.",
+                    "parameters": {
+                        "sport_id": 2,
+                        "event_type": "live"
+                    }
+                },
+                {
+                    "utterance": "Show me the special markets for tennis since the last update.",
+                    "parameters": {
+                        "sport_id": 3,
+                        "since": 1234567890
+                    }
+                },
+                {
+                    "utterance": "Get the special markets for hockey in league 5.",
+                    "parameters": {
+                        "sport_id": 4,
+                        "league_ids": 5
+                    }
+                },
+                {
+                    "utterance": "What are the special markets for American football with event ID 10?",
+                    "parameters": {
+                        "sport_id": 5,
+                        "event_ids": 10
+                    }
+                },
+                {
+                    "utterance": "Can you list the special markets for MMA that are prematch?",
+                    "parameters": {
+                        "sport_id": 6,
+                        "event_type": "prematch"
+                    }
+                },
+                {
+                    "utterance": "I want to see the special markets for baseball with odds available.",
+                    "parameters": {
+                        "sport_id": 7,
+                        "is_have_odds": true
+                    }
+                },
+                {
+                    "utterance": "Provide the special markets for soccer events in league 3 that are live.",
+                    "parameters": {
+                        "sport_id": 1,
+                        "league_ids": 3,
+                        "event_type": "live"
+                    }
+                },
+                {
+                    "utterance": "Get me the special markets for tennis since the timestamp 987654321.",
+                    "parameters": {
+                        "sport_id": 3,
+                        "since": 987654321
+                    }
+                },
+                {
+                    "utterance": "Show the special markets for basketball with event ID 20.",
+                    "parameters": {
+                        "sport_id": 2,
+                        "event_ids": 20
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1989 @@
+{
+    "name": "Shazam",
+    "description": "Identify any song. Discover, artists, lyrics, videos & playlists to create a song detector site/application such as shazam.com",
+    "url": "https://rapidapi.com/apidojo/api/shazam/",
+    "api_methods": [
+        {
+            "name": "shazam-events/list",
+            "description": "List future events",
+            "url": "https://shazam.p.rapidapi.com/shazam-events/list",
+            "parameters": [
+                {
+                    "name": "artistId",
+                    "type": "STRING",
+                    "description": "The value of 'artist->adamid' field returned in \u2026/search OR \u2026/songs/v2/detect OR \u2026/songs/get-details endpoint\nThe value of 'artists->id' field returned in \u2026/shazam-songs/get-details OR \u2026/albums/get-details OR \u2026/albums/get-related-artist",
+                    "default": "73406786",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "format": "language code"
+                    }
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "The date to list events from",
+                    "default": "2022-12-31",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of items per page, for paging purpose",
+                    "default": "50",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The page index, for paging purpose",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "The date to list events to. Ex : 2023-01-15",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the upcoming events for Taylor Swift?",
+                    "parameters": {
+                        "artistId": "Taylor Swift"
+                    }
+                },
+                {
+                    "utterance": "List the future events for Ed Sheeran in Spanish.",
+                    "parameters": {
+                        "artistId": "Ed Sheeran",
+                        "l": "es-ES"
+                    }
+                },
+                {
+                    "utterance": "What are the events for Drake starting from January 1st, 2024?",
+                    "parameters": {
+                        "artistId": "Drake",
+                        "from": "2024-01-01"
+                    }
+                },
+                {
+                    "utterance": "Show me the events for Billie Eilish happening until March 15th, 2024.",
+                    "parameters": {
+                        "artistId": "Billie Eilish",
+                        "to": "2024-03-15"
+                    }
+                },
+                {
+                    "utterance": "I want to see the events for The Weeknd from February 1st to February 28th, 2024.",
+                    "parameters": {
+                        "artistId": "The Weeknd",
+                        "from": "2024-02-01",
+                        "to": "2024-02-28"
+                    }
+                },
+                {
+                    "utterance": "List future events for Adele in French.",
+                    "parameters": {
+                        "artistId": "Adele",
+                        "l": "fr-FR"
+                    }
+                },
+                {
+                    "utterance": "Can you find the events for BTS starting from April 10th, 2024?",
+                    "parameters": {
+                        "artistId": "BTS",
+                        "from": "2024-04-10"
+                    }
+                },
+                {
+                    "utterance": "What are the upcoming events for Coldplay in German?",
+                    "parameters": {
+                        "artistId": "Coldplay",
+                        "l": "de-DE"
+                    }
+                },
+                {
+                    "utterance": "Show me the events for Justin Bieber happening until May 20th, 2024.",
+                    "parameters": {
+                        "artistId": "Justin Bieber",
+                        "to": "2024-05-20"
+                    }
+                },
+                {
+                    "utterance": "List the future events for Ariana Grande from March 1st to March 31st, 2024.",
+                    "parameters": {
+                        "artistId": "Ariana Grande",
+                        "from": "2024-03-01",
+                        "to": "2024-03-31"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "artists/get-latest-release",
+            "description": "Get latest release of an artist",
+            "url": "https://shazam.p.rapidapi.com/artists/get-latest-release",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'artist->adamid' field returned in .../search OR .../songs/v2/detect OR .../songs/get-details endpoint\nThe value of 'artists->id' field returned in .../shazam-songs/get-details OR .../albums/get-details OR .../albums/get-related-artist",
+                    "default": "567072",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the latest release from Taylor Swift?",
+                    "parameters": {
+                        "id": "Taylor Swift"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the newest album by Drake?",
+                    "parameters": {
+                        "id": "Drake"
+                    }
+                },
+                {
+                    "utterance": "Show me the most recent song released by Ed Sheeran.",
+                    "parameters": {
+                        "id": "Ed Sheeran"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the latest track from Billie Eilish.",
+                    "parameters": {
+                        "id": "Billie Eilish"
+                    }
+                },
+                {
+                    "utterance": "What is the newest release by The Weeknd?",
+                    "parameters": {
+                        "id": "The Weeknd"
+                    }
+                },
+                {
+                    "utterance": "Find the latest music release from Ariana Grande.",
+                    "parameters": {
+                        "id": "Ariana Grande"
+                    }
+                },
+                {
+                    "utterance": "Get me the most recent album by Post Malone.",
+                    "parameters": {
+                        "id": "Post Malone"
+                    }
+                },
+                {
+                    "utterance": "What's the latest single from Justin Bieber?",
+                    "parameters": {
+                        "id": "Justin Bieber"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the newest release by BTS?",
+                    "parameters": {
+                        "id": "BTS"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the latest track from Dua Lipa.",
+                    "parameters": {
+                        "id": "Dua Lipa"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "artists/get-summary",
+            "description": "Get summary information related to an artist",
+            "url": "https://shazam.p.rapidapi.com/artists/get-summary",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'artist->adamid' field returned in .../search OR .../songs/v2/detect OR .../songs/get-details endpoint\nThe value of 'artists->id' field returned in .../shazam-songs/get-details OR .../albums/get-details OR .../albums/get-related-artist",
+                    "default": "567072",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me a summary of the artist with ID 567072?",
+                    "parameters": {
+                        "id": "567072"
+                    }
+                },
+                {
+                    "utterance": "I need information about the artist whose ID is 123456.",
+                    "parameters": {
+                        "id": "123456"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the artist with the ID 789012.",
+                    "parameters": {
+                        "id": "789012"
+                    }
+                },
+                {
+                    "utterance": "What can you tell me about the artist with ID 345678?",
+                    "parameters": {
+                        "id": "345678"
+                    }
+                },
+                {
+                    "utterance": "Fetch the summary for the artist with ID 901234.",
+                    "parameters": {
+                        "id": "901234"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know more about the artist with ID 234567.",
+                    "parameters": {
+                        "id": "234567"
+                    }
+                },
+                {
+                    "utterance": "Provide details for the artist with ID 890123.",
+                    "parameters": {
+                        "id": "890123"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the summary of the artist with ID 456789?",
+                    "parameters": {
+                        "id": "456789"
+                    }
+                },
+                {
+                    "utterance": "Get me the artist summary for ID 678901.",
+                    "parameters": {
+                        "id": "678901"
+                    }
+                },
+                {
+                    "utterance": "I want to see the summary of the artist with ID 234890.",
+                    "parameters": {
+                        "id": "234890"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/detect",
+            "description": "You may check the tutorial at https://rapidapi.com/apidojo/api/shazam/tutorials.\nDetect songs from raw sound data. The raw sound data must be 44100Hz, 1 channel (Mono), signed 16 bit PCM little endian. Other types of media are NOT supported, such as : mp3, wav, etc... or need to be converted to uncompressed raw data. If the result is empty, your request data must be in wrong format in most case. Encoded base64 string of byte[] that generated from raw data less than 500KB (3-5 seconds sample are good enough for detection) will be sent via body as plain text",
+            "url": "https://shazam.p.rapidapi.com/songs/detect",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you identify this song from the audio clip I just recorded?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What's the name of the song playing right now?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I have a short audio sample. Can you tell me which song it is?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Help me find the artist of this track.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you detect the song from this sound snippet?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Identify the song from this raw audio data.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What song is this? I have a few seconds of audio.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me the lyrics of the song playing in this clip?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to know the title of the song from this audio sample.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you find out which song is in this recording?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "songs/get-related-artist",
+            "description": "Get artist related to a song",
+            "url": "https://shazam.p.rapidapi.com/songs/get-related-artist",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'songs->id' field returned from .../shazam-songs/get-details endpoint",
+                    "default": "1217912247",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find artists related to the song with ID 1217912247?",
+                    "parameters": {
+                        "id": "1217912247"
+                    }
+                },
+                {
+                    "utterance": "Show me artists similar to the song identified by ID 987654321.",
+                    "parameters": {
+                        "id": "987654321"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know which artists are related to the song with ID 234567890.",
+                    "parameters": {
+                        "id": "234567890"
+                    }
+                },
+                {
+                    "utterance": "Get me a list of artists connected to the song with ID 345678901.",
+                    "parameters": {
+                        "id": "345678901"
+                    }
+                },
+                {
+                    "utterance": "Who are the related artists for the song with ID 456789012?",
+                    "parameters": {
+                        "id": "456789012"
+                    }
+                },
+                {
+                    "utterance": "Find artists associated with the song ID 567890123.",
+                    "parameters": {
+                        "id": "567890123"
+                    }
+                },
+                {
+                    "utterance": "Which artists are linked to the song with ID 678901234?",
+                    "parameters": {
+                        "id": "678901234"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the artists related to the song ID 789012345?",
+                    "parameters": {
+                        "id": "789012345"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see artists similar to the song with ID 890123456.",
+                    "parameters": {
+                        "id": "890123456"
+                    }
+                },
+                {
+                    "utterance": "Please show me artists connected to the song identified by ID 901234567.",
+                    "parameters": {
+                        "id": "901234567"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/v2/get-details",
+            "description": "Get details information of specific song",
+            "url": "https://shazam.p.rapidapi.com/songs/v2/get-details",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'songs->id' field returned from .../shazam-songs/get-details endpoint",
+                    "default": "1217912247",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "format": "language code"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me details about the song with ID 1217912247?",
+                    "parameters": {
+                        "id": "1217912247"
+                    }
+                },
+                {
+                    "utterance": "I need information on the song identified by ID 987654321.",
+                    "parameters": {
+                        "id": "987654321"
+                    }
+                },
+                {
+                    "utterance": "What are the details for the song with ID 456123789?",
+                    "parameters": {
+                        "id": "456123789"
+                    }
+                },
+                {
+                    "utterance": "Please provide the song details for ID 321654987 in Spanish.",
+                    "parameters": {
+                        "id": "321654987",
+                        "l": "es-ES"
+                    }
+                },
+                {
+                    "utterance": "Fetch the song information for ID 654987321 with French language details.",
+                    "parameters": {
+                        "id": "654987321",
+                        "l": "fr-FR"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know more about the song with ID 789123456.",
+                    "parameters": {
+                        "id": "789123456"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the song details for ID 147258369 in German?",
+                    "parameters": {
+                        "id": "147258369",
+                        "l": "de-DE"
+                    }
+                },
+                {
+                    "utterance": "Get me the details of the song with ID 963852741.",
+                    "parameters": {
+                        "id": "963852741"
+                    }
+                },
+                {
+                    "utterance": "I want to see the song information for ID 852741963 in Italian.",
+                    "parameters": {
+                        "id": "852741963",
+                        "l": "it-IT"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the details for the song with ID 741963852?",
+                    "parameters": {
+                        "id": "741963852"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/v2/detect",
+            "description": "You may check the tutorial at https://rapidapi.com/apidojo/api/shazam/tutorials.\nDetect songs from raw sound data. The raw sound data must be 44100Hz, 1 channel (Mono), signed 16 bit PCM little endian. Other types of media are NOT supported, such as : mp3, wav, etc... or need to be converted to uncompressed raw data. If the result is empty, your request data must be in wrong format in most case. Encoded base64 string of byte[] that generated from raw data less than 500KB (3-5 seconds sample are good enough for detection) will be sent via body as plain text",
+            "url": "https://shazam.p.rapidapi.com/songs/v2/detect",
+            "parameters": [
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "User's timezone",
+                    "default": "America/Chicago",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "timestamp",
+                    "type": "STRING",
+                    "description": "This parameter is used to indicate that you are detecting the same song while making different calls in case the previous portion of sound cannot be recognized successfully. You simply use the same unix timestamp (milliseconds) which is the starting time of first sound portion of detecting progress. This parameter must be come along with \\\"samplems\\\" parameter. Ex : 1591884466431",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "timestamp, samplems: timestamp must be provided along with samplems."
+                    }
+                },
+                {
+                    "name": "samplems",
+                    "type": "STRING",
+                    "description": "The samplems in milliseconds including the total duration of previous sound portions if any. Otherwise just provide the samplems of the current sound portion. Ex : First portion is 5040, second portion is 9040, etc...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "timestamp, samplems: samplems must be provided along with timestamp."
+                    }
+                },
+                {
+                    "name": "identifier",
+                    "type": "STRING",
+                    "description": "This parameter is used to indicate that you are detecting the same song while making different calls in case the previous portion of sound cannot be recognized successfully. You simply use the same id string while detecting the same song. This parameter must be come along with \\\"samplems\\\" parameter.\nThe format is xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, Ex : 21abe4d2-0fe9-4be4-8492-0ecf26960f7e. ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "identifier, samplems: identifier must be provided along with samplems."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you identify this song snippet I just recorded?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I have a sound clip from earlier today, can you tell me what song it is?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to know the song from this audio sample. The timestamp is 1697040000000 and the sample duration is 5000 milliseconds.",
+                    "parameters": {
+                        "timestamp": "1697040000000",
+                        "samplems": "5000"
+                    }
+                },
+                {
+                    "utterance": "Here's a sound clip, can you detect the song? The identifier is 123e4567-e89b-12d3-a456-426614174000 and the sample duration is 7000 milliseconds.",
+                    "parameters": {
+                        "identifier": "123e4567-e89b-12d3-a456-426614174000",
+                        "samplems": "7000"
+                    }
+                },
+                {
+                    "utterance": "I have a song sample with a timestamp of 1697043600000 and a duration of 6000 milliseconds. Can you identify it?",
+                    "parameters": {
+                        "timestamp": "1697043600000",
+                        "samplems": "6000"
+                    }
+                },
+                {
+                    "utterance": "Can you find out what song this is? The identifier is 987f6543-21ba-43cd-9876-543210fedcba and the samplems is 8000.",
+                    "parameters": {
+                        "identifier": "987f6543-21ba-43cd-9876-543210fedcba",
+                        "samplems": "8000"
+                    }
+                },
+                {
+                    "utterance": "I recorded a song clip with a timestamp of 1697047200000 and a samplems of 5500. Can you detect the song?",
+                    "parameters": {
+                        "timestamp": "1697047200000",
+                        "samplems": "5500"
+                    }
+                },
+                {
+                    "utterance": "Here's an audio sample. The identifier is 456f7890-12ab-34cd-5678-90abcdef1234 and the samplems is 7500. Can you tell me the song?",
+                    "parameters": {
+                        "identifier": "456f7890-12ab-34cd-5678-90abcdef1234",
+                        "samplems": "7500"
+                    }
+                },
+                {
+                    "utterance": "I have a sound clip with a timestamp of 1697050800000 and a samplems of 6200. Can you identify the song?",
+                    "parameters": {
+                        "timestamp": "1697050800000",
+                        "samplems": "6200"
+                    }
+                },
+                {
+                    "utterance": "Can you detect the song from this audio? The identifier is 321cba98-76fe-54dc-3210-fedcba987654 and the samplems is 6800.",
+                    "parameters": {
+                        "identifier": "321cba98-76fe-54dc-3210-fedcba987654",
+                        "samplems": "6800"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/get-details",
+            "description": "Get details information of specific song",
+            "url": "https://shazam.p.rapidapi.com/songs/get-details",
+            "parameters": [
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "The key field returned from .../songs/detect or .../search endpoint",
+                    "default": "40333609",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me details about the song with key 40333609?",
+                    "parameters": {
+                        "key": "40333609"
+                    }
+                },
+                {
+                    "utterance": "I need information on the song identified by key 51234567.",
+                    "parameters": {
+                        "key": "51234567"
+                    }
+                },
+                {
+                    "utterance": "What are the details for the song with the key 67890123?",
+                    "parameters": {
+                        "key": "67890123"
+                    }
+                },
+                {
+                    "utterance": "Please provide the song details for the key 98765432.",
+                    "parameters": {
+                        "key": "98765432"
+                    }
+                },
+                {
+                    "utterance": "Fetch the song information for the key 12345678.",
+                    "parameters": {
+                        "key": "12345678"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know more about the song with key 23456789.",
+                    "parameters": {
+                        "key": "23456789"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the details of the song with key 34567890?",
+                    "parameters": {
+                        "key": "34567890"
+                    }
+                },
+                {
+                    "utterance": "Get me the song details for the key 45678901.",
+                    "parameters": {
+                        "key": "45678901"
+                    }
+                },
+                {
+                    "utterance": "What information is available for the song with key 56789012?",
+                    "parameters": {
+                        "key": "56789012"
+                    }
+                },
+                {
+                    "utterance": "I'd like the details of the song identified by key 67890123.",
+                    "parameters": {
+                        "key": "67890123"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/get-count",
+            "description": "Get total times the specific song is detected/shazamed by using .../songs/detect or .../songs/v2/detect endpoint",
+            "url": "https://shazam.p.rapidapi.com/songs/get-count",
+            "parameters": [
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "The key field returned from .../songs/detect or .../search endpoint",
+                    "default": "40333609",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "How many times has the song with key 40333609 been shazamed?",
+                    "parameters": {
+                        "key": "40333609"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the total shazams for the song identified by key 51234987?",
+                    "parameters": {
+                        "key": "51234987"
+                    }
+                },
+                {
+                    "utterance": "I want to know the detection count for the song with key 67890123.",
+                    "parameters": {
+                        "key": "67890123"
+                    }
+                },
+                {
+                    "utterance": "What's the total number of times the song with key 98765432 has been identified?",
+                    "parameters": {
+                        "key": "98765432"
+                    }
+                },
+                {
+                    "utterance": "Give me the shazam count for the song with key 23456789.",
+                    "parameters": {
+                        "key": "23456789"
+                    }
+                },
+                {
+                    "utterance": "How often has the song with key 34567890 been detected?",
+                    "parameters": {
+                        "key": "34567890"
+                    }
+                },
+                {
+                    "utterance": "Find out how many times the song with key 45678901 has been shazamed.",
+                    "parameters": {
+                        "key": "45678901"
+                    }
+                },
+                {
+                    "utterance": "Could you check the detection count for the song with key 56789012?",
+                    "parameters": {
+                        "key": "56789012"
+                    }
+                },
+                {
+                    "utterance": "Tell me the total shazams for the song identified by key 67890123.",
+                    "parameters": {
+                        "key": "67890123"
+                    }
+                },
+                {
+                    "utterance": "I need to know how many times the song with key 78901234 has been detected.",
+                    "parameters": {
+                        "key": "78901234"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/list-recommendations",
+            "description": "List related ones to a specific song.",
+            "url": "https://shazam.p.rapidapi.com/songs/list-recommendations",
+            "parameters": [
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "The key field returned from .../songs/detect or .../search endpoint",
+                    "default": "484129036",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you suggest some songs similar to 'Shape of You' by Ed Sheeran?",
+                    "parameters": {
+                        "key": "Shape of You"
+                    }
+                },
+                {
+                    "utterance": "What are some tracks related to 'Blinding Lights' by The Weeknd?",
+                    "parameters": {
+                        "key": "Blinding Lights"
+                    }
+                },
+                {
+                    "utterance": "Give me recommendations for songs like 'Rolling in the Deep' by Adele.",
+                    "parameters": {
+                        "key": "Rolling in the Deep"
+                    }
+                },
+                {
+                    "utterance": "Find songs that are similar to 'Bohemian Rhapsody' by Queen.",
+                    "parameters": {
+                        "key": "Bohemian Rhapsody"
+                    }
+                },
+                {
+                    "utterance": "What are some similar songs to 'Bad Guy' by Billie Eilish?",
+                    "parameters": {
+                        "key": "Bad Guy"
+                    }
+                },
+                {
+                    "utterance": "Can you list songs related to 'Uptown Funk' by Mark Ronson?",
+                    "parameters": {
+                        "key": "Uptown Funk"
+                    }
+                },
+                {
+                    "utterance": "Show me songs that are like 'Someone Like You' by Adele.",
+                    "parameters": {
+                        "key": "Someone Like You"
+                    }
+                },
+                {
+                    "utterance": "What tracks are similar to 'Despacito' by Luis Fonsi?",
+                    "parameters": {
+                        "key": "Despacito"
+                    }
+                },
+                {
+                    "utterance": "I want to hear songs related to 'Havana' by Camila Cabello.",
+                    "parameters": {
+                        "key": "Havana"
+                    }
+                },
+                {
+                    "utterance": "Could you recommend songs similar to 'Senorita' by Shawn Mendes?",
+                    "parameters": {
+                        "key": "Senorita"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/list-artist-top-tracks (Deprecated)",
+            "description": "List top tracks of specific artist",
+            "url": "https://shazam.p.rapidapi.com/songs/list-artist-top-tracks",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id field inside artists json object returned from .../songs/detect or .../search endpoint",
+                    "default": "40008598",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the top tracks by Taylor Swift?",
+                    "parameters": {
+                        "id": "Taylor Swift"
+                    }
+                },
+                {
+                    "utterance": "What are the most popular songs by Ed Sheeran?",
+                    "parameters": {
+                        "id": "Ed Sheeran"
+                    }
+                },
+                {
+                    "utterance": "List the top hits from Drake.",
+                    "parameters": {
+                        "id": "Drake"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the best tracks by Billie Eilish.",
+                    "parameters": {
+                        "id": "Billie Eilish"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the top songs by Ariana Grande?",
+                    "parameters": {
+                        "id": "Ariana Grande"
+                    }
+                },
+                {
+                    "utterance": "Show me the most popular tracks by The Weeknd.",
+                    "parameters": {
+                        "id": "The Weeknd"
+                    }
+                },
+                {
+                    "utterance": "What are the top tracks from Post Malone?",
+                    "parameters": {
+                        "id": "Post Malone"
+                    }
+                },
+                {
+                    "utterance": "Give me a list of the best songs by BTS.",
+                    "parameters": {
+                        "id": "BTS"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the top hits from Dua Lipa.",
+                    "parameters": {
+                        "id": "Dua Lipa"
+                    }
+                },
+                {
+                    "utterance": "Can you list the most popular songs by Justin Bieber?",
+                    "parameters": {
+                        "id": "Justin Bieber"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "albums/get-related-artist",
+            "description": "Get artist related to an album",
+            "url": "https://shazam.p.rapidapi.com/albums/get-related-artist",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'albums->id' field returned in .../shazam-songs/get-details OR .../artists/get-albums OR .../artists/get-summary\nThe value of 'id' field returned in .../artists/get-albums OR .../artists/get-latest-release endpoint\nThe value of 'albumadamid' field returned in .../songs/v2/detect OR .../songs/detect endpoint",
+                    "default": "850569437",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find artists related to the album 'Thriller'?",
+                    "parameters": {
+                        "id": "Thriller"
+                    }
+                },
+                {
+                    "utterance": "Show me artists connected to the album 'Back in Black'.",
+                    "parameters": {
+                        "id": "Back in Black"
+                    }
+                },
+                {
+                    "utterance": "Who are the artists associated with the album 'The Dark Side of the Moon'?",
+                    "parameters": {
+                        "id": "The Dark Side of the Moon"
+                    }
+                },
+                {
+                    "utterance": "Get me the artists linked to the album 'Abbey Road'.",
+                    "parameters": {
+                        "id": "Abbey Road"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the artists related to the album 'Rumours'.",
+                    "parameters": {
+                        "id": "Rumours"
+                    }
+                },
+                {
+                    "utterance": "Find artists connected to the album 'Hotel California'.",
+                    "parameters": {
+                        "id": "Hotel California"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me which artists are related to the album 'Led Zeppelin IV'?",
+                    "parameters": {
+                        "id": "Led Zeppelin IV"
+                    }
+                },
+                {
+                    "utterance": "List the artists associated with the album 'Born to Run'.",
+                    "parameters": {
+                        "id": "Born to Run"
+                    }
+                },
+                {
+                    "utterance": "Who are the artists linked to the album 'Purple Rain'?",
+                    "parameters": {
+                        "id": "Purple Rain"
+                    }
+                },
+                {
+                    "utterance": "Show me the artists related to the album 'The Wall'.",
+                    "parameters": {
+                        "id": "The Wall"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "albums/get-details",
+            "description": "Get detailed album of an album",
+            "url": "https://shazam.p.rapidapi.com/albums/get-details",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'albums->id' field returned in .../shazam-songs/get-details OR .../artists/get-albums OR .../artists/get-summary\nThe value of 'id' field returned in .../artists/get-albums OR .../artists/get-latest-release endpoint\nThe value of 'albumadamid' field returned in .../songs/v2/detect OR .../songs/detect endpoint",
+                    "default": "850576570",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the details of the album with ID 850576570?",
+                    "parameters": {
+                        "id": "850576570"
+                    }
+                },
+                {
+                    "utterance": "I need information about the album with ID 123456789.",
+                    "parameters": {
+                        "id": "123456789"
+                    }
+                },
+                {
+                    "utterance": "Show me the album details for ID 987654321 in Spanish.",
+                    "parameters": {
+                        "id": "987654321",
+                        "l": "es-ES"
+                    }
+                },
+                {
+                    "utterance": "What are the details of the album with ID 1122334455?",
+                    "parameters": {
+                        "id": "1122334455"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the album information for ID 5566778899 in French.",
+                    "parameters": {
+                        "id": "5566778899",
+                        "l": "fr-FR"
+                    }
+                },
+                {
+                    "utterance": "Please provide the album details for ID 9988776655.",
+                    "parameters": {
+                        "id": "9988776655"
+                    }
+                },
+                {
+                    "utterance": "Get me the album details for ID 4433221100 in German.",
+                    "parameters": {
+                        "id": "4433221100",
+                        "l": "de-DE"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the album details for ID 6677889900?",
+                    "parameters": {
+                        "id": "6677889900"
+                    }
+                },
+                {
+                    "utterance": "I want to know more about the album with ID 3344556677 in Italian.",
+                    "parameters": {
+                        "id": "3344556677",
+                        "l": "it-IT"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the album with ID 2233445566.",
+                    "parameters": {
+                        "id": "2233445566"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "shazam-songs/list-similarities",
+            "description": "Get similar (You may also like) songs",
+            "url": "https://shazam.p.rapidapi.com/shazam-songs/list-similarities",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'related-tracks->id' field returned in .../shazam-songs/get-details endpoint",
+                    "default": "track-similarities-id-424767377",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find songs similar to 'Shape of You' by Ed Sheeran?",
+                    "parameters": {
+                        "id": "shape-of-you-ed-sheeran"
+                    }
+                },
+                {
+                    "utterance": "Show me tracks that are like 'Blinding Lights' by The Weeknd.",
+                    "parameters": {
+                        "id": "blinding-lights-the-weeknd"
+                    }
+                },
+                {
+                    "utterance": "What are some songs that resemble 'Rolling in the Deep' by Adele?",
+                    "parameters": {
+                        "id": "rolling-in-the-deep-adele"
+                    }
+                },
+                {
+                    "utterance": "I'd like to hear songs similar to 'Bad Guy' by Billie Eilish.",
+                    "parameters": {
+                        "id": "bad-guy-billie-eilish"
+                    }
+                },
+                {
+                    "utterance": "Find me tracks that are similar to 'Uptown Funk' by Mark Ronson.",
+                    "parameters": {
+                        "id": "uptown-funk-mark-ronson"
+                    }
+                },
+                {
+                    "utterance": "What songs are similar to 'Someone Like You' by Adele?",
+                    "parameters": {
+                        "id": "someone-like-you-adele"
+                    }
+                },
+                {
+                    "utterance": "Can you suggest songs like 'Senorita' by Shawn Mendes?",
+                    "parameters": {
+                        "id": "senorita-shawn-mendes"
+                    }
+                },
+                {
+                    "utterance": "Show me songs that are similar to 'Old Town Road' by Lil Nas X.",
+                    "parameters": {
+                        "id": "old-town-road-lil-nas-x"
+                    }
+                },
+                {
+                    "utterance": "I'd love to hear tracks similar to 'Havana' by Camila Cabello.",
+                    "parameters": {
+                        "id": "havana-camila-cabello"
+                    }
+                },
+                {
+                    "utterance": "What are some tracks like 'Despacito' by Luis Fonsi?",
+                    "parameters": {
+                        "id": "despacito-luis-fonsi"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "shazam-songs/get-details",
+            "description": "Get mapping id information between systems to use with other endpoints.",
+            "url": "https://shazam.p.rapidapi.com/shazam-songs/get-details",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'id' field returned in .../search endpoint",
+                    "default": "40333609",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the details for the song with ID 40333609?",
+                    "parameters": {
+                        "id": "40333609"
+                    }
+                },
+                {
+                    "utterance": "I need information about the track with ID 51234567.",
+                    "parameters": {
+                        "id": "51234567"
+                    }
+                },
+                {
+                    "utterance": "Fetch the song details for the ID 67890123.",
+                    "parameters": {
+                        "id": "67890123"
+                    }
+                },
+                {
+                    "utterance": "What are the details for the song identified by ID 78901234?",
+                    "parameters": {
+                        "id": "78901234"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the song information for ID 89012345.",
+                    "parameters": {
+                        "id": "89012345"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the details for the song with ID 90123456?",
+                    "parameters": {
+                        "id": "90123456"
+                    }
+                },
+                {
+                    "utterance": "I want to know more about the song with ID 12345678.",
+                    "parameters": {
+                        "id": "12345678"
+                    }
+                },
+                {
+                    "utterance": "Get me the details for the track with ID 23456789.",
+                    "parameters": {
+                        "id": "23456789"
+                    }
+                },
+                {
+                    "utterance": "Please find the song details for ID 34567890.",
+                    "parameters": {
+                        "id": "34567890"
+                    }
+                },
+                {
+                    "utterance": "Show me the information for the song with ID 45678901.",
+                    "parameters": {
+                        "id": "45678901"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "artists/get-top-songs",
+            "description": "Get top songs of an artist",
+            "url": "https://shazam.p.rapidapi.com/artists/get-top-songs",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'artist->adamid' field returned in .../search OR .../songs/v2/detect OR .../songs/get-details endpoint\nThe value of 'artists->id' field returned in .../shazam-songs/get-details OR .../albums/get-details OR .../albums/get-related-artist",
+                    "default": "567072",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the top songs by Taylor Swift?",
+                    "parameters": {
+                        "id": "Taylor Swift"
+                    }
+                },
+                {
+                    "utterance": "Can you list the most popular tracks of Ed Sheeran?",
+                    "parameters": {
+                        "id": "Ed Sheeran"
+                    }
+                },
+                {
+                    "utterance": "Show me the hit songs from Drake.",
+                    "parameters": {
+                        "id": "Drake"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the top songs by Billie Eilish.",
+                    "parameters": {
+                        "id": "Billie Eilish"
+                    }
+                },
+                {
+                    "utterance": "Give me the best tracks from Ariana Grande.",
+                    "parameters": {
+                        "id": "Ariana Grande"
+                    }
+                },
+                {
+                    "utterance": "What are the top hits of The Weeknd?",
+                    "parameters": {
+                        "id": "The Weeknd"
+                    }
+                },
+                {
+                    "utterance": "List the most popular songs by Post Malone.",
+                    "parameters": {
+                        "id": "Post Malone"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the top tracks of BTS?",
+                    "parameters": {
+                        "id": "BTS"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the hit songs from Dua Lipa.",
+                    "parameters": {
+                        "id": "Dua Lipa"
+                    }
+                },
+                {
+                    "utterance": "What are the best songs by Justin Bieber?",
+                    "parameters": {
+                        "id": "Justin Bieber"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "artists/get-details",
+            "description": "Get detailed information of an artist",
+            "url": "https://shazam.p.rapidapi.com/artists/get-details",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'artist->adamid' field returned in .../search OR .../songs/v2/detect OR .../songs/get-details endpoint\nThe value of 'artists->id' field returned in .../shazam-songs/get-details OR .../albums/get-details OR .../albums/get-related-artist",
+                    "default": "567072",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me more information about the artist with ID 567072?",
+                    "parameters": {
+                        "id": "567072"
+                    }
+                },
+                {
+                    "utterance": "I want to know the details of the artist whose ID is 123456.",
+                    "parameters": {
+                        "id": "123456"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the artist with the ID 789012.",
+                    "parameters": {
+                        "id": "789012"
+                    }
+                },
+                {
+                    "utterance": "Fetch the details for the artist with ID 345678.",
+                    "parameters": {
+                        "id": "345678"
+                    }
+                },
+                {
+                    "utterance": "What can you tell me about the artist with ID 901234?",
+                    "parameters": {
+                        "id": "901234"
+                    }
+                },
+                {
+                    "utterance": "I'd like to get information on the artist with ID 234567.",
+                    "parameters": {
+                        "id": "234567"
+                    }
+                },
+                {
+                    "utterance": "Provide details for the artist whose ID is 890123.",
+                    "parameters": {
+                        "id": "890123"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the details of the artist with ID 456789?",
+                    "parameters": {
+                        "id": "456789"
+                    }
+                },
+                {
+                    "utterance": "I need information about the artist with ID 678901.",
+                    "parameters": {
+                        "id": "678901"
+                    }
+                },
+                {
+                    "utterance": "Get me the details of the artist with ID 234890.",
+                    "parameters": {
+                        "id": "234890"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "charts/list",
+            "description": "List all available charts by cities, countries, and genres",
+            "url": "https://shazam.p.rapidapi.com/charts/list",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "search",
+            "description": "Search for songs, artists that match input term",
+            "url": "https://shazam.p.rapidapi.com/search",
+            "parameters": [
+                {
+                    "name": "term",
+                    "type": "STRING",
+                    "description": "Full name of songs or artists",
+                    "default": "kiss the rain",
+                    "required": true
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "format": "language code"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "For paging purpose, maximum is fixed at 5 items per response",
+                    "default": "5",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 5
+                        }
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find the song 'Bohemian Rhapsody' for me?",
+                    "parameters": {
+                        "term": "Bohemian Rhapsody"
+                    }
+                },
+                {
+                    "utterance": "Show me songs by Taylor Swift in Spanish.",
+                    "parameters": {
+                        "term": "Taylor Swift",
+                        "locale": "es-ES"
+                    }
+                },
+                {
+                    "utterance": "I'm looking for tracks by The Beatles, but only show me two results.",
+                    "parameters": {
+                        "term": "The Beatles",
+                        "limit": 2
+                    }
+                },
+                {
+                    "utterance": "Find the song 'Shape of You' and give me the details in French.",
+                    "parameters": {
+                        "term": "Shape of You",
+                        "locale": "fr-FR"
+                    }
+                },
+                {
+                    "utterance": "Search for songs by Ed Sheeran and limit the results to three.",
+                    "parameters": {
+                        "term": "Ed Sheeran",
+                        "limit": 3
+                    }
+                },
+                {
+                    "utterance": "Can you look up the song 'Hotel California'?",
+                    "parameters": {
+                        "term": "Hotel California"
+                    }
+                },
+                {
+                    "utterance": "I want to find songs by Adele, but only show me one result.",
+                    "parameters": {
+                        "term": "Adele",
+                        "limit": 1
+                    }
+                },
+                {
+                    "utterance": "Please search for the song 'Imagine' and provide the results in German.",
+                    "parameters": {
+                        "term": "Imagine",
+                        "locale": "de-DE"
+                    }
+                },
+                {
+                    "utterance": "Look up songs by Coldplay and show me up to four results.",
+                    "parameters": {
+                        "term": "Coldplay",
+                        "limit": 4
+                    }
+                },
+                {
+                    "utterance": "Find the song 'Rolling in the Deep' and give me the information in Italian.",
+                    "parameters": {
+                        "term": "Rolling in the Deep",
+                        "locale": "it-IT"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "auto-complete",
+            "description": "Get suggestions by word or phrase",
+            "url": "https://shazam.p.rapidapi.com/auto-complete",
+            "parameters": [
+                {
+                    "name": "term",
+                    "type": "STRING",
+                    "description": "Any word or phrase of song, artist, etc... that you are familiar with",
+                    "default": "kiss the",
+                    "required": true
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you suggest some songs that start with 'hello'?",
+                    "parameters": {
+                        "term": "hello"
+                    }
+                },
+                {
+                    "utterance": "I'm looking for songs related to 'summer love'.",
+                    "parameters": {
+                        "term": "summer love"
+                    }
+                },
+                {
+                    "utterance": "What are some popular tracks with the phrase 'midnight city'?",
+                    "parameters": {
+                        "term": "midnight city"
+                    }
+                },
+                {
+                    "utterance": "Give me some artist suggestions for the word 'ocean'.",
+                    "parameters": {
+                        "term": "ocean"
+                    }
+                },
+                {
+                    "utterance": "Can you find songs that include 'dancing queen'?",
+                    "parameters": {
+                        "term": "dancing queen"
+                    }
+                },
+                {
+                    "utterance": "I'm interested in songs with the phrase 'wild heart'.",
+                    "parameters": {
+                        "term": "wild heart"
+                    }
+                },
+                {
+                    "utterance": "Could you suggest some music related to 'lonely night'?",
+                    "parameters": {
+                        "term": "lonely night"
+                    }
+                },
+                {
+                    "utterance": "What songs can you find with the word 'paradise'?",
+                    "parameters": {
+                        "term": "paradise"
+                    }
+                },
+                {
+                    "utterance": "Show me some tracks that mention 'golden hour'.",
+                    "parameters": {
+                        "term": "golden hour"
+                    }
+                },
+                {
+                    "utterance": "I'm searching for songs with the phrase 'broken dreams'.",
+                    "parameters": {
+                        "term": "broken dreams"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "charts/track",
+            "description": "Get all popular songs in specific chart",
+            "url": "https://shazam.p.rapidapi.com/charts/track",
+            "parameters": [
+                {
+                    "name": "listId",
+                    "type": "STRING",
+                    "description": "The value of listId field returned in .../charts/list endpoint",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "Used for paging purpose, 20 items per response is maximum.",
+                    "default": "20",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 20
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "startFrom",
+                    "type": "NUMBER",
+                    "description": "Used for paging purpose.",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the top songs in the global chart.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the trending tracks in the US chart?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the popular songs in the UK chart?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me the current hits in the pop chart.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to know the top songs in the rock chart.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the most popular songs in the hip-hop chart?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show the trending songs in the Latin chart.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the top tracks in the electronic chart.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me the popular songs in the jazz chart?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the top hits in the country chart?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "songs/detect",
+            "description": "You may check the tutorial at https://rapidapi.com/apidojo/api/shazam/tutorials.\nDetect songs from raw sound data. The raw sound data must be 44100Hz, 1 channel (Mono), signed 16 bit PCM little endian. Other types of media are NOT supported, such as : mp3, wav, etc... or need to be converted to uncompressed raw data. If the result is empty, your request data must be in wrong format in most case. Encoded base64 string of byte[] that generated from raw data less than 500KB (3-5 seconds sample are good enough for detection) will be sent via body as plain text",
+            "url": "https://shazam.p.rapidapi.com/songs/detect",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "songs/v2/detect",
+            "description": "You may check the tutorial at https://rapidapi.com/apidojo/api/shazam/tutorials.\nDetect songs from raw sound data. The raw sound data must be 44100Hz, 1 channel (Mono), signed 16 bit PCM little endian. Other types of media are NOT supported, such as : mp3, wav, etc... or need to be converted to uncompressed raw data. If the result is empty, your request data must be in wrong format in most case. Encoded base64 string of byte[] that generated from raw data less than 500KB (3-5 seconds sample are good enough for detection) will be sent via body as plain text",
+            "url": "https://shazam.p.rapidapi.com/songs/v2/detect",
+            "parameters": [
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "User's timezone",
+                    "default": "America/Chicago",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "timestamp",
+                    "type": "STRING",
+                    "description": "This parameter is used to indicate that you are detecting the same song while making different calls in case the previous portion of sound cannot be recognized successfully. You simply use the same unix timestamp (milliseconds) which is the starting time of first sound portion of detecting progress. This parameter must be come along with \\\"samplems\\\" parameter. Ex : 1591884466431",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "timestamp, samplems: timestamp must be provided along with samplems."
+                    }
+                },
+                {
+                    "name": "samplems",
+                    "type": "STRING",
+                    "description": "The samplems in milliseconds including the total duration of previous sound portions if any. Otherwise just provide the samplems of the current sound portion. Ex : First portion is 5040, second portion is 9040, etc...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "timestamp, samplems: samplems must be provided along with timestamp."
+                    }
+                },
+                {
+                    "name": "identifier",
+                    "type": "STRING",
+                    "description": "This parameter is used to indicate that you are detecting the same song while making different calls in case the previous portion of sound cannot be recognized successfully. You simply use the same id string while detecting the same song. This parameter must be come along with \\\"samplems\\\" parameter.\nThe format is xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, Ex : 21abe4d2-0fe9-4be4-8492-0ecf26960f7e. ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "identifier, samplems: identifier must be provided along with samplems.",
+                        "format": "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you identify this song snippet for me?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I have a song clip that starts at 1591884466431 milliseconds, can you tell me what song it is?",
+                    "parameters": {
+                        "timestamp": "1591884466431",
+                        "samplems": "5040"
+                    }
+                },
+                {
+                    "utterance": "I need to know the song from this audio sample with identifier 21abe4d2-0fe9-4be4-8492-0ecf26960f7e.",
+                    "parameters": {
+                        "identifier": "21abe4d2-0fe9-4be4-8492-0ecf26960f7e",
+                        "samplems": "9040"
+                    }
+                },
+                {
+                    "utterance": "What's the name of the song in this audio that starts at 1600000000000 milliseconds?",
+                    "parameters": {
+                        "timestamp": "1600000000000",
+                        "samplems": "6000"
+                    }
+                },
+                {
+                    "utterance": "Can you detect the song from this sound clip with identifier 123e4567-e89b-12d3-a456-426614174000?",
+                    "parameters": {
+                        "identifier": "123e4567-e89b-12d3-a456-426614174000",
+                        "samplems": "7000"
+                    }
+                },
+                {
+                    "utterance": "I have a sound sample that starts at 1610000000000 milliseconds, can you identify the song?",
+                    "parameters": {
+                        "timestamp": "1610000000000",
+                        "samplems": "8000"
+                    }
+                },
+                {
+                    "utterance": "Please find the song from this audio clip with identifier 987fbc97-4bed-5078-9f07-914d6679d1b4.",
+                    "parameters": {
+                        "identifier": "987fbc97-4bed-5078-9f07-914d6679d1b4",
+                        "samplems": "7500"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the song from this audio that starts at 1620000000000 milliseconds?",
+                    "parameters": {
+                        "timestamp": "1620000000000",
+                        "samplems": "9000"
+                    }
+                },
+                {
+                    "utterance": "Identify the song from this sound clip with identifier 550e8400-e29b-41d4-a716-446655440000.",
+                    "parameters": {
+                        "identifier": "550e8400-e29b-41d4-a716-446655440000",
+                        "samplems": "8500"
+                    }
+                },
+                {
+                    "utterance": "What song is this from the audio sample starting at 1630000000000 milliseconds?",
+                    "parameters": {
+                        "timestamp": "1630000000000",
+                        "samplems": "9500"
+                    }
+                }
+            ]
+        }
+    ]
+}

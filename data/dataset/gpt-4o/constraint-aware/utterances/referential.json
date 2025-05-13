@@ -1,0 +1,1761 @@
+{
+    "name": "Referential",
+    "description": "The fastest API to access countries, states, cities, continents, dial and zip codes in up to 20 languages. A collection of data APIs to support forms, signups, search and lookup. Our endpoints are optimized for speed and size. Our data is regularly maintained and comes from International Standardization bodies, the United Nations, government surveys and GIS datasets. We do not scrape WikiPedia etc",
+    "url": "https://rapidapi.com/referential/api/referential/",
+    "api_methods": [
+        {
+            "name": "City by IP address (Geo IP)",
+            "description": "Find a city, state, country and continent by IP address. For some results, the closest result within 10 miles will be provided.",
+            "url": "https://referential.p.rapidapi.com/v1/city",
+            "parameters": [
+                {
+                    "name": "ip",
+                    "type": "STRING",
+                    "description": "ip4 pr ip6 formatted IP address",
+                    "default": "128.218.229.26",
+                    "required": true,
+                    "constraints": {
+                        "format": "ip4 or ip6 formatted IP address"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [geonameid, timezone,state_code,iso_a2]",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "geonameid",
+                                "timezone",
+                                "state_code",
+                                "iso_a2"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you tell me the city and country for the IP address 192.168.1.1?",
+                    "parameters": {
+                        "ip": "192.168.1.1"
+                    }
+                },
+                {
+                    "utterance": "I need the timezone and state code for the IP 203.0.113.5.",
+                    "parameters": {
+                        "ip": "203.0.113.5",
+                        "fields": "timezone,state_code"
+                    }
+                },
+                {
+                    "utterance": "What is the geoname ID for the IP address 172.16.254.1?",
+                    "parameters": {
+                        "ip": "172.16.254.1",
+                        "fields": "geonameid"
+                    }
+                },
+                {
+                    "utterance": "Find the ISO country code for the IP 10.0.0.1.",
+                    "parameters": {
+                        "ip": "10.0.0.1",
+                        "fields": "iso_a2"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the state code and geoname ID for the IP 198.51.100.14?",
+                    "parameters": {
+                        "ip": "198.51.100.14",
+                        "fields": "state_code,geonameid"
+                    }
+                },
+                {
+                    "utterance": "Get me the timezone for the IP address 203.0.113.195.",
+                    "parameters": {
+                        "ip": "203.0.113.195",
+                        "fields": "timezone"
+                    }
+                },
+                {
+                    "utterance": "What is the city and its geoname ID for the IP 192.0.2.44?",
+                    "parameters": {
+                        "ip": "192.0.2.44",
+                        "fields": "geonameid"
+                    }
+                },
+                {
+                    "utterance": "I want to know the state code and ISO country code for the IP 198.51.100.22.",
+                    "parameters": {
+                        "ip": "198.51.100.22",
+                        "fields": "state_code,iso_a2"
+                    }
+                },
+                {
+                    "utterance": "Can you find the timezone and ISO country code for the IP 203.0.113.10?",
+                    "parameters": {
+                        "ip": "203.0.113.10",
+                        "fields": "timezone,iso_a2"
+                    }
+                },
+                {
+                    "utterance": "Please provide the geoname ID and timezone for the IP address 192.0.2.33.",
+                    "parameters": {
+                        "ip": "192.0.2.33",
+                        "fields": "geonameid,timezone"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Countries",
+            "description": "List or search countries of the world in different languages.. Get iso a2, a3 country code and localized country name",
+            "url": "https://referential.p.rapidapi.com/v1/country",
+            "parameters": [
+                {
+                    "name": "currency",
+                    "type": "STRING",
+                    "description": "Filter on currency name in chosen lang",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "dial_code",
+                    "type": "NUMBER",
+                    "description": "Filter on country dial code",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "currency_code",
+                    "type": "STRING",
+                    "description": "Filter on 3 letter currency code (ISO)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 4217"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return for each country [iso_a2, iso_a3, continent_code, dial_code, currency_code, currency_num_code, currency]",
+                    "default": "currency,currency_num_code,currency_code,continent_code,currency,iso_a3,dial_code",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "iso_a2",
+                                "iso_a3",
+                                "continent_code",
+                                "dial_code",
+                                "currency_code",
+                                "currency_num_code",
+                                "currency"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter iso country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Country name search string. Can be partial contains...",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "250",
+                    "required": false
+                },
+                {
+                    "name": "continent_code",
+                    "type": "STRING",
+                    "description": "Two letter region/continent code (eu, na, sa, as, af, oc, an). Lookup at /v1/continent.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "eu",
+                                "na",
+                                "sa",
+                                "as",
+                                "af",
+                                "oc",
+                                "an"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "iso_a3",
+                    "type": "STRING",
+                    "description": "Filter on 3 letter iso country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-3"
+                    }
+                },
+                {
+                    "name": "currency_num_code",
+                    "type": "STRING",
+                    "description": "Filter on 3 digit numeric currency code (ISO)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 4217 numeric"
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you list all countries in Europe with their ISO alpha-2 codes?",
+                    "parameters": {
+                        "continent_code": "eu",
+                        "fields": "iso_a2"
+                    }
+                },
+                {
+                    "utterance": "Show me countries that use the currency code USD.",
+                    "parameters": {
+                        "currency_code": "USD"
+                    }
+                },
+                {
+                    "utterance": "Find countries with the dial code 91.",
+                    "parameters": {
+                        "dial_code": 91
+                    }
+                },
+                {
+                    "utterance": "List countries in South America with their ISO alpha-3 codes.",
+                    "parameters": {
+                        "continent_code": "sa",
+                        "fields": "iso_a3"
+                    }
+                },
+                {
+                    "utterance": "What countries have the currency number code 978?",
+                    "parameters": {
+                        "currency_num_code": "978"
+                    }
+                },
+                {
+                    "utterance": "Give me a list of countries with the name starting with 'Can'.",
+                    "parameters": {
+                        "name": "Can"
+                    }
+                },
+                {
+                    "utterance": "Show me the countries with the ISO alpha-2 code 'FR'.",
+                    "parameters": {
+                        "iso_a2": "FR"
+                    }
+                },
+                {
+                    "utterance": "List all countries in Asia with their continent codes.",
+                    "parameters": {
+                        "continent_code": "as",
+                        "fields": "continent_code"
+                    }
+                },
+                {
+                    "utterance": "Can you provide a list of countries with the currency name 'Euro'?",
+                    "parameters": {
+                        "currency": "Euro"
+                    }
+                },
+                {
+                    "utterance": "Find countries with the ISO alpha-3 code 'AUS'.",
+                    "parameters": {
+                        "iso_a3": "AUS"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Cities",
+            "description": "List and search over 75,000 world cities in 20 languages.",
+            "url": "https://referential.p.rapidapi.com/v1/city",
+            "parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit results to N results",
+                    "default": "250",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "state_hasc",
+                    "type": "STRING",
+                    "description": "Filter on state's HASC code. List at /v1/state.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "Filter on timezone name. List at /v1/timezone.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "geonameid",
+                    "type": "STRING",
+                    "description": "Filter on geonameid",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "prefix",
+                    "type": "STRING",
+                    "description": "Search by names starting with prefix. See also limit, order and sort fields.",
+                    "default": "san fr",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "timezone_offset",
+                    "type": "NUMBER",
+                    "description": "Filter on timezone offset in hours",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Sort on field [population, state_code, name, timezone, state_hasc, iso_a2]. Please see limit and order fields.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "population",
+                                "state_code",
+                                "name",
+                                "timezone",
+                                "state_hasc",
+                                "iso_a2"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 letter code"
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter country code",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter country code"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Search as \\\"contains\\\" on city name in chosen lang",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "state_code",
+                    "type": "STRING",
+                    "description": "Filter on state's ISO-3166-2 letter code. List at /v1/state",
+                    "default": "US-CA",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO-3166-2 letter code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [iso_a2,state_code,timezone,timezone_offset,state_hasc,geonameid]",
+                    "default": "iso_a2,state_code,state_hasc,timezone,timezone_offset",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "iso_a2",
+                                "state_code",
+                                "timezone",
+                                "timezone_offset",
+                                "state_hasc",
+                                "geonameid"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "Sort order [asc | desc]",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "asc",
+                                "desc"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you list cities in the US with a population sort order?",
+                    "parameters": {
+                        "iso_a2": "us",
+                        "sort": "population"
+                    }
+                },
+                {
+                    "utterance": "Show me cities in California with a timezone offset of -8 hours.",
+                    "parameters": {
+                        "state_code": "US-CA",
+                        "timezone_offset": -8
+                    }
+                },
+                {
+                    "utterance": "Find cities starting with 'San' in Spanish.",
+                    "parameters": {
+                        "prefix": "San",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "List cities in the GMT timezone, sorted by name.",
+                    "parameters": {
+                        "timezone": "GMT",
+                        "sort": "name"
+                    }
+                },
+                {
+                    "utterance": "What are the cities in France with a limit of 10 results?",
+                    "parameters": {
+                        "iso_a2": "fr",
+                        "limit": 10
+                    }
+                },
+                {
+                    "utterance": "Give me cities in the state with HASC code 'US.TX'.",
+                    "parameters": {
+                        "state_hasc": "US.TX"
+                    }
+                },
+                {
+                    "utterance": "List cities containing 'York' in their name, sorted by state code.",
+                    "parameters": {
+                        "name": "York",
+                        "sort": "state_code"
+                    }
+                },
+                {
+                    "utterance": "Show cities in Germany with fields for timezone and geonameid.",
+                    "parameters": {
+                        "iso_a2": "de",
+                        "fields": "timezone,geonameid"
+                    }
+                },
+                {
+                    "utterance": "Find cities in Japan with a descending order by timezone.",
+                    "parameters": {
+                        "iso_a2": "jp",
+                        "order": "desc",
+                        "sort": "timezone"
+                    }
+                },
+                {
+                    "utterance": "Can you list cities in the UK with a timezone offset of 0?",
+                    "parameters": {
+                        "iso_a2": "gb",
+                        "timezone_offset": 0
+                    }
+                }
+            ]
+        },
+        {
+            "name": "State",
+            "description": "List the sub-regions/states/provinces/departments of the world's countries",
+            "url": "https://referential.p.rapidapi.com/v1/state",
+            "parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "250",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter country code",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                },
+                {
+                    "name": "iso_3166_2",
+                    "type": "STRING",
+                    "description": "Filter on Subregion's ISO-3166-2 letter code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-2"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to select in the result [iso_a2]",
+                    "default": "iso_a2",
+                    "required": false
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Filter as \\\"contains\\\" on the states's name in chosen lang",
+                    "default": "tex",
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you list all the states in the United States?",
+                    "parameters": {
+                        "iso_a2": "US"
+                    }
+                },
+                {
+                    "utterance": "Show me the provinces of Canada, but only the first 10.",
+                    "parameters": {
+                        "iso_a2": "CA",
+                        "limit": 10
+                    }
+                },
+                {
+                    "utterance": "I need the states in Brazil with their ISO codes.",
+                    "parameters": {
+                        "iso_a2": "BR",
+                        "fields": "iso_a2,iso_3166_2"
+                    }
+                },
+                {
+                    "utterance": "List the regions in Germany in German language.",
+                    "parameters": {
+                        "iso_a2": "DE",
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "What are the states in India that contain 'Pradesh' in their name?",
+                    "parameters": {
+                        "iso_a2": "IN",
+                        "name": "Pradesh"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the subregions of Australia with a limit of 5?",
+                    "parameters": {
+                        "iso_a2": "AU",
+                        "limit": 5
+                    }
+                },
+                {
+                    "utterance": "Find the departments in France using the ISO code FR-75.",
+                    "parameters": {
+                        "iso_a2": "FR",
+                        "iso_3166_2": "FR-75"
+                    }
+                },
+                {
+                    "utterance": "List the states in Mexico in Spanish.",
+                    "parameters": {
+                        "iso_a2": "MX",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the states in Nigeria with their names and ISO codes?",
+                    "parameters": {
+                        "iso_a2": "NG",
+                        "fields": "name,iso_3166_2"
+                    }
+                },
+                {
+                    "utterance": "I want to see the regions in Italy, but only the first 15.",
+                    "parameters": {
+                        "iso_a2": "IT",
+                        "limit": 15
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Timezones",
+            "description": "List the world's time zones in 20 languages",
+            "url": "https://referential.p.rapidapi.com/v1/timezone",
+            "parameters": [
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "Filter on non daylights savings offset in hours",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Filter as \"contains\" on timezone name in chosen lang",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "Filter on 3 letter non daylight savings timezone code (not unique)",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "Filter on timezone name in english",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "daylights_offset",
+                    "type": "STRING",
+                    "description": "Filter on daylights savings offset in hours",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "de",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 letter code"
+                    }
+                },
+                {
+                    "name": "daylights_code",
+                    "type": "STRING",
+                    "description": "Filter on daylights savings letter code (not unique)",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [code,timezone,daylights_code,daylights_offset,daylights,hours_offset,offset]",
+                    "default": "offset,daylights_offset,daylights,daylights_code,timezone",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "code",
+                                "timezone",
+                                "daylights_code",
+                                "daylights_offset",
+                                "daylights",
+                                "hours_offset",
+                                "offset"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "daylights",
+                    "type": "STRING",
+                    "description": "Filter on daylights savings/non daylight savings timezones (true,false)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you list the time zones with a non-daylight savings offset of 3 hours?",
+                    "parameters": {
+                        "offset": "3"
+                    }
+                },
+                {
+                    "utterance": "Show me the time zones that include 'Pacific' in their name.",
+                    "parameters": {
+                        "name": "Pacific"
+                    }
+                },
+                {
+                    "utterance": "I need the time zones with the code 'EST'.",
+                    "parameters": {
+                        "code": "EST"
+                    }
+                },
+                {
+                    "utterance": "What are the time zones in English that have a daylight savings offset of 2 hours?",
+                    "parameters": {
+                        "daylights_offset": "2",
+                        "lang": "en"
+                    }
+                },
+                {
+                    "utterance": "List the time zones with the daylight savings code 'DST'.",
+                    "parameters": {
+                        "daylights_code": "DST"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the time zones with a non-daylight savings offset of -5 hours in French?",
+                    "parameters": {
+                        "offset": "-5",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Find time zones that are currently observing daylight savings time.",
+                    "parameters": {
+                        "daylights": "true"
+                    }
+                },
+                {
+                    "utterance": "Give me the time zones with the name 'Eastern Standard Time'.",
+                    "parameters": {
+                        "timezone": "Eastern Standard Time"
+                    }
+                },
+                {
+                    "utterance": "Can you show the time zones with fields limited to code and timezone?",
+                    "parameters": {
+                        "fields": "code,timezone"
+                    }
+                },
+                {
+                    "utterance": "List the time zones that are not observing daylight savings time.",
+                    "parameters": {
+                        "daylights": "false"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "City by id",
+            "description": "Direct lookup of over 75,000 cities by id. See the v1/city API to search for city ids.",
+            "url": "https://referential.p.rapidapi.com/v1/city/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "description": "Lookup at /v1/city.",
+                    "default": "DULUTH|US-GA",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 letter code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [iso_a2,state_code,timezone,timezone_offset,state_hasc]",
+                    "default": "iso_a2,state_code,state_hasc,timezone, timezone_offset",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "iso_a2",
+                                "state_code",
+                                "timezone",
+                                "timezone_offset",
+                                "state_hasc"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details about the city with ID DULUTH|US-GA?",
+                    "parameters": {
+                        "id": "DULUTH|US-GA"
+                    }
+                },
+                {
+                    "utterance": "I need information about the city identified as PARIS|FR in French.",
+                    "parameters": {
+                        "id": "PARIS|FR",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Give me the timezone and state code for the city with ID TOKYO|JP.",
+                    "parameters": {
+                        "id": "TOKYO|JP",
+                        "fields": "timezone,state_code"
+                    }
+                },
+                {
+                    "utterance": "What are the details of the city with ID SYDNEY|AU in Spanish?",
+                    "parameters": {
+                        "id": "SYDNEY|AU",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "Fetch the state HASC and timezone offset for the city with ID LONDON|GB.",
+                    "parameters": {
+                        "id": "LONDON|GB",
+                        "fields": "state_hasc,timezone_offset"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the ISO code and timezone for the city with ID BERLIN|DE?",
+                    "parameters": {
+                        "id": "BERLIN|DE",
+                        "fields": "iso_a2,timezone"
+                    }
+                },
+                {
+                    "utterance": "I want to know the state code and timezone offset for the city with ID ROME|IT.",
+                    "parameters": {
+                        "id": "ROME|IT",
+                        "fields": "state_code,timezone_offset"
+                    }
+                },
+                {
+                    "utterance": "Please provide the city details for ID CAIRO|EG in Arabic.",
+                    "parameters": {
+                        "id": "CAIRO|EG",
+                        "lang": "ar"
+                    }
+                },
+                {
+                    "utterance": "What is the timezone and state HASC for the city with ID MUMBAI|IN?",
+                    "parameters": {
+                        "id": "MUMBAI|IN",
+                        "fields": "timezone,state_hasc"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the state code and ISO code for the city with ID BEIJING|CN?",
+                    "parameters": {
+                        "id": "BEIJING|CN",
+                        "fields": "state_code,iso_a2"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Country by iso code",
+            "description": "Get country by 2 letter iso code localized to a given language",
+            "url": "https://referential.p.rapidapi.com/v1/country/{iso_code}",
+            "parameters": [
+                {
+                    "name": "iso_code",
+                    "type": "string",
+                    "description": "2 letter iso country code. ",
+                    "default": "US",
+                    "required": true,
+                    "constraints": {
+                        "format": "2 letter ISO country code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Comma deliminated list of fields to return in response",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "2 letter iso language code to localize country name",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter ISO language code"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide information about the country with the ISO code 'FR'?",
+                    "parameters": {
+                        "iso_code": "FR"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know about the country with ISO code 'JP' in Japanese.",
+                    "parameters": {
+                        "iso_code": "JP",
+                        "lang": "ja"
+                    }
+                },
+                {
+                    "utterance": "Give me details about the country with ISO code 'BR', including its population and area.",
+                    "parameters": {
+                        "iso_code": "BR",
+                        "fields": "population,area"
+                    }
+                },
+                {
+                    "utterance": "What can you tell me about the country with ISO code 'DE' in German?",
+                    "parameters": {
+                        "iso_code": "DE",
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "Fetch the country information for ISO code 'IN' with fields for capital and currency.",
+                    "parameters": {
+                        "iso_code": "IN",
+                        "fields": "capital,currency"
+                    }
+                },
+                {
+                    "utterance": "I need the country details for ISO code 'CN' in Chinese.",
+                    "parameters": {
+                        "iso_code": "CN",
+                        "lang": "zh"
+                    }
+                },
+                {
+                    "utterance": "Could you get the country data for ISO code 'IT' with fields for language and timezone?",
+                    "parameters": {
+                        "iso_code": "IT",
+                        "fields": "language,timezone"
+                    }
+                },
+                {
+                    "utterance": "Please provide the country information for ISO code 'AU' in English.",
+                    "parameters": {
+                        "iso_code": "AU",
+                        "lang": "en"
+                    }
+                },
+                {
+                    "utterance": "What is the country with ISO code 'ES' and its main exports?",
+                    "parameters": {
+                        "iso_code": "ES",
+                        "fields": "exports"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the country details for ISO code 'RU' in Russian?",
+                    "parameters": {
+                        "iso_code": "RU",
+                        "lang": "ru"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "State by id",
+            "description": "Lookup sub-regions/states/provinces/departments by iso 3166-2 code",
+            "url": "https://referential.p.rapidapi.com/v1/state/{code}",
+            "parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "ISO 3166-2 state/province/deparm",
+                    "default": "US-MN",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 3166-2 code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [iso_a2]",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 letter code"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details about the state with the code US-CA?",
+                    "parameters": {
+                        "code": "US-CA"
+                    }
+                },
+                {
+                    "utterance": "I need information on the province with the code CA-ON in French.",
+                    "parameters": {
+                        "code": "CA-ON",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "What can you tell me about the region identified by the code IN-MH?",
+                    "parameters": {
+                        "code": "IN-MH"
+                    }
+                },
+                {
+                    "utterance": "Give me the details of the state with the code AU-NSW, but only return the ISO alpha-2 code.",
+                    "parameters": {
+                        "code": "AU-NSW",
+                        "fields": "iso_a2"
+                    }
+                },
+                {
+                    "utterance": "Could you look up the department with the code BR-SP and provide the information in Portuguese?",
+                    "parameters": {
+                        "code": "BR-SP",
+                        "lang": "pt"
+                    }
+                },
+                {
+                    "utterance": "I want to know more about the state with the code DE-BW.",
+                    "parameters": {
+                        "code": "DE-BW"
+                    }
+                },
+                {
+                    "utterance": "Fetch the details for the province with the code CN-SH in Chinese.",
+                    "parameters": {
+                        "code": "CN-SH",
+                        "lang": "zh"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the information for the region with the code JP-13, and include only the ISO alpha-2 code?",
+                    "parameters": {
+                        "code": "JP-13",
+                        "fields": "iso_a2"
+                    }
+                },
+                {
+                    "utterance": "Please provide the details of the state with the code RU-MOW.",
+                    "parameters": {
+                        "code": "RU-MOW"
+                    }
+                },
+                {
+                    "utterance": "I need the information for the province with the code ZA-GP in Afrikaans.",
+                    "parameters": {
+                        "code": "ZA-GP",
+                        "lang": "af"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Continent by id",
+            "description": "Lookup a continent by id",
+            "url": "https://referential.p.rapidapi.com/v1/continent/{code}",
+            "parameters": [
+                {
+                    "name": "code",
+                    "type": "string",
+                    "description": "Two letter iso continent code. Lookup /v1/continent.",
+                    "default": "NA",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2 code"
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Two letter iso 639-2 language code (i.e. en, sv, pl etc). Lookup /v1/lang.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 code"
+                    }
+                },
+                {
+                    "name": "continent_code",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter continent code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2 code"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Filter on continent name (value field) as \\\"contains\\\"",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return for each continent [iso_a2, iso_a3, continent_code, dial_code, currency_code, currency_num_code, currency]",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "iso_a2",
+                                "iso_a3",
+                                "continent_code",
+                                "dial_code",
+                                "currency_code",
+                                "currency_num_code",
+                                "currency"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me details about the continent with the code 'EU'?",
+                    "parameters": {
+                        "code": "EU"
+                    }
+                },
+                {
+                    "utterance": "I need information on the continent with code 'AS' in Spanish.",
+                    "parameters": {
+                        "code": "AS",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "What is the continent with the code 'AF' called?",
+                    "parameters": {
+                        "code": "AF"
+                    }
+                },
+                {
+                    "utterance": "Show me the continent details for 'SA' with the currency information.",
+                    "parameters": {
+                        "code": "SA",
+                        "fields": "currency"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the continent name for the code 'OC'?",
+                    "parameters": {
+                        "code": "OC"
+                    }
+                },
+                {
+                    "utterance": "I want to know about the continent with code 'AN' and its ISO alpha-3 code.",
+                    "parameters": {
+                        "code": "AN",
+                        "fields": "iso_a3"
+                    }
+                },
+                {
+                    "utterance": "Give me the continent information for 'NA' in French.",
+                    "parameters": {
+                        "code": "NA",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "What continent is represented by the code 'EU' and its dial code?",
+                    "parameters": {
+                        "code": "EU",
+                        "fields": "dial_code"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the continent with code 'SA' and its currency code?",
+                    "parameters": {
+                        "code": "SA",
+                        "fields": "currency_code"
+                    }
+                },
+                {
+                    "utterance": "I need the continent details for 'AF' with the ISO alpha-2 code.",
+                    "parameters": {
+                        "code": "AF",
+                        "fields": "iso_a2"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Continents",
+            "description": "List continents of the world localized to requested language",
+            "url": "https://referential.p.rapidapi.com/v1/continent",
+            "parameters": [
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return for each continent [iso_a2, iso_a3, continent_code, dial_code, currency_code, currency_num_code, currency]",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "iso_a2",
+                                "iso_a3",
+                                "continent_code",
+                                "dial_code",
+                                "currency_code",
+                                "currency_num_code",
+                                "currency"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "continent_code",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter continent code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter continent code"
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Two letter iso 639-2 language code (i.e. en, sv, pl etc). Lookup /v1/lang.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 language code"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "Filter as \"contains\" on continent name in chosen lang",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you list all continents in French?",
+                    "parameters": {
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Show me the continents with their ISO A2 codes.",
+                    "parameters": {
+                        "fields": "iso_a2"
+                    }
+                },
+                {
+                    "utterance": "I need the continent with the code EU.",
+                    "parameters": {
+                        "continent_code": "EU"
+                    }
+                },
+                {
+                    "utterance": "List continents that have 'America' in their name.",
+                    "parameters": {
+                        "name": "America"
+                    }
+                },
+                {
+                    "utterance": "Provide the continents with their currency codes.",
+                    "parameters": {
+                        "fields": "currency_code"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the continents in Spanish?",
+                    "parameters": {
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "What are the continents with their ISO A3 codes?",
+                    "parameters": {
+                        "fields": "iso_a3"
+                    }
+                },
+                {
+                    "utterance": "List the continents with the code AF.",
+                    "parameters": {
+                        "continent_code": "AF"
+                    }
+                },
+                {
+                    "utterance": "Show continents that include 'Asia' in their name.",
+                    "parameters": {
+                        "name": "Asia"
+                    }
+                },
+                {
+                    "utterance": "I want to see the continents with their currency numbers.",
+                    "parameters": {
+                        "fields": "currency_num_code"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Languages",
+            "description": "List the world's languages translated into 20 languages",
+            "url": "https://referential.p.rapidapi.com/v1/lang",
+            "parameters": [
+                {
+                    "name": "lang_3",
+                    "type": "STRING",
+                    "description": "Filter by 3 letter ISO language code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "3 letter ISO language code"
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter country code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [flag,iso_a2,lang_3,lang]",
+                    "default": "iso_a2,lang_3,flag",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "flag",
+                                "iso_a2",
+                                "lang_3",
+                                "lang"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Returns a language translated into lang language",
+                    "default": "en",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the list of languages in French?",
+                    "parameters": {
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "I need the languages translated into Spanish with their flags.",
+                    "parameters": {
+                        "lang": "es",
+                        "fields": "flag,lang"
+                    }
+                },
+                {
+                    "utterance": "List the languages spoken in Germany.",
+                    "parameters": {
+                        "iso_a2": "DE"
+                    }
+                },
+                {
+                    "utterance": "What are the languages available in the United States?",
+                    "parameters": {
+                        "iso_a2": "US"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the languages in Japanese with their ISO codes?",
+                    "parameters": {
+                        "lang": "ja",
+                        "fields": "iso_a2,lang_3"
+                    }
+                },
+                {
+                    "utterance": "Show me the languages in Italy with their flags and ISO codes.",
+                    "parameters": {
+                        "iso_a2": "IT",
+                        "fields": "flag,iso_a2,lang_3"
+                    }
+                },
+                {
+                    "utterance": "List the languages in Brazil translated into Portuguese.",
+                    "parameters": {
+                        "iso_a2": "BR",
+                        "lang": "pt"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the languages in China with their 3-letter codes?",
+                    "parameters": {
+                        "iso_a2": "CN",
+                        "fields": "lang_3"
+                    }
+                },
+                {
+                    "utterance": "I want to see the languages in Russia with their flags.",
+                    "parameters": {
+                        "iso_a2": "RU",
+                        "fields": "flag"
+                    }
+                },
+                {
+                    "utterance": "Provide the list of languages in India with their names in Hindi.",
+                    "parameters": {
+                        "iso_a2": "IN",
+                        "lang": "hi"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Language by id",
+            "description": "Find language by id translated into 20 languages",
+            "url": "https://referential.p.rapidapi.com/v1/lang/{lang}",
+            "parameters": [
+                {
+                    "name": "lang",
+                    "type": "string",
+                    "description": "2 letter iso language code. Lookup at /v1/lang.",
+                    "default": "es",
+                    "required": true,
+                    "constraints": {
+                        "format": "2 letter ISO language code"
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Returns a language translated into lang language",
+                    "default": "sv",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter ISO language code"
+                    }
+                },
+                {
+                    "name": "lang_3",
+                    "type": "STRING",
+                    "description": "Filter by 3 letter ISO language code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "3 letter ISO language code"
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter country code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [flag,iso_a2,lang_3,lang]",
+                    "default": "iso_a2,lang_3,flag",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "flag",
+                                "iso_a2",
+                                "lang_3",
+                                "lang"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the language details for the code 'en'?",
+                    "parameters": {
+                        "lang": "en"
+                    }
+                },
+                {
+                    "utterance": "I need the language information for 'fr' in German.",
+                    "parameters": {
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "What is the language with the 3-letter code 'spa'?",
+                    "parameters": {
+                        "lang": "es",
+                        "lang_3": "spa"
+                    }
+                },
+                {
+                    "utterance": "Get me the language data for 'it' and include the flag.",
+                    "parameters": {
+                        "lang": "it",
+                        "fields": "flag"
+                    }
+                },
+                {
+                    "utterance": "Find the language for the country code 'JP' in English.",
+                    "parameters": {
+                        "lang": "en",
+                        "iso_a2": "JP"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the language details for 'pt' with the fields 'lang_3' and 'iso_a2'.",
+                    "parameters": {
+                        "lang": "pt",
+                        "fields": "lang_3,iso_a2"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the language information for 'de' in French?",
+                    "parameters": {
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Show me the language with the 3-letter code 'ger' and include the flag.",
+                    "parameters": {
+                        "lang": "de",
+                        "lang_3": "ger",
+                        "fields": "flag"
+                    }
+                },
+                {
+                    "utterance": "I want the language data for 'es' with the country code 'MX'.",
+                    "parameters": {
+                        "lang": "es",
+                        "iso_a2": "MX"
+                    }
+                },
+                {
+                    "utterance": "Get the language details for 'nl' and return the fields 'lang' and 'flag'.",
+                    "parameters": {
+                        "lang": "nl",
+                        "fields": "lang,flag"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Timezone by id",
+            "description": "Lookup a time zone",
+            "url": "https://referential.p.rapidapi.com/v1/timezone/{timezone}",
+            "parameters": [
+                {
+                    "name": "timezone",
+                    "type": "string",
+                    "description": "Timezone",
+                    "default": "Afrika/Dakar",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [code,timezone,daylights_code,daylights_offset,daylights,hours_offset,offset]",
+                    "default": "offset,daylights_offset,daylights,daylights_code,timezone",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "code",
+                                "timezone",
+                                "daylights_code",
+                                "daylights_offset",
+                                "daylights",
+                                "hours_offset",
+                                "offset"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language selection ISO 639-2 letter code. Overrides Accept-Language header. Defaults to browser value. Default: en",
+                    "default": "de",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-2 letter code"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the current time zone information for New York?",
+                    "parameters": {
+                        "timezone": "America/New_York"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the time zone details for Tokyo, including the daylight saving information?",
+                    "parameters": {
+                        "timezone": "Asia/Tokyo",
+                        "fields": "daylights,daylights_offset"
+                    }
+                },
+                {
+                    "utterance": "I need the time zone code and offset for Sydney.",
+                    "parameters": {
+                        "timezone": "Australia/Sydney",
+                        "fields": "code,offset"
+                    }
+                },
+                {
+                    "utterance": "Give me the time zone and daylight saving code for London in French.",
+                    "parameters": {
+                        "timezone": "Europe/London",
+                        "fields": "timezone,daylights_code",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "What's the daylight saving offset for Los Angeles?",
+                    "parameters": {
+                        "timezone": "America/Los_Angeles",
+                        "fields": "daylights_offset"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the time zone and hours offset for Berlin?",
+                    "parameters": {
+                        "timezone": "Europe/Berlin",
+                        "fields": "timezone,hours_offset"
+                    }
+                },
+                {
+                    "utterance": "I need the time zone information for Moscow in Spanish.",
+                    "parameters": {
+                        "timezone": "Europe/Moscow",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "What's the time zone offset for Rio de Janeiro?",
+                    "parameters": {
+                        "timezone": "America/Sao_Paulo",
+                        "fields": "offset"
+                    }
+                },
+                {
+                    "utterance": "Provide the daylight saving details for Cape Town.",
+                    "parameters": {
+                        "timezone": "Africa/Johannesburg",
+                        "fields": "daylights,daylights_code"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the time zone and daylight saving information for Dubai in German?",
+                    "parameters": {
+                        "timezone": "Asia/Dubai",
+                        "fields": "timezone,daylights",
+                        "lang": "de"
+                    }
+                }
+            ]
+        }
+    ]
+}

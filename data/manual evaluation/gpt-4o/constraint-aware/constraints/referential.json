@@ -1,0 +1,92 @@
+{
+    "name": "Referential",
+    "description": "The fastest API to access countries, states, cities, continents, dial and zip codes in up to 20 languages. A collection of data APIs to support forms, signups, search and lookup. Our endpoints are optimized for speed and size. Our data is regularly maintained and comes from International Standardization bodies, the United Nations, government surveys and GIS datasets. We do not scrape WikiPedia etc",
+    "url": "https://rapidapi.com/referential/api/referential/",
+    "api_methods": [
+        {
+            "name": "Country by iso code",
+            "description": "Get country by 2 letter iso code localized to a given language",
+            "url": "https://referential.p.rapidapi.com/v1/country/{iso_code}",
+            "parameters": [
+                {
+                    "name": "iso_code",
+                    "type": "string",
+                    "description": "2 letter iso country code. ",
+                    "default": "US",
+                    "required": true,
+                    "constraints": {
+                        "format": "2 letter ISO country code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Comma deliminated list of fields to return in response",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "2 letter iso language code to localize country name",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter ISO language code"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Languages",
+            "description": "List the world's languages translated into 20 languages",
+            "url": "https://referential.p.rapidapi.com/v1/lang",
+            "parameters": [
+                {
+                    "name": "lang_3",
+                    "type": "STRING",
+                    "description": "Filter by 3 letter ISO language code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "3 letter ISO language code"
+                    }
+                },
+                {
+                    "name": "iso_a2",
+                    "type": "STRING",
+                    "description": "Filter on 2 letter country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letter country code"
+                    }
+                },
+                {
+                    "name": "fields",
+                    "type": "STRING",
+                    "description": "Select fields to return in result [flag,iso_a2,lang_3,lang]",
+                    "default": "iso_a2,lang_3,flag",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "flag",
+                                "iso_a2",
+                                "lang_3",
+                                "lang"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Returns a language translated into lang language",
+                    "default": "en",
+                    "required": false
+                }
+            ]
+        }
+    ]
+}

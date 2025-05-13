@@ -1,0 +1,68 @@
+{
+    "name": "Veriphone",
+    "description": "Global phone number verification in a free, fast, reliable JSON API",
+    "url": "https://rapidapi.com/Veriphone/api/veriphone/",
+    "api_methods": [
+        {
+            "name": "verify",
+            "description": "Global phone number verification",
+            "url": "https://veriphone.p.rapidapi.com/verify",
+            "parameters": [
+                {
+                    "name": "phone",
+                    "type": "STRING",
+                    "description": "The phone number to verify",
+                    "default": "+4915123577723",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "default_country",
+                    "type": "STRING",
+                    "description": "The default country in a 2 letters ISO format. Example: US, RU.  Optional: the country will be infered from the prefix, from this parameter or from the IP address (in that order).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letters ISO format"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "example",
+            "description": "Get an example phone number for any country",
+            "url": "https://veriphone.p.rapidapi.com/example",
+            "parameters": [
+                {
+                    "name": "country_code",
+                    "type": "STRING",
+                    "description": "The example number's country in a 2 letters ISO format. Example: US, RU.  Optional: the country will be infered from the IP address if this parameter is absent or invalid.",
+                    "default": "GB",
+                    "required": false,
+                    "constraints": {
+                        "format": "2 letters ISO format"
+                    }
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "The type of example number to return. Values: fixed_line, mobile , premium_rate, shared_cost, toll_free, voip",
+                    "default": "mobile",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "fixed_line",
+                                "mobile",
+                                "premium_rate",
+                                "shared_cost",
+                                "toll_free",
+                                "voip"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

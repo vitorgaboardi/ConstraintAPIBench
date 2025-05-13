@@ -4,6 +4,148 @@
     "url": "https://rapidapi.com/stromdao-stromdao-default/api/solarenergyprediction/",
     "api_methods": [
         {
+            "name": "/v2.0/solar/estimation",
+            "description": "# Solar Power Estimation\nEstimated photovoltaic (PV) system performance per month of an installation with given characteristics.",
+            "url": "https://solarenergyprediction.p.rapidapi.com/v2.0/solar/estimation",
+            "parameters": [
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "46.123",
+                    "required": true
+                },
+                {
+                    "name": "wp",
+                    "type": "NUMBER",
+                    "description": "Installed Watt-Peak (eq. kWp/1000)",
+                    "default": "10000",
+                    "required": true
+                },
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "8.0123",
+                    "required": true
+                },
+                {
+                    "name": "deg",
+                    "type": "NUMBER",
+                    "description": "Plant declination (tilt) degrees, 0 (horizontal) \u2026 90 (vertical)",
+                    "default": "34",
+                    "required": false
+                },
+                {
+                    "name": "loss",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "14",
+                    "required": false
+                },
+                {
+                    "name": "az",
+                    "type": "NUMBER",
+                    "description": "Plant azimuth, facing direction relative to south:  -180 \u2026 180 (-180 = north, -90 = east, 0 = south, 90 = west, 180 = north)",
+                    "default": "0",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the estimated solar power output for a PV plant located at latitude 40.7128, longitude -74.0060 with an installed capacity of 15000 Watt-Peak?",
+                    "parameters": {
+                        "lat": 40.7128,
+                        "wp": 15000,
+                        "lon": -74.006
+                    }
+                },
+                {
+                    "utterance": "Can you predict the monthly solar energy production for a photovoltaic system at latitude 34.0522, longitude -118.2437 with a capacity of 20000 Watt-Peak?",
+                    "parameters": {
+                        "lat": 34.0522,
+                        "wp": 20000,
+                        "lon": -118.2437
+                    }
+                },
+                {
+                    "utterance": "Estimate the solar power generation for a PV plant at latitude 51.5074, longitude -0.1278 with an installed capacity of 12000 Watt-Peak and a tilt angle of 30 degrees.",
+                    "parameters": {
+                        "lat": 51.5074,
+                        "wp": 12000,
+                        "lon": -0.1278,
+                        "deg": 30
+                    }
+                },
+                {
+                    "utterance": "What is the expected monthly solar energy output for a system at latitude 37.7749, longitude -122.4194 with a capacity of 18000 Watt-Peak and a loss factor of 10%?",
+                    "parameters": {
+                        "lat": 37.7749,
+                        "wp": 18000,
+                        "lon": -122.4194,
+                        "loss": 10
+                    }
+                },
+                {
+                    "utterance": "Calculate the solar power estimation for a PV plant at latitude 48.8566, longitude 2.3522 with an installed capacity of 25000 Watt-Peak, a tilt angle of 25 degrees, and an azimuth of 45 degrees.",
+                    "parameters": {
+                        "lat": 48.8566,
+                        "wp": 25000,
+                        "lon": 2.3522,
+                        "deg": 25,
+                        "az": 45
+                    }
+                },
+                {
+                    "utterance": "Estimate the monthly solar energy production for a photovoltaic system at latitude 35.6895, longitude 139.6917 with a capacity of 30000 Watt-Peak and a tilt angle of 20 degrees.",
+                    "parameters": {
+                        "lat": 35.6895,
+                        "wp": 30000,
+                        "lon": 139.6917,
+                        "deg": 20
+                    }
+                },
+                {
+                    "utterance": "What is the predicted solar power output for a PV plant at latitude 55.7558, longitude 37.6173 with an installed capacity of 10000 Watt-Peak and a loss factor of 12%?",
+                    "parameters": {
+                        "lat": 55.7558,
+                        "wp": 10000,
+                        "lon": 37.6173,
+                        "loss": 12
+                    }
+                },
+                {
+                    "utterance": "Can you estimate the solar energy generation for a system at latitude 41.9028, longitude 12.4964 with a capacity of 22000 Watt-Peak, a tilt angle of 35 degrees, and an azimuth of -30 degrees?",
+                    "parameters": {
+                        "lat": 41.9028,
+                        "wp": 22000,
+                        "lon": 12.4964,
+                        "deg": 35,
+                        "az": -30
+                    }
+                },
+                {
+                    "utterance": "What is the expected monthly solar power output for a PV plant at latitude 52.5200, longitude 13.4050 with an installed capacity of 15000 Watt-Peak and a tilt angle of 40 degrees?",
+                    "parameters": {
+                        "lat": 52.52,
+                        "wp": 15000,
+                        "lon": 13.405,
+                        "deg": 40
+                    }
+                },
+                {
+                    "utterance": "Estimate the solar energy production for a photovoltaic system at latitude 45.4215, longitude -75.6972 with a capacity of 17000 Watt-Peak, a tilt angle of 15 degrees, and a loss factor of 8%.",
+                    "parameters": {
+                        "lat": 45.4215,
+                        "wp": 17000,
+                        "lon": -75.6972,
+                        "deg": 15,
+                        "loss": 8
+                    }
+                }
+            ]
+        },
+        {
             "name": "/v2.0/solar/prediction",
             "description": "## Solar Power Forecasting \nThe PV generation forecast for unmetered PV systems makes it possible to predict production of a PV system on an hourly basis for the next 4 days without having your own metering equipment or system-specific generation data. \n\n**Key Features**\n- based on quality weather forecast\n- solar irradiance prediction based on real-time satellite data\n- support of multiple strings, slopes, system losses and azimuths\n- hourly forecast up to 96 hours (4 days)\n- No AI training required. \n- Ready for usage in Energy Management Systems \n\n\n**Usage**\nSpecify all individual parameters of a pv-plant with query parameters. The result will give a unique plant ID, that might be used in future requests to reference parameters using `plant` query parameter.\n\n[![Run in Postman](https://run.pstmn.io/button.svg)](https://god.gw.postman.com/run-collection/15081091-0b194e23-bda0-408d-b732-03239a67af4e?action=collection%2Ffork&collection-url=entityId%3D15081091-0b194e23-bda0-408d-b732-03239a67af4e%26entityType%3Dcollection%26workspaceId%3D62346650-ac84-4b89-9975-fb61337ec7de#?env%5BRapidAPI%5D=W3sia2V5IjoiWC1SYXBpZEFQSS1LZXkiLCJ2YWx1ZSI6ImQ0MGQyZTA0MWJtc2g5ZGZmN2ZmZThmOTMxOTVwMWRiNjU2anNuYTMyN2Y0NzljMGMxIiwiZW5hYmxlZCI6dHJ1ZSwidHlwZSI6InNlY3JldCIsInNlc3Npb25WYWx1ZSI6ImQ0MGQyZTA0MWJtc2g5ZGZmN2ZmZThmOTMxOTVwMWRiNjU2anNuYTMyN2Y0NzljMGMxIiwic2Vzc2lvbkluZGV4IjowfV0=)",
             "url": "https://solarenergyprediction.p.rapidapi.com/v2.0/solar/prediction",
@@ -95,61 +237,67 @@
                     }
                 },
                 {
-                    "utterance": "Can you provide the solar energy prediction for a plant with an azimuth of 30 degrees and a declination of 25 degrees?",
+                    "utterance": "Can you provide a solar energy prediction for a plant with an installed capacity of 5000 Watt-Peak and a plane azimuth of 30 degrees?",
                     "parameters": {
-                        "az": 30,
-                        "deg": 25
+                        "wp": 5000,
+                        "az": 30
                     }
                 },
                 {
-                    "utterance": "I need the solar power forecast for a PV system with a maximum inverter capacity of 5000 Watts.",
+                    "utterance": "Get the solar power forecast for a PV plant in Germany with the postal code 10115.",
                     "parameters": {
-                        "inverter": 5000
+                        "zip": "10115"
                     }
                 },
                 {
-                    "utterance": "What is the predicted solar energy output for a plant with an installed Watt-Peak of 7000?",
+                    "utterance": "What is the hourly solar power prediction for a PV system with a maximum inverter capacity of 6000 Watts and a plane declination of 45 degrees?",
                     "parameters": {
+                        "inverter": 6000,
+                        "deg": 45
+                    }
+                },
+                {
+                    "utterance": "Provide a solar energy forecast for a plant with a system loss of 10% and a plane azimuth of -90 degrees.",
+                    "parameters": {
+                        "loss": 10,
+                        "az": -90
+                    }
+                },
+                {
+                    "utterance": "Can you predict the solar power output for a PV plant located at latitude 40.71 and longitude -74.01 with an installed capacity of 7000 Watt-Peak?",
+                    "parameters": {
+                        "lat": 40.71,
+                        "lon": -74.01,
                         "wp": 7000
                     }
                 },
                 {
-                    "utterance": "Can you give me the solar power forecast for a PV plant located in the zip code 80331?",
+                    "utterance": "What is the solar power forecast for a PV plant with a plane declination of 60 degrees and a maximum inverter capacity of 5500 Watts?",
                     "parameters": {
-                        "zip": "80331"
+                        "deg": 60,
+                        "inverter": 5500
                     }
                 },
                 {
-                    "utterance": "What is the solar energy prediction for a plant with a system loss of 10%?",
+                    "utterance": "Get the solar energy prediction for a plant with a plane azimuth of 0 degrees and a system loss of 12%.",
                     "parameters": {
-                        "loss": 10
+                        "az": 0,
+                        "loss": 12
                     }
                 },
                 {
-                    "utterance": "I need the solar power forecast for a PV plant using monocrystalline panel technology.",
+                    "utterance": "What is the solar power forecast for a PV plant located at latitude 51.51 and longitude -0.13 with an installed capacity of 8000 Watt-Peak?",
                     "parameters": {
-                        "tech": "monocrystalline"
+                        "lat": 51.51,
+                        "lon": -0.13,
+                        "wp": 8000
                     }
                 },
                 {
-                    "utterance": "Can you provide the solar energy prediction for a plant with an azimuth of -90 degrees and a declination of 40 degrees?",
+                    "utterance": "Can you provide a solar energy prediction for a plant with a plane declination of 75 degrees and a maximum inverter capacity of 6500 Watts?",
                     "parameters": {
-                        "az": -90,
-                        "deg": 40
-                    }
-                },
-                {
-                    "utterance": "What is the predicted solar energy output for a plant with an installed Watt-Peak of 8000 and a maximum inverter capacity of 6000 Watts?",
-                    "parameters": {
-                        "wp": 8000,
-                        "inverter": 6000
-                    }
-                },
-                {
-                    "utterance": "Can you give me the solar power forecast for a PV plant located at latitude 40.71 and longitude -74.01?",
-                    "parameters": {
-                        "lat": 40.71,
-                        "lon": -74.01
+                        "deg": 75,
+                        "inverter": 6500
                     }
                 }
             ]

@@ -1,0 +1,284 @@
+{
+    "name": "Axesso - Amazon Data Service",
+    "description": "The Axesso Amazon Data Service API returns detailed Amazon product information including product title, manufacturer, reviews, size selection, price, reviews and many more. Additionally, the API supports product recommendations as provided by Amazon and invoke keyword searches to find up to 20 products per page relating to the searchterm. This service is comparable to the Amazon Product Advertising API, but presented in a more condensed manner. The usage requires a API Key in production mode....",
+    "url": "https://rapidapi.com/axesso/api/axesso-amazon-data-service1/",
+    "api_methods": [
+        {
+            "name": "lookupSellerPrices",
+            "description": "Lookup offer from different seller for the specified product",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/v2/amz/amazon-lookup-prices",
+            "parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Number of pages to return",
+                    "default": "1",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "e.g. com / de / fr / co.uk",
+                    "default": "com",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "com",
+                                "de",
+                                "fr",
+                                "co.uk"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "B07QFC6LN6",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "searchByKeywordAsin",
+            "description": "Search products by keyword, returning all asins for the specified page.",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-search-by-keyword-asin",
+            "parameters": [
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Jeans",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Parameter for Pagination",
+                    "default": "1",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "e.g. com / de / fr / co.uk",
+                    "default": "com",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "com",
+                                "de",
+                                "fr",
+                                "co.uk"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Pass the amazon category which should used for the search. Valid category list can found on the amazon website on the search selection box. **Important: If the passed category is not a valid amazon category, the response will be empty**",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "withCache",
+                    "type": "BOOLEAN",
+                    "description": "If true, proxy for same searchterm will be cached and used for next page. Might increase the response quality.",
+                    "default": "true",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "excludeSponsored",
+                    "type": "STRING",
+                    "description": "Set true to exclude sponsored products",
+                    "default": "false",
+                    "required": false
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "relevanceblender",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "lookupReviews",
+            "description": "Lookup reviews from a product",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-reviews",
+            "parameters": [
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "B07YLDNTKB",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "com",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "recent",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "filters",
+                    "type": "STRING",
+                    "description": "Semicolon seperated list of filters",
+                    "default": "reviewerType=avp_only_reviews;filterByStar=five_star",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "lookupSeller",
+            "description": "Lookup seller details based on sellerid and domain",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-seller",
+            "parameters": [
+                {
+                    "name": "sellerId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AD97MR4NOW5CD",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "com",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "lookupProduct",
+            "description": "request product information",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-product",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://www.amazon.com/dp/B09938DVH2",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "merchant",
+                    "type": "STRING",
+                    "description": "merchant id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "lookupSellerProducts",
+            "description": "Lookup all products for a given seller page by page.",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-seller-products",
+            "parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "com",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "sellerId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AD97MR4NOW5CD",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "lookupBestSeller",
+            "description": "Lookup best seller list by providing url and page.",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-best-sellers-list",
+            "parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://www.amazon.com/gp/movers-and-shakers/toys-and-games",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        }
+    ]
+}

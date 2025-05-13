@@ -1,0 +1,697 @@
+{
+    "name": "Shazam",
+    "description": "Identify any song. Discover, artists, lyrics, videos & playlists to create a song detector site/application such as shazam.com",
+    "url": "https://rapidapi.com/apidojo/api/shazam/",
+    "api_methods": [
+        {
+            "name": "shazam-events/list",
+            "description": "List future events",
+            "url": "https://shazam.p.rapidapi.com/shazam-events/list",
+            "parameters": [
+                {
+                    "name": "artistId",
+                    "type": "STRING",
+                    "description": "The value of 'artist->adamid' field returned in \u2026/search OR \u2026/songs/v2/detect OR \u2026/songs/get-details endpoint\nThe value of 'artists->id' field returned in \u2026/shazam-songs/get-details OR \u2026/albums/get-details OR \u2026/albums/get-related-artist",
+                    "default": "73406786",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "The date to list events from",
+                    "default": "2022-12-31",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of items per page, for paging purpose",
+                    "default": "50",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The page index, for paging purpose",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "The date to list events to. Ex : 2023-01-15",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "artists/get-latest-release",
+            "description": "Get latest release of an artist",
+            "url": "https://shazam.p.rapidapi.com/artists/get-latest-release",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'artist->adamid' field returned in .../search OR .../songs/v2/detect OR .../songs/get-details endpoint\nThe value of 'artists->id' field returned in .../shazam-songs/get-details OR .../albums/get-details OR .../albums/get-related-artist",
+                    "default": "567072",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "artists/get-summary",
+            "description": "Get summary information related to an artist",
+            "url": "https://shazam.p.rapidapi.com/artists/get-summary",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'artist->adamid' field returned in .../search OR .../songs/v2/detect OR .../songs/get-details endpoint\nThe value of 'artists->id' field returned in .../shazam-songs/get-details OR .../albums/get-details OR .../albums/get-related-artist",
+                    "default": "567072",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/detect",
+            "description": "You may check the tutorial at https://rapidapi.com/apidojo/api/shazam/tutorials.\nDetect songs from raw sound data. The raw sound data must be 44100Hz, 1 channel (Mono), signed 16 bit PCM little endian. Other types of media are NOT supported, such as : mp3, wav, etc... or need to be converted to uncompressed raw data. If the result is empty, your request data must be in wrong format in most case. Encoded base64 string of byte[] that generated from raw data less than 500KB (3-5 seconds sample are good enough for detection) will be sent via body as plain text",
+            "url": "https://shazam.p.rapidapi.com/songs/detect",
+            "parameters": []
+        },
+        {
+            "name": "songs/get-related-artist",
+            "description": "Get artist related to a song",
+            "url": "https://shazam.p.rapidapi.com/songs/get-related-artist",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'songs->id' field returned from .../shazam-songs/get-details endpoint",
+                    "default": "1217912247",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "format": "language code"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/v2/get-details",
+            "description": "Get details information of specific song",
+            "url": "https://shazam.p.rapidapi.com/songs/v2/get-details",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'songs->id' field returned from .../shazam-songs/get-details endpoint",
+                    "default": "1217912247",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "format": "language code"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/v2/detect",
+            "description": "You may check the tutorial at https://rapidapi.com/apidojo/api/shazam/tutorials.\nDetect songs from raw sound data. The raw sound data must be 44100Hz, 1 channel (Mono), signed 16 bit PCM little endian. Other types of media are NOT supported, such as : mp3, wav, etc... or need to be converted to uncompressed raw data. If the result is empty, your request data must be in wrong format in most case. Encoded base64 string of byte[] that generated from raw data less than 500KB (3-5 seconds sample are good enough for detection) will be sent via body as plain text",
+            "url": "https://shazam.p.rapidapi.com/songs/v2/detect",
+            "parameters": [
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "User's timezone",
+                    "default": "America/Chicago",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "timestamp",
+                    "type": "STRING",
+                    "description": "This parameter is used to indicate that you are detecting the same song while making different calls in case the previous portion of sound cannot be recognized successfully. You simply use the same unix timestamp (milliseconds) which is the starting time of first sound portion of detecting progress. This parameter must be come along with \\\"samplems\\\" parameter. Ex : 1591884466431",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true,
+                        "inter-dependency": "timestamp, samplems: timestamp must be provided along with samplems."
+                    }
+                },
+                {
+                    "name": "samplems",
+                    "type": "STRING",
+                    "description": "The samplems in milliseconds including the total duration of previous sound portions if any. Otherwise just provide the samplems of the current sound portion. Ex : First portion is 5040, second portion is 9040, etc...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true,
+                        "inter-dependency": "timestamp, samplems: samplems must be provided along with timestamp."
+                    }
+                },
+                {
+                    "name": "identifier",
+                    "type": "STRING",
+                    "description": "This parameter is used to indicate that you are detecting the same song while making different calls in case the previous portion of sound cannot be recognized successfully. You simply use the same id string while detecting the same song. This parameter must be come along with \\\"samplems\\\" parameter.\nThe format is xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, Ex : 21abe4d2-0fe9-4be4-8492-0ecf26960f7e. ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true,
+                        "inter-dependency": "identifier, samplems: identifier must be provided along with samplems."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/get-details",
+            "description": "Get details information of specific song",
+            "url": "https://shazam.p.rapidapi.com/songs/get-details",
+            "parameters": [
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "The key field returned from .../songs/detect or .../search endpoint",
+                    "default": "40333609",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/get-count",
+            "description": "Get total times the specific song is detected/shazamed by using .../songs/detect or .../songs/v2/detect endpoint",
+            "url": "https://shazam.p.rapidapi.com/songs/get-count",
+            "parameters": [
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "The key field returned from .../songs/detect or .../search endpoint",
+                    "default": "40333609",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/list-recommendations",
+            "description": "List related ones to a specific song.",
+            "url": "https://shazam.p.rapidapi.com/songs/list-recommendations",
+            "parameters": [
+                {
+                    "name": "key",
+                    "type": "STRING",
+                    "description": "The key field returned from .../songs/detect or .../search endpoint",
+                    "default": "484129036",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/list-artist-top-tracks (Deprecated)",
+            "description": "List top tracks of specific artist",
+            "url": "https://shazam.p.rapidapi.com/songs/list-artist-top-tracks",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The id field inside artists json object returned from .../songs/detect or .../search endpoint",
+                    "default": "40008598",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "albums/get-related-artist",
+            "description": "Get artist related to an album",
+            "url": "https://shazam.p.rapidapi.com/albums/get-related-artist",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'albums->id' field returned in .../shazam-songs/get-details OR .../artists/get-albums OR .../artists/get-summary\nThe value of 'id' field returned in .../artists/get-albums OR .../artists/get-latest-release endpoint\nThe value of 'albumadamid' field returned in .../songs/v2/detect OR .../songs/detect endpoint",
+                    "default": "850569437",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "albums/get-details",
+            "description": "Get detailed album of an album",
+            "url": "https://shazam.p.rapidapi.com/albums/get-details",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'albums->id' field returned in .../shazam-songs/get-details OR .../artists/get-albums OR .../artists/get-summary\nThe value of 'id' field returned in .../artists/get-albums OR .../artists/get-latest-release endpoint\nThe value of 'albumadamid' field returned in .../songs/v2/detect OR .../songs/detect endpoint",
+                    "default": "850576570",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "shazam-songs/list-similarities",
+            "description": "Get similar (You may also like) songs",
+            "url": "https://shazam.p.rapidapi.com/shazam-songs/list-similarities",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'related-tracks->id' field returned in .../shazam-songs/get-details endpoint",
+                    "default": "track-similarities-id-424767377",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "shazam-songs/get-details",
+            "description": "Get mapping id information between systems to use with other endpoints.",
+            "url": "https://shazam.p.rapidapi.com/shazam-songs/get-details",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'id' field returned in .../search endpoint",
+                    "default": "40333609",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "artists/get-top-songs",
+            "description": "Get top songs of an artist",
+            "url": "https://shazam.p.rapidapi.com/artists/get-top-songs",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'artist->adamid' field returned in .../search OR .../songs/v2/detect OR .../songs/get-details endpoint\nThe value of 'artists->id' field returned in .../shazam-songs/get-details OR .../albums/get-details OR .../albums/get-related-artist",
+                    "default": "567072",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "artists/get-details",
+            "description": "Get detailed information of an artist",
+            "url": "https://shazam.p.rapidapi.com/artists/get-details",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "The value of 'artist->adamid' field returned in .../search OR .../songs/v2/detect OR .../songs/get-details endpoint\nThe value of 'artists->id' field returned in .../shazam-songs/get-details OR .../albums/get-details OR .../albums/get-related-artist",
+                    "default": "567072",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "charts/list",
+            "description": "List all available charts by cities, countries, and genres",
+            "url": "https://shazam.p.rapidapi.com/charts/list",
+            "parameters": []
+        },
+        {
+            "name": "search",
+            "description": "Search for songs, artists that match input term",
+            "url": "https://shazam.p.rapidapi.com/search",
+            "parameters": [
+                {
+                    "name": "term",
+                    "type": "STRING",
+                    "description": "Full name of songs or artists",
+                    "default": "kiss the rain",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "For paging purpose, maximum is fixed at 5 items per response",
+                    "default": "5",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 5
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "auto-complete",
+            "description": "Get suggestions by word or phrase",
+            "url": "https://shazam.p.rapidapi.com/auto-complete",
+            "parameters": [
+                {
+                    "name": "term",
+                    "type": "STRING",
+                    "description": "Any word or phrase of song, artist, etc... that you are familiar with",
+                    "default": "kiss the",
+                    "required": true
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "charts/track",
+            "description": "Get all popular songs in specific chart",
+            "url": "https://shazam.p.rapidapi.com/charts/track",
+            "parameters": [
+                {
+                    "name": "listId",
+                    "type": "STRING",
+                    "description": "The value of listId field returned in .../charts/list endpoint",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "Used for paging purpose, 20 items per response is maximum.",
+                    "default": "20",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 20
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "startFrom",
+                    "type": "NUMBER",
+                    "description": "Used for paging purpose.",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "songs/detect",
+            "description": "You may check the tutorial at https://rapidapi.com/apidojo/api/shazam/tutorials.\nDetect songs from raw sound data. The raw sound data must be 44100Hz, 1 channel (Mono), signed 16 bit PCM little endian. Other types of media are NOT supported, such as : mp3, wav, etc... or need to be converted to uncompressed raw data. If the result is empty, your request data must be in wrong format in most case. Encoded base64 string of byte[] that generated from raw data less than 500KB (3-5 seconds sample are good enough for detection) will be sent via body as plain text",
+            "url": "https://shazam.p.rapidapi.com/songs/detect",
+            "parameters": []
+        },
+        {
+            "name": "songs/v2/detect",
+            "description": "You may check the tutorial at https://rapidapi.com/apidojo/api/shazam/tutorials.\nDetect songs from raw sound data. The raw sound data must be 44100Hz, 1 channel (Mono), signed 16 bit PCM little endian. Other types of media are NOT supported, such as : mp3, wav, etc... or need to be converted to uncompressed raw data. If the result is empty, your request data must be in wrong format in most case. Encoded base64 string of byte[] that generated from raw data less than 500KB (3-5 seconds sample are good enough for detection) will be sent via body as plain text",
+            "url": "https://shazam.p.rapidapi.com/songs/v2/detect",
+            "parameters": [
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "User's timezone",
+                    "default": "America/Chicago",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The language code",
+                    "default": "en-US",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "timestamp",
+                    "type": "STRING",
+                    "description": "This parameter is used to indicate that you are detecting the same song while making different calls in case the previous portion of sound cannot be recognized successfully. You simply use the same unix timestamp (milliseconds) which is the starting time of first sound portion of detecting progress. This parameter must be come along with \\\"samplems\\\" parameter. Ex : 1591884466431",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true,
+                        "inter-dependency": "timestamp, samplems: timestamp must be provided along with samplems."
+                    }
+                },
+                {
+                    "name": "samplems",
+                    "type": "STRING",
+                    "description": "The samplems in milliseconds including the total duration of previous sound portions if any. Otherwise just provide the samplems of the current sound portion. Ex : First portion is 5040, second portion is 9040, etc...",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true,
+                        "inter-dependency": "timestamp, samplems: samplems must be provided along with timestamp."
+                    }
+                },
+                {
+                    "name": "identifier",
+                    "type": "STRING",
+                    "description": "This parameter is used to indicate that you are detecting the same song while making different calls in case the previous portion of sound cannot be recognized successfully. You simply use the same id string while detecting the same song. This parameter must be come along with \\\"samplems\\\" parameter.\nThe format is xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx, Ex : 21abe4d2-0fe9-4be4-8492-0ecf26960f7e. ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true,
+                        "inter-dependency": "identifier, samplems: identifier must be provided along with samplems."
+                    }
+                }
+            ]
+        }
+    ]
+}

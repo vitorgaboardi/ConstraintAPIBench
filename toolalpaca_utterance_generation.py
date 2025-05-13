@@ -42,7 +42,7 @@ API_count = 0
 mistakes = 0
 OAS_to_create_utterances = ['foreca_weather.json-Daily', 'learn_to_read_and_write_japanese_kanji.json-Kanji grade level', 'getitsms_whatsapp_apis.json-GetIT SMS WHATSAPP API', 'streaming_availability.json-Search Basic (FREE)', 'solarenergyprediction.json-/v2.0/solar/prediction', 'nowpayments.json-3.Getestimatedprice', 'referential.json-Languages', 'covid_19_by_api_ninjas.json-/v1/covid19', 'ott_details.json-Advanced Search', 'dezgo.json-/text2image', 'veriphone.json-verify', 'working_days.json-/1.3/list_non_working_days', 'flightera_flight_data.json-airportDelayDailyStatistics', 'postal_ninja.json-createTrack', 'cricket_live_data.json-Results By Date', 'car_code.json-/obd2/{code}', 'trackingpackage.json-TrackingPackage', 'shazam.json-songs/get-count', 'axesso_amazon_data_service.json-lookupSeller', 'hotels_com_provider.json-Hotel Rooms (offers)', 'netflix_v2.json-Search', 'recipe_food_nutrition.json-Generate Shopping List', 'spotify.json-Artist albums', 'movie_database_alternative.json-By Search', 'tasty.json-tips/list', 'synwave.json-Upload a new file', 'everyearthquake.json-Earthquakes', 'flightera_flight_data.json-airlineStatistics', 'webcams_travel.json-/webcams/list/webcam={webcamid}[,{webcamid}[,...]]', 'working_days.json-/1.3/add_working_days']
 
-if model == "gpt-4.1-mini" or model == "gpt-4.1":
+if not '/' in model:
   client = OpenAI(api_key="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")
   model_name = model
 else:

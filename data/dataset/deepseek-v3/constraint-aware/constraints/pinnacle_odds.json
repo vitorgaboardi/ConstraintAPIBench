@@ -1,0 +1,262 @@
+{
+    "name": "Pinnacle Odds",
+    "description": "Pinnacle Sport API is a RESTful service for getting pre-match and live odds. Historical odds, score and results. Updates without delay. Sports: Soccer, tennis, basketball, hockey, american football, MMA, baseball. **Support**:  [tipsters@rapi.one](mailto:tipsters@rapi.one) / t.me/api_tipsters **Other sports api:** https://rapi.one",
+    "url": "https://rapidapi.com/tipsters/api/pinnacle-odds/",
+    "api_methods": [
+        {
+            "name": "Betting status",
+            "description": "Get a betting status. Checking the Pinnacle server",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/betting-status",
+            "parameters": []
+        },
+        {
+            "name": "List of special markets",
+            "description": "Get a list of special markets. Always first issue a snapshot call and continue with the delta calls. Calls return changes since the provided `since` value. You must always use the since parameter, after the first call. Please note that prematch and live events are different",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/special-markets",
+            "parameters": [
+                {
+                    "name": "sport_id",
+                    "type": "NUMBER",
+                    "description": "Sport id",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "is_have_odds",
+                    "type": "BOOLEAN",
+                    "description": "`1` or `0`. You can only get matches for which there are already open odds, or matches that will be given odds in the future",
+                    "default": true,
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                0,
+                                1
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "league_ids",
+                    "type": "NUMBER",
+                    "description": "League id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "event_type",
+                    "type": "STRING",
+                    "description": "Status: `prematch`, `live`  Please note that prematch and live events are different",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "prematch",
+                                "live"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "since",
+                    "type": "NUMBER",
+                    "description": "Since UTC time. Calls return changes since the provided `since` value.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "event_ids",
+                    "type": "NUMBER",
+                    "description": "Event id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Event details",
+            "description": "Get a event details and history odds. history:[time, value, max bet]. `Period_results - status`: 1 = Event period is settled, 2 = Event period is re-settled, 3 = Event period is cancelled, 4 = Event period is re-settled as cancelled, 5 = Event is deleted",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/details",
+            "parameters": [
+                {
+                    "name": "event_id",
+                    "type": "NUMBER",
+                    "description": "Event id",
+                    "default": 1419211461,
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "List of periods",
+            "description": "Get a list of periods",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/meta-periods",
+            "parameters": [
+                {
+                    "name": "sport_id",
+                    "type": "NUMBER",
+                    "description": "Sport id",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "id": true,
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "List of archive events",
+            "description": "Get a list of archive events. Use pagination",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/archive",
+            "parameters": [
+                {
+                    "name": "sport_id",
+                    "type": "NUMBER",
+                    "description": "Sport id",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "page_num",
+                    "type": "NUMBER",
+                    "description": "Page num",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "league_ids",
+                    "type": "NUMBER",
+                    "description": "League id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "List of sports",
+            "description": "Get a list of sports",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/sports",
+            "parameters": []
+        },
+        {
+            "name": "List of markets",
+            "description": "Get a list of markets. Always first issue a snapshot call and continue with the delta calls. Calls return changes since the provided `since` value.  You must always use the `since` parameter, after starting your program cycle. You can make request without a `since` parameter no more than 15 times in 5 minutes. Please note that `prematch` and `live` events are different",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/markets",
+            "parameters": [
+                {
+                    "name": "sport_id",
+                    "type": "NUMBER",
+                    "description": "Sport id",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "league_ids",
+                    "type": "NUMBER",
+                    "description": "League id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "event_type",
+                    "type": "STRING",
+                    "description": "Status: `prematch`, `live`  Please note that prematch and live events are different",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "prematch",
+                                "live"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "event_ids",
+                    "type": "NUMBER",
+                    "description": "Event id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "is_have_odds",
+                    "type": "BOOLEAN",
+                    "description": "`1` or `0`. You can only get matches for which there are already open odds, or matches that will be given odds in the future",
+                    "default": true,
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                1,
+                                0
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "since",
+                    "type": "NUMBER",
+                    "description": "Since UTC time. Calls return changes since the provided `since` value.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "List of leagues",
+            "description": "Get a list of leagues",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/leagues",
+            "parameters": [
+                {
+                    "name": "sport_id",
+                    "type": "NUMBER",
+                    "description": "Sport id",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        }
+    ]
+}

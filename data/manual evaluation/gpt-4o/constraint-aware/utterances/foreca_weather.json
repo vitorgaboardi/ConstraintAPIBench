@@ -1,0 +1,157 @@
+{
+    "name": "Foreca Weather",
+    "description": "Everything you need to build a weather app",
+    "url": "https://rapidapi.com/foreca-ltd-foreca-ltd-default/api/foreca-weather/",
+    "api_methods": [
+        {
+            "name": "Hourly",
+            "description": "Hourly forecast.",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/hourly/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "history",
+                    "type": "BOOLEAN",
+                    "description": "Whether to include 24 hours of past data.",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London",
+                    "required": false,
+                    "constraints": {
+                        "format": "IANA time zone database names"
+                    }
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 12
+                        }
+                    }
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the hourly weather forecast for New York City?",
+                    "parameters": {
+                        "location": "New York City"
+                    }
+                },
+                {
+                    "utterance": "What's the hourly weather forecast for the Eiffel Tower with the temperature in Fahrenheit?",
+                    "parameters": {
+                        "location": "Eiffel Tower",
+                        "tempunit": "F"
+                    }
+                },
+                {
+                    "utterance": "I need the hourly weather forecast for Mount Everest, including the past 24 hours of data.",
+                    "parameters": {
+                        "location": "Mount Everest",
+                        "history": true
+                    }
+                },
+                {
+                    "utterance": "Show me the hourly weather forecast for Sydney with wind speed in kilometers per hour.",
+                    "parameters": {
+                        "location": "Sydney",
+                        "windunit": "KMH"
+                    }
+                },
+                {
+                    "utterance": "What's the hourly forecast for Tokyo with a time zone set to Asia/Tokyo?",
+                    "parameters": {
+                        "location": "Tokyo",
+                        "tz": "Asia/Tokyo"
+                    }
+                },
+                {
+                    "utterance": "Can I get the hourly weather forecast for the Grand Canyon with an altitude of 1500 meters?",
+                    "parameters": {
+                        "location": "Grand Canyon",
+                        "alt": 1500
+                    }
+                },
+                {
+                    "utterance": "Provide the hourly weather forecast for London with a dataset of basic variables.",
+                    "parameters": {
+                        "location": "London",
+                        "dataset": "basic"
+                    }
+                },
+                {
+                    "utterance": "I want the hourly weather forecast for the Statue of Liberty for the next 10 hours.",
+                    "parameters": {
+                        "location": "Statue of Liberty",
+                        "periods": 10
+                    }
+                },
+                {
+                    "utterance": "Give me the hourly weather forecast for the Golden Gate Bridge with the temperature in Kelvin.",
+                    "parameters": {
+                        "location": "Golden Gate Bridge",
+                        "tempunit": "K"
+                    }
+                },
+                {
+                    "utterance": "What's the hourly weather forecast for the Great Wall of China with wind speed in miles per hour?",
+                    "parameters": {
+                        "location": "Great Wall of China",
+                        "windunit": "MPH"
+                    }
+                }
+            ]
+        }
+    ]
+}

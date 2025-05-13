@@ -1,0 +1,278 @@
+{
+    "name": "Flight Radar",
+    "description": "The world's most popular flight tracker API which helps you to create Flight tracker application, such as : flightradar24.com",
+    "url": "https://rapidapi.com/apidojo/api/flight-radar1/",
+    "api_methods": [
+        {
+            "name": "flights/list-in-boundary",
+            "description": "Helps to list flights, aircrafts in a GEO bounding box, and display them on a map",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/list-in-boundary",
+            "parameters": [
+                {
+                    "name": "bl_lng",
+                    "type": "NUMBER",
+                    "description": "The bottom left longitude of the bounding box",
+                    "default": "100.641975",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "tr_lat",
+                    "type": "NUMBER",
+                    "description": "The top right latitude of the bounding box",
+                    "default": "13.771029",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "bl_lat",
+                    "type": "NUMBER",
+                    "description": "The bottom left latitude of the bounding box",
+                    "default": "13.607884",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "tr_lng",
+                    "type": "NUMBER",
+                    "description": "The top right longitude of the bounding box",
+                    "default": "100.861566",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "The value of 'Code' field returned in .../aircrafts/list endpoint",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "speed",
+                    "type": "STRING",
+                    "description": "Filter by speed. The format is min,max . Ex : 0,460",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "min,max"
+                    }
+                },
+                {
+                    "name": "airline",
+                    "type": "STRING",
+                    "description": "The value of 'ICAO' field returned in .../airlines/list endpoint",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "altitude",
+                    "type": "STRING",
+                    "description": "Filter by altitude. The format is min,max . Ex : 0,48000",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "min,max"
+                    }
+                },
+                {
+                    "name": "airport",
+                    "type": "STRING",
+                    "description": "The value of 'icao' field returned in .../airports/list endpoint",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "reg",
+                    "type": "STRING",
+                    "description": "Registration Ex : D-AIHV",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of flights per response (max 300)",
+                    "default": "300",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 300
+                        },
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "aircrafts/list",
+            "description": "List available aircrafts",
+            "url": "https://flight-radar1.p.rapidapi.com/aircrafts/list",
+            "parameters": []
+        },
+        {
+            "name": "flights/list-by-airline",
+            "description": "List flights by airline",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/list-by-airline",
+            "parameters": [
+                {
+                    "name": "airline",
+                    "type": "STRING",
+                    "description": "The value of 'icao' field returned in .../airlines/list or .../flights/detail endpoint\nThe value of 'operator' field returned in .../flights/search endpoint\n",
+                    "default": "AXM",
+                    "required": true,
+                    "constraints": {
+                        "format": "icao"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "flights/get-playback",
+            "description": "Get history traveling data of specific flight",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/get-playback",
+            "parameters": [
+                {
+                    "name": "flightId",
+                    "type": "STRING",
+                    "description": "Value of 'id' OR 'identification/id' field returned in .../flights/detail or .../flights/get-more-info endpoint",
+                    "default": "2b5accad",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "timestamp",
+                    "type": "NUMBER",
+                    "description": "Value of 'departure' field returned in .../flights/detail OR .../flights/get-more-info endpoint",
+                    "default": "1648874400",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "flights/get-more-info",
+            "description": "Get more information of specific aircraft, flight, airline, etc...",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/get-more-info",
+            "parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "The value of registration (if fetchBy is 'reg') or default (if fetchBy is 'flight') field returned in .../flights/detail",
+                    "default": "FD3210",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "fetchBy",
+                    "type": "STRING",
+                    "description": "One of the following : reg|flight\n* reg is used to get specific aircraft info, flight is used to get specific flight or airline info",
+                    "default": "flight",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "reg",
+                                "flight"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "flights/detail",
+            "description": "Get detailed information of specific flight",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/detail",
+            "parameters": [
+                {
+                    "name": "flight",
+                    "type": "STRING",
+                    "description": "The value of id, flight_id field returned in .../flights/list-in-boundary or .../flights/list-most-tracked endpoint",
+                    "default": "2b5ae17f",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "flights/list-most-tracked",
+            "description": "Return the most tracked flights around the world",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/list-most-tracked",
+            "parameters": []
+        },
+        {
+            "name": "flights/search",
+            "description": "Search for specific flight",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/search",
+            "parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Aircraft number, flight code, airline code, etc...",
+                    "default": "FD3210",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of items per response (max 25)",
+                    "default": "25",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 25
+                        },
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airlines/get-logos",
+            "description": "Get logos of airlines",
+            "url": "https://flight-radar1.p.rapidapi.com/airlines/get-logos",
+            "parameters": []
+        },
+        {
+            "name": "airlines/list",
+            "description": "List all airlines around the world",
+            "url": "https://flight-radar1.p.rapidapi.com/airlines/list",
+            "parameters": []
+        },
+        {
+            "name": "airports/list",
+            "description": "List all airports around the world",
+            "url": "https://flight-radar1.p.rapidapi.com/airports/list",
+            "parameters": []
+        }
+    ]
+}

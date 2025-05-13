@@ -1,0 +1,296 @@
+{
+    "name": "Postal Ninja",
+    "description": "Official Postal Ninja tracking API for developers",
+    "url": "https://rapidapi.com/PostalNinja/api/postal-ninja/",
+    "api_methods": [
+        {
+            "name": "createTrack",
+            "description": "Returns ID of newly created package (status=CREATED) or stored ID if this tracking number already exists (status=FOUND).",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track",
+            "parameters": [
+                {
+                    "name": "trackCode",
+                    "type": "STRING",
+                    "description": "Tracking number",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "ds",
+                    "type": "STRING",
+                    "description": "Carrier ID (optional)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "destCountry",
+                    "type": "STRING",
+                    "description": "Optional destination country code (ISO 3166-1 alpha-2)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you track the package with the number 123456789?",
+                    "parameters": {
+                        "trackCode": "123456789"
+                    }
+                },
+                {
+                    "utterance": "Please create a tracking entry for the shipment with tracking code 987654321.",
+                    "parameters": {
+                        "trackCode": "987654321"
+                    }
+                },
+                {
+                    "utterance": "I need to track a package using the number 1122334455 and the carrier ID USPS.",
+                    "parameters": {
+                        "trackCode": "1122334455",
+                        "ds": "USPS"
+                    }
+                },
+                {
+                    "utterance": "Could you add a new tracking for the package 5566778899 heading to Canada?",
+                    "parameters": {
+                        "trackCode": "5566778899",
+                        "destCountry": "CA"
+                    }
+                },
+                {
+                    "utterance": "Track the shipment with code 9988776655 using FedEx as the carrier.",
+                    "parameters": {
+                        "trackCode": "9988776655",
+                        "ds": "FedEx"
+                    }
+                },
+                {
+                    "utterance": "Create a tracking entry for the package 3344556677 destined for Germany.",
+                    "parameters": {
+                        "trackCode": "3344556677",
+                        "destCountry": "DE"
+                    }
+                },
+                {
+                    "utterance": "I want to track the package with number 4455667788, carrier DHL, and destination France.",
+                    "parameters": {
+                        "trackCode": "4455667788",
+                        "ds": "DHL",
+                        "destCountry": "FR"
+                    }
+                },
+                {
+                    "utterance": "Please set up tracking for the shipment 6677889900 with UPS as the carrier.",
+                    "parameters": {
+                        "trackCode": "6677889900",
+                        "ds": "UPS"
+                    }
+                },
+                {
+                    "utterance": "Can you track the package 7788990011 that\u2019s going to Japan?",
+                    "parameters": {
+                        "trackCode": "7788990011",
+                        "destCountry": "JP"
+                    }
+                },
+                {
+                    "utterance": "Add a new tracking for the package 9900112233 with carrier FedEx and destination Australia.",
+                    "parameters": {
+                        "trackCode": "9900112233",
+                        "ds": "FedEx",
+                        "destCountry": "AU"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "refreshTrack",
+            "description": "Submits on-demand refresh request to tracking engine for package with given ID. Please note, that packages in ACTIVE list are auto-tracked regularly so you don't need to do this for such packages.",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track/{id}/refresh",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Package ID",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you refresh the tracking information for package number 123456789?",
+                    "parameters": {
+                        "id": "123456789"
+                    }
+                },
+                {
+                    "utterance": "Please update the tracking details for my package with ID 987654321.",
+                    "parameters": {
+                        "id": "987654321"
+                    }
+                },
+                {
+                    "utterance": "I need the latest tracking status for package 555555555.",
+                    "parameters": {
+                        "id": "555555555"
+                    }
+                },
+                {
+                    "utterance": "Could you refresh the tracking data for the package identified by 111222333?",
+                    "parameters": {
+                        "id": "111222333"
+                    }
+                },
+                {
+                    "utterance": "Please submit a refresh request for the tracking information of package 444444444.",
+                    "parameters": {
+                        "id": "444444444"
+                    }
+                },
+                {
+                    "utterance": "Can you get the latest updates for the package with ID 666777888?",
+                    "parameters": {
+                        "id": "666777888"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to refresh the tracking details for package 999888777.",
+                    "parameters": {
+                        "id": "999888777"
+                    }
+                },
+                {
+                    "utterance": "Please refresh the tracking status for my package number 222333444.",
+                    "parameters": {
+                        "id": "222333444"
+                    }
+                },
+                {
+                    "utterance": "Could you update the tracking information for package 777888999?",
+                    "parameters": {
+                        "id": "777888999"
+                    }
+                },
+                {
+                    "utterance": "I need to refresh the tracking data for package 333222111.",
+                    "parameters": {
+                        "id": "333222111"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "moveTrack",
+            "description": "Moves package with given ID to ARCHIVED, TRASHED or back to ACTIVE list.",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track/{id}/move",
+            "parameters": [
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "List to move package to",
+                    "default": "\"ACTIVE\"",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ARCHIVED",
+                                "TRASHED",
+                                "ACTIVE"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Package ID",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you move the package with tracking number 123456789 to the archived list?",
+                    "parameters": {
+                        "list": "ARCHIVED",
+                        "id": "123456789"
+                    }
+                },
+                {
+                    "utterance": "Please move the package with ID 987654321 to the trashed list.",
+                    "parameters": {
+                        "list": "TRASHED",
+                        "id": "987654321"
+                    }
+                },
+                {
+                    "utterance": "I need to move the package with tracking number 456789123 back to the active list.",
+                    "parameters": {
+                        "list": "ACTIVE",
+                        "id": "456789123"
+                    }
+                },
+                {
+                    "utterance": "Could you transfer the package with ID 321654987 to the archived list?",
+                    "parameters": {
+                        "list": "ARCHIVED",
+                        "id": "321654987"
+                    }
+                },
+                {
+                    "utterance": "Move the package with tracking number 789123456 to the trashed list.",
+                    "parameters": {
+                        "list": "TRASHED",
+                        "id": "789123456"
+                    }
+                },
+                {
+                    "utterance": "Please return the package with ID 654987321 to the active list.",
+                    "parameters": {
+                        "list": "ACTIVE",
+                        "id": "654987321"
+                    }
+                },
+                {
+                    "utterance": "Can you shift the package with tracking number 123789456 to the archived list?",
+                    "parameters": {
+                        "list": "ARCHIVED",
+                        "id": "123789456"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to move the package with ID 987321654 to the trashed list.",
+                    "parameters": {
+                        "list": "TRASHED",
+                        "id": "987321654"
+                    }
+                },
+                {
+                    "utterance": "Please move the package with tracking number 456321789 back to the active list.",
+                    "parameters": {
+                        "list": "ACTIVE",
+                        "id": "456321789"
+                    }
+                },
+                {
+                    "utterance": "Could you transfer the package with ID 321987654 to the archived list?",
+                    "parameters": {
+                        "list": "ARCHIVED",
+                        "id": "321987654"
+                    }
+                }
+            ]
+        }
+    ]
+}

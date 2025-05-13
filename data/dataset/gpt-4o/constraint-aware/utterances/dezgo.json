@@ -1,0 +1,1762 @@
+{
+    "name": "Dezgo",
+    "description": "\ud83e\ude84 Provides easy&fast access to text2image / image2image / inpainting AI. (57 models across Stable Diffusion 1.x/2.x and finetuned models)",
+    "url": "https://rapidapi.com/dezgo/api/dezgo/",
+    "api_methods": [
+        {
+            "name": "/upscale",
+            "description": "Upscale an image by a factor of 2\nThis AI attempts to preserve contrasted edges and details as much as possible, producing a sharper image than simple interpolation methods. The result is returned as \"image/png\".\n\nThe following parameters influence the request cost: `image`\n(see the \"About\" section for more details)\n\n",
+            "url": "https://dezgo.p.rapidapi.com/upscale",
+            "parameters": [
+                {
+                    "name": "image",
+                    "type": "BINARY",
+                    "description": "The image to upscale\r\n\r\n**Constraints:**\r\n- Image size: `8 - 2048` pixels on either side (auto-resized)\r\n",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 8,
+                            "max": 2048
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you enhance this photo to make it sharper?",
+                    "parameters": {
+                        "image": "photo.jpg"
+                    }
+                },
+                {
+                    "utterance": "I need this picture to be upscaled for better quality.",
+                    "parameters": {
+                        "image": "picture.png"
+                    }
+                },
+                {
+                    "utterance": "Please upscale this image to improve its resolution.",
+                    "parameters": {
+                        "image": "landscape.jpeg"
+                    }
+                },
+                {
+                    "utterance": "Make this image clearer by upscaling it.",
+                    "parameters": {
+                        "image": "portrait.bmp"
+                    }
+                },
+                {
+                    "utterance": "Could you increase the size of this image while keeping it sharp?",
+                    "parameters": {
+                        "image": "artwork.tiff"
+                    }
+                },
+                {
+                    "utterance": "I want this graphic to be upscaled for a sharper look.",
+                    "parameters": {
+                        "image": "graphic.svg"
+                    }
+                },
+                {
+                    "utterance": "Upscale this image to enhance its details.",
+                    "parameters": {
+                        "image": "snapshot.gif"
+                    }
+                },
+                {
+                    "utterance": "Can you make this image larger and more detailed?",
+                    "parameters": {
+                        "image": "design.psd"
+                    }
+                },
+                {
+                    "utterance": "Please enhance the clarity of this image by upscaling it.",
+                    "parameters": {
+                        "image": "icon.ico"
+                    }
+                },
+                {
+                    "utterance": "I need this image to be upscaled for a sharper appearance.",
+                    "parameters": {
+                        "image": "logo.ai"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/image2image",
+            "description": "Edit an existing image to fit a given text description\n\n\nThe following parameters influence the request cost: `init_image`, `steps`, `upscale`\n(see the \"About\" section for more details)\n\nLicense: CreativeML Open RAIL-M (https://dezgo.com/license.txt)\n",
+            "url": "https://dezgo.p.rapidapi.com/image2image",
+            "parameters": [
+                {
+                    "name": "prompt",
+                    "type": "STRING",
+                    "description": "Describe how the final image should look like\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "an astronaut riding a horse, digital art, epic lighting, highly-detailed masterpiece trending HQ",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "init_image",
+                    "type": "BINARY",
+                    "description": "Upload the original image to be modified.\r\nSupports PNG/JPEG files, up to a maximum of 1024x1024. Dimensions should be divisible by 8. The image is resized automatically if necessary.\r\n\r\n**Constraints:**\r\n- Image size: `8 - 1024` pixels on either side (auto-resized)\r\n",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 1024,
+                            "min": 8
+                        }
+                    }
+                },
+                {
+                    "name": "upscale",
+                    "type": "NUMBER",
+                    "description": "Upscale the image by this factor using the Real-ESRGAN model. Currently only a factor of 2 is supported.\r\n\r\n**Constraints:**\r\n- Range: `1 - 2`\r\n",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 2,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "seed",
+                    "type": "NUMBER",
+                    "description": "Unique image seed number. If not provided, the image will be random.\r\nAn unsigned 32-bit integer seed used to control the generator randomness.\nReusing the same seed with the same parameters will produce the same image.\nReusing the same seed with slightly different parameters tends to produce variations of the same composition ;\nyou can use this to experiment with the impact of different parameters.\n\nIf you instructed the API to choose a random seed, it can be retrieved from the response header `x-input-seed`\r\n\r\n**Constraints:**\r\n- Range: `0 - 4294967295`\r\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 4294967295,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "NUMBER",
+                    "description": "Number of sampling steps. More steps = more details but also longer computation time.\r\nMore steps may improve quality under some circumstances and refine details, but it will take longer and be more expensive.\nFewer will result in lower quality images but is quicker and cheaper to process.\r\n\r\n**Constraints:**\r\n- Range: `10 - 150`\r\n",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 150,
+                            "min": 10
+                        }
+                    }
+                },
+                {
+                    "name": "sampler",
+                    "type": "STRING",
+                    "description": "Defines the sampling method used to generate the image.\r\nThe best samplers for low step counts tend to be `dpm`, `euler` and `euler_a`.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `ddim`\r\n  - `dpm`\r\n  - `euler`\r\n  - `euler_a`\r\n  - `k_lms`\r\n  - `pndm`\r\n",
+                    "default": "euler_a",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ddim",
+                                "dpm",
+                                "euler",
+                                "euler_a",
+                                "k_lms",
+                                "pndm"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "negative_prompt",
+                    "type": "STRING",
+                    "description": "Describe what you DON'T want in the generated image\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, blurry, bad anatomy, blurred, watermark, grainy, signature, cut off, draft",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "The AI used to generate the image.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `abyss_orange_mix_2`\r\n  - `analog_diffusion`\r\n  - `anything_3_0`\r\n  - `anything_4_0`\r\n  - `basil_mix`\r\n  - `blood_orange_mix`\r\n  - `deliberate`\r\n  - `dh_classicanime`\r\n  - `disco_diffusion_style`\r\n  - `double_exposure_diffusion`\r\n  - `dreamshaper`\r\n  - `duchaiten_anime`\r\n  - `duchaiten_darkside`\r\n  - `duchaiten_dreamworld`\r\n  - `eimis_anime_diffusion_1`\r\n  - `ely_orange_mix`\r\n  - `emoji_diffusion`\r\n  - `epic_diffusion_1`\r\n  - `epic_diffusion_1_1`\r\n  - `foto_assisted_diffusion`\r\n  - `future_diffusion`\r\n  - `hasdx`\r\n  - `iconsmi_appiconsmodelforsd`\r\n  - `inkpunk_diffusion`\r\n  - `lowpoly_world`\r\n  - `openjourney`\r\n  - `openjourney_2`\r\n  - `openniji`\r\n  - `paint_journey_2_768px`\r\n  - `papercut`\r\n  - `pastel_mix`\r\n  - `portrait_plus`\r\n  - `realistic_vision_1_3`\r\n  - `redshift_diffusion`\r\n  - `redshift_diffusion_768px`\r\n  - `something_2`\r\n  - `stable_diffusion_fluidart`\r\n  - `stable_diffusion_papercut`\r\n  - `stable_diffusion_voxelart`\r\n  - `stablediffusion_1_4`\r\n  - `stablediffusion_1_5`\r\n  - `stablediffusion_2_0_512px`\r\n  - `stablediffusion_2_0_768px`\r\n  - `stablediffusion_2_1_512px`\r\n  - `stablediffusion_2_1_768px`\r\n  - `steampunk_diffusion`\r\n  - `synthwavepunk_v2`\r\n  - `texture_diffusion`\r\n  - `trinart_2_0`\r\n  - `tshirt_diffusion`\r\n  - `vectorartz_diffusion`\r\n  - `vintedois_diffusion_v0_1`\r\n  - `vox_2`\r\n  - `waifudiffusion_1_3`\r\n  - `waifudiffusion_1_4`\r\n",
+                    "default": "epic_diffusion_1_1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "abyss_orange_mix_2",
+                                "analog_diffusion",
+                                "anything_3_0",
+                                "anything_4_0",
+                                "basil_mix",
+                                "blood_orange_mix",
+                                "deliberate",
+                                "dh_classicanime",
+                                "disco_diffusion_style",
+                                "double_exposure_diffusion",
+                                "dreamshaper",
+                                "duchaiten_anime",
+                                "duchaiten_darkside",
+                                "duchaiten_dreamworld",
+                                "eimis_anime_diffusion_1",
+                                "ely_orange_mix",
+                                "emoji_diffusion",
+                                "epic_diffusion_1",
+                                "epic_diffusion_1_1",
+                                "foto_assisted_diffusion",
+                                "future_diffusion",
+                                "hasdx",
+                                "iconsmi_appiconsmodelforsd",
+                                "inkpunk_diffusion",
+                                "lowpoly_world",
+                                "openjourney",
+                                "openjourney_2",
+                                "openniji",
+                                "paint_journey_2_768px",
+                                "papercut",
+                                "pastel_mix",
+                                "portrait_plus",
+                                "realistic_vision_1_3",
+                                "redshift_diffusion",
+                                "redshift_diffusion_768px",
+                                "something_2",
+                                "stable_diffusion_fluidart",
+                                "stable_diffusion_papercut",
+                                "stable_diffusion_voxelart",
+                                "stablediffusion_1_4",
+                                "stablediffusion_1_5",
+                                "stablediffusion_2_0_512px",
+                                "stablediffusion_2_0_768px",
+                                "stablediffusion_2_1_512px",
+                                "stablediffusion_2_1_768px",
+                                "steampunk_diffusion",
+                                "synthwavepunk_v2",
+                                "texture_diffusion",
+                                "trinart_2_0",
+                                "tshirt_diffusion",
+                                "vectorartz_diffusion",
+                                "vintedois_diffusion_v0_1",
+                                "vox_2",
+                                "waifudiffusion_1_3",
+                                "waifudiffusion_1_4"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "strength",
+                    "type": "NUMBER",
+                    "description": "How strongly the original image should be altered (from subtle to drastic changes)\r\nFrom 0.0 to 1.0\r\n\r\n**Constraints:**\r\n- Range: `0 - 1`\r\n",
+                    "default": "0.8",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "guidance",
+                    "type": "NUMBER",
+                    "description": "Adjusts how much the AI tries to fit the prompt (higher = stricter, lower = more freedom).\r\nHigher values means that the AI will try harder to match the text, but extreme values may produce more artifacts.\nLower values means that the AI is allowed more creative freedom in the interpretation of the text.\r\n\r\n**Constraints:**\r\n- Range: `-20 - 20`\r\n",
+                    "default": "7",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 20,
+                            "min": -20
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you transform this image of a sunset into a futuristic cityscape?",
+                    "parameters": {
+                        "prompt": "a futuristic cityscape",
+                        "init_image": "sunset_image.png"
+                    }
+                },
+                {
+                    "utterance": "I have a picture of a forest. Make it look like a magical fairyland with vibrant colors.",
+                    "parameters": {
+                        "prompt": "a magical fairyland with vibrant colors",
+                        "init_image": "forest_image.jpg",
+                        "model": "dreamshaper"
+                    }
+                },
+                {
+                    "utterance": "Please edit this portrait to have a cyberpunk theme and upscale it.",
+                    "parameters": {
+                        "prompt": "cyberpunk theme",
+                        "init_image": "portrait_image.png",
+                        "upscale": 2
+                    }
+                },
+                {
+                    "utterance": "Turn this beach photo into a winter wonderland, but avoid any snowmen.",
+                    "parameters": {
+                        "prompt": "a winter wonderland",
+                        "init_image": "beach_photo.jpg",
+                        "negative_prompt": "snowmen"
+                    }
+                },
+                {
+                    "utterance": "Modify this garden picture to look like a scene from a fantasy novel with dragons.",
+                    "parameters": {
+                        "prompt": "a scene from a fantasy novel with dragons",
+                        "init_image": "garden_picture.png",
+                        "steps": 50
+                    }
+                },
+                {
+                    "utterance": "I want this mountain image to have a surreal dreamlike quality.",
+                    "parameters": {
+                        "prompt": "surreal dreamlike quality",
+                        "init_image": "mountain_image.jpg",
+                        "sampler": "euler"
+                    }
+                },
+                {
+                    "utterance": "Can you make this city skyline appear as if it's underwater?",
+                    "parameters": {
+                        "prompt": "city skyline underwater",
+                        "init_image": "city_skyline.png",
+                        "strength": 0.5
+                    }
+                },
+                {
+                    "utterance": "Transform this desert scene into a lush jungle, and use a high guidance value.",
+                    "parameters": {
+                        "prompt": "a lush jungle",
+                        "init_image": "desert_scene.jpg",
+                        "guidance": 15
+                    }
+                },
+                {
+                    "utterance": "Edit this castle photo to look like it's from a steampunk universe.",
+                    "parameters": {
+                        "prompt": "steampunk universe",
+                        "init_image": "castle_photo.png",
+                        "model": "steampunk_diffusion"
+                    }
+                },
+                {
+                    "utterance": "I have a picture of a cat. Make it look like a cartoon character.",
+                    "parameters": {
+                        "prompt": "cartoon character",
+                        "init_image": "cat_picture.jpg",
+                        "seed": 123456789
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/inpainting",
+            "description": "Modify a part of an image (using a mask) to fit a given text description\n\n\nThe following parameters influence the request cost: `init_image`, `steps`, `upscale`\n(see the \"About\" section for more details)\n\nLicense: CreativeML Open RAIL-M (https://dezgo.com/license.txt)\n\r\n\r\n**Global Constraints:**\r\n- Images must be of the same size: `init_image` and `mask_image`\r\n",
+            "url": "https://dezgo.p.rapidapi.com/inpainting",
+            "parameters": [
+                {
+                    "name": "prompt",
+                    "type": "STRING",
+                    "description": "Describe how the final image should look like\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "an astronaut riding a horse, digital art, epic lighting, highly-detailed masterpiece trending HQ",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "mask_image",
+                    "type": "BINARY",
+                    "description": "\r\nA black and white mask that defines the parts of the image to modify.\nShould be the same size as init_image.\n\nWhite pixels = modified ; Black pixels = unchanged\r\n\r\n**Constraints:**\r\n- Image size: `8 - 1024` pixels on either side (auto-resized)\r\n",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 1024,
+                            "min": 8
+                        },
+                        "inter-dependency": "init_image, mask_image: Images must be of the same size."
+                    }
+                },
+                {
+                    "name": "init_image",
+                    "type": "BINARY",
+                    "description": "Upload the original image to be modified.\r\nSupports PNG/JPEG files, up to a maximum of 1024x1024. Dimensions should be divisible by 8. The image is resized automatically if necessary.\r\n\r\n**Constraints:**\r\n- Image size: `8 - 1024` pixels on either side (auto-resized)\r\n",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 1024,
+                            "min": 8
+                        },
+                        "inter-dependency": "init_image, mask_image: Images must be of the same size."
+                    }
+                },
+                {
+                    "name": "upscale",
+                    "type": "NUMBER",
+                    "description": "Upscale the image by this factor using the Real-ESRGAN model. Currently only a factor of 2 is supported.\r\n\r\n**Constraints:**\r\n- Range: `1 - 2`\r\n",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 2,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "negative_prompt",
+                    "type": "STRING",
+                    "description": "Describe what you DON'T want in the generated image\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, blurry, bad anatomy, blurred, watermark, grainy, signature, cut off, draft",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "The AI used to generate the image.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `stablediffusion_inpaint_1`\r\n  - `stablediffusion_inpaint_2`\r\n",
+                    "default": "stablediffusion_inpaint_1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "stablediffusion_inpaint_1",
+                                "stablediffusion_inpaint_2"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "NUMBER",
+                    "description": "Number of sampling steps. More steps = more details but also longer computation time.\r\nMore steps may improve quality under some circumstances and refine details, but it will take longer and be more expensive.\nFewer will result in lower quality images but is quicker and cheaper to process.\r\n\r\n**Constraints:**\r\n- Range: `10 - 150`\r\n",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 150,
+                            "min": 10
+                        }
+                    }
+                },
+                {
+                    "name": "guidance",
+                    "type": "NUMBER",
+                    "description": "Adjusts how much the AI tries to fit the prompt (higher = stricter, lower = more freedom).\r\nHigher values means that the AI will try harder to match the text, but extreme values may produce more artifacts.\nLower values means that the AI is allowed more creative freedom in the interpretation of the text.\r\n\r\n**Constraints:**\r\n- Range: `-20 - 20`\r\n",
+                    "default": "7",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 20,
+                            "min": -20
+                        }
+                    }
+                },
+                {
+                    "name": "seed",
+                    "type": "NUMBER",
+                    "description": "Unique image seed number. If not provided, the image will be random.\r\nAn unsigned 32-bit integer seed used to control the generator randomness.\nReusing the same seed with the same parameters will produce the same image.\nReusing the same seed with slightly different parameters tends to produce variations of the same composition ;\nyou can use this to experiment with the impact of different parameters.\n\nIf you instructed the API to choose a random seed, it can be retrieved from the response header `x-input-seed`\r\n\r\n**Constraints:**\r\n- Range: `0 - 4294967295`\r\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 4294967295,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "sampler",
+                    "type": "STRING",
+                    "description": "Defines the sampling method used to generate the image.\r\nThe best samplers for low step counts tend to be `dpm`, `euler` and `euler_a`.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `ddim`\r\n  - `dpm`\r\n  - `euler`\r\n  - `euler_a`\r\n  - `k_lms`\r\n  - `pndm`\r\n",
+                    "default": "euler_a",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ddim",
+                                "dpm",
+                                "euler",
+                                "euler_a",
+                                "k_lms",
+                                "pndm"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you modify this image of a beach to add a sunset in the background?",
+                    "parameters": {
+                        "prompt": "a sunset in the background",
+                        "mask_image": "beach_mask.png",
+                        "init_image": "beach.png"
+                    }
+                },
+                {
+                    "utterance": "I want to change the sky in this cityscape to a starry night. Use the stablediffusion_inpaint_2 model.",
+                    "parameters": {
+                        "prompt": "a starry night sky",
+                        "mask_image": "cityscape_mask.png",
+                        "init_image": "cityscape.png",
+                        "model": "stablediffusion_inpaint_2"
+                    }
+                },
+                {
+                    "utterance": "Please replace the car in this image with a futuristic vehicle and make sure it's highly detailed.",
+                    "parameters": {
+                        "prompt": "a futuristic vehicle, highly detailed",
+                        "mask_image": "car_mask.png",
+                        "init_image": "car.png",
+                        "steps": 100
+                    }
+                },
+                {
+                    "utterance": "Transform the forest in this picture into a winter wonderland. Avoid any blurry effects.",
+                    "parameters": {
+                        "prompt": "a winter wonderland",
+                        "mask_image": "forest_mask.png",
+                        "init_image": "forest.png",
+                        "negative_prompt": "blurry"
+                    }
+                },
+                {
+                    "utterance": "Can you add a dragon flying over the castle in this image? Use the euler sampler.",
+                    "parameters": {
+                        "prompt": "a dragon flying over the castle",
+                        "mask_image": "castle_mask.png",
+                        "init_image": "castle.png",
+                        "sampler": "euler"
+                    }
+                },
+                {
+                    "utterance": "I'd like to change the color of the flowers in this garden to vibrant red. Use a guidance of 15.",
+                    "parameters": {
+                        "prompt": "vibrant red flowers",
+                        "mask_image": "garden_mask.png",
+                        "init_image": "garden.png",
+                        "guidance": 15
+                    }
+                },
+                {
+                    "utterance": "Modify this portrait to give the person a futuristic helmet. Use a seed of 123456789.",
+                    "parameters": {
+                        "prompt": "a futuristic helmet",
+                        "mask_image": "portrait_mask.png",
+                        "init_image": "portrait.png",
+                        "seed": 123456789
+                    }
+                },
+                {
+                    "utterance": "Can you add a rainbow over the mountains in this image and upscale it by a factor of 2?",
+                    "parameters": {
+                        "prompt": "a rainbow over the mountains",
+                        "mask_image": "mountains_mask.png",
+                        "init_image": "mountains.png",
+                        "upscale": 2
+                    }
+                },
+                {
+                    "utterance": "Please replace the old building in this photo with a modern skyscraper. Use 50 steps for more detail.",
+                    "parameters": {
+                        "prompt": "a modern skyscraper",
+                        "mask_image": "building_mask.png",
+                        "init_image": "building.png",
+                        "steps": 50
+                    }
+                },
+                {
+                    "utterance": "I want to change the ocean in this image to a vibrant coral reef. Avoid any grainy textures.",
+                    "parameters": {
+                        "prompt": "a vibrant coral reef",
+                        "mask_image": "ocean_mask.png",
+                        "init_image": "ocean.png",
+                        "negative_prompt": "grainy"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/text2image",
+            "description": "Generate an image from a text description\nThe result is returned as \"image/png\".\n\nThe following parameters influence the request cost: `width`, `height`, `steps`, `upscale`\n(see the \"About\" section for more details)\n\nLicense: CreativeML Open RAIL-M (https://dezgo.com/license.txt)\n\r\n\r\n**Global Constraints:**\r\n- Auto resolution: if not provided, fields `width` and `height` are automatically set to the model's native resolution.\r\n",
+            "url": "https://dezgo.p.rapidapi.com/text2image",
+            "parameters": [
+                {
+                    "name": "prompt",
+                    "type": "STRING",
+                    "description": "Describe how the final image should look like\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "an astronaut riding a horse, digital art, epic lighting, highly-detailed masterpiece trending HQ",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "seed",
+                    "type": "NUMBER",
+                    "description": "Unique image seed number. If not provided, the image will be random.\r\nAn unsigned 32-bit integer seed used to control the generator randomness.\nReusing the same seed with the same parameters will produce the same image.\nReusing the same seed with slightly different parameters tends to produce variations of the same composition ;\nyou can use this to experiment with the impact of different parameters.\n\nIf you instructed the API to choose a random seed, it can be retrieved from the response header `x-input-seed`\r\n\r\n**Constraints:**\r\n- Range: `0 - 4294967295`\r\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 4294967295,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "guidance",
+                    "type": "NUMBER",
+                    "description": "Adjusts how much the AI tries to fit the prompt (higher = stricter, lower = more freedom).\r\nHigher values means that the AI will try harder to match the text, but extreme values may produce more artifacts.\nLower values means that the AI is allowed more creative freedom in the interpretation of the text.\r\n\r\n**Constraints:**\r\n- Range: `-20 - 20`\r\n",
+                    "default": "7",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 20,
+                            "min": -20
+                        }
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "NUMBER",
+                    "description": "Number of sampling steps. More steps = more details but also longer computation time.\r\nMore steps may improve quality under some circumstances and refine details, but it will take longer and be more expensive.\nFewer will result in lower quality images but is quicker and cheaper to process.\r\n\r\n**Constraints:**\r\n- Range: `10 - 150`\r\n",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 150,
+                            "min": 10
+                        }
+                    }
+                },
+                {
+                    "name": "sampler",
+                    "type": "STRING",
+                    "description": "Defines the sampling method used to generate the image.\r\nThe best samplers for low step counts tend to be `dpm`, `euler` and `euler_a`.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `ddim`\r\n  - `dpm`\r\n  - `euler`\r\n  - `euler_a`\r\n  - `k_lms`\r\n  - `pndm`\r\n",
+                    "default": "euler_a",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ddim",
+                                "dpm",
+                                "euler",
+                                "euler_a",
+                                "k_lms",
+                                "pndm"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "width",
+                    "type": "NUMBER",
+                    "description": "The image width in pixels.\r\nMust be divisible by 8 (auto-adjusted to the lowest multiple)\r\n\r\n**Constraints:**\r\n- Range: `320 - 1024`\r\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1024,
+                            "min": 320
+                        }
+                    }
+                },
+                {
+                    "name": "upscale",
+                    "type": "NUMBER",
+                    "description": "Upscale the image by this factor using the Real-ESRGAN model. Currently only a factor of 2 is supported.\r\n\r\n**Constraints:**\r\n- Range: `1 - 2`\r\n",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 2,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "negative_prompt",
+                    "type": "STRING",
+                    "description": "Describe what you DON'T want in the generated image\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, blurry, bad anatomy, blurred, watermark, grainy, signature, cut off, draft",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "height",
+                    "type": "NUMBER",
+                    "description": "The image height in pixels.\r\nMust be divisible by 8 (auto-adjusted to the lowest multiple)\r\n\r\n**Constraints:**\r\n- Range: `320 - 1024`\r\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1024,
+                            "min": 320
+                        }
+                    }
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "The AI used to generate the image.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `abyss_orange_mix_2`\r\n  - `analog_diffusion`\r\n  - `anything_3_0`\r\n  - `anything_4_0`\r\n  - `basil_mix`\r\n  - `blood_orange_mix`\r\n  - `deliberate`\r\n  - `dh_classicanime`\r\n  - `disco_diffusion_style`\r\n  - `double_exposure_diffusion`\r\n  - `dreamshaper`\r\n  - `duchaiten_anime`\r\n  - `duchaiten_darkside`\r\n  - `duchaiten_dreamworld`\r\n  - `eimis_anime_diffusion_1`\r\n  - `ely_orange_mix`\r\n  - `emoji_diffusion`\r\n  - `epic_diffusion_1`\r\n  - `epic_diffusion_1_1`\r\n  - `foto_assisted_diffusion`\r\n  - `future_diffusion`\r\n  - `hasdx`\r\n  - `iconsmi_appiconsmodelforsd`\r\n  - `inkpunk_diffusion`\r\n  - `lowpoly_world`\r\n  - `openjourney`\r\n  - `openjourney_2`\r\n  - `openniji`\r\n  - `paint_journey_2_768px`\r\n  - `papercut`\r\n  - `pastel_mix`\r\n  - `portrait_plus`\r\n  - `realistic_vision_1_3`\r\n  - `redshift_diffusion`\r\n  - `redshift_diffusion_768px`\r\n  - `something_2`\r\n  - `stable_diffusion_fluidart`\r\n  - `stable_diffusion_papercut`\r\n  - `stable_diffusion_voxelart`\r\n  - `stablediffusion_1_4`\r\n  - `stablediffusion_1_5`\r\n  - `stablediffusion_2_0_512px`\r\n  - `stablediffusion_2_0_768px`\r\n  - `stablediffusion_2_1_512px`\r\n  - `stablediffusion_2_1_768px`\r\n  - `steampunk_diffusion`\r\n  - `synthwavepunk_v2`\r\n  - `texture_diffusion`\r\n  - `trinart_2_0`\r\n  - `tshirt_diffusion`\r\n  - `vectorartz_diffusion`\r\n  - `vintedois_diffusion_v0_1`\r\n  - `vox_2`\r\n  - `waifudiffusion_1_3`\r\n  - `waifudiffusion_1_4`\r\n",
+                    "default": "epic_diffusion_1_1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "abyss_orange_mix_2",
+                                "analog_diffusion",
+                                "anything_3_0",
+                                "anything_4_0",
+                                "basil_mix",
+                                "blood_orange_mix",
+                                "deliberate",
+                                "dh_classicanime",
+                                "disco_diffusion_style",
+                                "double_exposure_diffusion",
+                                "dreamshaper",
+                                "duchaiten_anime",
+                                "duchaiten_darkside",
+                                "duchaiten_dreamworld",
+                                "eimis_anime_diffusion_1",
+                                "ely_orange_mix",
+                                "emoji_diffusion",
+                                "epic_diffusion_1",
+                                "epic_diffusion_1_1",
+                                "foto_assisted_diffusion",
+                                "future_diffusion",
+                                "hasdx",
+                                "iconsmi_appiconsmodelforsd",
+                                "inkpunk_diffusion",
+                                "lowpoly_world",
+                                "openjourney",
+                                "openjourney_2",
+                                "openniji",
+                                "paint_journey_2_768px",
+                                "papercut",
+                                "pastel_mix",
+                                "portrait_plus",
+                                "realistic_vision_1_3",
+                                "redshift_diffusion",
+                                "redshift_diffusion_768px",
+                                "something_2",
+                                "stable_diffusion_fluidart",
+                                "stable_diffusion_papercut",
+                                "stable_diffusion_voxelart",
+                                "stablediffusion_1_4",
+                                "stablediffusion_1_5",
+                                "stablediffusion_2_0_512px",
+                                "stablediffusion_2_0_768px",
+                                "stablediffusion_2_1_512px",
+                                "stablediffusion_2_1_768px",
+                                "steampunk_diffusion",
+                                "synthwavepunk_v2",
+                                "texture_diffusion",
+                                "trinart_2_0",
+                                "tshirt_diffusion",
+                                "vectorartz_diffusion",
+                                "vintedois_diffusion_v0_1",
+                                "vox_2",
+                                "waifudiffusion_1_3",
+                                "waifudiffusion_1_4"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Create an image of a futuristic cityscape at night with neon lights.",
+                    "parameters": {
+                        "prompt": "a futuristic cityscape at night with neon lights"
+                    }
+                },
+                {
+                    "utterance": "Generate a portrait of a medieval knight in shining armor with a castle in the background, using the 'epic_diffusion_1' model.",
+                    "parameters": {
+                        "prompt": "a medieval knight in shining armor with a castle in the background",
+                        "model": "epic_diffusion_1"
+                    }
+                },
+                {
+                    "utterance": "I want an image of a serene beach at sunset with palm trees, and make sure it doesn't include any people.",
+                    "parameters": {
+                        "prompt": "a serene beach at sunset with palm trees",
+                        "negative_prompt": "people"
+                    }
+                },
+                {
+                    "utterance": "Can you create an image of a dragon flying over a mountain range with a guidance of 10?",
+                    "parameters": {
+                        "prompt": "a dragon flying over a mountain range",
+                        "guidance": 10
+                    }
+                },
+                {
+                    "utterance": "Make an image of a bustling market scene in an ancient city, using 50 steps for more detail.",
+                    "parameters": {
+                        "prompt": "a bustling market scene in an ancient city",
+                        "steps": 50
+                    }
+                },
+                {
+                    "utterance": "I'd like an image of a mystical forest with glowing mushrooms, using the 'euler' sampler.",
+                    "parameters": {
+                        "prompt": "a mystical forest with glowing mushrooms",
+                        "sampler": "euler"
+                    }
+                },
+                {
+                    "utterance": "Create an image of a cyberpunk cityscape with flying cars, and upscale it by a factor of 2.",
+                    "parameters": {
+                        "prompt": "a cyberpunk cityscape with flying cars",
+                        "upscale": 2
+                    }
+                },
+                {
+                    "utterance": "Generate an image of a tranquil lake surrounded by mountains, with a width of 800 pixels.",
+                    "parameters": {
+                        "prompt": "a tranquil lake surrounded by mountains",
+                        "width": 800
+                    }
+                },
+                {
+                    "utterance": "I want an image of a fantasy castle on a hill, using a seed of 123456789 for consistency.",
+                    "parameters": {
+                        "prompt": "a fantasy castle on a hill",
+                        "seed": 123456789
+                    }
+                },
+                {
+                    "utterance": "Create an image of a bustling futuristic city with flying vehicles, using the 'openjourney' model and a height of 600 pixels.",
+                    "parameters": {
+                        "prompt": "a bustling futuristic city with flying vehicles",
+                        "model": "openjourney",
+                        "height": 600
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/info",
+            "description": "Get information about the Dezgo API (such as available models).",
+            "url": "https://dezgo.p.rapidapi.com/info",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "/info",
+            "description": "Get information about the Dezgo API (such as available models).",
+            "url": "https://dezgo.p.rapidapi.com/info",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "/upscale",
+            "description": "Upscale an image by a factor of 2\nThis AI attempts to preserve contrasted edges and details as much as possible, producing a sharper image than simple interpolation methods. The result is returned as \"image/png\".\n\nThe following parameters influence the request cost: `image`\n(see the \"About\" section for more details)\n\n",
+            "url": "https://dezgo.p.rapidapi.com/upscale",
+            "parameters": [
+                {
+                    "name": "image",
+                    "type": "BINARY",
+                    "description": "The image to upscale\r\n\r\n**Constraints:**\r\n- Image size: `8 - 2048` pixels on either side (auto-resized)\r\n",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 8,
+                            "max": 2048
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you enhance the resolution of this photo for me?",
+                    "parameters": {
+                        "image": "photo.jpg"
+                    }
+                },
+                {
+                    "utterance": "I need this picture to be upscaled. Can you do that?",
+                    "parameters": {
+                        "image": "picture.png"
+                    }
+                },
+                {
+                    "utterance": "Please make this image sharper and clearer.",
+                    "parameters": {
+                        "image": "landscape.jpeg"
+                    }
+                },
+                {
+                    "utterance": "Could you improve the quality of this image?",
+                    "parameters": {
+                        "image": "portrait.bmp"
+                    }
+                },
+                {
+                    "utterance": "I want this graphic to be enhanced. Can you upscale it?",
+                    "parameters": {
+                        "image": "graphic.tiff"
+                    }
+                },
+                {
+                    "utterance": "Can you make this image larger while keeping the details intact?",
+                    "parameters": {
+                        "image": "artwork.gif"
+                    }
+                },
+                {
+                    "utterance": "Please upscale this image to make it more detailed.",
+                    "parameters": {
+                        "image": "snapshot.png"
+                    }
+                },
+                {
+                    "utterance": "I need this photo to be upscaled for better clarity.",
+                    "parameters": {
+                        "image": "vacation.jpg"
+                    }
+                },
+                {
+                    "utterance": "Can you enhance the details of this image?",
+                    "parameters": {
+                        "image": "design.jpeg"
+                    }
+                },
+                {
+                    "utterance": "Make this picture sharper and more defined, please.",
+                    "parameters": {
+                        "image": "illustration.bmp"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/image2image",
+            "description": "Edit an existing image to fit a given text description\n\n\nThe following parameters influence the request cost: `init_image`, `steps`, `upscale`\n(see the \"About\" section for more details)\n\nLicense: CreativeML Open RAIL-M (https://dezgo.com/license.txt)\n",
+            "url": "https://dezgo.p.rapidapi.com/image2image",
+            "parameters": [
+                {
+                    "name": "prompt",
+                    "type": "STRING",
+                    "description": "Describe how the final image should look like\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "an astronaut riding a horse, digital art, epic lighting, highly-detailed masterpiece trending HQ",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0,
+                            "max": 1000
+                        }
+                    }
+                },
+                {
+                    "name": "init_image",
+                    "type": "BINARY",
+                    "description": "Upload the original image to be modified.\r\nSupports PNG/JPEG files, up to a maximum of 1024x1024. Dimensions should be divisible by 8. The image is resized automatically if necessary.\r\n\r\n**Constraints:**\r\n- Image size: `8 - 1024` pixels on either side (auto-resized)\r\n",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 8,
+                            "max": 1024
+                        }
+                    }
+                },
+                {
+                    "name": "upscale",
+                    "type": "NUMBER",
+                    "description": "Upscale the image by this factor using the Real-ESRGAN model. Currently only a factor of 2 is supported.\r\n\r\n**Constraints:**\r\n- Range: `1 - 2`\r\n",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1,
+                            "max": 2
+                        }
+                    }
+                },
+                {
+                    "name": "seed",
+                    "type": "NUMBER",
+                    "description": "Unique image seed number. If not provided, the image will be random.\r\nAn unsigned 32-bit integer seed used to control the generator randomness.\nReusing the same seed with the same parameters will produce the same image.\nReusing the same seed with slightly different parameters tends to produce variations of the same composition ;\nyou can use this to experiment with the impact of different parameters.\n\nIf you instructed the API to choose a random seed, it can be retrieved from the response header `x-input-seed`\r\n\r\n**Constraints:**\r\n- Range: `0 - 4294967295`\r\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0,
+                            "max": 4294967295
+                        }
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "NUMBER",
+                    "description": "Number of sampling steps. More steps = more details but also longer computation time.\r\nMore steps may improve quality under some circumstances and refine details, but it will take longer and be more expensive.\nFewer will result in lower quality images but is quicker and cheaper to process.\r\n\r\n**Constraints:**\r\n- Range: `10 - 150`\r\n",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 10,
+                            "max": 150
+                        }
+                    }
+                },
+                {
+                    "name": "sampler",
+                    "type": "STRING",
+                    "description": "Defines the sampling method used to generate the image.\r\nThe best samplers for low step counts tend to be `dpm`, `euler` and `euler_a`.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `ddim`\r\n  - `dpm`\r\n  - `euler`\r\n  - `euler_a`\r\n  - `k_lms`\r\n  - `pndm`\r\n",
+                    "default": "euler_a",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ddim",
+                                "dpm",
+                                "euler",
+                                "euler_a",
+                                "k_lms",
+                                "pndm"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "negative_prompt",
+                    "type": "STRING",
+                    "description": "Describe what you DON'T want in the generated image\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, blurry, bad anatomy, blurred, watermark, grainy, signature, cut off, draft",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0,
+                            "max": 1000
+                        }
+                    }
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "The AI used to generate the image.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `abyss_orange_mix_2`\r\n  - `analog_diffusion`\r\n  - `anything_3_0`\r\n  - `anything_4_0`\r\n  - `basil_mix`\r\n  - `blood_orange_mix`\r\n  - `deliberate`\r\n  - `dh_classicanime`\r\n  - `disco_diffusion_style`\r\n  - `double_exposure_diffusion`\r\n  - `dreamshaper`\r\n  - `duchaiten_anime`\r\n  - `duchaiten_darkside`\r\n  - `duchaiten_dreamworld`\r\n  - `eimis_anime_diffusion_1`\r\n  - `ely_orange_mix`\r\n  - `emoji_diffusion`\r\n  - `epic_diffusion_1`\r\n  - `epic_diffusion_1_1`\r\n  - `foto_assisted_diffusion`\r\n  - `future_diffusion`\r\n  - `hasdx`\r\n  - `iconsmi_appiconsmodelforsd`\r\n  - `inkpunk_diffusion`\r\n  - `lowpoly_world`\r\n  - `openjourney`\r\n  - `openjourney_2`\r\n  - `openniji`\r\n  - `paint_journey_2_768px`\r\n  - `papercut`\r\n  - `pastel_mix`\r\n  - `portrait_plus`\r\n  - `realistic_vision_1_3`\r\n  - `redshift_diffusion`\r\n  - `redshift_diffusion_768px`\r\n  - `something_2`\r\n  - `stable_diffusion_fluidart`\r\n  - `stable_diffusion_papercut`\r\n  - `stable_diffusion_voxelart`\r\n  - `stablediffusion_1_4`\r\n  - `stablediffusion_1_5`\r\n  - `stablediffusion_2_0_512px`\r\n  - `stablediffusion_2_0_768px`\r\n  - `stablediffusion_2_1_512px`\r\n  - `stablediffusion_2_1_768px`\r\n  - `steampunk_diffusion`\r\n  - `synthwavepunk_v2`\r\n  - `texture_diffusion`\r\n  - `trinart_2_0`\r\n  - `tshirt_diffusion`\r\n  - `vectorartz_diffusion`\r\n  - `vintedois_diffusion_v0_1`\r\n  - `vox_2`\r\n  - `waifudiffusion_1_3`\r\n  - `waifudiffusion_1_4`\r\n",
+                    "default": "epic_diffusion_1_1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "abyss_orange_mix_2",
+                                "analog_diffusion",
+                                "anything_3_0",
+                                "anything_4_0",
+                                "basil_mix",
+                                "blood_orange_mix",
+                                "deliberate",
+                                "dh_classicanime",
+                                "disco_diffusion_style",
+                                "double_exposure_diffusion",
+                                "dreamshaper",
+                                "duchaiten_anime",
+                                "duchaiten_darkside",
+                                "duchaiten_dreamworld",
+                                "eimis_anime_diffusion_1",
+                                "ely_orange_mix",
+                                "emoji_diffusion",
+                                "epic_diffusion_1",
+                                "epic_diffusion_1_1",
+                                "foto_assisted_diffusion",
+                                "future_diffusion",
+                                "hasdx",
+                                "iconsmi_appiconsmodelforsd",
+                                "inkpunk_diffusion",
+                                "lowpoly_world",
+                                "openjourney",
+                                "openjourney_2",
+                                "openniji",
+                                "paint_journey_2_768px",
+                                "papercut",
+                                "pastel_mix",
+                                "portrait_plus",
+                                "realistic_vision_1_3",
+                                "redshift_diffusion",
+                                "redshift_diffusion_768px",
+                                "something_2",
+                                "stable_diffusion_fluidart",
+                                "stable_diffusion_papercut",
+                                "stable_diffusion_voxelart",
+                                "stablediffusion_1_4",
+                                "stablediffusion_1_5",
+                                "stablediffusion_2_0_512px",
+                                "stablediffusion_2_0_768px",
+                                "stablediffusion_2_1_512px",
+                                "stablediffusion_2_1_768px",
+                                "steampunk_diffusion",
+                                "synthwavepunk_v2",
+                                "texture_diffusion",
+                                "trinart_2_0",
+                                "tshirt_diffusion",
+                                "vectorartz_diffusion",
+                                "vintedois_diffusion_v0_1",
+                                "vox_2",
+                                "waifudiffusion_1_3",
+                                "waifudiffusion_1_4"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "strength",
+                    "type": "NUMBER",
+                    "description": "How strongly the original image should be altered (from subtle to drastic changes)\r\nFrom 0.0 to 1.0\r\n\r\n**Constraints:**\r\n- Range: `0 - 1`\r\n",
+                    "default": "0.8",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0,
+                            "max": 1
+                        }
+                    }
+                },
+                {
+                    "name": "guidance",
+                    "type": "NUMBER",
+                    "description": "Adjusts how much the AI tries to fit the prompt (higher = stricter, lower = more freedom).\r\nHigher values means that the AI will try harder to match the text, but extreme values may produce more artifacts.\nLower values means that the AI is allowed more creative freedom in the interpretation of the text.\r\n\r\n**Constraints:**\r\n- Range: `-20 - 20`\r\n",
+                    "default": "7",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": -20,
+                            "max": 20
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you transform this image of a sunset into a futuristic cityscape?",
+                    "parameters": {
+                        "prompt": "a futuristic cityscape",
+                        "init_image": "sunset_image.png"
+                    }
+                },
+                {
+                    "utterance": "I have a picture of a forest. Could you make it look like a magical fairyland with vibrant colors?",
+                    "parameters": {
+                        "prompt": "a magical fairyland with vibrant colors",
+                        "init_image": "forest_image.jpg",
+                        "model": "dreamshaper"
+                    }
+                },
+                {
+                    "utterance": "Please edit this portrait to give it a steampunk vibe.",
+                    "parameters": {
+                        "prompt": "steampunk vibe",
+                        "init_image": "portrait_image.png",
+                        "sampler": "euler"
+                    }
+                },
+                {
+                    "utterance": "Turn this beach photo into a winter wonderland scene.",
+                    "parameters": {
+                        "prompt": "a winter wonderland scene",
+                        "init_image": "beach_photo.jpg",
+                        "steps": 50
+                    }
+                },
+                {
+                    "utterance": "I want this landscape to look like a scene from a sci-fi movie.",
+                    "parameters": {
+                        "prompt": "a scene from a sci-fi movie",
+                        "init_image": "landscape_image.png",
+                        "upscale": 2
+                    }
+                },
+                {
+                    "utterance": "Can you modify this image of a cat to make it look like a cartoon character?",
+                    "parameters": {
+                        "prompt": "a cartoon character",
+                        "init_image": "cat_image.jpg",
+                        "strength": 0.5
+                    }
+                },
+                {
+                    "utterance": "Please change this garden photo to appear as if it's underwater.",
+                    "parameters": {
+                        "prompt": "underwater scene",
+                        "init_image": "garden_photo.png",
+                        "guidance": 10
+                    }
+                },
+                {
+                    "utterance": "I have a picture of a mountain. Can you make it look like it's on another planet?",
+                    "parameters": {
+                        "prompt": "a mountain on another planet",
+                        "init_image": "mountain_image.jpg",
+                        "negative_prompt": "earth-like features"
+                    }
+                },
+                {
+                    "utterance": "Transform this city skyline into a cyberpunk setting.",
+                    "parameters": {
+                        "prompt": "cyberpunk setting",
+                        "init_image": "city_skyline.jpg",
+                        "model": "synthwavepunk_v2",
+                        "seed": 123456789
+                    }
+                },
+                {
+                    "utterance": "Could you edit this image of a dog to make it look like a superhero?",
+                    "parameters": {
+                        "prompt": "a superhero dog",
+                        "init_image": "dog_image.png",
+                        "sampler": "ddim",
+                        "steps": 100
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/inpainting",
+            "description": "Modify a part of an image (using a mask) to fit a given text description\n\n\nThe following parameters influence the request cost: `init_image`, `steps`, `upscale`\n(see the \"About\" section for more details)\n\nLicense: CreativeML Open RAIL-M (https://dezgo.com/license.txt)\n\r\n\r\n**Global Constraints:**\r\n- Images must be of the same size: `init_image` and `mask_image`\r\n",
+            "url": "https://dezgo.p.rapidapi.com/inpainting",
+            "parameters": [
+                {
+                    "name": "prompt",
+                    "type": "STRING",
+                    "description": "Describe how the final image should look like\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "an astronaut riding a horse, digital art, epic lighting, highly-detailed masterpiece trending HQ",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "mask_image",
+                    "type": "BINARY",
+                    "description": "\r\nA black and white mask that defines the parts of the image to modify.\nShould be the same size as init_image.\n\nWhite pixels = modified ; Black pixels = unchanged\r\n\r\n**Constraints:**\r\n- Image size: `8 - 1024` pixels on either side (auto-resized)\r\n",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 1024,
+                            "min": 8
+                        },
+                        "inter-dependency": "init_image, mask_image: Images must be of the same size."
+                    }
+                },
+                {
+                    "name": "init_image",
+                    "type": "BINARY",
+                    "description": "Upload the original image to be modified.\r\nSupports PNG/JPEG files, up to a maximum of 1024x1024. Dimensions should be divisible by 8. The image is resized automatically if necessary.\r\n\r\n**Constraints:**\r\n- Image size: `8 - 1024` pixels on either side (auto-resized)\r\n",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 1024,
+                            "min": 8
+                        },
+                        "inter-dependency": "init_image, mask_image: Images must be of the same size."
+                    }
+                },
+                {
+                    "name": "upscale",
+                    "type": "NUMBER",
+                    "description": "Upscale the image by this factor using the Real-ESRGAN model. Currently only a factor of 2 is supported.\r\n\r\n**Constraints:**\r\n- Range: `1 - 2`\r\n",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 2,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "negative_prompt",
+                    "type": "STRING",
+                    "description": "Describe what you DON'T want in the generated image\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, blurry, bad anatomy, blurred, watermark, grainy, signature, cut off, draft",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "The AI used to generate the image.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `stablediffusion_inpaint_1`\r\n  - `stablediffusion_inpaint_2`\r\n",
+                    "default": "stablediffusion_inpaint_1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "stablediffusion_inpaint_1",
+                                "stablediffusion_inpaint_2"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "NUMBER",
+                    "description": "Number of sampling steps. More steps = more details but also longer computation time.\r\nMore steps may improve quality under some circumstances and refine details, but it will take longer and be more expensive.\nFewer will result in lower quality images but is quicker and cheaper to process.\r\n\r\n**Constraints:**\r\n- Range: `10 - 150`\r\n",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 150,
+                            "min": 10
+                        }
+                    }
+                },
+                {
+                    "name": "guidance",
+                    "type": "NUMBER",
+                    "description": "Adjusts how much the AI tries to fit the prompt (higher = stricter, lower = more freedom).\r\nHigher values means that the AI will try harder to match the text, but extreme values may produce more artifacts.\nLower values means that the AI is allowed more creative freedom in the interpretation of the text.\r\n\r\n**Constraints:**\r\n- Range: `-20 - 20`\r\n",
+                    "default": "7",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 20,
+                            "min": -20
+                        }
+                    }
+                },
+                {
+                    "name": "seed",
+                    "type": "NUMBER",
+                    "description": "Unique image seed number. If not provided, the image will be random.\r\nAn unsigned 32-bit integer seed used to control the generator randomness.\nReusing the same seed with the same parameters will produce the same image.\nReusing the same seed with slightly different parameters tends to produce variations of the same composition ;\nyou can use this to experiment with the impact of different parameters.\n\nIf you instructed the API to choose a random seed, it can be retrieved from the response header `x-input-seed`\r\n\r\n**Constraints:**\r\n- Range: `0 - 4294967295`\r\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 4294967295,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "sampler",
+                    "type": "STRING",
+                    "description": "Defines the sampling method used to generate the image.\r\nThe best samplers for low step counts tend to be `dpm`, `euler` and `euler_a`.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `ddim`\r\n  - `dpm`\r\n  - `euler`\r\n  - `euler_a`\r\n  - `k_lms`\r\n  - `pndm`\r\n",
+                    "default": "euler_a",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ddim",
+                                "dpm",
+                                "euler",
+                                "euler_a",
+                                "k_lms",
+                                "pndm"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you modify this image of a beach to add a sunset in the background?",
+                    "parameters": {
+                        "prompt": "a sunset in the background",
+                        "mask_image": "beach_mask.png",
+                        "init_image": "beach.png"
+                    }
+                },
+                {
+                    "utterance": "I want to change the sky in this cityscape to a starry night. Use the stablediffusion_inpaint_2 model.",
+                    "parameters": {
+                        "prompt": "a starry night sky",
+                        "mask_image": "cityscape_mask.png",
+                        "init_image": "cityscape.png",
+                        "model": "stablediffusion_inpaint_2"
+                    }
+                },
+                {
+                    "utterance": "Please replace the background of this portrait with a forest scene and upscale it.",
+                    "parameters": {
+                        "prompt": "a forest scene",
+                        "mask_image": "portrait_mask.png",
+                        "init_image": "portrait.png",
+                        "upscale": 2
+                    }
+                },
+                {
+                    "utterance": "Transform the car in this image to look like a futuristic vehicle. Avoid any blurry effects.",
+                    "parameters": {
+                        "prompt": "a futuristic vehicle",
+                        "mask_image": "car_mask.png",
+                        "init_image": "car.png",
+                        "negative_prompt": "blurry"
+                    }
+                },
+                {
+                    "utterance": "Can you make the garden in this photo appear as if it's in full bloom? Use 50 steps for more detail.",
+                    "parameters": {
+                        "prompt": "a garden in full bloom",
+                        "mask_image": "garden_mask.png",
+                        "init_image": "garden.png",
+                        "steps": 50
+                    }
+                },
+                {
+                    "utterance": "I'd like to change the color of the dress in this image to red. Use the euler sampler.",
+                    "parameters": {
+                        "prompt": "a red dress",
+                        "mask_image": "dress_mask.png",
+                        "init_image": "dress.png",
+                        "sampler": "euler"
+                    }
+                },
+                {
+                    "utterance": "Modify this landscape to include a waterfall. Set the guidance to 10 for a more accurate result.",
+                    "parameters": {
+                        "prompt": "a waterfall",
+                        "mask_image": "landscape_mask.png",
+                        "init_image": "landscape.png",
+                        "guidance": 10
+                    }
+                },
+                {
+                    "utterance": "Can you add a dragon flying in the sky of this castle image? Use a seed of 123456 for consistency.",
+                    "parameters": {
+                        "prompt": "a dragon flying in the sky",
+                        "mask_image": "castle_mask.png",
+                        "init_image": "castle.png",
+                        "seed": 123456
+                    }
+                },
+                {
+                    "utterance": "Please change the ocean in this picture to look like it's during a storm. Use the ddim sampler.",
+                    "parameters": {
+                        "prompt": "an ocean during a storm",
+                        "mask_image": "ocean_mask.png",
+                        "init_image": "ocean.png",
+                        "sampler": "ddim"
+                    }
+                },
+                {
+                    "utterance": "I want to replace the sky in this mountain photo with a sunrise. Use the k_lms sampler and 20 steps.",
+                    "parameters": {
+                        "prompt": "a sunrise sky",
+                        "mask_image": "mountain_mask.png",
+                        "init_image": "mountain.png",
+                        "sampler": "k_lms",
+                        "steps": 20
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/text2image",
+            "description": "Generate an image from a text description\nThe result is returned as \"image/png\".\n\nThe following parameters influence the request cost: `width`, `height`, `steps`, `upscale`\n(see the \"About\" section for more details)\n\nLicense: CreativeML Open RAIL-M (https://dezgo.com/license.txt)\n\r\n\r\n**Global Constraints:**\r\n- Auto resolution: if not provided, fields `width` and `height` are automatically set to the model's native resolution.\r\n",
+            "url": "https://dezgo.p.rapidapi.com/text2image",
+            "parameters": [
+                {
+                    "name": "prompt",
+                    "type": "STRING",
+                    "description": "Describe how the final image should look like\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "an astronaut riding a horse, digital art, epic lighting, highly-detailed masterpiece trending HQ",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "seed",
+                    "type": "NUMBER",
+                    "description": "Unique image seed number. If not provided, the image will be random.\r\nAn unsigned 32-bit integer seed used to control the generator randomness.\nReusing the same seed with the same parameters will produce the same image.\nReusing the same seed with slightly different parameters tends to produce variations of the same composition ;\nyou can use this to experiment with the impact of different parameters.\n\nIf you instructed the API to choose a random seed, it can be retrieved from the response header `x-input-seed`\r\n\r\n**Constraints:**\r\n- Range: `0 - 4294967295`\r\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 4294967295,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "guidance",
+                    "type": "NUMBER",
+                    "description": "Adjusts how much the AI tries to fit the prompt (higher = stricter, lower = more freedom).\r\nHigher values means that the AI will try harder to match the text, but extreme values may produce more artifacts.\nLower values means that the AI is allowed more creative freedom in the interpretation of the text.\r\n\r\n**Constraints:**\r\n- Range: `-20 - 20`\r\n",
+                    "default": "7",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 20,
+                            "min": -20
+                        }
+                    }
+                },
+                {
+                    "name": "steps",
+                    "type": "NUMBER",
+                    "description": "Number of sampling steps. More steps = more details but also longer computation time.\r\nMore steps may improve quality under some circumstances and refine details, but it will take longer and be more expensive.\nFewer will result in lower quality images but is quicker and cheaper to process.\r\n\r\n**Constraints:**\r\n- Range: `10 - 150`\r\n",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 150,
+                            "min": 10
+                        }
+                    }
+                },
+                {
+                    "name": "sampler",
+                    "type": "STRING",
+                    "description": "Defines the sampling method used to generate the image.\r\nThe best samplers for low step counts tend to be `dpm`, `euler` and `euler_a`.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `ddim`\r\n  - `dpm`\r\n  - `euler`\r\n  - `euler_a`\r\n  - `k_lms`\r\n  - `pndm`\r\n",
+                    "default": "euler_a",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ddim",
+                                "dpm",
+                                "euler",
+                                "euler_a",
+                                "k_lms",
+                                "pndm"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "width",
+                    "type": "NUMBER",
+                    "description": "The image width in pixels.\r\nMust be divisible by 8 (auto-adjusted to the lowest multiple)\r\n\r\n**Constraints:**\r\n- Range: `320 - 1024`\r\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1024,
+                            "min": 320
+                        }
+                    }
+                },
+                {
+                    "name": "upscale",
+                    "type": "NUMBER",
+                    "description": "Upscale the image by this factor using the Real-ESRGAN model. Currently only a factor of 2 is supported.\r\n\r\n**Constraints:**\r\n- Range: `1 - 2`\r\n",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 2,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "negative_prompt",
+                    "type": "STRING",
+                    "description": "Describe what you DON'T want in the generated image\r\n\r\n**Constraints:**\r\n- Text length: `0 - 1000` characters\r\n",
+                    "default": "ugly, tiling, poorly drawn hands, poorly drawn feet, poorly drawn face, out of frame, extra limbs, disfigured, deformed, body out of frame, blurry, bad anatomy, blurred, watermark, grainy, signature, cut off, draft",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "height",
+                    "type": "NUMBER",
+                    "description": "The image height in pixels.\r\nMust be divisible by 8 (auto-adjusted to the lowest multiple)\r\n\r\n**Constraints:**\r\n- Range: `320 - 1024`\r\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1024,
+                            "min": 320
+                        }
+                    }
+                },
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "The AI used to generate the image.\r\n\r\n**Constraints:**\r\n- Enum:\r\n  - `abyss_orange_mix_2`\r\n  - `analog_diffusion`\r\n  - `anything_3_0`\r\n  - `anything_4_0`\r\n  - `basil_mix`\r\n  - `blood_orange_mix`\r\n  - `deliberate`\r\n  - `dh_classicanime`\r\n  - `disco_diffusion_style`\r\n  - `double_exposure_diffusion`\r\n  - `dreamshaper`\r\n  - `duchaiten_anime`\r\n  - `duchaiten_darkside`\r\n  - `duchaiten_dreamworld`\r\n  - `eimis_anime_diffusion_1`\r\n  - `ely_orange_mix`\r\n  - `emoji_diffusion`\r\n  - `epic_diffusion_1`\r\n  - `epic_diffusion_1_1`\r\n  - `foto_assisted_diffusion`\r\n  - `future_diffusion`\r\n  - `hasdx`\r\n  - `iconsmi_appiconsmodelforsd`\r\n  - `inkpunk_diffusion`\r\n  - `lowpoly_world`\r\n  - `openjourney`\r\n  - `openjourney_2`\r\n  - `openniji`\r\n  - `paint_journey_2_768px`\r\n  - `papercut`\r\n  - `pastel_mix`\r\n  - `portrait_plus`\r\n  - `realistic_vision_1_3`\r\n  - `redshift_diffusion`\r\n  - `redshift_diffusion_768px`\r\n  - `something_2`\r\n  - `stable_diffusion_fluidart`\r\n  - `stable_diffusion_papercut`\r\n  - `stable_diffusion_voxelart`\r\n  - `stablediffusion_1_4`\r\n  - `stablediffusion_1_5`\r\n  - `stablediffusion_2_0_512px`\r\n  - `stablediffusion_2_0_768px`\r\n  - `stablediffusion_2_1_512px`\r\n  - `stablediffusion_2_1_768px`\r\n  - `steampunk_diffusion`\r\n  - `synthwavepunk_v2`\r\n  - `texture_diffusion`\r\n  - `trinart_2_0`\r\n  - `tshirt_diffusion`\r\n  - `vectorartz_diffusion`\r\n  - `vintedois_diffusion_v0_1`\r\n  - `vox_2`\r\n  - `waifudiffusion_1_3`\r\n  - `waifudiffusion_1_4`\r\n",
+                    "default": "epic_diffusion_1_1",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "abyss_orange_mix_2",
+                                "analog_diffusion",
+                                "anything_3_0",
+                                "anything_4_0",
+                                "basil_mix",
+                                "blood_orange_mix",
+                                "deliberate",
+                                "dh_classicanime",
+                                "disco_diffusion_style",
+                                "double_exposure_diffusion",
+                                "dreamshaper",
+                                "duchaiten_anime",
+                                "duchaiten_darkside",
+                                "duchaiten_dreamworld",
+                                "eimis_anime_diffusion_1",
+                                "ely_orange_mix",
+                                "emoji_diffusion",
+                                "epic_diffusion_1",
+                                "epic_diffusion_1_1",
+                                "foto_assisted_diffusion",
+                                "future_diffusion",
+                                "hasdx",
+                                "iconsmi_appiconsmodelforsd",
+                                "inkpunk_diffusion",
+                                "lowpoly_world",
+                                "openjourney",
+                                "openjourney_2",
+                                "openniji",
+                                "paint_journey_2_768px",
+                                "papercut",
+                                "pastel_mix",
+                                "portrait_plus",
+                                "realistic_vision_1_3",
+                                "redshift_diffusion",
+                                "redshift_diffusion_768px",
+                                "something_2",
+                                "stable_diffusion_fluidart",
+                                "stable_diffusion_papercut",
+                                "stable_diffusion_voxelart",
+                                "stablediffusion_1_4",
+                                "stablediffusion_1_5",
+                                "stablediffusion_2_0_512px",
+                                "stablediffusion_2_0_768px",
+                                "stablediffusion_2_1_512px",
+                                "stablediffusion_2_1_768px",
+                                "steampunk_diffusion",
+                                "synthwavepunk_v2",
+                                "texture_diffusion",
+                                "trinart_2_0",
+                                "tshirt_diffusion",
+                                "vectorartz_diffusion",
+                                "vintedois_diffusion_v0_1",
+                                "vox_2",
+                                "waifudiffusion_1_3",
+                                "waifudiffusion_1_4"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Create an image of a futuristic city skyline at sunset.",
+                    "parameters": {
+                        "prompt": "a futuristic city skyline at sunset"
+                    }
+                },
+                {
+                    "utterance": "Generate a portrait of a medieval knight with a dragon in the background, using the 'epic_diffusion_1' model.",
+                    "parameters": {
+                        "prompt": "a medieval knight with a dragon in the background",
+                        "model": "epic_diffusion_1"
+                    }
+                },
+                {
+                    "utterance": "I want an image of a serene mountain landscape with a lake, and make sure it doesn't include any people.",
+                    "parameters": {
+                        "prompt": "a serene mountain landscape with a lake",
+                        "negative_prompt": "people"
+                    }
+                },
+                {
+                    "utterance": "Can you create an image of a bustling city street at night with a guidance of 10?",
+                    "parameters": {
+                        "prompt": "a bustling city street at night",
+                        "guidance": 10
+                    }
+                },
+                {
+                    "utterance": "Please generate an image of a fantasy forest with glowing plants, using 50 steps.",
+                    "parameters": {
+                        "prompt": "a fantasy forest with glowing plants",
+                        "steps": 50
+                    }
+                },
+                {
+                    "utterance": "Create an image of a vintage car in a desert landscape, with a width of 800 pixels.",
+                    "parameters": {
+                        "prompt": "a vintage car in a desert landscape",
+                        "width": 800
+                    }
+                },
+                {
+                    "utterance": "I need an image of a cyberpunk cityscape with neon lights, using the 'euler' sampler.",
+                    "parameters": {
+                        "prompt": "a cyberpunk cityscape with neon lights",
+                        "sampler": "euler"
+                    }
+                },
+                {
+                    "utterance": "Generate an image of a peaceful beach at sunrise, with a height of 640 pixels and upscale it by 2.",
+                    "parameters": {
+                        "prompt": "a peaceful beach at sunrise",
+                        "height": 640,
+                        "upscale": 2
+                    }
+                },
+                {
+                    "utterance": "Create an image of a whimsical garden with oversized flowers, using a seed of 123456789.",
+                    "parameters": {
+                        "prompt": "a whimsical garden with oversized flowers",
+                        "seed": 123456789
+                    }
+                },
+                {
+                    "utterance": "Can you generate an image of a futuristic robot in a laboratory, avoiding any blurry effects?",
+                    "parameters": {
+                        "prompt": "a futuristic robot in a laboratory",
+                        "negative_prompt": "blurry"
+                    }
+                }
+            ]
+        }
+    ]
+}

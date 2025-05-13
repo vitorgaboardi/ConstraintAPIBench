@@ -10,6 +10,8 @@ import itertools
 import re
 from openai import OpenAI
 
+# COME BACK HERE AND MAKE SURE THAT ALL THE UTTERANCES ARE GENERATED FOR ALL ENDPOINTS, NOT ONLY THE ONE SELECTED!
+
 PROMPT_INSTRUCTION = """
 In this task, you are given a description of a tool, including it's parameters, generated from the tool's OpenAPI specification. Your task is to come up with questions in natural language form that can be answered by invoking the tool.
 
@@ -223,7 +225,7 @@ EXAMPLE_OUTPUT = """
 ]
 """
 # variables
-model="gpt-4o"  # "gpt-4.1" "deepseek-ai/DeepSeek-V3"
+model="deepseek-ai/DeepSeek-V3"  # "gpt-4.1" "deepseek-ai/DeepSeek-V3"
 OAS_folder = './data/tools'
 include_example = True
 number_of_utterances_per_method = 10
@@ -231,7 +233,7 @@ number_of_utterances_per_method = 10
 API_methods_count = 0
 API_count = 0
 mistakes = 0
-OAS_to_create_utterances = ['foreca_weather.json-Daily', 'learn_to_read_and_write_japanese_kanji.json-Kanji grade level', 'getitsms_whatsapp_apis.json-GetIT SMS WHATSAPP API', 'streaming_availability.json-Search Basic (FREE)', 'solarenergyprediction.json-/v2.0/solar/prediction', 'nowpayments.json-3.Getestimatedprice', 'referential.json-Languages', 'covid_19_by_api_ninjas.json-/v1/covid19', 'ott_details.json-Advanced Search', 'dezgo.json-/text2image', 'veriphone.json-verify', 'working_days.json-/1.3/list_non_working_days', 'flightera_flight_data.json-airportDelayDailyStatistics', 'postal_ninja.json-createTrack', 'cricket_live_data.json-Results By Date', 'car_code.json-/obd2/{code}', 'trackingpackage.json-TrackingPackage', 'shazam.json-songs/get-count', 'axesso_amazon_data_service.json-lookupSeller', 'hotels_com_provider.json-Hotel Rooms (offers)', 'netflix_v2.json-Search', 'recipe_food_nutrition.json-Generate Shopping List', 'spotify.json-Artist albums', 'movie_database_alternative.json-By Search', 'tasty.json-tips/list', 'synwave.json-Upload a new file', 'everyearthquake.json-Earthquakes', 'flightera_flight_data.json-airlineStatistics', 'webcams_travel.json-/webcams/list/webcam={webcamid}[,{webcamid}[,...]]', 'working_days.json-/1.3/add_working_days']
+OAS_to_create_utterances = ['working_days.json', 'flight_radar.json', 'horse_racing.json', 'moviesdatabase.json', 'cheapshark_game_deals.json', 'redline_zipcode.json', 'ott_details.json', 'sportspage_feeds.json', 'currencyapi_net.json', 'webcams_travel.json', 'mdblist.json', 'irctc.json', 'foreca_weather.json', 'referential.json', 'real_time_product_search.json', 'workable.json', 'youtube_mp3.json', 'youtube_search_and_download.json', 'solarenergyprediction.json', 'pinnacle_odds.json', 'hotels_com_provider.json', 'subreddit_scraper.json', 'shazam.json', 'indeed_jobs_api_finland.json', 'bayut.json', 'weatherapi_com.json', 'flightera_flight_data.json']
 
 if not '/' in model:
   client = OpenAI(api_key="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")
@@ -244,8 +246,6 @@ else:
 utterance_folder = os.path.join('./data/dataset', model_name, 'sheng et al')
 print(utterance_folder)
 
-
-# adding one example as sheng et al did
 if include_example:
     base_messages = [{"role": "system", "content": PROMPT_INSTRUCTION},
                     {"role": "user", "content": EXAMPLE_INPUT},
@@ -254,22 +254,20 @@ else:
     base_messages = [{"role": "system", "content": PROMPT_INSTRUCTION}]
 
 
-
-# running code
 categories = sorted(os.listdir(OAS_folder))
 for category_index, category in enumerate(categories):
     category_path = os.path.join(OAS_folder, category)
 
     for root, _, files in os.walk(category_path):
         for filename in files:
-            if not os.path.exists(utterance_folder+'/'+filename): 
+            if not os.path.exists(utterance_folder+'/'+filename) and filename in OAS_to_create_utterances:  # this second part is temporary to generate utterances only for the cases I will manually review
                 file_path = os.path.join(category_path, filename)
                 with open(file_path, 'r') as f:
                     data = json.load(f)
                     api_name = data['tool_name']
                     api_description = data['tool_description']
                     home_url = data['home_url']
-                    call_made = False
+                    print(API_methods_count, filename)
 
                     API_methods_to_save = []
                     for api_method_index, api_method in enumerate(data['api_list']):
@@ -278,6 +276,7 @@ for category_index, category in enumerate(categories):
                         api_method_url = api_method['url']
                         api_method_parameters = api_method['parameters']
                         required_parameters = [param["name"] for param in api_method_parameters if param.get('required', False)]
+                        print(api_method_name)
 
                         tool_specification = {"API Name": api_name,
                                             "API Description": api_description if len(api_description) < 4000 else '',
@@ -295,56 +294,48 @@ for category_index, category in enumerate(categories):
                                      f"Write {number_of_utterances_per_method} utterances that use the specified tool.")
 
                         messages = base_messages + [{"role": "user", "content": str(input)}]
+                        response = client.chat.completions.create(
+                            model=model,
+                            messages=messages,
+                            max_tokens=3000,
+                            temperature=0)
 
-                        # this if is temporary: make the call only for the ones that we will evaluate manually.
-                        if filename+"-"+api_method_name in OAS_to_create_utterances:
-                            print(API_methods_count, filename+"-"+api_method_name)
+                        try: 
+                            content = response.choices[0].message.content
+                            content = content.replace("```python","").replace("```","")
+                            content = content.replace("True", "true").replace("False", "false").replace("None", "null")
+                            content = json.loads(content)
 
-                            call_made = True
-                            response = client.chat.completions.create(
-                                model=model,
-                                messages=messages,
-                                max_tokens=3000,
-                                temperature=0)
+                            utterances = content
 
-                            try: 
-                                content = response.choices[0].message.content
-                                content = content.replace("```python","").replace("```","")
-                                content = content.replace("True", "true").replace("False", "false").replace("None", "null")
-                                content = json.loads(content)
+                        except Exception as e:
+                            print(e)
+                            print(response.choices[0].message.content)
+                            mistakes+=1
 
-                                utterances = content
+                            utterances = 'error parsing the information.'
+                                                        
+                        API_methods_to_save.append({
+                            'name': api_method_name,
+                            'description': api_method_description,
+                            'url': api_method_url,
+                            'parameters': api_method_parameters,
+                            'utterances': utterances
+                        })
 
-                            except Exception as e:
-                                print(e)
-                                print(response.choices[0].message.content)
-                                mistakes+=1
-
-                                utterances = 'error parsing the information.'
-                                                            
-                            API_methods_to_save.append({
-                                'name': api_method_name,
-                                'description': api_method_description,
-                                'url': api_method_url,
-                                'parameters': api_method_parameters,
-                                'utterances': utterances
-                            })
-
-                            API_methods_count+=1
+                        API_methods_count+=1
                         
-                    documentation = {
-                        "name": api_name,
-                        "description": api_description,
-                        "url": home_url,
-                        "api_methods": API_methods_to_save}
+                documentation = {
+                    "name": api_name,
+                    "description": api_description,
+                    "url": home_url,
+                    "api_methods": API_methods_to_save}
 
-                if call_made:
-                    output_file = os.path.join(utterance_folder, filename)
-                    with open(output_file, 'w') as json_file:
-                        json.dump(documentation, json_file, indent=4) 
+                output_file = os.path.join(utterance_folder, filename)
+                with open(output_file, 'w') as json_file:
+                    json.dump(documentation, json_file, indent=4) 
             
             API_count+=1
-
 
 print('number of methods:', API_methods_count)
 print('mistakes:', mistakes)

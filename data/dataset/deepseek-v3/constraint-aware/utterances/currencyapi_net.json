@@ -1,0 +1,571 @@
+{
+    "name": "CurrencyAPI.net",
+    "description": "Real-time currency conversion on 152 currencies and cryptos",
+    "url": "https://rapidapi.com/currencyapinet/api/currencyapi-net/",
+    "api_methods": [
+        {
+            "name": "Convert",
+            "description": "Convert a custom amount value from one currency to another",
+            "url": "https://currencyapi-net.p.rapidapi.com/convert",
+            "parameters": [
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Currency code of the currency you want to convert to. Eg, USD if you want to convert GBP to USD",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "Currency code"
+                    }
+                },
+                {
+                    "name": "amount",
+                    "type": "STRING",
+                    "description": "The value you want to convert. Eg 10.99 or 15",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Currency code of the currency you want to convert from. Eg, GBP if you want to convert GBP to USD",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "Currency code"
+                    }
+                },
+                {
+                    "name": "output",
+                    "type": "STRING",
+                    "description": "The output of the response. Either JSON or XML",
+                    "default": "JSON",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "JSON",
+                                "XML"
+                            ]
+                        },
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Convert 100 US dollars to Euros.",
+                    "parameters": {
+                        "to": "EUR",
+                        "amount": "100",
+                        "from": "USD"
+                    }
+                },
+                {
+                    "utterance": "How much is 50 British pounds in Japanese yen?",
+                    "parameters": {
+                        "to": "JPY",
+                        "amount": "50",
+                        "from": "GBP"
+                    }
+                },
+                {
+                    "utterance": "I need to convert 200 Canadian dollars to Australian dollars.",
+                    "parameters": {
+                        "to": "AUD",
+                        "amount": "200",
+                        "from": "CAD"
+                    }
+                },
+                {
+                    "utterance": "What is the equivalent of 75 Swiss francs in US dollars?",
+                    "parameters": {
+                        "to": "USD",
+                        "amount": "75",
+                        "from": "CHF"
+                    }
+                },
+                {
+                    "utterance": "Convert 500 Euros to British pounds.",
+                    "parameters": {
+                        "to": "GBP",
+                        "amount": "500",
+                        "from": "EUR"
+                    }
+                },
+                {
+                    "utterance": "How much would 1000 Indian rupees be in US dollars?",
+                    "parameters": {
+                        "to": "USD",
+                        "amount": "1000",
+                        "from": "INR"
+                    }
+                },
+                {
+                    "utterance": "I want to convert 300 Australian dollars to Canadian dollars.",
+                    "parameters": {
+                        "to": "CAD",
+                        "amount": "300",
+                        "from": "AUD"
+                    }
+                },
+                {
+                    "utterance": "What is 150 US dollars in Chinese yuan?",
+                    "parameters": {
+                        "to": "CNY",
+                        "amount": "150",
+                        "from": "USD"
+                    }
+                },
+                {
+                    "utterance": "Convert 250 Euros to Japanese yen.",
+                    "parameters": {
+                        "to": "JPY",
+                        "amount": "250",
+                        "from": "EUR"
+                    }
+                },
+                {
+                    "utterance": "How much is 120 British pounds in Swiss francs?",
+                    "parameters": {
+                        "to": "CHF",
+                        "amount": "120",
+                        "from": "GBP"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Currencies",
+            "description": "Gets list of currencies we support",
+            "url": "https://currencyapi-net.p.rapidapi.com/currencies",
+            "parameters": [
+                {
+                    "name": "output",
+                    "type": "STRING",
+                    "description": "The output of the response. Either JSON or XML",
+                    "default": "JSON",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "JSON",
+                                "XML"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the list of supported currencies in XML format?",
+                    "parameters": {
+                        "output": "XML"
+                    }
+                },
+                {
+                    "utterance": "What currencies does CurrencyAPI support? I need the response in JSON.",
+                    "parameters": {
+                        "output": "JSON"
+                    }
+                },
+                {
+                    "utterance": "List all the currencies available for conversion, please.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need the list of supported currencies in XML.",
+                    "parameters": {
+                        "output": "XML"
+                    }
+                },
+                {
+                    "utterance": "Could you provide me with the currencies that are supported by this service?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the currencies I can convert between, in JSON format.",
+                    "parameters": {
+                        "output": "JSON"
+                    }
+                },
+                {
+                    "utterance": "What are the available currencies for real-time conversion?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can I get the list of supported currencies in XML?",
+                    "parameters": {
+                        "output": "XML"
+                    }
+                },
+                {
+                    "utterance": "Please list all the currencies that are supported for conversion.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I\u2019d like to see the list of currencies supported by CurrencyAPI in JSON.",
+                    "parameters": {
+                        "output": "JSON"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Timeframe",
+            "description": "Display a currency conversion's historical rates within a given timeframe",
+            "url": "https://currencyapi-net.p.rapidapi.com/timeframe",
+            "parameters": [
+                {
+                    "name": "end_date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Display the start date you wish to get the historical data from. Eg 2010-12-29",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "DATE (YYYY-MM-DD)"
+                    }
+                },
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "The currency code you want to get the historical data of. Eg, USD",
+                    "default": "USD",
+                    "required": true,
+                    "constraints": {
+                        "format": "currency code"
+                    }
+                },
+                {
+                    "name": "start_date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Display the start date you wish to get the historical data from. Eg 2010-12-25",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "DATE (YYYY-MM-DD)"
+                    }
+                },
+                {
+                    "name": "output",
+                    "type": "STRING",
+                    "description": "The output of the response. Either JSON or XML",
+                    "default": "JSON",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "JSON",
+                                "XML"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What were the historical exchange rates for USD between January 1, 2023, and January 31, 2023?",
+                    "parameters": {
+                        "start_date": "2023-01-01",
+                        "end_date": "2023-01-31",
+                        "base": "USD"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the EUR conversion rates from March 15, 2022, to March 20, 2022, in XML format?",
+                    "parameters": {
+                        "start_date": "2022-03-15",
+                        "end_date": "2022-03-20",
+                        "base": "EUR",
+                        "output": "XML"
+                    }
+                },
+                {
+                    "utterance": "I need the historical rates for GBP from December 1, 2021, to December 5, 2021.",
+                    "parameters": {
+                        "start_date": "2021-12-01",
+                        "end_date": "2021-12-05",
+                        "base": "GBP"
+                    }
+                },
+                {
+                    "utterance": "Show me the JPY exchange rates between April 10, 2020, and April 15, 2020, in JSON format.",
+                    "parameters": {
+                        "start_date": "2020-04-10",
+                        "end_date": "2020-04-15",
+                        "base": "JPY",
+                        "output": "JSON"
+                    }
+                },
+                {
+                    "utterance": "What were the AUD conversion rates from July 1, 2019, to July 7, 2019?",
+                    "parameters": {
+                        "start_date": "2019-07-01",
+                        "end_date": "2019-07-07",
+                        "base": "AUD"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the historical rates for CAD from September 1, 2022, to September 30, 2022, in XML?",
+                    "parameters": {
+                        "start_date": "2022-09-01",
+                        "end_date": "2022-09-30",
+                        "base": "CAD",
+                        "output": "XML"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the CHF exchange rates between May 1, 2021, and May 10, 2021.",
+                    "parameters": {
+                        "start_date": "2021-05-01",
+                        "end_date": "2021-05-10",
+                        "base": "CHF"
+                    }
+                },
+                {
+                    "utterance": "What were the historical rates for CNY from August 1, 2020, to August 15, 2020, in JSON format?",
+                    "parameters": {
+                        "start_date": "2020-08-01",
+                        "end_date": "2020-08-15",
+                        "base": "CNY",
+                        "output": "JSON"
+                    }
+                },
+                {
+                    "utterance": "Show me the INR conversion rates between November 1, 2021, and November 5, 2021.",
+                    "parameters": {
+                        "start_date": "2021-11-01",
+                        "end_date": "2021-11-05",
+                        "base": "INR"
+                    }
+                },
+                {
+                    "utterance": "Can you display the historical rates for NZD from February 1, 2023, to February 28, 2023, in XML?",
+                    "parameters": {
+                        "start_date": "2023-02-01",
+                        "end_date": "2023-02-28",
+                        "base": "NZD",
+                        "output": "XML"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Rates",
+            "description": "Get live currency conversion rates of a given currency",
+            "url": "https://currencyapi-net.p.rapidapi.com/rates",
+            "parameters": [
+                {
+                    "name": "output",
+                    "type": "STRING",
+                    "description": "The output of the response. Either JSON or XML",
+                    "default": "JSON",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "JSON",
+                                "XML"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "Change the base currency. Eg GBP or BTC",
+                    "default": "USD",
+                    "required": false,
+                    "constraints": {
+                        "format": "currency code"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the current exchange rate for Euros?",
+                    "parameters": {
+                        "base": "EUR"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the conversion rates for Bitcoin in XML format?",
+                    "parameters": {
+                        "base": "BTC",
+                        "output": "XML"
+                    }
+                },
+                {
+                    "utterance": "Get me the latest rates for British Pounds.",
+                    "parameters": {
+                        "base": "GBP"
+                    }
+                },
+                {
+                    "utterance": "What are the current exchange rates based on Japanese Yen?",
+                    "parameters": {
+                        "base": "JPY"
+                    }
+                },
+                {
+                    "utterance": "Show me the conversion rates for Australian Dollars in JSON.",
+                    "parameters": {
+                        "base": "AUD",
+                        "output": "JSON"
+                    }
+                },
+                {
+                    "utterance": "Can I see the live rates for Canadian Dollars?",
+                    "parameters": {
+                        "base": "CAD"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the exchange rate for Swiss Francs today?",
+                    "parameters": {
+                        "base": "CHF"
+                    }
+                },
+                {
+                    "utterance": "Get the latest rates for Indian Rupees in XML.",
+                    "parameters": {
+                        "base": "INR",
+                        "output": "XML"
+                    }
+                },
+                {
+                    "utterance": "Show me the current exchange rates for South African Rand.",
+                    "parameters": {
+                        "base": "ZAR"
+                    }
+                },
+                {
+                    "utterance": "What are the live conversion rates for New Zealand Dollars?",
+                    "parameters": {
+                        "base": "NZD"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "History",
+            "description": "Display the currency conversions historical rates for a particular day",
+            "url": "https://currencyapi-net.p.rapidapi.com/history",
+            "parameters": [
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "Display the single date you wish to get the historical data from. Eg 2010-12-25",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "DATE (YYYY-MM-DD)"
+                    }
+                },
+                {
+                    "name": "base",
+                    "type": "STRING",
+                    "description": "The currency code you wish to get the historical rates of. Eg, USD",
+                    "default": "USD",
+                    "required": true,
+                    "constraints": {
+                        "format": "currency code"
+                    }
+                },
+                {
+                    "name": "output",
+                    "type": "STRING",
+                    "description": "The output of the response. Either JSON or XML",
+                    "default": "JSON",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "JSON",
+                                "XML"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What were the historical currency rates for the Euro on March 15, 2020?",
+                    "parameters": {
+                        "date": "2020-03-15",
+                        "base": "EUR"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the exchange rates for the British Pound on January 1, 2019 in XML format?",
+                    "parameters": {
+                        "date": "2019-01-01",
+                        "base": "GBP",
+                        "output": "XML"
+                    }
+                },
+                {
+                    "utterance": "I need the historical rates for the Japanese Yen on December 25, 2018.",
+                    "parameters": {
+                        "date": "2018-12-25",
+                        "base": "JPY"
+                    }
+                },
+                {
+                    "utterance": "Show me the currency conversion rates for the US Dollar on July 4, 2021 in JSON.",
+                    "parameters": {
+                        "date": "2021-07-04",
+                        "base": "USD",
+                        "output": "JSON"
+                    }
+                },
+                {
+                    "utterance": "What were the exchange rates for the Canadian Dollar on October 31, 2017?",
+                    "parameters": {
+                        "date": "2017-10-31",
+                        "base": "CAD"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the historical rates for the Australian Dollar on April 1, 2022 in XML?",
+                    "parameters": {
+                        "date": "2022-04-01",
+                        "base": "AUD",
+                        "output": "XML"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the historical currency rates for the Swiss Franc on February 14, 2016.",
+                    "parameters": {
+                        "date": "2016-02-14",
+                        "base": "CHF"
+                    }
+                },
+                {
+                    "utterance": "What were the exchange rates for the Chinese Yuan on September 10, 2015 in JSON format?",
+                    "parameters": {
+                        "date": "2015-09-10",
+                        "base": "CNY",
+                        "output": "JSON"
+                    }
+                },
+                {
+                    "utterance": "Show me the historical rates for the Indian Rupee on August 15, 2014.",
+                    "parameters": {
+                        "date": "2014-08-15",
+                        "base": "INR"
+                    }
+                },
+                {
+                    "utterance": "Can you display the currency conversion rates for the Brazilian Real on May 5, 2013 in XML?",
+                    "parameters": {
+                        "date": "2013-05-05",
+                        "base": "BRL",
+                        "output": "XML"
+                    }
+                }
+            ]
+        }
+    ]
+}

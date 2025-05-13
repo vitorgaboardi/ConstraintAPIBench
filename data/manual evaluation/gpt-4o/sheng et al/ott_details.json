@@ -4,156 +4,77 @@
     "url": "https://rapidapi.com/gox-ai-gox-ai-default/api/ott-details/",
     "api_methods": [
         {
-            "name": "Advanced Search",
-            "description": "This endpoint allows you to search for a movie or tvshow based on various parameters such as release year , imdb rating , genre , language etc.",
-            "url": "https://ott-details.p.rapidapi.com/advancedsearch",
+            "name": "Params",
+            "description": "Get array of values that can be used as params in Advanced Search .",
+            "url": "https://ott-details.p.rapidapi.com/getParams",
             "parameters": [
                 {
-                    "name": "start_year",
-                    "type": "NUMBER",
-                    "description": "Enter any year between 1970 to 2020 to get results.",
-                    "default": "1970",
-                    "required": false
-                },
-                {
-                    "name": "page",
-                    "type": "NUMBER",
-                    "description": "",
-                    "default": "1",
-                    "required": false
-                },
-                {
-                    "name": "max_imdb",
-                    "type": "NUMBER",
-                    "description": "",
-                    "default": "7.8",
-                    "required": false
-                },
-                {
-                    "name": "type",
+                    "name": "param",
                     "type": "STRING",
-                    "description": "Enter type 'movie' or 'show'",
-                    "default": "movie",
-                    "required": false
-                },
-                {
-                    "name": "sort",
-                    "type": "STRING",
-                    "description": "Enter values highestrated , lowestrated , latest , oldest to  sort results accodingly .",
-                    "default": "latest",
-                    "required": false
-                },
-                {
-                    "name": "min_imdb",
-                    "type": "NUMBER",
-                    "description": "",
-                    "default": "6",
-                    "required": false
-                },
-                {
-                    "name": "genre",
-                    "type": "STRING",
-                    "description": "use comma seperated values to enter multiple genre eg : action,horror",
-                    "default": "action",
-                    "required": false
-                },
-                {
-                    "name": "language",
-                    "type": "STRING",
-                    "description": "use comma seperated values to enter multiple values , eg : english,german",
-                    "default": "english",
-                    "required": false
-                },
-                {
-                    "name": "end_year",
-                    "type": "NUMBER",
-                    "description": "Enter any year from 1970 to 2020 to  get results.",
-                    "default": "2020",
-                    "required": false
+                    "description": "input 'genre' or 'language' to get array of genre or languages that can be used as filter in advanced search .",
+                    "default": "genre",
+                    "required": true
                 }
             ],
             "utterances": [
                 {
-                    "utterance": "Find the highest rated action movies released between 2000 and 2010.",
+                    "utterance": "Can you provide a list of genres available for filtering movies?",
                     "parameters": {
-                        "start_year": 2000,
-                        "end_year": 2010,
-                        "genre": "action",
-                        "sort": "highestrated"
+                        "param": "genre"
                     }
                 },
                 {
-                    "utterance": "Show me comedy shows in English with an IMDb rating between 6 and 8.",
+                    "utterance": "What languages can I use to filter TV shows?",
                     "parameters": {
-                        "type": "show",
-                        "genre": "comedy",
-                        "language": "english",
-                        "min_imdb": 6,
-                        "max_imdb": 8
+                        "param": "language"
                     }
                 },
                 {
-                    "utterance": "List the latest horror movies available.",
+                    "utterance": "I want to know the different genres I can use to search for films.",
                     "parameters": {
-                        "genre": "horror",
-                        "sort": "latest"
+                        "param": "genre"
                     }
                 },
                 {
-                    "utterance": "What are the oldest drama movies in German?",
+                    "utterance": "Could you tell me the available languages for movie filtering?",
                     "parameters": {
-                        "genre": "drama",
-                        "language": "german",
-                        "sort": "oldest"
+                        "param": "language"
                     }
                 },
                 {
-                    "utterance": "Find movies released in 1995 with an IMDb rating above 7.",
+                    "utterance": "List all the genres that I can use to filter my movie search.",
                     "parameters": {
-                        "start_year": 1995,
-                        "end_year": 1995,
-                        "min_imdb": 7
+                        "param": "genre"
                     }
                 },
                 {
-                    "utterance": "Show me the lowest rated sci-fi shows.",
+                    "utterance": "What are the language options for filtering TV shows?",
                     "parameters": {
-                        "type": "show",
-                        "genre": "sci-fi",
-                        "sort": "lowestrated"
+                        "param": "language"
                     }
                 },
                 {
-                    "utterance": "List all English and French movies from 2010 to 2015.",
+                    "utterance": "Can you show me the genres available for advanced movie search?",
                     "parameters": {
-                        "start_year": 2010,
-                        "end_year": 2015,
-                        "language": "english,french"
+                        "param": "genre"
                     }
                 },
                 {
-                    "utterance": "Find the top-rated romantic movies from the 1980s.",
+                    "utterance": "I need a list of languages that can be used to filter TV shows.",
                     "parameters": {
-                        "start_year": 1980,
-                        "end_year": 1989,
-                        "genre": "romantic",
-                        "sort": "highestrated"
+                        "param": "language"
                     }
                 },
                 {
-                    "utterance": "What are the latest thriller shows with an IMDb rating of at least 7.5?",
+                    "utterance": "What genres can I choose from when searching for movies?",
                     "parameters": {
-                        "type": "show",
-                        "genre": "thriller",
-                        "min_imdb": 7.5,
-                        "sort": "latest"
+                        "param": "genre"
                     }
                 },
                 {
-                    "utterance": "List all movies in Spanish released before 2000.",
+                    "utterance": "Could you provide the languages available for filtering movies?",
                     "parameters": {
-                        "end_year": 1999,
-                        "language": "spanish"
+                        "param": "language"
                     }
                 }
             ]

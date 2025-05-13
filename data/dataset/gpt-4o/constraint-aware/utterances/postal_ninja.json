@@ -1,0 +1,299 @@
+{
+    "name": "Postal Ninja",
+    "description": "Official Postal Ninja tracking API for developers",
+    "url": "https://rapidapi.com/PostalNinja/api/postal-ninja/",
+    "api_methods": [
+        {
+            "name": "createTrack",
+            "description": "Returns ID of newly created package (status=CREATED) or stored ID if this tracking number already exists (status=FOUND).",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track",
+            "parameters": [
+                {
+                    "name": "trackCode",
+                    "type": "STRING",
+                    "description": "Tracking number",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "ds",
+                    "type": "STRING",
+                    "description": "Carrier ID (optional)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "destCountry",
+                    "type": "STRING",
+                    "description": "Optional destination country code (ISO 3166-1 alpha-2)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you track the package with the tracking number 1Z999AA10123456784?",
+                    "parameters": {
+                        "trackCode": "1Z999AA10123456784"
+                    }
+                },
+                {
+                    "utterance": "I need to track my parcel with tracking number 9400110200881234567890 and it's being shipped by FedEx.",
+                    "parameters": {
+                        "trackCode": "9400110200881234567890",
+                        "ds": "FedEx"
+                    }
+                },
+                {
+                    "utterance": "Track the package with tracking number 12345678901234567890 and it's heading to Canada.",
+                    "parameters": {
+                        "trackCode": "12345678901234567890",
+                        "destCountry": "CA"
+                    }
+                },
+                {
+                    "utterance": "Please find the status of my shipment with tracking number 1Z12345E1512345676, which is being delivered by UPS.",
+                    "parameters": {
+                        "trackCode": "1Z12345E1512345676",
+                        "ds": "UPS"
+                    }
+                },
+                {
+                    "utterance": "Can you check the delivery status for the package with tracking number 123456789012 and it's going to Germany?",
+                    "parameters": {
+                        "trackCode": "123456789012",
+                        "destCountry": "DE"
+                    }
+                },
+                {
+                    "utterance": "I want to track my order with tracking number 567890123456 and the carrier is DHL.",
+                    "parameters": {
+                        "trackCode": "567890123456",
+                        "ds": "DHL"
+                    }
+                },
+                {
+                    "utterance": "Track the parcel with tracking number 1Z12345E0205271688, destined for the United States.",
+                    "parameters": {
+                        "trackCode": "1Z12345E0205271688",
+                        "destCountry": "US"
+                    }
+                },
+                {
+                    "utterance": "Please track the package with tracking number 1234567890, which is being shipped by USPS.",
+                    "parameters": {
+                        "trackCode": "1234567890",
+                        "ds": "USPS"
+                    }
+                },
+                {
+                    "utterance": "Can you find the status of my package with tracking number 1Z12345E6605272234, heading to the UK?",
+                    "parameters": {
+                        "trackCode": "1Z12345E6605272234",
+                        "destCountry": "GB"
+                    }
+                },
+                {
+                    "utterance": "I need to track the shipment with tracking number 98765432109876543210 and the carrier is TNT.",
+                    "parameters": {
+                        "trackCode": "98765432109876543210",
+                        "ds": "TNT"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "refreshTrack",
+            "description": "Submits on-demand refresh request to tracking engine for package with given ID. Please note, that packages in ACTIVE list are auto-tracked regularly so you don't need to do this for such packages.",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track/{id}/refresh",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Package ID",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you refresh the tracking information for package ID TRK123456?",
+                    "parameters": {
+                        "id": "TRK123456"
+                    }
+                },
+                {
+                    "utterance": "Please update the tracking status for my parcel with ID PKG987654.",
+                    "parameters": {
+                        "id": "PKG987654"
+                    }
+                },
+                {
+                    "utterance": "I need the latest tracking details for shipment ID SHP112233.",
+                    "parameters": {
+                        "id": "SHP112233"
+                    }
+                },
+                {
+                    "utterance": "Could you refresh the tracking data for the package with ID BOX445566?",
+                    "parameters": {
+                        "id": "BOX445566"
+                    }
+                },
+                {
+                    "utterance": "Update the tracking info for my delivery with ID DEL778899.",
+                    "parameters": {
+                        "id": "DEL778899"
+                    }
+                },
+                {
+                    "utterance": "Get the most recent tracking update for package ID PAR123789.",
+                    "parameters": {
+                        "id": "PAR123789"
+                    }
+                },
+                {
+                    "utterance": "I want to refresh the tracking status for my order with ID ORD456321.",
+                    "parameters": {
+                        "id": "ORD456321"
+                    }
+                },
+                {
+                    "utterance": "Please refresh the tracking information for the parcel with ID PCL654987.",
+                    "parameters": {
+                        "id": "PCL654987"
+                    }
+                },
+                {
+                    "utterance": "Can you update the tracking details for shipment ID SHP321654?",
+                    "parameters": {
+                        "id": "SHP321654"
+                    }
+                },
+                {
+                    "utterance": "I need to refresh the tracking data for my package with ID PKG789123.",
+                    "parameters": {
+                        "id": "PKG789123"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "moveTrack",
+            "description": "Moves package with given ID to ARCHIVED, TRASHED or back to ACTIVE list.",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track/{id}/move",
+            "parameters": [
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "List to move package to",
+                    "default": "\"ACTIVE\"",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ARCHIVED",
+                                "TRASHED",
+                                "ACTIVE"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Package ID",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you move package 1Z999AA10123456784 to the ARCHIVED list?",
+                    "parameters": {
+                        "list": "ARCHIVED",
+                        "id": "1Z999AA10123456784"
+                    }
+                },
+                {
+                    "utterance": "Please archive the package with ID 9400110200881234567890.",
+                    "parameters": {
+                        "list": "ARCHIVED",
+                        "id": "9400110200881234567890"
+                    }
+                },
+                {
+                    "utterance": "Move the package with tracking number 123456789012 to the TRASHED list.",
+                    "parameters": {
+                        "list": "TRASHED",
+                        "id": "123456789012"
+                    }
+                },
+                {
+                    "utterance": "I need to trash the package with ID 1Z12345E1512345676.",
+                    "parameters": {
+                        "list": "TRASHED",
+                        "id": "1Z12345E1512345676"
+                    }
+                },
+                {
+                    "utterance": "Could you please move package 420221819101234567890123456789 to the ACTIVE list?",
+                    "parameters": {
+                        "list": "ACTIVE",
+                        "id": "420221819101234567890123456789"
+                    }
+                },
+                {
+                    "utterance": "Reactivate the package with ID 9274899991234567890123.",
+                    "parameters": {
+                        "list": "ACTIVE",
+                        "id": "9274899991234567890123"
+                    }
+                },
+                {
+                    "utterance": "Archive the package with tracking number 1Z12345E6205277936.",
+                    "parameters": {
+                        "list": "ARCHIVED",
+                        "id": "1Z12345E6205277936"
+                    }
+                },
+                {
+                    "utterance": "Can you move the package with ID 9405509205568123456789 to the TRASHED list?",
+                    "parameters": {
+                        "list": "TRASHED",
+                        "id": "9405509205568123456789"
+                    }
+                },
+                {
+                    "utterance": "Please move package 1Z12345E1512345677 back to the ACTIVE list.",
+                    "parameters": {
+                        "list": "ACTIVE",
+                        "id": "1Z12345E1512345677"
+                    }
+                },
+                {
+                    "utterance": "I want to archive the package with tracking ID 9274899991234567890124.",
+                    "parameters": {
+                        "list": "ARCHIVED",
+                        "id": "9274899991234567890124"
+                    }
+                }
+            ]
+        }
+    ]
+}

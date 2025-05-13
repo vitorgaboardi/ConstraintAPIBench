@@ -1,0 +1,498 @@
+{
+    "name": "Price Analytics",
+    "description": "Amazon, Google Shopping, Ebay, Idealo, billiger - price & product data from all marketplaces via one API. The Price Analytics API provides price & product data incl. product title, manufacturer, sellers, reviews, prices, size selection etc. Querying product data is done using session jobs. You create a session with the query details (marketplace, country , product id etc\u2026), and get a job ID. You can then use that job ID to poll results.   If you need a private plan with higher request amounts...",
+    "url": "https://rapidapi.com/3b-data-3b-data-default/api/price-analytics/",
+    "api_methods": [
+        {
+            "name": "Start search by gtin",
+            "description": "Create a product search session based on a search GTIN - Global Trade Item Number (e.g. 0194252099537). A successful response returns job_id, which is required when polling the session. Take the job_id and append it as a param to the poll session URL.",
+            "url": "https://price-analytics.p.rapidapi.com/search-by-gtin",
+            "parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The marketplace country",
+                    "default": "de",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "Marketplace name (amazon, google, idealo, ebay)",
+                    "default": "amazon",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "amazon",
+                                "google",
+                                "idealo",
+                                "ebay"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "values",
+                    "type": "STRING",
+                    "description": "Search value",
+                    "default": "0194252099537",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find the product with GTIN 0194252099537 on Amazon in Germany?",
+                    "parameters": {
+                        "country": "de",
+                        "source": "amazon",
+                        "values": "0194252099537"
+                    }
+                },
+                {
+                    "utterance": "Search for the item with GTIN 1234567890123 on Google Shopping in France.",
+                    "parameters": {
+                        "country": "fr",
+                        "source": "google",
+                        "values": "1234567890123"
+                    }
+                },
+                {
+                    "utterance": "I need to look up the product with GTIN 9876543210987 on Ebay in the UK.",
+                    "parameters": {
+                        "country": "gb",
+                        "source": "ebay",
+                        "values": "9876543210987"
+                    }
+                },
+                {
+                    "utterance": "Please find the item with GTIN 4567890123456 on Idealo in Italy.",
+                    "parameters": {
+                        "country": "it",
+                        "source": "idealo",
+                        "values": "4567890123456"
+                    }
+                },
+                {
+                    "utterance": "Can you search for the product with GTIN 3210987654321 on Amazon in Spain?",
+                    "parameters": {
+                        "country": "es",
+                        "source": "amazon",
+                        "values": "3210987654321"
+                    }
+                },
+                {
+                    "utterance": "Find the item with GTIN 6543210987654 on Google Shopping in Germany.",
+                    "parameters": {
+                        "country": "de",
+                        "source": "google",
+                        "values": "6543210987654"
+                    }
+                },
+                {
+                    "utterance": "I want to search for the product with GTIN 7890123456789 on Ebay in France.",
+                    "parameters": {
+                        "country": "fr",
+                        "source": "ebay",
+                        "values": "7890123456789"
+                    }
+                },
+                {
+                    "utterance": "Please look up the item with GTIN 2109876543210 on Idealo in the UK.",
+                    "parameters": {
+                        "country": "gb",
+                        "source": "idealo",
+                        "values": "2109876543210"
+                    }
+                },
+                {
+                    "utterance": "Can you find the product with GTIN 5432109876543 on Amazon in Italy?",
+                    "parameters": {
+                        "country": "it",
+                        "source": "amazon",
+                        "values": "5432109876543"
+                    }
+                },
+                {
+                    "utterance": "Search for the item with GTIN 8765432109876 on Google Shopping in Spain.",
+                    "parameters": {
+                        "country": "es",
+                        "source": "google",
+                        "values": "8765432109876"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Start search by id",
+            "description": "Create a product search session based on a search id (e.g. amazon ASIN: B09G98X7GV). A successful response returns job_id, which is required when polling the session. Take the job_id and append it as a param to the poll session URL.",
+            "url": "https://price-analytics.p.rapidapi.com/search-by-id",
+            "parameters": [
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "Marketplace name (amazon, google, idealo, ebay)",
+                    "default": "amazon",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "amazon",
+                                "google",
+                                "idealo",
+                                "ebay"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "values",
+                    "type": "STRING",
+                    "description": "Search value",
+                    "default": "B09G98X7GV",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The marketplace country",
+                    "default": "de",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you start a product search for ASIN B09G98X7GV on Amazon in Germany?",
+                    "parameters": {
+                        "source": "amazon",
+                        "values": "B09G98X7GV",
+                        "country": "de"
+                    }
+                },
+                {
+                    "utterance": "I need to search for product ID B09G98X7GV on Google Shopping in Germany.",
+                    "parameters": {
+                        "source": "google",
+                        "values": "B09G98X7GV",
+                        "country": "de"
+                    }
+                },
+                {
+                    "utterance": "Please initiate a search for ASIN B09G98X7GV on eBay in Germany.",
+                    "parameters": {
+                        "source": "ebay",
+                        "values": "B09G98X7GV",
+                        "country": "de"
+                    }
+                },
+                {
+                    "utterance": "Start a product search for B09G98X7GV on Idealo in Germany.",
+                    "parameters": {
+                        "source": "idealo",
+                        "values": "B09G98X7GV",
+                        "country": "de"
+                    }
+                },
+                {
+                    "utterance": "Can you create a search session for product ID B09G98X7GV on Amazon in Germany?",
+                    "parameters": {
+                        "source": "amazon",
+                        "values": "B09G98X7GV",
+                        "country": "de"
+                    }
+                },
+                {
+                    "utterance": "I want to search for ASIN B09G98X7GV on Google Shopping in Germany.",
+                    "parameters": {
+                        "source": "google",
+                        "values": "B09G98X7GV",
+                        "country": "de"
+                    }
+                },
+                {
+                    "utterance": "Please start a search for product ID B09G98X7GV on eBay in Germany.",
+                    "parameters": {
+                        "source": "ebay",
+                        "values": "B09G98X7GV",
+                        "country": "de"
+                    }
+                },
+                {
+                    "utterance": "Initiate a product search for ASIN B09G98X7GV on Idealo in Germany.",
+                    "parameters": {
+                        "source": "idealo",
+                        "values": "B09G98X7GV",
+                        "country": "de"
+                    }
+                },
+                {
+                    "utterance": "Can you begin a search for product ID B09G98X7GV on Amazon in Germany?",
+                    "parameters": {
+                        "source": "amazon",
+                        "values": "B09G98X7GV",
+                        "country": "de"
+                    }
+                },
+                {
+                    "utterance": "I need to start a search for ASIN B09G98X7GV on Google Shopping in Germany.",
+                    "parameters": {
+                        "source": "google",
+                        "values": "B09G98X7GV",
+                        "country": "de"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Start search by term",
+            "description": "Create a product search session based on a search term (e.g. iphone 11). A successful response returns job_id, which is required when polling the session. Take the job_id and append it as a param to the poll session URL.",
+            "url": "https://price-analytics.p.rapidapi.com/search-by-term",
+            "parameters": [
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "Marketplace name (amazon, google, idealo, ebay)",
+                    "default": "amazon",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "amazon",
+                                "google",
+                                "idealo",
+                                "ebay"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "values",
+                    "type": "STRING",
+                    "description": "Search value",
+                    "default": "iphone 11",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The marketplace country",
+                    "default": "de",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you search for Samsung Galaxy S21 on Amazon in Germany?",
+                    "parameters": {
+                        "source": "amazon",
+                        "values": "Samsung Galaxy S21",
+                        "country": "de"
+                    }
+                },
+                {
+                    "utterance": "Find the latest prices for AirPods Pro on Google Shopping in the US.",
+                    "parameters": {
+                        "source": "google",
+                        "values": "AirPods Pro",
+                        "country": "us"
+                    }
+                },
+                {
+                    "utterance": "Look up the price of a Sony WH-1000XM4 on eBay in the UK.",
+                    "parameters": {
+                        "source": "ebay",
+                        "values": "Sony WH-1000XM4",
+                        "country": "uk"
+                    }
+                },
+                {
+                    "utterance": "Search for a Dyson V11 on Idealo in France.",
+                    "parameters": {
+                        "source": "idealo",
+                        "values": "Dyson V11",
+                        "country": "fr"
+                    }
+                },
+                {
+                    "utterance": "Can you find the best deals for a MacBook Air on Amazon in Canada?",
+                    "parameters": {
+                        "source": "amazon",
+                        "values": "MacBook Air",
+                        "country": "ca"
+                    }
+                },
+                {
+                    "utterance": "Check the prices for a PlayStation 5 on Google Shopping in Australia.",
+                    "parameters": {
+                        "source": "google",
+                        "values": "PlayStation 5",
+                        "country": "au"
+                    }
+                },
+                {
+                    "utterance": "Search for a Fitbit Charge 5 on eBay in Germany.",
+                    "parameters": {
+                        "source": "ebay",
+                        "values": "Fitbit Charge 5",
+                        "country": "de"
+                    }
+                },
+                {
+                    "utterance": "Find the latest offers for a Kindle Paperwhite on Idealo in Italy.",
+                    "parameters": {
+                        "source": "idealo",
+                        "values": "Kindle Paperwhite",
+                        "country": "it"
+                    }
+                },
+                {
+                    "utterance": "Can you look up the price of an iPad Pro on Amazon in Spain?",
+                    "parameters": {
+                        "source": "amazon",
+                        "values": "iPad Pro",
+                        "country": "es"
+                    }
+                },
+                {
+                    "utterance": "Search for a Bose QuietComfort 45 on Google Shopping in the Netherlands.",
+                    "parameters": {
+                        "source": "google",
+                        "values": "Bose QuietComfort 45",
+                        "country": "nl"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Start search by pzn",
+            "description": "Create a product search session based on a search PZN - Pharmazentralnummer (e.g. 16035503). A successful response returns job_id, which is required when polling the session. Take the job_id and append it as a param to the poll session URL.",
+            "url": "https://price-analytics.p.rapidapi.com/search-by-pzn",
+            "parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The marketplace country",
+                    "default": "de",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "de"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "Marketplace name (supported only: idealo)",
+                    "default": "idealo",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "idealo"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "values",
+                    "type": "STRING",
+                    "description": "Search value",
+                    "default": "16035503",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you start a product search for PZN 16035503 in Germany on Idealo?",
+                    "parameters": {
+                        "country": "de",
+                        "source": "idealo",
+                        "values": "16035503"
+                    }
+                },
+                {
+                    "utterance": "I need to find product details for PZN 16035503 in the German marketplace on Idealo.",
+                    "parameters": {
+                        "country": "de",
+                        "source": "idealo",
+                        "values": "16035503"
+                    }
+                },
+                {
+                    "utterance": "Please initiate a search for PZN 16035503 on Idealo in Germany.",
+                    "parameters": {
+                        "country": "de",
+                        "source": "idealo",
+                        "values": "16035503"
+                    }
+                },
+                {
+                    "utterance": "Start a product search session for PZN 16035503 in Germany using Idealo.",
+                    "parameters": {
+                        "country": "de",
+                        "source": "idealo",
+                        "values": "16035503"
+                    }
+                },
+                {
+                    "utterance": "Could you create a search session for PZN 16035503 on Idealo in the German marketplace?",
+                    "parameters": {
+                        "country": "de",
+                        "source": "idealo",
+                        "values": "16035503"
+                    }
+                },
+                {
+                    "utterance": "I want to search for product data using PZN 16035503 in Germany on Idealo.",
+                    "parameters": {
+                        "country": "de",
+                        "source": "idealo",
+                        "values": "16035503"
+                    }
+                },
+                {
+                    "utterance": "Begin a product search for PZN 16035503 in the German Idealo marketplace.",
+                    "parameters": {
+                        "country": "de",
+                        "source": "idealo",
+                        "values": "16035503"
+                    }
+                },
+                {
+                    "utterance": "Can you set up a search session for PZN 16035503 on Idealo in Germany?",
+                    "parameters": {
+                        "country": "de",
+                        "source": "idealo",
+                        "values": "16035503"
+                    }
+                },
+                {
+                    "utterance": "Please start a product search for PZN 16035503 in Germany via Idealo.",
+                    "parameters": {
+                        "country": "de",
+                        "source": "idealo",
+                        "values": "16035503"
+                    }
+                },
+                {
+                    "utterance": "Initiate a search session for PZN 16035503 on the German Idealo marketplace.",
+                    "parameters": {
+                        "country": "de",
+                        "source": "idealo",
+                        "values": "16035503"
+                    }
+                }
+            ]
+        }
+    ]
+}

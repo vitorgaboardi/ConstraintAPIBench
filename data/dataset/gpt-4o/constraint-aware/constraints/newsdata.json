@@ -1,0 +1,313 @@
+{
+    "name": "NewsData",
+    "description": "Best News API To Search And Collect Worldwide News",
+    "url": "https://rapidapi.com/algodom-media-algodom-media-default/api/newsdata2/",
+    "api_methods": [
+        {
+            "name": "sources",
+            "description": "News sources endpoint provides access to the subsets of news publishers that the latest news is available from.\n\nIt's mainly a convenience endpoint that you can use to keep track of the publishers available on the API, and you can pipe it straight through to your users",
+            "url": "https://newsdata2.p.rapidapi.com/sources",
+            "parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Find sources that display news in a specific country. Possible Options: us gb in jp ae sa au ca sg",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "us",
+                                "gb",
+                                "in",
+                                "jp",
+                                "ae",
+                                "sa",
+                                "au",
+                                "ca",
+                                "sg"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Find sources that display news in a specific language. Possible Options: en ar jp in es fr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "ar",
+                                "jp",
+                                "in",
+                                "es",
+                                "fr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Find sources that display news of this category. Possible Options: top business science technology sports health entertainment",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "top",
+                                "business",
+                                "science",
+                                "technology",
+                                "sports",
+                                "health",
+                                "entertainment"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "news",
+            "description": "The latest news endpoint provides access to the latest and breaking news for a country, for a specific category in a country, or for a single or multiple domains. The news articles are sorted by the publish date.\n\nRetrieving the latest news allows you to build experience such as showcasing the latest news, breaking news tickers and analyzing News to better understand their content.",
+            "url": "https://newsdata2.p.rapidapi.com/news",
+            "parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "A comma separated string of languages (maximum 5) to restrict the search to. Possible Options: en ar jp in es fr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "ar",
+                                "jp",
+                                "in",
+                                "es",
+                                "fr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "A comma separated string of 2-letter ISO 3166-1 countries (maximum 5) to restrict the search to. Possible Options: us gb in jp ae sa au ca",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1",
+                        "values": {
+                            "enumerated": [
+                                "us",
+                                "gb",
+                                "in",
+                                "jp",
+                                "ae",
+                                "sa",
+                                "au",
+                                "ca"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Use this to page through the results if the total results found is greater than the page size.\n\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "A comma separated string of categories (maximum 5) to restrict the search to. Possible Options: top business science technology sports health entertainment",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "top",
+                                "business",
+                                "science",
+                                "technology",
+                                "sports",
+                                "health",
+                                "entertainment"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "qintitle",
+                    "type": "STRING",
+                    "description": "Keywords or phrases to search for in the news title only.\n\nPlease note: This parameter can't be used with q parameter in the same query.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "qintitle, q: qintitle can't be used with q parameter in the same query."
+                    }
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Keywords or phrases to search for in the news title and content. \nPlease note: You can't use AND and OR in the same query.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "qintitle, q: qintitle can't be used with q parameter in the same query."
+                    }
+                },
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "A comma separated string of domains (maximum 5) to restrict the search to. Use the /domains endpoint to find top sources id.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "archive",
+            "description": "The news archive endpoint provides access to the old news data for a country, for a specific category in a country, or for a single or multiple domains.\n\nRetrieving a piece of old news allows you to get the past news data for research and analysis purposes.",
+            "url": "https://newsdata2.p.rapidapi.com/archive",
+            "parameters": [
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "A comma separated string of domains (maximum 5) to restrict the search to. Use the /domains endpoint to find top sources id.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 5
+                        }
+                    }
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Keywords or phrases to search for in the news title and content. The value must be URL-encoded\nPlease note: You can't use AND and OR in the same query.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "q, qintitle: q and qintitle cannot be used together in the same query."
+                    }
+                },
+                {
+                    "name": "qintitle",
+                    "type": "STRING",
+                    "description": "Keywords or phrases to search for in the news title only.\n\nPlease note: This parameter can't be used with q parameter in the same query.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "q, qintitle: q and qintitle cannot be used together in the same query."
+                    }
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "A comma separated string of categories (maximum 5) to restrict the search to. Possible Options: top business science technology sports health entertainment",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 5,
+                            "enumerated": [
+                                "top",
+                                "business",
+                                "science",
+                                "technology",
+                                "sports",
+                                "health",
+                                "entertainment"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "from_date",
+                    "type": "STRING",
+                    "description": "A date and optional time for the oldest article allowed. This should be in ISO 8601 format ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 8601 format"
+                    }
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "A comma separated string of languages (maximum 5) to restrict the search to. Possible Options: en ar jp in es fr",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 5,
+                            "enumerated": [
+                                "en",
+                                "ar",
+                                "jp",
+                                "in",
+                                "es",
+                                "fr"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Use this to page through the results if the total results found is greater than the page size.\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "to_date",
+                    "type": "STRING",
+                    "description": "A date and optional time for the newest article allowed. This should be in ISO 8601 format ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 8601 format"
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "A comma separated string of 2-letter ISO 3166-1 countries (maximum 5) to restrict the search to. Possible Options: us gb in jp ae sa au ca",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 5,
+                            "enumerated": [
+                                "us",
+                                "gb",
+                                "in",
+                                "jp",
+                                "ae",
+                                "sa",
+                                "au",
+                                "ca"
+                            ]
+                        }
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,754 @@
+{
+    "name": "Flight Radar",
+    "description": "The world's most popular flight tracker API which helps you to create Flight tracker application, such as : flightradar24.com",
+    "url": "https://rapidapi.com/apidojo/api/flight-radar1/",
+    "api_methods": [
+        {
+            "name": "flights/list-in-boundary",
+            "description": "Helps to list flights, aircrafts in a GEO bounding box, and display them on a map",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/list-in-boundary",
+            "parameters": [
+                {
+                    "name": "bl_lng",
+                    "type": "NUMBER",
+                    "description": "The bottom left longitude of the bounding box",
+                    "default": "100.641975",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "tr_lat",
+                    "type": "NUMBER",
+                    "description": "The top right latitude of the bounding box",
+                    "default": "13.771029",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "bl_lat",
+                    "type": "NUMBER",
+                    "description": "The bottom left latitude of the bounding box",
+                    "default": "13.607884",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "tr_lng",
+                    "type": "NUMBER",
+                    "description": "The top right longitude of the bounding box",
+                    "default": "100.861566",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "The value of 'Code' field returned in .../aircrafts/list endpoint",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "speed",
+                    "type": "STRING",
+                    "description": "Filter by speed. The format is min,max . Ex : 0,460",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "airline",
+                    "type": "STRING",
+                    "description": "The value of 'ICAO' field returned in .../airlines/list endpoint",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "altitude",
+                    "type": "STRING",
+                    "description": "Filter by altitude. The format is min,max . Ex : 0,48000",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "airport",
+                    "type": "STRING",
+                    "description": "The value of 'icao' field returned in .../airports/list endpoint",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "reg",
+                    "type": "STRING",
+                    "description": "Registration Ex : D-AIHV",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of flights per response (max 300)",
+                    "default": "300",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 300
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me all flights in the area from 100.5 longitude and 13.6 latitude to 100.9 longitude and 13.8 latitude.",
+                    "parameters": {
+                        "bl_lng": 100.5,
+                        "tr_lat": 13.8,
+                        "bl_lat": 13.6,
+                        "tr_lng": 100.9
+                    }
+                },
+                {
+                    "utterance": "List flights between coordinates 100.6, 13.7 and 100.8, 13.9 with a speed range of 200 to 500.",
+                    "parameters": {
+                        "bl_lng": 100.6,
+                        "tr_lat": 13.9,
+                        "bl_lat": 13.7,
+                        "tr_lng": 100.8,
+                        "speed": "200,500"
+                    }
+                },
+                {
+                    "utterance": "Can you find flights in the bounding box from 100.4 longitude, 13.5 latitude to 100.7 longitude, 13.7 latitude operated by airline ICAO123?",
+                    "parameters": {
+                        "bl_lng": 100.4,
+                        "tr_lat": 13.7,
+                        "bl_lat": 13.5,
+                        "tr_lng": 100.7,
+                        "airline": "ICAO123"
+                    }
+                },
+                {
+                    "utterance": "Retrieve flights in the area from 100.3 longitude, 13.4 latitude to 100.6 longitude, 13.6 latitude with altitude between 1000 and 20000.",
+                    "parameters": {
+                        "bl_lng": 100.3,
+                        "tr_lat": 13.6,
+                        "bl_lat": 13.4,
+                        "tr_lng": 100.6,
+                        "altitude": "1000,20000"
+                    }
+                },
+                {
+                    "utterance": "Get flights in the region from 100.2 longitude, 13.3 latitude to 100.5 longitude, 13.5 latitude for the airport ICAO456.",
+                    "parameters": {
+                        "bl_lng": 100.2,
+                        "tr_lat": 13.5,
+                        "bl_lat": 13.3,
+                        "tr_lng": 100.5,
+                        "airport": "ICAO456"
+                    }
+                },
+                {
+                    "utterance": "Find flights in the box from 100.1 longitude, 13.2 latitude to 100.4 longitude, 13.4 latitude with registration D-ABCD.",
+                    "parameters": {
+                        "bl_lng": 100.1,
+                        "tr_lat": 13.4,
+                        "bl_lat": 13.2,
+                        "tr_lng": 100.4,
+                        "reg": "D-ABCD"
+                    }
+                },
+                {
+                    "utterance": "Show flights in the area from 100.0 longitude, 13.1 latitude to 100.3 longitude, 13.3 latitude, limited to 150 results.",
+                    "parameters": {
+                        "bl_lng": 100.0,
+                        "tr_lat": 13.3,
+                        "bl_lat": 13.1,
+                        "tr_lng": 100.3,
+                        "limit": 150
+                    }
+                },
+                {
+                    "utterance": "List all flights in the region from 99.9 longitude, 13.0 latitude to 100.2 longitude, 13.2 latitude for aircraft type A320.",
+                    "parameters": {
+                        "bl_lng": 99.9,
+                        "tr_lat": 13.2,
+                        "bl_lat": 13.0,
+                        "tr_lng": 100.2,
+                        "type": "A320"
+                    }
+                },
+                {
+                    "utterance": "Can you show flights in the area from 99.8 longitude, 12.9 latitude to 100.1 longitude, 13.1 latitude with speed between 100 and 400?",
+                    "parameters": {
+                        "bl_lng": 99.8,
+                        "tr_lat": 13.1,
+                        "bl_lat": 12.9,
+                        "tr_lng": 100.1,
+                        "speed": "100,400"
+                    }
+                },
+                {
+                    "utterance": "Retrieve flights in the bounding box from 99.7 longitude, 12.8 latitude to 100.0 longitude, 13.0 latitude with altitude range 5000 to 25000.",
+                    "parameters": {
+                        "bl_lng": 99.7,
+                        "tr_lat": 13.0,
+                        "bl_lat": 12.8,
+                        "tr_lng": 100.0,
+                        "altitude": "5000,25000"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "aircrafts/list",
+            "description": "List available aircrafts",
+            "url": "https://flight-radar1.p.rapidapi.com/aircrafts/list",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "flights/list-by-airline",
+            "description": "List flights by airline",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/list-by-airline",
+            "parameters": [
+                {
+                    "name": "airline",
+                    "type": "STRING",
+                    "description": "The value of 'icao' field returned in .../airlines/list or .../flights/detail endpoint\nThe value of 'operator' field returned in .../flights/search endpoint\n",
+                    "default": "AXM",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me all flights operated by American Airlines.",
+                    "parameters": {
+                        "airline": "AAL"
+                    }
+                },
+                {
+                    "utterance": "Can you list the flights for Delta Air Lines?",
+                    "parameters": {
+                        "airline": "DAL"
+                    }
+                },
+                {
+                    "utterance": "I need to see the flights for Lufthansa.",
+                    "parameters": {
+                        "airline": "DLH"
+                    }
+                },
+                {
+                    "utterance": "What flights are available for Emirates today?",
+                    "parameters": {
+                        "airline": "UAE"
+                    }
+                },
+                {
+                    "utterance": "Please provide the flight list for British Airways.",
+                    "parameters": {
+                        "airline": "BAW"
+                    }
+                },
+                {
+                    "utterance": "List all flights for Air France.",
+                    "parameters": {
+                        "airline": "AFR"
+                    }
+                },
+                {
+                    "utterance": "Could you show me the flights for Qatar Airways?",
+                    "parameters": {
+                        "airline": "QTR"
+                    }
+                },
+                {
+                    "utterance": "I want to know the flights operated by Singapore Airlines.",
+                    "parameters": {
+                        "airline": "SIA"
+                    }
+                },
+                {
+                    "utterance": "Give me the list of flights for Turkish Airlines.",
+                    "parameters": {
+                        "airline": "THY"
+                    }
+                },
+                {
+                    "utterance": "What are the flights for Cathay Pacific today?",
+                    "parameters": {
+                        "airline": "CPA"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "flights/get-playback",
+            "description": "Get history traveling data of specific flight",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/get-playback",
+            "parameters": [
+                {
+                    "name": "flightId",
+                    "type": "STRING",
+                    "description": "Value of 'id' OR 'identification/id' field returned in .../flights/detail or .../flights/get-more-info endpoint",
+                    "default": "2b5accad",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "timestamp",
+                    "type": "NUMBER",
+                    "description": "Value of 'departure' field returned in .../flights/detail OR .../flights/get-more-info endpoint",
+                    "default": "1648874400",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the travel history for flight AA1234 that departed on March 1, 2023?",
+                    "parameters": {
+                        "flightId": "AA1234",
+                        "timestamp": 1677628800
+                    }
+                },
+                {
+                    "utterance": "I need the flight path details for flight DL5678 that took off on April 10, 2023.",
+                    "parameters": {
+                        "flightId": "DL5678",
+                        "timestamp": 1681104000
+                    }
+                },
+                {
+                    "utterance": "What was the route for flight BA91011 that left on May 15, 2023?",
+                    "parameters": {
+                        "flightId": "BA91011",
+                        "timestamp": 1684108800
+                    }
+                },
+                {
+                    "utterance": "Please provide the travel data for flight QF1213 that departed on June 20, 2023.",
+                    "parameters": {
+                        "flightId": "QF1213",
+                        "timestamp": 1687286400
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the historical flight path for flight LH1415 that took off on July 25, 2023.",
+                    "parameters": {
+                        "flightId": "LH1415",
+                        "timestamp": 1690464000
+                    }
+                },
+                {
+                    "utterance": "Can you get me the travel history for flight EK1617 that departed on August 30, 2023?",
+                    "parameters": {
+                        "flightId": "EK1617",
+                        "timestamp": 1693641600
+                    }
+                },
+                {
+                    "utterance": "Show me the flight path for flight AF1819 that left on September 5, 2023.",
+                    "parameters": {
+                        "flightId": "AF1819",
+                        "timestamp": 1693872000
+                    }
+                },
+                {
+                    "utterance": "I want to know the route for flight SQ2021 that took off on October 10, 2023.",
+                    "parameters": {
+                        "flightId": "SQ2021",
+                        "timestamp": 1696896000
+                    }
+                },
+                {
+                    "utterance": "Could you provide the travel data for flight UA2223 that departed on November 15, 2023?",
+                    "parameters": {
+                        "flightId": "UA2223",
+                        "timestamp": 1700006400
+                    }
+                },
+                {
+                    "utterance": "Please show me the historical flight path for flight AC2425 that took off on December 20, 2023.",
+                    "parameters": {
+                        "flightId": "AC2425",
+                        "timestamp": 1703116800
+                    }
+                }
+            ]
+        },
+        {
+            "name": "flights/get-more-info",
+            "description": "Get more information of specific aircraft, flight, airline, etc...",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/get-more-info",
+            "parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "The value of registration (if fetchBy is 'reg') or default (if fetchBy is 'flight') field returned in .../flights/detail",
+                    "default": "FD3210",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "fetchBy",
+                    "type": "STRING",
+                    "description": "One of the following : reg|flight\n* reg is used to get specific aircraft info, flight is used to get specific flight or airline info",
+                    "default": "flight",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "reg",
+                                "flight"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details about the flight FD3210?",
+                    "parameters": {
+                        "query": "FD3210",
+                        "fetchBy": "flight"
+                    }
+                },
+                {
+                    "utterance": "I need information on the aircraft with registration number N12345.",
+                    "parameters": {
+                        "query": "N12345",
+                        "fetchBy": "reg"
+                    }
+                },
+                {
+                    "utterance": "Tell me more about the flight with code BA2490.",
+                    "parameters": {
+                        "query": "BA2490",
+                        "fetchBy": "flight"
+                    }
+                },
+                {
+                    "utterance": "What can you tell me about the aircraft registered as G-ABCD?",
+                    "parameters": {
+                        "query": "G-ABCD",
+                        "fetchBy": "reg"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know more about the flight number LH1234.",
+                    "parameters": {
+                        "query": "LH1234",
+                        "fetchBy": "flight"
+                    }
+                },
+                {
+                    "utterance": "Give me the details of the aircraft with registration ZK-OKQ.",
+                    "parameters": {
+                        "query": "ZK-OKQ",
+                        "fetchBy": "reg"
+                    }
+                },
+                {
+                    "utterance": "Can you find information on the flight AA5678?",
+                    "parameters": {
+                        "query": "AA5678",
+                        "fetchBy": "flight"
+                    }
+                },
+                {
+                    "utterance": "I want to know about the aircraft with the registration number VH-OQA.",
+                    "parameters": {
+                        "query": "VH-OQA",
+                        "fetchBy": "reg"
+                    }
+                },
+                {
+                    "utterance": "Please provide details for the flight QR7890.",
+                    "parameters": {
+                        "query": "QR7890",
+                        "fetchBy": "flight"
+                    }
+                },
+                {
+                    "utterance": "What information do you have on the aircraft registered as D-ABCD?",
+                    "parameters": {
+                        "query": "D-ABCD",
+                        "fetchBy": "reg"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "flights/detail",
+            "description": "Get detailed information of specific flight",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/detail",
+            "parameters": [
+                {
+                    "name": "flight",
+                    "type": "STRING",
+                    "description": "The value of id, flight_id field returned in .../flights/list-in-boundary or .../flights/list-most-tracked endpoint",
+                    "default": "2b5ae17f",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details for the flight with ID 2b5ae17f?",
+                    "parameters": {
+                        "flight": "2b5ae17f"
+                    }
+                },
+                {
+                    "utterance": "I need information on the flight identified by 3c9f8b2d.",
+                    "parameters": {
+                        "flight": "3c9f8b2d"
+                    }
+                },
+                {
+                    "utterance": "What's the status of the flight with ID 4d7e9c3a?",
+                    "parameters": {
+                        "flight": "4d7e9c3a"
+                    }
+                },
+                {
+                    "utterance": "Give me the details for flight ID 5e8f0d4b.",
+                    "parameters": {
+                        "flight": "5e8f0d4b"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know more about the flight with ID 6f9g1e5c.",
+                    "parameters": {
+                        "flight": "6f9g1e5c"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the information for flight ID 7g0h2f6d?",
+                    "parameters": {
+                        "flight": "7g0h2f6d"
+                    }
+                },
+                {
+                    "utterance": "Please provide the details for the flight with ID 8h1i3g7e.",
+                    "parameters": {
+                        "flight": "8h1i3g7e"
+                    }
+                },
+                {
+                    "utterance": "I want to check the details of the flight with ID 9i2j4h8f.",
+                    "parameters": {
+                        "flight": "9i2j4h8f"
+                    }
+                },
+                {
+                    "utterance": "Could you give me the flight information for ID 0j3k5i9g?",
+                    "parameters": {
+                        "flight": "0j3k5i9g"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the flight with ID 1k4l6j0h.",
+                    "parameters": {
+                        "flight": "1k4l6j0h"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "flights/list-most-tracked",
+            "description": "Return the most tracked flights around the world",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/list-most-tracked",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me the most tracked flights right now.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the top flights being tracked globally?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the flights that are currently the most followed?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to see the most popular flights being tracked at the moment.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which flights are people tracking the most today?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me a list of the most tracked flights worldwide.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the most followed flights in the world right now?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show the flights that have the highest tracking numbers currently.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide the most tracked flights globally?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to know which flights are the most tracked at this time.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "flights/search",
+            "description": "Search for specific flight",
+            "url": "https://flight-radar1.p.rapidapi.com/flights/search",
+            "parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Aircraft number, flight code, airline code, etc...",
+                    "default": "FD3210",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of items per response (max 25)",
+                    "default": "25",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 25
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you track the flight with the code FD3210?",
+                    "parameters": {
+                        "query": "FD3210"
+                    }
+                },
+                {
+                    "utterance": "Show me the details for flight number AA1234.",
+                    "parameters": {
+                        "query": "AA1234"
+                    }
+                },
+                {
+                    "utterance": "I need information on the flight operated by Delta with the code DL5678.",
+                    "parameters": {
+                        "query": "DL5678"
+                    }
+                },
+                {
+                    "utterance": "Find the flight details for the aircraft number BA4321.",
+                    "parameters": {
+                        "query": "BA4321"
+                    }
+                },
+                {
+                    "utterance": "What can you tell me about the flight with the airline code LH7890?",
+                    "parameters": {
+                        "query": "LH7890"
+                    }
+                },
+                {
+                    "utterance": "Please provide the flight information for the code QR2468, but limit the results to 10.",
+                    "parameters": {
+                        "query": "QR2468",
+                        "limit": 10
+                    }
+                },
+                {
+                    "utterance": "Get me the flight details for the code EK1357 with a maximum of 5 results.",
+                    "parameters": {
+                        "query": "EK1357",
+                        "limit": 5
+                    }
+                },
+                {
+                    "utterance": "I'd like to know about the flight with the code AF9753, showing up to 15 entries.",
+                    "parameters": {
+                        "query": "AF9753",
+                        "limit": 15
+                    }
+                },
+                {
+                    "utterance": "Can you find the flight information for the aircraft with the code UA8642 and limit the output to 20?",
+                    "parameters": {
+                        "query": "UA8642",
+                        "limit": 20
+                    }
+                },
+                {
+                    "utterance": "Look up the flight details for the code QF1234, but only show 8 results.",
+                    "parameters": {
+                        "query": "QF1234",
+                        "limit": 8
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airlines/get-logos",
+            "description": "Get logos of airlines",
+            "url": "https://flight-radar1.p.rapidapi.com/airlines/get-logos",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "airlines/list",
+            "description": "List all airlines around the world",
+            "url": "https://flight-radar1.p.rapidapi.com/airlines/list",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "airports/list",
+            "description": "List all airports around the world",
+            "url": "https://flight-radar1.p.rapidapi.com/airports/list",
+            "parameters": [],
+            "utterances": []
+        }
+    ]
+}

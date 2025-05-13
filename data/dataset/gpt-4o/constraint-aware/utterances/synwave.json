@@ -1,0 +1,130 @@
+{
+    "name": "SynWave",
+    "description": "A data storage management API offering the following features:\n\n",
+    "url": "https://rapidapi.com/rpi4gx/api/synwave/",
+    "api_methods": [
+        {
+            "name": "Upload a new file",
+            "description": "Upload a new file.",
+            "url": "https://synwave.p.rapidapi.com/v1/upload",
+            "parameters": [
+                {
+                    "name": "file",
+                    "type": "BINARY",
+                    "description": "",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "auth_password",
+                    "type": "STRING",
+                    "description": "Password to protect this file. auth_username parameter is required if auth_password is set.\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "auth_password, auth_username: auth_username parameter is required if auth_password is set."
+                    }
+                },
+                {
+                    "name": "expiration_seconds",
+                    "type": "NUMBER",
+                    "description": "Number of seconds before the file becomes unavailable.\n",
+                    "default": 3600,
+                    "required": false
+                },
+                {
+                    "name": "auth_username",
+                    "type": "STRING",
+                    "description": "Username to protect this file. auth_password parameter is required if auth_username is set.\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "auth_password, auth_username: auth_password parameter is required if auth_username is set."
+                    }
+                },
+                {
+                    "name": "download_limit",
+                    "type": "NUMBER",
+                    "description": "Number of downloads before the file becomes unavailable.\n",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Please upload this document and set it to expire in 2 hours.",
+                    "parameters": {
+                        "file": "document",
+                        "expiration_seconds": 7200
+                    }
+                },
+                {
+                    "utterance": "Upload the image and limit the downloads to 5 times.",
+                    "parameters": {
+                        "file": "image",
+                        "download_limit": 5
+                    }
+                },
+                {
+                    "utterance": "Can you upload this video with a password protection? Use 'secure123' as the password and 'user1' as the username.",
+                    "parameters": {
+                        "file": "video",
+                        "auth_password": "secure123",
+                        "auth_username": "user1"
+                    }
+                },
+                {
+                    "utterance": "Upload the presentation and make it available for 24 hours.",
+                    "parameters": {
+                        "file": "presentation",
+                        "expiration_seconds": 86400
+                    }
+                },
+                {
+                    "utterance": "I need to upload this spreadsheet with a download limit of 10.",
+                    "parameters": {
+                        "file": "spreadsheet",
+                        "download_limit": 10
+                    }
+                },
+                {
+                    "utterance": "Upload this audio file and protect it with the username 'audioUser' and password 'audioPass'.",
+                    "parameters": {
+                        "file": "audio file",
+                        "auth_username": "audioUser",
+                        "auth_password": "audioPass"
+                    }
+                },
+                {
+                    "utterance": "Can you upload this PDF and set it to expire in 3 days?",
+                    "parameters": {
+                        "file": "PDF",
+                        "expiration_seconds": 259200
+                    }
+                },
+                {
+                    "utterance": "Upload the archive and limit its downloads to 3.",
+                    "parameters": {
+                        "file": "archive",
+                        "download_limit": 3
+                    }
+                },
+                {
+                    "utterance": "Please upload this text file with a username 'textUser' and password 'textPass'.",
+                    "parameters": {
+                        "file": "text file",
+                        "auth_username": "textUser",
+                        "auth_password": "textPass"
+                    }
+                },
+                {
+                    "utterance": "Upload this graphic and make it available for 6 hours.",
+                    "parameters": {
+                        "file": "graphic",
+                        "expiration_seconds": 21600
+                    }
+                }
+            ]
+        }
+    ]
+}

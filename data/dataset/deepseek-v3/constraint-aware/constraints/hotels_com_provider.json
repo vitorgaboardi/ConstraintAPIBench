@@ -1,0 +1,640 @@
+{
+    "name": "Hotels com Provider",
+    "description": "Search hotels, see prices, photos of the hotels, reviews.  **Site:** www.hotels.com **Support**:  [tipsters@rapi.one](mailto:tipsters@rapi.one) / t.me/api_tipsters **Other travel api:** https://rapi.one",
+    "url": "https://rapidapi.com/tipsters/api/hotels-com-provider/",
+    "api_methods": [
+        {
+            "name": "Hotel Details",
+            "description": "Get hotel details",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/details",
+            "parameters": [
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AE",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en_GB",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "hotel_id",
+                    "type": "NUMBER",
+                    "description": "Hotel ID",
+                    "default": "1105156",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Hotel Info",
+            "description": "Get hotel info",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/info",
+            "parameters": [
+                {
+                    "name": "hotel_id",
+                    "type": "NUMBER",
+                    "description": "Hotel ID",
+                    "default": "1105156",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en_GB",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AE",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Regions Search",
+            "description": "Search region, locations, city or hotel by name",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/regions",
+            "parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en_GB",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Query. Live search",
+                    "default": "Prag",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AE",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Hotel Slug convert",
+            "description": "Get Hotel ID from Hotel Site slug, (https://hotels.com/ho219115) `ho219115` -> `1105156`",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/meta/convert/slug-id",
+            "parameters": [
+                {
+                    "name": "slug",
+                    "type": "STRING",
+                    "description": "Hotels Slug",
+                    "default": "ho219115",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Domains List",
+            "description": "Get a list of Domains, available domains code, currencies and locales",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/domains",
+            "parameters": []
+        },
+        {
+            "name": "Hotels Search",
+            "description": "Get hotels by the filter. Set the `domain`, it is necessary for localization at the currency setting. (meta / Domains List). `accessibility` parameter, needed to get ONLY available hotels. Indicate the `region_id` -> use `Region Search`, check-in and check-out date, number of adults and children",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/search",
+            "parameters": [
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AE",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "sort_order",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "REVIEW",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en_GB",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "checkout_date",
+                    "type": "STRING",
+                    "description": "Checkout Date",
+                    "default": "2023-09-27",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 8601 YYYY-MM-DD format"
+                    }
+                },
+                {
+                    "name": "region_id",
+                    "type": "NUMBER",
+                    "description": "Region Id -> use `Regions Search`",
+                    "default": "2872",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "adults_number",
+                    "type": "NUMBER",
+                    "description": "Number of adults",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "checkin_date",
+                    "type": "STRING",
+                    "description": "Checkin Date",
+                    "default": "2023-09-26",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 8601 YYYY-MM-DD format"
+                    }
+                },
+                {
+                    "name": "accessibility",
+                    "type": "STRING",
+                    "description": "Accessibility. List: `SIGN_LANGUAGE_INTERPRETER`,`STAIR_FREE_PATH`,`SERVICE_ANIMAL`,`IN_ROOM_ACCESSIBLE`,`ROLL_IN_SHOWER`,`ACCESSIBLE_BATHROOM`,`ELEVATOR`,`ACCESSIBLE_PARKING`",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "SIGN_LANGUAGE_INTERPRETER",
+                                "STAIR_FREE_PATH",
+                                "SERVICE_ANIMAL",
+                                "IN_ROOM_ACCESSIBLE",
+                                "ROLL_IN_SHOWER",
+                                "ACCESSIBLE_BATHROOM",
+                                "ELEVATOR",
+                                "ACCESSIBLE_PARKING"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "available_filter",
+                    "type": "STRING",
+                    "description": "Available filter. List: `SHOW_AVAILABLE_ONLY`",
+                    "default": "SHOW_AVAILABLE_ONLY",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "SHOW_AVAILABLE_ONLY"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "meal_plan",
+                    "type": "STRING",
+                    "description": "Meal plan. List: `ALL_INCLUSIVE`,`FULL_BOARD`,`HALF_BOARD`,`FREE_BREAKFAST`",
+                    "default": "FREE_BREAKFAST",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ALL_INCLUSIVE",
+                                "FULL_BOARD",
+                                "HALF_BOARD",
+                                "FREE_BREAKFAST"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "guest_rating_min",
+                    "type": "NUMBER",
+                    "description": "Minimal guest rating. Ex. `9` -> +9",
+                    "default": 8,
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "price_min",
+                    "type": "NUMBER",
+                    "description": "Price min",
+                    "default": 10,
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "page_number",
+                    "type": "NUMBER",
+                    "description": "Number of page",
+                    "default": 1,
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "children_ages",
+                    "type": "STRING",
+                    "description": "The age of every child. Indicate their ages separated by commas. `4,0,15` -> three kids. `0` - less than a year",
+                    "default": "4,0,15",
+                    "required": false,
+                    "constraints": {
+                        "format": "comma-separated list of ages"
+                    }
+                },
+                {
+                    "name": "amenities",
+                    "type": "STRING",
+                    "description": "Amenities. List: `SPA_ON_SITE`,`WIFI`,`HOT_TUB`,`FREE_AIRPORT_TRANSPORTATION`,`POOL`,`GYM`,`OCEAN_VIEW`,`WATER_PARK`,`BALCONY_OR_TERRACE`,`KITCHEN_KITCHENETTE`,`ELECTRIC_CAR`,`PARKING`,`CRIB`,`RESTAURANT_IN_HOTEL`,`PETS`,`WASHER_DRYER`,`CASINO`,`AIR_CONDITIONING`",
+                    "default": "WIFI,PARKING",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "SPA_ON_SITE",
+                                "WIFI",
+                                "HOT_TUB",
+                                "FREE_AIRPORT_TRANSPORTATION",
+                                "POOL",
+                                "GYM",
+                                "OCEAN_VIEW",
+                                "WATER_PARK",
+                                "BALCONY_OR_TERRACE",
+                                "KITCHEN_KITCHENETTE",
+                                "ELECTRIC_CAR",
+                                "PARKING",
+                                "CRIB",
+                                "RESTAURANT_IN_HOTEL",
+                                "PETS",
+                                "WASHER_DRYER",
+                                "CASINO",
+                                "AIR_CONDITIONING"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "price_max",
+                    "type": "NUMBER",
+                    "description": "Price max",
+                    "default": 500,
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "lodging_type",
+                    "type": "STRING",
+                    "description": "Lodging type. List: `HOSTAL`,`APARTMENT`,`APART_HOTEL`,`CHALET`,`HOTEL`,`RYOKAN`,`BED_AND_BREAKFAST`,`HOSTEL`",
+                    "default": "HOTEL,HOSTEL,APART_HOTEL",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "HOSTAL",
+                                "APARTMENT",
+                                "APART_HOTEL",
+                                "CHALET",
+                                "HOTEL",
+                                "RYOKAN",
+                                "BED_AND_BREAKFAST",
+                                "HOSTEL"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "payment_type",
+                    "type": "STRING",
+                    "description": "Payment type. List: `GIFT_CARD`,`PAY_LATER`,`FREE_CANCELLATION`",
+                    "default": "PAY_LATER,FREE_CANCELLATION",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "GIFT_CARD",
+                                "PAY_LATER",
+                                "FREE_CANCELLATION"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "star_rating_ids",
+                    "type": "STRING",
+                    "description": "Hotel Star ratings",
+                    "default": "3,4,5",
+                    "required": false,
+                    "constraints": {
+                        "format": "comma-separated list of star ratings"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Hotel Rooms (offers)",
+            "description": "Get available rooms at the hotel",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/offers",
+            "parameters": [
+                {
+                    "name": "adults_number",
+                    "type": "NUMBER",
+                    "description": "Number of adults",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "checkout_date",
+                    "type": "STRING",
+                    "description": "Checkout date",
+                    "default": "2023-09-27",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 8601 YYYY-MM-DD format"
+                    }
+                },
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AE",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2 country code"
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en_GB",
+                    "required": true,
+                    "constraints": {
+                        "format": "BCP 47 language tag"
+                    }
+                },
+                {
+                    "name": "hotel_id",
+                    "type": "NUMBER",
+                    "description": "Hotel ID",
+                    "default": "1105156",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "checkin_date",
+                    "type": "STRING",
+                    "description": "Checkin date",
+                    "default": "2023-09-26",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 8601 YYYY-MM-DD format"
+                    }
+                },
+                {
+                    "name": "children_ages",
+                    "type": "STRING",
+                    "description": "The age of every child. If children will be staying in the room, please indicate their ages separated by commas. 0-less than a year",
+                    "default": "4,0",
+                    "required": false,
+                    "constraints": {
+                        "format": "comma-separated list of ages"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reviews scores",
+            "description": "Get hotel overall score",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/reviews/scores",
+            "parameters": [
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AE",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "hotel_id",
+                    "type": "NUMBER",
+                    "description": "Hotel ID",
+                    "default": "1105156",
+                    "required": true,
+                    "constraints": {
+                        "id": true,
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en_GB",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reviews list",
+            "description": "Get hotel reviews list",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/reviews/list",
+            "parameters": [
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AE",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en_GB",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "hotel_id",
+                    "type": "NUMBER",
+                    "description": "Hotel ID",
+                    "default": "1105156",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "page_number",
+                    "type": "NUMBER",
+                    "description": "Number of page",
+                    "default": 1,
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reviews summary",
+            "description": "Get hotel reviews summary",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/reviews/summary",
+            "parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en_GB",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AE",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "hotel_id",
+                    "type": "NUMBER",
+                    "description": "Hotel ID",
+                    "default": "1105156",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Hotel Summary",
+            "description": "Get hotel summary",
+            "url": "https://hotels-com-provider.p.rapidapi.com/v2/hotels/summary",
+            "parameters": [
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AE",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en_GB",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "hotel_id",
+                    "type": "NUMBER",
+                    "description": "Hotel ID",
+                    "default": "1105156",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        }
+    ]
+}

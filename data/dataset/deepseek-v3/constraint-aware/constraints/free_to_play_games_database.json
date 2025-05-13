@@ -1,0 +1,159 @@
+{
+    "name": "Free-to-Play Games Database",
+    "description": "Free-to-play games database powered by FreeToGame.com!",
+    "url": "https://rapidapi.com/digiwalls/api/free-to-play-games-database/",
+    "api_methods": [
+        {
+            "name": "Filter games by multiple tags",
+            "description": "Filter Games by multiple tags and platform for personalized results. Optionally you can also use the \"platform\" and \"sort\" parameters.",
+            "url": "https://free-to-play-games-database.p.rapidapi.com/api/filter",
+            "parameters": [
+                {
+                    "name": "tag",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "3d.mmorpg.fantasy.pvp",
+                    "required": true
+                },
+                {
+                    "name": "platform",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "pc",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Games by platform",
+            "description": "Insert platform, eg: pc, browser.",
+            "url": "https://free-to-play-games-database.p.rapidapi.com/api/games?",
+            "parameters": [
+                {
+                    "name": "platform",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "pc",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "pc",
+                                "browser"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Games by category or tag",
+            "description": "Insert game category or tag, eg: mmorpg, shooter, pvp, mmofps and more.",
+            "url": "https://free-to-play-games-database.p.rapidapi.com/api/games?",
+            "parameters": [
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "shooter",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "Games by platform & category & sorted",
+            "description": "Get games list using multiple parameters",
+            "url": "https://free-to-play-games-database.p.rapidapi.com/api/games?",
+            "parameters": [
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "mmorpg",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "mmorpg"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "platform",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "browser",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "browser"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "sort-by",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "release-date",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "release-date"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Return details from a specific game",
+            "description": "Insert game id",
+            "url": "https://free-to-play-games-database.p.rapidapi.com/api/game",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "452",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Sort games",
+            "description": "Insert sort by, eg: release-date, alphabetical or relevance",
+            "url": "https://free-to-play-games-database.p.rapidapi.com/api/games?",
+            "parameters": [
+                {
+                    "name": "sort-by",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "alphabetical",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "release-date",
+                                "alphabetical",
+                                "relevance"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Games list",
+            "description": "Get all games!",
+            "url": "https://free-to-play-games-database.p.rapidapi.com/api/games",
+            "parameters": []
+        }
+    ]
+}

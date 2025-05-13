@@ -1,0 +1,104 @@
+{
+    "name": "Al-Quran",
+    "description": "Quickly retrieve original Arabic text, translation, transliteration and Word Search from the Koran /Quran",
+    "url": "https://rapidapi.com/raz0229/api/al-quran1/",
+    "api_methods": [
+        {
+            "name": "Get range of verses",
+            "description": "Responds with a collection of *Ayahs/Verses* in a specific *Chapter/Surah* along with original Arabic text, translation, transliteration and verse ID in JSON",
+            "url": "https://al-quran1.p.rapidapi.com/{chapterid}/{range}",
+            "parameters": [
+                {
+                    "name": "chapterId",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "63",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "range",
+                    "type": "string",
+                    "description": "",
+                    "default": "1-4",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Get base information",
+            "description": "Responds with JSON including some properties of the Quran. *(deprecated)*",
+            "url": "https://al-quran1.p.rapidapi.com/",
+            "parameters": []
+        },
+        {
+            "name": "Get entire Surah/Chapter",
+            "description": "Possible values: ***1-114*** \nResponds with entire Surah/Chapter of the Koran including all verses in the Surah and some additional information.",
+            "url": "https://al-quran1.p.rapidapi.com/{chapterid}",
+            "parameters": [
+                {
+                    "name": "chapterId",
+                    "type": "NUMBER",
+                    "description": "Represents a unique Surah/Chapter in the Koran.\n**Min Value: *1***\n**Max Value: *114***",
+                    "default": "114",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 114,
+                            "min": 1
+                        },
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get specific Ayah/Verse",
+            "description": "Responds with a specific *Ayah/Verse* in a specific *Chapter/Surah* along with original Arabic text, translation, transliteration and verse ID in JSON",
+            "url": "https://al-quran1.p.rapidapi.com/{chapterid}/{verseid}",
+            "parameters": [
+                {
+                    "name": "chapterId",
+                    "type": "NUMBER",
+                    "description": "Refers to a *Surah/Chapter* in the Koran\n**Min Value: *1***\n**Max Value: *114***",
+                    "default": "38",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 1,
+                            "max": 114
+                        }
+                    }
+                },
+                {
+                    "name": "verseId",
+                    "type": "NUMBER",
+                    "description": "A valid *Ayah/verse* number from a specific chapter from the Quran",
+                    "default": "29",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Search for a word in Quran",
+            "description": "Looks for a given keyword (English) in ***translation_eng*** key in the entire Koran and responds with all the verses containing the given keyword and toal matches in JSON",
+            "url": "https://al-quran1.p.rapidapi.com/corpus/{searchterm}",
+            "parameters": [
+                {
+                    "name": "searchTerm",
+                    "type": "string",
+                    "description": "Any given keyword or phrase you like to search for in the Koran",
+                    "default": "muhammad",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        }
+    ]
+}

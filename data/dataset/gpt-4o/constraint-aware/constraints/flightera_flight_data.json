@@ -1,0 +1,598 @@
+{
+    "name": "Flightera Flight Data",
+    "description": "Flight status, on-time performance and statistics by Flightera",
+    "url": "https://rapidapi.com/flightera/api/flightera-flight-data/",
+    "api_methods": [
+        {
+            "name": "flightSearch",
+            "description": "Returns a list of flights for a given flight number. Minimum and/or maximum date can optionally be specified to limit the search. Results are ordered by departure date ascending. The next departure time is returned for pagination.\nWill return a 400 if the date range requested is outside the subscription level",
+            "url": "https://flightera-flight-data.p.rapidapi.com/flight/search",
+            "parameters": [
+                {
+                    "name": "flnr",
+                    "type": "STRING",
+                    "description": "The flight number to request",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "dtFrom",
+                    "type": "STRING",
+                    "description": "The minimum date to request",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "dtTo",
+                    "type": "STRING",
+                    "description": "The maximum date to request",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "airlineSearch",
+            "description": "Returns a list of airlines for a given country, identifiers or name search pattern. Multiple arguments can be specified to limit the search.\nEither one of the arguments must be specified.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/search",
+            "parameters": [
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airline",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "IATA code"
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The name or part of the name of the airline, case insensitive",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airline",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ICAO code"
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The ISO 3166-1 alpha-2 code country code to request",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2 code"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "aircraftSearch",
+            "description": "A list of plane registrations for a given search criteria.\nCan search by airline ident, country, model\nIf multiple arguments are provided, they will be chained as AND\nReturns only currently active aircraft",
+            "url": "https://flightera-flight-data.p.rapidapi.com/aircraft/search",
+            "parameters": [
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "Model ICAO code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ICAO code"
+                    }
+                },
+                {
+                    "name": "airline_ident",
+                    "type": "STRING",
+                    "description": "The ident of the airline, as returned by /airline/search",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Two letter country code",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "Two letter country code"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportSearch",
+            "description": "Returns a list of airports for a given country, bbox or timezone. Multiple arguments can be specified to limit the search.\nEither one of country, bbox or timezone must be specified.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/search",
+            "parameters": [
+                {
+                    "name": "timezone",
+                    "type": "STRING",
+                    "description": "The timezone of the airport (e.g. Europe/Berlin)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "country, bbox, timezone: Either one of country, bbox, or timezone must be specified."
+                    }
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The ISO 3166-1 alpha-2 code country code to request",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2 code",
+                        "inter-dependency": "country, bbox, timezone: Either one of country, bbox, or timezone must be specified."
+                    }
+                },
+                {
+                    "name": "bbox",
+                    "type": "STRING",
+                    "description": "A bbox (min Longitude , min Latitude , max Longitude , max Latitude), will restrict results to airports within that box",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "country, bbox, timezone: Either one of country, bbox, or timezone must be specified."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportInfo",
+            "description": "Returns detailed airport information for airports identified by the provided identifiers. In most cases the list should contain only one entry.\nHowever, due to the nature of the data, it is possible that multiple entries are returned.\nIf searched by ident, only one airport is returned.\nOne of ident, iata, icao, localID must be provided.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/info",
+            "parameters": [
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airport, must have a length of 4",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 4,
+                            "max": 4
+                        }
+                    }
+                },
+                {
+                    "name": "localID",
+                    "type": "STRING",
+                    "description": "Local identifiers of the airport, currently mostly available for the US & CA (FAA-ID). Max length is 6",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 6
+                        }
+                    }
+                },
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airport, must have a length of 3",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 3,
+                            "max": 3
+                        }
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airport, as returned by /airport/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airlineAircrafts",
+            "description": "A list of plane registrations for a given airline. Can search by ident only.\nOnly returns currently active aircraft",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/aircrafts",
+            "parameters": [
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airline, as returned by /airline/search",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "flightStatistics",
+            "description": "Returns statistics for a flight number with one entry per route flown. Statistics are updated daily.\nThe query can be filtered by route.\nStatistics are always as of today, please contact us if you require historical statistics.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/flight/statistics",
+            "parameters": [
+                {
+                    "name": "flnr",
+                    "type": "STRING",
+                    "description": "The flight number to request",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "aptFrom",
+                    "type": "STRING",
+                    "description": "Departure airport ident",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "aptTo",
+                    "type": "STRING",
+                    "description": "Arrival airport ident",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "airlineStatistics",
+            "description": "Returns detailed airline statistics for airlines identified by the provided identifiers. In most cases the list should contain only one entry, unless the ident is ambiguous.\nIf searched by ident, only one airline is returned.\nOne of ident, iata, icao must be provided.\nStatistics are calculated overnight and represent the current day's data.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/statistics",
+            "parameters": [
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airline, must have a length of 4",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ICAO code",
+                        "values": {
+                            "min": 4,
+                            "max": 4
+                        },
+                        "inter-dependency": "ident, iata, icao: One of ident, iata, or icao must be provided."
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airline, as returned by /airline/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "ident, iata, icao: One of ident, iata, or icao must be provided."
+                    }
+                },
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airline, must have a length of 3",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "IATA code",
+                        "values": {
+                            "min": 3,
+                            "max": 3
+                        },
+                        "inter-dependency": "ident, iata, icao: One of ident, iata, or icao must be provided."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "flightInfo",
+            "description": "Returns the info for a flight on a specified date, or the current flight if date is omitted. Will return a 400 if the date requested is outside the subscription level",
+            "url": "https://flightera-flight-data.p.rapidapi.com/flight/info",
+            "parameters": [
+                {
+                    "name": "flnr",
+                    "type": "STRING",
+                    "description": "The flight number to request",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "The date, if omitted the current flight will be returned",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 8601 date format"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportMetar",
+            "description": "Returns the most recent METAR for an airport specified by the given ident.\nIncludes a parsed version of the METAR.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/metar",
+            "parameters": [
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airport (e.g. as returned by /airport/search)",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportDelayDailyStatistics",
+            "description": "Returns detailed daily delay statistics for an airport identified by the provided identifiers. If searched by ident, only one airport is returned.\nOne of ident, iata, icao, localID must be provided. Additionally, `dt` and `isDeparture` are required.\nStatistics are calculated overnight and represent the data for the specific date.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/delays_by_day",
+            "parameters": [
+                {
+                    "name": "isDeparture",
+                    "type": "BOOLEAN",
+                    "description": "Flag indicating if the desired statistics are for departures (true) or arrivals (false)",
+                    "default": true,
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "dt",
+                    "type": "STRING",
+                    "description": "The date for which delay statistics are desired, formatted as \"YYYY-MM-DD\"",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airport, as returned by /airport/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true,
+                        "inter-dependency": "ident, iata, icao, localID: One of these must be provided."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportFlights",
+            "description": "Returns a list of flights for an airport, direction and time. The list is sorted ascending by scheduled departure time for direction==\"departure\" and sorted descending by scheduled arrival time for direction==\"arrival\".\nThe next departure/arrival time is returned for pagination.\nThe dates returned for each flight represent the scheduled departure date in local time and can be used to query flight data via /flight/info.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/flights",
+            "parameters": [
+                {
+                    "name": "direction",
+                    "type": "STRING",
+                    "description": "Direction, one of \"arrival\", \"departure\"",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "arrival",
+                                "departure"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "Ident of the airport to request. Ident is the unique identifier as returned by /airport/search or /airport/info endpoints.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "time",
+                    "type": "STRING",
+                    "description": "Timestamp in UTC. If direction is \"arrival\", show flights with scheduled arrival time prior to this timestamp. If direction is \"departure\", show flights with scheduled departure time after this timestamp. Expected in any valid format, such as 2022-01-01T12:00:00.000Z. Maximum range of flights returned is 30 days.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "Timestamp in UTC"
+                    }
+                },
+                {
+                    "name": "counterpart_ident",
+                    "type": "STRING",
+                    "description": "Ident of the counterpart airport (destination if direction=arrival, otherwise arrival). Used to query connections on a defined route. Ident is the unique identifier as returned by /airport/search or /airport/info endpoints.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "aircraftInfo",
+            "description": "Returns detailed aircraft information for an aircraft identified by registration.\nOnly works for currently active aircraft",
+            "url": "https://flightera-flight-data.p.rapidapi.com/aircraft/info",
+            "parameters": [
+                {
+                    "name": "reg",
+                    "type": "STRING",
+                    "description": "The registration of the aircraft, as returned by /airline/aircraft or /aircraft/search",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airlineFlights",
+            "description": "Returns a list of flights for an airline given a start time. The list is sorted ascending by scheduled departure time.\nThe next departure/ time is returned for pagination (use start times to paginate).\nThe dates returned for each flight represent the scheduled departure date in local time and can be used to query flight data via /flight/info.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/flights",
+            "parameters": [
+                {
+                    "name": "time",
+                    "type": "STRING",
+                    "description": "Timestamp in UTC. Shows flights with scheduled departure time after this timestamp. Expected in any valid format, such as 2022-01-01T12:00:00.000Z. Maximum range of flights returned is 30 days.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": "30 days"
+                        }
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "Ident of the airline to request. Ident is the unique identifier as returned by /airline/search or /airline/info endpoints.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airlineInfo",
+            "description": "Returns detailed airline information for airlines identified by the provided identifiers. In most cases the list should contain only one entry.\nHowever, due to the nature of the data, it is possible that multiple entries are returned.\nIf searched by ident, only one airline is returned.\nOne of ident, iata, icao, name must be provided.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airline/info",
+            "parameters": [
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airline, must have a length of 4",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ICAO code",
+                        "values": {
+                            "min": 4,
+                            "max": 4
+                        }
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "The name of the airline. Not case sensitive",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airline, must have a length of 3",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "IATA code",
+                        "values": {
+                            "min": 3,
+                            "max": 3
+                        }
+                    }
+                },
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airline, as returned by /airline/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "airportStatistics",
+            "description": "Returns detailed airport statistics for airports identified by the provided identifiers. In most cases the list should contain only one entry, unless the ident is ambiguous.\nIf searched by ident, only one airport is returned.\nOne of ident, iata, icao, localID must be provided.\nStatistics are calculated overnight and represent the current day's data.",
+            "url": "https://flightera-flight-data.p.rapidapi.com/airport/statistics",
+            "parameters": [
+                {
+                    "name": "ident",
+                    "type": "STRING",
+                    "description": "The ident of the airport, as returned by /airport/search",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true,
+                        "inter-dependency": "ident, iata, icao, localID: One of these must be provided."
+                    }
+                },
+                {
+                    "name": "localID",
+                    "type": "STRING",
+                    "description": "Local identifiers of the airport, currently mostly available for the US & CA (FAA-ID). Max length is 6",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 6
+                        },
+                        "inter-dependency": "ident, iata, icao, localID: One of these must be provided."
+                    }
+                },
+                {
+                    "name": "iata",
+                    "type": "STRING",
+                    "description": "The IATA code of the airport, must have a length of 3",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "IATA code",
+                        "values": {
+                            "max": 3,
+                            "min": 3
+                        },
+                        "inter-dependency": "ident, iata, icao, localID: One of these must be provided."
+                    }
+                },
+                {
+                    "name": "icao",
+                    "type": "STRING",
+                    "description": "The ICAO code of the airport, must have a length of 4",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ICAO code",
+                        "values": {
+                            "max": 4,
+                            "min": 4
+                        },
+                        "inter-dependency": "ident, iata, icao, localID: One of these must be provided."
+                    }
+                }
+            ]
+        }
+    ]
+}

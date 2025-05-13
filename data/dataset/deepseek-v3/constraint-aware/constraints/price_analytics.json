@@ -1,0 +1,170 @@
+{
+    "name": "Price Analytics",
+    "description": "Amazon, Google Shopping, Ebay, Idealo, billiger - price & product data from all marketplaces via one API. The Price Analytics API provides price & product data incl. product title, manufacturer, sellers, reviews, prices, size selection etc. Querying product data is done using session jobs. You create a session with the query details (marketplace, country , product id etc\u2026), and get a job ID. You can then use that job ID to poll results.   If you need a private plan with higher request amounts...",
+    "url": "https://rapidapi.com/3b-data-3b-data-default/api/price-analytics/",
+    "api_methods": [
+        {
+            "name": "Start search by gtin",
+            "description": "Create a product search session based on a search GTIN - Global Trade Item Number (e.g. 0194252099537). A successful response returns job_id, which is required when polling the session. Take the job_id and append it as a param to the poll session URL.",
+            "url": "https://price-analytics.p.rapidapi.com/search-by-gtin",
+            "parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The marketplace country",
+                    "default": "de",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "Marketplace name (amazon, google, idealo, ebay)",
+                    "default": "amazon",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "amazon",
+                                "google",
+                                "idealo",
+                                "ebay"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "values",
+                    "type": "STRING",
+                    "description": "Search value",
+                    "default": "0194252099537",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Start search by id",
+            "description": "Create a product search session based on a search id (e.g. amazon ASIN: B09G98X7GV). A successful response returns job_id, which is required when polling the session. Take the job_id and append it as a param to the poll session URL.",
+            "url": "https://price-analytics.p.rapidapi.com/search-by-id",
+            "parameters": [
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "Marketplace name (amazon, google, idealo, ebay)",
+                    "default": "amazon",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "amazon",
+                                "google",
+                                "idealo",
+                                "ebay"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "values",
+                    "type": "STRING",
+                    "description": "Search value",
+                    "default": "B09G98X7GV",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The marketplace country",
+                    "default": "de",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Start search by term",
+            "description": "Create a product search session based on a search term (e.g. iphone 11). A successful response returns job_id, which is required when polling the session. Take the job_id and append it as a param to the poll session URL.",
+            "url": "https://price-analytics.p.rapidapi.com/search-by-term",
+            "parameters": [
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "Marketplace name (amazon, google, idealo, ebay)",
+                    "default": "amazon",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "amazon",
+                                "google",
+                                "idealo",
+                                "ebay"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "values",
+                    "type": "STRING",
+                    "description": "Search value",
+                    "default": "iphone 11",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The marketplace country",
+                    "default": "de",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Start search by pzn",
+            "description": "Create a product search session based on a search PZN - Pharmazentralnummer (e.g. 16035503). A successful response returns job_id, which is required when polling the session. Take the job_id and append it as a param to the poll session URL.",
+            "url": "https://price-analytics.p.rapidapi.com/search-by-pzn",
+            "parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "The marketplace country",
+                    "default": "de",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "de"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "Marketplace name (supported only: idealo)",
+                    "default": "idealo",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "idealo"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "values",
+                    "type": "STRING",
+                    "description": "Search value",
+                    "default": "16035503",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        }
+    ]
+}

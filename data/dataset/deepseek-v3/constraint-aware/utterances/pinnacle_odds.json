@@ -1,0 +1,684 @@
+{
+    "name": "Pinnacle Odds",
+    "description": "Pinnacle Sport API is a RESTful service for getting pre-match and live odds. Historical odds, score and results. Updates without delay. Sports: Soccer, tennis, basketball, hockey, american football, MMA, baseball. **Support**:  [tipsters@rapi.one](mailto:tipsters@rapi.one) / t.me/api_tipsters **Other sports api:** https://rapi.one",
+    "url": "https://rapidapi.com/tipsters/api/pinnacle-odds/",
+    "api_methods": [
+        {
+            "name": "Betting status",
+            "description": "Get a betting status. Checking the Pinnacle server",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/betting-status",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you check the betting status for me?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What is the current betting status on Pinnacle?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Is the Pinnacle betting server up and running?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you verify the betting status on Pinnacle Sports?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to know if the Pinnacle betting service is active.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please check the status of the Pinnacle betting platform.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Is the Pinnacle betting system operational right now?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you confirm the betting status on Pinnacle?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What\u2019s the current status of the Pinnacle betting server?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Is the Pinnacle betting service available at the moment?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "List of special markets",
+            "description": "Get a list of special markets. Always first issue a snapshot call and continue with the delta calls. Calls return changes since the provided `since` value. You must always use the since parameter, after the first call. Please note that prematch and live events are different",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/special-markets",
+            "parameters": [
+                {
+                    "name": "sport_id",
+                    "type": "NUMBER",
+                    "description": "Sport id",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "is_have_odds",
+                    "type": "BOOLEAN",
+                    "description": "`1` or `0`. You can only get matches for which there are already open odds, or matches that will be given odds in the future",
+                    "default": true,
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                0,
+                                1
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "league_ids",
+                    "type": "NUMBER",
+                    "description": "League id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "event_type",
+                    "type": "STRING",
+                    "description": "Status: `prematch`, `live`  Please note that prematch and live events are different",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "prematch",
+                                "live"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "since",
+                    "type": "NUMBER",
+                    "description": "Since UTC time. Calls return changes since the provided `since` value.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "event_ids",
+                    "type": "NUMBER",
+                    "description": "Event id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the special markets for soccer?",
+                    "parameters": {
+                        "sport_id": 1
+                    }
+                },
+                {
+                    "utterance": "What are the special markets available for basketball with open odds?",
+                    "parameters": {
+                        "sport_id": 2,
+                        "is_have_odds": 1
+                    }
+                },
+                {
+                    "utterance": "List the special markets for hockey in the NHL league.",
+                    "parameters": {
+                        "sport_id": 3,
+                        "league_ids": 1
+                    }
+                },
+                {
+                    "utterance": "Show me the live special markets for tennis.",
+                    "parameters": {
+                        "sport_id": 4,
+                        "event_type": "live"
+                    }
+                },
+                {
+                    "utterance": "What are the special markets for the upcoming MMA event with ID 123?",
+                    "parameters": {
+                        "sport_id": 5,
+                        "event_ids": 123
+                    }
+                },
+                {
+                    "utterance": "Can you get me the special markets for baseball with no odds yet?",
+                    "parameters": {
+                        "sport_id": 6,
+                        "is_have_odds": 0
+                    }
+                },
+                {
+                    "utterance": "List the special markets for American football in the NFL league with open odds.",
+                    "parameters": {
+                        "sport_id": 7,
+                        "league_ids": 2,
+                        "is_have_odds": 1
+                    }
+                },
+                {
+                    "utterance": "Show me the prematch special markets for soccer in the Premier League.",
+                    "parameters": {
+                        "sport_id": 1,
+                        "league_ids": 3,
+                        "event_type": "prematch"
+                    }
+                },
+                {
+                    "utterance": "What are the special markets for the live tennis event with ID 456?",
+                    "parameters": {
+                        "sport_id": 4,
+                        "event_ids": 456,
+                        "event_type": "live"
+                    }
+                },
+                {
+                    "utterance": "Can you list the special markets for hockey with open odds in the NHL league?",
+                    "parameters": {
+                        "sport_id": 3,
+                        "league_ids": 1,
+                        "is_have_odds": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Event details",
+            "description": "Get a event details and history odds. history:[time, value, max bet]. `Period_results - status`: 1 = Event period is settled, 2 = Event period is re-settled, 3 = Event period is cancelled, 4 = Event period is re-settled as cancelled, 5 = Event is deleted",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/details",
+            "parameters": [
+                {
+                    "name": "event_id",
+                    "type": "NUMBER",
+                    "description": "Event id",
+                    "default": 1419211461,
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the details and odds history for the event with ID 1419211461?",
+                    "parameters": {
+                        "event_id": 1419211461
+                    }
+                },
+                {
+                    "utterance": "What are the event details and historical odds for event number 1419211461?",
+                    "parameters": {
+                        "event_id": 1419211461
+                    }
+                },
+                {
+                    "utterance": "I need the event history and odds for the event identified by 1419211461.",
+                    "parameters": {
+                        "event_id": 1419211461
+                    }
+                },
+                {
+                    "utterance": "Could you provide the details and odds history for the event with ID 1419211461?",
+                    "parameters": {
+                        "event_id": 1419211461
+                    }
+                },
+                {
+                    "utterance": "Show me the event details and historical odds for event ID 1419211461.",
+                    "parameters": {
+                        "event_id": 1419211461
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the event history and odds for the event with ID 1419211461?",
+                    "parameters": {
+                        "event_id": 1419211461
+                    }
+                },
+                {
+                    "utterance": "Please fetch the event details and odds history for event ID 1419211461.",
+                    "parameters": {
+                        "event_id": 1419211461
+                    }
+                },
+                {
+                    "utterance": "Can you retrieve the event details and historical odds for event 1419211461?",
+                    "parameters": {
+                        "event_id": 1419211461
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the event details and odds history for event ID 1419211461.",
+                    "parameters": {
+                        "event_id": 1419211461
+                    }
+                },
+                {
+                    "utterance": "Provide the event details and historical odds for the event with ID 1419211461.",
+                    "parameters": {
+                        "event_id": 1419211461
+                    }
+                }
+            ]
+        },
+        {
+            "name": "List of periods",
+            "description": "Get a list of periods",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/meta-periods",
+            "parameters": [
+                {
+                    "name": "sport_id",
+                    "type": "NUMBER",
+                    "description": "Sport id",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "id": true,
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the list of periods for the upcoming soccer matches?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the different periods available for basketball games?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need the list of periods for live tennis matches.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide the periods for hockey games?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the periods for American football matches.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What periods are there for MMA fights?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the periods for baseball games?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I\u2019d like to see the periods for pre-match soccer odds.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the periods for live basketball odds?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you give me the list of periods for tennis matches?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "List of archive events",
+            "description": "Get a list of archive events. Use pagination",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/archive",
+            "parameters": [
+                {
+                    "name": "sport_id",
+                    "type": "NUMBER",
+                    "description": "Sport id",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "page_num",
+                    "type": "NUMBER",
+                    "description": "Page num",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "league_ids",
+                    "type": "NUMBER",
+                    "description": "League id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the list of past sports events?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to see the archived events from last month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide me with the historical sports events?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the list of completed matches in soccer and basketball.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to check the archive of past tennis and MMA events.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you fetch the list of historical American football games?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please display the archive of baseball and hockey events.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I\u2019d like to see the list of past events with their results.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you give me the archive of sports events from last year?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the historical data for all sports events.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "List of sports",
+            "description": "Get a list of sports",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/sports",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the list of available sports?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What sports can I get odds for?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide the list of sports supported by the API?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to see all the sports covered by this service.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which sports are included in the Pinnacle Odds API?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please list all the sports available for betting.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the different sports I can check odds for?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you give me a rundown of the sports offered?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the sports that are supported for live odds.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What sports can I find historical odds for?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "List of markets",
+            "description": "Get a list of markets. Always first issue a snapshot call and continue with the delta calls. Calls return changes since the provided `since` value.  You must always use the `since` parameter, after starting your program cycle. You can make request without a `since` parameter no more than 15 times in 5 minutes. Please note that `prematch` and `live` events are different",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/markets",
+            "parameters": [
+                {
+                    "name": "sport_id",
+                    "type": "NUMBER",
+                    "description": "Sport id",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "league_ids",
+                    "type": "NUMBER",
+                    "description": "League id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "event_type",
+                    "type": "STRING",
+                    "description": "Status: `prematch`, `live`  Please note that prematch and live events are different",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "prematch",
+                                "live"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "event_ids",
+                    "type": "NUMBER",
+                    "description": "Event id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "is_have_odds",
+                    "type": "BOOLEAN",
+                    "description": "`1` or `0`. You can only get matches for which there are already open odds, or matches that will be given odds in the future",
+                    "default": true,
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                1,
+                                0
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "since",
+                    "type": "NUMBER",
+                    "description": "Since UTC time. Calls return changes since the provided `since` value.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the markets for soccer?",
+                    "parameters": {
+                        "sport_id": 1
+                    }
+                },
+                {
+                    "utterance": "What are the current live markets for basketball?",
+                    "parameters": {
+                        "sport_id": 2,
+                        "event_type": "live"
+                    }
+                },
+                {
+                    "utterance": "Show me the prematch markets for the NBA league.",
+                    "parameters": {
+                        "sport_id": 2,
+                        "league_ids": 123,
+                        "event_type": "prematch"
+                    }
+                },
+                {
+                    "utterance": "Are there any markets available for the upcoming tennis event with ID 456?",
+                    "parameters": {
+                        "sport_id": 3,
+                        "event_ids": 456
+                    }
+                },
+                {
+                    "utterance": "Can you list the markets for hockey that have open odds?",
+                    "parameters": {
+                        "sport_id": 4,
+                        "is_have_odds": 1
+                    }
+                },
+                {
+                    "utterance": "What are the live markets for the MLB league in baseball?",
+                    "parameters": {
+                        "sport_id": 5,
+                        "league_ids": 789,
+                        "event_type": "live"
+                    }
+                },
+                {
+                    "utterance": "Show me the markets for the MMA event with ID 101.",
+                    "parameters": {
+                        "sport_id": 6,
+                        "event_ids": 101
+                    }
+                },
+                {
+                    "utterance": "Are there any prematch markets for American football with open odds?",
+                    "parameters": {
+                        "sport_id": 7,
+                        "event_type": "prematch",
+                        "is_have_odds": 1
+                    }
+                },
+                {
+                    "utterance": "Can you list the markets for soccer in the Premier League?",
+                    "parameters": {
+                        "sport_id": 1,
+                        "league_ids": 202
+                    }
+                },
+                {
+                    "utterance": "What are the live markets for tennis that have open odds?",
+                    "parameters": {
+                        "sport_id": 3,
+                        "event_type": "live",
+                        "is_have_odds": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "List of leagues",
+            "description": "Get a list of leagues",
+            "url": "https://pinnacle-odds.p.rapidapi.com/kit/v1/leagues",
+            "parameters": [
+                {
+                    "name": "sport_id",
+                    "type": "NUMBER",
+                    "description": "Sport id",
+                    "default": 1,
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the list of available leagues?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the different leagues I can bet on?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide me with the list of sports leagues?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to see all the leagues supported by Pinnacle Odds.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please display the leagues available for betting.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which leagues are included in the Pinnacle Odds platform?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me an overview of the leagues I can follow.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What leagues are currently active for placing bets?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list all the leagues that Pinnacle Odds covers?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the full list of leagues for sports betting.",
+                    "parameters": {}
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,42 @@
+{
+    "name": "Route optimization",
+    "description": "Calculate fastest driving, cycling, walking or multimodal public transportation route between locations",
+    "url": "https://rapidapi.com/geoapify-gmbh-geoapify/api/route-optimization/",
+    "api_methods": [
+        {
+            "name": "Route and directions",
+            "description": "Calculate route between provided waypoints, including turn by turn directions",
+            "url": "https://route-optimization.p.rapidapi.com/v1/routing",
+            "parameters": [
+                {
+                    "name": "mode",
+                    "type": "STRING",
+                    "description": "Routing mode - drive, truck, bicycle, walk or transit",
+                    "default": "drive",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "drive",
+                                "truck",
+                                "bicycle",
+                                "walk",
+                                "transit"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "waypoints",
+                    "type": "STRING",
+                    "description": "List of two or more lat,lon coordinates, separated by the pipe symbol \\\"|\\\"",
+                    "default": "48.34364,10.87474|48.37073,10.90925",
+                    "required": true,
+                    "constraints": {
+                        "format": "List of two or more lat,lon coordinates, separated by the pipe symbol \"|\""
+                    }
+                }
+            ]
+        }
+    ]
+}

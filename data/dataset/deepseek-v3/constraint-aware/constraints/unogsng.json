@@ -1,0 +1,501 @@
+{
+    "name": "unogsNG",
+    "description": "Next Generation Netflix Global Search",
+    "url": "https://rapidapi.com/unogs/api/unogsng/",
+    "api_methods": [
+        {
+            "name": "Genres",
+            "description": "Returns a list of Netflix genres",
+            "url": "https://unogsng.p.rapidapi.com/genres",
+            "parameters": []
+        },
+        {
+            "name": "Countries",
+            "description": "Returns list of available Netflix countries (includes uNoGS country id)",
+            "url": "https://unogsng.p.rapidapi.com/countries",
+            "parameters": []
+        },
+        {
+            "name": "Images",
+            "description": "Pull all the images associated with a particular title",
+            "url": "https://unogsng.p.rapidapi.com/images",
+            "parameters": [
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "Netflix Title ID",
+                    "default": "81037848",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Starting Number of results (Default is 0)",
+                    "default": "3",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit of returned items default/max 100",
+                    "default": "2",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100
+                        },
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Title Countries",
+            "description": "Get all countries associated with a particular Netflix ID",
+            "url": "https://unogsng.p.rapidapi.com/titlecountries",
+            "parameters": [
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "Netflix ID",
+                    "default": "81043135",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Title Genres",
+            "description": "Get all genres associated with a particular Netflix ID",
+            "url": "https://unogsng.p.rapidapi.com/titlegenres",
+            "parameters": [
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "Netflix ID",
+                    "default": "81043135",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Title Details",
+            "description": "Specific information for a given Netflix title",
+            "url": "https://unogsng.p.rapidapi.com/title",
+            "parameters": [
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "A Netflix specific ID",
+                    "default": "81043135",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "imdbid",
+                    "type": "STRING",
+                    "description": "An IMDB ID",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Expiring",
+            "description": "Get list of expiring titles",
+            "url": "https://unogsng.p.rapidapi.com/expiring",
+            "parameters": [
+                {
+                    "name": "countrylist",
+                    "type": "STRING",
+                    "description": "List of uNoGS country IDs separated by a ,",
+                    "default": "78,46",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Starting Number of results (Default is 0)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit of returned items default/max 100",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true,
+                        "values": {
+                            "max": 100
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "People",
+            "description": "Search for Netflix People by name (returns person id for searches)",
+            "url": "https://unogsng.p.rapidapi.com/people",
+            "parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Starting Number of results (Default is 0)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "A persons name First Last or Both",
+                    "default": "Brad Pitt",
+                    "required": false
+                },
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "A Netflix title ID",
+                    "default": "70021641",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit of returned items default/max 100",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100
+                        },
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Episodes",
+            "description": "Search for Netflix People by name (returns person id for searches)",
+            "url": "https://unogsng.p.rapidapi.com/episodes",
+            "parameters": [
+                {
+                    "name": "seasonid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "70051768",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "episodeid",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "70150654",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "netflixid",
+                    "type": "NUMBER",
+                    "description": "A Netflix title ID",
+                    "default": "70153392",
+                    "required": false,
+                    "constraints": {
+                        "id": true,
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Deleted",
+            "description": "Returns all title which have been deleted meeting a limited criteria",
+            "url": "https://unogsng.p.rapidapi.com/titlesdel",
+            "parameters": [
+                {
+                    "name": "offset",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "netflixid",
+                    "type": "STRING",
+                    "description": "Netflix Title ID",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "date",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "returns anything deleted after this date",
+                    "default": "2019-12-01",
+                    "required": false,
+                    "constraints": {
+                        "format": "DATE (YYYY-MM-DD)"
+                    }
+                },
+                {
+                    "name": "countrylist",
+                    "type": "STRING",
+                    "description": "list of uNoGS country ID's separated by a ,",
+                    "default": "78",
+                    "required": false,
+                    "constraints": {
+                        "format": "list of uNoGS country ID's separated by a comma"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Search",
+            "description": "Search for Netflix titles based on a variety of parameters",
+            "url": "https://unogsng.p.rapidapi.com/search",
+            "parameters": [
+                {
+                    "name": "start_year",
+                    "type": "NUMBER",
+                    "description": "A 4 digit year",
+                    "default": "1972",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1972
+                        }
+                    }
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "movie or series",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "movie",
+                                "series"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "audio",
+                    "type": "STRING",
+                    "description": "A valid language type",
+                    "default": "english",
+                    "required": false,
+                    "constraints": {
+                        "format": "valid language type"
+                    }
+                },
+                {
+                    "name": "audiosubtitle_andor",
+                    "type": "STRING",
+                    "description": "and/or for audio and subtitles",
+                    "default": "and",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "and",
+                                "or"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit of returned items default/max 100",
+                    "default": "100",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "end_rating",
+                    "type": "NUMBER",
+                    "description": "imdb rating 0-10",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "any string you want to search (fulltext against the title)",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "countrylist",
+                    "type": "STRING",
+                    "description": "list of uNoGS country ID's (from country endpoint) leave blank for all country search",
+                    "default": "78,46",
+                    "required": false,
+                    "constraints": {
+                        "format": "uNoGS country ID's"
+                    }
+                },
+                {
+                    "name": "country_andorunique",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "unique",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "unique"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "orderby",
+                    "type": "STRING",
+                    "description": "orderby string (date,dateDesc,rating,title,type,runtime,filmyear,filmyearDesc)",
+                    "default": "rating",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "date",
+                                "dateDesc",
+                                "rating",
+                                "title",
+                                "type",
+                                "runtime",
+                                "filmyear",
+                                "filmyearDesc"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "newdate",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "returns all titles with a new date greater than this",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "genrelist",
+                    "type": "STRING",
+                    "description": "list of Netflix genre id's (see genre endpoint for list)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "Netflix genre id's"
+                    }
+                },
+                {
+                    "name": "start_rating",
+                    "type": "STRING",
+                    "description": "imdb rating 0-10",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10,
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "end_year",
+                    "type": "NUMBER",
+                    "description": "A 4 digit year",
+                    "default": "2019",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 2019
+                        }
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Starting Number of results (Default is 0)",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "subtitle",
+                    "type": "STRING",
+                    "description": "A valid language type",
+                    "default": "english",
+                    "required": false,
+                    "constraints": {
+                        "format": "valid language type"
+                    }
+                }
+            ]
+        }
+    ]
+}

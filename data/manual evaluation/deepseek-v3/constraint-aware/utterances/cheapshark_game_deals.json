@@ -1,0 +1,267 @@
+{
+    "name": "CheapShark - Game Deals",
+    "description": "CheapShark is a price comparison website for digital PC Games. We keep track of prices across multiple stores including Steam, GreenManGaming, Fanatical, and many others.",
+    "url": "https://rapidapi.com/CheapShark/api/cheapshark-game-deals/",
+    "api_methods": [
+        {
+            "name": "List of Deals",
+            "description": "Get a paged list of deals matching any number of criteria, all the filtering parameters are optional.\n\nThe deal object is what drives most of what you see on the site. They are price + metadata properties for games for a given store. All dealID\u2019s are encoded on the server. On your website/app, you will use the redirect page to link users to a specific deal:\n\n> https://www.cheapshark.com/redirect?dealID={id}\n\n**Important Note**: The redirect page is not an API endpoint and is not designed for automated access. It is purely a way to link your end users to deals.\n\nThe deal rating property provides a quick way to compare how 'good' a deal is. It is normalized on a scale from 0 to 10.",
+            "url": "https://cheapshark-game-deals.p.rapidapi.com/deals",
+            "parameters": [
+                {
+                    "name": "lowerPrice",
+                    "type": "NUMBER",
+                    "description": "Default `0`\n\nOnly returns deals with a price *greater than* this value",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "steamRating",
+                    "type": "NUMBER",
+                    "description": "Minimum Steam reviews rating for a game",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Looks for the string contained anywhere in the game name",
+                    "default": "batman",
+                    "required": false
+                },
+                {
+                    "name": "steamAppID",
+                    "type": "ARRAY",
+                    "description": "Look for deals on specific games, comma separated list of Steam App ID",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "comma-separated list of Steam App ID"
+                    }
+                },
+                {
+                    "name": "desc",
+                    "type": "BOOLEAN",
+                    "description": "Default `0`\n\nDetermines sort direction",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "output",
+                    "type": "STRING",
+                    "description": "Option to output deals in `RSS` format (overrides page number/size to `0`/`100`)",
+                    "default": "json",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "json",
+                                "RSS"
+                            ]
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "steamworks",
+                    "type": "BOOLEAN",
+                    "description": "Default `0`\n\nFlag to include only deals that redeem on Steam (best guess, depends on store support)",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "Criteria to sort the list by, possible values -\n\n- Deal Rating\n- Title\n- Savings\n- Price\n- Metacritic\n- Reviews\n- Release\n- Store\n- recent",
+                    "default": "Deal Rating",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Deal Rating",
+                                "Title",
+                                "Savings",
+                                "Price",
+                                "Metacritic",
+                                "Reviews",
+                                "Release",
+                                "Store",
+                                "recent"
+                            ]
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "AAA",
+                    "type": "BOOLEAN",
+                    "description": "Default `0`\n\nFlag to include only deals with retail price > `$29`",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "The size of pages returned, default and maximum value is `60`",
+                    "default": "60",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 60
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "exact",
+                    "type": "BOOLEAN",
+                    "description": "Default `0`\n\nFlag to allow only exact string match for `title` parameter",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "upperPrice",
+                    "type": "NUMBER",
+                    "description": "Only returns deals with a price* less than or equal to` this value (`50` acts the same as no limit)",
+                    "default": "50",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 50
+                        }
+                    }
+                },
+                {
+                    "name": "pageNumber",
+                    "type": "NUMBER",
+                    "description": "The requested page number, 0 indexed, default of `0`",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "onSale",
+                    "type": "BOOLEAN",
+                    "description": "Default `0`\n\nFlag to include only games that are currently on sale",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "metacritic",
+                    "type": "NUMBER",
+                    "description": "Minimum Metacritic rating for a game",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "storeID",
+                    "type": "ARRAY",
+                    "description": "Comma separated list of store ID's to filter on, omit for deals from any store",
+                    "default": "1,2,3",
+                    "required": false,
+                    "constraints": {
+                        "format": "comma-separated list of store IDs"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me game deals under $20.",
+                    "parameters": {
+                        "upperPrice": 20
+                    }
+                },
+                {
+                    "utterance": "Find deals for games with a Steam rating above 80.",
+                    "parameters": {
+                        "steamRating": 80
+                    }
+                },
+                {
+                    "utterance": "What are the best deals for games with a Metacritic score of at least 90?",
+                    "parameters": {
+                        "metacritic": 90
+                    }
+                },
+                {
+                    "utterance": "Can you find deals for games that include the word 'Zelda' in the title?",
+                    "parameters": {
+                        "title": "Zelda"
+                    }
+                },
+                {
+                    "utterance": "Show me game deals priced between $10 and $30.",
+                    "parameters": {
+                        "lowerPrice": 10,
+                        "upperPrice": 30
+                    }
+                },
+                {
+                    "utterance": "Find deals for games with Steam App IDs 12345 and 67890.",
+                    "parameters": {
+                        "steamAppID": "12345,67890"
+                    }
+                },
+                {
+                    "utterance": "What are the best deals from stores with IDs 1 and 2?",
+                    "parameters": {
+                        "storeID": "1,2"
+                    }
+                },
+                {
+                    "utterance": "Show me game deals with a Steam rating above 70 and a Metacritic score of at least 85.",
+                    "parameters": {
+                        "steamRating": 70,
+                        "metacritic": 85
+                    }
+                },
+                {
+                    "utterance": "Find deals for games priced above $15 with the word 'Witcher' in the title.",
+                    "parameters": {
+                        "lowerPrice": 15,
+                        "title": "Witcher"
+                    }
+                },
+                {
+                    "utterance": "What are the best deals for games with a Steam rating above 90 and a price under $25?",
+                    "parameters": {
+                        "steamRating": 90,
+                        "upperPrice": 25
+                    }
+                }
+            ]
+        }
+    ]
+}

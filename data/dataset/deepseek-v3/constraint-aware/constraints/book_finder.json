@@ -1,0 +1,112 @@
+{
+    "name": "Book Finder",
+    "description": "Find books by title, author, series, and reading complexity. Try the demo: [https://bookfinder-1-r7047837.deta.app](https://bookfinder-1-r7047837.deta.app/)",
+    "url": "https://rapidapi.com/dfskGT/api/book-finder1/",
+    "api_methods": [
+        {
+            "name": "Find books",
+            "description": "Search books using optional title, author, series, book type, categories, and [lexile measure](https://lexile.com/educators/understanding-lexile-measures/) range.",
+            "url": "https://book-finder1.p.rapidapi.com/api/search",
+            "parameters": [
+                {
+                    "name": "book_type",
+                    "type": "STRING",
+                    "description": "Book type, fiction or nonfiction.",
+                    "default": "Fiction",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Fiction",
+                                "Nonfiction"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "categories",
+                    "type": "STRING",
+                    "description": "Semicolon separated book categories to search for, e.g., 'Mystery & Suspense; Science Fiction & Fantasy'. Available categories include: ['Animals, Bugs & Pets', 'Art, Creativity & Music', 'General Literature', 'Hobbies, Sports & Outdoors', 'Science Fiction & Fantasy', 'Real Life', 'Science & Technology', 'Mystery & Suspense', 'Reference']",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Animals, Bugs & Pets",
+                                "Art, Creativity & Music",
+                                "General Literature",
+                                "Hobbies, Sports & Outdoors",
+                                "Science Fiction & Fantasy",
+                                "Real Life",
+                                "Science & Technology",
+                                "Mystery & Suspense",
+                                "Reference"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lexile_max",
+                    "type": "NUMBER",
+                    "description": "Maximum Lexile measure.",
+                    "default": "800",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "lexile_min, lexile_max: lexile_min must be less than or equal to lexile_max."
+                    }
+                },
+                {
+                    "name": "series",
+                    "type": "STRING",
+                    "description": "Series name.",
+                    "default": "Wings of fire",
+                    "required": false
+                },
+                {
+                    "name": "lexile_min",
+                    "type": "NUMBER",
+                    "description": "Minimum Lexile measure.",
+                    "default": "600",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "lexile_min, lexile_max: lexile_min must be less than or equal to lexile_max."
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page of the results.",
+                    "default": 1,
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "author",
+                    "type": "STRING",
+                    "description": "Name of the author.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Terms to be appeared in book title.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "results_per_page",
+                    "type": "NUMBER",
+                    "description": "Results per page.",
+                    "default": 25,
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        }
+    ]
+}

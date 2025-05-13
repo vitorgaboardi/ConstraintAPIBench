@@ -1,0 +1,1523 @@
+{
+    "name": "EveryEarthquake",
+    "description": "Get every earthquake and any other event that registers on the richter scale ever catalogued by the USGS, with very detailed location data.",
+    "url": "https://rapidapi.com/dbarkman/api/everyearthquake/",
+    "api_methods": [
+        {
+            "name": "Recent Earthquakes",
+            "description": "Get the 100 most recent earthquakes from all over in the world, from now to the date and time determined by the 'interval' property.",
+            "url": "https://everyearthquake.p.rapidapi.com/recentEarthquakes",
+            "parameters": [
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "Get recent earthquakes from current time, back to a time based on the interval provided. Interval is an ISO8601 Duration, examples: P5D for the last 5 days, PT12H for the last 12 hours. https://en.wikipedia.org/wiki/ISO_8601#Durations",
+                    "default": "P1Y2M3W4DT1H2M3S",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 8601 Duration"
+                    }
+                },
+                {
+                    "name": "count",
+                    "type": "STRING",
+                    "description": "Add to any call to limit the number of earthquakes returned.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "100",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "radius",
+                    "type": "STRING",
+                    "description": "The length across half a circle of the search area. The latitude and longitude together make up the center of the circle, while the radius is the distance from the center to the outside of the circle. A 10 mile radius will be a circle 20 miles across with its center at the latitude/longitude point.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "1000",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "units",
+                    "type": "STRING",
+                    "description": "Either miles or kilometers for the radius of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "miles",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "miles",
+                                "kilometers"
+                            ]
+                        },
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "intensity",
+                    "type": "STRING",
+                    "description": "Intensity can be added to limit results to only those earthquakes with at least the specified intensity or greater.",
+                    "default": "1",
+                    "required": false
+                },
+                {
+                    "name": "magnitude",
+                    "type": "STRING",
+                    "description": "Magnitude can be added to limit results to only those earthquakes with at least the specified magnitude or greater.",
+                    "default": "3",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "The longitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "-118.3706975",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Use the 'start' parameter to retrieve more than 1000 earthquakes, up to 1000 at a time. 'Start' is the offset to start at within the overall results.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "The latitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "33.962523",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type can be added to limit results to only those types specified, e.g.: earthquakes, quarry blasts, explosions. Use the 'types' endpoints to see all available types.",
+                    "default": "earthquake",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "type: Use the 'types' endpoints to see all available types."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the earthquakes from the last 3 days.",
+                    "parameters": {
+                        "interval": "P3D"
+                    }
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes in the past week with a magnitude of at least 5?",
+                    "parameters": {
+                        "interval": "P1W",
+                        "magnitude": "5"
+                    }
+                },
+                {
+                    "utterance": "Find the earthquakes that happened in the last 24 hours near Los Angeles with a radius of 50 miles.",
+                    "parameters": {
+                        "interval": "PT24H",
+                        "latitude": "34.0522",
+                        "longitude": "-118.2437",
+                        "radius": "50",
+                        "units": "miles"
+                    }
+                },
+                {
+                    "utterance": "Get the most recent 200 earthquakes from the last month.",
+                    "parameters": {
+                        "interval": "P1M",
+                        "count": "200"
+                    }
+                },
+                {
+                    "utterance": "I want to see the earthquakes from the past 2 days with an intensity of at least 4.",
+                    "parameters": {
+                        "interval": "P2D",
+                        "intensity": "4"
+                    }
+                },
+                {
+                    "utterance": "Show me the earthquakes from the last 6 hours near Tokyo with a radius of 100 kilometers.",
+                    "parameters": {
+                        "interval": "PT6H",
+                        "latitude": "35.6895",
+                        "longitude": "139.6917",
+                        "radius": "100",
+                        "units": "kilometers"
+                    }
+                },
+                {
+                    "utterance": "List the recent earthquakes from the past 10 days with a magnitude of at least 6.",
+                    "parameters": {
+                        "interval": "P10D",
+                        "magnitude": "6"
+                    }
+                },
+                {
+                    "utterance": "Can you find the earthquakes from the last 48 hours near San Francisco with a radius of 30 miles?",
+                    "parameters": {
+                        "interval": "PT48H",
+                        "latitude": "37.7749",
+                        "longitude": "-122.4194",
+                        "radius": "30",
+                        "units": "miles"
+                    }
+                },
+                {
+                    "utterance": "Get the earthquakes from the last 5 days with a type of quarry blast.",
+                    "parameters": {
+                        "interval": "P5D",
+                        "type": "quarry blast"
+                    }
+                },
+                {
+                    "utterance": "Show me the earthquakes from the past 12 hours with an intensity of at least 3 and a magnitude of at least 4.",
+                    "parameters": {
+                        "interval": "PT12H",
+                        "intensity": "3",
+                        "magnitude": "4"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "M1.0+ Earthquakes, Past Day",
+            "description": "Magnitude 1.0+ Earthquakes, Past Day",
+            "url": "https://everyearthquake.p.rapidapi.com/1.0_day.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes that happened in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the earthquakes with a magnitude of 1.0 or higher from yesterday?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see the recent earthquakes recorded in the last 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details of all seismic events from the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the earthquakes that occurred in the last day?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the list of earthquakes with a magnitude above 1.0 from the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide information on all earthquakes recorded in the past 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you show the seismic activities from yesterday?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the earthquakes that have been catalogued in the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a report on the earthquakes that happened over the past day.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "All Earthquakes, Past 30 Days",
+            "description": "All Earthquakes, Past Thirty Days",
+            "url": "https://everyearthquake.p.rapidapi.com/all_month.json",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "M1.0+ Earthquakes, Past 30 Days",
+            "description": "Magnitude 1.0+ Earthquakes, Past Thirty Days",
+            "url": "https://everyearthquake.p.rapidapi.com/1.0_month.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes that happened in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes recorded in the past month?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see the earthquakes with a magnitude of 1.0 or higher from the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details of all seismic events from the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the earthquakes that have been catalogued in the last month?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the data for all earthquakes over the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all seismic activities recorded in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide information on earthquakes from the past month?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a report on all earthquakes that occurred in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show the earthquake events from the past 30 days.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M2.5+ Earthquakes, Past 30 Days",
+            "description": "Magnitude 2.5+ Earthquakes, Past Thirty Days",
+            "url": "https://everyearthquake.p.rapidapi.com/2.5_month.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes with a magnitude of 2.5 or higher that happened in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes with magnitudes above 2.5 from the past month?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see the earthquakes that occurred in the last 30 days with a magnitude greater than 2.5.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details of all earthquakes with a magnitude of at least 2.5 from the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the earthquakes with a magnitude over 2.5 that have been recorded in the last month?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the earthquakes from the past 30 days that had a magnitude of 2.5 or more.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide information on earthquakes with magnitudes above 2.5 that happened in the last 30 days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a report on all earthquakes with a magnitude of 2.5 or higher from the past month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the data for earthquakes with a magnitude greater than 2.5 that occurred in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the earthquakes with a magnitude of at least 2.5 that have been recorded in the past 30 days.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M4.5+ Earthquakes, Past 30 Days",
+            "description": "Magnitude 4.5+ Earthquakes, Past Thirty Days",
+            "url": "https://everyearthquake.p.rapidapi.com/4.5_month.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes with a magnitude of 4.5 or higher that happened in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes with magnitudes above 4.5 from the past month?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see the earthquakes that were recorded in the last 30 days with a magnitude of at least 4.5.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details of all earthquakes over 4.5 magnitude that occurred in the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the earthquakes with a magnitude greater than 4.5 that have been detected in the last month?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the significant earthquakes from the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide information on earthquakes with a magnitude of 4.5 or more from the last 30 days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a report on all earthquakes with a magnitude above 4.5 that happened in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the data for earthquakes with a magnitude of 4.5 and above from the past month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the earthquakes with a magnitude of at least 4.5 that occurred in the last 30 days.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Significant Earthquakes, Past 30 Days",
+            "description": "Significant Earthquakes, Past Thirty Days",
+            "url": "https://everyearthquake.p.rapidapi.com/significant_month.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all significant earthquakes that happened in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the major earthquakes from the past month?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the significant seismic events recorded in the last 30 days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to know about the major earthquakes that occurred in the past 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me a summary of significant earthquakes over the last month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What significant earthquakes have been recorded in the past 30 days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the major seismic activities from the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide details on significant earthquakes in the past month?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the significant earthquakes that happened in the last 30 days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the major earthquakes that have occurred in the past 30 days?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "All Earthquakes, Past 7 Days",
+            "description": "All Earthquakes, Past Seven Days",
+            "url": "https://everyearthquake.p.rapidapi.com/all_week.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes that happened in the last week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the earthquakes recorded over the past seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see the recent earthquake events from the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the earthquakes that occurred in the past week?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details of all earthquakes from the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the earthquake data for the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all seismic activities recorded in the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide information on earthquakes from the past week?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a report on all earthquakes that happened over the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What seismic events have been catalogued in the past week?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M1.0+ Earthquakes, Past 7 Days",
+            "description": "Magnitude 1.0+ Earthquakes, Past Seven Days",
+            "url": "https://everyearthquake.p.rapidapi.com/1.0_week.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes that happened in the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes from the last seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see the earthquakes recorded over the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details of all earthquakes that occurred in the last week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the earthquakes that have been detected in the past seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the earthquake data for the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all seismic events from the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide information on earthquakes from the last seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a report on all earthquakes that happened in the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show the earthquakes that have been recorded over the last seven days.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M2.5+ Earthquakes, Past 7 Days",
+            "description": "Magnitude 2.5+ Earthquakes, Past Seven Days",
+            "url": "https://everyearthquake.p.rapidapi.com/2.5_week.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes with a magnitude of 2.5 or higher that happened in the last week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes over the past seven days with a magnitude above 2.5?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know about all the earthquakes that occurred in the last seven days with a magnitude of at least 2.5.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details of earthquakes with a magnitude greater than 2.5 from the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the earthquakes with a magnitude of 2.5 or more that have been recorded in the last seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the earthquakes from the past week that had a magnitude of 2.5 or higher.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide information on earthquakes with a magnitude over 2.5 that occurred in the last seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the earthquakes with a magnitude of at least 2.5 that happened in the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a report on all earthquakes with a magnitude above 2.5 from the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the list of earthquakes with a magnitude of 2.5 or more that took place in the past week.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M4.5+ Earthquakes, Past 7 Days",
+            "description": "Magnitude 4.5+ Earthquakes, Past Seven Days",
+            "url": "https://everyearthquake.p.rapidapi.com/4.5_week.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes with a magnitude of 4.5 or higher that happened in the last week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes with a magnitude above 4.5 from the past seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know about any earthquakes over 4.5 magnitude that occurred in the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details of all earthquakes with a magnitude greater than 4.5 that have been recorded in the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the earthquakes with a magnitude of at least 4.5 that took place in the last seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the earthquakes from the past week that had a magnitude of 4.5 or more.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide information on earthquakes with a magnitude over 4.5 that happened in the last seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the earthquakes with a magnitude of 4.5 and above from the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a report on all earthquakes with a magnitude higher than 4.5 that occurred in the last seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the list of earthquakes with a magnitude of 4.5 or more from the past seven days.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Significant Earthquakes, Past 7 Days",
+            "description": "Significant Earthquakes, Past Seven Days",
+            "url": "https://everyearthquake.p.rapidapi.com/significant_week.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me the significant earthquakes that happened in the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list all the major earthquakes from the last seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the significant seismic events recorded in the past seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to know about the major earthquakes that occurred over the last week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details of significant earthquakes from the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What significant earthquakes have been recorded in the last week?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the major seismic activities from the past seven days.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide information on significant earthquakes that happened in the last seven days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the significant earthquakes that occurred in the past week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the major earthquakes that have been catalogued in the last seven days?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M4.5+ Earthquakes, Past Day",
+            "description": "Magnitude 4.5+ Earthquakes, Past Day",
+            "url": "https://everyearthquake.p.rapidapi.com/4.5_day.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes with a magnitude of 4.5 or higher that happened in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes with a magnitude above 4.5 from the last 24 hours?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know about any significant earthquakes that occurred in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details on earthquakes with a magnitude of at least 4.5 that took place yesterday.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the recent seismic events with a magnitude over 4.5 from the last day?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the list of earthquakes with a magnitude greater than 4.5 that happened in the past 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the earthquakes with a magnitude of 4.5 or more that occurred in the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need information on all earthquakes with a magnitude above 4.5 from the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide the details of earthquakes with a magnitude of 4.5+ that happened yesterday?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the significant earthquakes from the past 24 hours with a magnitude of at least 4.5.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M2.5+ Earthquakes, Past Day",
+            "description": "Magnitude 2.5+ Earthquakes, Past Day",
+            "url": "https://everyearthquake.p.rapidapi.com/2.5_day.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes that happened in the past day with a magnitude of 2.5 or higher.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes with a magnitude above 2.5?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know about the earthquakes that occurred yesterday with a magnitude of at least 2.5.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details on the earthquakes from the past 24 hours that were 2.5 or greater in magnitude.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the recent seismic activities with a magnitude over 2.5?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the earthquakes from the last day that had a magnitude of 2.5 or more.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide information on the earthquakes with a magnitude of 2.5+ that happened recently?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the earthquakes that have occurred in the past day with a magnitude higher than 2.5.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a report on the earthquakes from the last 24 hours with a magnitude of at least 2.5.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What seismic events with a magnitude of 2.5 or more have been recorded in the past day?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M1.0+ Earthquakes, Past Hour",
+            "description": "Magnitude 1.0+ Earthquakes, Past Hour",
+            "url": "https://everyearthquake.p.rapidapi.com/1.0_hour.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes that happened in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes from the last hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know about the earthquakes that occurred in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details of the earthquakes recorded in the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the recent seismic activities in the past hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the earthquakes that have been detected in the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the earthquakes that took place in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need information on the earthquakes from the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all seismic events that occurred in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What earthquakes have been recorded in the last hour?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "All Earthquakes, Past Day",
+            "description": "All Earthquakes, Past Day",
+            "url": "https://everyearthquake.p.rapidapi.com/all_day.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes that happened in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the earthquakes recorded in the last 24 hours?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see the recent earthquakes from the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the earthquakes that occurred yesterday?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details of all seismic events from the last day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the earthquake data for the past 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the earthquakes that have been recorded in the past day.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide information on the earthquakes from the last day?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a report on all the earthquakes that happened in the past 24 hours.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What seismic activities were detected in the last day?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Significant Earthquakes, Past Day",
+            "description": "Significant Earthquakes, Past Day",
+            "url": "https://everyearthquake.p.rapidapi.com/significant_day.json",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "All Earthquakes, Past Hour",
+            "description": "All Earthquakes, Past Hour",
+            "url": "https://everyearthquake.p.rapidapi.com/all_hour.json",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "M2.5+ Earthquakes, Past Hour",
+            "description": "Magnitude 2.5+ Earthquakes, Past Hour",
+            "url": "https://everyearthquake.p.rapidapi.com/2.5_hour.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes that happened in the past hour with a magnitude of 2.5 or higher.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes with a magnitude above 2.5 from the last hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know about any earthquakes over 2.5 magnitude that occurred in the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details on earthquakes with a magnitude greater than 2.5 that happened in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the earthquakes with a magnitude of at least 2.5 that have been recorded in the last hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the list of earthquakes from the past hour with magnitudes over 2.5.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Are there any earthquakes with a magnitude higher than 2.5 that occurred in the last hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the earthquakes with a magnitude of 2.5 or more that took place in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need information on any recent earthquakes with a magnitude above 2.5 from the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all earthquakes with a magnitude of 2.5 or higher that have occurred in the last hour.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "M4.5+ Earthquakes, Past Hour",
+            "description": "Magnitude 4.5+ Earthquakes, Past Hour",
+            "url": "https://everyearthquake.p.rapidapi.com/4.5_hour.json",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the earthquakes with a magnitude of 4.5 or higher that happened in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the recent earthquakes with a magnitude above 4.5 from the last hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know about any earthquakes over 4.5 magnitude that occurred in the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me details on earthquakes with a magnitude greater than 4.5 that have been recorded in the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the recent seismic activities with a magnitude of 4.5 or more from the last hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the list of earthquakes with a magnitude higher than 4.5 that happened within the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the earthquakes with a magnitude of at least 4.5 that occurred in the last hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Are there any earthquakes with a magnitude over 4.5 that have been detected in the past hour?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the earthquakes with a magnitude of 4.5 or above from the past hour.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need information on any earthquakes with a magnitude greater than 4.5 that took place in the last hour.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Significant Earthquakes, Past Hour",
+            "description": "Significant Earthquakes, Past Hour",
+            "url": "https://everyearthquake.p.rapidapi.com/significant_hour.json",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "API Test",
+            "description": "Simple call to determine if the API is available and responding.",
+            "url": "https://everyearthquake.p.rapidapi.com/testPass",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "Earthquakes By Date",
+            "description": "Get the 100 most recent earthquakes from all over in the world, within a specified date range.",
+            "url": "https://everyearthquake.p.rapidapi.com/earthquakesByDate",
+            "parameters": [
+                {
+                    "name": "startDate",
+                    "type": "STRING",
+                    "description": "The start date for the search period in YYYY-MM-DD format. All dates start and end at midnight UTC.",
+                    "default": "2021-01-27",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "endDate",
+                    "type": "STRING",
+                    "description": "The end date for the search period in YYYY-MM-DD format. All dates start and end at midnight UTC.",
+                    "default": "2022-01-27",
+                    "required": true,
+                    "constraints": {
+                        "format": "YYYY-MM-DD"
+                    }
+                },
+                {
+                    "name": "intensity",
+                    "type": "STRING",
+                    "description": "Intensity can be added to limit results to only those earthquakes with at least the specified intensity or greater.",
+                    "default": "1",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "The longitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "-118.3706975",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type can be added to limit results to only those types specified, e.g.: earthquakes, quarry blasts, explosions. Use the 'types' endpoints to see all available types.",
+                    "default": "earthquake",
+                    "required": false
+                },
+                {
+                    "name": "count",
+                    "type": "STRING",
+                    "description": "Add to any call to limit the number of earthquakes returned.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "100",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "The latitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "33.962523",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "units",
+                    "type": "STRING",
+                    "description": "Either miles or kilometers for the radius of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "miles",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "miles",
+                                "kilometers"
+                            ]
+                        },
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Use the 'start' parameter to retrieve more than 1000 earthquakes, up to 1000 at a time. 'Start' is the offset to start at within the overall results.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "radius",
+                    "type": "STRING",
+                    "description": "The length across half a circle of the search area. The latitude and longitude together make up the center of the circle, while the radius is the distance from the center to the outside of the circle. A 10 mile radius will be a circle 20 miles across with its center at the latitude/longitude point.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "1000",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "magnitude",
+                    "type": "STRING",
+                    "description": "Magnitude can be added to limit results to only those earthquakes with at least the specified magnitude or greater.",
+                    "default": "3",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me all earthquakes from January 1, 2022 to January 31, 2022.",
+                    "parameters": {
+                        "startDate": "2022-01-01",
+                        "endDate": "2022-01-31"
+                    }
+                },
+                {
+                    "utterance": "Find earthquakes with a magnitude of at least 5 that occurred between March 1, 2023 and March 15, 2023.",
+                    "parameters": {
+                        "startDate": "2023-03-01",
+                        "endDate": "2023-03-15",
+                        "magnitude": "5"
+                    }
+                },
+                {
+                    "utterance": "List all seismic events from June 10, 2023 to June 20, 2023 near Los Angeles with a radius of 50 kilometers.",
+                    "parameters": {
+                        "startDate": "2023-06-10",
+                        "endDate": "2023-06-20",
+                        "latitude": "34.0522",
+                        "longitude": "-118.2437",
+                        "radius": "50",
+                        "units": "kilometers"
+                    }
+                },
+                {
+                    "utterance": "Can you provide details of earthquakes with intensity 4 or higher from February 1, 2023 to February 28, 2023?",
+                    "parameters": {
+                        "startDate": "2023-02-01",
+                        "endDate": "2023-02-28",
+                        "intensity": "4"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the 50 most recent earthquakes from April 1, 2023 to April 30, 2023.",
+                    "parameters": {
+                        "startDate": "2023-04-01",
+                        "endDate": "2023-04-30",
+                        "count": "50"
+                    }
+                },
+                {
+                    "utterance": "Get all quarry blasts recorded from May 1, 2023 to May 31, 2023.",
+                    "parameters": {
+                        "startDate": "2023-05-01",
+                        "endDate": "2023-05-31",
+                        "type": "quarry blasts"
+                    }
+                },
+                {
+                    "utterance": "Show me explosions that happened between July 1, 2023 and July 10, 2023.",
+                    "parameters": {
+                        "startDate": "2023-07-01",
+                        "endDate": "2023-07-10",
+                        "type": "explosions"
+                    }
+                },
+                {
+                    "utterance": "Find earthquakes with a magnitude of at least 6 near Tokyo from August 1, 2023 to August 15, 2023.",
+                    "parameters": {
+                        "startDate": "2023-08-01",
+                        "endDate": "2023-08-15",
+                        "magnitude": "6",
+                        "latitude": "35.6895",
+                        "longitude": "139.6917",
+                        "radius": "100",
+                        "units": "miles"
+                    }
+                },
+                {
+                    "utterance": "List all seismic activities from September 1, 2023 to September 30, 2023 with a radius of 200 miles around San Francisco.",
+                    "parameters": {
+                        "startDate": "2023-09-01",
+                        "endDate": "2023-09-30",
+                        "latitude": "37.7749",
+                        "longitude": "-122.4194",
+                        "radius": "200",
+                        "units": "miles"
+                    }
+                },
+                {
+                    "utterance": "Provide details of earthquakes with intensity 3 or higher from October 1, 2023 to October 31, 2023.",
+                    "parameters": {
+                        "startDate": "2023-10-01",
+                        "endDate": "2023-10-31",
+                        "intensity": "3"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Types",
+            "description": "Return all types of events ever recorded by the USGS, such as earthquakes, explosions, landslides and many more.",
+            "url": "https://everyearthquake.p.rapidapi.com/types",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you list all the types of seismic events recorded by the USGS?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the different types of events that have been catalogued by the USGS?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me all the event types ever recorded on the Richter scale.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to know the various types of geological events documented by the USGS.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide a list of all event types that the USGS has recorded?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What kinds of events have been registered by the USGS over the years?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the types of events that have been recorded by the USGS.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me about the different types of events the USGS has catalogued?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the various types of events that have been documented by the USGS?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to see all the types of events ever recorded by the USGS.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Earthquakes",
+            "description": "Get the 100 most recent earthquakes from all over in the world. No parameters required.",
+            "url": "https://everyearthquake.p.rapidapi.com/earthquakes",
+            "parameters": [
+                {
+                    "name": "units",
+                    "type": "STRING",
+                    "description": "Either miles or kilometers for the radius of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "miles",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "miles",
+                                "kilometers"
+                            ]
+                        },
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "The latitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "33.962523",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "intensity",
+                    "type": "STRING",
+                    "description": "Intensity can be added to limit results to only those earthquakes with at least the specified intensity or greater.",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type can be added to limit results to only those types specified, e.g.: earthquakes, quarry blasts, explosions. Use the 'types' endpoints to see all available types.",
+                    "default": "earthquake",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "magnitude",
+                    "type": "STRING",
+                    "description": "Magnitude can be added to limit results to only those earthquakes with at least the specified magnitude or greater.",
+                    "default": "3",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "radius",
+                    "type": "STRING",
+                    "description": "The length across half a circle of the search area. The latitude and longitude together make up the center of the circle, while the radius is the distance from the center to the outside of the circle. A 10 mile radius will be a circle 20 miles across with its center at the latitude/longitude point.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "1000",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "count",
+                    "type": "STRING",
+                    "description": "Add to any call to limit the number of earthquakes returned.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "100",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1000,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "The longitude portion of the point at the center of the search circle.\nSearch for earthquakes near a certain location using latitude, longitude, radius and units. All four properties must be included when retrieving earthquakes near a certain location.",
+                    "default": "-118.3706975",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "latitude, longitude, radius, units: All four properties must be included when retrieving earthquakes near a certain location."
+                    }
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "Use the 'start' parameter to retrieve more than 1000 earthquakes, up to 1000 at a time. 'Start' is the offset to start at within the overall results.\n100 earthquakes are returned by default, up to 1000 earthquakes can be returned using the 'count' parameter.",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the most recent earthquakes with a magnitude of at least 5.",
+                    "parameters": {
+                        "magnitude": "5"
+                    }
+                },
+                {
+                    "utterance": "Can you list the latest 50 earthquakes?",
+                    "parameters": {
+                        "count": "50"
+                    }
+                },
+                {
+                    "utterance": "Find earthquakes near Los Angeles with a radius of 50 miles.",
+                    "parameters": {
+                        "latitude": "34.0522",
+                        "longitude": "-118.2437",
+                        "radius": "50",
+                        "units": "miles"
+                    }
+                },
+                {
+                    "utterance": "I want to see recent quarry blasts.",
+                    "parameters": {
+                        "type": "quarry blasts"
+                    }
+                },
+                {
+                    "utterance": "Get the latest earthquakes with an intensity of at least 4.",
+                    "parameters": {
+                        "intensity": "4"
+                    }
+                },
+                {
+                    "utterance": "Show me the most recent explosions.",
+                    "parameters": {
+                        "type": "explosions"
+                    }
+                },
+                {
+                    "utterance": "List earthquakes near Tokyo within a 100-kilometer radius.",
+                    "parameters": {
+                        "latitude": "35.6895",
+                        "longitude": "139.6917",
+                        "radius": "100",
+                        "units": "kilometers"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the latest 200 earthquakes?",
+                    "parameters": {
+                        "count": "200"
+                    }
+                },
+                {
+                    "utterance": "Find recent earthquakes with a magnitude of at least 6.",
+                    "parameters": {
+                        "magnitude": "6"
+                    }
+                },
+                {
+                    "utterance": "Show me earthquakes near San Francisco with a radius of 30 kilometers.",
+                    "parameters": {
+                        "latitude": "37.7749",
+                        "longitude": "-122.4194",
+                        "radius": "30",
+                        "units": "kilometers"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Latest Earthquake Near Me",
+            "description": "Call this endpoint with your latitude and longitude and you'll receive a simple return for the most recent earthquake, within 100 miles, of the lat/long coordinates provided.",
+            "url": "https://everyearthquake.p.rapidapi.com/latestEarthquakeNearMe",
+            "parameters": [
+                {
+                    "name": "latitude",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "33.962523",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "longitude",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "-118.3706975",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you tell me about the latest earthquake near Los Angeles?",
+                    "parameters": {
+                        "latitude": "34.0522",
+                        "longitude": "-118.2437"
+                    }
+                },
+                {
+                    "utterance": "What was the most recent earthquake around San Francisco?",
+                    "parameters": {
+                        "latitude": "37.7749",
+                        "longitude": "-122.4194"
+                    }
+                },
+                {
+                    "utterance": "Find the latest seismic activity close to New York City.",
+                    "parameters": {
+                        "latitude": "40.7128",
+                        "longitude": "-74.0060"
+                    }
+                },
+                {
+                    "utterance": "Give me details on the most recent earthquake near Tokyo.",
+                    "parameters": {
+                        "latitude": "35.6895",
+                        "longitude": "139.6917"
+                    }
+                },
+                {
+                    "utterance": "What's the latest earthquake that happened near Sydney?",
+                    "parameters": {
+                        "latitude": "-33.8688",
+                        "longitude": "151.2093"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the most recent earthquake around Mexico City.",
+                    "parameters": {
+                        "latitude": "19.4326",
+                        "longitude": "-99.1332"
+                    }
+                },
+                {
+                    "utterance": "Can you find the latest earthquake near Rio de Janeiro?",
+                    "parameters": {
+                        "latitude": "-22.9068",
+                        "longitude": "-43.1729"
+                    }
+                },
+                {
+                    "utterance": "What was the last earthquake near Cape Town?",
+                    "parameters": {
+                        "latitude": "-33.9249",
+                        "longitude": "18.4241"
+                    }
+                },
+                {
+                    "utterance": "Show me the most recent earthquake near Paris.",
+                    "parameters": {
+                        "latitude": "48.8566",
+                        "longitude": "2.3522"
+                    }
+                },
+                {
+                    "utterance": "Find the latest earthquake activity close to Beijing.",
+                    "parameters": {
+                        "latitude": "39.9042",
+                        "longitude": "116.4074"
+                    }
+                }
+            ]
+        }
+    ]
+}

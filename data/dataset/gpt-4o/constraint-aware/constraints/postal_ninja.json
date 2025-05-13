@@ -1,0 +1,94 @@
+{
+    "name": "Postal Ninja",
+    "description": "Official Postal Ninja tracking API for developers",
+    "url": "https://rapidapi.com/PostalNinja/api/postal-ninja/",
+    "api_methods": [
+        {
+            "name": "createTrack",
+            "description": "Returns ID of newly created package (status=CREATED) or stored ID if this tracking number already exists (status=FOUND).",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track",
+            "parameters": [
+                {
+                    "name": "trackCode",
+                    "type": "STRING",
+                    "description": "Tracking number",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "ds",
+                    "type": "STRING",
+                    "description": "Carrier ID (optional)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "destCountry",
+                    "type": "STRING",
+                    "description": "Optional destination country code (ISO 3166-1 alpha-2)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha-2"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "refreshTrack",
+            "description": "Submits on-demand refresh request to tracking engine for package with given ID. Please note, that packages in ACTIVE list are auto-tracked regularly so you don't need to do this for such packages.",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track/{id}/refresh",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Package ID",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "moveTrack",
+            "description": "Moves package with given ID to ARCHIVED, TRASHED or back to ACTIVE list.",
+            "url": "https://postal-ninja.p.rapidapi.com/v1/track/{id}/move",
+            "parameters": [
+                {
+                    "name": "list",
+                    "type": "STRING",
+                    "description": "List to move package to",
+                    "default": "\"ACTIVE\"",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ARCHIVED",
+                                "TRASHED",
+                                "ACTIVE"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "Package ID",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        }
+    ]
+}

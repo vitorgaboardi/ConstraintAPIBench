@@ -1,0 +1,422 @@
+{
+    "name": "OpenCritic API",
+    "description": "An API for accessing video game and video game review data",
+    "url": "https://rapidapi.com/opencritic-opencritic-default/api/opencritic-api/",
+    "api_methods": [
+        {
+            "name": "Reviews for Game (legacy fix)",
+            "description": "Gets reviews for a specific Game ID. Uses /review/game/{id} for legacy support.",
+            "url": "https://opencritic-api.p.rapidapi.com/review/game/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "463",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "skip",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "Sorts reviews based on one of the following:\n\n- newest (newest reviews first, by publishedDate of the review)\n- oldest (oldest reviews first, by publishedDate of the review)\n- score-high (highest scoring reviews first, with unscored reviews last)\n- score-low (lowest scoring reviews first, with unscored reviews last)\n- popularity (based on publication popularity)\n- blend (reviews within the last 3.5 days first; otherwise, sort by popularity)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "newest",
+                                "oldest",
+                                "score-high",
+                                "score-low",
+                                "popularity",
+                                "blend"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/game/{id}",
+            "description": "Get game data",
+            "url": "https://opencritic-api.p.rapidapi.com/game/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The OpenCritic Game ID",
+                    "default": "463",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/game/hall-of-fame",
+            "description": "Get the top 12 games on the OpenCritic Hall of Fame for the current year (usually changes in early February).",
+            "url": "https://opencritic-api.p.rapidapi.com/game/hall-of-fame",
+            "parameters": []
+        },
+        {
+            "name": "General Search",
+            "description": "Search a combination of Outlet, Game, and Author by String",
+            "url": "https://opencritic-api.p.rapidapi.com/meta/search",
+            "parameters": [
+                {
+                    "name": "criteria",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "god is of",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "All Outlet Profiles",
+            "description": "Get all Outlet profiles",
+            "url": "https://opencritic-api.p.rapidapi.com/outlet",
+            "parameters": []
+        },
+        {
+            "name": "Game Search",
+            "description": "Searches OpenCritic for games with similar names/titles. Search results are based on inverse trigram distance, with 0 being a perfect match and 1 being no shared/overlapping trigrams. See the [pg_trgm](https://www.postgresql.org/docs/current/pgtrgm.html) library for more information.",
+            "url": "https://opencritic-api.p.rapidapi.com/game/search",
+            "parameters": [
+                {
+                    "name": "criteria",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "the withcer 3",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "/game/popular",
+            "description": "Gets the most popular games on OpenCritic, using a blend of page views, recent reviews, and the notoriety of publications that have reviewed it",
+            "url": "https://opencritic-api.p.rapidapi.com/game/popular",
+            "parameters": []
+        },
+        {
+            "name": "/game",
+            "description": "Query for searching game listings",
+            "url": "https://opencritic-api.p.rapidapi.com/game",
+            "parameters": [
+                {
+                    "name": "platforms",
+                    "type": "STRING",
+                    "description": "Platforms to search in a comma-separated list. Valid values are:\n\nall,ps4,xb1,pc,wii-u,vita,switch,oculus,vive,psvr,3ds,xbsx,ps5,stadia,vive",
+                    "default": "ps4,ps5",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "all",
+                                "ps4",
+                                "xb1",
+                                "pc",
+                                "wii-u",
+                                "vita",
+                                "switch",
+                                "oculus",
+                                "vive",
+                                "psvr",
+                                "3ds",
+                                "xbsx",
+                                "ps5",
+                                "stadia",
+                                "vive"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "skip",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Score Format",
+            "description": "Gets OpenCritic Score Formats",
+            "url": "https://opencritic-api.p.rapidapi.com/score-format",
+            "parameters": []
+        },
+        {
+            "name": "Author Search",
+            "description": "Search for an Author",
+            "url": "https://opencritic-api.p.rapidapi.com/author/search",
+            "parameters": [
+                {
+                    "name": "criteria",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "travis north",
+                    "required": true
+                }
+            ]
+        },
+        {
+            "name": "/game/reviewed-this-week",
+            "description": "Gets the most reviewed games this week",
+            "url": "https://opencritic-api.p.rapidapi.com/game/reviewed-this-week",
+            "parameters": []
+        },
+        {
+            "name": "Genre",
+            "description": "Gets OpenCritic genres",
+            "url": "https://opencritic-api.p.rapidapi.com/genre",
+            "parameters": []
+        },
+        {
+            "name": "Platform",
+            "description": "Gets OpenCritic Platforms",
+            "url": "https://opencritic-api.p.rapidapi.com/platform",
+            "parameters": []
+        },
+        {
+            "name": "Reviews for Outlet",
+            "description": "Gets reviews for a specific Outlet ID",
+            "url": "https://opencritic-api.p.rapidapi.com/review/outlet/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "56",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "skip",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "Sorts reviews based on one of the following:\n\n- newest (newest reviews first, by publishedDate of the review)\n- oldest (oldest reviews first, by publishedDate of the review)\n- score-high (highest scoring reviews first, with unscored reviews last)\n- score-low (lowest scoring reviews first, with unscored reviews last)\n- popularity (based on publication popularity)\n- blend (reviews within the last 3.5 days first; otherwise, sort by popularity)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "newest",
+                                "oldest",
+                                "score-high",
+                                "score-low",
+                                "popularity",
+                                "blend"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reviews for Author",
+            "description": "Gets reviews for a specific Author ID",
+            "url": "https://opencritic-api.p.rapidapi.com/review/author/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "481",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "skip",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "Sorts reviews based on one of the following:\n\n- newest (newest reviews first, by publishedDate of the review)\n- oldest (oldest reviews first, by publishedDate of the review)\n- score-high (highest scoring reviews first, with unscored reviews last)\n- score-low (lowest scoring reviews first, with unscored reviews last)\n- popularity (based on publication popularity)\n- blend (reviews within the last 3.5 days first; otherwise, sort by popularity)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "newest",
+                                "oldest",
+                                "score-high",
+                                "score-low",
+                                "popularity",
+                                "blend"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Outlet Profile",
+            "description": "Gets a given outlet's profile",
+            "url": "https://opencritic-api.p.rapidapi.com/outlet/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The Outlet's ID",
+                    "default": "56",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Author Profile",
+            "description": "Gets an Author's profile data on OpenCritic",
+            "url": "https://opencritic-api.p.rapidapi.com/author/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Author ID",
+                    "default": "481",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/game/reviewed-today",
+            "description": "Gets the 10 games that have been most reviewed today.",
+            "url": "https://opencritic-api.p.rapidapi.com/game/reviewed-today",
+            "parameters": []
+        },
+        {
+            "name": "/game/hall-of-fame/{year}",
+            "description": "Gets the Hall of Fame for a specific year",
+            "url": "https://opencritic-api.p.rapidapi.com/game/hall-of-fame/{year}",
+            "parameters": [
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year between 2016 and the current calendar year",
+                    "default": "2020",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 2016
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/game/recently-released",
+            "description": "Gets the 8 most recently released major titles on OpenCritic",
+            "url": "https://opencritic-api.p.rapidapi.com/game/recently-released",
+            "parameters": []
+        },
+        {
+            "name": "/game/upcoming",
+            "description": "Gets the next 8 upcoming major titles on OpenCritic",
+            "url": "https://opencritic-api.p.rapidapi.com/game/upcoming",
+            "parameters": []
+        },
+        {
+            "name": "Reviews for Game",
+            "description": "Gets reviews for a specific Game ID",
+            "url": "https://opencritic-api.p.rapidapi.com/reviews/game/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "463",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "Sorts reviews based on one of the following:\n\n- newest (newest reviews first, by publishedDate of the review)\n- oldest (oldest reviews first, by publishedDate of the review)\n- score-high (highest scoring reviews first, with unscored reviews last)\n- score-low (lowest scoring reviews first, with unscored reviews last)\n- popularity (based on publication popularity)\n- blend (reviews within the last 3.5 days first; otherwise, sort by popularity)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "newest",
+                                "oldest",
+                                "score-high",
+                                "score-low",
+                                "popularity",
+                                "blend"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "skip",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        }
+    ]
+}

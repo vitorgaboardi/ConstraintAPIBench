@@ -1,0 +1,117 @@
+{
+    "name": "Pen to Print - Handwriting OCR",
+    "description": "Handwriting Recognition OCR - Convert scanned handwritten notes into editable text.",
+    "url": "https://rapidapi.com/serendi/api/pen-to-print-handwriting-ocr/",
+    "api_methods": [
+        {
+            "name": "recognize",
+            "description": "extarct text from an image",
+            "url": "https://pen-to-print-handwriting-ocr.p.rapidapi.com/recognize/",
+            "parameters": [
+                {
+                    "name": "includeSubScan",
+                    "type": "NUMBER",
+                    "description": "integer [0/1] indicate whether the return value should include images of the split lines.",
+                    "default": 0,
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                0,
+                                1
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "srcImg",
+                    "type": "BINARY",
+                    "description": "file object of the image (jpg or png format) to be scanned.",
+                    "default": "File",
+                    "required": false,
+                    "constraints": {
+                        "format": "jpg or png format"
+                    }
+                },
+                {
+                    "name": "Session",
+                    "type": "STRING",
+                    "description": "GUID string to represent the session. Will appear in billing for tracking purposes.",
+                    "default": "string",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you convert this handwritten note into text?",
+                    "parameters": {
+                        "srcImg": "handwritten_note.jpg"
+                    }
+                },
+                {
+                    "utterance": "I need the text from this image, and please include the split line images.",
+                    "parameters": {
+                        "srcImg": "note_with_lines.png",
+                        "includeSubScan": 1
+                    }
+                },
+                {
+                    "utterance": "Extract the text from this scanned page.",
+                    "parameters": {
+                        "srcImg": "scanned_page.jpg"
+                    }
+                },
+                {
+                    "utterance": "Please convert this image to text and track it under session ID 'session-1234'.",
+                    "parameters": {
+                        "srcImg": "meeting_notes.png",
+                        "Session": "session-1234"
+                    }
+                },
+                {
+                    "utterance": "I have a handwritten letter here, can you extract the text?",
+                    "parameters": {
+                        "srcImg": "handwritten_letter.jpg"
+                    }
+                },
+                {
+                    "utterance": "Turn this image into editable text and include the line images.",
+                    "parameters": {
+                        "srcImg": "lecture_notes.png",
+                        "includeSubScan": 1
+                    }
+                },
+                {
+                    "utterance": "Can you recognize the text from this picture and use session ID 'track-5678'?",
+                    "parameters": {
+                        "srcImg": "recipe.png",
+                        "Session": "track-5678"
+                    }
+                },
+                {
+                    "utterance": "Extract text from this image and include the sub scans.",
+                    "parameters": {
+                        "srcImg": "journal_entry.jpg",
+                        "includeSubScan": 1
+                    }
+                },
+                {
+                    "utterance": "Please convert this handwritten document to text.",
+                    "parameters": {
+                        "srcImg": "document.png"
+                    }
+                },
+                {
+                    "utterance": "I need the text from this image, and track it with session ID 'billing-2023'.",
+                    "parameters": {
+                        "srcImg": "notes.png",
+                        "Session": "billing-2023"
+                    }
+                }
+            ]
+        }
+    ]
+}

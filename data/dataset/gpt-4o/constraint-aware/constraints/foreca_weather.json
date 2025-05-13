@@ -1,0 +1,472 @@
+{
+    "name": "Foreca Weather",
+    "description": "Everything you need to build a weather app",
+    "url": "https://rapidapi.com/foreca-ltd-foreca-ltd-default/api/foreca-weather/",
+    "api_methods": [
+        {
+            "name": "Nowcast",
+            "description": "3-hour forecast in 15-minute time steps.",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/15minutely/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full",
+                    "required": false
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS",
+                    "required": false
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London",
+                    "required": false,
+                    "constraints": {
+                        "format": "IANA time zone database names"
+                    }
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
+                    "required": false
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0",
+                    "required": false
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 12
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Three-hourly",
+            "description": "A longer three-hourly forecast up to 14 days.",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/3hourly/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "history",
+                    "type": "BOOLEAN",
+                    "description": "Whether to include 24 hours of past data.",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                true,
+                                false
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London",
+                    "required": false,
+                    "constraints": {
+                        "format": "IANA time zone database names"
+                    }
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full",
+                    "required": false
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
+                    "required": false
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0",
+                    "required": false
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 12,
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Daily",
+            "description": "Daily forecast.",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/daily/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full",
+                    "required": false
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "C",
+                                "F"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "MS",
+                                "KMH",
+                                "MPH",
+                                "KTS",
+                                "BFT"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 12,
+                            "min": 1
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Location info",
+            "description": "Metadata for location.",
+            "url": "https://foreca-weather.p.rapidapi.com/location/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "101275339",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Current",
+            "description": "Current weather estimate for location.",
+            "url": "https://foreca-weather.p.rapidapi.com/current/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Language (ISO 639-1 codes). Options: de, en, es, fr, it, pl, ru, fi, sv, nl, ko, pt, th, tr, zh, zh_TW (Chinese in Taiwan), zh_CN (Chinese in China). (default en)",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 639-1 codes",
+                        "values": {
+                            "enumerated": [
+                                "de",
+                                "en",
+                                "es",
+                                "fr",
+                                "it",
+                                "pl",
+                                "ru",
+                                "fi",
+                                "sv",
+                                "nl",
+                                "ko",
+                                "pt",
+                                "th",
+                                "tr",
+                                "zh",
+                                "zh_TW",
+                                "zh_CN"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London",
+                    "required": false,
+                    "constraints": {
+                        "format": "IANA time zone database names"
+                    }
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Latest observations",
+            "description": "Observations from nearby representative weather stations.",
+            "url": "https://foreca-weather.p.rapidapi.com/observation/latest/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Location search",
+            "description": "Search for locations by name.",
+            "url": "https://foreca-weather.p.rapidapi.com/location/search/{query}",
+            "parameters": [
+                {
+                    "name": "query",
+                    "type": "string",
+                    "description": "",
+                    "default": "mumbai",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "in",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Hourly",
+            "description": "Hourly forecast.",
+            "url": "https://foreca-weather.p.rapidapi.com/forecast/hourly/{location}",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "string",
+                    "description": "",
+                    "default": "102643743",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "alt",
+                    "type": "NUMBER",
+                    "description": "Altitude (meters)",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "history",
+                    "type": "BOOLEAN",
+                    "description": "Whether to include 24 hours of past data.",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "dataset",
+                    "type": "STRING",
+                    "description": "Variable set",
+                    "default": "full",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "tz",
+                    "type": "STRING",
+                    "description": "Time zone in response (IANA time zone database names)",
+                    "default": "Europe/London",
+                    "required": false,
+                    "constraints": {
+                        "format": "IANA time zone database names"
+                    }
+                },
+                {
+                    "name": "periods",
+                    "type": "NUMBER",
+                    "description": "Number of time steps (default 8, maximum 12)",
+                    "default": "8",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 12
+                        }
+                    }
+                },
+                {
+                    "name": "windunit",
+                    "type": "STRING",
+                    "description": "Wind speed unit in response.",
+                    "default": "MS",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "tempunit",
+                    "type": "STRING",
+                    "description": "Temperature unit in response",
+                    "default": "C",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        }
+    ]
+}

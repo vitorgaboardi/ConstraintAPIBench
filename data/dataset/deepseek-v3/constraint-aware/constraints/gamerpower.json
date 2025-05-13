@@ -1,0 +1,164 @@
+{
+    "name": "GamerPower",
+    "description": "Find all free games, loot and giveaways with this giveaway tracker API powered by GamerPower.com! Access programmatically the best giveaways in gaming!",
+    "url": "https://rapidapi.com/digiwalls/api/gamerpower/",
+    "api_methods": [
+        {
+            "name": "Filter & Group Giveaways",
+            "description": "Filter and group platforms and giveaway types to get personalized results.",
+            "url": "https://gamerpower.p.rapidapi.com/api/filter",
+            "parameters": [
+                {
+                    "name": "platform",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "epic-games-store.steam.android",
+                    "required": true
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "game.loot",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Specific giveaway details",
+            "description": "Get details from a specific giveaway (insert giveaway id).",
+            "url": "https://gamerpower.p.rapidapi.com/api/giveaway",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "525",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Live giveaways by platform",
+            "description": "Insert platform eg: pc, steam, epic-games-store, uplay, gog, icthio, ps4, xbox-one, switch, android, ios, vr, battlenet",
+            "url": "https://gamerpower.p.rapidapi.com/api/giveaways?",
+            "parameters": [
+                {
+                    "name": "platform",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "pc",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "pc",
+                                "steam",
+                                "epic-games-store",
+                                "uplay",
+                                "gog",
+                                "icthio",
+                                "ps4",
+                                "xbox-one",
+                                "switch",
+                                "android",
+                                "ios",
+                                "vr",
+                                "battlenet"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Live giveaways by type",
+            "description": "Get live giveaways by type, eg: game, loot, beta",
+            "url": "https://gamerpower.p.rapidapi.com/api/giveaways?",
+            "parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "game",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "game",
+                                "loot",
+                                "beta"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Sort live giveaways",
+            "description": "Insert sort by, eg: date, value, popularity",
+            "url": "https://gamerpower.p.rapidapi.com/api/giveaways?",
+            "parameters": [
+                {
+                    "name": "sort-by",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "value",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "date",
+                                "value",
+                                "popularity"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Live giveaways by platform & type & sorted",
+            "description": "Get all live giveaways by platform and type and sorted.",
+            "url": "https://gamerpower.p.rapidapi.com/api/giveaways?",
+            "parameters": [
+                {
+                    "name": "platform",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "steam",
+                    "required": false
+                },
+                {
+                    "name": "sort-by",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "popularity",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "loot",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Total live giveaways & worth estimation in dollars",
+            "description": "You can also use the \"platform\" and \"type\" parameters to get more specific results, eg: /api/worth?platform=steam?type=game",
+            "url": "https://gamerpower.p.rapidapi.com/api/worth",
+            "parameters": []
+        },
+        {
+            "name": "All live giveaways",
+            "description": "Get all live giveaways.",
+            "url": "https://gamerpower.p.rapidapi.com/api/giveaways",
+            "parameters": []
+        }
+    ]
+}

@@ -1,0 +1,920 @@
+{
+    "name": "Bayut",
+    "description": "This API helps to query real estate in UAE to create a real estate site/application",
+    "url": "https://rapidapi.com/apidojo/api/bayut/",
+    "api_methods": [
+        {
+            "name": "properties/detail",
+            "description": "Get detail information of a property",
+            "url": "https://bayut.p.rapidapi.com/properties/detail",
+            "parameters": [
+                {
+                    "name": "externalID",
+                    "type": "STRING",
+                    "description": "The value of externalID returned in ..../properties/list endpoint",
+                    "default": "4937770",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the details of the property with externalID 4937770?",
+                    "parameters": {
+                        "externalID": "4937770"
+                    }
+                },
+                {
+                    "utterance": "I need more information about the property identified by externalID 1234567.",
+                    "parameters": {
+                        "externalID": "1234567"
+                    }
+                },
+                {
+                    "utterance": "What are the details for the property with externalID 9876543?",
+                    "parameters": {
+                        "externalID": "9876543"
+                    }
+                },
+                {
+                    "utterance": "Please provide the full details of the property with externalID 5555555.",
+                    "parameters": {
+                        "externalID": "5555555"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the information for the property with externalID 1111111?",
+                    "parameters": {
+                        "externalID": "1111111"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the details of the property with externalID 2222222.",
+                    "parameters": {
+                        "externalID": "2222222"
+                    }
+                },
+                {
+                    "utterance": "Show me the details for the property with externalID 3333333.",
+                    "parameters": {
+                        "externalID": "3333333"
+                    }
+                },
+                {
+                    "utterance": "Can you get me the information for the property with externalID 4444444?",
+                    "parameters": {
+                        "externalID": "4444444"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the detailed information for the property with externalID 6666666?",
+                    "parameters": {
+                        "externalID": "6666666"
+                    }
+                },
+                {
+                    "utterance": "Please retrieve the details of the property with externalID 7777777.",
+                    "parameters": {
+                        "externalID": "7777777"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "agencies/list",
+            "description": "List agencies or search for agencies by name",
+            "url": "https://bayut.p.rapidapi.com/agencies/list",
+            "parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "One of the following : en|ar",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "ar"
+                            ]
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "hitsPerPage",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "25",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Any term or phrase that you are familiar with",
+                    "default": "patriot",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find agencies related to luxury properties?",
+                    "parameters": {
+                        "query": "luxury properties"
+                    }
+                },
+                {
+                    "utterance": "Show me agencies that specialize in commercial real estate.",
+                    "parameters": {
+                        "query": "commercial real estate"
+                    }
+                },
+                {
+                    "utterance": "I\u2019m looking for agencies that handle waterfront properties.",
+                    "parameters": {
+                        "query": "waterfront properties"
+                    }
+                },
+                {
+                    "utterance": "Do you have any agencies that focus on affordable housing?",
+                    "parameters": {
+                        "query": "affordable housing"
+                    }
+                },
+                {
+                    "utterance": "Find agencies that deal with villa rentals in Dubai.",
+                    "parameters": {
+                        "query": "villa rentals Dubai"
+                    }
+                },
+                {
+                    "utterance": "Can you list agencies known for high-rise apartments?",
+                    "parameters": {
+                        "query": "high-rise apartments"
+                    }
+                },
+                {
+                    "utterance": "I need agencies that offer property management services.",
+                    "parameters": {
+                        "query": "property management services"
+                    }
+                },
+                {
+                    "utterance": "Show me agencies that specialize in off-plan properties.",
+                    "parameters": {
+                        "query": "off-plan properties"
+                    }
+                },
+                {
+                    "utterance": "Are there any agencies that focus on eco-friendly homes?",
+                    "parameters": {
+                        "query": "eco-friendly homes"
+                    }
+                },
+                {
+                    "utterance": "Find agencies that handle short-term rentals in Abu Dhabi.",
+                    "parameters": {
+                        "query": "short-term rentals Abu Dhabi"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "agencies/get-listings",
+            "description": "Get listing belonging to an agency",
+            "url": "https://bayut.p.rapidapi.com/agencies/get-listings",
+            "parameters": [
+                {
+                    "name": "agencySlug",
+                    "type": "STRING",
+                    "description": "The value of hits -> slug field returned in .../agencies/list endpoint",
+                    "default": "patriot-real-estate-7737",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "categorySlug",
+                    "type": "STRING",
+                    "description": "One of the following : commerical-properties|mixed-use-land|factories|commercial-floors|bulk-units|labour-camps|shops|showrooms|industrial-land|commercial-buildings|commercial-plots|commercial-villas|warehouses|offices|residential-floors|hotel-apartments|penthouse|villas|residential-building|residential-plots|villa-compound|townhouses|apartments",
+                    "default": "commerical-properties",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "commerical-properties",
+                                "mixed-use-land",
+                                "factories",
+                                "commercial-floors",
+                                "bulk-units",
+                                "labour-camps",
+                                "shops",
+                                "showrooms",
+                                "industrial-land",
+                                "commercial-buildings",
+                                "commercial-plots",
+                                "commercial-villas",
+                                "warehouses",
+                                "offices",
+                                "residential-floors",
+                                "hotel-apartments",
+                                "penthouse",
+                                "villas",
+                                "residential-building",
+                                "residential-plots",
+                                "villa-compound",
+                                "townhouses",
+                                "apartments"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "One of the following : price-desc|price-asc|city-level-score|date-desc|date-asc|verified-score",
+                    "default": "price-asc",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "price-desc",
+                                "price-asc",
+                                "city-level-score",
+                                "date-desc",
+                                "date-asc",
+                                "verified-score"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "completionStatus",
+                    "type": "STRING",
+                    "description": "One of the following : completed|under-construction\nThis parameter only takes effect if purpose is for-sale",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "completed",
+                                "under-construction"
+                            ]
+                        },
+                        "inter-dependency": "purpose, completionStatus: completionStatus only takes effect if purpose is for-sale"
+                    }
+                },
+                {
+                    "name": "rentFrequency",
+                    "type": "STRING",
+                    "description": "One of the following : monthly|yearly|weekly|daily\nThe parameter only takes effect if purpose is for-rent",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "monthly",
+                                "yearly",
+                                "weekly",
+                                "daily"
+                            ]
+                        },
+                        "inter-dependency": "purpose, rentFrequency: rentFrequency only takes effect if purpose is for-rent"
+                    }
+                },
+                {
+                    "name": "purpose",
+                    "type": "STRING",
+                    "description": "One of the following : for-rent|for-sale",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "for-rent",
+                                "for-sale"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "hitsPerPage",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "25",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "One of the following : en|ar",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "ar"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the listings for Dubai Properties?",
+                    "parameters": {
+                        "agencySlug": "dubai-properties"
+                    }
+                },
+                {
+                    "utterance": "What are the latest villas listed by Emaar Properties?",
+                    "parameters": {
+                        "agencySlug": "emaar-properties",
+                        "categorySlug": "villas",
+                        "sort": "date-desc"
+                    }
+                },
+                {
+                    "utterance": "Show me the commercial properties for sale by Damac Properties.",
+                    "parameters": {
+                        "agencySlug": "damac-properties",
+                        "categorySlug": "commerical-properties",
+                        "purpose": "for-sale"
+                    }
+                },
+                {
+                    "utterance": "List the apartments for rent by Nakheel Properties, sorted by price ascending.",
+                    "parameters": {
+                        "agencySlug": "nakheel-properties",
+                        "categorySlug": "apartments",
+                        "purpose": "for-rent",
+                        "sort": "price-asc"
+                    }
+                },
+                {
+                    "utterance": "What are the under-construction villas for sale by Sobha Realty?",
+                    "parameters": {
+                        "agencySlug": "sobha-realty",
+                        "categorySlug": "villas",
+                        "purpose": "for-sale",
+                        "completionStatus": "under-construction"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the yearly rental properties by Meraas?",
+                    "parameters": {
+                        "agencySlug": "meraas",
+                        "purpose": "for-rent",
+                        "rentFrequency": "yearly"
+                    }
+                },
+                {
+                    "utterance": "List the townhouses for sale by Azizi Developments, sorted by city-level score.",
+                    "parameters": {
+                        "agencySlug": "azizi-developments",
+                        "categorySlug": "townhouses",
+                        "purpose": "for-sale",
+                        "sort": "city-level-score"
+                    }
+                },
+                {
+                    "utterance": "Show me the completed commercial buildings for sale by Aldar Properties.",
+                    "parameters": {
+                        "agencySlug": "aldar-properties",
+                        "categorySlug": "commercial-buildings",
+                        "purpose": "for-sale",
+                        "completionStatus": "completed"
+                    }
+                },
+                {
+                    "utterance": "What are the weekly rental apartments listed by Deyaar?",
+                    "parameters": {
+                        "agencySlug": "deyaar",
+                        "categorySlug": "apartments",
+                        "purpose": "for-rent",
+                        "rentFrequency": "weekly"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the listings for Emaar Properties in Arabic?",
+                    "parameters": {
+                        "agencySlug": "emaar-properties",
+                        "lang": "ar"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "properties/list",
+            "description": "List properties with options and filters",
+            "url": "https://bayut.p.rapidapi.com/properties/list",
+            "parameters": [
+                {
+                    "name": "locationExternalIDs",
+                    "type": "STRING",
+                    "description": "The location/externalID fields returned in .../auto-complete endpoint. Separated by comma for multiple locations. Ex : 5002,6020",
+                    "default": "5002,6020",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "hasFloorPlan",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "areaMin",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "areaMin, areaMax: areaMin must be less than or equal to areaMax."
+                    }
+                },
+                {
+                    "name": "purpose",
+                    "type": "STRING",
+                    "description": "One of the following : for-rent|for-sale",
+                    "default": "for-rent",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "for-rent",
+                                "for-sale"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "hasVideo",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "hasPanorama",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "furnishingStatus",
+                    "type": "STRING",
+                    "description": "One of the following : unfurnished|furnished",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "unfurnished",
+                                "furnished"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "bathsMin",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "bathsMin, bathsMax: bathsMin must be less than or equal to bathsMax."
+                    }
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "One of the following : price-desc|price-asc|city-level-score|date-desc|verified-score",
+                    "default": "city-level-score",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "price-desc",
+                                "price-asc",
+                                "city-level-score",
+                                "date-desc",
+                                "verified-score"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "bathsMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "bathsMin, bathsMax: bathsMax must be greater than or equal to bathsMin."
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "agencyExternalIDs",
+                    "type": "STRING",
+                    "description": "The externalID fields returned in .../agencies/list endpoint. Separated by comma for multiple agencies. Ex : 7737,5002",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "hitsPerPage",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "25",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "roomsMin",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "roomsMin, roomsMax: roomsMin must be less than or equal to roomsMax."
+                    }
+                },
+                {
+                    "name": "roomsMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "roomsMin, roomsMax: roomsMax must be greater than or equal to roomsMin."
+                    }
+                },
+                {
+                    "name": "categoryExternalID",
+                    "type": "NUMBER",
+                    "description": "Apartment -> 4|Townhouses -> 16|Villas -> 3|Penthouses -> 18|Hotel Apartments -> 21|Villa Compound -> 19|Residential Plot -> 14|Residential Floor -> 12|Residential Building -> 17|Office -> 5|Shop -> 6|Warehouse -> 7|Labour camp -> 9|Commercial Villa -> 25|Bulk Units -> 20|Commercial Plot -> 15|Commercial Floor -> 13|Commercial Building -> 10|Factory -> 8|Industrial Land -> 22|Mixed Use Land -> 23|Showroom -> 24|Other Commercial -> 11",
+                    "default": "4",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                4,
+                                16,
+                                3,
+                                18,
+                                21,
+                                19,
+                                14,
+                                12,
+                                17,
+                                5,
+                                6,
+                                7,
+                                9,
+                                25,
+                                20,
+                                15,
+                                13,
+                                10,
+                                8,
+                                22,
+                                23,
+                                24,
+                                11
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "rentFrequency",
+                    "type": "STRING",
+                    "description": "One of the following : monthly|yearly|weekly|daily",
+                    "default": "monthly",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "monthly",
+                                "yearly",
+                                "weekly",
+                                "daily"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "One of the following : en|ar",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "ar"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "priceMin",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "priceMin, priceMax: priceMin must be less than or equal to priceMax."
+                    }
+                },
+                {
+                    "name": "priceMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "priceMin, priceMax: priceMax must be greater than or equal to priceMin."
+                    }
+                },
+                {
+                    "name": "areaMax",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "areaMin, areaMax: areaMax must be greater than or equal to areaMin."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me furnished apartments for rent in Dubai with at least 2 bathrooms and a floor plan.",
+                    "parameters": {
+                        "locationExternalIDs": "Dubai",
+                        "furnishingStatus": "furnished",
+                        "purpose": "for-rent",
+                        "bathsMin": 2,
+                        "hasFloorPlan": true,
+                        "categoryExternalID": 4
+                    }
+                },
+                {
+                    "utterance": "Find villas for sale in Abu Dhabi with a minimum area of 2000 sqft and a maximum of 3000 sqft.",
+                    "parameters": {
+                        "locationExternalIDs": "Abu Dhabi",
+                        "purpose": "for-sale",
+                        "areaMin": 2000,
+                        "areaMax": 3000,
+                        "categoryExternalID": 3
+                    }
+                },
+                {
+                    "utterance": "List properties in Sharjah with a video tour and a panorama view, sorted by price in descending order.",
+                    "parameters": {
+                        "locationExternalIDs": "Sharjah",
+                        "hasVideo": true,
+                        "hasPanorama": true,
+                        "sort": "price-desc"
+                    }
+                },
+                {
+                    "utterance": "Can you find unfurnished townhouses for rent in Ajman with at least 3 rooms and a maximum of 4 rooms?",
+                    "parameters": {
+                        "locationExternalIDs": "Ajman",
+                        "furnishingStatus": "unfurnished",
+                        "purpose": "for-rent",
+                        "roomsMin": 3,
+                        "roomsMax": 4,
+                        "categoryExternalID": 16
+                    }
+                },
+                {
+                    "utterance": "Show me commercial properties in Dubai with a minimum price of 500,000 AED and a maximum price of 1,000,000 AED.",
+                    "parameters": {
+                        "locationExternalIDs": "Dubai",
+                        "priceMin": 500000,
+                        "priceMax": 1000000,
+                        "categoryExternalID": 5
+                    }
+                },
+                {
+                    "utterance": "Find furnished apartments for rent in Ras Al Khaimah with a monthly rent frequency and at least 2 bathrooms.",
+                    "parameters": {
+                        "locationExternalIDs": "Ras Al Khaimah",
+                        "furnishingStatus": "furnished",
+                        "purpose": "for-rent",
+                        "rentFrequency": "monthly",
+                        "bathsMin": 2,
+                        "categoryExternalID": 4
+                    }
+                },
+                {
+                    "utterance": "List properties in Fujairah with a floor plan and a video tour, sorted by verified score.",
+                    "parameters": {
+                        "locationExternalIDs": "Fujairah",
+                        "hasFloorPlan": true,
+                        "hasVideo": true,
+                        "sort": "verified-score"
+                    }
+                },
+                {
+                    "utterance": "Can you find villas for sale in Umm Al Quwain with a minimum area of 1500 sqft and a maximum of 2500 sqft?",
+                    "parameters": {
+                        "locationExternalIDs": "Umm Al Quwain",
+                        "purpose": "for-sale",
+                        "areaMin": 1500,
+                        "areaMax": 2500,
+                        "categoryExternalID": 3
+                    }
+                },
+                {
+                    "utterance": "Show me properties in Dubai with a panorama view and a minimum of 3 rooms, sorted by date in descending order.",
+                    "parameters": {
+                        "locationExternalIDs": "Dubai",
+                        "hasPanorama": true,
+                        "roomsMin": 3,
+                        "sort": "date-desc"
+                    }
+                },
+                {
+                    "utterance": "Find furnished apartments for rent in Al Ain with a weekly rent frequency and at least 1 bathroom.",
+                    "parameters": {
+                        "locationExternalIDs": "Al Ain",
+                        "furnishingStatus": "furnished",
+                        "purpose": "for-rent",
+                        "rentFrequency": "weekly",
+                        "bathsMin": 1,
+                        "categoryExternalID": 4
+                    }
+                }
+            ]
+        },
+        {
+            "name": "auto-complete",
+            "description": "Get suggestions of locations by term or phrase",
+            "url": "https://bayut.p.rapidapi.com/auto-complete",
+            "parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Any term or phrase that you are familiar with",
+                    "default": "abu dhabi",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "hitsPerPage",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "25",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "One of the following : en|ar",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "ar"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "For paging purpose",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you suggest locations for 'Dubai Marina'?",
+                    "parameters": {
+                        "query": "Dubai Marina"
+                    }
+                },
+                {
+                    "utterance": "What are some areas similar to 'Jumeirah Beach Residence'?",
+                    "parameters": {
+                        "query": "Jumeirah Beach Residence"
+                    }
+                },
+                {
+                    "utterance": "Find me locations related to 'Al Barsha' in Arabic.",
+                    "parameters": {
+                        "query": "Al Barsha",
+                        "lang": "ar"
+                    }
+                },
+                {
+                    "utterance": "I need suggestions for 'Palm Jumeirah'.",
+                    "parameters": {
+                        "query": "Palm Jumeirah"
+                    }
+                },
+                {
+                    "utterance": "Show me areas like 'Downtown Dubai' in English.",
+                    "parameters": {
+                        "query": "Downtown Dubai",
+                        "lang": "en"
+                    }
+                },
+                {
+                    "utterance": "What locations are associated with 'Sheikh Zayed Road'?",
+                    "parameters": {
+                        "query": "Sheikh Zayed Road"
+                    }
+                },
+                {
+                    "utterance": "Can you find suggestions for 'Al Nahda' in Arabic?",
+                    "parameters": {
+                        "query": "Al Nahda",
+                        "lang": "ar"
+                    }
+                },
+                {
+                    "utterance": "Give me some options for 'Business Bay'.",
+                    "parameters": {
+                        "query": "Business Bay"
+                    }
+                },
+                {
+                    "utterance": "What are the areas related to 'Dubai Silicon Oasis' in English?",
+                    "parameters": {
+                        "query": "Dubai Silicon Oasis",
+                        "lang": "en"
+                    }
+                },
+                {
+                    "utterance": "Suggest locations for 'Al Qusais'.",
+                    "parameters": {
+                        "query": "Al Qusais"
+                    }
+                }
+            ]
+        }
+    ]
+}

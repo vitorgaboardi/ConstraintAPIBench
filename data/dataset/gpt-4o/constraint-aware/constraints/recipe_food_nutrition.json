@@ -1,0 +1,548 @@
+{
+    "name": "Recipe - Food - Nutrition",
+    "description": "The spoonacular Nutrition, Recipe, and Food API allows you to access over 365,000 recipes and 86,000 food products. Our food ontology and semantic recipe search engine makes it possible to search for recipes using natural language queries, such as \"gluten free brownies without sugar\" or \"low fat vegan cupcakes.\" You can automatically calculate the nutritional information for any recipe, analyze recipe costs, visualize ingredient lists, find recipes for what's in your fridge, find recipes based on special diets, nutritional requirements, or favorite ingredients, classify recipes into types and cuisines, convert ingredient amounts, or even compute an entire meal plan. With our powerful API, you can create many kinds of food and especially nutrition apps.\r\n\r\nSpecial diets/dietary requirements currently available include: vegan, vegetarian, pescetarian, gluten free, grain free, dairy free, high protein, low sodium, low carb, Paleo, Primal, ketogenic, FODMAP, and Whole 30. We will soon be adding Weight Watcher points, too.",
+    "url": "https://rapidapi.com/spoonacular/api/recipe-food-nutrition/",
+    "api_methods": [
+        {
+            "name": "Create Recipe Card (Deprecated)",
+            "description": "Create a recipe card given a recipe.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/visualizeRecipe",
+            "parameters": [
+                {
+                    "name": "backgroundImage",
+                    "type": "STRING",
+                    "description": "The background image (\"none\",\"background1\", or \"background2\").",
+                    "default": "background1",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "none",
+                                "background1",
+                                "background2"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "readyInMinutes",
+                    "type": "NUMBER",
+                    "description": "The number of minutes it takes to get the recipe on the table.",
+                    "default": "60",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "The title of the recipe.",
+                    "default": "Pork tenderloin with green beans",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "image",
+                    "type": "BINARY",
+                    "description": "The binary image of the recipe as jpg.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "mask",
+                    "type": "STRING",
+                    "description": "The mask to put over the recipe image (\"ellipseMask\", \"diamondMask\", \"diamondMask\", \"starMask\", \"heartMask\", \"potMask\", \"fishMask\").",
+                    "default": "ellipseMask",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ellipseMask",
+                                "diamondMask",
+                                "starMask",
+                                "heartMask",
+                                "potMask",
+                                "fishMask"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "instructions",
+                    "type": "STRING",
+                    "description": "The instructions to make the recipe. One step per line.",
+                    "default": "cook the beans",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "ingredients",
+                    "type": "STRING",
+                    "description": "The ingredient list of the recipe, one ingredient per line.",
+                    "default": "2 cups of green beans",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "servings",
+                    "type": "NUMBER",
+                    "description": "The number of servings that you can make from the ingredients.",
+                    "default": "2",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "fontColor",
+                    "type": "STRING",
+                    "description": "The font color on the recipe card as a hex-string.",
+                    "default": "#333333",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "The source of the recipe.",
+                    "default": "spoonacular.com",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "author",
+                    "type": "STRING",
+                    "description": "The author of the recipe.",
+                    "default": "Emily Henderson",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "backgroundColor",
+                    "type": "STRING",
+                    "description": "The background color on the recipe card as a hex-string.",
+                    "default": "#ffffff",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Recipe Nutrition Widget",
+            "description": "Visualize a recipe's nutritional information as HTML including CSS. \n\nFull example code of how to work with widgets can be found in our [spoonacular-widget GitHub](https://github.com/ddsky/spoonacular-widgets).",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/visualizeNutrition",
+            "parameters": [
+                {
+                    "name": "servings",
+                    "type": "NUMBER",
+                    "description": "The number of servings.",
+                    "default": "2",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                },
+                {
+                    "name": "ingredientList",
+                    "type": "STRING",
+                    "description": "The ingredient list of the recipe, one ingredient per line.",
+                    "default": "3 oz flour",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "showBacklink",
+                    "type": "BOOLEAN",
+                    "description": "Whether to show a backlink to spoonacular.",
+                    "default": "true",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "defaultCss",
+                    "type": "BOOLEAN",
+                    "description": "Whether the default CSS should be added to the response.",
+                    "default": "true",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The input language, either \"en\" or \"de\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "de"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Detect Food in Text",
+            "description": "Detect ingredients and dishes in texts.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/detect",
+            "parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "The text in which food items such as dish names and ingredients should be detected in.",
+                    "default": "I like to eat delicious tacos. Only cheeseburger with cheddar are better than that. But then again, pizza with pepperoni, mushrooms, and tomatoes is so good!",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Image Analysis (File)",
+            "description": "Classify and analyze a food image.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/images/analyze",
+            "parameters": [
+                {
+                    "name": "file",
+                    "type": "BINARY",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Compute Shopping List",
+            "description": "Compute a shopping list from a set of simple foods. This endpoint does not require usernames.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/mealplanner/shopping-list/compute",
+            "parameters": []
+        },
+        {
+            "name": "Generate Shopping List",
+            "description": "Generate the shopping list for a user from the meal planner in a given time frame.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/mealplanner/dsky/shopping-list/2020-06-01/2020-06-07",
+            "parameters": [
+                {
+                    "name": "end-date",
+                    "type": "string",
+                    "description": "The end date in the format yyyy-mm-dd.",
+                    "default": "2020-06-07",
+                    "required": true,
+                    "constraints": {
+                        "format": "yyyy-mm-dd"
+                    }
+                },
+                {
+                    "name": "hash",
+                    "type": "STRING",
+                    "description": "The private hash for the username.",
+                    "default": "4b5v4398573406",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "start-date",
+                    "type": "string",
+                    "description": "The start date in the format yyyy-mm-dd.",
+                    "default": "2020-06-01",
+                    "required": true,
+                    "constraints": {
+                        "format": "yyyy-mm-dd",
+                        "inter-dependency": "start-date, end-date: start-date must be before or equal to end-date."
+                    }
+                },
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "The username.",
+                    "default": "dsky",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Add to Shopping List",
+            "description": "Add an item to the current shopping list of a user.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/mealplanner/dsky/shopping-list/items",
+            "parameters": [
+                {
+                    "name": "hash",
+                    "type": "STRING",
+                    "description": "The private hash for the username.",
+                    "default": "4b5v4398573406",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "The username.",
+                    "default": "dsky",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Add Meal Plan Template",
+            "description": "Add a meal plan template for a user.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/mealplanner/dsky/templates",
+            "parameters": [
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "The username.",
+                    "default": "dsky",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "hash",
+                    "type": "STRING",
+                    "description": "The private hash for the username.",
+                    "default": "4b5v4398573406",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Add to Meal Plan",
+            "description": "Add an item to the user's meal plan. The Add to Meal Plan endpoint is complex, be sure to review the [guide here](https://spoonacular.com/food-api/docs#Add-to-Meal-Plan)",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/mealplanner/dsky/items",
+            "parameters": [
+                {
+                    "name": "hash",
+                    "type": "STRING",
+                    "description": "The private hash for the username.",
+                    "default": "4b5v4398573406",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "The username.",
+                    "default": "dsky",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Classify Grocery Product Bulk",
+            "description": "Provide a set of product jsons, get back classified products.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/products/classifyBatch",
+            "parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The display name of the returned category, supported is en_US (for American English) and en_GB (for British English).",
+                    "default": "en_US",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en_US",
+                                "en_GB"
+                            ]
+                        },
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Compute Glycemic Load",
+            "description": "Retrieve the glycemic index for a list of ingredients and compute the individual and total glycemic load.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/glycemicLoad",
+            "parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The input language, either \\\\\\\"en\\\\\\\" or \\\\\\\"de\\\\\\\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "de"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Parse Ingredients",
+            "description": "Extract an ingredient from plain text.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/parseIngredients",
+            "parameters": [
+                {
+                    "name": "ingredientList",
+                    "type": "STRING",
+                    "description": "The ingredient list of the recipe, one ingredient per line.",
+                    "default": "3 oz pork shoulder",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "servings",
+                    "type": "NUMBER",
+                    "description": "The number of servings that you can make from the ingredients.",
+                    "default": "2",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "includeNutrition",
+                    "type": "BOOLEAN",
+                    "description": "Whether nutrition data should be added to correctly parsed ingredients.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Analyze Recipe",
+            "description": "This endpoint allows you to send raw recipe information, such as title, servings, and ingredients, to then see what we compute (badges, diets, nutrition, and more). This is useful if you have your own recipe data and want to enrich it with our semantic analysis.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/analyze",
+            "parameters": [
+                {
+                    "name": "includeTaste",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "false",
+                    "required": false
+                },
+                {
+                    "name": "includeNutrition",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "false",
+                    "required": false
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The input language, either \\\\\\\"en\\\\\\\" or \\\\\\\"de\\\\\\\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "de"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Analyze Recipe Instructions",
+            "description": "Extract ingredients and equipment from the recipe instruction steps.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/analyzeInstructions",
+            "parameters": [
+                {
+                    "name": "instructions",
+                    "type": "STRING",
+                    "description": "The instructions text.",
+                    "default": "Put the garlic in a pan and then add the onion.",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Connect User",
+            "description": "In order to call user-specific endpoints, you need to connect your app's users to spoonacular users.\n\nJust call this endpoint with your user's information and you will get back a username and hash that you must save on your side. In future requests that you make on this user's behalf you simply pass their username and hash alongside your API key.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/users/connect",
+            "parameters": []
+        },
+        {
+            "name": "Map Ingredients to Grocery Products",
+            "description": "Map a set of ingredients to products you can buy in the grocery store.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/map",
+            "parameters": []
+        },
+        {
+            "name": "Classify a Grocery Product",
+            "description": "Given a grocery product title, this endpoint allows you to detect what basic ingredient it is.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/products/classify",
+            "parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The locale of the returned category, supported is en\\_US and en\\_GB.",
+                    "default": "en_us",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en_US",
+                                "en_GB"
+                            ]
+                        },
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Classify Cuisine",
+            "description": "Classify the recipe's cuisine.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/cuisine",
+            "parameters": [
+                {
+                    "name": "ingredientList",
+                    "type": "STRING",
+                    "description": "The ingredient list of the recipe, one ingredient per line.",
+                    "default": "3 oz pork shoulder",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "The title of the recipe.",
+                    "default": "Pork roast with green beans",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        },
+        {
+            "name": "Image Classification (File)",
+            "description": "Classify a food image.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/images/classify",
+            "parameters": [
+                {
+                    "name": "file",
+                    "type": "BINARY",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,1773 @@
+{
+    "name": "webcams.travel",
+    "description": "The World's Largest Landscape Webcam API ***** Get webcams by categories, country, region or just nearby your location ***** Get timelapse slideshows for every webcam ***** Get an uncluttered webcam layer for your map",
+    "url": "https://rapidapi.com/webcams.travel/api/webcams-travel/",
+    "api_methods": [
+        {
+            "name": "/webcams/list/nearby={lat},{lng},{radius}",
+            "description": "This is a modifier. Returns a list of webcams near the given coordinates {lat},{lng} up to the given {radius} in kilometers. Required: {lat}, {lng}, {radius}. The maximum value for {radius} is 250.",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/nearby={lat},{lng},{radius}",
+            "parameters": [
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "Maximum distance in kilometers.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 250
+                        }
+                    }
+                },
+                {
+                    "name": "lng",
+                    "type": "NUMBER",
+                    "description": "WGS84 longitude.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "WGS84 latitude.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me webcams within 100 kilometers of the Eiffel Tower.",
+                    "parameters": {
+                        "lat": 48.8584,
+                        "lng": 2.2945,
+                        "radius": 100
+                    }
+                },
+                {
+                    "utterance": "Find webcams near the Statue of Liberty with a radius of 50 kilometers.",
+                    "parameters": {
+                        "lat": 40.6892,
+                        "lng": -74.0445,
+                        "radius": 50
+                    }
+                },
+                {
+                    "utterance": "Can you list webcams around Mount Fuji in Japanese?",
+                    "parameters": {
+                        "lat": 35.3606,
+                        "lng": 138.7274,
+                        "radius": 80,
+                        "lang": "ja"
+                    }
+                },
+                {
+                    "utterance": "I want to see categories of webcams near the Sydney Opera House within 30 kilometers.",
+                    "parameters": {
+                        "lat": -33.8568,
+                        "lng": 151.2153,
+                        "radius": 30,
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "List all properties of webcams close to the Great Wall of China, up to 200 kilometers.",
+                    "parameters": {
+                        "lat": 40.4319,
+                        "lng": 116.5704,
+                        "radius": 200,
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "What webcams are available near the Colosseum in Rome within a 60-kilometer radius?",
+                    "parameters": {
+                        "lat": 41.8902,
+                        "lng": 12.4922,
+                        "radius": 60
+                    }
+                },
+                {
+                    "utterance": "Show me webcams in the regions around the Taj Mahal, up to 150 kilometers.",
+                    "parameters": {
+                        "lat": 27.1751,
+                        "lng": 78.0421,
+                        "radius": 150,
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "Find webcams in the countries surrounding the Christ the Redeemer statue within 70 kilometers.",
+                    "parameters": {
+                        "lat": -22.9519,
+                        "lng": -43.2105,
+                        "radius": 70,
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "Can you show me webcams near the Pyramids of Giza with a 40-kilometer radius in Arabic?",
+                    "parameters": {
+                        "lat": 29.9792,
+                        "lng": 31.1342,
+                        "radius": 40,
+                        "lang": "ar"
+                    }
+                },
+                {
+                    "utterance": "List webcams and their continents around the Golden Gate Bridge within 120 kilometers.",
+                    "parameters": {
+                        "lat": 37.8199,
+                        "lng": -122.4783,
+                        "radius": 120,
+                        "show": "continents"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/list/category={category}[,{category}[,...]]",
+            "description": "This is a modifier. Returns a list of webcams according to the listed categories. Multiple categories must be separated by comma. Required: at least one {category}.",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/category={category}",
+            "parameters": [
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Comma separated list of category names.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "inter-dependency": "category: At least one category must be provided."
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me webcams in the mountains category.",
+                    "parameters": {
+                        "category": "mountains",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Can I see a list of categories related to beaches?",
+                    "parameters": {
+                        "category": "beaches",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "I want to find webcams in the city and nature categories.",
+                    "parameters": {
+                        "category": "city,nature",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "List all countries with webcams in the wildlife category.",
+                    "parameters": {
+                        "category": "wildlife",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "What regions have webcams for the desert category?",
+                    "parameters": {
+                        "category": "desert",
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "Give me the properties of webcams in the historical sites category.",
+                    "parameters": {
+                        "category": "historical sites",
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "Can you show me webcams and their locations in the forest category?",
+                    "parameters": {
+                        "category": "forest",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "I want to see webcams in the lakes and rivers categories.",
+                    "parameters": {
+                        "category": "lakes,rivers",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "List all continents with webcams in the urban category.",
+                    "parameters": {
+                        "category": "urban",
+                        "show": "continents"
+                    }
+                },
+                {
+                    "utterance": "Show me the webcams in the coastal and mountain categories.",
+                    "parameters": {
+                        "category": "coastal,mountain",
+                        "show": "webcams"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/list/continent={continent}[,{continent}[,...]]",
+            "description": "This is a modifier. Returns a list of webcams according to the listed continents. Multiple continents must be separated by comma. Required: at least one {continent}.",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/continent={continent}",
+            "parameters": [
+                {
+                    "name": "continent",
+                    "type": "STRING",
+                    "description": "Possible values for {continent} are: \"AF\" (Africa), \"AN\" (Antarctica), \"AS\" (Asia), \"EU\" (Europe), \"NA\" (North America), \"OC\" (Oceania), or \"SA\" (South America)",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "AF",
+                                "AN",
+                                "AS",
+                                "EU",
+                                "NA",
+                                "OC",
+                                "SA"
+                            ]
+                        },
+                        "inter-dependency": "continent: At least one continent must be provided."
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me webcams in Europe.",
+                    "parameters": {
+                        "continent": "EU",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the categories of webcams available in Asia.",
+                    "parameters": {
+                        "continent": "AS",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "Can you list the continents that have webcams?",
+                    "parameters": {
+                        "continent": "AF",
+                        "show": "continents"
+                    }
+                },
+                {
+                    "utterance": "What countries have webcams in North America?",
+                    "parameters": {
+                        "continent": "NA",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "Give me the regions with webcams in Oceania.",
+                    "parameters": {
+                        "continent": "OC",
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "List the properties of webcams in South America.",
+                    "parameters": {
+                        "continent": "SA",
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "I want to see webcams in Antarctica and Africa.",
+                    "parameters": {
+                        "continent": "AN,AF",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Could you show me the categories of webcams in Europe and Asia?",
+                    "parameters": {
+                        "continent": "EU,AS",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "What are the regions with webcams in both North America and Oceania?",
+                    "parameters": {
+                        "continent": "NA,OC",
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "List the countries with webcams in Africa and South America.",
+                    "parameters": {
+                        "continent": "AF,SA",
+                        "show": "countries"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/list/{modifier}[/{modifier}[/...]]",
+            "description": "Returns a list of webcams according to the applied {modifier}s. Initially, the list contains all webcams. The resulting list of webcams from applying a modifer will be used as input for the following modifier. modifiers are processed from left to right. With every applied modifier, the list of webcams will be narrowed down. Possible values for {modifier} are: \"webcam\" (initial list of webcams), \"nearby\" (list of webcams around a position), \"bbox\" (list of webcams in an area), \"category\" (list of webcams in a category), \"continent\" (list of webcams in a continent), \"country\" (list of webcams in a country), \"region\" (list of webcams in a region of a country), \"exclude\" (exclude webcams from a list of webcams), \"orderby\" (order the list of webcams), \"limit\" (slice the list of webcams). \"webcam\", if given, is always applied first. \"exclude\", \"orderby\", and \"limit\" are always applied (even if not explicitly given) in this order and always after \"webcam\", \"nearby\", \"bbox\", \"category\", \"continent\", \"country\", and \"region\" have been applied.  If none of \"webcam\", \"nearby\", \"bbox\", \"category\", \"continent\", \"country\", and \"region\" are applied, then all webcams are in the list before applying \"exclude\", \"orderby\", and \"limit\".  Please refer to the description of the various {modifier}s to learn more about their parameter and defaults.  A {modifier} may be applied only once. If a {modifier} is listed multiple times, it may only applied once.",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/{modifier}",
+            "parameters": [
+                {
+                    "name": "modifier",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcam",
+                                "nearby",
+                                "bbox",
+                                "category",
+                                "continent",
+                                "country",
+                                "region",
+                                "exclude",
+                                "orderby",
+                                "limit"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me webcams in the United States.",
+                    "parameters": {
+                        "modifier": "country",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "List all categories of webcams available.",
+                    "parameters": {
+                        "modifier": "category",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "Can you provide webcams located near the Eiffel Tower?",
+                    "parameters": {
+                        "modifier": "nearby",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "I want to see webcams in Europe.",
+                    "parameters": {
+                        "modifier": "continent",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Give me a list of all continents with webcams.",
+                    "parameters": {
+                        "modifier": "continent",
+                        "show": "continents"
+                    }
+                },
+                {
+                    "utterance": "What regions in Canada have webcams?",
+                    "parameters": {
+                        "modifier": "region",
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "Find webcams in the category of beaches.",
+                    "parameters": {
+                        "modifier": "category",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Show me properties of webcams in Asia.",
+                    "parameters": {
+                        "modifier": "continent",
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "List all countries that have webcams.",
+                    "parameters": {
+                        "modifier": "country",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "Can you show me webcams in the region of Tuscany, Italy?",
+                    "parameters": {
+                        "modifier": "region",
+                        "show": "webcams"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/list/country={country}[,{country}[,...]]",
+            "description": "This is a modifier. Returns a list of webcams according to the listed country. Multiple countries must be separated by comma. Required: at least one {country}. Possible values are ISO 3166-1-alpha-2 codes.",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/country={country}",
+            "parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Comma separated ISO 3166-1-alpha-2 codes for the countries.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 3166-1-alpha-2 codes"
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me webcams in France.",
+                    "parameters": {
+                        "country": "FR"
+                    }
+                },
+                {
+                    "utterance": "Can I see the webcams available in Germany and Italy?",
+                    "parameters": {
+                        "country": "DE,IT"
+                    }
+                },
+                {
+                    "utterance": "List all categories of webcams in Japan.",
+                    "parameters": {
+                        "country": "JP",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "What webcams are there in Spain? Please show them in Spanish.",
+                    "parameters": {
+                        "country": "ES",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "Give me a list of regions with webcams in Canada.",
+                    "parameters": {
+                        "country": "CA",
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the properties of webcams in Australia.",
+                    "parameters": {
+                        "country": "AU",
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "Can you provide a list of continents with webcams in Brazil?",
+                    "parameters": {
+                        "country": "BR",
+                        "show": "continents"
+                    }
+                },
+                {
+                    "utterance": "Show me the webcams in the United States, but in French.",
+                    "parameters": {
+                        "country": "US",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "List all countries with webcams in the United Kingdom.",
+                    "parameters": {
+                        "country": "GB",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "What webcams can I find in Mexico and Argentina?",
+                    "parameters": {
+                        "country": "MX,AR"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/list/region={region}[,{region}[,...]]",
+            "description": "This is a modifier. Returns a list of webcams according to the listed region. Multiple regions must be separated by comma. Required: at least one {region}. Possible values are ISO 3166-1-alpha-2 codes for the country and a region code separated by a dot.",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/region={region}",
+            "parameters": [
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "Comma separated list of ISO 3166-1-alpha-2 codes for the country and a region code separated by a dot.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "ISO 3166-1-alpha-2 code",
+                        "inter-dependency": "region: At least one region must be provided."
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "default": "en"
+                    }
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me webcams in the California region of the United States.",
+                    "parameters": {
+                        "region": "US.CA",
+                        "lang": "en",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Can I see the categories of webcams available in the Bavaria region of Germany?",
+                    "parameters": {
+                        "region": "DE.BY",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "List all the properties of webcams in the Ontario region of Canada.",
+                    "parameters": {
+                        "region": "CA.ON",
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "What webcams are available in the \u00cele-de-France region of France?",
+                    "parameters": {
+                        "region": "FR.IDF",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Give me a list of countries with webcams in the Tuscany region of Italy.",
+                    "parameters": {
+                        "region": "IT.TOS",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "I want to see webcams in the Queensland region of Australia, but in Spanish.",
+                    "parameters": {
+                        "region": "AU.QLD",
+                        "lang": "es",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the regions with webcams in the Catalonia region of Spain?",
+                    "parameters": {
+                        "region": "ES.CT",
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "List the continents with webcams in the Hokkaido region of Japan.",
+                    "parameters": {
+                        "region": "JP.01",
+                        "show": "continents"
+                    }
+                },
+                {
+                    "utterance": "What webcams are there in the Alberta region of Canada, and show it in French?",
+                    "parameters": {
+                        "region": "CA.AB",
+                        "lang": "fr",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Show me the webcams in the New South Wales region of Australia.",
+                    "parameters": {
+                        "region": "AU.NSW",
+                        "show": "webcams"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/list/bbox={ne_lat},{ne_lng},{sw_lat},{sw_lng}",
+            "description": "This is a modifier. Returns a list of the webcams in the bounding box given by north-east ({ne_lat},{ne_lng}) and south-west ({sw_lat},{sw_lng}) coordinates. Required: {ne_lat},{ne_lng},{sw_lat},{sw_lng}.",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/bbox={ne_lat},{ne_lng},{sw_lat},{sw_lng}",
+            "parameters": [
+                {
+                    "name": "ne_lat",
+                    "type": "NUMBER",
+                    "description": "North-east WGS84 latitude of the bounding box.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": -90,
+                            "max": 90
+                        }
+                    }
+                },
+                {
+                    "name": "sw_lng",
+                    "type": "NUMBER",
+                    "description": "South-west WGS84 longitude of the bounding box.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": -180,
+                            "max": 180
+                        }
+                    }
+                },
+                {
+                    "name": "sw_lat",
+                    "type": "NUMBER",
+                    "description": "South-west WGS84 latitude of the bounding box.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": -90,
+                            "max": 90
+                        }
+                    }
+                },
+                {
+                    "name": "ne_lng",
+                    "type": "NUMBER",
+                    "description": "North-east WGS84 longitude of the bounding box.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": -180,
+                            "max": 180
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me webcams in the area from 40.7128\u00b0 N, 74.0060\u00b0 W to 34.0522\u00b0 N, 118.2437\u00b0 W.",
+                    "parameters": {
+                        "ne_lat": 40.7128,
+                        "ne_lng": -74.006,
+                        "sw_lat": 34.0522,
+                        "sw_lng": -118.2437
+                    }
+                },
+                {
+                    "utterance": "Can I see the categories of webcams between 48.8566\u00b0 N, 2.3522\u00b0 E and 41.9028\u00b0 N, 12.4964\u00b0 E?",
+                    "parameters": {
+                        "ne_lat": 48.8566,
+                        "ne_lng": 2.3522,
+                        "sw_lat": 41.9028,
+                        "sw_lng": 12.4964,
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "List all the regions with webcams from 51.5074\u00b0 N, 0.1278\u00b0 W to 55.7558\u00b0 N, 37.6173\u00b0 E.",
+                    "parameters": {
+                        "ne_lat": 51.5074,
+                        "ne_lng": -0.1278,
+                        "sw_lat": 55.7558,
+                        "sw_lng": 37.6173,
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "I want to see webcams in Spanish for the area from 35.6895\u00b0 N, 139.6917\u00b0 E to 37.7749\u00b0 N, 122.4194\u00b0 W.",
+                    "parameters": {
+                        "ne_lat": 35.6895,
+                        "ne_lng": 139.6917,
+                        "sw_lat": 37.7749,
+                        "sw_lng": -122.4194,
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "Find properties of webcams between 34.0522\u00b0 N, 118.2437\u00b0 W and 36.1699\u00b0 N, 115.1398\u00b0 W.",
+                    "parameters": {
+                        "ne_lat": 34.0522,
+                        "ne_lng": -118.2437,
+                        "sw_lat": 36.1699,
+                        "sw_lng": -115.1398,
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "What webcams are available from 52.5200\u00b0 N, 13.4050\u00b0 E to 48.1351\u00b0 N, 11.5820\u00b0 E?",
+                    "parameters": {
+                        "ne_lat": 52.52,
+                        "ne_lng": 13.405,
+                        "sw_lat": 48.1351,
+                        "sw_lng": 11.582
+                    }
+                },
+                {
+                    "utterance": "Show me the countries with webcams from 60.1695\u00b0 N, 24.9354\u00b0 E to 59.3293\u00b0 N, 18.0686\u00b0 E.",
+                    "parameters": {
+                        "ne_lat": 60.1695,
+                        "ne_lng": 24.9354,
+                        "sw_lat": 59.3293,
+                        "sw_lng": 18.0686,
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "List the continents with webcams from 35.6895\u00b0 N, 139.6917\u00b0 E to 34.0522\u00b0 N, 118.2437\u00b0 W.",
+                    "parameters": {
+                        "ne_lat": 35.6895,
+                        "ne_lng": 139.6917,
+                        "sw_lat": 34.0522,
+                        "sw_lng": -118.2437,
+                        "show": "continents"
+                    }
+                },
+                {
+                    "utterance": "Can you show me webcams in French for the area from 40.4168\u00b0 N, 3.7038\u00b0 W to 48.8566\u00b0 N, 2.3522\u00b0 E?",
+                    "parameters": {
+                        "ne_lat": 40.4168,
+                        "ne_lng": -3.7038,
+                        "sw_lat": 48.8566,
+                        "sw_lng": 2.3522,
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "I want to see webcams and their locations from 55.7558\u00b0 N, 37.6173\u00b0 E to 59.9343\u00b0 N, 30.3351\u00b0 E.",
+                    "parameters": {
+                        "ne_lat": 55.7558,
+                        "ne_lng": 37.6173,
+                        "sw_lat": 59.9343,
+                        "sw_lng": 30.3351,
+                        "show": "webcams"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/list/exclude={webcamid}[,{webcamid}[,...]]",
+            "description": "This is a modifier. Exclude the {webcamid} from a list. Multiple {webcamid} must be separated by comma. Required: at least one {webcamid}",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/exclude={webcamid}",
+            "parameters": [
+                {
+                    "name": "webcamid",
+                    "type": "STRING",
+                    "description": "Comma separated list of webcamids to exclude from result.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true,
+                        "inter-dependency": "webcamid: At least one webcamid must be provided."
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me webcams excluding the ones from Times Square and Eiffel Tower?",
+                    "parameters": {
+                        "webcamid": "Times Square,Eiffel Tower",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "I want to see categories but exclude webcams from Sydney Opera House.",
+                    "parameters": {
+                        "webcamid": "Sydney Opera House",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "List all countries but don't include webcams from Golden Gate Bridge.",
+                    "parameters": {
+                        "webcamid": "Golden Gate Bridge",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "Exclude the webcams from Mount Fuji and show me the regions.",
+                    "parameters": {
+                        "webcamid": "Mount Fuji",
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "Can you provide a list of properties excluding the webcams from Niagara Falls?",
+                    "parameters": {
+                        "webcamid": "Niagara Falls",
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "Show me the continents but leave out webcams from the Colosseum.",
+                    "parameters": {
+                        "webcamid": "Colosseum",
+                        "show": "continents"
+                    }
+                },
+                {
+                    "utterance": "I want to see webcams but exclude those from the Great Wall of China and Machu Picchu.",
+                    "parameters": {
+                        "webcamid": "Great Wall of China,Machu Picchu",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "List categories but don't include webcams from the Statue of Liberty.",
+                    "parameters": {
+                        "webcamid": "Statue of Liberty",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "Exclude webcams from the Pyramids of Giza and show me the countries.",
+                    "parameters": {
+                        "webcamid": "Pyramids of Giza",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the properties but exclude webcams from Christ the Redeemer?",
+                    "parameters": {
+                        "webcamid": "Christ the Redeemer",
+                        "show": "properties"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/list/orderby={order},{sort}",
+            "description": "This is a modifier. Returns the list of webcams ordered by {order}. The optional sorting direction is given by {sort}. Required {order}.",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/orderby={order},{sort}",
+            "parameters": [
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Possible values are: \"asc\" (ascending), or \"desc\" (descending).",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "asc",
+                                "desc"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "order",
+                    "type": "STRING",
+                    "description": "Possible values are: \"popularity\" (default order: \"desc\"), \"hotness\" (default order: \"desc\"), \"new\" (default order: \"desc\"), \"recent\" (default order: \"desc\"), \"random\" (default order: \"asc\"), or \"distance\" (default order: \"asc\", only available if the modifier \"nearby\" has been applied).",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "popularity",
+                                "hotness",
+                                "new",
+                                "recent",
+                                "random",
+                                "distance"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the most popular webcams in descending order?",
+                    "parameters": {
+                        "sort": "desc",
+                        "order": "popularity"
+                    }
+                },
+                {
+                    "utterance": "List the newest webcams in ascending order.",
+                    "parameters": {
+                        "sort": "asc",
+                        "order": "new"
+                    }
+                },
+                {
+                    "utterance": "I want to see the hottest webcams sorted in descending order.",
+                    "parameters": {
+                        "sort": "desc",
+                        "order": "hotness"
+                    }
+                },
+                {
+                    "utterance": "Show me webcams sorted by distance in ascending order.",
+                    "parameters": {
+                        "sort": "asc",
+                        "order": "distance"
+                    }
+                },
+                {
+                    "utterance": "Can you list the webcams by recent activity in descending order?",
+                    "parameters": {
+                        "sort": "desc",
+                        "order": "recent"
+                    }
+                },
+                {
+                    "utterance": "Display the webcams randomly in ascending order.",
+                    "parameters": {
+                        "sort": "asc",
+                        "order": "random"
+                    }
+                },
+                {
+                    "utterance": "List the most popular webcams in French.",
+                    "parameters": {
+                        "sort": "desc",
+                        "order": "popularity",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Show me the categories of the newest webcams.",
+                    "parameters": {
+                        "sort": "desc",
+                        "order": "new",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "Can you provide a list of countries with the hottest webcams?",
+                    "parameters": {
+                        "sort": "desc",
+                        "order": "hotness",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "I want to see the properties of webcams sorted by recent activity.",
+                    "parameters": {
+                        "sort": "desc",
+                        "order": "recent",
+                        "show": "properties"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/list/limit={limit},{offset}",
+            "description": "This is a modifier. Returns the list of webcams sliced by {limit}. The optional offset is given by {offset}. Required: {limit}. The maximum value for {limit} is 50. {offset} defaults to 0. If limit is not given, then a default of limit=10 is applied.",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/limit={limit},0",
+            "parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of webcams in the result list.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 50
+                        }
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "Offset for the first item in the result list.",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the top 5 webcams available.",
+                    "parameters": {
+                        "limit": 5
+                    }
+                },
+                {
+                    "utterance": "Can I get a list of 10 webcams in French?",
+                    "parameters": {
+                        "limit": 10,
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "List 20 webcams with their categories.",
+                    "parameters": {
+                        "limit": 20,
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "I want to see 15 webcams and their locations.",
+                    "parameters": {
+                        "limit": 15,
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Provide me with 8 webcams in Spanish.",
+                    "parameters": {
+                        "limit": 8,
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "Give me a list of 12 webcams and their properties.",
+                    "parameters": {
+                        "limit": 12,
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "Can you show me 25 webcams in German?",
+                    "parameters": {
+                        "limit": 25,
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "I need a list of 30 webcams with their countries.",
+                    "parameters": {
+                        "limit": 30,
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "Fetch 40 webcams and their regions.",
+                    "parameters": {
+                        "limit": 40,
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "Show me 50 webcams with their continents.",
+                    "parameters": {
+                        "limit": 50,
+                        "show": "continents"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/map/{ne_lat},{ne_lng},{sw_lat},{sw_lng},{zoom}",
+            "description": "Returns a list of webcams optimized for displaying on a map for a given bounding box and {zoom} level. The value for the zoom level is compatible with the Google Maps zoom level.",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/map/{ne_lat},{ne_lng},{sw_lat},{sw_lng},{zoom}",
+            "parameters": [
+                {
+                    "name": "ne_lat",
+                    "type": "NUMBER",
+                    "description": "North-east WGS84 latitude of the bounding box.",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "ne_lng",
+                    "type": "NUMBER",
+                    "description": "North-east WGS84 longitude of the bounding box.",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "sw_lat",
+                    "type": "NUMBER",
+                    "description": "South-west WGS84 latitude of the bounding box.",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "sw_lng",
+                    "type": "NUMBER",
+                    "description": "South-west WGS84 longitude of the bounding box.",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "zoom",
+                    "type": "NUMBER",
+                    "description": "A zoom level compatible with Google Maps.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "inter-dependency": "zoom: The value for the zoom level is compatible with the Google Maps zoom level."
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the webcams available in the area from 40.7128\u00b0 N, 74.0060\u00b0 W to 34.0522\u00b0 N, 118.2437\u00b0 W with a zoom level of 10.",
+                    "parameters": {
+                        "ne_lat": 40.7128,
+                        "ne_lng": -74.006,
+                        "sw_lat": 34.0522,
+                        "sw_lng": -118.2437,
+                        "zoom": 10,
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Can you list the categories of webcams between 51.5074\u00b0 N, 0.1278\u00b0 W and 48.8566\u00b0 N, 2.3522\u00b0 E at zoom level 8?",
+                    "parameters": {
+                        "ne_lat": 51.5074,
+                        "ne_lng": -0.1278,
+                        "sw_lat": 48.8566,
+                        "sw_lng": 2.3522,
+                        "zoom": 8,
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "I want to see the continents covered by webcams from 35.6895\u00b0 N, 139.6917\u00b0 E to 34.0522\u00b0 N, 118.2437\u00b0 W with a zoom of 5.",
+                    "parameters": {
+                        "ne_lat": 35.6895,
+                        "ne_lng": 139.6917,
+                        "sw_lat": 34.0522,
+                        "sw_lng": -118.2437,
+                        "zoom": 5,
+                        "show": "continents"
+                    }
+                },
+                {
+                    "utterance": "Find the countries with webcams in the region from 55.7558\u00b0 N, 37.6173\u00b0 E to 48.8566\u00b0 N, 2.3522\u00b0 E at a zoom level of 7.",
+                    "parameters": {
+                        "ne_lat": 55.7558,
+                        "ne_lng": 37.6173,
+                        "sw_lat": 48.8566,
+                        "sw_lng": 2.3522,
+                        "zoom": 7,
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "What regions have webcams between 37.7749\u00b0 N, 122.4194\u00b0 W and 34.0522\u00b0 N, 118.2437\u00b0 W with a zoom level of 9?",
+                    "parameters": {
+                        "ne_lat": 37.7749,
+                        "ne_lng": -122.4194,
+                        "sw_lat": 34.0522,
+                        "sw_lng": -118.2437,
+                        "zoom": 9,
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "List the properties of webcams from 52.5200\u00b0 N, 13.4050\u00b0 E to 48.8566\u00b0 N, 2.3522\u00b0 E at zoom level 6.",
+                    "parameters": {
+                        "ne_lat": 52.52,
+                        "ne_lng": 13.405,
+                        "sw_lat": 48.8566,
+                        "sw_lng": 2.3522,
+                        "zoom": 6,
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "Show webcams in the area from 34.0522\u00b0 N, 118.2437\u00b0 W to 36.1699\u00b0 N, 115.1398\u00b0 W with a zoom level of 12.",
+                    "parameters": {
+                        "ne_lat": 34.0522,
+                        "ne_lng": -118.2437,
+                        "sw_lat": 36.1699,
+                        "sw_lng": -115.1398,
+                        "zoom": 12,
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Can you display the webcams in the region from 40.7128\u00b0 N, 74.0060\u00b0 W to 34.0522\u00b0 N, 118.2437\u00b0 W with a zoom level of 11?",
+                    "parameters": {
+                        "ne_lat": 40.7128,
+                        "ne_lng": -74.006,
+                        "sw_lat": 34.0522,
+                        "sw_lng": -118.2437,
+                        "zoom": 11,
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "I want to see webcams in the area from 48.8566\u00b0 N, 2.3522\u00b0 E to 41.9028\u00b0 N, 12.4964\u00b0 E with a zoom level of 10.",
+                    "parameters": {
+                        "ne_lat": 48.8566,
+                        "ne_lng": 2.3522,
+                        "sw_lat": 41.9028,
+                        "sw_lng": 12.4964,
+                        "zoom": 10,
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "Find webcams in the area from 35.6895\u00b0 N, 139.6917\u00b0 E to 34.0522\u00b0 N, 118.2437\u00b0 W with a zoom level of 8.",
+                    "parameters": {
+                        "ne_lat": 35.6895,
+                        "ne_lng": 139.6917,
+                        "sw_lat": 34.0522,
+                        "sw_lng": -118.2437,
+                        "zoom": 8,
+                        "show": "webcams"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/list/property={property}[,{property}[,...]]",
+            "description": "This is a modifier. Returns a list of webcams according to the listed {property}. Multiple {property} must be separated by comma. Required: at least one {property}. Possible values are \"editors\" (featured from the editors), \"hd\" (high resolution webcams), and \"live\" (webcams with a live stream).",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/property={property}",
+            "parameters": [
+                {
+                    "name": "property",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "editors",
+                                "hd",
+                                "live"
+                            ]
+                        },
+                        "inter-dependency": "property: At least one property must be provided."
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the featured webcams from the editors.",
+                    "parameters": {
+                        "property": "editors"
+                    }
+                },
+                {
+                    "utterance": "Can you list all high resolution webcams?",
+                    "parameters": {
+                        "property": "hd"
+                    }
+                },
+                {
+                    "utterance": "I want to see webcams with a live stream.",
+                    "parameters": {
+                        "property": "live"
+                    }
+                },
+                {
+                    "utterance": "Give me a list of high resolution webcams and show their categories.",
+                    "parameters": {
+                        "property": "hd",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "What are the live stream webcams available and their countries?",
+                    "parameters": {
+                        "property": "live",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "List the featured webcams from the editors and include the regions they are in.",
+                    "parameters": {
+                        "property": "editors",
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the high resolution webcams and their continents?",
+                    "parameters": {
+                        "property": "hd",
+                        "show": "continents"
+                    }
+                },
+                {
+                    "utterance": "I would like to see the live webcams and their properties.",
+                    "parameters": {
+                        "property": "live",
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "Please provide a list of editor's choice webcams and their categories.",
+                    "parameters": {
+                        "property": "editors",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "Show me the high resolution webcams along with the regions they belong to.",
+                    "parameters": {
+                        "property": "hd",
+                        "show": "regions"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/webcams/list/webcam={webcamid}[,{webcamid}[,...]]",
+            "description": "This is a modifier. Returns a list of webcams according to the listed {webcamid}s. Multiple {webcamid}s must be separated by comma. Required: at least one {webcamid}.",
+            "url": "https://webcamstravel.p.rapidapi.com/webcams/list/webcam={webcamid}",
+            "parameters": [
+                {
+                    "name": "webcamid",
+                    "type": "STRING",
+                    "description": "Comma separated list of webcamids that are in the initial list. If this modifier ist not applied, all available webcams will be in the initial list.",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "id": true,
+                        "inter-dependency": "webcamid: At least one webcamid must be provided."
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "Localize the results to this language, if available. Default: \"en\".",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "show",
+                    "type": "STRING",
+                    "description": "Content to be listed in the response. Possible values are: \"webcams\", \"categories\", \"continents\", \"countries\", \"regions\", \"properties\". Default is \"webcams\".",
+                    "default": "webcams:image,location",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "webcams",
+                                "categories",
+                                "continents",
+                                "countries",
+                                "regions",
+                                "properties"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the webcam details for the Eiffel Tower and Times Square?",
+                    "parameters": {
+                        "webcamid": "EiffelTower,TimesSquare",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "I want to see the categories for webcams at the Golden Gate Bridge.",
+                    "parameters": {
+                        "webcamid": "GoldenGateBridge",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "Give me the list of countries for the webcams at Niagara Falls and Mount Fuji.",
+                    "parameters": {
+                        "webcamid": "NiagaraFalls,MountFuji",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "What are the regions covered by the webcam at Sydney Opera House?",
+                    "parameters": {
+                        "webcamid": "SydneyOperaHouse",
+                        "show": "regions"
+                    }
+                },
+                {
+                    "utterance": "Show me the properties of the webcam located at the Colosseum.",
+                    "parameters": {
+                        "webcamid": "Colosseum",
+                        "show": "properties"
+                    }
+                },
+                {
+                    "utterance": "List the continents for the webcams at the Great Wall of China and Christ the Redeemer.",
+                    "parameters": {
+                        "webcamid": "GreatWallOfChina,ChristTheRedeemer",
+                        "show": "continents"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the webcam images and locations for the Statue of Liberty?",
+                    "parameters": {
+                        "webcamid": "StatueOfLiberty",
+                        "show": "webcams"
+                    }
+                },
+                {
+                    "utterance": "I need to know the categories available for the webcam at the Taj Mahal.",
+                    "parameters": {
+                        "webcamid": "TajMahal",
+                        "show": "categories"
+                    }
+                },
+                {
+                    "utterance": "What countries are the webcams at the Pyramids of Giza and the Leaning Tower of Pisa located in?",
+                    "parameters": {
+                        "webcamid": "PyramidsOfGiza,LeaningTowerOfPisa",
+                        "show": "countries"
+                    }
+                },
+                {
+                    "utterance": "Please list the properties of the webcam at Machu Picchu.",
+                    "parameters": {
+                        "webcamid": "MachuPicchu",
+                        "show": "properties"
+                    }
+                }
+            ]
+        }
+    ]
+}

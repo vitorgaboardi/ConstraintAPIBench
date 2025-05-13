@@ -1,0 +1,112 @@
+{
+    "name": "RedLine Zipcode",
+    "description": "The Zip Code API provides the following functions: Distance Between Zip Code API - The API allows you to quickly and easily figure out the distance between zip codes.Zip Codes in Radius API - You can use this API to find all zip codes within a given radius from another zip code.Zip Code to City and State API and Zip Code to Latitude/Longitude API - The API can convert a zip code to the primary location for the zip code. This includes the city, state, latitude, and longitude for the primary lo...",
+    "url": "https://rapidapi.com/redline/api/redline-zipcode/",
+    "api_methods": [
+        {
+            "name": "Multiple Zip Codes to Location Information",
+            "description": "Returns location information for multiple zip codes (up to 100).  This information includes city, state, latitude, longitude, and time zone information.  It also contains a list of other acceptable city names for the locations.  **Each zip code provided will count as a separate request.** For example, if you send 5 zip codes, you will be charged for 5 requests.",
+            "url": "https://redline-redline-zipcode.p.rapidapi.com/rest/multi-info.json/{zipcodes}/{units}",
+            "parameters": [
+                {
+                    "name": "zipcodes",
+                    "type": "STRING",
+                    "description": "Zip Codes (Comma separated) - 100 Max",
+                    "default": "08057,08055",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 100
+                        }
+                    }
+                },
+                {
+                    "name": "units",
+                    "type": "STRING",
+                    "description": "Units: degrees or radians",
+                    "default": "degrees",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "degrees",
+                                "radians"
+                            ]
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "State to Zip Codes",
+            "description": "Get all zip codes for a state.  **Each 10 zip codes returned are charged as separate request.** For example, if the state you select returns 200 zip codes, you will be charged for 20 requests.",
+            "url": "https://redline-redline-zipcode.p.rapidapi.com/rest/state-zips.json/{state}",
+            "parameters": [
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "State Abbreviation (e.g. RI)",
+                    "default": "RI",
+                    "required": true,
+                    "constraints": {
+                        "format": "State Abbreviation"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Multiple Zip Codes by Radius",
+            "description": "Use this API to find all zip codes within a given radius of multiple zip codes.  Each line is charged as a separate request.",
+            "url": "https://redline-redline-zipcode.p.rapidapi.com/rest/multi-radius.json/10/mile",
+            "parameters": [
+                {
+                    "name": "distance",
+                    "type": "NUMBER",
+                    "description": "Radius (in appropriate units)",
+                    "default": "10",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "units",
+                    "type": "STRING",
+                    "description": "Distance units: mile or km",
+                    "default": "mile",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "mile",
+                                "km"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "zip_codes",
+                    "type": "STRING",
+                    "description": "Zip codes (one per line; max 100).  You may only send one of zip_codes or addrs.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "zip_codes, addrs: You may only send one of zip_codes or addrs."
+                    }
+                },
+                {
+                    "name": "addrs",
+                    "type": "STRING",
+                    "description": "Addresses (one per line; max 100).  E.g. \"123 Main St. Moorestown NJ 08057\".  Each line is charged as a separate request.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "zip_codes, addrs: You may only send one of zip_codes or addrs."
+                    }
+                }
+            ]
+        }
+    ]
+}

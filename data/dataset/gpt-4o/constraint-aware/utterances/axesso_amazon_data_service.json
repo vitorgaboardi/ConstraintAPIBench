@@ -1,0 +1,788 @@
+{
+    "name": "Axesso - Amazon Data Service",
+    "description": "The Axesso Amazon Data Service API returns detailed Amazon product information including product title, manufacturer, reviews, size selection, price, reviews and many more. Additionally, the API supports product recommendations as provided by Amazon and invoke keyword searches to find up to 20 products per page relating to the searchterm. This service is comparable to the Amazon Product Advertising API, but presented in a more condensed manner. The usage requires a API Key in production mode....",
+    "url": "https://rapidapi.com/axesso/api/axesso-amazon-data-service1/",
+    "api_methods": [
+        {
+            "name": "lookupSellerPrices",
+            "description": "Lookup offer from different seller for the specified product",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/v2/amz/amazon-lookup-prices",
+            "parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Number of pages to return",
+                    "default": "1",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "e.g. com / de / fr / co.uk",
+                    "default": "com",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "com",
+                                "de",
+                                "fr",
+                                "co.uk"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "B07QFC6LN6",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find the seller prices for the product with ASIN B07QFC6LN6 on Amazon.com?",
+                    "parameters": {
+                        "domainCode": "com",
+                        "asin": "B07QFC6LN6"
+                    }
+                },
+                {
+                    "utterance": "I need to check the offers from different sellers for the ASIN B08N5WRWNW on the UK Amazon site.",
+                    "parameters": {
+                        "domainCode": "co.uk",
+                        "asin": "B08N5WRWNW"
+                    }
+                },
+                {
+                    "utterance": "What are the seller prices for the product with ASIN B08CFSZLQ4 on Amazon France?",
+                    "parameters": {
+                        "domainCode": "fr",
+                        "asin": "B08CFSZLQ4"
+                    }
+                },
+                {
+                    "utterance": "Show me the different seller offers for ASIN B07PGL2ZSL on the German Amazon site.",
+                    "parameters": {
+                        "domainCode": "de",
+                        "asin": "B07PGL2ZSL"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the seller prices for ASIN B07XJ8C8F5 on Amazon.com.",
+                    "parameters": {
+                        "domainCode": "com",
+                        "asin": "B07XJ8C8F5"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the seller offers for the product with ASIN B08K2S1NBL on Amazon UK?",
+                    "parameters": {
+                        "domainCode": "co.uk",
+                        "asin": "B08K2S1NBL"
+                    }
+                },
+                {
+                    "utterance": "Find the seller prices for ASIN B07Y3LQZC1 on the French Amazon site.",
+                    "parameters": {
+                        "domainCode": "fr",
+                        "asin": "B07Y3LQZC1"
+                    }
+                },
+                {
+                    "utterance": "I want to know the different seller offers for ASIN B08L5V1YV4 on Amazon Germany.",
+                    "parameters": {
+                        "domainCode": "de",
+                        "asin": "B08L5V1YV4"
+                    }
+                },
+                {
+                    "utterance": "Please look up the seller prices for ASIN B07Z5W3GZ2 on Amazon.com.",
+                    "parameters": {
+                        "domainCode": "com",
+                        "asin": "B07Z5W3GZ2"
+                    }
+                },
+                {
+                    "utterance": "What are the offers from different sellers for ASIN B08J4F2H5H on the UK Amazon site?",
+                    "parameters": {
+                        "domainCode": "co.uk",
+                        "asin": "B08J4F2H5H"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "searchByKeywordAsin",
+            "description": "Search products by keyword, returning all asins for the specified page.",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-search-by-keyword-asin",
+            "parameters": [
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Jeans",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Parameter for Pagination",
+                    "default": "1",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "e.g. com / de / fr / co.uk",
+                    "default": "com",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "com",
+                                "de",
+                                "fr",
+                                "co.uk"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Pass the amazon category which should used for the search. Valid category list can found on the amazon website on the search selection box. **Important: If the passed category is not a valid amazon category, the response will be empty**",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "withCache",
+                    "type": "BOOLEAN",
+                    "description": "If true, proxy for same searchterm will be cached and used for next page. Might increase the response quality.",
+                    "default": "true",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "excludeSponsored",
+                    "type": "STRING",
+                    "description": "Set true to exclude sponsored products",
+                    "default": "false",
+                    "required": false
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "relevanceblender",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find me some jeans on Amazon UK.",
+                    "parameters": {
+                        "keyword": "Jeans",
+                        "domainCode": "co.uk"
+                    }
+                },
+                {
+                    "utterance": "Search for laptops in the electronics category on Amazon Germany.",
+                    "parameters": {
+                        "keyword": "laptops",
+                        "domainCode": "de",
+                        "category": "electronics"
+                    }
+                },
+                {
+                    "utterance": "Show me the top-rated books on Amazon France.",
+                    "parameters": {
+                        "keyword": "books",
+                        "domainCode": "fr",
+                        "sortBy": "relevanceblender"
+                    }
+                },
+                {
+                    "utterance": "Can you find kitchen appliances on Amazon US without sponsored products?",
+                    "parameters": {
+                        "keyword": "kitchen appliances",
+                        "domainCode": "com",
+                        "excludeSponsored": "true"
+                    }
+                },
+                {
+                    "utterance": "Look for the latest smartphones on Amazon UK, excluding sponsored items.",
+                    "parameters": {
+                        "keyword": "smartphones",
+                        "domainCode": "co.uk",
+                        "excludeSponsored": "true"
+                    }
+                },
+                {
+                    "utterance": "Search for gaming consoles in the video games category on Amazon US.",
+                    "parameters": {
+                        "keyword": "gaming consoles",
+                        "domainCode": "com",
+                        "category": "video games"
+                    }
+                },
+                {
+                    "utterance": "Find me some hiking gear on Amazon France.",
+                    "parameters": {
+                        "keyword": "hiking gear",
+                        "domainCode": "fr"
+                    }
+                },
+                {
+                    "utterance": "Look up the best-selling headphones on Amazon Germany.",
+                    "parameters": {
+                        "keyword": "headphones",
+                        "domainCode": "de",
+                        "sortBy": "relevanceblender"
+                    }
+                },
+                {
+                    "utterance": "Can you search for office chairs on Amazon UK in the furniture category?",
+                    "parameters": {
+                        "keyword": "office chairs",
+                        "domainCode": "co.uk",
+                        "category": "furniture"
+                    }
+                },
+                {
+                    "utterance": "Find the most popular board games on Amazon US.",
+                    "parameters": {
+                        "keyword": "board games",
+                        "domainCode": "com",
+                        "sortBy": "relevanceblender"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "lookupReviews",
+            "description": "Lookup reviews from a product",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-reviews",
+            "parameters": [
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "B07YLDNTKB",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "com",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "recent",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "filters",
+                    "type": "STRING",
+                    "description": "Semicolon seperated list of filters",
+                    "default": "reviewerType=avp_only_reviews;filterByStar=five_star",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the reviews for the Amazon product with ASIN B07YLDNTKB on the US site?",
+                    "parameters": {
+                        "asin": "B07YLDNTKB",
+                        "domainCode": "com"
+                    }
+                },
+                {
+                    "utterance": "I need the most recent reviews for the product with ASIN B08N5WRWNW on Amazon UK.",
+                    "parameters": {
+                        "asin": "B08N5WRWNW",
+                        "domainCode": "co.uk",
+                        "sortBy": "recent"
+                    }
+                },
+                {
+                    "utterance": "Fetch the top-rated reviews for the item with ASIN B07PGL2ZSL on Amazon Canada.",
+                    "parameters": {
+                        "asin": "B07PGL2ZSL",
+                        "domainCode": "ca",
+                        "filters": "filterByStar=five_star"
+                    }
+                },
+                {
+                    "utterance": "Get me the reviews sorted by helpfulness for the product with ASIN B07FZ8S74R on Amazon Germany.",
+                    "parameters": {
+                        "asin": "B07FZ8S74R",
+                        "domainCode": "de",
+                        "sortBy": "helpful"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the verified purchase reviews for the product with ASIN B07HDBZN7Q on Amazon India.",
+                    "parameters": {
+                        "asin": "B07HDBZN7Q",
+                        "domainCode": "in",
+                        "filters": "reviewerType=avp_only_reviews"
+                    }
+                },
+                {
+                    "utterance": "Can you retrieve the reviews for ASIN B07XJ8C8F5 on Amazon Australia, sorted by recent?",
+                    "parameters": {
+                        "asin": "B07XJ8C8F5",
+                        "domainCode": "com.au",
+                        "sortBy": "recent"
+                    }
+                },
+                {
+                    "utterance": "Please get the reviews for ASIN B07Q5WHSBD on Amazon Japan, focusing on one-star ratings.",
+                    "parameters": {
+                        "asin": "B07Q5WHSBD",
+                        "domainCode": "co.jp",
+                        "filters": "filterByStar=one_star"
+                    }
+                },
+                {
+                    "utterance": "I want to see the reviews for ASIN B07D9C7SQH on Amazon France, sorted by the most helpful.",
+                    "parameters": {
+                        "asin": "B07D9C7SQH",
+                        "domainCode": "fr",
+                        "sortBy": "helpful"
+                    }
+                },
+                {
+                    "utterance": "Show me the reviews for ASIN B07K1B3XZZ on Amazon Italy, but only from verified purchases.",
+                    "parameters": {
+                        "asin": "B07K1B3XZZ",
+                        "domainCode": "it",
+                        "filters": "reviewerType=avp_only_reviews"
+                    }
+                },
+                {
+                    "utterance": "Could you find the reviews for ASIN B07N4M94ZP on Amazon Spain, sorted by the most recent?",
+                    "parameters": {
+                        "asin": "B07N4M94ZP",
+                        "domainCode": "es",
+                        "sortBy": "recent"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "lookupSeller",
+            "description": "Lookup seller details based on sellerid and domain",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-seller",
+            "parameters": [
+                {
+                    "name": "sellerId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AD97MR4NOW5CD",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "com",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details about the seller with ID 'BestSeller123' on Amazon US?",
+                    "parameters": {
+                        "sellerId": "BestSeller123",
+                        "domainCode": "com"
+                    }
+                },
+                {
+                    "utterance": "I need information on the seller 'TopGadgets' from Amazon UK.",
+                    "parameters": {
+                        "sellerId": "TopGadgets",
+                        "domainCode": "co.uk"
+                    }
+                },
+                {
+                    "utterance": "Fetch the seller details for 'EcoFriendlyStore' on Amazon Canada.",
+                    "parameters": {
+                        "sellerId": "EcoFriendlyStore",
+                        "domainCode": "ca"
+                    }
+                },
+                {
+                    "utterance": "What can you tell me about the seller 'FashionHub' on Amazon Germany?",
+                    "parameters": {
+                        "sellerId": "FashionHub",
+                        "domainCode": "de"
+                    }
+                },
+                {
+                    "utterance": "Get the seller information for 'TechWorld' on Amazon India.",
+                    "parameters": {
+                        "sellerId": "TechWorld",
+                        "domainCode": "in"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know more about the seller 'HomeEssentials' on Amazon Australia.",
+                    "parameters": {
+                        "sellerId": "HomeEssentials",
+                        "domainCode": "com.au"
+                    }
+                },
+                {
+                    "utterance": "Can you look up the seller 'BookNook' on Amazon Japan?",
+                    "parameters": {
+                        "sellerId": "BookNook",
+                        "domainCode": "co.jp"
+                    }
+                },
+                {
+                    "utterance": "Please find the details for the seller 'GourmetDelights' on Amazon France.",
+                    "parameters": {
+                        "sellerId": "GourmetDelights",
+                        "domainCode": "fr"
+                    }
+                },
+                {
+                    "utterance": "I want to check the seller 'PetParadise' on Amazon Italy.",
+                    "parameters": {
+                        "sellerId": "PetParadise",
+                        "domainCode": "it"
+                    }
+                },
+                {
+                    "utterance": "Could you give me the seller details for 'GadgetZone' on Amazon Spain?",
+                    "parameters": {
+                        "sellerId": "GadgetZone",
+                        "domainCode": "es"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "lookupProduct",
+            "description": "request product information",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-lookup-product",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://www.amazon.com/dp/B09938DVH2",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "merchant",
+                    "type": "STRING",
+                    "description": "merchant id",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the details for the product at https://www.amazon.com/dp/B08N5WRWNW?",
+                    "parameters": {
+                        "url": "https://www.amazon.com/dp/B08N5WRWNW"
+                    }
+                },
+                {
+                    "utterance": "I need information about the item listed at https://www.amazon.com/dp/B07FZ8S74R.",
+                    "parameters": {
+                        "url": "https://www.amazon.com/dp/B07FZ8S74R"
+                    }
+                },
+                {
+                    "utterance": "Fetch the product details from this link: https://www.amazon.com/dp/B07PGL2ZSL.",
+                    "parameters": {
+                        "url": "https://www.amazon.com/dp/B07PGL2ZSL"
+                    }
+                },
+                {
+                    "utterance": "What can you tell me about the product at https://www.amazon.com/dp/B08CFSZLQ4?",
+                    "parameters": {
+                        "url": "https://www.amazon.com/dp/B08CFSZLQ4"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the product information for https://www.amazon.com/dp/B07XJ8C8F5.",
+                    "parameters": {
+                        "url": "https://www.amazon.com/dp/B07XJ8C8F5"
+                    }
+                },
+                {
+                    "utterance": "Can you provide details for the product at https://www.amazon.com/dp/B08HR3DPGW from the merchant with ID AMZ123?",
+                    "parameters": {
+                        "url": "https://www.amazon.com/dp/B08HR3DPGW",
+                        "merchant": "AMZ123"
+                    }
+                },
+                {
+                    "utterance": "Get me the product info for https://www.amazon.com/dp/B07VGRJDFY, sold by merchant ID MERCHANT456.",
+                    "parameters": {
+                        "url": "https://www.amazon.com/dp/B07VGRJDFY",
+                        "merchant": "MERCHANT456"
+                    }
+                },
+                {
+                    "utterance": "I want to know more about the product at https://www.amazon.com/dp/B08N5LNQCX, from the seller with ID SELLER789.",
+                    "parameters": {
+                        "url": "https://www.amazon.com/dp/B08N5LNQCX",
+                        "merchant": "SELLER789"
+                    }
+                },
+                {
+                    "utterance": "Please find the details for the product at https://www.amazon.com/dp/B07Z5W3GZ2.",
+                    "parameters": {
+                        "url": "https://www.amazon.com/dp/B07Z5W3GZ2"
+                    }
+                },
+                {
+                    "utterance": "Could you look up the product information for https://www.amazon.com/dp/B08J5F3G18?",
+                    "parameters": {
+                        "url": "https://www.amazon.com/dp/B08J5F3G18"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "lookupSellerProducts",
+            "description": "Lookup all products for a given seller page by page.",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-seller-products",
+            "parameters": [
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "domainCode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "com",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "sellerId",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "AD97MR4NOW5CD",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me all the products listed by the seller with ID AD97MR4NOW5CD on Amazon.com?",
+                    "parameters": {
+                        "domainCode": "com",
+                        "sellerId": "AD97MR4NOW5CD"
+                    }
+                },
+                {
+                    "utterance": "I need to see the product listings for the seller identified as B07XQXZXJC on the Amazon UK site.",
+                    "parameters": {
+                        "domainCode": "co.uk",
+                        "sellerId": "B07XQXZXJC"
+                    }
+                },
+                {
+                    "utterance": "Fetch the products from the seller with ID A1PA6795UKMFR9 on Amazon.de.",
+                    "parameters": {
+                        "domainCode": "de",
+                        "sellerId": "A1PA6795UKMFR9"
+                    }
+                },
+                {
+                    "utterance": "What products are available from the seller with ID A1RKKUPIHCS9HS on Amazon.es?",
+                    "parameters": {
+                        "domainCode": "es",
+                        "sellerId": "A1RKKUPIHCS9HS"
+                    }
+                },
+                {
+                    "utterance": "List all items sold by the seller with ID A1F83G8C2ARO7P on Amazon.co.uk.",
+                    "parameters": {
+                        "domainCode": "co.uk",
+                        "sellerId": "A1F83G8C2ARO7P"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the product catalog for the seller with ID A1VC38T7YXB528 on Amazon Japan.",
+                    "parameters": {
+                        "domainCode": "co.jp",
+                        "sellerId": "A1VC38T7YXB528"
+                    }
+                },
+                {
+                    "utterance": "Can you get the list of products from the seller with ID A1C3SOZRARQ6R3 on Amazon.ca?",
+                    "parameters": {
+                        "domainCode": "ca",
+                        "sellerId": "A1C3SOZRARQ6R3"
+                    }
+                },
+                {
+                    "utterance": "Show me the products offered by the seller with ID A1IMEXAMPLE on Amazon.com.mx.",
+                    "parameters": {
+                        "domainCode": "com.mx",
+                        "sellerId": "A1IMEXAMPLE"
+                    }
+                },
+                {
+                    "utterance": "I want to see the product listings for the seller with ID A1R2TTEXAMPLE on Amazon.in.",
+                    "parameters": {
+                        "domainCode": "in",
+                        "sellerId": "A1R2TTEXAMPLE"
+                    }
+                },
+                {
+                    "utterance": "Find all products from the seller with ID A1QEXAMPLE on Amazon.com.au.",
+                    "parameters": {
+                        "domainCode": "com.au",
+                        "sellerId": "A1QEXAMPLE"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "lookupBestSeller",
+            "description": "Lookup best seller list by providing url and page.",
+            "url": "https://axesso-axesso-amazon-data-service-v1.p.rapidapi.com/amz/amazon-best-sellers-list",
+            "parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://www.amazon.com/gp/movers-and-shakers/toys-and-games",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the best sellers in toys and games on Amazon?",
+                    "parameters": {
+                        "url": "https://www.amazon.com/gp/movers-and-shakers/toys-and-games"
+                    }
+                },
+                {
+                    "utterance": "Find the top-selling books on Amazon for me.",
+                    "parameters": {
+                        "url": "https://www.amazon.com/gp/movers-and-shakers/books"
+                    }
+                },
+                {
+                    "utterance": "What's trending in electronics on Amazon right now?",
+                    "parameters": {
+                        "url": "https://www.amazon.com/gp/movers-and-shakers/electronics"
+                    }
+                },
+                {
+                    "utterance": "Show me the best sellers in home and kitchen on Amazon.",
+                    "parameters": {
+                        "url": "https://www.amazon.com/gp/movers-and-shakers/home-and-kitchen"
+                    }
+                },
+                {
+                    "utterance": "Can you list the top-selling beauty products on Amazon?",
+                    "parameters": {
+                        "url": "https://www.amazon.com/gp/movers-and-shakers/beauty"
+                    }
+                },
+                {
+                    "utterance": "What are the best sellers in clothing on Amazon?",
+                    "parameters": {
+                        "url": "https://www.amazon.com/gp/movers-and-shakers/clothing"
+                    }
+                },
+                {
+                    "utterance": "Find the most popular items in sports and outdoors on Amazon.",
+                    "parameters": {
+                        "url": "https://www.amazon.com/gp/movers-and-shakers/sports-and-outdoors"
+                    }
+                },
+                {
+                    "utterance": "Show me the top-selling video games on Amazon.",
+                    "parameters": {
+                        "url": "https://www.amazon.com/gp/movers-and-shakers/video-games"
+                    }
+                },
+                {
+                    "utterance": "What's trending in health and personal care on Amazon?",
+                    "parameters": {
+                        "url": "https://www.amazon.com/gp/movers-and-shakers/health-and-personal-care"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the best sellers in pet supplies on Amazon?",
+                    "parameters": {
+                        "url": "https://www.amazon.com/gp/movers-and-shakers/pet-supplies"
+                    }
+                }
+            ]
+        }
+    ]
+}

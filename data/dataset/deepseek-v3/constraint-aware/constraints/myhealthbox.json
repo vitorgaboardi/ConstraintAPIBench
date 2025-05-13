@@ -1,0 +1,286 @@
+{
+    "name": "myHealthbox",
+    "description": "Access to the largest database of medicines and healthcare products.",
+    "url": "https://rapidapi.com/roblat/api/myhealthbox/",
+    "api_methods": [
+        {
+            "name": "Product Documents",
+            "description": "Get a list of documents associated to a specific product",
+            "url": "https://myhealthbox.p.rapidapi.com/product/documents",
+            "parameters": [
+                {
+                    "name": "nman_code",
+                    "type": "STRING",
+                    "description": "This value is returned by a product/info call (i.e. nman_code)",
+                    "default": "eu_hum_EMEA_H_C_000471",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Info",
+            "description": "Get all available information about a specific product",
+            "url": "https://myhealthbox.p.rapidapi.com/product/info",
+            "parameters": [
+                {
+                    "name": "product_id",
+                    "type": "NUMBER",
+                    "description": "This value is returned by a call to search/fulltext  (i.e. product_id)",
+                    "default": "3521578",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get document Url",
+            "description": "Get the URL of a document, the URL is valid for 24 hours.",
+            "url": "https://myhealthbox.p.rapidapi.com/document/getUrl",
+            "parameters": [
+                {
+                    "name": "document_id",
+                    "type": "NUMBER",
+                    "description": "This value is returned by an product/documents call",
+                    "default": "2121579",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Updated Documents",
+            "description": "Search documents that have been updated after a certain date or within a date interval",
+            "url": "https://myhealthbox.p.rapidapi.com/search/updatedDocuments",
+            "parameters": [
+                {
+                    "name": "sd",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "2020-06-01",
+                    "required": true,
+                    "constraints": {
+                        "format": "DATE (YYYY-MM-DD)"
+                    }
+                },
+                {
+                    "name": "t",
+                    "type": "ENUM",
+                    "description": "Document type, one of:  \npil (Patient Information Leaflet), spc (Summary of Product Characteristics), par (Public Assessment Report), sds (Safety Data Sheet), man (User Manual), inf (Product Information), mmr (Additional Risk Minimisation Measures), hta (Health Technology Assessment Report)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "pil",
+                                "spc",
+                                "par",
+                                "sds",
+                                "man",
+                                "inf",
+                                "mmr",
+                                "hta"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "ed",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Default value: 32\nMax value: 100",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "c",
+                    "type": "STRING",
+                    "description": "See the Supported countries section in the Developers Manual",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "format": "Supported countries"
+                    }
+                },
+                {
+                    "name": "f",
+                    "type": "ENUM",
+                    "description": "Field optional parameter, if present it can only have 1 value. Perform date comparison on this attribute (date when record was updated in the myHealthbox database) instead of the default one (date when the actual document was updated).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "date when record was updated in the myHealthbox database"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "See the Supported countries section in the Developers Manual.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "Supported languages"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Alerts Search",
+            "description": "Search alerts (health alerts, products recalls, etc.) in over 60 countries. Information is only from official sources (health Ministries and Government Agencies).",
+            "url": "https://myhealthbox.p.rapidapi.com/search/alerts",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Any string or set of strings",
+                    "default": "aspirin",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "c",
+                    "type": "STRING",
+                    "description": "See the manual for a full list of supported countries and codes.",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Default value is: 32\nMaximum value: 100",
+                    "default": "10",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100
+                        },
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "See the manual for a full list of supported languages and codes.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Fulltext Search",
+            "description": "Fulltext search against the whole database of products (default search is on all fields and documents)",
+            "url": "https://myhealthbox.p.rapidapi.com/search/fulltext",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Any string or set of strings",
+                    "default": "aspirin",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "from",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "f",
+                    "type": "ENUM",
+                    "description": "Only one of the following values can be used: name, active_ingredient, barcode, atc_code.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "name",
+                                "active_ingredient",
+                                "barcode",
+                                "atc_code"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "l",
+                    "type": "STRING",
+                    "description": "See the manual for a full list of supported languages and codes.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "c",
+                    "type": "STRING",
+                    "description": "See the manual for a full list of supported countries and codes.",
+                    "default": "us",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Default value is: 32\nMaximum value: 100",
+                    "default": "10",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 100
+                        },
+                        "technical": true
+                    }
+                }
+            ]
+        }
+    ]
+}

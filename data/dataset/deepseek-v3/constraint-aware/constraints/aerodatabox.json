@@ -1,0 +1,57 @@
+{
+    "name": "AeroDataBox",
+    "description": "Flight data API for travel, hospitality, or aviation applications, researchers, small teams, and individual developers.",
+    "url": "https://rapidapi.com/aedbx-aedbx/api/aerodatabox/",
+    "api_methods": [
+        {
+            "name": "(BETA) Aircraft image recognition",
+            "description": "**What aircrafts are depicted on this photo?**\n\nThis endpoint recognizes aircrafts on uploaded image and returns information about all detected aircrafts. It is based on computer vision technology and therefore results may be imprecise. It relies on detecting aircrafts' registrations and, once detected, attempting to match these registration with records in aircrafts database.\n\nReturns: Data about found and recognized aircrafts.",
+            "url": "https://aerodatabox.p.rapidapi.com/aircrafts/recognize/beta",
+            "parameters": [
+                {
+                    "name": "photo",
+                    "type": "BINARY",
+                    "description": "Image containing aircraft. It should be image-type file (JPEG, PNG or BMP).  To improve results:  ensure that aircraft registration is as much as possible visible on the image; other inscriptions are visible as least as possible or absent on the image (although algorithm strives to filter these out as much as possible, false results are still possible).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "JPEG, PNG, or BMP"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Create web-hook subscription",
+            "description": "Creates a webhook subscription on a subject (e.g. flight by number or by airport code). Returns information about the created subscription. Subscription ID contained in it can be used to refresh or remove it.",
+            "url": "https://aerodatabox.p.rapidapi.com/subscriptions/webhook/{subjectType}/KL1395",
+            "parameters": [
+                {
+                    "name": "subjectType",
+                    "type": "ENUM",
+                    "description": "Subject type",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "FlightByNumber",
+                                "FlightByAirportIcao"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "subjectId",
+                    "type": "string",
+                    "description": "Subject ID. If `subjectType` is:\n- `FlightByNumber`, then this field must be a flight number (with or without spaces, IATA or ICAO, any case formats are acceptable, e.g. KL1395, Klm 1395);\n- `FlightByAirportIcao`, then this field must be a 4-character ICAO-code of the airport where flights are operated (e.g.: EHAM, KLAX, UUEE, etc.).",
+                    "default": "KL1395",
+                    "required": true,
+                    "constraints": {
+                        "format": "Flight number or ICAO airport code",
+                        "inter-dependency": "subjectType, subjectId: subjectId must be a flight number if subjectType is 'FlightByNumber' or an ICAO airport code if subjectType is 'FlightByAirportIcao'."
+                    }
+                }
+            ]
+        }
+    ]
+}
