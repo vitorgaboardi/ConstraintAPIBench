@@ -66,8 +66,7 @@ if not '/' in model:
   client = OpenAI(api_key="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")
   model_name = model
 else:
-  client = client = OpenAI(api_key="0cTfrP7S4xnxVcQeMnkCvfY7nrgZs41e",
-                           base_url="https://api.deepinfra.com/v1/openai",)
+  client = OpenAI(api_key="0cTfrP7S4xnxVcQeMnkCvfY7nrgZs41e", base_url="https://api.deepinfra.com/v1/openai",)
   model_name = model.split('/')[1].lower()
 
 constraint_folder = os.path.join('./data/dataset', model_name, 'constraint-aware/constraints/')

@@ -4,8 +4,9 @@ import random
 import pandas as pd
 import torch
 from collections import defaultdict
-from sentence_transformers import SentenceTransformer, util
-from bleurt import score
+# from sentence_transformers import SentenceTransformer, util
+# from bleurt import score
+from openai import OpenAI
 
 # the evaluation is done per model
 model_name = "gpt-4o"  # deepseek-ai/DeepSeek-V3
@@ -13,6 +14,7 @@ model_name = model_name.split("/")[1].lower() if "/" in model_name else model_na
 print(model_name)
 prompts = ['constraint-aware', 'sheng et al']
 
+##### DATA FOR MANUAL EVALUATION
 # 1. Organising the data (saving as CSV file for inspection) for manual evaluation of constraints violation:
 # save_folder = os.path.join('./data/manual evaluation', model_name)
 
@@ -57,83 +59,167 @@ prompts = ['constraint-aware', 'sheng et al']
 #                     number_of_endpoints+=1
 
 #     df = pd.DataFrame(rows)
-#     file_name = prompt + '.csv'
+#     file_name = 'violations_' + prompt + '.csv'
 #     file_path = os.path.join(save_folder, file_name)
 #     df.to_csv(file_path, index=False)
 
 
 
-# 2.1 Cosine similarity using embeddings sentence models: the problem is that it highlights similar things in the reference (which highlights the api name) rather than fluency and naturalness
-cosine_similarity = [[], []] # one for each prompt
-model = SentenceTransformer('all-mpnet-base-v2')
+##### DATA FOR NATURALNESS ANALYSIS
+# 2.1 Using LLMs to check whether the utterances are natural/coherent or not. 
+PROMPT_INSTRUCTION = """Naturalness refers to how realistic and likely a sentence is to be used by a person in a real-world conversation.
+You will be given a text representing an user utterance that wants to accomplish a task when talking to a chatbot. 
+Evaluate the utterance and return whether it is natural or unnatural, based on how a real user would typically speak.
 
+Respond only with 'natural' or 'unnatural'. Choose the one that best fits. Do not leave the output blank."""
+
+model_evaluation = "anthropic/claude-3-7-sonnet-latest"
+model_evaluation_name = model_evaluation.split("/")[1].lower() if "/" in model_evaluation else model_evaluation
+client = OpenAI(api_key="0cTfrP7S4xnxVcQeMnkCvfY7nrgZs41e", base_url="https://api.deepinfra.com/v1/openai",)
+
+natural_count = [0, 0]
+mistakes = [0, 0]
+
+save_folder = os.path.join('./data/manual evaluation', model_name)
 for prompt_index, prompt in enumerate(prompts):
-    utterance_folder = os.path.join('./data/manual evaluation', model_name, prompt, 'utterances' if prompt == 'constraint-aware' else '')
+    number_of_utterances = 1
+    number_of_endpoints = 1
 
+    utterance_folder = os.path.join('./data/manual evaluation', model_name, prompt, 'utterances' if prompt == 'constraint-aware' else '')
+    print(utterance_folder)
+
+    rows = []
     for root, _, files in os.walk(utterance_folder):
         for filename in sorted(files):
             file_path = os.path.join(root, filename)
             with open(file_path, 'r') as f:
                 data = json.load(f)
-                api_description = data['description']
+                api_name = data["name"]
 
                 for endpoint in data['api_methods']:
-                    #print(data['name'], endpoint['name'])
-                    # parameter_list = []
-                    # for parameter in endpoint['parameters']:
-                    #     parameter_list.append(parameter['name'])
-                    # reference = [str(api_description + '. ' +  endpoint['description']) + '. Information that can be used: ' + str(parameter_list)]
+                    api_method_name = endpoint['name']
+                    print(api_method_name)
+
+                    for utterances in endpoint['utterances']:
+                        utterance = utterances['utterance']
+                        messages = [{"role": "system", "content": PROMPT_INSTRUCTION},
+                                    {"role": "user", "content": utterance}]
+
+                        response = client.chat.completions.create(
+                                model=model_evaluation,
+                                messages=messages,
+                                max_tokens=100,
+                                temperature=0.0)
+
+                        content = response.choices[0].message.content
+                        if content == "natural" or content == "unnatural":
+                            print(content, ' - ' , utterance)
+                            if content == "natural":
+                                natural_count[prompt_index]+=1
+
+                            rows.append({'utterance index': number_of_utterances,
+                                         'endpoint index': number_of_endpoints,
+                                         'API name': api_name,
+                                         'API method name': api_method_name,
+                                         'utterance': utterance,
+                                         model_evaluation_name+'_evaluation': content})
+
+                        else:
+                            print('This was the output:' + content)
+
+                            rows.append({'utterance index': number_of_utterances,
+                                         'endpoint index': number_of_endpoints,
+                                         'API name': api_name,
+                                         'API method name': api_method_name,
+                                         'utterance': utterance['utterance'],
+                                         'LLM_evaluation': 'none'})
+
+                        number_of_utterances+=1
+                    number_of_endpoints+=1
+                    print("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
+
+    df = pd.DataFrame(rows)
+    file_name = 'naturalness_' + prompt + "_" + model_evaluation_name + '.csv'
+    file_path = os.path.join(save_folder, file_name)
+    df.to_csv(file_path, index=False)
+
+print(natural_count)
+
+
+
+# 2.2 Cosine similarity using embeddings sentence models: the problem is that it highlights similar things in the reference (which highlights the api name) rather than fluency and naturalness
+# cosine_similarity = [[], []] # one for each prompt
+# model = SentenceTransformer('all-mpnet-base-v2')
+
+# for prompt_index, prompt in enumerate(prompts):
+#     utterance_folder = os.path.join('./data/manual evaluation', model_name, prompt, 'utterances' if prompt == 'constraint-aware' else '')
+
+#     for root, _, files in os.walk(utterance_folder):
+#         for filename in sorted(files):
+#             file_path = os.path.join(root, filename)
+#             with open(file_path, 'r') as f:
+#                 data = json.load(f)
+#                 api_description = data['description']
+
+#                 for endpoint in data['api_methods']:
+#                     #print(data['name'], endpoint['name'])
+#                     # parameter_list = []
+#                     # for parameter in endpoint['parameters']:
+#                     #     parameter_list.append(parameter['name'])
+#                     # reference = [str(api_description + '. ' +  endpoint['description']) + '. Information that can be used: ' + str(parameter_list)]
                 
-                    reference = [str(api_description + '. ' +  endpoint['description'])]
-                    utterances = [x['utterance'] for x in endpoint['utterances']]
+#                     reference = [str(api_description + '. ' +  endpoint['description'])]
+#                     utterances = [x['utterance'] for x in endpoint['utterances']]
 
-                    # computing embeddings and similarity
-                    reference_embedding = model.encode(reference, convert_to_tensor=True)
-                    utterance_embedding = model.encode(utterances, convert_to_tensor=True)
-                    cosine_scores = util.cos_sim(reference_embedding, utterance_embedding)[0]
+#                     # computing embeddings and similarity
+#                     reference_embedding = model.encode(reference, convert_to_tensor=True)
+#                     utterance_embedding = model.encode(utterances, convert_to_tensor=True)
+#                     cosine_scores = util.cos_sim(reference_embedding, utterance_embedding)[0]
 
-                    #print(cosine_scores)
-                    cosine_similarity[prompt_index].append(round(cosine_scores.mean().item(), 4))
+#                     #print(cosine_scores)
+#                     cosine_similarity[prompt_index].append(round(cosine_scores.mean().item(), 4))
 
-                    # for idx, (candidate, score) in enumerate(zip(utterances, cosine_scores)):
-                    #     print(f"{idx+1:2d}. Score: {score:.4f} | {candidate}")
+#                     # for idx, (candidate, score) in enumerate(zip(utterances, cosine_scores)):
+#                     #     print(f"{idx+1:2d}. Score: {score:.4f} | {candidate}")
 
-print()
-print('average cosine similarity:')
-for cs, prompt in zip(cosine_similarity, prompts):
-    print(prompt + ':', round(sum(cs)/len(cs), 4), '   -   ', cs)
+# print()
+# print('average cosine similarity:')
+# for cs, prompt in zip(cosine_similarity, prompts):
+#     print(prompt + ':', round(sum(cs)/len(cs), 4), '   -   ', cs)
 
-# 2.2 BLEURT similarity: results similar with the one shown in the utterance.
-bleurt_similarity = [[], []] # one for each prompt
-checkpoint = "/home/vitor/Documents/phd/bleurt/BLEURT-20"
-scorer = score.BleurtScorer(checkpoint)
+# 2.3 BLEURT similarity: results similar with the ones shown in the cosine similarity but lower. not that good.
+# bleurt_similarity = [[], []] # one for each prompt
+# checkpoint = "/home/vitor/Documents/phd/bleurt/BLEURT-20"
+# scorer = score.BleurtScorer(checkpoint)
 
-for prompt_index, prompt in enumerate(prompts):
-    utterance_folder = os.path.join('./data/manual evaluation', model_name, prompt, 'utterances' if prompt == 'constraint-aware' else '')
+# for prompt_index, prompt in enumerate(prompts):
+#     utterance_folder = os.path.join('./data/manual evaluation', model_name, prompt, 'utterances' if prompt == 'constraint-aware' else '')
 
-    for root, _, files in os.walk(utterance_folder):
-        for filename in sorted(files):
-            file_path = os.path.join(root, filename)
-            with open(file_path, 'r') as f:
-                data = json.load(f)
-                api_description = data['description']
+#     for root, _, files in os.walk(utterance_folder):
+#         for filename in sorted(files):
+#             file_path = os.path.join(root, filename)
+#             with open(file_path, 'r') as f:
+#                 data = json.load(f)
+#                 api_description = data['description']
 
-                for endpoint in data['api_methods']:                
-                    reference = [str(api_description + '. ' +  endpoint['description'])]
-                    utterances = [x['utterance'] for x in endpoint['utterances']]
-                    scores = scorer.score(references=len(utterances)*reference, candidates=utterances)
-                    bleurt_similarity[prompt_index].append(round(sum(scores)/len(scores),4))
+#                 for endpoint in data['api_methods']:                
+#                     reference = [str(api_description + '. ' +  endpoint['description'])]
+#                     utterances = [x['utterance'] for x in endpoint['utterances']]
+#                     scores = scorer.score(references=len(utterances)*reference, candidates=utterances)
+#                     bleurt_similarity[prompt_index].append(round(sum(scores)/len(scores),4))
 
-                    # for idx, (candidate, score) in enumerate(zip(utterances, scores)):
-                    #     print(f"{idx+1:2d}. Score: {score:.4f} | {candidate}")
-
-
-print()
-print('BLEURT:')                
-for prompt, bs in zip(prompts, bleurt_similarity):
-    print(prompt + ':', round(sum(bs)/len(bs), 4), '   -   ', bs)
+#                     # for idx, (candidate, score) in enumerate(zip(utterances, scores)):
+#                     #     print(f"{idx+1:2d}. Score: {score:.4f} | {candidate}")
 
 
+# print()
+# print('BLEURT:')                
+# for prompt, bs in zip(prompts, bleurt_similarity):
+#     print(prompt + ':', round(sum(bs)/len(bs), 4), '   -   ', bs)
+
+
+
+##### PARAMETER COVERAGE
 # 3. parameter coverage and parameter combination coverage
 # I will have to remove the ones that are technical and compare for a fair evaluation. 
 parameter_coverage = [[], []]
