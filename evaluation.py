@@ -9,7 +9,7 @@ from collections import defaultdict
 from openai import OpenAI
 
 # the evaluation is done per model
-model_name = "gpt-4o"  # deepseek-ai/DeepSeek-V3
+model_name = "deepseek-ai/DeepSeek-V3"  # deepseek-ai/DeepSeek-V3
 model_name = model_name.split("/")[1].lower() if "/" in model_name else model_name
 print(model_name)
 prompts = ['constraint-aware', 'sheng et al']
@@ -73,7 +73,7 @@ Evaluate the utterance and return whether it is natural or unnatural, based on h
 
 Respond only with 'natural' or 'unnatural'. Choose the one that best fits. Do not leave the output blank."""
 
-model_evaluation = "anthropic/claude-3-7-sonnet-latest"
+model_evaluation = "meta-llama/Llama-4-Maverick-17B-128E-Instruct-FP8" #  anthropic/claude-3-7-sonnet-latest
 model_evaluation_name = model_evaluation.split("/")[1].lower() if "/" in model_evaluation else model_evaluation
 client = OpenAI(api_key="0cTfrP7S4xnxVcQeMnkCvfY7nrgZs41e", base_url="https://api.deepinfra.com/v1/openai",)
 
