@@ -1,5 +1,5 @@
 """
-Reads the configuration file and makes the dataset ready for training the retriever model.
+Makes the LLM-based generated dataset ready for training a retrieval model.
 """
 import os
 import json
@@ -63,7 +63,8 @@ def main():
                                     "api_method_parameters": api_method_parameters}
 
                 doc_id = doc_id_map.setdefault(json.dumps(document_content), len(doc_id_map) + 1)
-                documents.append([doc_id, document_content])
+                if doc_id == len(doc_id_map):
+                    documents.append([doc_id, document_content])
 
                 # organizing queries and training pairs
                 if isinstance(api_method['utterances'], list):
