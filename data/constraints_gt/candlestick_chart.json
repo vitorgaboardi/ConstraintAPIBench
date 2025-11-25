@@ -1,0 +1,87 @@
+{
+    "name": "Candlestick Chart",
+    "description": "This API returns candlestick charts images (base64) so you can use them wherever you want!",
+    "url": "https://rapidapi.com/totigm/api/candlestick-chart/",
+    "api_methods": [
+        {
+            "name": "Binance charts",
+            "description": "This endpoint creates candlestick charts for any cryptocurrency listed on [Binance](https://www.binance.com) that you want!",
+            "url": "https://candlestick-chart.p.rapidapi.com/binance",
+            "parameters": [
+                {
+                    "name": "symbol",
+                    "type": "STRING",
+                    "description": "Symbol for the traiding pair\n\nYou can see every traiding pair available [here](https://coinmarketcap.com/en/exchanges/binance)",
+                    "default": "BTCUSDT",
+                    "required": true,
+                    "constraints": {
+                        "format": "^[A-Z0-9]{2,10}(?:-|/)?[A-Z0-9]{2,10}$"
+                    }
+                },
+                {
+                    "name": "Content-Type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "application/x-www-form-urlencoded",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Amount of candles in the chart\n\n- Default: 16\n- Type: Integer. Maximum 1000",
+                    "default": "16",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 1000
+                        }
+                    }
+                },
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "Time interval for each candle.\n\n- Default: 1m\n\n## Time intervals\n- m: Minutes\n- h: Hours\n- d: Days\n- w: Weeks\n- M: Months\n\nList of intervals:\n- 1m\n- 3m\n- 5m\n- 15m\n- 30m\n- 1h\n- 2h\n- 4h\n- 6h\n- 8h\n- 12h\n- 1d\n- 3d\n- 1w\n- 1M",
+                    "default": "1m",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "1m",
+                                "3m",
+                                "5m",
+                                "15m",
+                                "30m",
+                                "1h",
+                                "2h",
+                                "4h",
+                                "6h",
+                                "8h",
+                                "12h",
+                                "1d",
+                                "3d",
+                                "1w",
+                                "1M"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lastPrice",
+                    "type": "NUMBER",
+                    "description": "The last price that the chart must have. This could be useful if there is some delay between your analysis and the call to this API, and that delay could make a difference between the numbers and the chart. If not given, the chart will be created with Binance last price\n\n- Type: Number",
+                    "default": "57500",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Health",
+            "description": "Health check",
+            "url": "https://candlestick-chart.p.rapidapi.com/",
+            "parameters": []
+        }
+    ]
+}

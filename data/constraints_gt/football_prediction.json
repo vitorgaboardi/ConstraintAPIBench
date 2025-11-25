@@ -1,0 +1,154 @@
+{
+    "name": "Football Prediction",
+    "description": "The Football Prediction API provides predictions for upcoming football matches, average bookie odds, results for past matches and prediction performance statistics for past results.",
+    "url": "https://rapidapi.com/boggio-analytics/api/football-prediction/",
+    "api_methods": [
+        {
+            "name": "Head To Head",
+            "description": "Shows head to head stats and previous encounters for the home and away team of an upcoming match.",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "(use predictions endpoint to get list of IDs)",
+                    "default": "81930",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit the search to only X previous encounters. (max is 10)",
+                    "default": "10",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        }
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Home Team League Stats",
+            "description": "Shows the league table and stats for the home team of an upcoming match.",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/home-league-stats/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "(use predictions endpoint to get list of IDs)",
+                    "default": "81930",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Home Team Last 10 Matches",
+            "description": "Grab the statistics and list of the last 10 matches played by the home team for a certain ID",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/home-last-10/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "(use predictions endpoint to get list of IDs)",
+                    "default": "81930",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Away Team Last 10 Matches",
+            "description": "Grab the statistics and list of the last 10 matches played by the away team for a certain ID",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/away-last-10/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "(use predictions endpoint to get list of IDs)",
+                    "default": "81930",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Away Team League Stats",
+            "description": "Shows the league table and stats for the away team of an upcoming match.",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/away-league-stats/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "(use predictions endpoint to get list of IDs)",
+                    "default": "86397",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Prediction Details",
+            "description": "Grab all available predictions for a match id",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/predictions/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "99999",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "List available federations",
+            "description": "Returns an array of all the available federations.",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/list-federations",
+            "parameters": []
+        },
+        {
+            "name": "Performance stats for past predictions",
+            "description": "Returns information about the accuracy of past predictions. (in the last day, 7 days, 14 days and 30 days) Can be additionally filtered by federation and market. If no market filter is provided it defaults to classic",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/performance-stats",
+            "parameters": [
+                {
+                    "name": "federation",
+                    "type": "STRING",
+                    "description": "Filter stats by federation",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "Show stats for a different prediction market. Defaults to \"classic\" if not provided",
+                    "default": "classic",
+                    "required": false
+                }
+            ]
+        },
+        {
+            "name": "Get list of fixture IDs",
+            "description": "Returns a list of fixture IDs that can be used to make requests to endpoints expecting a ID url parameter.\nCan be filtered by:\n\n- iso_date\n- market\n- federation",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/get-list-of-fixture-ids",
+            "parameters": []
+        }
+    ]
+}
