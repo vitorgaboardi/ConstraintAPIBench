@@ -1,0 +1,863 @@
+{
+    "name": "AIbit translator",
+    "description": "Translate API, Translation Service.\n\u2713 Text, JSON, HTML\n\u2713 Pay per requests, Affordable Price\n\u2713 High-Quality Results, Blazing Speed, Reliability, Availability\n\u2713 110+ Languages Supported.",
+    "url": "https://rapidapi.com/aibitranslator-aibitranslator-default/api/aibit-translator/",
+    "api_methods": [
+        {
+            "name": "Detect language",
+            "description": "- Detect text language",
+            "url": "https://aibit-translator.p.rapidapi.com/api/v1/translator/detect-language",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you tell me what language this text is in?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Identify the language of this sentence.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What language is this paragraph written in?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Detect the language of this message.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you figure out the language of this text?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Determine the language used in this document.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What language does this text belong to?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please detect the language of this snippet.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you identify the language of this passage?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me the language of this text.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Get Supported Languages",
+            "description": "Get list support languages by AIbit",
+            "url": "https://aibit-translator.p.rapidapi.com/api/v1/translator/support-languages",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What languages does AIbit translator support?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you show me the list of languages available for translation with AIbit?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which languages can I translate using AIbit translator?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me the languages supported by AIbit translation service.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to know the languages AIbit translator can handle.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the supported languages for AIbit translator?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide the list of languages AIbit translator supports?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which languages are compatible with AIbit translator?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the languages AIbit translator can translate.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the available languages for translation in AIbit?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Translate JSON",
+            "description": "- Translate JSON data, able to protect paths",
+            "url": "https://aibit-translator.p.rapidapi.com/api/v1/translator/json",
+            "parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "auto",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "json",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "{         \"title\": \"The Importance of Regular Exercise\",         \"author\": \"John Doe\",         \"rate\": 4.2999,         \"extra\": {             \"comment_counts\": 10,             \"last_comment\": {                 \"author\": \"not be translated\",                 \"short_text\": \"Hi thank for your post... We need more information\"             }         }     }",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "vi",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "protected_paths",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[\"extra.last_comment.author\"]",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Translate this JSON data from English to French, but keep the author's name in the last comment unchanged.",
+                    "parameters": {
+                        "from": "en",
+                        "json": {
+                            "title": "The Importance of Regular Exercise",
+                            "author": "John Doe",
+                            "rate": 4.2999,
+                            "extra": {
+                                "comment_counts": 10,
+                                "last_comment": {
+                                    "author": "not be translated",
+                                    "short_text": "Hi thank for your post... We need more information"
+                                }
+                            }
+                        },
+                        "to": "fr",
+                        "protected_paths": [
+                            "extra.last_comment.author"
+                        ]
+                    }
+                },
+                {
+                    "utterance": "Can you translate this JSON from Spanish to German?",
+                    "parameters": {
+                        "from": "es",
+                        "json": {
+                            "title": "La importancia del ejercicio regular",
+                            "author": "Juan P\u00e9rez",
+                            "rate": 4.5,
+                            "extra": {
+                                "comment_counts": 15,
+                                "last_comment": {
+                                    "author": "no traducir",
+                                    "short_text": "Hola, gracias por tu publicaci\u00f3n... Necesitamos m\u00e1s informaci\u00f3n"
+                                }
+                            }
+                        },
+                        "to": "de"
+                    }
+                },
+                {
+                    "utterance": "Translate this JSON data from auto-detected language to Japanese, but protect the author field in the last comment.",
+                    "parameters": {
+                        "from": "auto",
+                        "json": {
+                            "title": "The Importance of Regular Exercise",
+                            "author": "John Doe",
+                            "rate": 4.2999,
+                            "extra": {
+                                "comment_counts": 10,
+                                "last_comment": {
+                                    "author": "not be translated",
+                                    "short_text": "Hi thank for your post... We need more information"
+                                }
+                            }
+                        },
+                        "to": "ja",
+                        "protected_paths": [
+                            "extra.last_comment.author"
+                        ]
+                    }
+                },
+                {
+                    "utterance": "I need this JSON translated from Portuguese to Russian.",
+                    "parameters": {
+                        "from": "pt",
+                        "json": {
+                            "title": "A import\u00e2ncia do exerc\u00edcio regular",
+                            "author": "Jo\u00e3o Silva",
+                            "rate": 4.7,
+                            "extra": {
+                                "comment_counts": 20,
+                                "last_comment": {
+                                    "author": "n\u00e3o traduzir",
+                                    "short_text": "Ol\u00e1, obrigado pelo seu post... Precisamos de mais informa\u00e7\u00f5es"
+                                }
+                            }
+                        },
+                        "to": "ru"
+                    }
+                },
+                {
+                    "utterance": "Translate this JSON from English to Chinese, but keep the last comment's author name as is.",
+                    "parameters": {
+                        "from": "en",
+                        "json": {
+                            "title": "The Importance of Regular Exercise",
+                            "author": "John Doe",
+                            "rate": 4.2999,
+                            "extra": {
+                                "comment_counts": 10,
+                                "last_comment": {
+                                    "author": "not be translated",
+                                    "short_text": "Hi thank for your post... We need more information"
+                                }
+                            }
+                        },
+                        "to": "zh",
+                        "protected_paths": [
+                            "extra.last_comment.author"
+                        ]
+                    }
+                },
+                {
+                    "utterance": "Can you translate this JSON from Italian to Korean?",
+                    "parameters": {
+                        "from": "it",
+                        "json": {
+                            "title": "L'importanza dell'esercizio regolare",
+                            "author": "Mario Rossi",
+                            "rate": 4.8,
+                            "extra": {
+                                "comment_counts": 12,
+                                "last_comment": {
+                                    "author": "non tradurre",
+                                    "short_text": "Ciao, grazie per il tuo post... Abbiamo bisogno di pi\u00f9 informazioni"
+                                }
+                            }
+                        },
+                        "to": "ko"
+                    }
+                },
+                {
+                    "utterance": "Translate this JSON data from French to Arabic, but protect the author field in the last comment.",
+                    "parameters": {
+                        "from": "fr",
+                        "json": {
+                            "title": "L'importance de l'exercice r\u00e9gulier",
+                            "author": "Jean Dupont",
+                            "rate": 4.6,
+                            "extra": {
+                                "comment_counts": 18,
+                                "last_comment": {
+                                    "author": "ne pas traduire",
+                                    "short_text": "Bonjour, merci pour votre post... Nous avons besoin de plus d'informations"
+                                }
+                            }
+                        },
+                        "to": "ar",
+                        "protected_paths": [
+                            "extra.last_comment.author"
+                        ]
+                    }
+                },
+                {
+                    "utterance": "I need this JSON translated from German to Hindi.",
+                    "parameters": {
+                        "from": "de",
+                        "json": {
+                            "title": "Die Bedeutung von regelm\u00e4\u00dfiger Bewegung",
+                            "author": "Hans M\u00fcller",
+                            "rate": 4.4,
+                            "extra": {
+                                "comment_counts": 14,
+                                "last_comment": {
+                                    "author": "nicht \u00fcbersetzen",
+                                    "short_text": "Hallo, danke f\u00fcr deinen Beitrag... Wir brauchen mehr Informationen"
+                                }
+                            }
+                        },
+                        "to": "hi"
+                    }
+                },
+                {
+                    "utterance": "Translate this JSON from English to Turkish, but keep the last comment's author name unchanged.",
+                    "parameters": {
+                        "from": "en",
+                        "json": {
+                            "title": "The Importance of Regular Exercise",
+                            "author": "John Doe",
+                            "rate": 4.2999,
+                            "extra": {
+                                "comment_counts": 10,
+                                "last_comment": {
+                                    "author": "not be translated",
+                                    "short_text": "Hi thank for your post... We need more information"
+                                }
+                            }
+                        },
+                        "to": "tr",
+                        "protected_paths": [
+                            "extra.last_comment.author"
+                        ]
+                    }
+                },
+                {
+                    "utterance": "Can you translate this JSON from Dutch to Polish?",
+                    "parameters": {
+                        "from": "nl",
+                        "json": {
+                            "title": "Het belang van regelmatige lichaamsbeweging",
+                            "author": "Jan Jansen",
+                            "rate": 4.3,
+                            "extra": {
+                                "comment_counts": 16,
+                                "last_comment": {
+                                    "author": "niet vertalen",
+                                    "short_text": "Hallo, bedankt voor je bericht... We hebben meer informatie nodig"
+                                }
+                            }
+                        },
+                        "to": "pl"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Translate Text",
+            "description": "- Translate between more than 110 languages.",
+            "url": "https://aibit-translator.p.rapidapi.com/api/v1/translator/text",
+            "parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Original Language",
+                    "default": "auto",
+                    "required": true
+                },
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "The text you want to translate",
+                    "default": "C\u1ea3m \u01a1n b\u1ea1n \u0111\u00e3 s\u1eed d\u1ee5ng d\u1ecbch v\u1ee5 c\u1ee7a ch\u00fang t\u00f4i",
+                    "required": true
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Destination Language",
+                    "default": "en",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Translate 'Thank you for using our service' from English to Spanish.",
+                    "parameters": {
+                        "from": "en",
+                        "text": "Thank you for using our service",
+                        "to": "es"
+                    }
+                },
+                {
+                    "utterance": "Can you convert 'Bonjour' from French to German?",
+                    "parameters": {
+                        "from": "fr",
+                        "text": "Bonjour",
+                        "to": "de"
+                    }
+                },
+                {
+                    "utterance": "How do you say 'Good morning' in Japanese if it's originally in English?",
+                    "parameters": {
+                        "from": "en",
+                        "text": "Good morning",
+                        "to": "ja"
+                    }
+                },
+                {
+                    "utterance": "I need 'Hola' translated from Spanish to Italian.",
+                    "parameters": {
+                        "from": "es",
+                        "text": "Hola",
+                        "to": "it"
+                    }
+                },
+                {
+                    "utterance": "Translate 'Guten Tag' from German to Russian.",
+                    "parameters": {
+                        "from": "de",
+                        "text": "Guten Tag",
+                        "to": "ru"
+                    }
+                },
+                {
+                    "utterance": "What is 'Hello' in Chinese if it's in English?",
+                    "parameters": {
+                        "from": "en",
+                        "text": "Hello",
+                        "to": "zh"
+                    }
+                },
+                {
+                    "utterance": "Could you translate 'Ciao' from Italian to Portuguese?",
+                    "parameters": {
+                        "from": "it",
+                        "text": "Ciao",
+                        "to": "pt"
+                    }
+                },
+                {
+                    "utterance": "Please translate '\uc548\ub155\ud558\uc138\uc694' from Korean to English.",
+                    "parameters": {
+                        "from": "ko",
+                        "text": "\uc548\ub155\ud558\uc138\uc694",
+                        "to": "en"
+                    }
+                },
+                {
+                    "utterance": "I want to translate 'Merci' from French to Dutch.",
+                    "parameters": {
+                        "from": "fr",
+                        "text": "Merci",
+                        "to": "nl"
+                    }
+                },
+                {
+                    "utterance": "Translate 'Gracias' from Spanish to French.",
+                    "parameters": {
+                        "from": "es",
+                        "text": "Gracias",
+                        "to": "fr"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Detect language",
+            "description": "- Detect text language",
+            "url": "https://aibit-translator.p.rapidapi.com/api/v1/translator/detect-language",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you detect the language of this text?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What language is this sentence written in?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Identify the language of the following paragraph.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you tell me the language of this message?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Determine the language used in this document.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Is it possible to detect the language of this text?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please find out the language of this excerpt.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What is the language of this text snippet?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you figure out the language of this passage?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Detect the language of this written content.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Translate JSON",
+            "description": "- Translate JSON data, able to protect paths",
+            "url": "https://aibit-translator.p.rapidapi.com/api/v1/translator/json",
+            "parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "auto",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "json",
+                    "type": "OBJECT",
+                    "description": "",
+                    "default": "{         \"title\": \"The Importance of Regular Exercise\",         \"author\": \"John Doe\",         \"rate\": 4.2999,         \"extra\": {             \"comment_counts\": 10,             \"last_comment\": {                 \"author\": \"not be translated\",                 \"short_text\": \"Hi thank for your post... We need more information\"             }         }     }",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "vi",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "protected_paths",
+                    "type": "ARRAY",
+                    "description": "",
+                    "default": "[\"extra.last_comment.author\"]",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Translate this JSON data from English to French, but keep the author's name in the comments unchanged.",
+                    "parameters": {
+                        "from": "en",
+                        "json": {
+                            "title": "The Importance of Regular Exercise",
+                            "author": "John Doe",
+                            "rate": 4.2999,
+                            "extra": {
+                                "comment_counts": 10,
+                                "last_comment": {
+                                    "author": "not be translated",
+                                    "short_text": "Hi thank for your post... We need more information"
+                                }
+                            }
+                        },
+                        "to": "fr",
+                        "protected_paths": [
+                            "extra.last_comment.author"
+                        ]
+                    }
+                },
+                {
+                    "utterance": "Can you translate this JSON from Spanish to German?",
+                    "parameters": {
+                        "from": "es",
+                        "json": {
+                            "title": "La importancia del ejercicio regular",
+                            "author": "Juan P\u00e9rez",
+                            "rate": 4.5,
+                            "extra": {
+                                "comment_counts": 15,
+                                "last_comment": {
+                                    "author": "no traducir",
+                                    "short_text": "Hola, gracias por tu publicaci\u00f3n... Necesitamos m\u00e1s informaci\u00f3n"
+                                }
+                            }
+                        },
+                        "to": "de"
+                    }
+                },
+                {
+                    "utterance": "Translate this JSON from Chinese to English, but don't translate the author's name in the comments.",
+                    "parameters": {
+                        "from": "zh",
+                        "json": {
+                            "title": "\u5b9a\u671f\u953b\u70bc\u7684\u91cd\u8981\u6027",
+                            "author": "\u5f20\u4e09",
+                            "rate": 4.8,
+                            "extra": {
+                                "comment_counts": 20,
+                                "last_comment": {
+                                    "author": "\u4e0d\u8981\u7ffb\u8bd1",
+                                    "short_text": "\u4f60\u597d\uff0c\u611f\u8c22\u4f60\u7684\u5e16\u5b50...\u6211\u4eec\u9700\u8981\u66f4\u591a\u4fe1\u606f"
+                                }
+                            }
+                        },
+                        "to": "en",
+                        "protected_paths": [
+                            "extra.last_comment.author"
+                        ]
+                    }
+                },
+                {
+                    "utterance": "I need this JSON translated from French to Italian.",
+                    "parameters": {
+                        "from": "fr",
+                        "json": {
+                            "title": "L'importance de l'exercice r\u00e9gulier",
+                            "author": "Jean Dupont",
+                            "rate": 4.2,
+                            "extra": {
+                                "comment_counts": 12,
+                                "last_comment": {
+                                    "author": "ne pas traduire",
+                                    "short_text": "Bonjour, merci pour votre post... Nous avons besoin de plus d'informations"
+                                }
+                            }
+                        },
+                        "to": "it"
+                    }
+                },
+                {
+                    "utterance": "Translate this JSON from German to Spanish, but leave the author's name in the comments as is.",
+                    "parameters": {
+                        "from": "de",
+                        "json": {
+                            "title": "Die Bedeutung von regelm\u00e4\u00dfiger Bewegung",
+                            "author": "Max Mustermann",
+                            "rate": 4.6,
+                            "extra": {
+                                "comment_counts": 18,
+                                "last_comment": {
+                                    "author": "nicht \u00fcbersetzen",
+                                    "short_text": "Hallo, danke f\u00fcr deinen Beitrag... Wir brauchen mehr Informationen"
+                                }
+                            }
+                        },
+                        "to": "es",
+                        "protected_paths": [
+                            "extra.last_comment.author"
+                        ]
+                    }
+                },
+                {
+                    "utterance": "Can you translate this JSON from Russian to Portuguese?",
+                    "parameters": {
+                        "from": "ru",
+                        "json": {
+                            "title": "\u0412\u0430\u0436\u043d\u043e\u0441\u0442\u044c \u0440\u0435\u0433\u0443\u043b\u044f\u0440\u043d\u044b\u0445 \u0443\u043f\u0440\u0430\u0436\u043d\u0435\u043d\u0438\u0439",
+                            "author": "\u0418\u0432\u0430\u043d \u0418\u0432\u0430\u043d\u043e\u0432",
+                            "rate": 4.7,
+                            "extra": {
+                                "comment_counts": 14,
+                                "last_comment": {
+                                    "author": "\u043d\u0435 \u043f\u0435\u0440\u0435\u0432\u043e\u0434\u0438\u0442\u044c",
+                                    "short_text": "\u041f\u0440\u0438\u0432\u0435\u0442, \u0441\u043f\u0430\u0441\u0438\u0431\u043e \u0437\u0430 \u0432\u0430\u0448 \u043f\u043e\u0441\u0442... \u041d\u0430\u043c \u043d\u0443\u0436\u043d\u043e \u0431\u043e\u043b\u044c\u0448\u0435 \u0438\u043d\u0444\u043e\u0440\u043c\u0430\u0446\u0438\u0438"
+                                }
+                            }
+                        },
+                        "to": "pt"
+                    }
+                },
+                {
+                    "utterance": "Translate this JSON from Japanese to Korean, but keep the author's name in the comments unchanged.",
+                    "parameters": {
+                        "from": "ja",
+                        "json": {
+                            "title": "\u5b9a\u671f\u7684\u306a\u904b\u52d5\u306e\u91cd\u8981\u6027",
+                            "author": "\u5c71\u7530\u592a\u90ce",
+                            "rate": 4.4,
+                            "extra": {
+                                "comment_counts": 16,
+                                "last_comment": {
+                                    "author": "\u7ffb\u8a33\u3057\u306a\u3044",
+                                    "short_text": "\u3053\u3093\u306b\u3061\u306f\u3001\u6295\u7a3f\u3042\u308a\u304c\u3068\u3046...\u3082\u3063\u3068\u60c5\u5831\u304c\u5fc5\u8981\u3067\u3059"
+                                }
+                            }
+                        },
+                        "to": "ko",
+                        "protected_paths": [
+                            "extra.last_comment.author"
+                        ]
+                    }
+                },
+                {
+                    "utterance": "I need this JSON translated from Portuguese to Chinese.",
+                    "parameters": {
+                        "from": "pt",
+                        "json": {
+                            "title": "A import\u00e2ncia do exerc\u00edcio regular",
+                            "author": "Carlos Silva",
+                            "rate": 4.3,
+                            "extra": {
+                                "comment_counts": 11,
+                                "last_comment": {
+                                    "author": "n\u00e3o traduzir",
+                                    "short_text": "Ol\u00e1, obrigado pelo seu post... Precisamos de mais informa\u00e7\u00f5es"
+                                }
+                            }
+                        },
+                        "to": "zh"
+                    }
+                },
+                {
+                    "utterance": "Translate this JSON from Italian to Russian, but don't translate the author's name in the comments.",
+                    "parameters": {
+                        "from": "it",
+                        "json": {
+                            "title": "L'importanza dell'esercizio regolare",
+                            "author": "Mario Rossi",
+                            "rate": 4.1,
+                            "extra": {
+                                "comment_counts": 13,
+                                "last_comment": {
+                                    "author": "non tradurre",
+                                    "short_text": "Ciao, grazie per il tuo post... Abbiamo bisogno di pi\u00f9 informazioni"
+                                }
+                            }
+                        },
+                        "to": "ru",
+                        "protected_paths": [
+                            "extra.last_comment.author"
+                        ]
+                    }
+                },
+                {
+                    "utterance": "Can you translate this JSON from Korean to Japanese?",
+                    "parameters": {
+                        "from": "ko",
+                        "json": {
+                            "title": "\uc815\uae30\uc801\uc778 \uc6b4\ub3d9\uc758 \uc911\uc694\uc131",
+                            "author": "\uae40\ucca0\uc218",
+                            "rate": 4.9,
+                            "extra": {
+                                "comment_counts": 17,
+                                "last_comment": {
+                                    "author": "\ubc88\uc5ed\ud558\uc9c0 \ub9c8\uc2ed\uc2dc\uc624",
+                                    "short_text": "\uc548\ub155\ud558\uc138\uc694, \uac8c\uc2dc\ubb3c \uac10\uc0ac\ud569\ub2c8\ub2e4... \ub354 \ub9ce\uc740 \uc815\ubcf4\uac00 \ud544\uc694\ud569\ub2c8\ub2e4"
+                                }
+                            }
+                        },
+                        "to": "ja"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Translate Text",
+            "description": "- Translate between more than 110 languages.",
+            "url": "https://aibit-translator.p.rapidapi.com/api/v1/translator/text",
+            "parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Original Language",
+                    "default": "auto",
+                    "required": true
+                },
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "The text you want to translate",
+                    "default": "C\u1ea3m \u01a1n b\u1ea1n \u0111\u00e3 s\u1eed d\u1ee5ng d\u1ecbch v\u1ee5 c\u1ee7a ch\u00fang t\u00f4i",
+                    "required": true
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Destination Language",
+                    "default": "en",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Translate 'Thank you for using our service' from English to French.",
+                    "parameters": {
+                        "from": "en",
+                        "text": "Thank you for using our service",
+                        "to": "fr"
+                    }
+                },
+                {
+                    "utterance": "Can you convert 'Hola, \u00bfc\u00f3mo est\u00e1s?' from Spanish to German?",
+                    "parameters": {
+                        "from": "es",
+                        "text": "Hola, \u00bfc\u00f3mo est\u00e1s?",
+                        "to": "de"
+                    }
+                },
+                {
+                    "utterance": "I need 'Bonjour, comment \u00e7a va?' translated from French to Italian.",
+                    "parameters": {
+                        "from": "fr",
+                        "text": "Bonjour, comment \u00e7a va?",
+                        "to": "it"
+                    }
+                },
+                {
+                    "utterance": "How do you say 'Good morning' in Japanese from English?",
+                    "parameters": {
+                        "from": "en",
+                        "text": "Good morning",
+                        "to": "ja"
+                    }
+                },
+                {
+                    "utterance": "Please translate 'Guten Tag' from German to Russian.",
+                    "parameters": {
+                        "from": "de",
+                        "text": "Guten Tag",
+                        "to": "ru"
+                    }
+                },
+                {
+                    "utterance": "Could you help me translate 'Ol\u00e1, tudo bem?' from Portuguese to Chinese?",
+                    "parameters": {
+                        "from": "pt",
+                        "text": "Ol\u00e1, tudo bem?",
+                        "to": "zh"
+                    }
+                },
+                {
+                    "utterance": "I want to know how 'Hello' is said in Arabic from English.",
+                    "parameters": {
+                        "from": "en",
+                        "text": "Hello",
+                        "to": "ar"
+                    }
+                },
+                {
+                    "utterance": "Translate '\uc548\ub155\ud558\uc138\uc694' from Korean to Spanish.",
+                    "parameters": {
+                        "from": "ko",
+                        "text": "\uc548\ub155\ud558\uc138\uc694",
+                        "to": "es"
+                    }
+                },
+                {
+                    "utterance": "What is 'Ciao' in English from Italian?",
+                    "parameters": {
+                        "from": "it",
+                        "text": "Ciao",
+                        "to": "en"
+                    }
+                },
+                {
+                    "utterance": "Can you translate '\u0928\u092e\u0938\u094d\u0924\u0947' from Hindi to French?",
+                    "parameters": {
+                        "from": "hi",
+                        "text": "\u0928\u092e\u0938\u094d\u0924\u0947",
+                        "to": "fr"
+                    }
+                }
+            ]
+        }
+    ]
+}

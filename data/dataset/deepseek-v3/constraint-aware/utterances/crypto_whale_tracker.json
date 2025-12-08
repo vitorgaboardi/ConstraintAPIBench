@@ -1,0 +1,684 @@
+{
+    "name": "\u20bf Crypto Whale Tracker \ud83d\ude80",
+    "description": "Portfolio  & whales  multi-chain tracker. Get Net worth, Coins  & NFTs on wallets, History, Trade signals (short/long) and Pools/Staking and more",
+    "url": "https://rapidapi.com/emir12/api/crypto-whale-tracker/",
+    "api_methods": [
+        {
+            "name": "Address history",
+            "description": "Get activity history of specific address\n\nSupported chains:\neth, bsc, arb, op, matic, avax, ftm, xdai",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/history/list",
+            "parameters": [
+                {
+                    "name": "chain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "eth",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "eth",
+                                "bsc",
+                                "arb",
+                                "op",
+                                "matic",
+                                "avax",
+                                "ftm",
+                                "xdai"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "user_addr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "page_count",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the transaction history for the wallet address 0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3 on the Ethereum network?",
+                    "parameters": {
+                        "chain": "eth",
+                        "user_addr": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the activity history for the Binance Smart Chain wallet 0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3?",
+                    "parameters": {
+                        "chain": "bsc",
+                        "user_addr": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3"
+                    }
+                },
+                {
+                    "utterance": "I need the transaction details for the wallet 0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3 on the Arbitrum chain.",
+                    "parameters": {
+                        "chain": "arb",
+                        "user_addr": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the history for the Optimism wallet address 0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3?",
+                    "parameters": {
+                        "chain": "op",
+                        "user_addr": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3"
+                    }
+                },
+                {
+                    "utterance": "Show me the activity history for the Polygon wallet 0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3.",
+                    "parameters": {
+                        "chain": "matic",
+                        "user_addr": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the transaction history for the Avalanche wallet address 0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3?",
+                    "parameters": {
+                        "chain": "avax",
+                        "user_addr": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3"
+                    }
+                },
+                {
+                    "utterance": "Can you retrieve the history for the Fantom wallet 0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3?",
+                    "parameters": {
+                        "chain": "ftm",
+                        "user_addr": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3"
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the activity history for the xDai wallet address 0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3.",
+                    "parameters": {
+                        "chain": "xdai",
+                        "user_addr": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the transaction history for the Ethereum wallet 0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3?",
+                    "parameters": {
+                        "chain": "eth",
+                        "user_addr": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the activity history for the Binance Smart Chain wallet 0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3?",
+                    "parameters": {
+                        "chain": "bsc",
+                        "user_addr": "0x741aa7cfb2c7bf2a1e7d4da2e3df6a56ca4131f3"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Address projects",
+            "description": "Get projects for specific address\n\nSupported chains:\neth, bsc, arb, op, matic, avax, ftm, xdai",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/portfolio/project_list",
+            "parameters": [
+                {
+                    "name": "chain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "eth",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "eth",
+                                "bsc",
+                                "arb",
+                                "op",
+                                "matic",
+                                "avax",
+                                "ftm",
+                                "xdai"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "user_addr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What projects are associated with the Ethereum wallet address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "chain": "eth",
+                        "user_addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the projects linked to the Binance Smart Chain address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "chain": "bsc",
+                        "user_addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the projects on the Arbitrum network for wallet 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26.",
+                    "parameters": {
+                        "chain": "arb",
+                        "user_addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "What projects are active on the Optimism chain for the address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "chain": "op",
+                        "user_addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "List the projects associated with the Polygon wallet 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26.",
+                    "parameters": {
+                        "chain": "matic",
+                        "user_addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "Can you provide details on the projects for the Avalanche address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "chain": "avax",
+                        "user_addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "What projects are linked to the Fantom wallet 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "chain": "ftm",
+                        "user_addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "Show me the projects on the xDai chain for the address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26.",
+                    "parameters": {
+                        "chain": "xdai",
+                        "user_addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "What are the projects associated with the Ethereum wallet 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "chain": "eth",
+                        "user_addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "Can you list the projects for the Binance Smart Chain address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "chain": "bsc",
+                        "user_addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Address balance",
+            "description": "Get balance for specific address\n\nSupported chains:\neth, bsc, arb, op, matic, avax, ftm, xdai",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/token/balance_list",
+            "parameters": [
+                {
+                    "name": "user_addr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "chain",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "eth",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "eth",
+                                "bsc",
+                                "arb",
+                                "op",
+                                "matic",
+                                "avax",
+                                "ftm",
+                                "xdai"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the balance for the Ethereum wallet address 0x4b16c5de96eb2117bbe5fd171e4d203624b014aa?",
+                    "parameters": {
+                        "user_addr": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                        "chain": "eth"
+                    }
+                },
+                {
+                    "utterance": "Can you check the balance of the Binance Smart Chain address 0x4b16c5de96eb2117bbe5fd171e4d203624b014aa?",
+                    "parameters": {
+                        "user_addr": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                        "chain": "bsc"
+                    }
+                },
+                {
+                    "utterance": "Tell me the balance for the Arbitrum wallet 0x4b16c5de96eb2117bbe5fd171e4d203624b014aa.",
+                    "parameters": {
+                        "user_addr": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                        "chain": "arb"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the current balance of the Optimism address 0x4b16c5de96eb2117bbe5fd171e4d203624b014aa?",
+                    "parameters": {
+                        "user_addr": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                        "chain": "op"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the balance for the Polygon wallet 0x4b16c5de96eb2117bbe5fd171e4d203624b014aa?",
+                    "parameters": {
+                        "user_addr": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                        "chain": "matic"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the balance of the Avalanche address 0x4b16c5de96eb2117bbe5fd171e4d203624b014aa?",
+                    "parameters": {
+                        "user_addr": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                        "chain": "avax"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the balance for the Fantom wallet 0x4b16c5de96eb2117bbe5fd171e4d203624b014aa?",
+                    "parameters": {
+                        "user_addr": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                        "chain": "ftm"
+                    }
+                },
+                {
+                    "utterance": "What is the balance of the xDai address 0x4b16c5de96eb2117bbe5fd171e4d203624b014aa?",
+                    "parameters": {
+                        "user_addr": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                        "chain": "xdai"
+                    }
+                },
+                {
+                    "utterance": "Check the balance for the Ethereum wallet 0x4b16c5de96eb2117bbe5fd171e4d203624b014aa.",
+                    "parameters": {
+                        "user_addr": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                        "chain": "eth"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the balance for the Binance Smart Chain wallet 0x4b16c5de96eb2117bbe5fd171e4d203624b014aa?",
+                    "parameters": {
+                        "user_addr": "0x4b16c5de96eb2117bbe5fd171e4d203624b014aa",
+                        "chain": "bsc"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Address net worth sparklines",
+            "description": "Get sparklines 24h data for specific address to render chart",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/asset/net_curve_24h",
+            "parameters": [
+                {
+                    "name": "user_addr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the 24-hour net worth sparklines for the wallet address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "user_addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "What does the net worth chart look like for the address 0x3b1f5b8c9e8a2b3c4d5e6f7a8b9c0d1e2f3a4b5?",
+                    "parameters": {
+                        "user_addr": "0x3b1f5b8c9e8a2b3c4d5e6f7a8b9c0d1e2f3a4b5"
+                    }
+                },
+                {
+                    "utterance": "Generate the 24-hour sparklines for the wallet 0x4c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d.",
+                    "parameters": {
+                        "user_addr": "0x4c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0d"
+                    }
+                },
+                {
+                    "utterance": "I need the net worth sparklines for the address 0x5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4.",
+                    "parameters": {
+                        "user_addr": "0x5e6f7a8b9c0d1e2f3a4b5c6d7e8f9a0b1c2d3e4"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the 24-hour net worth chart for the wallet 0x6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5?",
+                    "parameters": {
+                        "user_addr": "0x6d7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5"
+                    }
+                },
+                {
+                    "utterance": "Show me the sparklines for the address 0x7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6.",
+                    "parameters": {
+                        "user_addr": "0x7e8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the 24-hour net worth trend for the wallet 0x8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7?",
+                    "parameters": {
+                        "user_addr": "0x8f9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7"
+                    }
+                },
+                {
+                    "utterance": "Can you display the net worth sparklines for the address 0x9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8?",
+                    "parameters": {
+                        "user_addr": "0x9a0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8"
+                    }
+                },
+                {
+                    "utterance": "Generate the 24-hour net worth chart for the wallet 0xa0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9.",
+                    "parameters": {
+                        "user_addr": "0xa0b1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the sparkline data for the address 0xb1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0?",
+                    "parameters": {
+                        "user_addr": "0xb1c2d3e4f5a6b7c8d9e0f1a2b3c4d5e6f7a8b9c0"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Address info",
+            "description": "Get info about specific address",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/user/addr",
+            "parameters": [
+                {
+                    "name": "addr",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me details about the wallet address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "What information do you have on the address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the wallet 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26.",
+                    "parameters": {
+                        "addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "I need info on the address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26.",
+                    "parameters": {
+                        "addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the status of the wallet 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "Can you check the details for the address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "Provide me with information about the wallet 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26.",
+                    "parameters": {
+                        "addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the net worth of the address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the portfolio for the wallet 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                },
+                {
+                    "utterance": "What coins and NFTs are held in the address 0x2a82ae142b2e62cb7d10b55e323acb1cab663a26?",
+                    "parameters": {
+                        "addr": "0x2a82ae142b2e62cb7d10b55e323acb1cab663a26"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Whale portfolios",
+            "description": "Get huge whale portfolios\npagination example: ?start=0&limit=20",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/whale/list",
+            "parameters": [
+                {
+                    "name": "order_by",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "usd_value",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the top whale portfolios.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the largest crypto whale portfolios?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see the biggest whale portfolios in the crypto space.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Display the most significant whale portfolios across multiple chains.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the largest whale portfolios right now?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me an overview of the top whale portfolios.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the whale portfolios with the highest net worth.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the whale portfolios that are making the most trades.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide details on the biggest whale portfolios?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to see the whale portfolios with the most coins and NFTs.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Trade signals",
+            "description": "Parameters:\nsort_by: usd_value, time_at",
+            "url": "https://crypto-whale-tracker.p.rapidapi.com/activity/list",
+            "parameters": [
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "0",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "is_whale",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "true",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "order_by",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "time_at",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the latest trade signals sorted by USD value?",
+                    "parameters": {
+                        "sort_by": "usd_value"
+                    }
+                },
+                {
+                    "utterance": "What are the most recent trade signals ordered by time?",
+                    "parameters": {
+                        "sort_by": "time_at"
+                    }
+                },
+                {
+                    "utterance": "Give me the trade signals sorted by their USD value.",
+                    "parameters": {
+                        "sort_by": "usd_value"
+                    }
+                },
+                {
+                    "utterance": "Show me the trade signals arranged by the time they occurred.",
+                    "parameters": {
+                        "sort_by": "time_at"
+                    }
+                },
+                {
+                    "utterance": "What trade signals are available, sorted by USD value?",
+                    "parameters": {
+                        "sort_by": "usd_value"
+                    }
+                },
+                {
+                    "utterance": "List the trade signals in order of when they happened.",
+                    "parameters": {
+                        "sort_by": "time_at"
+                    }
+                },
+                {
+                    "utterance": "Can you display the trade signals sorted by their USD value?",
+                    "parameters": {
+                        "sort_by": "usd_value"
+                    }
+                },
+                {
+                    "utterance": "What are the trade signals, sorted by the time they were recorded?",
+                    "parameters": {
+                        "sort_by": "time_at"
+                    }
+                },
+                {
+                    "utterance": "Show me the trade signals ordered by USD value.",
+                    "parameters": {
+                        "sort_by": "usd_value"
+                    }
+                },
+                {
+                    "utterance": "List the trade signals sorted by the time they were generated.",
+                    "parameters": {
+                        "sort_by": "time_at"
+                    }
+                }
+            ]
+        }
+    ]
+}

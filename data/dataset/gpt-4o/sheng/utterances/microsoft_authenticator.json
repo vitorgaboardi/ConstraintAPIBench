@@ -1,0 +1,281 @@
+{
+    "product_id": "api_bdca90ea-15e6-4714-9c0c-ed34491126a5",
+    "tool_description": "Generate and validate time-based one-time passwords (TOTP) for your second factor authentication (2FA) scenario using Microsoft Authenticator app",
+    "home_url": "https://rapidapi.com/chdan/api/microsoft-authenticator/",
+    "name": "Microsoft Authenticator",
+    "title": "Microsoft Authenticator",
+    "pricing": "FREEMIUM",
+    "tool_name": "Microsoft Authenticator",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 280,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "host": "microsoft-authenticator.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "enroll",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/enroll/",
+            "description": "Step 2. Generate QR code and enroll using Google Authenticator app",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://microsoft-authenticator.p.rapidapi.com/enroll/\"\nquerystring = {\"account\": \"User1\", \"secret\": \"IH225HMVWDS3XJVY\", \"issuer\": \"HomeCorp\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microsoft-authenticator.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microsoft-authenticator.p.rapidapi.com/enroll/\"\nquerystring = {\"account\": \"User1\", \"secret\": \"IH225HMVWDS3XJVY\", \"issuer\": \"HomeCorp\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microsoft-authenticator.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "parameters": [
+                {
+                    "name": "secret",
+                    "type": "STRING",
+                    "description": "Secret code that /new/ or /new_v2/ return",
+                    "default": "IH225HMVWDS3XJVY",
+                    "required": true
+                },
+                {
+                    "name": "account",
+                    "type": "STRING",
+                    "description": "Account within the company",
+                    "default": "User1",
+                    "required": false
+                },
+                {
+                    "name": "issuer",
+                    "type": "STRING",
+                    "description": "A company issuing temporary codes",
+                    "default": "HomeCorp",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Enroll my account with the secret code IH225HMVWDS3XJVY.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY"
+                    }
+                },
+                {
+                    "utterance": "Generate a QR code for the secret code IH225HMVWDS3XJVY for my account at HomeCorp.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "issuer": "HomeCorp"
+                    }
+                },
+                {
+                    "utterance": "Use the secret IH225HMVWDS3XJVY to enroll my account User1.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "account": "User1"
+                    }
+                },
+                {
+                    "utterance": "I need to enroll using the secret IH225HMVWDS3XJVY for my company account.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY"
+                    }
+                },
+                {
+                    "utterance": "Please generate a QR code with the secret IH225HMVWDS3XJVY for my HomeCorp account.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "issuer": "HomeCorp"
+                    }
+                },
+                {
+                    "utterance": "Enroll my User1 account using the secret IH225HMVWDS3XJVY.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "account": "User1"
+                    }
+                },
+                {
+                    "utterance": "I want to use the secret IH225HMVWDS3XJVY to enroll my account with HomeCorp.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "issuer": "HomeCorp"
+                    }
+                },
+                {
+                    "utterance": "Generate a QR code for my account using the secret IH225HMVWDS3XJVY.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY"
+                    }
+                },
+                {
+                    "utterance": "Use the secret IH225HMVWDS3XJVY to enroll my account at HomeCorp.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "issuer": "HomeCorp"
+                    }
+                },
+                {
+                    "utterance": "Enroll my account with the secret IH225HMVWDS3XJVY and issuer HomeCorp.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "issuer": "HomeCorp"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "new_v2",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/new_v2/",
+            "description": "Step 1. Generate new secret \n\nnb! This is the absolutely the same as the /new/, the only difference is that here we omit the return message \"Your new secret: \", which makes it a little easier to parse the results",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://microsoft-authenticator.p.rapidapi.com/new_v2/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microsoft-authenticator.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microsoft-authenticator.p.rapidapi.com/new_v2/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microsoft-authenticator.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "new",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/new/",
+            "description": "Step 1. Generate new secret",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://microsoft-authenticator.p.rapidapi.com/new/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microsoft-authenticator.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microsoft-authenticator.p.rapidapi.com/new/\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microsoft-authenticator.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Generate a new secret for my Microsoft Authenticator app.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a new secret key for setting up 2FA with Microsoft Authenticator.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you create a new secret for my two-factor authentication setup?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please generate a new secret for my Microsoft Authenticator.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to set up 2FA, can you provide a new secret?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Create a new secret for my Microsoft Authenticator app.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a new secret for my second factor authentication.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you generate a new secret for my Microsoft Authenticator?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please create a new secret key for my 2FA setup.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a new secret for my Microsoft Authenticator app.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "validate",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/validate/",
+            "description": "Step 3. Validate TOTP",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://microsoft-authenticator.p.rapidapi.com/validate/\"\nquerystring = {\"secret\": \"IH225HMVWDS3XJVY\", \"code\": \"425079\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microsoft-authenticator.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://microsoft-authenticator.p.rapidapi.com/validate/\"\nquerystring = {\"secret\": \"IH225HMVWDS3XJVY\", \"code\": \"425079\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"microsoft-authenticator.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "parameters": [
+                {
+                    "name": "secret",
+                    "type": "STRING",
+                    "description": "Secret code that /new/ or /new_v2/ return",
+                    "default": "IH225HMVWDS3XJVY",
+                    "required": true
+                },
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "Temporary code generated by Microsoft Authenticator app",
+                    "default": "425079",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you validate the TOTP using the secret code IH225HMVWDS3XJVY and the temporary code 425079?",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "code": "425079"
+                    }
+                },
+                {
+                    "utterance": "Please check if the code 425079 is valid with the secret IH225HMVWDS3XJVY.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "code": "425079"
+                    }
+                },
+                {
+                    "utterance": "I need to verify the TOTP with secret IH225HMVWDS3XJVY and code 425079.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "code": "425079"
+                    }
+                },
+                {
+                    "utterance": "Is the temporary code 425079 correct for the secret IH225HMVWDS3XJVY?",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "code": "425079"
+                    }
+                },
+                {
+                    "utterance": "Validate the one-time password using secret IH225HMVWDS3XJVY and code 425079.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "code": "425079"
+                    }
+                },
+                {
+                    "utterance": "Can you confirm the TOTP with secret IH225HMVWDS3XJVY and code 425079?",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "code": "425079"
+                    }
+                },
+                {
+                    "utterance": "Check the validity of the code 425079 for the secret IH225HMVWDS3XJVY.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "code": "425079"
+                    }
+                },
+                {
+                    "utterance": "I want to validate the TOTP using the secret IH225HMVWDS3XJVY and the code 425079.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "code": "425079"
+                    }
+                },
+                {
+                    "utterance": "Please verify if the code 425079 matches the secret IH225HMVWDS3XJVY.",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "code": "425079"
+                    }
+                },
+                {
+                    "utterance": "Can you authenticate the TOTP with the secret IH225HMVWDS3XJVY and the code 425079?",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "code": "425079"
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "SMS"
+}

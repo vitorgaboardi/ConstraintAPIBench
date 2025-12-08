@@ -1,0 +1,134 @@
+{
+    "tool_name": "Indeed Jobs API",
+    "tool_description": "Indeed Jobs Search API - USA\nGet the Jobs List as JSON by giving Keyword, Location (USA Only) and offset value.\nContact me at: vuesdata@gmail.com or visit https://www.vuesdata.com for building custom spiders or custom requests.",
+    "title": "Indeed Jobs API",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 4086,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.4,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/vuesdata/api/indeed-jobs-api/",
+    "host": "indeed-jobs-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "SearchJobs",
+            "url": "https://indeed-jobs-api.p.rapidapi.com/indeed-us/",
+            "description": "offset = 0 (starting of the page, it must be increased by 10 to achieve pagination)\nkeyword = python (it can be any search keyword for ex: job title or skill title)\nlocation = california (For now this API gets data for USA Indeed. You can enter a specific city or state.)\nThis will provide you with a list of 15 jobs in the page, by default a single page can have a max of 15 jobs posting only. In order to get all the data using pagination you need to keep increasing the count of offset by 10.\n\nYou will get the following fields using this API.\n\n'position'\n'company_name'\n'job_title'\n'job_location'\n'salary'\n'date'\n'job_url'\n'urgently_hiring'\n'multiple_hiring'\n'company_rating'\n'company_reviews'\n'company_review_link'\n'company_logo_url'\n'page_number'",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://indeed-jobs-api.p.rapidapi.com/indeed-us/\"\nquerystring = {\"location\": location, \"keyword\": keyword, \"offset\": offset}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"indeed-jobs-api.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "california",
+                    "required": true
+                },
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "python",
+                    "required": true
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find software engineer jobs in New York starting from the first page.",
+                    "parameters": {
+                        "location": "New York",
+                        "keyword": "software engineer",
+                        "offset": 0
+                    }
+                },
+                {
+                    "utterance": "Search for data analyst positions in Texas, starting from the second page.",
+                    "parameters": {
+                        "location": "Texas",
+                        "keyword": "data analyst",
+                        "offset": 10
+                    }
+                },
+                {
+                    "utterance": "Look for marketing manager roles in Los Angeles, starting from the third page.",
+                    "parameters": {
+                        "location": "Los Angeles",
+                        "keyword": "marketing manager",
+                        "offset": 20
+                    }
+                },
+                {
+                    "utterance": "Get the list of nursing jobs in Florida from the fourth page.",
+                    "parameters": {
+                        "location": "Florida",
+                        "keyword": "nursing",
+                        "offset": 30
+                    }
+                },
+                {
+                    "utterance": "Find accounting jobs in Chicago starting from the fifth page.",
+                    "parameters": {
+                        "location": "Chicago",
+                        "keyword": "accounting",
+                        "offset": 40
+                    }
+                },
+                {
+                    "utterance": "Search for graphic designer positions in Seattle, starting from the sixth page.",
+                    "parameters": {
+                        "location": "Seattle",
+                        "keyword": "graphic designer",
+                        "offset": 50
+                    }
+                },
+                {
+                    "utterance": "Look for project manager roles in Boston, starting from the seventh page.",
+                    "parameters": {
+                        "location": "Boston",
+                        "keyword": "project manager",
+                        "offset": 60
+                    }
+                },
+                {
+                    "utterance": "Get the list of teaching jobs in San Francisco from the eighth page.",
+                    "parameters": {
+                        "location": "San Francisco",
+                        "keyword": "teaching",
+                        "offset": 70
+                    }
+                },
+                {
+                    "utterance": "Find customer service jobs in Miami starting from the ninth page.",
+                    "parameters": {
+                        "location": "Miami",
+                        "keyword": "customer service",
+                        "offset": 80
+                    }
+                },
+                {
+                    "utterance": "Search for electrician positions in Denver, starting from the tenth page.",
+                    "parameters": {
+                        "location": "Denver",
+                        "keyword": "electrician",
+                        "offset": 90
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Jobs"
+}

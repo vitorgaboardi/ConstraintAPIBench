@@ -1,0 +1,192 @@
+{
+    "tool_name": "Planets by API-Ninjas",
+    "tool_description": "Get statistics on thousands of planets in the known universe. See more info at https://api-ninjas.com/api/planets.",
+    "title": "Planets by API-Ninjas",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 98,
+        "avgLatency": 580,
+        "avgSuccessRate": 95,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/apininjas/api/planets-by-api-ninjas/",
+    "host": "planets-by-api-ninjas.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/v1/planets",
+            "url": "https://planets-by-api-ninjas.p.rapidapi.com/v1/planets",
+            "description": "Get a list of planets matching specified parameters. Returns at most 30 results. To access more than 30 results, use the offset parameter to offset results in multiple API calls.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://planets-by-api-ninjas.p.rapidapi.com/v1/planets\"\nquerystring = {\"name\": name}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"planets-by-api-ninjas.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "max_period",
+                    "type": "NUMBER",
+                    "description": "maximum orbital period of the planet in Earth days.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "max_temperature",
+                    "type": "NUMBER",
+                    "description": "maximum average surface temperature of the planet in Kelvin.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "number of results to offset for pagination.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "max_distance_light_year",
+                    "type": "NUMBER",
+                    "description": "maximum distance the planet is from Earth in light years.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "min_distance_light_year",
+                    "type": "NUMBER",
+                    "description": "minimum distance the planet is from Earth in light years.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "max_mass",
+                    "type": "NUMBER",
+                    "description": "maximum mass of the planet in Jupiters (1 Jupiter = 1.898 \u00d7 10^27 kg).",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "max_semi_major_axis",
+                    "type": "NUMBER",
+                    "description": "maximum semi major axis of planet in astronomical units (AU).",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "min_mass",
+                    "type": "NUMBER",
+                    "description": "minimum mass of the planet in Jupiters (1 Jupiter = 1.898 \u00d7 10^27 kg).",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "min_semi_major_axis",
+                    "type": "NUMBER",
+                    "description": "minimum semi major axis of planet in astronomical units (AU).",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": " name of the planet.",
+                    "default": "Mars",
+                    "required": false
+                },
+                {
+                    "name": "min_temperature",
+                    "type": "NUMBER",
+                    "description": "minimum average surface temperature of the planet in Kelvin.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "max_radius",
+                    "type": "NUMBER",
+                    "description": "maximum average radius of the planet in Jupiters (1 Jupiter = 69911 km).",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "min_radius",
+                    "type": "NUMBER",
+                    "description": "minimum average radius of the planet in Jupiters (1 Jupiter = 69911 km).",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "min_period",
+                    "type": "NUMBER",
+                    "description": "minimum orbital period of the planet in Earth days.",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find planets with an orbital period of less than 365 Earth days.",
+                    "parameters": {
+                        "max_period": 365
+                    }
+                },
+                {
+                    "utterance": "Show me planets with a surface temperature below 300 Kelvin.",
+                    "parameters": {
+                        "max_temperature": 300
+                    }
+                },
+                {
+                    "utterance": "List planets that are at least 10 light years away from Earth.",
+                    "parameters": {
+                        "min_distance_light_year": 10
+                    }
+                },
+                {
+                    "utterance": "Get information on planets with a mass less than 2 Jupiters.",
+                    "parameters": {
+                        "max_mass": 2
+                    }
+                },
+                {
+                    "utterance": "Find planets with a semi major axis between 0.5 and 5 AU.",
+                    "parameters": {
+                        "min_semi_major_axis": 0.5,
+                        "max_semi_major_axis": 5
+                    }
+                },
+                {
+                    "utterance": "Show planets with a radius greater than 0.8 Jupiters.",
+                    "parameters": {
+                        "min_radius": 0.8
+                    }
+                },
+                {
+                    "utterance": "List planets named 'Kepler-22b'.",
+                    "parameters": {
+                        "name": "Kepler-22b"
+                    }
+                },
+                {
+                    "utterance": "Find planets with a minimum temperature of 150 Kelvin.",
+                    "parameters": {
+                        "min_temperature": 150
+                    }
+                },
+                {
+                    "utterance": "Get planets with a maximum distance of 50 light years from Earth.",
+                    "parameters": {
+                        "max_distance_light_year": 50
+                    }
+                },
+                {
+                    "utterance": "Show me planets with an orbital period longer than 500 Earth days.",
+                    "parameters": {
+                        "min_period": 500
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Science"
+}

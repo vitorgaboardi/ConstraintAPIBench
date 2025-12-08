@@ -1,0 +1,174 @@
+{
+    "name": "Prayer Times",
+    "description": "A flexible RESTful prayer times API that returns JSON times for a given day or a calendar for a whole month.\r\n\r\nFor more detailed documentation, various methods and additional endpoints, please see the complete documentation on http://aladhan.com/prayer-times-api.",
+    "url": "https://rapidapi.com/meezaan/api/prayer-times/",
+    "api_methods": [
+        {
+            "name": "Calendar by Address",
+            "description": "Get a prayer times calendar for a month by address",
+            "url": "https://aladhan.p.rapidapi.com/calendarByAddress",
+            "parameters": [
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "4 digit year - example 2017",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "4 digit year"
+                    }
+                },
+                {
+                    "name": "month",
+                    "type": "NUMBER",
+                    "description": "2 digit month, example 03 for March",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "format": "2 digit month"
+                    }
+                },
+                {
+                    "name": "method",
+                    "type": "NUMBER",
+                    "description": "Any of the prayer time calculation methods specified on https://aladhan.com/calculation-methods",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "prayer time calculation methods"
+                    }
+                },
+                {
+                    "name": "school",
+                    "type": "NUMBER",
+                    "description": "1 for Hanfi. 0 for all others, including, Shafi, Hanbali, etc.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                0,
+                                1
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "latitudeAdjustmentMethod",
+                    "type": "NUMBER",
+                    "description": "Method for adjusting times higher latitudes - for instance, if you are checking timings in the UK or Sweden. 1 - Middle of the Night 2 - One Seventh 3 - Angle Based",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                1,
+                                2,
+                                3
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the prayer times for March 2023 in New York?",
+                    "parameters": {
+                        "address": "New York",
+                        "year": 2023,
+                        "month": 3
+                    }
+                },
+                {
+                    "utterance": "Can you give me the prayer calendar for April 2024 in London using the Hanafi school?",
+                    "parameters": {
+                        "address": "London",
+                        "year": 2024,
+                        "month": 4,
+                        "school": 1
+                    }
+                },
+                {
+                    "utterance": "Show me the prayer times for January 2023 in Paris with the Middle of the Night adjustment.",
+                    "parameters": {
+                        "address": "Paris",
+                        "year": 2023,
+                        "month": 1,
+                        "latitudeAdjustmentMethod": 1
+                    }
+                },
+                {
+                    "utterance": "Get the prayer calendar for December 2023 in Dubai using the Shafi method.",
+                    "parameters": {
+                        "address": "Dubai",
+                        "year": 2023,
+                        "month": 12,
+                        "method": 3
+                    }
+                },
+                {
+                    "utterance": "What are the prayer times for February 2024 in Berlin with the One Seventh adjustment?",
+                    "parameters": {
+                        "address": "Berlin",
+                        "year": 2024,
+                        "month": 2,
+                        "latitudeAdjustmentMethod": 2
+                    }
+                },
+                {
+                    "utterance": "Can you provide the prayer calendar for May 2023 in Istanbul using the Hanafi school and Angle Based adjustment?",
+                    "parameters": {
+                        "address": "Istanbul",
+                        "year": 2023,
+                        "month": 5,
+                        "school": 1,
+                        "latitudeAdjustmentMethod": 3
+                    }
+                },
+                {
+                    "utterance": "Show me the prayer times for June 2024 in Tokyo with the Middle of the Night adjustment.",
+                    "parameters": {
+                        "address": "Tokyo",
+                        "year": 2024,
+                        "month": 6,
+                        "latitudeAdjustmentMethod": 1
+                    }
+                },
+                {
+                    "utterance": "Get the prayer calendar for July 2023 in Sydney using the Shafi method.",
+                    "parameters": {
+                        "address": "Sydney",
+                        "year": 2023,
+                        "month": 7,
+                        "method": 3
+                    }
+                },
+                {
+                    "utterance": "What are the prayer times for August 2024 in Toronto with the One Seventh adjustment?",
+                    "parameters": {
+                        "address": "Toronto",
+                        "year": 2024,
+                        "month": 8,
+                        "latitudeAdjustmentMethod": 2
+                    }
+                },
+                {
+                    "utterance": "Can you give me the prayer calendar for September 2023 in Mumbai using the Hanafi school?",
+                    "parameters": {
+                        "address": "Mumbai",
+                        "year": 2023,
+                        "month": 9,
+                        "school": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

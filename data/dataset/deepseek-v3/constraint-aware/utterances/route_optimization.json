@@ -1,0 +1,114 @@
+{
+    "name": "Route optimization",
+    "description": "Calculate fastest driving, cycling, walking or multimodal public transportation route between locations",
+    "url": "https://rapidapi.com/geoapify-gmbh-geoapify/api/route-optimization/",
+    "api_methods": [
+        {
+            "name": "Route and directions",
+            "description": "Calculate route between provided waypoints, including turn by turn directions",
+            "url": "https://route-optimization.p.rapidapi.com/v1/routing",
+            "parameters": [
+                {
+                    "name": "mode",
+                    "type": "STRING",
+                    "description": "Routing mode - drive, truck, bicycle, walk or transit",
+                    "default": "drive",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "drive",
+                                "truck",
+                                "bicycle",
+                                "walk",
+                                "transit"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "waypoints",
+                    "type": "STRING",
+                    "description": "List of two or more lat,lon coordinates, separated by the pipe symbol \\\"|\\\"",
+                    "default": "48.34364,10.87474|48.37073,10.90925",
+                    "required": true,
+                    "constraints": {
+                        "format": "List of two or more lat,lon coordinates, separated by the pipe symbol \"|\""
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What's the fastest driving route from Berlin to Munich?",
+                    "parameters": {
+                        "mode": "drive",
+                        "waypoints": "52.5200,13.4050|48.1351,11.5820"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the cycling path from Paris to Lyon?",
+                    "parameters": {
+                        "mode": "bicycle",
+                        "waypoints": "48.8566,2.3522|45.7640,4.8357"
+                    }
+                },
+                {
+                    "utterance": "Find the quickest walking route from Central Park to Times Square.",
+                    "parameters": {
+                        "mode": "walk",
+                        "waypoints": "40.7851,-73.9683|40.7589,-73.9851"
+                    }
+                },
+                {
+                    "utterance": "How do I get from London to Manchester by public transport?",
+                    "parameters": {
+                        "mode": "transit",
+                        "waypoints": "51.5074,-0.1278|53.4808,-2.2426"
+                    }
+                },
+                {
+                    "utterance": "What's the best truck route from Chicago to Indianapolis?",
+                    "parameters": {
+                        "mode": "truck",
+                        "waypoints": "41.8781,-87.6298|39.7684,-86.1581"
+                    }
+                },
+                {
+                    "utterance": "Show me the driving directions from San Francisco to Los Angeles.",
+                    "parameters": {
+                        "mode": "drive",
+                        "waypoints": "37.7749,-122.4194|34.0522,-118.2437"
+                    }
+                },
+                {
+                    "utterance": "Can you map out a bicycle route from Amsterdam to Rotterdam?",
+                    "parameters": {
+                        "mode": "bicycle",
+                        "waypoints": "52.3676,4.9041|51.9225,4.4797"
+                    }
+                },
+                {
+                    "utterance": "What's the fastest walking route from the Eiffel Tower to the Louvre?",
+                    "parameters": {
+                        "mode": "walk",
+                        "waypoints": "48.8584,2.2945|48.8606,2.3376"
+                    }
+                },
+                {
+                    "utterance": "How can I travel from Sydney to Melbourne by transit?",
+                    "parameters": {
+                        "mode": "transit",
+                        "waypoints": "-33.8688,151.2093|-37.8136,144.9631"
+                    }
+                },
+                {
+                    "utterance": "Find the optimal truck route from Dallas to Houston.",
+                    "parameters": {
+                        "mode": "truck",
+                        "waypoints": "32.7767,-96.7970|29.7604,-95.3698"
+                    }
+                }
+            ]
+        }
+    ]
+}

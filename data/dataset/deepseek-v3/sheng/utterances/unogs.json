@@ -1,0 +1,1699 @@
+{
+    "tool_name": "uNoGS",
+    "tool_description": "uNoGS (unofficial Netflix online Global Search) allows anyone to  search the global Netflix catalog.",
+    "title": "uNoGS",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 1506,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/unogs/api/unogs/",
+    "host": "unogs-unogs-v1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/static/genres",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/static/genres",
+            "description": "Get Static list of Genres (updated daily)",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://unogs-unogs-v1.p.rapidapi.com/static/genres\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"unogs-unogs-v1.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "results": [
+                    {
+                        "country": "",
+                        "countrycode": "",
+                        "expiring": 0,
+                        "id": 0,
+                        "nl7": 0,
+                        "tmovs": 0,
+                        "tseries": 0,
+                        "tvids": 0
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "country": {
+                                    "type": "string"
+                                },
+                                "countrycode": {
+                                    "type": "string"
+                                },
+                                "expiring": {
+                                    "type": "integer"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "nl7": {
+                                    "type": "integer"
+                                },
+                                "tmovs": {
+                                    "type": "integer"
+                                },
+                                "tseries": {
+                                    "type": "integer"
+                                },
+                                "tvids": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you provide me with the list of genres available on Netflix?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the different genres I can find on Netflix?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the updated list of Netflix genres.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me the current genres in the Netflix catalog.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What genres are currently available on Netflix globally?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the genres that Netflix offers.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you fetch the latest genres from Netflix?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the genres I can explore on Netflix today?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide me with the daily updated list of Netflix genres.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the genres available in the global Netflix catalog?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/title/genres",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/title/genres",
+            "description": "All Genres Associated with a Title",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://unogs-unogs-v1.p.rapidapi.com/title/genres\"\nquerystring = {\"netflix_id\": netflix_id}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"unogs-unogs-v1.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "object": {
+                    "limit": 0,
+                    "offset": 0,
+                    "total": 0
+                },
+                "results": [
+                    {
+                        "genre": "",
+                        "genre_id": 0
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "type": "object",
+                        "properties": {
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "total": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "genre": {
+                                    "type": "string"
+                                },
+                                "genre_id": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What genres are associated with the Netflix title with ID 70143836?",
+                    "parameters": {
+                        "netflix_id": 70143836
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the genres for the Netflix show with ID 80057281?",
+                    "parameters": {
+                        "netflix_id": 80057281
+                    }
+                },
+                {
+                    "utterance": "Find the genres for the Netflix movie with ID 80234304.",
+                    "parameters": {
+                        "netflix_id": 80234304
+                    }
+                },
+                {
+                    "utterance": "What are the genres of the Netflix title with ID 80192098?",
+                    "parameters": {
+                        "netflix_id": 80192098
+                    }
+                },
+                {
+                    "utterance": "List the genres for the Netflix series with ID 70264888.",
+                    "parameters": {
+                        "netflix_id": 70264888
+                    }
+                },
+                {
+                    "utterance": "Get the genres associated with the Netflix title with ID 80100142.",
+                    "parameters": {
+                        "netflix_id": 80100142
+                    }
+                },
+                {
+                    "utterance": "What genres does the Netflix title with ID 80025678 belong to?",
+                    "parameters": {
+                        "netflix_id": 80025678
+                    }
+                },
+                {
+                    "utterance": "Can you provide the genres for the Netflix show with ID 70153404?",
+                    "parameters": {
+                        "netflix_id": 70153404
+                    }
+                },
+                {
+                    "utterance": "Find out the genres for the Netflix movie with ID 80236252.",
+                    "parameters": {
+                        "netflix_id": 80236252
+                    }
+                },
+                {
+                    "utterance": "What are the genres of the Netflix title with ID 80027563?",
+                    "parameters": {
+                        "netflix_id": 80027563
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/title/images",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/title/images",
+            "description": "All Images associated with a Title",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://unogs-unogs-v1.p.rapidapi.com/title/images\"\nquerystring = {\"netflix_id\": netflix_id}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"unogs-unogs-v1.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "object": {
+                    "limit": 0,
+                    "offset": 0,
+                    "total": 0
+                },
+                "results": [
+                    {
+                        "image_type": "",
+                        "url": ""
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "type": "object",
+                        "properties": {
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "total": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "image_type": {
+                                    "type": "string"
+                                },
+                                "url": {
+                                    "description": "filmid as netflixid,url,itype",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me all the images associated with the Netflix title with ID 70143836?",
+                    "parameters": {
+                        "netflix_id": 70143836
+                    }
+                },
+                {
+                    "utterance": "I need the images for the Netflix show with ID 80057281.",
+                    "parameters": {
+                        "netflix_id": 80057281
+                    }
+                },
+                {
+                    "utterance": "Please retrieve all images for the Netflix title with ID 80192098.",
+                    "parameters": {
+                        "netflix_id": 80192098
+                    }
+                },
+                {
+                    "utterance": "What images are available for the Netflix title with ID 70285511?",
+                    "parameters": {
+                        "netflix_id": 70285511
+                    }
+                },
+                {
+                    "utterance": "Show me the images associated with the Netflix title with ID 80057918.",
+                    "parameters": {
+                        "netflix_id": 80057918
+                    }
+                },
+                {
+                    "utterance": "Can you fetch all images for the Netflix title with ID 80100142?",
+                    "parameters": {
+                        "netflix_id": 80100142
+                    }
+                },
+                {
+                    "utterance": "I\u2019d like to see the images for the Netflix title with ID 70153404.",
+                    "parameters": {
+                        "netflix_id": 70153404
+                    }
+                },
+                {
+                    "utterance": "Retrieve the images for the Netflix title with ID 80025678.",
+                    "parameters": {
+                        "netflix_id": 80025678
+                    }
+                },
+                {
+                    "utterance": "What are the images for the Netflix title with ID 80211627?",
+                    "parameters": {
+                        "netflix_id": 80211627
+                    }
+                },
+                {
+                    "utterance": "Can you display all images associated with the Netflix title with ID 70136120?",
+                    "parameters": {
+                        "netflix_id": 70136120
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/title/details",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/title/details",
+            "description": "General Details associated with a Title",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://unogs-unogs-v1.p.rapidapi.com/title/details\"\nquerystring = {\"netflix_id\": netflix_id}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"unogs-unogs-v1.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "alt_id": "",
+                "alt_image": "",
+                "alt_metascore": "",
+                "alt_plot": "",
+                "alt_runtime": "",
+                "alt_votes": "",
+                "awards": "",
+                "default_image": "",
+                "large_image": "",
+                "latest_date": "",
+                "maturity_label": "",
+                "maturity_level": "",
+                "netflix_id": "",
+                "origin_country": "",
+                "poster": "",
+                "rating": "",
+                "runtime": "",
+                "start_date": "",
+                "synopsis": "",
+                "title": "",
+                "title_type": "",
+                "year": ""
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "alt_id": {
+                        "type": "string"
+                    },
+                    "alt_image": {
+                        "type": "string"
+                    },
+                    "alt_metascore": {
+                        "type": "string"
+                    },
+                    "alt_plot": {
+                        "type": "string"
+                    },
+                    "alt_runtime": {
+                        "type": "string"
+                    },
+                    "alt_votes": {
+                        "type": "string"
+                    },
+                    "awards": {
+                        "type": "string"
+                    },
+                    "default_image": {
+                        "type": "string"
+                    },
+                    "large_image": {
+                        "type": "string"
+                    },
+                    "latest_date": {
+                        "type": "string"
+                    },
+                    "maturity_label": {
+                        "type": "string"
+                    },
+                    "maturity_level": {
+                        "type": "string"
+                    },
+                    "netflix_id": {
+                        "type": "string"
+                    },
+                    "origin_country": {
+                        "type": "string"
+                    },
+                    "poster": {
+                        "type": "string"
+                    },
+                    "rating": {
+                        "type": "string"
+                    },
+                    "runtime": {
+                        "type": "string"
+                    },
+                    "start_date": {
+                        "type": "string"
+                    },
+                    "synopsis": {
+                        "type": "string"
+                    },
+                    "title": {
+                        "type": "string"
+                    },
+                    "title_type": {
+                        "type": "string"
+                    },
+                    "year": {
+                        "type": "string"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details for the Netflix title with ID 70143836?",
+                    "parameters": {
+                        "netflix_id": 70143836
+                    }
+                },
+                {
+                    "utterance": "What information is available for the Netflix show with ID 80057281?",
+                    "parameters": {
+                        "netflix_id": 80057281
+                    }
+                },
+                {
+                    "utterance": "Find details about the Netflix movie with ID 80234304.",
+                    "parameters": {
+                        "netflix_id": 80234304
+                    }
+                },
+                {
+                    "utterance": "Get the general details for the Netflix title with ID 80192098.",
+                    "parameters": {
+                        "netflix_id": 80192098
+                    }
+                },
+                {
+                    "utterance": "Can you look up the Netflix title with ID 70264888?",
+                    "parameters": {
+                        "netflix_id": 70264888
+                    }
+                },
+                {
+                    "utterance": "What are the details for the Netflix show with ID 80057918?",
+                    "parameters": {
+                        "netflix_id": 80057918
+                    }
+                },
+                {
+                    "utterance": "Provide information about the Netflix movie with ID 80100142.",
+                    "parameters": {
+                        "netflix_id": 80100142
+                    }
+                },
+                {
+                    "utterance": "Find the general details for the Netflix title with ID 70153404.",
+                    "parameters": {
+                        "netflix_id": 70153404
+                    }
+                },
+                {
+                    "utterance": "Can you retrieve details for the Netflix show with ID 80025678?",
+                    "parameters": {
+                        "netflix_id": 80025678
+                    }
+                },
+                {
+                    "utterance": "What is the information available for the Netflix title with ID 80211626?",
+                    "parameters": {
+                        "netflix_id": 80211626
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/title/episodes",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/title/episodes",
+            "description": "All Episodes associated with a Title",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://unogs-unogs-v1.p.rapidapi.com/title/episodes\"\nquerystring = {\"season_id\": season_id, \"netflix_id\": netflix_id}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"unogs-unogs-v1.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "object": {
+                    "limit": 0,
+                    "offset": 0,
+                    "total": 0
+                },
+                "results": [
+                    {
+                        "episode_id": 0,
+                        "episode_number": "",
+                        "image": "",
+                        "netflix_id": 0,
+                        "season_id": 0,
+                        "season_number": "",
+                        "synopsis": "",
+                        "title": ""
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "type": "object",
+                        "properties": {
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "total": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "episode_id": {
+                                    "type": "integer"
+                                },
+                                "episode_number": {
+                                    "type": "string"
+                                },
+                                "image": {
+                                    "type": "string"
+                                },
+                                "netflix_id": {
+                                    "type": "integer"
+                                },
+                                "season_id": {
+                                    "type": "integer"
+                                },
+                                "season_number": {
+                                    "type": "string"
+                                },
+                                "synopsis": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "season_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix season ID e.g. 70105286 for Breaking Bad season 1",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me all episodes of Breaking Bad season 1?",
+                    "parameters": {
+                        "season_id": 70105286,
+                        "netflix_id": 70143836
+                    }
+                },
+                {
+                    "utterance": "What are the episodes in Stranger Things season 3?",
+                    "parameters": {
+                        "season_id": 80000001,
+                        "netflix_id": 80000000
+                    }
+                },
+                {
+                    "utterance": "List all episodes of The Crown season 4.",
+                    "parameters": {
+                        "season_id": 80200001,
+                        "netflix_id": 80200000
+                    }
+                },
+                {
+                    "utterance": "Show me the episodes for Narcos season 2.",
+                    "parameters": {
+                        "season_id": 80000002,
+                        "netflix_id": 80000003
+                    }
+                },
+                {
+                    "utterance": "What episodes are in Money Heist season 5?",
+                    "parameters": {
+                        "season_id": 80000004,
+                        "netflix_id": 80000005
+                    }
+                },
+                {
+                    "utterance": "Can you list all episodes of Black Mirror season 3?",
+                    "parameters": {
+                        "season_id": 80000006,
+                        "netflix_id": 80000007
+                    }
+                },
+                {
+                    "utterance": "Show me the episodes for Ozark season 2.",
+                    "parameters": {
+                        "season_id": 80000008,
+                        "netflix_id": 80000009
+                    }
+                },
+                {
+                    "utterance": "What are the episodes in The Witcher season 1?",
+                    "parameters": {
+                        "season_id": 80000010,
+                        "netflix_id": 80000011
+                    }
+                },
+                {
+                    "utterance": "List all episodes of Dark season 3.",
+                    "parameters": {
+                        "season_id": 80000012,
+                        "netflix_id": 80000013
+                    }
+                },
+                {
+                    "utterance": "Can you show me all episodes of BoJack Horseman season 6?",
+                    "parameters": {
+                        "season_id": 80000014,
+                        "netflix_id": 80000015
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/title/countries",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/title/countries",
+            "description": "All Country/Language information associated with a Title",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://unogs-unogs-v1.p.rapidapi.com/title/countries\"\nquerystring = {\"netflix_id\": netflix_id}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"unogs-unogs-v1.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "object": {
+                    "limit": 0,
+                    "offset": 0,
+                    "total": 0
+                },
+                "results": [
+                    {
+                        "audio": "",
+                        "country": "",
+                        "country_code": "",
+                        "expire_date": "",
+                        "new_date": "",
+                        "season_detail": "",
+                        "subtitle": ""
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "type": "object",
+                        "properties": {
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "total": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "audio": {
+                                    "type": "string"
+                                },
+                                "country": {
+                                    "type": "string"
+                                },
+                                "country_code": {
+                                    "type": "string"
+                                },
+                                "expire_date": {
+                                    "type": "string"
+                                },
+                                "new_date": {
+                                    "type": "string"
+                                },
+                                "season_detail": {
+                                    "type": "string"
+                                },
+                                "subtitle": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What countries is the Netflix title with ID 70143836 available in?",
+                    "parameters": {
+                        "netflix_id": 70143836
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the languages associated with the Netflix show 80057281?",
+                    "parameters": {
+                        "netflix_id": 80057281
+                    }
+                },
+                {
+                    "utterance": "Find the country and language details for the Netflix title 80192098.",
+                    "parameters": {
+                        "netflix_id": 80192098
+                    }
+                },
+                {
+                    "utterance": "Where can I watch the Netflix series with ID 70281562?",
+                    "parameters": {
+                        "netflix_id": 70281562
+                    }
+                },
+                {
+                    "utterance": "What are the available languages for the Netflix movie 80121370?",
+                    "parameters": {
+                        "netflix_id": 80121370
+                    }
+                },
+                {
+                    "utterance": "Provide the country availability for the Netflix title 80211666.",
+                    "parameters": {
+                        "netflix_id": 80211666
+                    }
+                },
+                {
+                    "utterance": "Which countries have access to the Netflix show 70153404?",
+                    "parameters": {
+                        "netflix_id": 70153404
+                    }
+                },
+                {
+                    "utterance": "What are the language options for the Netflix series 80025678?",
+                    "parameters": {
+                        "netflix_id": 80025678
+                    }
+                },
+                {
+                    "utterance": "Can you list the countries where the Netflix title 80104121 is available?",
+                    "parameters": {
+                        "netflix_id": 80104121
+                    }
+                },
+                {
+                    "utterance": "Find the country and language information for the Netflix movie 80223946.",
+                    "parameters": {
+                        "netflix_id": 80223946
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/search/titles",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/search/titles",
+            "description": "Parameter Notes:\nnew_date will either take a single date and check for all titles added after that date or it will take 2 dates separated by a comma to check titles added between them.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://unogs-unogs-v1.p.rapidapi.com/search/titles\"\nquerystring = {\"order_by\": order_by, \"type\": type}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"unogs-unogs-v1.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "object": {
+                    "limit": 0,
+                    "offset": 0,
+                    "total": 0
+                },
+                "results": [
+                    {
+                        "imdb_id": "",
+                        "img": "",
+                        "netflix_id": 0,
+                        "poster": "",
+                        "rating": "",
+                        "runtime": "",
+                        "synopsis": "",
+                        "title": "",
+                        "title_date": "",
+                        "title_type": "",
+                        "top250": 0,
+                        "top250tv": 0,
+                        "year": ""
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "type": "object",
+                        "properties": {
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "total": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "imdb_id": {
+                                    "type": "string"
+                                },
+                                "img": {
+                                    "type": "string"
+                                },
+                                "netflix_id": {
+                                    "type": "integer"
+                                },
+                                "poster": {
+                                    "type": "string"
+                                },
+                                "rating": {
+                                    "type": "string"
+                                },
+                                "runtime": {
+                                    "type": "string"
+                                },
+                                "synopsis": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "title_date": {
+                                    "type": "string"
+                                },
+                                "title_type": {
+                                    "type": "string"
+                                },
+                                "top250": {
+                                    "type": "integer"
+                                },
+                                "top250tv": {
+                                    "type": "integer"
+                                },
+                                "year": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "end_rating",
+                    "type": "STRING",
+                    "description": "number between 1 and 10, aligns with imdb rating, if there is one",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country_list",
+                    "type": "STRING",
+                    "description": "CSV list of country IDs e.g. 46,78",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "start_year",
+                    "type": "NUMBER",
+                    "description": "year date > 1900",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "person",
+                    "type": "STRING",
+                    "description": "name of person in title",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "where you want the response to start e.g. 10 starts with the 10th element",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "order_by",
+                    "type": "STRING",
+                    "description": "Order of Response",
+                    "default": "date",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "limit of object returned",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "end_year",
+                    "type": "NUMBER",
+                    "description": "year date > 1900",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "top250",
+                    "type": "NUMBER",
+                    "description": "IMDB top 250 Movies number 0-250",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "start_rating",
+                    "type": "STRING",
+                    "description": "number between 1 and 10, aligns with imdb rating, if there is one",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "new_date",
+                    "type": "STRING",
+                    "description": "2018-01-01 or 2010-01-01,2012-01-01 see Parameter Notes",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "top250tv",
+                    "type": "NUMBER",
+                    "description": "IMDB top 250 Series number 0-250",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "search all titles by name",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "expiring",
+                    "type": "STRING",
+                    "description": "if 'true' show all titles set to expire",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "subtitle",
+                    "type": "STRING",
+                    "description": "name of subtitle language e.g. english",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "movie or series",
+                    "default": "movie",
+                    "required": false
+                },
+                {
+                    "name": "genre_list",
+                    "type": "STRING",
+                    "description": "CSV list of genres, see misc/genre endpoint",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "audio",
+                    "type": "STRING",
+                    "description": "name of audio language e.g english",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "audio_sub_andor",
+                    "type": "STRING",
+                    "description": "and=language in bot audio and sub, or=language in either audio or sub",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country_andorunique",
+                    "type": "STRING",
+                    "description": "and=titles in all countries, or=any title in these countries, unique=unique titles in chosen countries",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find movies released between 2010 and 2020 with an IMDb rating above 7.",
+                    "parameters": {
+                        "start_year": 2010,
+                        "end_year": 2020,
+                        "start_rating": "7"
+                    }
+                },
+                {
+                    "utterance": "Search for series in the top 250 IMDb TV list.",
+                    "parameters": {
+                        "top250tv": 250,
+                        "type": "series"
+                    }
+                },
+                {
+                    "utterance": "Show movies added to Netflix between January 1, 2021, and December 31, 2021.",
+                    "parameters": {
+                        "new_date": "2021-01-01,2021-12-31"
+                    }
+                },
+                {
+                    "utterance": "Find titles in English audio and subtitles available in the US and Canada.",
+                    "parameters": {
+                        "audio": "english",
+                        "subtitle": "english",
+                        "country_list": "46,78",
+                        "audio_sub_andor": "and"
+                    }
+                },
+                {
+                    "utterance": "Search for movies in the action and adventure genres.",
+                    "parameters": {
+                        "genre_list": "action,adventure"
+                    }
+                },
+                {
+                    "utterance": "Find titles expiring soon on Netflix.",
+                    "parameters": {
+                        "expiring": "true"
+                    }
+                },
+                {
+                    "utterance": "Search for movies starring Tom Hanks.",
+                    "parameters": {
+                        "person": "Tom Hanks"
+                    }
+                },
+                {
+                    "utterance": "Find unique titles available in Japan and South Korea.",
+                    "parameters": {
+                        "country_list": "110,117",
+                        "country_andorunique": "unique"
+                    }
+                },
+                {
+                    "utterance": "Show the top 10 movies released in 2015.",
+                    "parameters": {
+                        "start_year": 2015,
+                        "limit": 10,
+                        "order_by": "date"
+                    }
+                },
+                {
+                    "utterance": "Find series with an IMDb rating between 8 and 10.",
+                    "parameters": {
+                        "start_rating": "8",
+                        "end_rating": "10",
+                        "type": "series"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/search/people",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/search/people",
+            "description": "Search for people by title name, person name, or netflix_id",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://unogs-unogs-v1.p.rapidapi.com/search/people\"\nquerystring = {\"person_type\": person_type}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"unogs-unogs-v1.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "object": {
+                    "limit": 0,
+                    "offset": 0,
+                    "total": 0
+                },
+                "results": [
+                    {
+                        "imdb_id": "",
+                        "img": "",
+                        "netflix_id": 0,
+                        "poster": "",
+                        "rating": "",
+                        "runtime": "",
+                        "synopsis": "",
+                        "title": "",
+                        "title_date": "",
+                        "title_type": "",
+                        "top250": 0,
+                        "top250tv": 0,
+                        "year": ""
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "type": "object",
+                        "properties": {
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "total": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "imdb_id": {
+                                    "type": "string"
+                                },
+                                "img": {
+                                    "type": "string"
+                                },
+                                "netflix_id": {
+                                    "type": "integer"
+                                },
+                                "poster": {
+                                    "type": "string"
+                                },
+                                "rating": {
+                                    "type": "string"
+                                },
+                                "runtime": {
+                                    "type": "string"
+                                },
+                                "synopsis": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "title_date": {
+                                    "type": "string"
+                                },
+                                "title_type": {
+                                    "type": "string"
+                                },
+                                "top250": {
+                                    "type": "integer"
+                                },
+                                "top250tv": {
+                                    "type": "integer"
+                                },
+                                "year": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "person_type",
+                    "type": "STRING",
+                    "description": "what the person did on the project",
+                    "default": "Actor",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "limit of object returned",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "search all titles by name",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "where you want the response to start e.g. 10 starts with the 10th element",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find information about the person with Netflix ID 70143836.",
+                    "parameters": {
+                        "netflix_id": 70143836
+                    }
+                },
+                {
+                    "utterance": "Search for titles related to the actor Tom Hanks.",
+                    "parameters": {
+                        "name": "Tom Hanks",
+                        "person_type": "Actor"
+                    }
+                },
+                {
+                    "utterance": "Get details about the director Christopher Nolan.",
+                    "parameters": {
+                        "name": "Christopher Nolan",
+                        "person_type": "Director"
+                    }
+                },
+                {
+                    "utterance": "Find the first 10 titles associated with the producer Steven Spielberg.",
+                    "parameters": {
+                        "name": "Steven Spielberg",
+                        "person_type": "Producer",
+                        "limit": 10
+                    }
+                },
+                {
+                    "utterance": "Search for titles related to the writer Aaron Sorkin starting from the 5th result.",
+                    "parameters": {
+                        "name": "Aaron Sorkin",
+                        "person_type": "Writer",
+                        "offset": 5
+                    }
+                },
+                {
+                    "utterance": "Find information about the person with Netflix ID 80000000.",
+                    "parameters": {
+                        "netflix_id": 80000000
+                    }
+                },
+                {
+                    "utterance": "Search for titles related to the actor Meryl Streep.",
+                    "parameters": {
+                        "name": "Meryl Streep",
+                        "person_type": "Actor"
+                    }
+                },
+                {
+                    "utterance": "Get details about the director Quentin Tarantino.",
+                    "parameters": {
+                        "name": "Quentin Tarantino",
+                        "person_type": "Director"
+                    }
+                },
+                {
+                    "utterance": "Find the first 15 titles associated with the producer James Cameron.",
+                    "parameters": {
+                        "name": "James Cameron",
+                        "person_type": "Producer",
+                        "limit": 15
+                    }
+                },
+                {
+                    "utterance": "Search for titles related to the writer J.K. Rowling starting from the 20th result.",
+                    "parameters": {
+                        "name": "J.K. Rowling",
+                        "person_type": "Writer",
+                        "offset": 20
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/search/deleted",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/search/deleted",
+            "description": "Search for Deleted Titles by Country or Title Name\ndelete_date will either take a single date and check for all titles added after that date or it will take 2 dates separated by a comma to check titles added between them.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://unogs-unogs-v1.p.rapidapi.com/search/deleted\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"unogs-unogs-v1.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "object": {
+                    "limit": 0,
+                    "offset": 0,
+                    "total": 0
+                },
+                "results": [
+                    {
+                        "imdb_id": "",
+                        "img": "",
+                        "netflix_id": 0,
+                        "poster": "",
+                        "rating": "",
+                        "runtime": "",
+                        "synopsis": "",
+                        "title": "",
+                        "title_date": "",
+                        "title_type": "",
+                        "top250": 0,
+                        "top250tv": 0,
+                        "year": ""
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "object": {
+                        "type": "object",
+                        "properties": {
+                            "limit": {
+                                "type": "integer"
+                            },
+                            "offset": {
+                                "type": "integer"
+                            },
+                            "total": {
+                                "type": "integer"
+                            }
+                        }
+                    },
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "imdb_id": {
+                                    "type": "string"
+                                },
+                                "img": {
+                                    "type": "string"
+                                },
+                                "netflix_id": {
+                                    "type": "integer"
+                                },
+                                "poster": {
+                                    "type": "string"
+                                },
+                                "rating": {
+                                    "type": "string"
+                                },
+                                "runtime": {
+                                    "type": "string"
+                                },
+                                "synopsis": {
+                                    "type": "string"
+                                },
+                                "title": {
+                                    "type": "string"
+                                },
+                                "title_date": {
+                                    "type": "string"
+                                },
+                                "title_type": {
+                                    "type": "string"
+                                },
+                                "top250": {
+                                    "type": "integer"
+                                },
+                                "top250tv": {
+                                    "type": "integer"
+                                },
+                                "year": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "search all titles by name",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "delete_date",
+                    "type": "STRING",
+                    "description": "2018-01-01 or 2010-01-01,2012-01-01 see Parameter Notes",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "netflix_id",
+                    "type": "NUMBER",
+                    "description": "actual netflix ID for the title e.g. 70143836 for Breaking Bad",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "limit of object returned",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "where you want the response to start e.g. 10 starts with the 10th element",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country_list",
+                    "type": "STRING",
+                    "description": "CSV list of country IDs e.g. 46,78",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find deleted titles in Netflix for the United States and Canada.",
+                    "parameters": {
+                        "country_list": "46,78"
+                    }
+                },
+                {
+                    "utterance": "Search for deleted titles named 'Breaking Bad'.",
+                    "parameters": {
+                        "title": "Breaking Bad"
+                    }
+                },
+                {
+                    "utterance": "Get deleted titles from Netflix with the ID 70143836.",
+                    "parameters": {
+                        "netflix_id": 70143836
+                    }
+                },
+                {
+                    "utterance": "Find deleted titles added to Netflix after January 1, 2018.",
+                    "parameters": {
+                        "delete_date": "2018-01-01"
+                    }
+                },
+                {
+                    "utterance": "Search for deleted titles added to Netflix between January 1, 2010, and January 1, 2012.",
+                    "parameters": {
+                        "delete_date": "2010-01-01,2012-01-01"
+                    }
+                },
+                {
+                    "utterance": "Find deleted titles in Netflix for France, starting from the 10th result.",
+                    "parameters": {
+                        "country_list": "46",
+                        "offset": 10
+                    }
+                },
+                {
+                    "utterance": "Search for deleted titles named 'Stranger Things' in the United Kingdom.",
+                    "parameters": {
+                        "title": "Stranger Things",
+                        "country_list": "78"
+                    }
+                },
+                {
+                    "utterance": "Get deleted titles added to Netflix after January 1, 2015, limited to 5 results.",
+                    "parameters": {
+                        "delete_date": "2015-01-01",
+                        "limit": 5
+                    }
+                },
+                {
+                    "utterance": "Find deleted titles in Netflix for Germany and Italy, starting from the 20th result.",
+                    "parameters": {
+                        "country_list": "49,55",
+                        "offset": 20
+                    }
+                },
+                {
+                    "utterance": "Search for deleted titles named 'The Crown' added to Netflix between January 1, 2016, and January 1, 2018.",
+                    "parameters": {
+                        "title": "The Crown",
+                        "delete_date": "2016-01-01,2018-01-01"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/static/countries",
+            "url": "https://unogs-unogs-v1.p.rapidapi.com/static/countries",
+            "description": "Get Static list of Supported Countries",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://unogs-unogs-v1.p.rapidapi.com/static/countries\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"unogs-unogs-v1.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "results": [
+                    {
+                        "country": "",
+                        "countrycode": "",
+                        "expiring": 0,
+                        "id": 0,
+                        "nl7": 0,
+                        "tmovs": 0,
+                        "tseries": 0,
+                        "tvids": 0
+                    }
+                ]
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "country": {
+                                    "type": "string"
+                                },
+                                "countrycode": {
+                                    "type": "string"
+                                },
+                                "expiring": {
+                                    "type": "integer"
+                                },
+                                "id": {
+                                    "type": "integer"
+                                },
+                                "nl7": {
+                                    "type": "integer"
+                                },
+                                "tmovs": {
+                                    "type": "integer"
+                                },
+                                "tseries": {
+                                    "type": "integer"
+                                },
+                                "tvids": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you provide me with the list of countries supported by Netflix?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the countries where Netflix is available?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the list of Netflix-supported countries.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which countries can I access Netflix in?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me the list of all countries where Netflix operates.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What countries are included in the Netflix global catalog?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list all the countries that Netflix supports?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me the countries where Netflix is officially available.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide the list of countries that have access to Netflix.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which countries are part of the Netflix global catalog?",
+                    "parameters": {}
+                }
+            ]
+        }
+    ],
+    "category": "Entertainment"
+}

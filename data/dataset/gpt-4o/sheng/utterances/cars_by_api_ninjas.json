@@ -1,0 +1,204 @@
+{
+    "tool_name": "Cars by API-Ninjas",
+    "tool_description": "Get detailed data on tens of thousands of vehicle models from dozens of automakers. See more info at https://api-ninjas.com/api/cars.",
+    "title": "Cars by API-Ninjas",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 469,
+        "avgSuccessRate": 93,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/apininjas/api/cars-by-api-ninjas/",
+    "host": "cars-by-api-ninjas.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/v1/cars",
+            "url": "https://cars-by-api-ninjas.p.rapidapi.com/v1/cars",
+            "description": "API Ninjas Cars API endpoint.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://cars-by-api-ninjas.p.rapidapi.com/v1/cars\"\nquerystring = {\"model\": model}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"cars-by-api-ninjas.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "Model of vehicle.",
+                    "default": "corolla",
+                    "required": false
+                },
+                {
+                    "name": "max_city_mpg",
+                    "type": "NUMBER",
+                    "description": "Maximum city fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "min_comb_mpg",
+                    "type": "NUMBER",
+                    "description": "Minimum combination (city + highway) fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "max_hwy_mpg",
+                    "type": "NUMBER",
+                    "description": "Maximum highway fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "fuel_type",
+                    "type": "STRING",
+                    "description": "Type of fuel used. Possible values: **gas**, **diesel**, **electricity**",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "How many results to return. Must be between **1** and **30**. Default is **5**",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "drive",
+                    "type": "STRING",
+                    "description": "Drive transmission. Possible values: **fwd** (front-wheel drive), **rwd** (rear-wheel drive), **awd** (all-wheel drive), **4wd** (four-wheel drive)",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "max_comb_mpg",
+                    "type": "NUMBER",
+                    "description": "Maximum combination (city + highway) fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "make",
+                    "type": "STRING",
+                    "description": "Vehicle manufacturer.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "transmission",
+                    "type": "STRING",
+                    "description": "Type of transmission. Possible values: **manual**, **automatic**",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "Vehicle model year.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "min_hwy_mpg",
+                    "type": "NUMBER",
+                    "description": "Minimum highway fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "min_city_mpg",
+                    "type": "NUMBER",
+                    "description": "Minimum City fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "cylinders",
+                    "type": "NUMBER",
+                    "description": "Number of cylinders. Possible values: **2, 3 4, 5, 6, 8, 10, 12, 16**",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me details of the 2020 Toyota Camry with automatic transmission.",
+                    "parameters": {
+                        "make": "Toyota",
+                        "model": "Camry",
+                        "year": "2020",
+                        "transmission": "automatic"
+                    }
+                },
+                {
+                    "utterance": "Find electric cars with a minimum highway fuel efficiency of 100 miles per gallon.",
+                    "parameters": {
+                        "fuel_type": "electricity",
+                        "min_hwy_mpg": 100
+                    }
+                },
+                {
+                    "utterance": "List all Ford vehicles with a maximum city fuel efficiency of 25 miles per gallon.",
+                    "parameters": {
+                        "make": "Ford",
+                        "max_city_mpg": 25
+                    }
+                },
+                {
+                    "utterance": "I need a list of diesel cars with at least 30 combined miles per gallon.",
+                    "parameters": {
+                        "fuel_type": "diesel",
+                        "min_comb_mpg": 30
+                    }
+                },
+                {
+                    "utterance": "Show me all 4-wheel drive vehicles from 2018.",
+                    "parameters": {
+                        "drive": "4wd",
+                        "year": "2018"
+                    }
+                },
+                {
+                    "utterance": "Find cars with 6 cylinders and a maximum highway fuel efficiency of 20 miles per gallon.",
+                    "parameters": {
+                        "cylinders": 6,
+                        "max_hwy_mpg": 20
+                    }
+                },
+                {
+                    "utterance": "List up to 10 rear-wheel drive cars with a minimum city fuel efficiency of 15 miles per gallon.",
+                    "parameters": {
+                        "drive": "rwd",
+                        "min_city_mpg": 15,
+                        "limit": "10"
+                    }
+                },
+                {
+                    "utterance": "Show me all manual transmission vehicles from Honda.",
+                    "parameters": {
+                        "make": "Honda",
+                        "transmission": "manual"
+                    }
+                },
+                {
+                    "utterance": "Find all vehicles with a maximum combined fuel efficiency of 35 miles per gallon.",
+                    "parameters": {
+                        "max_comb_mpg": 35
+                    }
+                },
+                {
+                    "utterance": "List all 2021 models with front-wheel drive and at least 40 highway miles per gallon.",
+                    "parameters": {
+                        "year": "2021",
+                        "drive": "fwd",
+                        "min_hwy_mpg": 40
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Data"
+}

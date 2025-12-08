@@ -1,0 +1,225 @@
+{
+    "name": "TrueWay Places",
+    "description": "Search for places. Provides detailed information for over 100 million places and points of interest.",
+    "url": "https://rapidapi.com/trueway/api/trueway-places/",
+    "api_methods": [
+        {
+            "name": "FindPlacesNearby",
+            "description": "Search for nearby places",
+            "url": "https://trueway-places.p.rapidapi.com/FindPlacesNearby",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "The latitude/longitude around which to retrieve places",
+                    "default": "37.783366,-122.402325",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language in which to return results",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "The distance (in meters) within which to return results. Max = 10000 m",
+                    "default": "180",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10000
+                        }
+                    }
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "The type of places that are returned",
+                    "default": "cafe",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find some cafes near the Golden Gate Park?",
+                    "parameters": {
+                        "location": "37.7694,-122.4862",
+                        "type": "cafe"
+                    }
+                },
+                {
+                    "utterance": "Show me restaurants within 500 meters of Times Square.",
+                    "parameters": {
+                        "location": "40.7580,-73.9855",
+                        "radius": 500,
+                        "type": "restaurant"
+                    }
+                },
+                {
+                    "utterance": "Find nearby museums in Paris and provide the results in French.",
+                    "parameters": {
+                        "location": "48.8566,2.3522",
+                        "language": "fr",
+                        "type": "museum"
+                    }
+                },
+                {
+                    "utterance": "What are the closest parks to Central Park?",
+                    "parameters": {
+                        "location": "40.785091,-73.968285",
+                        "type": "park"
+                    }
+                },
+                {
+                    "utterance": "Locate bars around the Sydney Opera House.",
+                    "parameters": {
+                        "location": "-33.8568,151.2153",
+                        "type": "bar"
+                    }
+                },
+                {
+                    "utterance": "Find libraries within a 2 km radius of the British Museum.",
+                    "parameters": {
+                        "location": "51.5194,-0.1270",
+                        "radius": 2000,
+                        "type": "library"
+                    }
+                },
+                {
+                    "utterance": "Can you list the nearby hotels in Tokyo?",
+                    "parameters": {
+                        "location": "35.6895,139.6917",
+                        "type": "hotel"
+                    }
+                },
+                {
+                    "utterance": "Search for gyms near the Colosseum in Italian.",
+                    "parameters": {
+                        "location": "41.8902,12.4922",
+                        "language": "it",
+                        "type": "gym"
+                    }
+                },
+                {
+                    "utterance": "What are the closest ATMs to the Eiffel Tower?",
+                    "parameters": {
+                        "location": "48.8584,2.2945",
+                        "type": "atm"
+                    }
+                },
+                {
+                    "utterance": "Find nearby pharmacies in Berlin with results in German.",
+                    "parameters": {
+                        "location": "52.5200,13.4050",
+                        "language": "de",
+                        "type": "pharmacy"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "FindPlaceByText",
+            "description": "Search for places by text string",
+            "url": "https://trueway-places.p.rapidapi.com/FindPlaceByText",
+            "parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "A text string on which to search",
+                    "default": "Children's Creativity Museum",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language in which to return results",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "bounds",
+                    "type": "STRING",
+                    "description": "Rectangular bounds (south,west,north,east)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find information about the Eiffel Tower?",
+                    "parameters": {
+                        "text": "Eiffel Tower"
+                    }
+                },
+                {
+                    "utterance": "Show me details about the Louvre Museum in French.",
+                    "parameters": {
+                        "text": "Louvre Museum",
+                        "language": "fr"
+                    }
+                },
+                {
+                    "utterance": "I'm looking for places called Central Park.",
+                    "parameters": {
+                        "text": "Central Park"
+                    }
+                },
+                {
+                    "utterance": "Find me the details of the Sydney Opera House in Spanish.",
+                    "parameters": {
+                        "text": "Sydney Opera House",
+                        "language": "es"
+                    }
+                },
+                {
+                    "utterance": "What can you tell me about the Colosseum?",
+                    "parameters": {
+                        "text": "Colosseum"
+                    }
+                },
+                {
+                    "utterance": "Search for the Golden Gate Bridge within the bounds of San Francisco.",
+                    "parameters": {
+                        "text": "Golden Gate Bridge",
+                        "bounds": "37.703399,-123.017220,37.833238,-122.356982"
+                    }
+                },
+                {
+                    "utterance": "Give me information on the Statue of Liberty in German.",
+                    "parameters": {
+                        "text": "Statue of Liberty",
+                        "language": "de"
+                    }
+                },
+                {
+                    "utterance": "Find the details of the Great Wall of China.",
+                    "parameters": {
+                        "text": "Great Wall of China"
+                    }
+                },
+                {
+                    "utterance": "Can you provide details about the Taj Mahal in Hindi?",
+                    "parameters": {
+                        "text": "Taj Mahal",
+                        "language": "hi"
+                    }
+                },
+                {
+                    "utterance": "Look up the details for Buckingham Palace.",
+                    "parameters": {
+                        "text": "Buckingham Palace"
+                    }
+                }
+            ]
+        }
+    ]
+}

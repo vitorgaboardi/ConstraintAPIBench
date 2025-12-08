@@ -1,0 +1,322 @@
+{
+    "name": "Moon Phase",
+    "description": "1000+ Active Users - The MoonAPI provides lunar and astronomical data, including moon phases, sun data, and zodiac signs, with additional endpoints for generating lunar calendars.",
+    "url": "https://rapidapi.com/MoonAPIcom/api/moon-phase/",
+    "api_methods": [
+        {
+            "name": "Advanced",
+            "description": "**Advanced Endpoint: Comprehensive Lunar and Solar Details**\n\nUnlock comprehensive insights into the lunar and solar aspects with the Advanced Endpoint. This endpoint delivers an extensive JSON object filled with detailed information about the moon, including its phase, illumination percentage, age in days since the last new moon, lunar cycle completion percentage, current phase name, moon-rise and moon set times, zodiac/star sign association, and much more. Additionally, it provides sun-related data such as sunrise and sunset times, solar noon, day length, and solar positions. Dive deep into lunar and solar analytics with this endpoint to enhance your understanding of the moon's dynamics.\n\n**Filter Data in Advanced Moon API**\n\nThe Advanced Moon API allows users to filter the returned data based on their specific requirements. By including the `filters` parameter in the API request, users can customise the data fields they want to retrieve. The `filters` parameter accepts a comma-separated list of keys representing the desired data fields.\n\n**Example Usage**\n\n**Request**\n\n```\nGET /advanced?filters=moon.phase_name,moon.stage,moon_phases.full_moon.next\n```\n\nThis example request filters the data to include only the moon's phase name, stage, and the next full moon information.\n\n**Response**\n\n```json\n{\n  \"moon\": {\n    \"phase_name\": \"First Quarter\",\n    \"stage\": \"waxing\",\n    \"moon_phases\": {\n      \"full_moon\": {\n        \"next\": {\n          \"timestamp\": 1671379200,\n          \"datestamp\": \"2023-01-17T00:00:00+00:00\",\n          \"days_ahead\": 258,\n          \"name\": \"Wolf Moon\",\n          \"description\": \"Named after the howling wolves often heard during this time.\"\n        }\n      }\n    }\n  }\n}\n```\n\nIn the response, only the filtered data fields are included.\n\n**Additional Filter Examples**\n\n- Filter only the moon's phase name and age in days:\n\n  ```\n  GET /advanced?filters=moon.phase_name,moon.age_days\n  ```\n\n- Filter the moon's phase name and the sunrise time:\n\n  ```\n  GET /advanced?filters=moon.phase_name,sun.sunrise_timestamp\n  ```\n\n- Filter the moon's phase name and the next new moon date:\n\n  ```\n  GET /advanced?filters=moon.phase_name,moon_phases.new_moon.next.datestamp\n  ```\n\nUsers can customise the filters according to their specific requirements to retrieve the desired data fields.",
+            "url": "https://moon-phase.p.rapidapi.com/advanced",
+            "parameters": [
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "51.4768",
+                    "required": false
+                },
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "-0.0004",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the current moon phase in New York?",
+                    "parameters": {
+                        "lat": 40.7128,
+                        "lon": -74.006
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the moon phase and sunrise time in Paris?",
+                    "parameters": {
+                        "lat": 48.8566,
+                        "lon": 2.3522
+                    }
+                },
+                {
+                    "utterance": "What is the moon's illumination percentage in Tokyo?",
+                    "parameters": {
+                        "lat": 35.6895,
+                        "lon": 139.6917
+                    }
+                },
+                {
+                    "utterance": "Give me details about the moon phase and sunset time in Sydney.",
+                    "parameters": {
+                        "lat": -33.8688,
+                        "lon": 151.2093
+                    }
+                },
+                {
+                    "utterance": "What is the next full moon date in Berlin?",
+                    "parameters": {
+                        "lat": 52.52,
+                        "lon": 13.405
+                    }
+                },
+                {
+                    "utterance": "Can you provide the moon phase and solar noon time in San Francisco?",
+                    "parameters": {
+                        "lat": 37.7749,
+                        "lon": -122.4194
+                    }
+                },
+                {
+                    "utterance": "What is the moon's age in days since the last new moon in London?",
+                    "parameters": {
+                        "lat": 51.5074,
+                        "lon": -0.1278
+                    }
+                },
+                {
+                    "utterance": "Tell me the moon phase and day length in Moscow.",
+                    "parameters": {
+                        "lat": 55.7558,
+                        "lon": 37.6173
+                    }
+                },
+                {
+                    "utterance": "What is the moon's zodiac sign association in Rome?",
+                    "parameters": {
+                        "lat": 41.9028,
+                        "lon": 12.4964
+                    }
+                },
+                {
+                    "utterance": "Can you give me the moon phase and moonrise time in Cape Town?",
+                    "parameters": {
+                        "lat": -33.9249,
+                        "lon": 18.4241
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Lunar Calendar",
+            "description": "**Calendar Endpoint: Lunar Calendar**\n\nRetrieve a comprehensive Lunar Calendar with the Calendar Endpoint. This endpoint generates a markdown table representing the moon phases for each day of the year or a specific month. The table displays the moon phase emoji for each day, allowing you to easily visualise the lunar cycle. Whether you need an overview of the entire year or a specific month, the Calendar Endpoint provides a clear and structured presentation of the moon phases. Access this endpoint to explore the moon's phases in a calendar format.",
+            "url": "https://moon-phase.p.rapidapi.com/calendar",
+            "parameters": [
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "This can be either markdown or html. (defaults to markdown if nothing sent)",
+                    "default": "html",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "markdown",
+                                "html"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the lunar calendar for this year in HTML format?",
+                    "parameters": {
+                        "format": "html"
+                    }
+                },
+                {
+                    "utterance": "I need a markdown version of the lunar calendar for next month.",
+                    "parameters": {
+                        "format": "markdown"
+                    }
+                },
+                {
+                    "utterance": "Could you generate a lunar calendar for the entire year?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the moon phases for this month in markdown.",
+                    "parameters": {
+                        "format": "markdown"
+                    }
+                },
+                {
+                    "utterance": "Can I get the lunar calendar in HTML?",
+                    "parameters": {
+                        "format": "html"
+                    }
+                },
+                {
+                    "utterance": "Generate a lunar calendar for the year 2023.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I\u2019d like to see the moon phases for December in HTML format.",
+                    "parameters": {
+                        "format": "html"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the lunar calendar for next year in markdown?",
+                    "parameters": {
+                        "format": "markdown"
+                    }
+                },
+                {
+                    "utterance": "Show me the lunar calendar for this month.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you create a lunar calendar for the year 2024 in HTML?",
+                    "parameters": {
+                        "format": "html"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Basic",
+            "description": "**Basic Endpoint: Essential Moon Phase Information**\n\nObtain the fundamental details about the current phase of the moon with the Basic Endpoint. This endpoint provides a concise JSON response including the name of the moon phase, the stage of the moon's cycle, and the number of days until the next full moon and new moon. Access this endpoint to get a quick overview of the moon's current state.",
+            "url": "https://moon-phase.p.rapidapi.com/basic",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What is the current phase of the moon?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me the stage of the moon's cycle right now?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "How many days are left until the next full moon?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to know the name of the current moon phase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What\u2019s the moon\u2019s current state?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide me with details about the moon's phase today?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "When is the next new moon?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the moon's current cycle stage.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What\u2019s the moon phase called at the moment?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you give me an overview of the moon's current phase?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Phase",
+            "description": "**Plain Text Endpoint: Simple Moon Phase Description**\n\nRetrieve a straightforward, text-based description of the moon's current phase using the Plain Text Endpoint. This endpoint offers a clear and concise explanation of the moon phase, providing you with a brief understanding of its appearance and position in its cycle. Utilise this endpoint when you need a plain text description of the moon phase for easy integration and display.",
+            "url": "https://moon-phase.p.rapidapi.com/plain-text",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What is the current phase of the moon?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me the moon's phase right now?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Describe the moon's current phase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What does the moon look like today?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me a brief description of the moon's phase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "How is the moon positioned in its cycle today?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What is the appearance of the moon at this moment?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide a simple explanation of the moon's phase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the moon's current phase in plain text.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What is the moon's phase description for today?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Emoji",
+            "description": "**Emoji Endpoint: Moon Phase Emoji**\n\nObtain the relevant emoji representation of the moon's current phase using the Emoji Endpoint. This endpoint returns a single emoji character that represents the specific phase of the moon, allowing you to visually depict the moon's appearance and progression in its cycle. Incorporate this endpoint when you need a concise and expressive emoji representation of the moon phase in your applications or interfaces.",
+            "url": "https://moon-phase.p.rapidapi.com/emoji",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What emoji represents the current moon phase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the emoji for today's moon phase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you display the moon phase emoji?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What\u2019s the emoji for the moon\u2019s current appearance?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me the emoji that matches the moon\u2019s phase right now.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What\u2019s the symbol for the moon\u2019s phase today?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show the emoji that corresponds to the moon\u2019s current phase.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me the emoji for the moon\u2019s phase?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What\u2019s the emoji for the moon\u2019s appearance tonight?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Display the emoji representing the moon\u2019s phase.",
+                    "parameters": {}
+                }
+            ]
+        }
+    ]
+}

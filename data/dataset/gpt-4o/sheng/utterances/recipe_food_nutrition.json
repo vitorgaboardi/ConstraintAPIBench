@@ -1,0 +1,1633 @@
+{
+    "name": "Recipe - Food - Nutrition",
+    "description": "The spoonacular Nutrition, Recipe, and Food API allows you to access over 365,000 recipes and 86,000 food products. Our food ontology and semantic recipe search engine makes it possible to search for recipes using natural language queries, such as \"gluten free brownies without sugar\" or \"low fat vegan cupcakes.\" You can automatically calculate the nutritional information for any recipe, analyze recipe costs, visualize ingredient lists, find recipes for what's in your fridge, find recipes based on special diets, nutritional requirements, or favorite ingredients, classify recipes into types and cuisines, convert ingredient amounts, or even compute an entire meal plan. With our powerful API, you can create many kinds of food and especially nutrition apps.\r\n\r\nSpecial diets/dietary requirements currently available include: vegan, vegetarian, pescetarian, gluten free, grain free, dairy free, high protein, low sodium, low carb, Paleo, Primal, ketogenic, FODMAP, and Whole 30. We will soon be adding Weight Watcher points, too.",
+    "url": "https://rapidapi.com/spoonacular/api/recipe-food-nutrition/",
+    "api_methods": [
+        {
+            "name": "Create Recipe Card (Deprecated)",
+            "description": "Create a recipe card given a recipe.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/visualizeRecipe",
+            "parameters": [
+                {
+                    "name": "backgroundImage",
+                    "type": "STRING",
+                    "description": "The background image (\"none\",\"background1\", or \"background2\").",
+                    "default": "background1",
+                    "required": true
+                },
+                {
+                    "name": "readyInMinutes",
+                    "type": "NUMBER",
+                    "description": "The number of minutes it takes to get the recipe on the table.",
+                    "default": "60",
+                    "required": true
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "The title of the recipe.",
+                    "default": "Pork tenderloin with green beans",
+                    "required": true
+                },
+                {
+                    "name": "image",
+                    "type": "BINARY",
+                    "description": "The binary image of the recipe as jpg.",
+                    "default": "",
+                    "required": true
+                },
+                {
+                    "name": "mask",
+                    "type": "STRING",
+                    "description": "The mask to put over the recipe image (\"ellipseMask\", \"diamondMask\", \"diamondMask\", \"starMask\", \"heartMask\", \"potMask\", \"fishMask\").",
+                    "default": "ellipseMask",
+                    "required": true
+                },
+                {
+                    "name": "instructions",
+                    "type": "STRING",
+                    "description": "The instructions to make the recipe. One step per line.",
+                    "default": "cook the beans",
+                    "required": true
+                },
+                {
+                    "name": "ingredients",
+                    "type": "STRING",
+                    "description": "The ingredient list of the recipe, one ingredient per line.",
+                    "default": "2 cups of green beans",
+                    "required": true
+                },
+                {
+                    "name": "servings",
+                    "type": "NUMBER",
+                    "description": "The number of servings that you can make from the ingredients.",
+                    "default": "2",
+                    "required": true
+                },
+                {
+                    "name": "fontColor",
+                    "type": "STRING",
+                    "description": "The font color on the recipe card as a hex-string.",
+                    "default": "#333333",
+                    "required": false
+                },
+                {
+                    "name": "source",
+                    "type": "STRING",
+                    "description": "The source of the recipe.",
+                    "default": "spoonacular.com",
+                    "required": false
+                },
+                {
+                    "name": "author",
+                    "type": "STRING",
+                    "description": "The author of the recipe.",
+                    "default": "Emily Henderson",
+                    "required": false
+                },
+                {
+                    "name": "backgroundColor",
+                    "type": "STRING",
+                    "description": "The background color on the recipe card as a hex-string.",
+                    "default": "#ffffff",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Create a recipe card for a quick 30-minute spaghetti with tomato sauce using background2 and a heart mask.",
+                    "parameters": {
+                        "backgroundImage": "background2",
+                        "readyInMinutes": 30,
+                        "title": "Spaghetti with Tomato Sauce",
+                        "image": "spaghetti.jpg",
+                        "mask": "heartMask",
+                        "instructions": "Boil pasta\nPrepare sauce\nMix together",
+                        "ingredients": "200g spaghetti\n100g tomato sauce\nSalt to taste",
+                        "servings": 4
+                    }
+                },
+                {
+                    "utterance": "I need a recipe card for a 45-minute chicken curry with background1 and a star mask.",
+                    "parameters": {
+                        "backgroundImage": "background1",
+                        "readyInMinutes": 45,
+                        "title": "Chicken Curry",
+                        "image": "chicken_curry.jpg",
+                        "mask": "starMask",
+                        "instructions": "Cook chicken\nAdd spices\nSimmer with coconut milk",
+                        "ingredients": "500g chicken\n2 tbsp curry powder\n200ml coconut milk",
+                        "servings": 3
+                    }
+                },
+                {
+                    "utterance": "Make a recipe card for a 20-minute avocado toast with background2 and a diamond mask.",
+                    "parameters": {
+                        "backgroundImage": "background2",
+                        "readyInMinutes": 20,
+                        "title": "Avocado Toast",
+                        "image": "avocado_toast.jpg",
+                        "mask": "diamondMask",
+                        "instructions": "Toast bread\nMash avocado\nSpread on toast",
+                        "ingredients": "2 slices of bread\n1 avocado\nSalt and pepper",
+                        "servings": 2
+                    }
+                },
+                {
+                    "utterance": "Generate a recipe card for a 15-minute fruit salad with background1 and a pot mask.",
+                    "parameters": {
+                        "backgroundImage": "background1",
+                        "readyInMinutes": 15,
+                        "title": "Fruit Salad",
+                        "image": "fruit_salad.jpg",
+                        "mask": "potMask",
+                        "instructions": "Chop fruits\nMix in a bowl\nServe chilled",
+                        "ingredients": "1 apple\n1 banana\n1 cup grapes",
+                        "servings": 4
+                    }
+                },
+                {
+                    "utterance": "Create a recipe card for a 60-minute beef stew with background2 and a fish mask.",
+                    "parameters": {
+                        "backgroundImage": "background2",
+                        "readyInMinutes": 60,
+                        "title": "Beef Stew",
+                        "image": "beef_stew.jpg",
+                        "mask": "fishMask",
+                        "instructions": "Brown beef\nAdd vegetables\nSimmer until tender",
+                        "ingredients": "500g beef\n2 carrots\n3 potatoes",
+                        "servings": 5
+                    }
+                },
+                {
+                    "utterance": "I want a recipe card for a 25-minute Caesar salad with background1 and an ellipse mask.",
+                    "parameters": {
+                        "backgroundImage": "background1",
+                        "readyInMinutes": 25,
+                        "title": "Caesar Salad",
+                        "image": "caesar_salad.jpg",
+                        "mask": "ellipseMask",
+                        "instructions": "Chop lettuce\nAdd dressing\nTop with croutons",
+                        "ingredients": "1 head of lettuce\n50g croutons\nCaesar dressing",
+                        "servings": 3
+                    }
+                },
+                {
+                    "utterance": "Make a recipe card for a 50-minute lasagna with background2 and a diamond mask.",
+                    "parameters": {
+                        "backgroundImage": "background2",
+                        "readyInMinutes": 50,
+                        "title": "Lasagna",
+                        "image": "lasagna.jpg",
+                        "mask": "diamondMask",
+                        "instructions": "Layer pasta\nAdd sauce\nBake until golden",
+                        "ingredients": "200g lasagna sheets\n500g minced meat\n200g cheese",
+                        "servings": 6
+                    }
+                },
+                {
+                    "utterance": "Generate a recipe card for a 10-minute smoothie with background1 and a heart mask.",
+                    "parameters": {
+                        "backgroundImage": "background1",
+                        "readyInMinutes": 10,
+                        "title": "Berry Smoothie",
+                        "image": "smoothie.jpg",
+                        "mask": "heartMask",
+                        "instructions": "Blend berries\nAdd yogurt\nServe chilled",
+                        "ingredients": "1 cup mixed berries\n1 cup yogurt\nHoney to taste",
+                        "servings": 2
+                    }
+                },
+                {
+                    "utterance": "Create a recipe card for a 35-minute vegetable stir-fry with background2 and a star mask.",
+                    "parameters": {
+                        "backgroundImage": "background2",
+                        "readyInMinutes": 35,
+                        "title": "Vegetable Stir-Fry",
+                        "image": "stir_fry.jpg",
+                        "mask": "starMask",
+                        "instructions": "Chop vegetables\nStir-fry in oil\nAdd soy sauce",
+                        "ingredients": "1 bell pepper\n1 broccoli\n2 tbsp soy sauce",
+                        "servings": 4
+                    }
+                },
+                {
+                    "utterance": "I need a recipe card for a 40-minute chocolate cake with background1 and a pot mask.",
+                    "parameters": {
+                        "backgroundImage": "background1",
+                        "readyInMinutes": 40,
+                        "title": "Chocolate Cake",
+                        "image": "chocolate_cake.jpg",
+                        "mask": "potMask",
+                        "instructions": "Mix ingredients\nBake in oven\nCool before serving",
+                        "ingredients": "200g flour\n100g cocoa powder\n200g sugar",
+                        "servings": 8
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Recipe Nutrition Widget",
+            "description": "Visualize a recipe's nutritional information as HTML including CSS. \n\nFull example code of how to work with widgets can be found in our [spoonacular-widget GitHub](https://github.com/ddsky/spoonacular-widgets).",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/visualizeNutrition",
+            "parameters": [
+                {
+                    "name": "servings",
+                    "type": "NUMBER",
+                    "description": "The number of servings.",
+                    "default": "2",
+                    "required": true
+                },
+                {
+                    "name": "ingredientList",
+                    "type": "STRING",
+                    "description": "The ingredient list of the recipe, one ingredient per line.",
+                    "default": "3 oz flour",
+                    "required": true
+                },
+                {
+                    "name": "showBacklink",
+                    "type": "BOOLEAN",
+                    "description": "Whether to show a backlink to spoonacular.",
+                    "default": "true",
+                    "required": false
+                },
+                {
+                    "name": "defaultCss",
+                    "type": "BOOLEAN",
+                    "description": "Whether the default CSS should be added to the response.",
+                    "default": "true",
+                    "required": false
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The input language, either \"en\" or \"de\".",
+                    "default": "en",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the nutritional information for a recipe with 4 servings using 2 cups of rice, 1 cup of beans, and 1 tablespoon of olive oil?",
+                    "parameters": {
+                        "servings": 4,
+                        "ingredientList": "2 cups of rice\n1 cup of beans\n1 tablespoon of olive oil"
+                    }
+                },
+                {
+                    "utterance": "I need the nutrition details for a dish with 3 servings that includes 200g chicken breast, 100g broccoli, and 50g cheese.",
+                    "parameters": {
+                        "servings": 3,
+                        "ingredientList": "200g chicken breast\n100g broccoli\n50g cheese"
+                    }
+                },
+                {
+                    "utterance": "What's the nutritional breakdown for a 5-serving meal with 500g of salmon, 2 lemons, and 1 tablespoon of dill?",
+                    "parameters": {
+                        "servings": 5,
+                        "ingredientList": "500g of salmon\n2 lemons\n1 tablespoon of dill"
+                    }
+                },
+                {
+                    "utterance": "Provide the nutrition facts for a recipe serving 6 people with 3 cups of pasta, 1 cup of tomato sauce, and 100g of parmesan.",
+                    "parameters": {
+                        "servings": 6,
+                        "ingredientList": "3 cups of pasta\n1 cup of tomato sauce\n100g of parmesan"
+                    }
+                },
+                {
+                    "utterance": "Can you calculate the nutritional content for a 2-serving dish with 1 avocado, 2 eggs, and 1 slice of bread?",
+                    "parameters": {
+                        "servings": 2,
+                        "ingredientList": "1 avocado\n2 eggs\n1 slice of bread"
+                    }
+                },
+                {
+                    "utterance": "I need the nutrition information for a 7-serving recipe using 1kg of potatoes, 200g of butter, and 100ml of cream.",
+                    "parameters": {
+                        "servings": 7,
+                        "ingredientList": "1kg of potatoes\n200g of butter\n100ml of cream"
+                    }
+                },
+                {
+                    "utterance": "What's the nutritional profile for a 4-serving meal with 300g of beef, 2 onions, and 3 cloves of garlic?",
+                    "parameters": {
+                        "servings": 4,
+                        "ingredientList": "300g of beef\n2 onions\n3 cloves of garlic"
+                    }
+                },
+                {
+                    "utterance": "Show me the nutrition details for a 3-serving dish with 1 cup of quinoa, 1 cup of spinach, and 1 tablespoon of lemon juice.",
+                    "parameters": {
+                        "servings": 3,
+                        "ingredientList": "1 cup of quinoa\n1 cup of spinach\n1 tablespoon of lemon juice"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the nutritional analysis for a 5-serving recipe with 2 cups of oats, 1 cup of milk, and 2 tablespoons of honey?",
+                    "parameters": {
+                        "servings": 5,
+                        "ingredientList": "2 cups of oats\n1 cup of milk\n2 tablespoons of honey"
+                    }
+                },
+                {
+                    "utterance": "I need the nutrition facts for a 6-serving meal with 400g of tofu, 1 cup of soy sauce, and 1 tablespoon of sesame oil.",
+                    "parameters": {
+                        "servings": 6,
+                        "ingredientList": "400g of tofu\n1 cup of soy sauce\n1 tablespoon of sesame oil"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Detect Food in Text",
+            "description": "Detect ingredients and dishes in texts.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/detect",
+            "parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "The text in which food items such as dish names and ingredients should be detected in.",
+                    "default": "I like to eat delicious tacos. Only cheeseburger with cheddar are better than that. But then again, pizza with pepperoni, mushrooms, and tomatoes is so good!",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you identify the food items in this text: 'I had a delicious breakfast with scrambled eggs, bacon, and toast.'?",
+                    "parameters": {
+                        "text": "I had a delicious breakfast with scrambled eggs, bacon, and toast."
+                    }
+                },
+                {
+                    "utterance": "What ingredients can you find in the sentence: 'For dinner, I made a salad with lettuce, tomatoes, cucumbers, and feta cheese.'?",
+                    "parameters": {
+                        "text": "For dinner, I made a salad with lettuce, tomatoes, cucumbers, and feta cheese."
+                    }
+                },
+                {
+                    "utterance": "Detect the dishes mentioned in this text: 'My favorite meals are spaghetti carbonara and chicken curry.'",
+                    "parameters": {
+                        "text": "My favorite meals are spaghetti carbonara and chicken curry."
+                    }
+                },
+                {
+                    "utterance": "Identify the food items in: 'I love snacking on almonds, cashews, and dried apricots.'",
+                    "parameters": {
+                        "text": "I love snacking on almonds, cashews, and dried apricots."
+                    }
+                },
+                {
+                    "utterance": "What food items are mentioned in: 'For lunch, I had a turkey sandwich with avocado and a side of coleslaw.'?",
+                    "parameters": {
+                        "text": "For lunch, I had a turkey sandwich with avocado and a side of coleslaw."
+                    }
+                },
+                {
+                    "utterance": "Can you find the ingredients in this text: 'The smoothie was made with bananas, strawberries, and almond milk.'?",
+                    "parameters": {
+                        "text": "The smoothie was made with bananas, strawberries, and almond milk."
+                    }
+                },
+                {
+                    "utterance": "What dishes are mentioned in: 'I enjoy eating sushi rolls and miso soup for dinner.'?",
+                    "parameters": {
+                        "text": "I enjoy eating sushi rolls and miso soup for dinner."
+                    }
+                },
+                {
+                    "utterance": "Detect the food items in: 'For dessert, I had a slice of chocolate cake and a scoop of vanilla ice cream.'",
+                    "parameters": {
+                        "text": "For dessert, I had a slice of chocolate cake and a scoop of vanilla ice cream."
+                    }
+                },
+                {
+                    "utterance": "Identify the ingredients in: 'The pasta sauce was made with garlic, onions, and crushed tomatoes.'",
+                    "parameters": {
+                        "text": "The pasta sauce was made with garlic, onions, and crushed tomatoes."
+                    }
+                },
+                {
+                    "utterance": "What food items can you find in: 'I like to start my day with oatmeal topped with blueberries and honey.'?",
+                    "parameters": {
+                        "text": "I like to start my day with oatmeal topped with blueberries and honey."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Image Analysis (File)",
+            "description": "Classify and analyze a food image.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/images/analyze",
+            "parameters": [
+                {
+                    "name": "file",
+                    "type": "BINARY",
+                    "description": "",
+                    "default": "",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Analyze this image to identify the food items.",
+                    "parameters": {
+                        "file": "image_of_food.jpg"
+                    }
+                },
+                {
+                    "utterance": "Can you classify the food in this picture?",
+                    "parameters": {
+                        "file": "food_picture.png"
+                    }
+                },
+                {
+                    "utterance": "What ingredients are in this dish shown in the image?",
+                    "parameters": {
+                        "file": "dish_image.jpeg"
+                    }
+                },
+                {
+                    "utterance": "Please analyze this photo to determine the type of cuisine.",
+                    "parameters": {
+                        "file": "cuisine_photo.bmp"
+                    }
+                },
+                {
+                    "utterance": "Identify the nutritional content of the food in this image.",
+                    "parameters": {
+                        "file": "nutrition_image.tiff"
+                    }
+                },
+                {
+                    "utterance": "What kind of meal is depicted in this image?",
+                    "parameters": {
+                        "file": "meal_image.gif"
+                    }
+                },
+                {
+                    "utterance": "Can you tell if this food is vegan from the image?",
+                    "parameters": {
+                        "file": "vegan_food_image.png"
+                    }
+                },
+                {
+                    "utterance": "Analyze this image to check if the food is gluten-free.",
+                    "parameters": {
+                        "file": "gluten_free_food.jpg"
+                    }
+                },
+                {
+                    "utterance": "What is the calorie count of the food in this picture?",
+                    "parameters": {
+                        "file": "calorie_count_image.jpeg"
+                    }
+                },
+                {
+                    "utterance": "Determine the main ingredients in this food photo.",
+                    "parameters": {
+                        "file": "ingredients_photo.bmp"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Compute Shopping List",
+            "description": "Compute a shopping list from a set of simple foods. This endpoint does not require usernames.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/mealplanner/shopping-list/compute",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "Generate Shopping List",
+            "description": "Generate the shopping list for a user from the meal planner in a given time frame.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/mealplanner/dsky/shopping-list/2020-06-01/2020-06-07",
+            "parameters": [
+                {
+                    "name": "end-date",
+                    "type": "string",
+                    "description": "The end date in the format yyyy-mm-dd.",
+                    "default": "2020-06-07",
+                    "required": true
+                },
+                {
+                    "name": "hash",
+                    "type": "STRING",
+                    "description": "The private hash for the username.",
+                    "default": "4b5v4398573406",
+                    "required": true
+                },
+                {
+                    "name": "start-date",
+                    "type": "string",
+                    "description": "The start date in the format yyyy-mm-dd.",
+                    "default": "2020-06-01",
+                    "required": true
+                },
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "The username.",
+                    "default": "dsky",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Generate my shopping list from June 1st to June 7th.",
+                    "parameters": {
+                        "start-date": "2020-06-01",
+                        "end-date": "2020-06-07",
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "I need a shopping list for my meal plan from May 15th to May 20th.",
+                    "parameters": {
+                        "start-date": "2020-05-15",
+                        "end-date": "2020-05-20",
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Can you create a shopping list for me from July 10th to July 17th?",
+                    "parameters": {
+                        "start-date": "2020-07-10",
+                        "end-date": "2020-07-17",
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Prepare my shopping list for the week starting August 1st.",
+                    "parameters": {
+                        "start-date": "2020-08-01",
+                        "end-date": "2020-08-07",
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "I need a shopping list for the meal plan from September 5th to September 12th.",
+                    "parameters": {
+                        "start-date": "2020-09-05",
+                        "end-date": "2020-09-12",
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Generate a shopping list for my meals from October 1st to October 8th.",
+                    "parameters": {
+                        "start-date": "2020-10-01",
+                        "end-date": "2020-10-08",
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Create a shopping list for the period from November 20th to November 27th.",
+                    "parameters": {
+                        "start-date": "2020-11-20",
+                        "end-date": "2020-11-27",
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "I need a shopping list for my meal plan from December 1st to December 7th.",
+                    "parameters": {
+                        "start-date": "2020-12-01",
+                        "end-date": "2020-12-07",
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Can you generate a shopping list for me from January 10th to January 17th?",
+                    "parameters": {
+                        "start-date": "2021-01-10",
+                        "end-date": "2021-01-17",
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Prepare my shopping list for the week starting February 1st.",
+                    "parameters": {
+                        "start-date": "2021-02-01",
+                        "end-date": "2021-02-07",
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Add to Shopping List",
+            "description": "Add an item to the current shopping list of a user.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/mealplanner/dsky/shopping-list/items",
+            "parameters": [
+                {
+                    "name": "hash",
+                    "type": "STRING",
+                    "description": "The private hash for the username.",
+                    "default": "4b5v4398573406",
+                    "required": true
+                },
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "The username.",
+                    "default": "dsky",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Add 2 pounds of chicken breast to my shopping list.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Please include a dozen eggs in my shopping list.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Add a gallon of milk to my shopping list.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Can you add a loaf of whole grain bread to my shopping list?",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Add 500 grams of pasta to my shopping list.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Include a bottle of olive oil in my shopping list.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Add a pack of butter to my shopping list.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Please add a bag of brown rice to my shopping list.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Add a jar of peanut butter to my shopping list.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Include a bunch of bananas in my shopping list.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Add Meal Plan Template",
+            "description": "Add a meal plan template for a user.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/mealplanner/dsky/templates",
+            "parameters": [
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "The username.",
+                    "default": "dsky",
+                    "required": true
+                },
+                {
+                    "name": "hash",
+                    "type": "STRING",
+                    "description": "The private hash for the username.",
+                    "default": "4b5v4398573406",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Create a new meal plan template for user dsky with hash 4b5v4398573406.",
+                    "parameters": {
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Add a meal plan template for dsky using the hash 4b5v4398573406.",
+                    "parameters": {
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Set up a meal plan template for the user dsky with the hash 4b5v4398573406.",
+                    "parameters": {
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Can you add a meal plan template for dsky? The hash is 4b5v4398573406.",
+                    "parameters": {
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Please create a meal plan template for dsky with the hash 4b5v4398573406.",
+                    "parameters": {
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "I need a meal plan template added for user dsky, hash 4b5v4398573406.",
+                    "parameters": {
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Generate a meal plan template for dsky using hash 4b5v4398573406.",
+                    "parameters": {
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Add a new meal plan template for the user dsky with hash 4b5v4398573406.",
+                    "parameters": {
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "Could you set up a meal plan template for dsky? The hash is 4b5v4398573406.",
+                    "parameters": {
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                },
+                {
+                    "utterance": "I want to add a meal plan template for dsky with the hash 4b5v4398573406.",
+                    "parameters": {
+                        "username": "dsky",
+                        "hash": "4b5v4398573406"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Add to Meal Plan",
+            "description": "Add an item to the user's meal plan. The Add to Meal Plan endpoint is complex, be sure to review the [guide here](https://spoonacular.com/food-api/docs#Add-to-Meal-Plan)",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/mealplanner/dsky/items",
+            "parameters": [
+                {
+                    "name": "hash",
+                    "type": "STRING",
+                    "description": "The private hash for the username.",
+                    "default": "4b5v4398573406",
+                    "required": true
+                },
+                {
+                    "name": "username",
+                    "type": "string",
+                    "description": "The username.",
+                    "default": "dsky",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Add a vegan breakfast to my meal plan.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Include a gluten-free dinner in my meal plan.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Add a high protein lunch to my meal plan.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Can you add a low carb snack to my meal plan?",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Add a pescetarian dinner to my meal plan.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Include a dairy-free dessert in my meal plan.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Add a ketogenic breakfast to my meal plan.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Can you add a Paleo lunch to my meal plan?",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Add a Whole 30 dinner to my meal plan.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                },
+                {
+                    "utterance": "Include a FODMAP-friendly snack in my meal plan.",
+                    "parameters": {
+                        "hash": "4b5v4398573406",
+                        "username": "dsky"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Classify Grocery Product Bulk",
+            "description": "Provide a set of product jsons, get back classified products.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/products/classifyBatch",
+            "parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The display name of the returned category, supported is en_US (for American English) and en_GB (for British English).",
+                    "default": "en_US",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Classify these grocery products using American English.",
+                    "parameters": {
+                        "locale": "en_US"
+                    }
+                },
+                {
+                    "utterance": "Can you categorize these food items in British English?",
+                    "parameters": {
+                        "locale": "en_GB"
+                    }
+                },
+                {
+                    "utterance": "Use American English to classify this list of grocery products.",
+                    "parameters": {
+                        "locale": "en_US"
+                    }
+                },
+                {
+                    "utterance": "Please classify these products with the category names in British English.",
+                    "parameters": {
+                        "locale": "en_GB"
+                    }
+                },
+                {
+                    "utterance": "I need these grocery items classified using American English.",
+                    "parameters": {
+                        "locale": "en_US"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the classification for these products in British English?",
+                    "parameters": {
+                        "locale": "en_GB"
+                    }
+                },
+                {
+                    "utterance": "Classify the following grocery products with American English labels.",
+                    "parameters": {
+                        "locale": "en_US"
+                    }
+                },
+                {
+                    "utterance": "Please categorize these items using British English.",
+                    "parameters": {
+                        "locale": "en_GB"
+                    }
+                },
+                {
+                    "utterance": "I want these grocery products classified in American English.",
+                    "parameters": {
+                        "locale": "en_US"
+                    }
+                },
+                {
+                    "utterance": "Can you classify these food products with British English categories?",
+                    "parameters": {
+                        "locale": "en_GB"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Compute Glycemic Load",
+            "description": "Retrieve the glycemic index for a list of ingredients and compute the individual and total glycemic load.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/glycemicLoad",
+            "parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The input language, either \\\\\\\"en\\\\\\\" or \\\\\\\"de\\\\\\\".",
+                    "default": "en",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the glycemic load of a banana?",
+                    "parameters": {
+                        "language": "en"
+                    }
+                },
+                {
+                    "utterance": "Calculate the glycemic load for white rice and potatoes.",
+                    "parameters": {
+                        "language": "en"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the glycemic index of oatmeal?",
+                    "parameters": {
+                        "language": "en"
+                    }
+                },
+                {
+                    "utterance": "Find the glycemic load for a meal with pasta and chicken.",
+                    "parameters": {
+                        "language": "en"
+                    }
+                },
+                {
+                    "utterance": "What's the glycemic load of a breakfast with toast and jam?",
+                    "parameters": {
+                        "language": "en"
+                    }
+                },
+                {
+                    "utterance": "Compute the glycemic load for a salad with quinoa and chickpeas.",
+                    "parameters": {
+                        "language": "en"
+                    }
+                },
+                {
+                    "utterance": "How does the glycemic load of apples compare to oranges?",
+                    "parameters": {
+                        "language": "en"
+                    }
+                },
+                {
+                    "utterance": "Tell me the glycemic load for a dinner with steak and mashed potatoes.",
+                    "parameters": {
+                        "language": "en"
+                    }
+                },
+                {
+                    "utterance": "What is the glycemic load of a smoothie with bananas and strawberries?",
+                    "parameters": {
+                        "language": "en"
+                    }
+                },
+                {
+                    "utterance": "Calculate the glycemic load for a dessert with chocolate cake and ice cream.",
+                    "parameters": {
+                        "language": "en"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Parse Ingredients",
+            "description": "Extract an ingredient from plain text.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/parseIngredients",
+            "parameters": [
+                {
+                    "name": "ingredientList",
+                    "type": "STRING",
+                    "description": "The ingredient list of the recipe, one ingredient per line.",
+                    "default": "3 oz pork shoulder",
+                    "required": true
+                },
+                {
+                    "name": "servings",
+                    "type": "NUMBER",
+                    "description": "The number of servings that you can make from the ingredients.",
+                    "default": "2",
+                    "required": true
+                },
+                {
+                    "name": "includeNutrition",
+                    "type": "BOOLEAN",
+                    "description": "Whether nutrition data should be added to correctly parsed ingredients.",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you parse the ingredients for a recipe with 3 oz pork shoulder and 2 servings?",
+                    "parameters": {
+                        "ingredientList": "3 oz pork shoulder",
+                        "servings": 2
+                    }
+                },
+                {
+                    "utterance": "I need the nutritional breakdown for a recipe with 1 cup of quinoa and 4 servings.",
+                    "parameters": {
+                        "ingredientList": "1 cup quinoa",
+                        "servings": 4,
+                        "includeNutrition": true
+                    }
+                },
+                {
+                    "utterance": "Extract the ingredients for a dish using 200g of chicken breast for 3 servings.",
+                    "parameters": {
+                        "ingredientList": "200g chicken breast",
+                        "servings": 3
+                    }
+                },
+                {
+                    "utterance": "Can you provide the nutrition info for a recipe with 2 tablespoons of olive oil for 5 servings?",
+                    "parameters": {
+                        "ingredientList": "2 tablespoons olive oil",
+                        "servings": 5,
+                        "includeNutrition": true
+                    }
+                },
+                {
+                    "utterance": "Parse the ingredients for a meal with 1 pound of ground beef for 6 servings.",
+                    "parameters": {
+                        "ingredientList": "1 pound ground beef",
+                        "servings": 6
+                    }
+                },
+                {
+                    "utterance": "I need to know the nutritional content for a recipe with 3 cups of spinach for 2 servings.",
+                    "parameters": {
+                        "ingredientList": "3 cups spinach",
+                        "servings": 2,
+                        "includeNutrition": true
+                    }
+                },
+                {
+                    "utterance": "Extract the ingredients for a dish using 500ml of coconut milk for 4 servings.",
+                    "parameters": {
+                        "ingredientList": "500ml coconut milk",
+                        "servings": 4
+                    }
+                },
+                {
+                    "utterance": "Can you parse the ingredients for a recipe with 2 teaspoons of salt for 8 servings?",
+                    "parameters": {
+                        "ingredientList": "2 teaspoons salt",
+                        "servings": 8
+                    }
+                },
+                {
+                    "utterance": "I need the nutritional breakdown for a recipe with 1 tablespoon of honey for 3 servings.",
+                    "parameters": {
+                        "ingredientList": "1 tablespoon honey",
+                        "servings": 3,
+                        "includeNutrition": true
+                    }
+                },
+                {
+                    "utterance": "Extract the ingredients for a meal with 4 oz of salmon for 2 servings.",
+                    "parameters": {
+                        "ingredientList": "4 oz salmon",
+                        "servings": 2
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Analyze Recipe",
+            "description": "This endpoint allows you to send raw recipe information, such as title, servings, and ingredients, to then see what we compute (badges, diets, nutrition, and more). This is useful if you have your own recipe data and want to enrich it with our semantic analysis.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/analyze",
+            "parameters": [
+                {
+                    "name": "includeTaste",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "false",
+                    "required": false
+                },
+                {
+                    "name": "includeNutrition",
+                    "type": "BOOLEAN",
+                    "description": "",
+                    "default": "false",
+                    "required": false
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The input language, either \\\\\\\"en\\\\\\\" or \\\\\\\"de\\\\\\\".",
+                    "default": "en",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you analyze this recipe for chocolate cake and include the nutritional information?",
+                    "parameters": {
+                        "includeNutrition": true
+                    }
+                },
+                {
+                    "utterance": "Please analyze my pasta recipe and include taste details.",
+                    "parameters": {
+                        "includeTaste": true
+                    }
+                },
+                {
+                    "utterance": "Analyze this vegan salad recipe and provide both taste and nutrition information.",
+                    "parameters": {
+                        "includeTaste": true,
+                        "includeNutrition": true
+                    }
+                },
+                {
+                    "utterance": "Can you analyze my German apple pie recipe?",
+                    "parameters": {
+                        "language": "de"
+                    }
+                },
+                {
+                    "utterance": "I need a nutritional analysis for my homemade granola recipe.",
+                    "parameters": {
+                        "includeNutrition": true
+                    }
+                },
+                {
+                    "utterance": "Could you analyze this smoothie recipe and include taste details?",
+                    "parameters": {
+                        "includeTaste": true
+                    }
+                },
+                {
+                    "utterance": "Please analyze my recipe for chicken curry and provide nutritional information.",
+                    "parameters": {
+                        "includeNutrition": true
+                    }
+                },
+                {
+                    "utterance": "Can you analyze this recipe for lasagna and include both taste and nutrition details?",
+                    "parameters": {
+                        "includeTaste": true,
+                        "includeNutrition": true
+                    }
+                },
+                {
+                    "utterance": "Analyze my recipe for French onion soup.",
+                    "parameters": {
+                        "language": "en"
+                    }
+                },
+                {
+                    "utterance": "I need a taste analysis for my chocolate chip cookies recipe.",
+                    "parameters": {
+                        "includeTaste": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Analyze Recipe Instructions",
+            "description": "Extract ingredients and equipment from the recipe instruction steps.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/analyzeInstructions",
+            "parameters": [
+                {
+                    "name": "instructions",
+                    "type": "STRING",
+                    "description": "The instructions text.",
+                    "default": "Put the garlic in a pan and then add the onion.",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you extract the ingredients and equipment from this recipe: 'Chop the tomatoes and add them to the salad bowl with lettuce and cucumber.'?",
+                    "parameters": {
+                        "instructions": "Chop the tomatoes and add them to the salad bowl with lettuce and cucumber."
+                    }
+                },
+                {
+                    "utterance": "What ingredients and equipment are needed for this recipe: 'Boil the pasta, then saut\u00e9 it with garlic and olive oil.'?",
+                    "parameters": {
+                        "instructions": "Boil the pasta, then saut\u00e9 it with garlic and olive oil."
+                    }
+                },
+                {
+                    "utterance": "Please analyze the following recipe instructions: 'Mix flour and sugar, then bake in the oven at 350 degrees for 20 minutes.'",
+                    "parameters": {
+                        "instructions": "Mix flour and sugar, then bake in the oven at 350 degrees for 20 minutes."
+                    }
+                },
+                {
+                    "utterance": "Extract the ingredients and equipment from this: 'Grill the chicken breast and serve with steamed broccoli.'",
+                    "parameters": {
+                        "instructions": "Grill the chicken breast and serve with steamed broccoli."
+                    }
+                },
+                {
+                    "utterance": "What are the ingredients and equipment for this recipe: 'Blend the bananas with milk and honey until smooth.'?",
+                    "parameters": {
+                        "instructions": "Blend the bananas with milk and honey until smooth."
+                    }
+                },
+                {
+                    "utterance": "Analyze this recipe: 'Fry the bacon until crispy, then scramble the eggs in the same pan.'",
+                    "parameters": {
+                        "instructions": "Fry the bacon until crispy, then scramble the eggs in the same pan."
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the ingredients and equipment needed for: 'Simmer the lentils with carrots and celery for 30 minutes.'?",
+                    "parameters": {
+                        "instructions": "Simmer the lentils with carrots and celery for 30 minutes."
+                    }
+                },
+                {
+                    "utterance": "Please extract the ingredients and equipment from: 'Whisk the eggs with salt and pepper, then pour into a heated skillet.'",
+                    "parameters": {
+                        "instructions": "Whisk the eggs with salt and pepper, then pour into a heated skillet."
+                    }
+                },
+                {
+                    "utterance": "What ingredients and equipment are required for: 'Marinate the beef in soy sauce and ginger, then grill to desired doneness.'?",
+                    "parameters": {
+                        "instructions": "Marinate the beef in soy sauce and ginger, then grill to desired doneness."
+                    }
+                },
+                {
+                    "utterance": "Analyze the following instructions: 'Combine the oats with almond milk and let sit overnight in the fridge.'",
+                    "parameters": {
+                        "instructions": "Combine the oats with almond milk and let sit overnight in the fridge."
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Connect User",
+            "description": "In order to call user-specific endpoints, you need to connect your app's users to spoonacular users.\n\nJust call this endpoint with your user's information and you will get back a username and hash that you must save on your side. In future requests that you make on this user's behalf you simply pass their username and hash alongside your API key.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/users/connect",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "Map Ingredients to Grocery Products",
+            "description": "Map a set of ingredients to products you can buy in the grocery store.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/ingredients/map",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Find grocery products for making gluten free brownies without sugar.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What grocery items do I need to buy for a low fat vegan cupcake recipe?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Map the ingredients for a high protein breakfast smoothie to grocery products.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the grocery products needed for a dairy free lasagna?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What should I buy to make a ketogenic pizza?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Get me the grocery list for a Paleo chicken stir fry.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Map the ingredients for a FODMAP-friendly salad to grocery store items.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What products do I need to purchase for a Whole 30 compliant dinner?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Find the grocery products for a pescetarian sushi roll.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What do I need to buy to make a grain free bread?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Classify a Grocery Product",
+            "description": "Given a grocery product title, this endpoint allows you to detect what basic ingredient it is.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/products/classify",
+            "parameters": [
+                {
+                    "name": "locale",
+                    "type": "STRING",
+                    "description": "The locale of the returned category, supported is en\\_US and en\\_GB.",
+                    "default": "en_us",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What basic ingredient is 'Kellogg's Corn Flakes'?",
+                    "parameters": {
+                        "locale": "en_us"
+                    }
+                },
+                {
+                    "utterance": "Can you classify 'Heinz Tomato Ketchup' for me?",
+                    "parameters": {
+                        "locale": "en_us"
+                    }
+                },
+                {
+                    "utterance": "Identify the main ingredient in 'Barilla Spaghetti Pasta'.",
+                    "parameters": {
+                        "locale": "en_us"
+                    }
+                },
+                {
+                    "utterance": "What is the basic ingredient of 'Oreo Cookies'?",
+                    "parameters": {
+                        "locale": "en_us"
+                    }
+                },
+                {
+                    "utterance": "Classify the grocery product 'Chobani Greek Yogurt'.",
+                    "parameters": {
+                        "locale": "en_us"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the main ingredient in 'Lay's Classic Potato Chips'?",
+                    "parameters": {
+                        "locale": "en_us"
+                    }
+                },
+                {
+                    "utterance": "What basic ingredient does 'Campbell's Chicken Noodle Soup' contain?",
+                    "parameters": {
+                        "locale": "en_us"
+                    }
+                },
+                {
+                    "utterance": "Classify 'Quaker Oats Old Fashioned Oatmeal' for me.",
+                    "parameters": {
+                        "locale": "en_us"
+                    }
+                },
+                {
+                    "utterance": "Identify the main ingredient in 'Skippy Peanut Butter'.",
+                    "parameters": {
+                        "locale": "en_us"
+                    }
+                },
+                {
+                    "utterance": "What is the basic ingredient of 'Hershey's Milk Chocolate Bar'?",
+                    "parameters": {
+                        "locale": "en_us"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Classify Cuisine",
+            "description": "Classify the recipe's cuisine.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/cuisine",
+            "parameters": [
+                {
+                    "name": "ingredientList",
+                    "type": "STRING",
+                    "description": "The ingredient list of the recipe, one ingredient per line.",
+                    "default": "3 oz pork shoulder",
+                    "required": true
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "The title of the recipe.",
+                    "default": "Pork roast with green beans",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Classify the cuisine of a recipe titled 'Spaghetti Bolognese' with ingredients: 200g spaghetti, 100g minced beef, 1 onion, 2 cloves garlic, 400g canned tomatoes.",
+                    "parameters": {
+                        "ingredientList": "200g spaghetti\n100g minced beef\n1 onion\n2 cloves garlic\n400g canned tomatoes",
+                        "title": "Spaghetti Bolognese"
+                    }
+                },
+                {
+                    "utterance": "What cuisine is the recipe 'Chicken Tikka Masala' with ingredients: 500g chicken breast, 1 cup yogurt, 2 tbsp tikka masala paste, 1 onion, 1 can coconut milk?",
+                    "parameters": {
+                        "ingredientList": "500g chicken breast\n1 cup yogurt\n2 tbsp tikka masala paste\n1 onion\n1 can coconut milk",
+                        "title": "Chicken Tikka Masala"
+                    }
+                },
+                {
+                    "utterance": "Determine the cuisine for 'Sushi Roll' using these ingredients: 1 cup sushi rice, 2 sheets nori, 100g salmon, 1 avocado, 1 cucumber.",
+                    "parameters": {
+                        "ingredientList": "1 cup sushi rice\n2 sheets nori\n100g salmon\n1 avocado\n1 cucumber",
+                        "title": "Sushi Roll"
+                    }
+                },
+                {
+                    "utterance": "Identify the cuisine of 'Beef Tacos' with the following ingredients: 300g ground beef, 1 packet taco seasoning, 8 taco shells, 1 cup shredded lettuce, 1 cup diced tomatoes.",
+                    "parameters": {
+                        "ingredientList": "300g ground beef\n1 packet taco seasoning\n8 taco shells\n1 cup shredded lettuce\n1 cup diced tomatoes",
+                        "title": "Beef Tacos"
+                    }
+                },
+                {
+                    "utterance": "Classify the cuisine for 'Pad Thai' with these ingredients: 200g rice noodles, 100g shrimp, 2 tbsp fish sauce, 1 lime, 1 egg, 1/4 cup peanuts.",
+                    "parameters": {
+                        "ingredientList": "200g rice noodles\n100g shrimp\n2 tbsp fish sauce\n1 lime\n1 egg\n1/4 cup peanuts",
+                        "title": "Pad Thai"
+                    }
+                },
+                {
+                    "utterance": "What is the cuisine of 'Moussaka' with ingredients: 500g eggplant, 300g ground lamb, 1 onion, 2 cloves garlic, 1 cup b\u00e9chamel sauce?",
+                    "parameters": {
+                        "ingredientList": "500g eggplant\n300g ground lamb\n1 onion\n2 cloves garlic\n1 cup b\u00e9chamel sauce",
+                        "title": "Moussaka"
+                    }
+                },
+                {
+                    "utterance": "Determine the cuisine for 'Ratatouille' using these ingredients: 1 zucchini, 1 eggplant, 1 bell pepper, 2 tomatoes, 1 onion, 2 cloves garlic.",
+                    "parameters": {
+                        "ingredientList": "1 zucchini\n1 eggplant\n1 bell pepper\n2 tomatoes\n1 onion\n2 cloves garlic",
+                        "title": "Ratatouille"
+                    }
+                },
+                {
+                    "utterance": "Identify the cuisine of 'Butter Chicken' with the following ingredients: 500g chicken thighs, 1 cup cream, 2 tbsp butter, 1 onion, 2 tbsp garam masala.",
+                    "parameters": {
+                        "ingredientList": "500g chicken thighs\n1 cup cream\n2 tbsp butter\n1 onion\n2 tbsp garam masala",
+                        "title": "Butter Chicken"
+                    }
+                },
+                {
+                    "utterance": "Classify the cuisine for 'Falafel Wrap' with these ingredients: 1 can chickpeas, 1 onion, 2 cloves garlic, 1 tbsp cumin, 4 pita breads, 1 cup tahini sauce.",
+                    "parameters": {
+                        "ingredientList": "1 can chickpeas\n1 onion\n2 cloves garlic\n1 tbsp cumin\n4 pita breads\n1 cup tahini sauce",
+                        "title": "Falafel Wrap"
+                    }
+                },
+                {
+                    "utterance": "What is the cuisine of 'Paella' with ingredients: 200g rice, 100g chorizo, 100g shrimp, 1 bell pepper, 1 cup peas, 1 tsp saffron?",
+                    "parameters": {
+                        "ingredientList": "200g rice\n100g chorizo\n100g shrimp\n1 bell pepper\n1 cup peas\n1 tsp saffron",
+                        "title": "Paella"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Image Classification (File)",
+            "description": "Classify a food image.",
+            "url": "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/food/images/classify",
+            "parameters": [
+                {
+                    "name": "file",
+                    "type": "BINARY",
+                    "description": "",
+                    "default": "",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you identify the dish in this image?",
+                    "parameters": {
+                        "file": "image_of_dish.jpg"
+                    }
+                },
+                {
+                    "utterance": "What food is shown in this picture?",
+                    "parameters": {
+                        "file": "food_picture.png"
+                    }
+                },
+                {
+                    "utterance": "Please classify the food item in this photo.",
+                    "parameters": {
+                        "file": "photo_of_food.jpeg"
+                    }
+                },
+                {
+                    "utterance": "Could you tell me what this meal is from the image?",
+                    "parameters": {
+                        "file": "meal_image.bmp"
+                    }
+                },
+                {
+                    "utterance": "Identify the cuisine in this image.",
+                    "parameters": {
+                        "file": "cuisine_image.tiff"
+                    }
+                },
+                {
+                    "utterance": "What type of food is in this picture?",
+                    "parameters": {
+                        "file": "food_type_image.gif"
+                    }
+                },
+                {
+                    "utterance": "Classify the dish shown in this image.",
+                    "parameters": {
+                        "file": "dish_image.png"
+                    }
+                },
+                {
+                    "utterance": "Can you recognize the food in this photo?",
+                    "parameters": {
+                        "file": "food_photo.jpg"
+                    }
+                },
+                {
+                    "utterance": "What is the name of the dish in this image?",
+                    "parameters": {
+                        "file": "dish_name_image.jpeg"
+                    }
+                },
+                {
+                    "utterance": "Please identify the ingredients in this food image.",
+                    "parameters": {
+                        "file": "ingredients_image.bmp"
+                    }
+                }
+            ]
+        }
+    ]
+}

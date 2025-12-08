@@ -1,0 +1,735 @@
+{
+    "tool_name": "Air Cargo CO2 Track And Trace",
+    "tool_description": "Track your Air Cargo shipments and measure CO2 with more than 190 airlines",
+    "title": "Air Cargo CO2 Track And Trace",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 96,
+        "avgLatency": 6301,
+        "avgSuccessRate": 93,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/cargoai-cargoai-default/api/air-cargo-co2-track-and-trace/",
+    "host": "air-cargo-co2-track-and-trace.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "PULL (track)",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track",
+            "description": "By providing a valid AWB, you can get tracking information for the shipment.\n\nAnswers are 10s in average. However, it takes between 1s to 5min to get the information from the airline system but the API has to answer in 30s which generating timeouts errors.\nIn such case, you have to build the logic to try again 10mins after a timeout to avoid this or to use the subscription method.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://air-cargo-co2-track-and-trace.p.rapidapi.com/track\"\nquerystring = {\"awb\": awb}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"air-cargo-co2-track-and-trace.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": [
+                {
+                    "awb": "000-99999970",
+                    "weight": "7.0",
+                    "pieces": "1",
+                    "origin": "LHR",
+                    "destination": "NRT",
+                    "events": [
+                        {
+                            "code": "BKD",
+                            "eventDate": "2022-06-01T09:21:00+00:00",
+                            "eventLocation": "LHR",
+                            "eventLocationCoord": "-0.46194100,51.47060013",
+                            "flight": {
+                                "number": "CAI62",
+                                "origin": "LHR",
+                                "destination": "SIN",
+                                "originCoord": "-0.46194100,51.47060013",
+                                "destinationCoord": "103.99400330,1.35019004",
+                                "scheduledDeparture": "2022-06-04T12:25:00+00:00",
+                                "actualDeparture": "2022-06-04T12:25:00+00:00",
+                                "scheduledArrival": "2022-06-05T09:30:00+08:00",
+                                "actualArrival": "2022-06-05T09:47:24+08:00",
+                                "carbonEmission": "34.57 kg (est)",
+                                "distance": "10883.29"
+                            },
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "distance": "10883.29",
+                            "origin": "LHR",
+                            "destination": "SIN",
+                            "time": "12h 5m 33s",
+                            "flightNumber": "CAI62",
+                            "scheduledDepartureDate": "2022-06-04T12:25:00+00:00",
+                            "carbonEmission": "34.57 kg (est)",
+                            "originCoord": "-0.46194100,51.47060013",
+                            "destinationCoord": "103.99400330,1.35019004"
+                        },
+                        {
+                            "code": "BKD",
+                            "eventDate": "2022-06-01T09:21:00+00:00",
+                            "eventLocation": "LHR",
+                            "eventLocationCoord": "-0.46194100,51.47060013",
+                            "flight": {
+                                "number": "CAI24",
+                                "origin": "SIN",
+                                "destination": "NRT",
+                                "originCoord": "103.99400330,1.35019004",
+                                "destinationCoord": "140.38600159,35.76470184",
+                                "scheduledDeparture": "2022-06-05T20:45:00+08:00",
+                                "actualDeparture": "2022-06-05T20:40:00+08:00",
+                                "scheduledArrival": "2022-06-06T07:30:00+12:00",
+                                "actualArrival": "2022-06-06T07:25:00+12:00",
+                                "carbonEmission": "17.39 kg (est)",
+                                "distance": "5357.58"
+                            },
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "distance": "5357.58",
+                            "origin": "SIN",
+                            "destination": "NRT",
+                            "time": "5h 57m 10s",
+                            "flightNumber": "CAI24",
+                            "scheduledDepartureDate": "2022-06-05T20:45:00+08:00",
+                            "carbonEmission": "17.39 kg (est)",
+                            "originCoord": "103.99400330,1.35019004",
+                            "destinationCoord": "140.38600159,35.76470184"
+                        },
+                        {
+                            "code": "RCS",
+                            "eventDate": "2022-06-02T09:32:46+00:00",
+                            "eventLocation": "LHR",
+                            "eventLocationCoord": "-0.46194100,51.47060013",
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "origin": "LHR",
+                            "destination": "NRT"
+                        },
+                        {
+                            "code": "MAN",
+                            "eventDate": "2022-06-04T12:25:00+00:00",
+                            "eventLocation": "LHR",
+                            "eventLocationCoord": "-0.46194100,51.47060013",
+                            "flight": {
+                                "number": "CAI62",
+                                "origin": "LHR",
+                                "destination": "SIN",
+                                "originCoord": "-0.46194100,51.47060013",
+                                "destinationCoord": "103.99400330,1.35019004",
+                                "scheduledDeparture": "2022-06-04T12:25:00+00:00",
+                                "actualDeparture": "2022-06-04T12:25:00+00:00",
+                                "scheduledArrival": "2022-06-05T09:30:00+08:00",
+                                "actualArrival": "2022-06-05T09:47:24+08:00",
+                                "carbonEmission": "34.57 kg (est)",
+                                "distance": "10883.29"
+                            },
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "distance": "10883.29",
+                            "origin": "LHR",
+                            "destination": "SIN",
+                            "time": "12h 5m 33s",
+                            "flightNumber": "CAI62",
+                            "scheduledDepartureDate": "2022-06-04T12:25:00+00:00",
+                            "carbonEmission": "34.57 kg (est)",
+                            "originCoord": "-0.46194100,51.47060013",
+                            "destinationCoord": "103.99400330,1.35019004"
+                        },
+                        {
+                            "code": "DEP",
+                            "eventDate": "2022-06-04T12:25:00+00:00",
+                            "eventLocation": "LHR",
+                            "eventLocationCoord": "-0.46194100,51.47060013",
+                            "flight": {
+                                "number": "CAI62",
+                                "origin": "LHR",
+                                "destination": "SIN",
+                                "originCoord": "-0.46194100,51.47060013",
+                                "destinationCoord": "103.99400330,1.35019004",
+                                "scheduledDeparture": "2022-06-04T12:25:00+00:00",
+                                "actualDeparture": "2022-06-04T12:25:00+00:00",
+                                "scheduledArrival": "2022-06-05T09:30:00+08:00",
+                                "actualArrival": "2022-06-05T09:47:24+08:00",
+                                "carbonEmission": "34.57 kg (est)",
+                                "distance": "10883.29"
+                            },
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "distance": "10883.29",
+                            "origin": "LHR",
+                            "destination": "SIN",
+                            "time": "12h 5m 33s",
+                            "flightNumber": "CAI62",
+                            "scheduledDepartureDate": "2022-06-04T12:25:00+00:00",
+                            "carbonEmission": "34.57 kg (est)",
+                            "originCoord": "-0.46194100,51.47060013",
+                            "destinationCoord": "103.99400330,1.35019004"
+                        },
+                        {
+                            "code": "ARR",
+                            "eventDate": "2022-06-05T09:47:24+08:00",
+                            "eventLocation": "SIN",
+                            "eventLocationCoord": "103.99400330,1.35019004",
+                            "flight": {
+                                "number": "CAI62",
+                                "origin": "LHR",
+                                "destination": "SIN",
+                                "originCoord": "-0.46194100,51.47060013",
+                                "destinationCoord": "103.99400330,1.35019004",
+                                "scheduledDeparture": "2022-06-04T12:25:00+00:00",
+                                "actualDeparture": "2022-06-04T12:25:00+00:00",
+                                "scheduledArrival": "2022-06-05T09:30:00+08:00",
+                                "actualArrival": "2022-06-05T09:47:24+08:00",
+                                "carbonEmission": "34.57 kg (est)",
+                                "distance": "10883.29"
+                            },
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "distance": "10883.29",
+                            "origin": "LHR",
+                            "destination": "SIN",
+                            "time": "12h 5m 33s",
+                            "flightNumber": "CAI62",
+                            "scheduledDepartureDate": "2022-06-04T12:25:00+00:00",
+                            "carbonEmission": "34.57 kg (est)",
+                            "originCoord": "-0.46194100,51.47060013",
+                            "destinationCoord": "103.99400330,1.35019004"
+                        },
+                        {
+                            "code": "RCF",
+                            "eventDate": "2022-06-05T10:27:00+08:00",
+                            "eventLocation": "SIN",
+                            "eventLocationCoord": "103.99400330,1.35019004",
+                            "flight": {
+                                "number": "CAI62",
+                                "origin": "LHR",
+                                "destination": "SIN",
+                                "originCoord": "-0.46194100,51.47060013",
+                                "destinationCoord": "103.99400330,1.35019004",
+                                "scheduledDeparture": "2022-06-04T12:25:00+00:00",
+                                "actualDeparture": "2022-06-04T12:25:00+00:00",
+                                "scheduledArrival": "2022-06-05T09:30:00+08:00",
+                                "actualArrival": "2022-06-05T09:47:24+08:00",
+                                "carbonEmission": "34.57 kg (est)",
+                                "distance": "10883.29"
+                            },
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "distance": "10883.29",
+                            "origin": "LHR",
+                            "destination": "SIN",
+                            "time": "12h 5m 33s",
+                            "flightNumber": "CAI62",
+                            "scheduledDepartureDate": "2022-06-04T12:25:00+00:00",
+                            "carbonEmission": "34.57 kg (est)",
+                            "originCoord": "-0.46194100,51.47060013",
+                            "destinationCoord": "103.99400330,1.35019004"
+                        },
+                        {
+                            "code": "MAN",
+                            "eventDate": "2022-06-05T20:40:00+08:00",
+                            "eventLocation": "SIN",
+                            "eventLocationCoord": "103.99400330,1.35019004",
+                            "flight": {
+                                "number": "CAI24",
+                                "origin": "SIN",
+                                "destination": "NRT",
+                                "originCoord": "103.99400330,1.35019004",
+                                "destinationCoord": "140.38600159,35.76470184",
+                                "scheduledDeparture": "2022-06-05T20:45:00+08:00",
+                                "actualDeparture": "2022-06-05T20:40:00+08:00",
+                                "scheduledArrival": "2022-06-06T07:30:00+12:00",
+                                "actualArrival": "2022-06-06T07:25:00+12:00",
+                                "carbonEmission": "17.39 kg (est)",
+                                "distance": "5357.58"
+                            },
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "distance": "5357.58",
+                            "origin": "SIN",
+                            "destination": "NRT",
+                            "time": "5h 57m 10s",
+                            "flightNumber": "CAI24",
+                            "scheduledDepartureDate": "2022-06-05T20:45:00+08:00",
+                            "carbonEmission": "17.39 kg (est)",
+                            "originCoord": "103.99400330,1.35019004",
+                            "destinationCoord": "140.38600159,35.76470184"
+                        },
+                        {
+                            "code": "DEP",
+                            "eventDate": "2022-06-05T20:40:00+08:00",
+                            "eventLocation": "SIN",
+                            "eventLocationCoord": "103.99400330,1.35019004",
+                            "flight": {
+                                "number": "CAI24",
+                                "origin": "SIN",
+                                "destination": "NRT",
+                                "originCoord": "103.99400330,1.35019004",
+                                "destinationCoord": "140.38600159,35.76470184",
+                                "scheduledDeparture": "2022-06-05T20:45:00+08:00",
+                                "actualDeparture": "2022-06-05T20:40:00+08:00",
+                                "scheduledArrival": "2022-06-06T07:30:00+12:00",
+                                "actualArrival": "2022-06-06T07:25:00+12:00",
+                                "carbonEmission": "17.39 kg (est)",
+                                "distance": "5357.58"
+                            },
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "distance": "5357.58",
+                            "origin": "SIN",
+                            "destination": "NRT",
+                            "time": "5h 57m 10s",
+                            "flightNumber": "CAI24",
+                            "scheduledDepartureDate": "2022-06-05T20:45:00+08:00",
+                            "carbonEmission": "17.39 kg (est)",
+                            "originCoord": "103.99400330,1.35019004",
+                            "destinationCoord": "140.38600159,35.76470184"
+                        },
+                        {
+                            "code": "ARR",
+                            "eventDate": "2022-06-06T07:25:00+12:00",
+                            "eventLocation": "NRT",
+                            "eventLocationCoord": "140.38600159,35.76470184",
+                            "flight": {
+                                "number": "CAI24",
+                                "origin": "SIN",
+                                "destination": "NRT",
+                                "originCoord": "103.99400330,1.35019004",
+                                "destinationCoord": "140.38600159,35.76470184",
+                                "scheduledDeparture": "2022-06-05T20:45:00+08:00",
+                                "actualDeparture": "2022-06-05T20:40:00+08:00",
+                                "scheduledArrival": "2022-06-06T07:30:00+12:00",
+                                "actualArrival": "2022-06-06T07:25:00+12:00",
+                                "carbonEmission": "17.39 kg (est)",
+                                "distance": "5357.58"
+                            },
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "distance": "5357.58",
+                            "origin": "SIN",
+                            "destination": "NRT",
+                            "time": "5h 57m 10s",
+                            "flightNumber": "CAI24",
+                            "scheduledDepartureDate": "2022-06-05T20:45:00+08:00",
+                            "carbonEmission": "17.39 kg (est)",
+                            "originCoord": "103.99400330,1.35019004",
+                            "destinationCoord": "140.38600159,35.76470184"
+                        },
+                        {
+                            "code": "RCF",
+                            "eventDate": "2022-06-06T09:45:20+12:00",
+                            "eventLocation": "NRT",
+                            "eventLocationCoord": "140.38600159,35.76470184",
+                            "flight": {
+                                "number": "CAI24",
+                                "origin": "SIN",
+                                "destination": "NRT",
+                                "originCoord": "103.99400330,1.35019004",
+                                "destinationCoord": "140.38600159,35.76470184",
+                                "scheduledDeparture": "2022-06-05T20:45:00+08:00",
+                                "actualDeparture": "2022-06-05T20:40:00+08:00",
+                                "scheduledArrival": "2022-06-06T07:30:00+12:00",
+                                "actualArrival": "2022-06-06T07:25:00+12:00",
+                                "carbonEmission": "17.39 kg (est)",
+                                "distance": "5357.58"
+                            },
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "distance": "5357.58",
+                            "origin": "SIN",
+                            "destination": "NRT",
+                            "time": "5h 57m 10s",
+                            "flightNumber": "CAI24",
+                            "scheduledDepartureDate": "2022-06-05T20:45:00+08:00",
+                            "carbonEmission": "17.39 kg (est)",
+                            "originCoord": "103.99400330,1.35019004",
+                            "destinationCoord": "140.38600159,35.76470184"
+                        },
+                        {
+                            "code": "NFD",
+                            "eventDate": "2022-06-06T11:32:12+12:00",
+                            "eventLocation": "NRT",
+                            "eventLocationCoord": "140.38600159,35.76470184",
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "origin": "LHR",
+                            "destination": "NRT"
+                        },
+                        {
+                            "code": "DLV",
+                            "eventDate": "2022-06-06T16:24:00+12:00",
+                            "eventLocation": "NRT",
+                            "eventLocationCoord": "140.38600159,35.76470184",
+                            "weight": "7.0",
+                            "pieces": "1",
+                            "origin": "LHR",
+                            "destination": "NRT"
+                        }
+                    ],
+                    "originCoord": "-0.46194100,51.47060013",
+                    "destinationCoord": "140.38600159,35.76470184",
+                    "carbonEmission": "51.97 kg (est)",
+                    "distance": "16240.87",
+                    "time": "18h 2m 43s"
+                }
+            ],
+            "headers": {},
+            "schema": {
+                "type": "array",
+                "items": {
+                    "type": "object",
+                    "properties": {
+                        "awb": {
+                            "type": "string",
+                            "description": "air waybill number"
+                        },
+                        "origin": {
+                            "type": "string"
+                        },
+                        "destination": {
+                            "type": "string"
+                        },
+                        "pieces": {
+                            "type": "string"
+                        },
+                        "weight": {
+                            "type": "string"
+                        },
+                        "volume": {
+                            "type": "string"
+                        },
+                        "events": {
+                            "type": "array",
+                            "items": {
+                                "type": "object",
+                                "properties": {
+                                    "code": {
+                                        "type": "string"
+                                    },
+                                    "eventLocation": {
+                                        "type": "string"
+                                    },
+                                    "eventDate": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "eventLocationCoord": {
+                                        "type": "string"
+                                    },
+                                    "flight": {
+                                        "type": "object",
+                                        "properties": {
+                                            "number": {
+                                                "type": "string"
+                                            },
+                                            "origin": {
+                                                "type": "string"
+                                            },
+                                            "destination": {
+                                                "type": "string"
+                                            },
+                                            "scheduledDeparture": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "actualDeparture": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "scheduledArrival": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "actualArrival": {
+                                                "type": "string",
+                                                "format": "date-time"
+                                            },
+                                            "originCoord": {
+                                                "type": "string"
+                                            },
+                                            "destinationCoord": {
+                                                "type": "string"
+                                            },
+                                            "carbonEmission": {
+                                                "type": "string"
+                                            },
+                                            "distance": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    },
+                                    "pieces": {
+                                        "type": "string"
+                                    },
+                                    "weight": {
+                                        "type": "string"
+                                    },
+                                    "volume": {
+                                        "type": "string"
+                                    },
+                                    "eventUlds": {
+                                        "type": "array",
+                                        "items": {
+                                            "type": "object",
+                                            "properties": {
+                                                "pieces": {
+                                                    "type": "string"
+                                                },
+                                                "uld": {
+                                                    "type": "string"
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        },
+                        "originCoord": {
+                            "type": "string"
+                        },
+                        "destinationCoord": {
+                            "type": "string"
+                        },
+                        "carbonEmission": {
+                            "type": "string"
+                        },
+                        "distance": {
+                            "type": "string"
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "awb",
+                    "type": "STRING",
+                    "description": "provide valid AWB number",
+                    "default": "000-99999970",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you track the shipment with AWB number 123-45678901?",
+                    "parameters": {
+                        "awb": "123-45678901"
+                    }
+                },
+                {
+                    "utterance": "I need the tracking details for the air cargo with AWB 987-65432109.",
+                    "parameters": {
+                        "awb": "987-65432109"
+                    }
+                },
+                {
+                    "utterance": "Please provide the status of the shipment with AWB 555-12345678.",
+                    "parameters": {
+                        "awb": "555-12345678"
+                    }
+                },
+                {
+                    "utterance": "What is the current location of the cargo with AWB 321-98765432?",
+                    "parameters": {
+                        "awb": "321-98765432"
+                    }
+                },
+                {
+                    "utterance": "Track the air cargo shipment using AWB 111-22233344.",
+                    "parameters": {
+                        "awb": "111-22233344"
+                    }
+                },
+                {
+                    "utterance": "I need to know the CO2 emissions for the shipment with AWB 444-55566677.",
+                    "parameters": {
+                        "awb": "444-55566677"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the tracking information for AWB 666-77788899?",
+                    "parameters": {
+                        "awb": "666-77788899"
+                    }
+                },
+                {
+                    "utterance": "Please check the status of my shipment with AWB 888-99900011.",
+                    "parameters": {
+                        "awb": "888-99900011"
+                    }
+                },
+                {
+                    "utterance": "Find out where the cargo with AWB 222-33344455 is currently located.",
+                    "parameters": {
+                        "awb": "222-33344455"
+                    }
+                },
+                {
+                    "utterance": "I want to track the air cargo with AWB 777-88899900.",
+                    "parameters": {
+                        "awb": "777-88899900"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "PUSH (unsubscribe)",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/unsubscribe",
+            "description": "Provided valid callback URL and AWB to unsubscribe from receiving tracking updates.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/unsubscribe\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"air-cargo-co2-track-and-trace.p.rapidapi.com\"\n}\n\nresponse = requests.post(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "status": 200,
+                "message": "successfully unsubscribed"
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer"
+                    },
+                    "error": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "PUSH (subscribe)",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/subscribe",
+            "description": "Provided valid callback URL, AWB and/or email(s), you can receive tracking event updates automatically when they're available.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/subscribe\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"air-cargo-co2-track-and-trace.p.rapidapi.com\"\n}\n\nresponse = requests.post(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "status": 200,
+                "message": "successfully subscribed"
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "integer"
+                    },
+                    "error": {
+                        "type": "string"
+                    },
+                    "message": {
+                        "type": "string"
+                    }
+                }
+            },
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you track my air cargo shipment and provide CO2 emissions data?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to subscribe to updates for my air cargo shipment's CO2 tracking.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "How can I receive automatic updates on my air cargo's CO2 emissions?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please track my shipment and notify me about its CO2 footprint.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide real-time CO2 tracking for my air cargo?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to subscribe to CO2 tracking updates for my air cargo shipment.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "How do I get automatic notifications for my air cargo's CO2 emissions?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please track my air cargo and send me updates on its CO2 emissions.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you help me monitor the CO2 emissions of my air cargo shipment?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to track my air cargo's CO2 emissions and receive updates automatically.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "PUSH (unsubscribe)",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/unsubscribe",
+            "description": "Provided valid callback URL and AWB to unsubscribe from receiving tracking updates.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/unsubscribe\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"air-cargo-co2-track-and-trace.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/unsubscribe\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"air-cargo-co2-track-and-trace.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "PUSH (subscribe)",
+            "url": "https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/subscribe",
+            "description": "Provided valid callback URL, AWB and/or email(s), you can receive tracking event updates automatically when they're available.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/subscribe\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"air-cargo-co2-track-and-trace.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://air-cargo-co2-track-and-trace.p.rapidapi.com/track/subscribe\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"air-cargo-co2-track-and-trace.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you track my air cargo shipment and provide CO2 emissions data?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to subscribe to updates for my air cargo shipment.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "How can I receive automatic tracking updates for my air cargo?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please provide CO2 tracking for my air cargo shipment.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can I get notifications for my air cargo shipment status?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to measure the CO2 emissions of my air cargo shipment.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "How do I subscribe to air cargo tracking events?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you send me updates on my air cargo shipment automatically?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to track my air cargo shipment and its CO2 emissions.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "How can I get CO2 data for my air cargo shipment?",
+                    "parameters": {}
+                }
+            ]
+        }
+    ],
+    "category": "Logistics"
+}

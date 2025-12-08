@@ -1,0 +1,191 @@
+{
+    "name": "AeroDataBox",
+    "description": "Flight data API for travel, hospitality, or aviation applications, researchers, small teams, and individual developers.",
+    "url": "https://rapidapi.com/aedbx-aedbx/api/aerodatabox/",
+    "api_methods": [
+        {
+            "name": "(BETA) Aircraft image recognition",
+            "description": "**What aircrafts are depicted on this photo?**\n\nThis endpoint recognizes aircrafts on uploaded image and returns information about all detected aircrafts. It is based on computer vision technology and therefore results may be imprecise. It relies on detecting aircrafts' registrations and, once detected, attempting to match these registration with records in aircrafts database.\n\nReturns: Data about found and recognized aircrafts.",
+            "url": "https://aerodatabox.p.rapidapi.com/aircrafts/recognize/beta",
+            "parameters": [
+                {
+                    "name": "photo",
+                    "type": "BINARY",
+                    "description": "Image containing aircraft. It should be image-type file (JPEG, PNG or BMP).  To improve results:  ensure that aircraft registration is as much as possible visible on the image; other inscriptions are visible as least as possible or absent on the image (although algorithm strives to filter these out as much as possible, false results are still possible).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "JPEG, PNG, or BMP"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you identify the aircraft in this photo I took at the airport?",
+                    "parameters": {
+                        "photo": "airport_photo.jpg"
+                    }
+                },
+                {
+                    "utterance": "What planes are shown in this image from my recent trip?",
+                    "parameters": {
+                        "photo": "trip_image.png"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the aircraft in this picture I captured during the airshow.",
+                    "parameters": {
+                        "photo": "airshow_pic.bmp"
+                    }
+                },
+                {
+                    "utterance": "Can you recognize the aircraft in this photo I snapped at the runway?",
+                    "parameters": {
+                        "photo": "runway_photo.jpg"
+                    }
+                },
+                {
+                    "utterance": "What kind of planes are in this image I took from the observation deck?",
+                    "parameters": {
+                        "photo": "observation_deck.png"
+                    }
+                },
+                {
+                    "utterance": "Identify the aircraft in this photo I took while plane spotting.",
+                    "parameters": {
+                        "photo": "plane_spotting.jpg"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me about the aircraft in this picture I took at the aviation museum?",
+                    "parameters": {
+                        "photo": "museum_pic.bmp"
+                    }
+                },
+                {
+                    "utterance": "What aircraft are in this photo I captured during my flight?",
+                    "parameters": {
+                        "photo": "flight_photo.jpg"
+                    }
+                },
+                {
+                    "utterance": "Can you identify the planes in this image I took from the hotel balcony?",
+                    "parameters": {
+                        "photo": "hotel_balcony.png"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the aircraft in this photo I took at the military airbase.",
+                    "parameters": {
+                        "photo": "airbase_photo.bmp"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Create web-hook subscription",
+            "description": "Creates a webhook subscription on a subject (e.g. flight by number or by airport code). Returns information about the created subscription. Subscription ID contained in it can be used to refresh or remove it.",
+            "url": "https://aerodatabox.p.rapidapi.com/subscriptions/webhook/{subjectType}/KL1395",
+            "parameters": [
+                {
+                    "name": "subjectType",
+                    "type": "ENUM",
+                    "description": "Subject type",
+                    "default": "",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "FlightByNumber",
+                                "FlightByAirportIcao"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "subjectId",
+                    "type": "string",
+                    "description": "Subject ID. If `subjectType` is:\n- `FlightByNumber`, then this field must be a flight number (with or without spaces, IATA or ICAO, any case formats are acceptable, e.g. KL1395, Klm 1395);\n- `FlightByAirportIcao`, then this field must be a 4-character ICAO-code of the airport where flights are operated (e.g.: EHAM, KLAX, UUEE, etc.).",
+                    "default": "KL1395",
+                    "required": true,
+                    "constraints": {
+                        "format": "Flight number or ICAO airport code",
+                        "inter-dependency": "subjectType, subjectId: subjectId must be a flight number if subjectType is 'FlightByNumber' or an ICAO airport code if subjectType is 'FlightByAirportIcao'."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Set up a webhook subscription for flight KL1395.",
+                    "parameters": {
+                        "subjectType": "FlightByNumber",
+                        "subjectId": "KL1395"
+                    }
+                },
+                {
+                    "utterance": "Create a subscription for flights departing from Los Angeles International Airport.",
+                    "parameters": {
+                        "subjectType": "FlightByAirportIcao",
+                        "subjectId": "KLAX"
+                    }
+                },
+                {
+                    "utterance": "I need a webhook for flight AA123.",
+                    "parameters": {
+                        "subjectType": "FlightByNumber",
+                        "subjectId": "AA123"
+                    }
+                },
+                {
+                    "utterance": "Subscribe me to updates for flights at Amsterdam Airport Schiphol.",
+                    "parameters": {
+                        "subjectType": "FlightByAirportIcao",
+                        "subjectId": "EHAM"
+                    }
+                },
+                {
+                    "utterance": "Can you create a webhook for flight BA456?",
+                    "parameters": {
+                        "subjectType": "FlightByNumber",
+                        "subjectId": "BA456"
+                    }
+                },
+                {
+                    "utterance": "Set up a subscription for flights from Moscow Sheremetyevo Airport.",
+                    "parameters": {
+                        "subjectType": "FlightByAirportIcao",
+                        "subjectId": "UUEE"
+                    }
+                },
+                {
+                    "utterance": "I want to receive updates for flight DL789.",
+                    "parameters": {
+                        "subjectType": "FlightByNumber",
+                        "subjectId": "DL789"
+                    }
+                },
+                {
+                    "utterance": "Create a webhook for flights at John F. Kennedy International Airport.",
+                    "parameters": {
+                        "subjectType": "FlightByAirportIcao",
+                        "subjectId": "KJFK"
+                    }
+                },
+                {
+                    "utterance": "Subscribe me to flight UA321.",
+                    "parameters": {
+                        "subjectType": "FlightByNumber",
+                        "subjectId": "UA321"
+                    }
+                },
+                {
+                    "utterance": "Set up a webhook for flights departing from Heathrow Airport.",
+                    "parameters": {
+                        "subjectType": "FlightByAirportIcao",
+                        "subjectId": "EGLL"
+                    }
+                }
+            ]
+        }
+    ]
+}

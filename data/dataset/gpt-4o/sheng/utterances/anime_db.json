@@ -1,0 +1,386 @@
+{
+    "tool_name": "Anime DB",
+    "tool_description": "Complete anime data. Ranking, synopsis, genre, search by title. Over 20k data updated everyday",
+    "title": "Anime DB",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 947,
+        "avgSuccessRate": 93,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/brian.rofiq/api/anime-db/",
+    "host": "anime-db.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Get All",
+            "url": "https://anime-db.p.rapidapi.com/anime",
+            "description": "Get List of anime. You can search, sort an specify genre",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://anime-db.p.rapidapi.com/anime\"\nquerystring = {\"genres\": genres, \"sortBy\": sortby, \"sortOrder\": sortorder, \"page\": page, \"search\": search, \"size\": size}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"anime-db.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "1",
+                    "required": true
+                },
+                {
+                    "name": "size",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "10",
+                    "required": true
+                },
+                {
+                    "name": "types",
+                    "type": "STRING",
+                    "description": "Anime type, separated by comma",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "genres",
+                    "type": "STRING",
+                    "description": "genres separated by comma",
+                    "default": "Fantasy,Drama",
+                    "required": false
+                },
+                {
+                    "name": "sortBy",
+                    "type": "STRING",
+                    "description": "ranking or title",
+                    "default": "ranking",
+                    "required": false
+                },
+                {
+                    "name": "sortOrder",
+                    "type": "STRING",
+                    "description": "asc or desc",
+                    "default": "asc",
+                    "required": false
+                },
+                {
+                    "name": "search",
+                    "type": "STRING",
+                    "description": "Search by title or alternative titles. Search will ignore sort",
+                    "default": "Fullmetal",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the first 10 anime sorted by ranking.",
+                    "parameters": {
+                        "page": "1",
+                        "size": "10",
+                        "sortBy": "ranking",
+                        "sortOrder": "asc"
+                    }
+                },
+                {
+                    "utterance": "List 20 drama and fantasy anime on page 2.",
+                    "parameters": {
+                        "page": "2",
+                        "size": "20",
+                        "genres": "Drama,Fantasy"
+                    }
+                },
+                {
+                    "utterance": "Find anime with the title 'Naruto' on the first page.",
+                    "parameters": {
+                        "page": "1",
+                        "size": "10",
+                        "search": "Naruto"
+                    }
+                },
+                {
+                    "utterance": "Give me 15 action anime sorted by title in descending order.",
+                    "parameters": {
+                        "page": "1",
+                        "size": "15",
+                        "genres": "Action",
+                        "sortBy": "title",
+                        "sortOrder": "desc"
+                    }
+                },
+                {
+                    "utterance": "Show the top 5 romance anime on page 3.",
+                    "parameters": {
+                        "page": "3",
+                        "size": "5",
+                        "genres": "Romance"
+                    }
+                },
+                {
+                    "utterance": "List 10 anime of type 'Movie' sorted by ranking.",
+                    "parameters": {
+                        "page": "1",
+                        "size": "10",
+                        "types": "Movie",
+                        "sortBy": "ranking"
+                    }
+                },
+                {
+                    "utterance": "Find the first 10 anime with the title 'Attack on Titan'.",
+                    "parameters": {
+                        "page": "1",
+                        "size": "10",
+                        "search": "Attack on Titan"
+                    }
+                },
+                {
+                    "utterance": "Show me 8 comedy anime sorted by title in ascending order.",
+                    "parameters": {
+                        "page": "1",
+                        "size": "8",
+                        "genres": "Comedy",
+                        "sortBy": "title",
+                        "sortOrder": "asc"
+                    }
+                },
+                {
+                    "utterance": "List 12 anime of type 'TV' on page 4.",
+                    "parameters": {
+                        "page": "4",
+                        "size": "12",
+                        "types": "TV"
+                    }
+                },
+                {
+                    "utterance": "Find 10 anime with the title 'One Piece' on the second page.",
+                    "parameters": {
+                        "page": "2",
+                        "size": "10",
+                        "search": "One Piece"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get by id",
+            "url": "https://anime-db.p.rapidapi.com/anime/by-id/{id}",
+            "description": "Get anime by its corresponding ID.\n\nID is got from 'Get All' endpoint",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://anime-db.p.rapidapi.com/anime/by-id/{id}\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"anime-db.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {},
+            "headers": {},
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": 1,
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details for the anime with ID 101?",
+                    "parameters": {
+                        "id": 101
+                    }
+                },
+                {
+                    "utterance": "I want to know more about the anime with ID 2500.",
+                    "parameters": {
+                        "id": 2500
+                    }
+                },
+                {
+                    "utterance": "Fetch the anime information for ID 6789.",
+                    "parameters": {
+                        "id": 6789
+                    }
+                },
+                {
+                    "utterance": "What is the synopsis of the anime with ID 4321?",
+                    "parameters": {
+                        "id": 4321
+                    }
+                },
+                {
+                    "utterance": "Get me the ranking and genre for the anime with ID 9876.",
+                    "parameters": {
+                        "id": 9876
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the details of the anime with ID 5555.",
+                    "parameters": {
+                        "id": 5555
+                    }
+                },
+                {
+                    "utterance": "Can you show me the anime information for ID 1234?",
+                    "parameters": {
+                        "id": 1234
+                    }
+                },
+                {
+                    "utterance": "Retrieve the anime data for ID 2020.",
+                    "parameters": {
+                        "id": 2020
+                    }
+                },
+                {
+                    "utterance": "Please provide the anime details for ID 3333.",
+                    "parameters": {
+                        "id": 3333
+                    }
+                },
+                {
+                    "utterance": "I need the synopsis and ranking for the anime with ID 7777.",
+                    "parameters": {
+                        "id": 7777
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get Genres",
+            "url": "https://anime-db.p.rapidapi.com/genre",
+            "description": "Get Genres",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://anime-db.p.rapidapi.com/genre\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"anime-db.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What are the different genres available in the anime database?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list all the anime genres?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the genres of anime you have in your database.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know all the anime genres. Can you provide that information?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What genres does the anime database cover?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you give me a list of all anime genres?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please provide the genres available in the anime database.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the available genres in your anime collection?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the genres of anime that are included in the database.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me what genres are included in the anime database?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Get one anime by ranking",
+            "url": "https://anime-db.p.rapidapi.com/anime/by-ranking/{rank}",
+            "description": "Get anime by ranking",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://anime-db.p.rapidapi.com/anime/by-ranking/{rank}\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"anime-db.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {},
+            "headers": {},
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "rank",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the top-ranked anime currently?",
+                    "parameters": {
+                        "rank": 1
+                    }
+                },
+                {
+                    "utterance": "Can you tell me which anime is ranked number 5?",
+                    "parameters": {
+                        "rank": 5
+                    }
+                },
+                {
+                    "utterance": "I'm curious about the anime that holds the 10th position in the rankings.",
+                    "parameters": {
+                        "rank": 10
+                    }
+                },
+                {
+                    "utterance": "Which anime is currently ranked at position 3?",
+                    "parameters": {
+                        "rank": 3
+                    }
+                },
+                {
+                    "utterance": "Please provide details about the anime ranked 7th.",
+                    "parameters": {
+                        "rank": 7
+                    }
+                },
+                {
+                    "utterance": "What anime is sitting at rank 2 right now?",
+                    "parameters": {
+                        "rank": 2
+                    }
+                },
+                {
+                    "utterance": "I'd like to know about the anime that is ranked 15th.",
+                    "parameters": {
+                        "rank": 15
+                    }
+                },
+                {
+                    "utterance": "Can you give me information on the anime ranked 20th?",
+                    "parameters": {
+                        "rank": 20
+                    }
+                },
+                {
+                    "utterance": "Which anime is in the 8th spot in the rankings?",
+                    "parameters": {
+                        "rank": 8
+                    }
+                },
+                {
+                    "utterance": "Tell me about the anime that is currently ranked 12th.",
+                    "parameters": {
+                        "rank": 12
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Movies"
+}

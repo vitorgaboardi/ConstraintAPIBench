@@ -1,0 +1,112 @@
+{
+    "name": "BreachDirectory",
+    "description": "Check if an email, username, password, or phone number was compromised in a data breach.",
+    "url": "https://rapidapi.com/rohan-patra/api/breachdirectory/",
+    "api_methods": [
+        {
+            "name": "index",
+            "description": "Base URL for using each of BreachDirectory's API functions: auto, sources, and password.",
+            "url": "https://breachdirectory.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "term",
+                    "type": "STRING",
+                    "description": "Enter the proper search term given the function you selected.",
+                    "default": "someone@example.com",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "func",
+                    "type": "STRING",
+                    "description": "Select the function you wish to use from the following:\n- auto: Returns passwords, SHA-1 hashes, and sources given any username or email.\n- sources: Returns sources given username or email.\n- password: Returns how many times a given password has been leaked.\n- domain: Returns passwords, SHA-1 hashes, and sources given any domain (Limited to 1000 results for security).\n- dehash: Attempts to decrypt a given hash.",
+                    "default": "auto",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "auto",
+                                "sources",
+                                "password",
+                                "domain",
+                                "dehash"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Check if my email john.doe@gmail.com has been compromised in any data breaches.",
+                    "parameters": {
+                        "term": "john.doe@gmail.com",
+                        "func": "auto"
+                    }
+                },
+                {
+                    "utterance": "Has the username 'jane_smith' appeared in any breach sources?",
+                    "parameters": {
+                        "term": "jane_smith",
+                        "func": "sources"
+                    }
+                },
+                {
+                    "utterance": "How many times has the password 'P@ssw0rd123' been leaked?",
+                    "parameters": {
+                        "term": "P@ssw0rd123",
+                        "func": "password"
+                    }
+                },
+                {
+                    "utterance": "Can you check if the domain 'example.com' has been involved in any breaches?",
+                    "parameters": {
+                        "term": "example.com",
+                        "func": "domain"
+                    }
+                },
+                {
+                    "utterance": "Try to decrypt the hash '5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8'.",
+                    "parameters": {
+                        "term": "5baa61e4c9b93f3f0682250b6cf8331b7ee68fd8",
+                        "func": "dehash"
+                    }
+                },
+                {
+                    "utterance": "Is the email alice.wonderland@yahoo.com part of any known data breaches?",
+                    "parameters": {
+                        "term": "alice.wonderland@yahoo.com",
+                        "func": "auto"
+                    }
+                },
+                {
+                    "utterance": "Find out if the username 'bob_builder' has been exposed in any breaches.",
+                    "parameters": {
+                        "term": "bob_builder",
+                        "func": "sources"
+                    }
+                },
+                {
+                    "utterance": "Check how many times the password 'SecurePass2023' has been leaked.",
+                    "parameters": {
+                        "term": "SecurePass2023",
+                        "func": "password"
+                    }
+                },
+                {
+                    "utterance": "Has the domain 'mycompany.com' been compromised in any data breaches?",
+                    "parameters": {
+                        "term": "mycompany.com",
+                        "func": "domain"
+                    }
+                },
+                {
+                    "utterance": "Can you attempt to decrypt the hash 'e99a18c428cb38d5f260853678922e03'?",
+                    "parameters": {
+                        "term": "e99a18c428cb38d5f260853678922e03",
+                        "func": "dehash"
+                    }
+                }
+            ]
+        }
+    ]
+}

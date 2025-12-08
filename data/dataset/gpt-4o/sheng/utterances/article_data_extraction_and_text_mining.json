@@ -1,0 +1,313 @@
+{
+    "tool_name": "Article Data Extraction and Text Mining",
+    "tool_description": "Ujeebu Article Extraction API extracts clean text, and other structured data from news and blog articles.",
+    "title": "Article Data Extraction and Text Mining",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 3140,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/lexper/api/article-data-extraction-and-text-mining/",
+    "host": "lexper.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/v1.1/card",
+            "url": "https://lexper.p.rapidapi.com/v1.1/card",
+            "description": "Extract a preview of an article (article card). This is faster than the extract endpoint as it doesn't do any in-depth analysis of the content of the article, and instead mostly relies on its meta tags.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://lexper.p.rapidapi.com/v1.1/card\"\nquerystring = {\"url\": url, \"js_timeout\": js_timeout}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"lexper.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "URL of article to preview.\n",
+                    "default": "https://thenextweb.com/news/pixel-6-teaser",
+                    "required": true
+                },
+                {
+                    "name": "js_timeout",
+                    "type": "NUMBER",
+                    "description": "when JavaScript is enabled, indicates how many seconds the API should wait for the JS interpreter before starting the extraction.\n",
+                    "default": "30",
+                    "required": false
+                },
+                {
+                    "name": "js",
+                    "type": "ENUM",
+                    "description": "indicates whether to execute JavaScript or not.\n",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you extract a preview of the article from this URL: https://thenextweb.com/news/pixel-6-teaser?",
+                    "parameters": {
+                        "url": "https://thenextweb.com/news/pixel-6-teaser"
+                    }
+                },
+                {
+                    "utterance": "Get a quick preview of the article at https://www.bbc.com/news/technology-56713017.",
+                    "parameters": {
+                        "url": "https://www.bbc.com/news/technology-56713017"
+                    }
+                },
+                {
+                    "utterance": "I'd like a summary of the article found at https://www.cnn.com/2023/10/01/world/climate-change-report/index.html.",
+                    "parameters": {
+                        "url": "https://www.cnn.com/2023/10/01/world/climate-change-report/index.html"
+                    }
+                },
+                {
+                    "utterance": "Please extract the main points from this article: https://www.forbes.com/sites/johnkoetsier/2023/09/30/ai-revolution-in-healthcare.",
+                    "parameters": {
+                        "url": "https://www.forbes.com/sites/johnkoetsier/2023/09/30/ai-revolution-in-healthcare"
+                    }
+                },
+                {
+                    "utterance": "Can you provide a preview of the content at https://www.nytimes.com/2023/10/02/business/economy/us-economy.html?",
+                    "parameters": {
+                        "url": "https://www.nytimes.com/2023/10/02/business/economy/us-economy.html"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see a brief overview of the article located at https://www.theguardian.com/world/2023/oct/01/global-warming-impact.",
+                    "parameters": {
+                        "url": "https://www.theguardian.com/world/2023/oct/01/global-warming-impact"
+                    }
+                },
+                {
+                    "utterance": "Extract a summary from the article at https://www.washingtonpost.com/technology/2023/10/01/social-media-impact-study.",
+                    "parameters": {
+                        "url": "https://www.washingtonpost.com/technology/2023/10/01/social-media-impact-study"
+                    }
+                },
+                {
+                    "utterance": "Can you give me a quick rundown of the article at https://www.bloomberg.com/news/articles/2023-10-01/stock-market-trends.",
+                    "parameters": {
+                        "url": "https://www.bloomberg.com/news/articles/2023-10-01/stock-market-trends"
+                    }
+                },
+                {
+                    "utterance": "Please provide a preview of the article from https://www.reuters.com/business/finance/2023/10/01/global-markets-overview.",
+                    "parameters": {
+                        "url": "https://www.reuters.com/business/finance/2023/10/01/global-markets-overview"
+                    }
+                },
+                {
+                    "utterance": "I'd like a brief summary of the article at https://www.nbcnews.com/news/world/2023-10-01-international-relations-update.",
+                    "parameters": {
+                        "url": "https://www.nbcnews.com/news/world/2023-10-01-international-relations-update"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/v1.1/extract",
+            "url": "https://lexper.p.rapidapi.com/v1.1/extract",
+            "description": "Article Extraction Endpoint",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://lexper.p.rapidapi.com/v1.1/extract\"\nquerystring = {\"media\": media, \"url\": url, \"js_timeout\": js_timeout}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"lexper.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "article": {
+                    "text": "Why do we care so much about what others think?\nWhy does it feel so damn weird to put ourselves out there?\nWhy does the prospect of being rejected fill us with weird vibes?\nWhy do we fight so hard to protect our cool, relaxed, totally not boring, happy images?\nBecause we\u2019re human.\nBecause we don\u2019t want to be rejected by \u2018society.\u2019\nBecause we want to survive.\nBecause it\u2019s understandable and normal to try and look and act flawlessly.\n\u2026\nThe only teenie weenie issue with this is that it makes us miserable.\n\u2026\nWe can never relax if there is the chance that we will look stupid.\nWe can never just \u2018be ourselves.\u2019\nSo how the hell can we just relax?\nHow can we be more \u2018authentic?\u2019 (Whatever the heck that means).\nHow can we be more courageous and face our stupid fears, and just be a success without making everything such a huge deal?\n\u2026\nWe do this by forgetting ourselves.\n\u2026\nWorrying about who we are and what image we project is an issue with our thinking: our minds.\nYou cannot fix problems of the mind at the level of the mind.\nThere\u2019s no point \u2018trying\u2019 to be yourself.\n\u2018Trying\u2019 is thinking, and thinking will not change your mind\u200a\u2014\u200ait will only stir it up.\nIt\u2019s not going to happen until you re-direct your focus away from yourself.\nYour biggest addiction isn\u2019t the Internet, sugar, fast food or smoking.\nYour biggest obsession is yourself.\n\u2026\nHow do you quit yourself?\nYou don\u2019t. You just focus on other things.\nWhat things?\nThe things that matter.\nThe people that matter.\nHelp yourself by helping others.\nImprove yourself by improving the lives of others.\nLearn by teaching.\nBecome confident by helping others be confident.\nBe yourself by helping others be themselves.\nBe happy by making others happy.\n\u2026\n\u201cIf you want love and abundance in your life, give it away.\u201d  \u2014\u200aMark Twain  \u2026\nWhen we make improving ourselves such a big deal, we\u2019ve entered the labyrinth.\nTo free yourself from this maze, stop, breathe, and commit to making the world better.\nThink today about who matters in your life.\nNot everyone matters equally.\nNot everyone is ready for\u200a\u2014\u200anor do they deserve your honesty; your wisdom; your expression. Pandering to those who do not, drain the life from us.\nWho is open to your truth?\nWho deserves your contribution?\nWho is your tribe?\nFind them, and improve their lives energetically.\nBring life, love, and value to what matters.\nThis will bring you more life than you knew was possible.\nYou will find you.\nYou will be yourself.\n\u2014\nMake sure you follow me here and  subscribe to my newsletter  for more ideas like these, and receive my book: \u2018Joining the Dots\u2019 for free.\nOriginally published at  alexmathers.net  on August 27, 2017.",
+                    "html": "<section><figure><img src=\"https://cdn-images-1.medium.com/max/2000/1*Ktoia0e5MPJsudicOI5cwA.jpeg\"><img src=\"https://cdn-images-1.medium.com/max/2000/1*Ktoia0e5MPJsudicOI5cwA.jpeg\"><figcaption class=\"imageCaption\"> Art by author. More at alexmathers.net </figcaption></figure><p> Why do we care so much about what others think? </p>\n<p> Why does it feel so damn weird to put ourselves out there? </p>\n<p> Why does the prospect of being rejected fill us with weird vibes? </p>\n<p> Why do we fight so hard to protect our cool, relaxed, totally not boring, happy images? </p>\n<p> Because we\u2019re human. </p>\n<p> Because we don\u2019t want to be rejected by \u2018society.\u2019 </p>\n<p> Because we want to survive. </p>\n<p> Because it\u2019s understandable and normal to try and look and act flawlessly. </p>\n<p> \u2026 </p>\n<p> The only teenie weenie issue with this is that it makes us miserable. </p>\n<p> \u2026 </p>\n<p> We can never relax if there is the chance that we will look stupid. </p>\n<p> We can never just \u2018be ourselves.\u2019 </p>\n<p> So how the hell can we just relax? </p>\n<p> How can we be more \u2018authentic?\u2019 (Whatever the heck that means). </p>\n<p> How can we be more courageous and face our stupid fears, and just be a success without making everything such a huge deal? </p>\n<p> \u2026 </p>\n<p><strong class=\"markup--strong markup--p-strong\"> We do this by forgetting ourselves. </strong></p>\n<p> \u2026 </p>\n<p> Worrying about who we are and what image we project is an issue with our thinking: our minds. </p>\n<p> You cannot fix problems of the mind at the level of the mind. </p>\n<p> There\u2019s no point \u2018trying\u2019 to be yourself. </p>\n<p> \u2018Trying\u2019 is thinking, and thinking will not change your mind\u200a\u2014\u200ait will only stir it up. </p>\n<p> It\u2019s not going to happen until you re-direct your focus away from yourself. </p>\n<p> Your biggest addiction isn\u2019t the Internet, sugar, fast food or smoking. </p>\n<p><strong class=\"markup--strong markup--p-strong\"> Your biggest obsession is yourself. </strong></p>\n<p> \u2026 </p>\n<figure><img src=\"https://cdn-images-1.medium.com/max/1600/0*xOppG0TFa5kWSigy.\"><img src=\"https://cdn-images-1.medium.com/max/1600/0*xOppG0TFa5kWSigy.\"></figure><p><em class=\"markup--em markup--p-em\"> How do you quit yourself? </em></p>\n<p> You don\u2019t. You just focus on other things. </p>\n<p><em class=\"markup--em markup--p-em\"> What things? </em></p>\n<p> The things that matter. </p>\n<p> The people that matter. </p>\n<p> Help yourself by helping others. </p>\n<p> Improve yourself by improving the lives of others. </p>\n<p> Learn by teaching. </p>\n<p> Become confident by helping others be confident. </p>\n<p> Be yourself by helping others be themselves. </p>\n<p> Be happy by making others happy. </p>\n<p> \u2026 </p>\n<blockquote name=\"6916\" id=\"6916\" class=\"graf graf--blockquote graf--startsWithDoubleQuote graf-after--p\"> \u201cIf you want love and abundance in your life, give it away.\u201d <em class=\"markup--em markup--blockquote-em\"> \u2014\u200aMark Twain </em>\n</blockquote>\n<p> \u2026 </p>\n<p> When we make improving ourselves such a big deal, we\u2019ve entered the labyrinth. </p>\n<p> To free yourself from this maze, stop, breathe, and commit to making the world better. </p>\n<p> Think today about who matters in your life. </p>\n<p><strong class=\"markup--strong markup--p-strong\"> Not everyone matters equally. </strong></p>\n<p> Not everyone is ready for\u200a\u2014\u200anor do they deserve your honesty; your wisdom; your expression. Pandering to those who do not, drain the life from us. </p>\n<p> Who is open to your truth? </p>\n<p> Who deserves your contribution? </p>\n<p> Who is your tribe? </p>\n<p> Find them, and improve their lives energetically. </p>\n<p> Bring life, love, and value to what matters. </p>\n<p> This will bring you more life than you knew was possible. </p>\n<p> You will find you. </p>\n<p><strong class=\"markup--strong markup--p-strong\"> You will be yourself. </strong></p>\n<p> \u2014 </p>\n<figure><img src=\"https://cdn-images-1.medium.com/max/1600/1*Pkyys2D_m_MYKMnES-fnTg.jpeg\"><img src=\"https://cdn-images-1.medium.com/max/1600/1*Pkyys2D_m_MYKMnES-fnTg.jpeg\"></figure><p><strong class=\"markup--strong markup--p-strong\"> Make sure you follow me here and </strong><a href=\"http://joiningthedotsbook.com/\"><strong class=\"markup--strong markup--p-strong\"> subscribe to my newsletter </strong></a> for more ideas like these, and receive my book: \u2018Joining the Dots\u2019 for free. </p></section><section><p><em class=\"markup--em markup--p-em\"> Originally published at </em><a href=\"http://alexmathers.net/howtobeyourself/\"><em class=\"markup--em markup--p-em\"> alexmathers.net </em></a><em class=\"markup--em markup--p-em\"> on August 27, 2017. </em></p></section>",
+                    "media": [],
+                    "images": [
+                        "https://cdn-images-1.medium.com/max/2000/1*Ktoia0e5MPJsudicOI5cwA.jpeg",
+                        "https://cdn-images-1.medium.com/max/1600/0*xOppG0TFa5kWSigy.",
+                        "https://cdn-images-1.medium.com/max/1600/1*Pkyys2D_m_MYKMnES-fnTg.jpeg"
+                    ],
+                    "author": "Alex Mathers",
+                    "pub_date": "2017-08-27 15:08:27",
+                    "url": "https://medium.com/personal-growth/how-to-be-yourself-2221085391a3",
+                    "canonical_url": "http://alexmathers.net/howtobeyourself/",
+                    "title": "How to be yourself \u2013 Personal Growth \u2013 Medium",
+                    "language": "en",
+                    "image": "https://cdn-images-1.medium.com/max/1200/1*Ktoia0e5MPJsudicOI5cwA.jpeg",
+                    "summary": "How can we be more courageous and face our stupid fears, and just be a success without making everything such a huge deal? Not everyone is ready for \u2014 nor do they deserve your honesty; your wisdom\u2026",
+                    "modified_date": "2017-08-27 15:08:27",
+                    "site_name": "Medium",
+                    "favicon": "https://cdn-static-1.medium.com/_/fp/icons/favicon-rebrand-medium.3Y6xpZ-0FSdWDnPM3hSBIA.ico",
+                    "encoding": "utf-8"
+                },
+                "time": 10.976494073867798
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "article": {
+                        "type": "object",
+                        "properties": {
+                            "text": {
+                                "type": "string"
+                            },
+                            "html": {
+                                "type": "string"
+                            },
+                            "media": {
+                                "type": "array"
+                            },
+                            "images": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "author": {
+                                "type": "string"
+                            },
+                            "pub_date": {
+                                "type": "string"
+                            },
+                            "url": {
+                                "type": "string"
+                            },
+                            "canonical_url": {
+                                "type": "string"
+                            },
+                            "title": {
+                                "type": "string"
+                            },
+                            "language": {
+                                "type": "string"
+                            },
+                            "image": {
+                                "type": "string"
+                            },
+                            "summary": {
+                                "type": "string"
+                            },
+                            "modified_date": {
+                                "type": "string"
+                            },
+                            "site_name": {
+                                "type": "string"
+                            },
+                            "favicon": {
+                                "type": "string"
+                            },
+                            "encoding": {
+                                "type": "string"
+                            }
+                        }
+                    },
+                    "time": {
+                        "type": "number"
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "URL",
+                    "default": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                    "required": true
+                },
+                {
+                    "name": "media",
+                    "type": "BOOLEAN",
+                    "description": "extract media",
+                    "default": "true",
+                    "required": false
+                },
+                {
+                    "name": "js",
+                    "type": "ENUM",
+                    "description": "indicates whether to execute JavaScript or not. ",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "js_timeout",
+                    "type": "NUMBER",
+                    "description": "when JavaScript is enabled, indicates how many seconds the API should wait for the JS interpreter before starting the extraction",
+                    "default": "30",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Extract the main content from the article at https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/"
+                    }
+                },
+                {
+                    "utterance": "Can you get the text and media from this blog post? Here's the link: https://example.com/blog-post",
+                    "parameters": {
+                        "url": "https://example.com/blog-post",
+                        "media": true
+                    }
+                },
+                {
+                    "utterance": "I need the article content from https://news.example.com/article123, and please execute JavaScript.",
+                    "parameters": {
+                        "url": "https://news.example.com/article123",
+                        "js": "true"
+                    }
+                },
+                {
+                    "utterance": "Fetch the clean text from this URL: https://example.com/news-article, and set the JavaScript timeout to 45 seconds.",
+                    "parameters": {
+                        "url": "https://example.com/news-article",
+                        "js_timeout": 45
+                    }
+                },
+                {
+                    "utterance": "Extract the article from https://example.com/article and include any media.",
+                    "parameters": {
+                        "url": "https://example.com/article",
+                        "media": true
+                    }
+                },
+                {
+                    "utterance": "Get the structured data from this page: https://example.com/page, without executing JavaScript.",
+                    "parameters": {
+                        "url": "https://example.com/page",
+                        "js": "false"
+                    }
+                },
+                {
+                    "utterance": "Please extract the text from https://example.com/story and wait 60 seconds for JavaScript execution.",
+                    "parameters": {
+                        "url": "https://example.com/story",
+                        "js_timeout": 60
+                    }
+                },
+                {
+                    "utterance": "I need the article text from https://example.com/news, and make sure to extract any media.",
+                    "parameters": {
+                        "url": "https://example.com/news",
+                        "media": true
+                    }
+                },
+                {
+                    "utterance": "Extract the content from https://example.com/article456, and execute JavaScript if necessary.",
+                    "parameters": {
+                        "url": "https://example.com/article456",
+                        "js": "true"
+                    }
+                },
+                {
+                    "utterance": "Can you get the main text from this URL: https://example.com/blog-entry, with a JavaScript timeout of 20 seconds?",
+                    "parameters": {
+                        "url": "https://example.com/blog-entry",
+                        "js_timeout": 20
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Media"
+}

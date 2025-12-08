@@ -1,0 +1,172 @@
+{
+    "tool_name": "Job Salary Data",
+    "tool_description": "Extremely Fast and Simple API to get Job Salary/Pay Estimations from all major publishers - Payscale, Glassdoor, ZipRecruiter and many others, all in a single API.",
+    "title": "Job Salary Data",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 450,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/job-salary-data/",
+    "host": "job-salary-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Job Salary",
+            "url": "https://job-salary-data.p.rapidapi.com/job-salary",
+            "description": "Get estimated job salaries/pay by job title and location.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://job-salary-data.p.rapidapi.com/job-salary\"\nquerystring = {\"job_title\": job_title, \"radius\": radius, \"location\": location}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"job-salary-data.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "key1": "value",
+                "key2": "value"
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "location": {
+                                    "type": "string"
+                                },
+                                "job_title": {
+                                    "type": "string"
+                                },
+                                "publisher_name": {
+                                    "type": "string"
+                                },
+                                "publisher_link": {
+                                    "type": "string"
+                                },
+                                "min_salary": {
+                                    "type": "integer"
+                                },
+                                "max_salary": {
+                                    "type": "integer"
+                                },
+                                "median_pay": {
+                                    "type": "integer"
+                                },
+                                "salary_period": {
+                                    "type": "string"
+                                },
+                                "salary_currency": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "job_title",
+                    "type": "STRING",
+                    "description": "Job title for which to get salary estimation",
+                    "default": "nodejs developer",
+                    "required": true
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "Free-text location/area in which to get salary estimation",
+                    "default": "new york, usa",
+                    "required": true
+                },
+                {
+                    "name": "radius",
+                    "type": "STRING",
+                    "description": "Search radius in km (measured from *location*).\nDefault: `200`.",
+                    "default": "200",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the estimated salary for a software engineer in San Francisco?",
+                    "parameters": {
+                        "job_title": "software engineer",
+                        "location": "San Francisco"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the salary estimation for a data scientist in Chicago?",
+                    "parameters": {
+                        "job_title": "data scientist",
+                        "location": "Chicago"
+                    }
+                },
+                {
+                    "utterance": "Find the average pay for a project manager in Austin, Texas.",
+                    "parameters": {
+                        "job_title": "project manager",
+                        "location": "Austin, Texas"
+                    }
+                },
+                {
+                    "utterance": "What is the salary range for a marketing manager in London, UK?",
+                    "parameters": {
+                        "job_title": "marketing manager",
+                        "location": "London, UK"
+                    }
+                },
+                {
+                    "utterance": "Get the estimated salary for a nurse in Boston, Massachusetts.",
+                    "parameters": {
+                        "job_title": "nurse",
+                        "location": "Boston, Massachusetts"
+                    }
+                },
+                {
+                    "utterance": "What is the average pay for a graphic designer in Seattle, Washington?",
+                    "parameters": {
+                        "job_title": "graphic designer",
+                        "location": "Seattle, Washington"
+                    }
+                },
+                {
+                    "utterance": "Find the salary estimation for a financial analyst in Toronto, Canada.",
+                    "parameters": {
+                        "job_title": "financial analyst",
+                        "location": "Toronto, Canada"
+                    }
+                },
+                {
+                    "utterance": "What is the estimated salary for a teacher in Sydney, Australia?",
+                    "parameters": {
+                        "job_title": "teacher",
+                        "location": "Sydney, Australia"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the salary range for a software developer in Berlin, Germany?",
+                    "parameters": {
+                        "job_title": "software developer",
+                        "location": "Berlin, Germany"
+                    }
+                },
+                {
+                    "utterance": "What is the average pay for a sales representative in Miami, Florida?",
+                    "parameters": {
+                        "job_title": "sales representative",
+                        "location": "Miami, Florida"
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Financial"
+}

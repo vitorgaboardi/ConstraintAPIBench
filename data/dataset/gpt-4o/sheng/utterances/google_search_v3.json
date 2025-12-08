@@ -1,0 +1,330 @@
+{
+    "product_id": "api_52346797-1622-4cfe-92d6-8d38279c8d30",
+    "tool_description": "API used to retrieve data from Google search results in real time. Support web search and image search",
+    "home_url": "https://rapidapi.com/neoscrap-net/api/google-search72/",
+    "name": "Google Search_v3",
+    "title": "Google Search",
+    "pricing": "FREEMIUM",
+    "tool_name": "Google Search_v3",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 708,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "host": "google-search72.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Image Search",
+            "url": "https://google-search72.p.rapidapi.com/imagesearch",
+            "description": "This endpoint is used for image searches",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://google-search72.p.rapidapi.com/imagesearch\"\nquerystring = {\"q\": \"Word Cup\", \"start\": \"0\", \"num\": \"10\", \"gl\": \"us\", \"lr\": \"lang_en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-search72.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://google-search72.p.rapidapi.com/imagesearch\"\nquerystring = {\"q\": \"Word Cup\", \"start\": \"0\", \"num\": \"10\", \"gl\": \"us\", \"lr\": \"lang_en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-search72.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "thumbnailImageUrl": {
+                                    "type": "string"
+                                },
+                                "originalImageUrl": {
+                                    "type": "string"
+                                },
+                                "height": {
+                                    "type": "integer"
+                                },
+                                "width": {
+                                    "type": "integer"
+                                },
+                                "size": {
+                                    "type": "string"
+                                },
+                                "contextLink": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Word Cup",
+                    "required": true
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "The index of the first result to return.",
+                    "default": "0",
+                    "required": false
+                },
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of search results to return.\nValid values are integers between 1 and 20, inclusive",
+                    "default": "10",
+                    "required": false
+                },
+                {
+                    "name": "gl",
+                    "type": "STRING",
+                    "description": "The gl parameter value is a two-letter country code. The gl parameter boosts search results whose country of origin matches the parameter value.",
+                    "default": "us",
+                    "required": false
+                },
+                {
+                    "name": "lr",
+                    "type": "STRING",
+                    "description": "Restricts the search to documents written in a particular language",
+                    "default": "lang_en",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find images of the Eiffel Tower.",
+                    "parameters": {
+                        "q": "Eiffel Tower"
+                    }
+                },
+                {
+                    "utterance": "Search for 15 images of the Grand Canyon.",
+                    "parameters": {
+                        "q": "Grand Canyon",
+                        "num": 15
+                    }
+                },
+                {
+                    "utterance": "Show me images of the Great Wall of China starting from the 5th result.",
+                    "parameters": {
+                        "q": "Great Wall of China",
+                        "start": "5"
+                    }
+                },
+                {
+                    "utterance": "Get images of Mount Everest in Nepali language.",
+                    "parameters": {
+                        "q": "Mount Everest",
+                        "lr": "lang_ne"
+                    }
+                },
+                {
+                    "utterance": "Find 10 images of the Sydney Opera House with results boosted for Australia.",
+                    "parameters": {
+                        "q": "Sydney Opera House",
+                        "num": 10,
+                        "gl": "au"
+                    }
+                },
+                {
+                    "utterance": "Search for images of the Taj Mahal in Hindi.",
+                    "parameters": {
+                        "q": "Taj Mahal",
+                        "lr": "lang_hi"
+                    }
+                },
+                {
+                    "utterance": "Retrieve images of the Statue of Liberty with a focus on US results.",
+                    "parameters": {
+                        "q": "Statue of Liberty",
+                        "gl": "us"
+                    }
+                },
+                {
+                    "utterance": "Show me 5 images of the Colosseum.",
+                    "parameters": {
+                        "q": "Colosseum",
+                        "num": 5
+                    }
+                },
+                {
+                    "utterance": "Find images of Niagara Falls starting from the 10th result.",
+                    "parameters": {
+                        "q": "Niagara Falls",
+                        "start": "10"
+                    }
+                },
+                {
+                    "utterance": "Get images of the Pyramids of Giza in Arabic.",
+                    "parameters": {
+                        "q": "Pyramids of Giza",
+                        "lr": "lang_ar"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Web Search",
+            "url": "https://google-search72.p.rapidapi.com/search",
+            "description": "This endpoint is used for web searches",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://google-search72.p.rapidapi.com/search\"\nquerystring = {\"num\": \"10\", \"start\": \"0\", \"gl\": \"us\", \"q\": \"word cup\", \"lr\": \"lang_en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-search72.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://google-search72.p.rapidapi.com/search\"\nquerystring = {\"num\": \"10\", \"start\": \"0\", \"gl\": \"us\", \"q\": \"word cup\", \"lr\": \"lang_en\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"google-search72.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "items": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "title": {
+                                    "type": "string"
+                                },
+                                "htmlTitle": {
+                                    "type": "string"
+                                },
+                                "link": {
+                                    "type": "string"
+                                },
+                                "displayLink": {
+                                    "type": "string"
+                                },
+                                "snippet": {
+                                    "type": "string"
+                                },
+                                "htmlSnippet": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Search query",
+                    "default": "word cup",
+                    "required": true
+                },
+                {
+                    "name": "num",
+                    "type": "NUMBER",
+                    "description": "Number of search results to return.\nValid values are integers between 1 and 20, inclusive",
+                    "default": "10",
+                    "required": false
+                },
+                {
+                    "name": "start",
+                    "type": "STRING",
+                    "description": "The index of the first result to return.",
+                    "default": "0",
+                    "required": false
+                },
+                {
+                    "name": "gl",
+                    "type": "STRING",
+                    "description": "The gl parameter value is a two-letter country code. The gl parameter boosts search results whose country of origin matches the parameter value.",
+                    "default": "us",
+                    "required": false
+                },
+                {
+                    "name": "lr",
+                    "type": "STRING",
+                    "description": "Restricts the search to documents written in a particular language",
+                    "default": "lang_en",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you search for the latest news on climate change?",
+                    "parameters": {
+                        "q": "latest news on climate change"
+                    }
+                },
+                {
+                    "utterance": "Find me 5 articles about the history of the internet.",
+                    "parameters": {
+                        "q": "history of the internet",
+                        "num": 5
+                    }
+                },
+                {
+                    "utterance": "What are the top 10 results for the best Italian restaurants in New York?",
+                    "parameters": {
+                        "q": "best Italian restaurants in New York",
+                        "num": 10
+                    }
+                },
+                {
+                    "utterance": "Search for information on the Mars Rover mission starting from the 5th result.",
+                    "parameters": {
+                        "q": "Mars Rover mission",
+                        "start": "5"
+                    }
+                },
+                {
+                    "utterance": "Can you find articles about renewable energy in Spanish?",
+                    "parameters": {
+                        "q": "renewable energy",
+                        "lr": "lang_es"
+                    }
+                },
+                {
+                    "utterance": "Look up the latest technology trends in the UK.",
+                    "parameters": {
+                        "q": "latest technology trends",
+                        "gl": "uk"
+                    }
+                },
+                {
+                    "utterance": "Get me 15 search results for the benefits of meditation.",
+                    "parameters": {
+                        "q": "benefits of meditation",
+                        "num": 15
+                    }
+                },
+                {
+                    "utterance": "Find the top 3 results for the best hiking trails in Canada.",
+                    "parameters": {
+                        "q": "best hiking trails in Canada",
+                        "num": 3,
+                        "gl": "ca"
+                    }
+                },
+                {
+                    "utterance": "Search for articles on artificial intelligence written in French.",
+                    "parameters": {
+                        "q": "artificial intelligence",
+                        "lr": "lang_fr"
+                    }
+                },
+                {
+                    "utterance": "What are the first 20 results for the query 'global economic outlook'?",
+                    "parameters": {
+                        "q": "global economic outlook",
+                        "num": 20
+                    }
+                }
+            ]
+        }
+    ],
+    "standardized_name": "google_search_v3",
+    "category": "Search"
+}

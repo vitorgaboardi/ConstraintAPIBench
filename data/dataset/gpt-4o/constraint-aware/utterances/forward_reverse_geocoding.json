@@ -1,0 +1,672 @@
+{
+    "name": "Forward & Reverse Geocoding",
+    "description": "Forward & Reverse Geocoding API. Get address by location or location by address.",
+    "url": "https://rapidapi.com/GeocodeSupport/api/forward-reverse-geocoding/",
+    "api_methods": [
+        {
+            "name": "ForwardGeocoding",
+            "description": "Turn an address into latitude and longitude (e.g. to display on a map) by schematic input.",
+            "url": "https://forward-reverse-geocoding.p.rapidapi.com/v1/forward",
+            "parameters": [
+                {
+                    "name": "json_callback",
+                    "type": "STRING",
+                    "description": "Use this with format=json to define a callback function for jsonp. ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "polygon_kml",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "bounded",
+                    "type": "ENUM",
+                    "description": "Used in conjunction with viewbox to search only in an area.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "addressdetails",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "New York City",
+                    "required": false
+                },
+                {
+                    "name": "namedetails",
+                    "type": "ENUM",
+                    "description": "- namedetails = [0,1]\n\nSet this to 1 to receive different spellings in different languages of a returned place.\nDefault is 0.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                0,
+                                1
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "countrycodes",
+                    "type": "STRING",
+                    "description": "Two letter country code to restrict area to search in. Use the country code as defined in ISO 3166-1 alpha2.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha2"
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "accept-language",
+                    "type": "STRING",
+                    "description": "Set the query and response language. Accepts two letter language codes (e.g. 'en' or 'es') or a combination of language and region code, e.g. 'en-GB' or 'es-AR'. Default: 'en'.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "language-region code"
+                    }
+                },
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "postalcode",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "10011",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "USA",
+                    "required": false
+                },
+                {
+                    "name": "county",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "NY",
+                    "required": false
+                },
+                {
+                    "name": "street",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "34 West 13th Street",
+                    "required": false
+                },
+                {
+                    "name": "viewbox",
+                    "type": "STRING",
+                    "description": "Format: x1,y1,x2,y2 - restrict search area to a bounded box defined by two coordinates (x is longitude, y is latitude). The two coordinates have to span a box to work.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "x1,y1,x2,y2"
+                    }
+                },
+                {
+                    "name": "polygon_text",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "polygon_geojson",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "polygon_threshold",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0.0",
+                    "required": false
+                },
+                {
+                    "name": "polygon_svg",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find the coordinates for 1600 Pennsylvania Avenue in Washington, D.C.?",
+                    "parameters": {
+                        "street": "1600 Pennsylvania Avenue",
+                        "city": "Washington",
+                        "state": "D.C.",
+                        "country": "USA"
+                    }
+                },
+                {
+                    "utterance": "I need the latitude and longitude for a place in Paris, France, with postal code 75001.",
+                    "parameters": {
+                        "city": "Paris",
+                        "country": "France",
+                        "postalcode": "75001"
+                    }
+                },
+                {
+                    "utterance": "What's the location for 10 Downing Street in London, and please provide the details in French.",
+                    "parameters": {
+                        "street": "10 Downing Street",
+                        "city": "London",
+                        "country": "UK",
+                        "accept-language": "fr"
+                    }
+                },
+                {
+                    "utterance": "Get me the coordinates for a place in Berlin, Germany, and include different spellings.",
+                    "parameters": {
+                        "city": "Berlin",
+                        "country": "Germany",
+                        "namedetails": 1
+                    }
+                },
+                {
+                    "utterance": "Find the latitude and longitude for a location in Tokyo, Japan, within the viewbox 139.6917,35.6895,139.7000,35.7000.",
+                    "parameters": {
+                        "city": "Tokyo",
+                        "country": "Japan",
+                        "viewbox": "139.6917,35.6895,139.7000,35.7000"
+                    }
+                },
+                {
+                    "utterance": "I need the coordinates for a place in Sydney, Australia, with a polygon threshold of 0.5.",
+                    "parameters": {
+                        "city": "Sydney",
+                        "country": "Australia",
+                        "polygon_threshold": 0.5
+                    }
+                },
+                {
+                    "utterance": "Can you provide the location for 221B Baker Street in London, and restrict the search to the UK?",
+                    "parameters": {
+                        "street": "221B Baker Street",
+                        "city": "London",
+                        "countrycodes": "GB"
+                    }
+                },
+                {
+                    "utterance": "Get the coordinates for a place in Toronto, Canada, and include address details.",
+                    "parameters": {
+                        "city": "Toronto",
+                        "country": "Canada",
+                        "addressdetails": "1"
+                    }
+                },
+                {
+                    "utterance": "Find the latitude and longitude for a location in Rome, Italy, and limit the results to 5.",
+                    "parameters": {
+                        "city": "Rome",
+                        "country": "Italy",
+                        "limit": "5"
+                    }
+                },
+                {
+                    "utterance": "What's the location for a place in Mumbai, India, and provide the response in Hindi?",
+                    "parameters": {
+                        "city": "Mumbai",
+                        "country": "India",
+                        "accept-language": "hi"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "ReverseGeocoding",
+            "description": "Find address or place by latitude and longitude",
+            "url": "https://forward-reverse-geocoding.p.rapidapi.com/v1/reverse",
+            "parameters": [
+                {
+                    "name": "lon",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "-87.6244212",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "41.8755616",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "json_callback",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "polygon_geojson",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "limit",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "accept-language",
+                    "type": "STRING",
+                    "description": "Set the response language. Accepts two letter language codes (e.g. 'en' or 'es') or a combination of language and region code, e.g. 'en-GB' or 'es-AR'. Default: 'en'.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "language code",
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "es",
+                                "en-GB",
+                                "es-AR"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "polygon_kml",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "zoom",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "polygon_svg",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "addressdetails",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "namedetails",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "polygon_threshold",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0.0",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "polygon_text",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find the address for the location at 41.8755616 latitude and -87.6244212 longitude?",
+                    "parameters": {
+                        "lat": 41.8755616,
+                        "lon": -87.6244212
+                    }
+                },
+                {
+                    "utterance": "What's the address for the coordinates 34.052235, -118.243683 in Spanish?",
+                    "parameters": {
+                        "lat": 34.052235,
+                        "lon": -118.243683,
+                        "accept-language": "es"
+                    }
+                },
+                {
+                    "utterance": "I need the address for 48.856613 latitude and 2.352222 longitude with detailed address information.",
+                    "parameters": {
+                        "lat": 48.856613,
+                        "lon": 2.352222,
+                        "addressdetails": "1"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the address for 51.507351 latitude and -0.127758 longitude with name details included?",
+                    "parameters": {
+                        "lat": 51.507351,
+                        "lon": -0.127758,
+                        "namedetails": "1"
+                    }
+                },
+                {
+                    "utterance": "Find the address for the coordinates 35.689487, 139.691711 with a polygon in GeoJSON format.",
+                    "parameters": {
+                        "lat": 35.689487,
+                        "lon": 139.691711,
+                        "polygon_geojson": "1"
+                    }
+                },
+                {
+                    "utterance": "What's the address for 40.712776 latitude and -74.005974 longitude with a limit of 5 results?",
+                    "parameters": {
+                        "lat": 40.712776,
+                        "lon": -74.005974,
+                        "limit": "5"
+                    }
+                },
+                {
+                    "utterance": "Can you get the address for 55.755825 latitude and 37.617298 longitude with a KML polygon?",
+                    "parameters": {
+                        "lat": 55.755825,
+                        "lon": 37.617298,
+                        "polygon_kml": "1"
+                    }
+                },
+                {
+                    "utterance": "I need the address for 37.774929 latitude and -122.419418 longitude with a zoom level of 10.",
+                    "parameters": {
+                        "lat": 37.774929,
+                        "lon": -122.419418,
+                        "zoom": "10"
+                    }
+                },
+                {
+                    "utterance": "What's the address for 52.520008 latitude and 13.404954 longitude with SVG polygon details?",
+                    "parameters": {
+                        "lat": 52.520008,
+                        "lon": 13.404954,
+                        "polygon_svg": "1"
+                    }
+                },
+                {
+                    "utterance": "Could you find the address for 41.902782 latitude and 12.496366 longitude with a polygon threshold of 0.5?",
+                    "parameters": {
+                        "lat": 41.902782,
+                        "lon": 12.496366,
+                        "polygon_threshold": 0.5
+                    }
+                }
+            ]
+        },
+        {
+            "name": "GeocodingSearch",
+            "description": "Free-form query forward geocoding.",
+            "url": "https://forward-reverse-geocoding.p.rapidapi.com/v1/search",
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "New York City NY USA",
+                    "required": true
+                },
+                {
+                    "name": "countrycodes",
+                    "type": "STRING",
+                    "description": "Two-letter country code as defined in ISO 3166-1 alpha2 to restrict search to a country.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "ISO 3166-1 alpha2"
+                    }
+                },
+                {
+                    "name": "json_callback",
+                    "type": "STRING",
+                    "description": "Name of json callback function for jsonp calls. Use format=json for this.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "polygon_text",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "namedetails",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "viewbox",
+                    "type": "STRING",
+                    "description": "Format: x1,y1,x2,y2 where is x is longitude and y latitude. The two coordinates have to span a box to let this work in conjunction with bounded=1 (see there).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "x1,y1,x2,y2 where x is longitude and y is latitude",
+                        "inter-dependency": "viewbox, bounded: viewbox must be used in conjunction with bounded=1 to restrict search area."
+                    }
+                },
+                {
+                    "name": "format",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "polygon_geojson",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "bounded",
+                    "type": "ENUM",
+                    "description": "Use bounded=1 in conjunction with viewbox to restrict search area. You can use this to search for amenities in a given area, e.g. post offices or police stations, etc. as q param.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "viewbox, bounded: viewbox must be used in conjunction with bounded=1 to restrict search area."
+                    }
+                },
+                {
+                    "name": "polygon_svg",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "polygon_kml",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "polygon_threshold",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0.0",
+                    "required": false
+                },
+                {
+                    "name": "accept-language",
+                    "type": "STRING",
+                    "description": "Set the query and response language. Accepts two letter language codes (e.g. 'en' or 'es') or a combination of language and region code, e.g. 'en-GB' or 'es-AR'. Default: 'en'.",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "format": "Two-letter language codes or language-region codes"
+                    }
+                },
+                {
+                    "name": "addressdetails",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find the location of the Eiffel Tower in France?",
+                    "parameters": {
+                        "q": "Eiffel Tower",
+                        "countrycodes": "FR"
+                    }
+                },
+                {
+                    "utterance": "Show me the address for the Sydney Opera House with detailed names.",
+                    "parameters": {
+                        "q": "Sydney Opera House",
+                        "namedetails": "1"
+                    }
+                },
+                {
+                    "utterance": "What's the address of the Colosseum in Rome, Italy?",
+                    "parameters": {
+                        "q": "Colosseum",
+                        "countrycodes": "IT"
+                    }
+                },
+                {
+                    "utterance": "Find the location of the Great Wall of China and limit the results to 5.",
+                    "parameters": {
+                        "q": "Great Wall of China",
+                        "limit": "5"
+                    }
+                },
+                {
+                    "utterance": "Locate the Statue of Liberty and provide the response in Spanish.",
+                    "parameters": {
+                        "q": "Statue of Liberty",
+                        "accept-language": "es"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the address of the Taj Mahal with address details included?",
+                    "parameters": {
+                        "q": "Taj Mahal",
+                        "addressdetails": "1"
+                    }
+                },
+                {
+                    "utterance": "Find the coordinates for the Golden Gate Bridge within the viewbox of San Francisco.",
+                    "parameters": {
+                        "q": "Golden Gate Bridge",
+                        "viewbox": "-123.173825,37.63983,-122.28178,37.929824",
+                        "bounded": "1"
+                    }
+                },
+                {
+                    "utterance": "What's the address of the Burj Khalifa in Dubai with a polygon in GeoJSON format?",
+                    "parameters": {
+                        "q": "Burj Khalifa",
+                        "polygon_geojson": "1"
+                    }
+                },
+                {
+                    "utterance": "Can you find the address of the Louvre Museum in Paris with a polygon in SVG format?",
+                    "parameters": {
+                        "q": "Louvre Museum",
+                        "polygon_svg": "1"
+                    }
+                },
+                {
+                    "utterance": "Get me the location of the Christ the Redeemer statue in Brazil with a polygon threshold of 0.5.",
+                    "parameters": {
+                        "q": "Christ the Redeemer",
+                        "countrycodes": "BR",
+                        "polygon_threshold": 0.5
+                    }
+                }
+            ]
+        }
+    ]
+}

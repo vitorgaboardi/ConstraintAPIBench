@@ -1,0 +1,152 @@
+{
+    "tool_name": "Covid-19 by API-Ninjas",
+    "tool_description": "Covid-19 case count and death data for every country in the world. See more info at https://api-ninjas.com/api/covid19.",
+    "title": "Covid-19 by API-Ninjas",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 936,
+        "avgSuccessRate": 95,
+        "popularityScore": 9.4,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/apininjas/api/covid-19-by-api-ninjas/",
+    "host": "covid-19-by-api-ninjas.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/v1/covid19",
+            "url": "https://covid-19-by-api-ninjas.p.rapidapi.com/v1/covid19",
+            "description": "API Ninjas Covid19 API endpoint. Either **date** or **country** must be set.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://covid-19-by-api-ninjas.p.rapidapi.com/v1/covid19\"\nquerystring = {\"date\": date}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"covid-19-by-api-ninjas.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "type of data to retrieve. Must be either cases or deaths. If not set, cases will be used by default.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "country name (case insensitive).",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "date to retrieve single-day snapshot. Must be in the form of YYYY-MM-DD (e.g. 2022-01-01)",
+                    "default": "2022-01-01",
+                    "required": false
+                },
+                {
+                    "name": "county",
+                    "type": "STRING",
+                    "description": "county name for US states (case insensitive). For United States data only. Must be used in conjunction with country (United States) and region (e.g. California).",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "administrative region (also known as state or province in many countries) name (case insensitive). Must be used in conjunction with country. If not set, countries with data broken down by administrative regions will return separate data for each region.",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What were the COVID-19 cases in France on 2022-03-15?",
+                    "parameters": {
+                        "country": "France",
+                        "date": "2022-03-15",
+                        "type": "cases"
+                    }
+                },
+                {
+                    "utterance": "Get the COVID-19 deaths in Germany.",
+                    "parameters": {
+                        "country": "Germany",
+                        "type": "deaths"
+                    }
+                },
+                {
+                    "utterance": "Retrieve COVID-19 cases for the United States in California.",
+                    "parameters": {
+                        "country": "United States",
+                        "region": "California",
+                        "type": "cases"
+                    }
+                },
+                {
+                    "utterance": "What were the COVID-19 deaths in Los Angeles County on 2022-04-01?",
+                    "parameters": {
+                        "country": "United States",
+                        "region": "California",
+                        "county": "Los Angeles County",
+                        "date": "2022-04-01",
+                        "type": "deaths"
+                    }
+                },
+                {
+                    "utterance": "Find COVID-19 cases in Italy on 2022-05-10.",
+                    "parameters": {
+                        "country": "Italy",
+                        "date": "2022-05-10",
+                        "type": "cases"
+                    }
+                },
+                {
+                    "utterance": "Get COVID-19 deaths in Canada for Ontario.",
+                    "parameters": {
+                        "country": "Canada",
+                        "region": "Ontario",
+                        "type": "deaths"
+                    }
+                },
+                {
+                    "utterance": "Retrieve COVID-19 cases for Australia on 2022-06-20.",
+                    "parameters": {
+                        "country": "Australia",
+                        "date": "2022-06-20",
+                        "type": "cases"
+                    }
+                },
+                {
+                    "utterance": "What were the COVID-19 deaths in New York State on 2022-07-15?",
+                    "parameters": {
+                        "country": "United States",
+                        "region": "New York",
+                        "date": "2022-07-15",
+                        "type": "deaths"
+                    }
+                },
+                {
+                    "utterance": "Find COVID-19 cases in Japan on 2022-08-01.",
+                    "parameters": {
+                        "country": "Japan",
+                        "date": "2022-08-01",
+                        "type": "cases"
+                    }
+                },
+                {
+                    "utterance": "Get COVID-19 deaths in Cook County, Illinois on 2022-09-10.",
+                    "parameters": {
+                        "country": "United States",
+                        "region": "Illinois",
+                        "county": "Cook County",
+                        "date": "2022-09-10",
+                        "type": "deaths"
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Medical"
+}

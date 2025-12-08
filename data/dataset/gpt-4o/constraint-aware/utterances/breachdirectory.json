@@ -1,0 +1,112 @@
+{
+    "name": "BreachDirectory",
+    "description": "Check if an email, username, password, or phone number was compromised in a data breach.",
+    "url": "https://rapidapi.com/rohan-patra/api/breachdirectory/",
+    "api_methods": [
+        {
+            "name": "index",
+            "description": "Base URL for using each of BreachDirectory's API functions: auto, sources, and password.",
+            "url": "https://breachdirectory.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "term",
+                    "type": "STRING",
+                    "description": "Enter the proper search term given the function you selected.",
+                    "default": "someone@example.com",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "func",
+                    "type": "STRING",
+                    "description": "Select the function you wish to use from the following:\n- auto: Returns passwords, SHA-1 hashes, and sources given any username or email.\n- sources: Returns sources given username or email.\n- password: Returns how many times a given password has been leaked.\n- domain: Returns passwords, SHA-1 hashes, and sources given any domain (Limited to 1000 results for security).\n- dehash: Attempts to decrypt a given hash.",
+                    "default": "auto",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "auto",
+                                "sources",
+                                "password",
+                                "domain",
+                                "dehash"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Has the email john.doe@example.com been involved in any data breaches?",
+                    "parameters": {
+                        "term": "john.doe@example.com",
+                        "func": "auto"
+                    }
+                },
+                {
+                    "utterance": "Can you check how many times the password '123456' has been leaked?",
+                    "parameters": {
+                        "term": "123456",
+                        "func": "password"
+                    }
+                },
+                {
+                    "utterance": "I need to know the sources where the username 'jane_doe' was found.",
+                    "parameters": {
+                        "term": "jane_doe",
+                        "func": "sources"
+                    }
+                },
+                {
+                    "utterance": "Is there any breach information available for the domain 'example.com'?",
+                    "parameters": {
+                        "term": "example.com",
+                        "func": "domain"
+                    }
+                },
+                {
+                    "utterance": "Can you find out if the phone number '+1234567890' has been compromised?",
+                    "parameters": {
+                        "term": "+1234567890",
+                        "func": "auto"
+                    }
+                },
+                {
+                    "utterance": "Please check the sources for the email 'alice.smith@example.com'.",
+                    "parameters": {
+                        "term": "alice.smith@example.com",
+                        "func": "sources"
+                    }
+                },
+                {
+                    "utterance": "How many times has the password 'qwerty' appeared in breaches?",
+                    "parameters": {
+                        "term": "qwerty",
+                        "func": "password"
+                    }
+                },
+                {
+                    "utterance": "Can you decrypt the hash '5d41402abc4b2a76b9719d911017c592'?",
+                    "parameters": {
+                        "term": "5d41402abc4b2a76b9719d911017c592",
+                        "func": "dehash"
+                    }
+                },
+                {
+                    "utterance": "Check if the username 'charlie_brown' has been leaked.",
+                    "parameters": {
+                        "term": "charlie_brown",
+                        "func": "auto"
+                    }
+                },
+                {
+                    "utterance": "I want to know the breach sources for the domain 'mywebsite.com'.",
+                    "parameters": {
+                        "term": "mywebsite.com",
+                        "func": "domain"
+                    }
+                }
+            ]
+        }
+    ]
+}

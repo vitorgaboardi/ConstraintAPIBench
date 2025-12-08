@@ -1,0 +1,183 @@
+{
+    "name": "Book Finder",
+    "description": "Find books by title, author, series, and reading complexity. Try the demo: [https://bookfinder-1-r7047837.deta.app](https://bookfinder-1-r7047837.deta.app/)",
+    "url": "https://rapidapi.com/dfskGT/api/book-finder1/",
+    "api_methods": [
+        {
+            "name": "Find books",
+            "description": "Search books using optional title, author, series, book type, categories, and [lexile measure](https://lexile.com/educators/understanding-lexile-measures/) range.",
+            "url": "https://book-finder1.p.rapidapi.com/api/search",
+            "parameters": [
+                {
+                    "name": "book_type",
+                    "type": "STRING",
+                    "description": "Book type, fiction or nonfiction.",
+                    "default": "Fiction",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Fiction",
+                                "Nonfiction"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "categories",
+                    "type": "STRING",
+                    "description": "Semicolon separated book categories to search for, e.g., 'Mystery & Suspense; Science Fiction & Fantasy'. Available categories include: ['Animals, Bugs & Pets', 'Art, Creativity & Music', 'General Literature', 'Hobbies, Sports & Outdoors', 'Science Fiction & Fantasy', 'Real Life', 'Science & Technology', 'Mystery & Suspense', 'Reference']",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Animals, Bugs & Pets",
+                                "Art, Creativity & Music",
+                                "General Literature",
+                                "Hobbies, Sports & Outdoors",
+                                "Science Fiction & Fantasy",
+                                "Real Life",
+                                "Science & Technology",
+                                "Mystery & Suspense",
+                                "Reference"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lexile_max",
+                    "type": "NUMBER",
+                    "description": "Maximum Lexile measure.",
+                    "default": "800",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "lexile_min, lexile_max: lexile_min must be less than or equal to lexile_max."
+                    }
+                },
+                {
+                    "name": "series",
+                    "type": "STRING",
+                    "description": "Series name.",
+                    "default": "Wings of fire",
+                    "required": false
+                },
+                {
+                    "name": "lexile_min",
+                    "type": "NUMBER",
+                    "description": "Minimum Lexile measure.",
+                    "default": "600",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "lexile_min, lexile_max: lexile_min must be less than or equal to lexile_max."
+                    }
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page of the results.",
+                    "default": 1,
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "author",
+                    "type": "STRING",
+                    "description": "Name of the author.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Terms to be appeared in book title.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "results_per_page",
+                    "type": "NUMBER",
+                    "description": "Results per page.",
+                    "default": 25,
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find fiction books by J.K. Rowling?",
+                    "parameters": {
+                        "book_type": "Fiction",
+                        "author": "J.K. Rowling"
+                    }
+                },
+                {
+                    "utterance": "I'm looking for nonfiction books about science and technology.",
+                    "parameters": {
+                        "book_type": "Nonfiction",
+                        "categories": "Science & Technology"
+                    }
+                },
+                {
+                    "utterance": "Find books in the 'Wings of Fire' series.",
+                    "parameters": {
+                        "series": "Wings of Fire"
+                    }
+                },
+                {
+                    "utterance": "Show me mystery and suspense books with a Lexile measure between 500 and 700.",
+                    "parameters": {
+                        "categories": "Mystery & Suspense",
+                        "lexile_min": 500,
+                        "lexile_max": 700
+                    }
+                },
+                {
+                    "utterance": "What are some general literature books by Jane Austen?",
+                    "parameters": {
+                        "categories": "General Literature",
+                        "author": "Jane Austen"
+                    }
+                },
+                {
+                    "utterance": "I need fiction books with 'Harry Potter' in the title.",
+                    "parameters": {
+                        "book_type": "Fiction",
+                        "title": "Harry Potter"
+                    }
+                },
+                {
+                    "utterance": "Find nonfiction books about animals and pets with a Lexile measure up to 600.",
+                    "parameters": {
+                        "book_type": "Nonfiction",
+                        "categories": "Animals, Bugs & Pets",
+                        "lexile_max": 600
+                    }
+                },
+                {
+                    "utterance": "Can you recommend science fiction and fantasy books?",
+                    "parameters": {
+                        "categories": "Science Fiction & Fantasy"
+                    }
+                },
+                {
+                    "utterance": "I'm searching for books by Stephen King with a Lexile measure above 800.",
+                    "parameters": {
+                        "author": "Stephen King",
+                        "lexile_min": 800
+                    }
+                },
+                {
+                    "utterance": "Find books in the 'Art, Creativity & Music' category.",
+                    "parameters": {
+                        "categories": "Art, Creativity & Music"
+                    }
+                }
+            ]
+        }
+    ]
+}

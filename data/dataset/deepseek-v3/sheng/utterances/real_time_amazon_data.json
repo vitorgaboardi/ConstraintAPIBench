@@ -1,0 +1,832 @@
+{
+    "tool_name": "Real-Time Amazon Data",
+    "tool_description": "Fast and Simple product searches, data and reviews on Amazon.com in real-time.",
+    "title": "Real-Time Amazon Data",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 90,
+        "avgLatency": 2458,
+        "avgSuccessRate": 90,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/letscrape-6bRBa3QguO5/api/real-time-amazon-data/",
+    "host": "real-time-amazon-data.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Search",
+            "url": "https://real-time-amazon-data.p.rapidapi.com/search",
+            "description": "Search for product offers on Amazon with support for multiple filters and options.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://real-time-amazon-data.p.rapidapi.com/search\"\nquerystring = {\"country\": country, \"query\": query, \"category_id\": category_id, \"page\": page}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"real-time-amazon-data.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "key1": "value",
+                "key2": "value"
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "total_products": {
+                                "type": "integer"
+                            },
+                            "country": {
+                                "type": "string"
+                            },
+                            "products": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Search query. Supports both free-form text queries or a product asin.",
+                    "default": "Phone",
+                    "required": true
+                },
+                {
+                    "name": "brand",
+                    "type": "STRING",
+                    "description": "Find products with a specific brand. Multiple brands can be specified as a comma (,) separated list. The brand values can be seen from Amazon's search left filters panel, as seen [here](https://www.amazon.com/s?k=phone).\n\n**e.g.** `SAMSUNG`\n**e.g.** `Google,Apple`",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "min_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price greater than a certain value. Specified in the currency of the selected country. For example, in case country=US, a value of *105.34* means *$105.34*.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "max_price",
+                    "type": "NUMBER",
+                    "description": "Only return product offers with price lower than a certain value. Specified in the currency of the selected country. For example, in case country=US, a value of *105.34* means *$105.34*.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Sets the marketplace country, language and currency. \n\n**Default:** `US`\n\n**Allowed values:**  `US, AU, BR, CA, CN, FR, DE, IN, IT, MX, NL, SG, ES, TR, AE, GB, JP`\n",
+                    "default": "US",
+                    "required": false
+                },
+                {
+                    "name": "category_id",
+                    "type": "STRING",
+                    "description": "Find products in a specific category / department. Use the **Product Category List** endpoint to get a list of valid categories and their ids for the country specified in the request.\n\n**Default:** `aps` (All Departments)",
+                    "default": "aps",
+                    "required": false
+                },
+                {
+                    "name": "sort_by",
+                    "type": "ENUM",
+                    "description": "Return the results in a specific sort order.\n\n**Default:** `RELEVANCE`\n\n**Allowed values:** `RELEVANCE, LOWEST_PRICE, HIGHEST_PRICE, REVIEWS, NEWEST`\n",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "page",
+                    "type": "STRING",
+                    "description": "Results page to return.\n\n**Default:** `1`",
+                    "default": "1",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find the latest iPhone models available on Amazon.",
+                    "parameters": {
+                        "query": "iPhone"
+                    }
+                },
+                {
+                    "utterance": "Search for Samsung Galaxy smartphones under $500.",
+                    "parameters": {
+                        "query": "Samsung Galaxy",
+                        "max_price": 500
+                    }
+                },
+                {
+                    "utterance": "Look for laptops from Apple or Dell in the US.",
+                    "parameters": {
+                        "query": "laptops",
+                        "brand": "Apple,Dell",
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "Find wireless headphones priced between $50 and $100.",
+                    "parameters": {
+                        "query": "wireless headphones",
+                        "min_price": 50,
+                        "max_price": 100
+                    }
+                },
+                {
+                    "utterance": "Search for kitchen appliances in the UK.",
+                    "parameters": {
+                        "query": "kitchen appliances",
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "Find the newest books in the literature category.",
+                    "parameters": {
+                        "query": "books",
+                        "category_id": "literature",
+                        "sort_by": "NEWEST"
+                    }
+                },
+                {
+                    "utterance": "Look for cameras from Canon or Nikon in Canada.",
+                    "parameters": {
+                        "query": "cameras",
+                        "brand": "Canon,Nikon",
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "Find fitness trackers with the highest reviews.",
+                    "parameters": {
+                        "query": "fitness trackers",
+                        "sort_by": "REVIEWS"
+                    }
+                },
+                {
+                    "utterance": "Search for gaming consoles priced above $300.",
+                    "parameters": {
+                        "query": "gaming consoles",
+                        "min_price": 300
+                    }
+                },
+                {
+                    "utterance": "Find the cheapest tablets available on Amazon.",
+                    "parameters": {
+                        "query": "tablets",
+                        "sort_by": "LOWEST_PRICE"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Details",
+            "url": "https://real-time-amazon-data.p.rapidapi.com/product-details",
+            "description": "Get additional product information / details such as description, about, rating distribution and specs.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://real-time-amazon-data.p.rapidapi.com/product-details\"\nquerystring = {\"country\": country, \"asin\": asin}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"real-time-amazon-data.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "key1": "value",
+                "key2": "value"
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "asin": {
+                                "type": "string"
+                            },
+                            "country": {
+                                "type": "string"
+                            },
+                            "about_product": {
+                                "type": "array",
+                                "items": {
+                                    "type": "string"
+                                }
+                            },
+                            "product_description": {
+                                "type": "string"
+                            },
+                            "product_information": {
+                                "type": "object",
+                                "properties": {
+                                    "Product Dimensions": {
+                                        "type": "string"
+                                    },
+                                    "Item Weight": {
+                                        "type": "string"
+                                    },
+                                    "ASIN": {
+                                        "type": "string"
+                                    },
+                                    "Item model number": {
+                                        "type": "string"
+                                    },
+                                    "Batteries": {
+                                        "type": "string"
+                                    },
+                                    "OS": {
+                                        "type": "string"
+                                    },
+                                    "Wireless communication technologies": {
+                                        "type": "string"
+                                    },
+                                    "Connectivity technologies": {
+                                        "type": "string"
+                                    },
+                                    "Other display features": {
+                                        "type": "string"
+                                    },
+                                    "Human Interface Input": {
+                                        "type": "string"
+                                    },
+                                    "Other camera features": {
+                                        "type": "string"
+                                    },
+                                    "Form Factor": {
+                                        "type": "string"
+                                    },
+                                    "Color": {
+                                        "type": "string"
+                                    },
+                                    "Battery Power Rating": {
+                                        "type": "string"
+                                    },
+                                    "Whats in the box": {
+                                        "type": "string"
+                                    },
+                                    "Manufacturer": {
+                                        "type": "string"
+                                    },
+                                    "Date First Available": {
+                                        "type": "string"
+                                    },
+                                    "Memory Storage Capacity": {
+                                        "type": "string"
+                                    },
+                                    "Standing screen display size": {
+                                        "type": "string"
+                                    },
+                                    "Ram Memory Installed Size": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "Product ASIN for which to get details. Supports batching of up to 10 ASINs in a single request, separated by comma (e.g. *B08PPDJWC8,B07ZPKBL9V, B08BHXG144*).\n\nNote that each ASIN in a batch request is counted as a single request against the plan quota.",
+                    "default": "B07ZPKBL9V",
+                    "required": true
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Sets the marketplace country, language and currency. \n\n**Default:** `US`\n\n**Allowed values:**  `US, AU, BR, CA, CN, FR, DE, IN, IT, MX, NL, SG, ES, TR, AE, GB, JP`\n",
+                    "default": "US",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details for the product with ASIN B08PPDJWC8?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8"
+                    }
+                },
+                {
+                    "utterance": "What are the specifications for the product with ASIN B07ZPKBL9V in the US marketplace?",
+                    "parameters": {
+                        "asin": "B07ZPKBL9V",
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "Get the description and rating distribution for the product with ASIN B08BHXG144 in Japan.",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "country": "JP"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch details for products with ASINs B08PPDJWC8, B07ZPKBL9V, and B08BHXG144?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8,B07ZPKBL9V,B08BHXG144"
+                    }
+                },
+                {
+                    "utterance": "What is the product information for ASIN B08PPDJWC8 in the UK marketplace?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "Provide details for the product with ASIN B07ZPKBL9V in Canada.",
+                    "parameters": {
+                        "asin": "B07ZPKBL9V",
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "Can you get the specs and description for the product with ASIN B08BHXG144 in Germany?",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "Fetch details for products with ASINs B08PPDJWC8 and B07ZPKBL9V in the US.",
+                    "parameters": {
+                        "asin": "B08PPDJWC8,B07ZPKBL9V",
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "What are the product details for ASIN B08BHXG144 in France?",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "country": "FR"
+                    }
+                },
+                {
+                    "utterance": "Can you provide information for the product with ASIN B08PPDJWC8 in Australia?",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "country": "AU"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Reviews",
+            "url": "https://real-time-amazon-data.p.rapidapi.com/product-reviews",
+            "description": "Get and paginate through all product reviews on Amazon.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://real-time-amazon-data.p.rapidapi.com/product-reviews\"\nquerystring = {\"asin\": asin, \"verified_purchases_only\": verified_purchases_only, \"page_size\": page_size, \"page\": page, \"images_or_videos_only\": images_or_videos_only, \"country\": country}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"real-time-amazon-data.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "key1": "value",
+                "key2": "value"
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "asin": {
+                                "type": "string"
+                            },
+                            "total_reviews": {
+                                "type": "integer"
+                            },
+                            "total_ratings": {
+                                "type": "integer"
+                            },
+                            "country": {
+                                "type": "string"
+                            },
+                            "reviews": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "Product asin for which to get reviews.",
+                    "default": "B07ZPKN6YR",
+                    "required": true
+                },
+                {
+                    "name": "query",
+                    "type": "STRING",
+                    "description": "Find reviews matching a search query.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "sort_by",
+                    "type": "ENUM",
+                    "description": "Return reviews in a specific sort order.\n\n**Default:** `TOP_REVIEWS`\n\n**Allowed values:** `TOP_REVIEWS, MOST_RECENT`\n",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "verified_purchases_only",
+                    "type": "BOOLEAN",
+                    "description": "Only return reviews by reviewers who made a verified purchase.",
+                    "default": "false",
+                    "required": false
+                },
+                {
+                    "name": "page_size",
+                    "type": "NUMBER",
+                    "description": "Results page size.\n\n**Allowed values:** `1-20`\n\n**Default:** `10`",
+                    "default": "10",
+                    "required": false
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Results page to return.\n\n**Default:** `1`",
+                    "default": "1",
+                    "required": false
+                },
+                {
+                    "name": "star_rating",
+                    "type": "ENUM",
+                    "description": "Only return reviews with a specific star rating.\n\n**Default:** `ALL`\n\n**Allowed values:** `ALL, 5_STARS, 4_STARS, 3_STARS, 2_STARS, 1_STARS, POSITIVE, CRITICAL`\n",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "images_or_videos_only",
+                    "type": "BOOLEAN",
+                    "description": "Only return reviews containing images and / or videos.",
+                    "default": "false",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Sets the marketplace country, language and currency. \n\n**Default:** `US`\n\n**Allowed values:**  `US, AU, BR, CA, CN, FR, DE, IN, IT, MX, NL, SG, ES, TR, AE, GB, JP`\n",
+                    "default": "US",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the reviews for the product with ASIN B08N5WRWNW.",
+                    "parameters": {
+                        "asin": "B08N5WRWNW"
+                    }
+                },
+                {
+                    "utterance": "Find reviews for the product B08N5WRWNW that mention 'battery life'.",
+                    "parameters": {
+                        "asin": "B08N5WRWNW",
+                        "query": "battery life"
+                    }
+                },
+                {
+                    "utterance": "Get the most recent reviews for the product with ASIN B08N5WRWNW.",
+                    "parameters": {
+                        "asin": "B08N5WRWNW",
+                        "sort_by": "MOST_RECENT"
+                    }
+                },
+                {
+                    "utterance": "Show only verified purchase reviews for the product B08N5WRWNW.",
+                    "parameters": {
+                        "asin": "B08N5WRWNW",
+                        "verified_purchases_only": true
+                    }
+                },
+                {
+                    "utterance": "Display 15 reviews per page for the product with ASIN B08N5WRWNW.",
+                    "parameters": {
+                        "asin": "B08N5WRWNW",
+                        "page_size": 15
+                    }
+                },
+                {
+                    "utterance": "Get the second page of reviews for the product B08N5WRWNW.",
+                    "parameters": {
+                        "asin": "B08N5WRWNW",
+                        "page": 2
+                    }
+                },
+                {
+                    "utterance": "Find 5-star reviews for the product with ASIN B08N5WRWNW.",
+                    "parameters": {
+                        "asin": "B08N5WRWNW",
+                        "star_rating": "5_STARS"
+                    }
+                },
+                {
+                    "utterance": "Show reviews with images or videos for the product B08N5WRWNW.",
+                    "parameters": {
+                        "asin": "B08N5WRWNW",
+                        "images_or_videos_only": true
+                    }
+                },
+                {
+                    "utterance": "Get reviews for the product with ASIN B08N5WRWNW from the UK marketplace.",
+                    "parameters": {
+                        "asin": "B08N5WRWNW",
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "Find positive reviews for the product B08N5WRWNW.",
+                    "parameters": {
+                        "asin": "B08N5WRWNW",
+                        "star_rating": "POSITIVE"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Category List",
+            "url": "https://real-time-amazon-data.p.rapidapi.com/product-category-list",
+            "description": "Get Amazon product categories (per country / marketplace).",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://real-time-amazon-data.p.rapidapi.com/product-category-list\"\nquerystring = {\"country\": country}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"real-time-amazon-data.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "key1": "value",
+                "key2": "value"
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Sets the marketplace country, language and currency. \n\n**Default:** `US`\n\n**Allowed values:**  `US, AU, BR, CA, CN, FR, DE, IN, IT, MX, NL, SG, ES, TR, AE, GB, JP`\n",
+                    "default": "US",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the product categories available on Amazon in the United States?",
+                    "parameters": {
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "Can you list the product categories for Amazon in Canada?",
+                    "parameters": {
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "Show me the product categories on Amazon in Japan.",
+                    "parameters": {
+                        "country": "JP"
+                    }
+                },
+                {
+                    "utterance": "What are the Amazon product categories in Germany?",
+                    "parameters": {
+                        "country": "DE"
+                    }
+                },
+                {
+                    "utterance": "List the product categories available on Amazon in France.",
+                    "parameters": {
+                        "country": "FR"
+                    }
+                },
+                {
+                    "utterance": "Can you get the product categories for Amazon in India?",
+                    "parameters": {
+                        "country": "IN"
+                    }
+                },
+                {
+                    "utterance": "What are the Amazon product categories in the United Kingdom?",
+                    "parameters": {
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "Show me the product categories on Amazon in Australia.",
+                    "parameters": {
+                        "country": "AU"
+                    }
+                },
+                {
+                    "utterance": "List the product categories available on Amazon in Mexico.",
+                    "parameters": {
+                        "country": "MX"
+                    }
+                },
+                {
+                    "utterance": "What are the Amazon product categories in Spain?",
+                    "parameters": {
+                        "country": "ES"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Product Offers",
+            "url": "https://real-time-amazon-data.p.rapidapi.com/product-offers",
+            "description": "Get top 10 offers of a specific product on Amazon by its asin, the first offer in the list is the pinned offer returned by the **Search** endpoint. Supports filtering by product condition.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://real-time-amazon-data.p.rapidapi.com/product-offers\"\nquerystring = {\"limit\": limit, \"asin\": asin, \"country\": country}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"real-time-amazon-data.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "key1": "value",
+                "key2": "value"
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "status": {
+                        "type": "string"
+                    },
+                    "request_id": {
+                        "type": "string"
+                    },
+                    "data": {
+                        "type": "object",
+                        "properties": {
+                            "asin": {
+                                "type": "string"
+                            },
+                            "country": {
+                                "type": "string"
+                            },
+                            "product_offers": {
+                                "type": "array",
+                                "items": {
+                                    "type": "object"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "asin",
+                    "type": "STRING",
+                    "description": "Product ASIN for which to get offers. Supports batching of up to 10 ASINs in a single request, separated by comma (e.g. *B08PPDJWC8,B07ZPKBL9V, B08BHXG144*).\n\nNote that each ASIN in a batch request is counted as a single request against the plan quota.",
+                    "default": "B07ZPKBL9V",
+                    "required": true
+                },
+                {
+                    "name": "delivery",
+                    "type": "STRING",
+                    "description": "[EXPERIMENTAL]\nFind products with specific delivery option, specified as a comma delimited list of the following values: `PRIME_ELIGIBLE,FREE_DELIVERY`.\n\n**e.g.** `FREE_DELIVERY`\n**e.g.** `PRIME_ELIGIBLE,FREE_DELIVERY`\n",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Maximum number of offers to return.\n\n**Default:** `100`",
+                    "default": "100",
+                    "required": false
+                },
+                {
+                    "name": "product_condition",
+                    "type": "STRING",
+                    "description": "Find products in specific conditions, specified as a comma delimited list of the following values: `NEW, USED_LIKE_NEW, USED_VERY_GOOD, USED_GOOD, USED_ACCEPTABLE`.\n\n**e.g.** `NEW,USED_LIKE_NEW`\n**e.g.** `USED_VERY_GOOD,USED_GOOD,USED_LIKE_NEW`\n",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Sets the marketplace country, language and currency. \n\n**Default:** `US`\n\n**Allowed values:**  `US, AU, BR, CA, CN, FR, DE, IN, IT, MX, NL, SG, ES, TR, AE, GB, JP`\n",
+                    "default": "US",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Get the top 10 offers for the product with ASIN B08PPDJWC8.",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "limit": 10
+                    }
+                },
+                {
+                    "utterance": "Find offers for the product with ASIN B07ZPKBL9V that are eligible for Prime delivery.",
+                    "parameters": {
+                        "asin": "B07ZPKBL9V",
+                        "delivery": "PRIME_ELIGIBLE"
+                    }
+                },
+                {
+                    "utterance": "Get the top 5 offers for the product with ASIN B08BHXG144 in new condition.",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "limit": 5,
+                        "product_condition": "NEW"
+                    }
+                },
+                {
+                    "utterance": "Find offers for the product with ASIN B08PPDJWC8 in the UK marketplace.",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "country": "GB"
+                    }
+                },
+                {
+                    "utterance": "Get the top 20 offers for the product with ASIN B07ZPKBL9V that are eligible for free delivery.",
+                    "parameters": {
+                        "asin": "B07ZPKBL9V",
+                        "limit": 20,
+                        "delivery": "FREE_DELIVERY"
+                    }
+                },
+                {
+                    "utterance": "Find offers for the product with ASIN B08BHXG144 in used like new condition.",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "product_condition": "USED_LIKE_NEW"
+                    }
+                },
+                {
+                    "utterance": "Get the top 10 offers for the product with ASIN B08PPDJWC8 in the Canadian marketplace.",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "country": "CA"
+                    }
+                },
+                {
+                    "utterance": "Find offers for the product with ASIN B07ZPKBL9V that are eligible for both Prime and free delivery.",
+                    "parameters": {
+                        "asin": "B07ZPKBL9V",
+                        "delivery": "PRIME_ELIGIBLE,FREE_DELIVERY"
+                    }
+                },
+                {
+                    "utterance": "Get the top 15 offers for the product with ASIN B08BHXG144 in used very good condition.",
+                    "parameters": {
+                        "asin": "B08BHXG144",
+                        "limit": 15,
+                        "product_condition": "USED_VERY_GOOD"
+                    }
+                },
+                {
+                    "utterance": "Find offers for the product with ASIN B08PPDJWC8 in the Japanese marketplace.",
+                    "parameters": {
+                        "asin": "B08PPDJWC8",
+                        "country": "JP"
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "eCommerce"
+}

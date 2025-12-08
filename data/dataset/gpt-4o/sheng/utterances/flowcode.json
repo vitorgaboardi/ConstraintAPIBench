@@ -1,0 +1,174 @@
+{
+    "tool_name": "Flowcode",
+    "tool_description": "Check out our new Developer Portal and docs: https://www.flowcode.com/developer-portal",
+    "title": "Flowcode",
+    "pricing": "FREE",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 423,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.5,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/flowcode/api/flowcode1/",
+    "host": "flowcode1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Create QR Code",
+            "url": "https://flowcode1.p.rapidapi.com/flowcode",
+            "description": "This API takes an endpoint and return and image for a QR Code in either svg, png, jpg, or pdf format",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://flowcode1.p.rapidapi.com/flowcode\"\nquerystring = {\"bgColor\": bgcolor, \"fgColor\": fgcolor, \"url\": url, \"rimTextTop\": rimtexttop, \"style\": style, \"moduleShape\": moduleshape, \"imageType\": imagetype, \"rimTextBottom\": rimtextbottom}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"flowcode1.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "This is the URL the QR code will scan to",
+                    "default": "https://www.flowcode.com",
+                    "required": true
+                },
+                {
+                    "name": "imageType",
+                    "type": "STRING",
+                    "description": "Response image type:\npng, svg, pdf, or jpg",
+                    "default": "svg",
+                    "required": true
+                },
+                {
+                    "name": "bgColor",
+                    "type": "STRING",
+                    "description": "Hex background color for flowcode.\nFormat: #rrggbb or transparent for transparent background.",
+                    "default": "#cbcbcb",
+                    "required": false
+                },
+                {
+                    "name": "fgColor",
+                    "type": "STRING",
+                    "description": "Hex foreground color for flowcode\nFormat: #rrggbb",
+                    "default": "#ff0000",
+                    "required": false
+                },
+                {
+                    "name": "rimTextTop",
+                    "type": "STRING",
+                    "description": "For style=rim, the call to action text to put at top of the rim",
+                    "default": "Scan Me",
+                    "required": false
+                },
+                {
+                    "name": "style",
+                    "type": "STRING",
+                    "description": "Style of flowcode:\ndefault, inset, or rim",
+                    "default": "default",
+                    "required": false
+                },
+                {
+                    "name": "moduleShape",
+                    "type": "STRING",
+                    "description": "Shape to use for code pattern:\ndefault, circle, square, or diamond",
+                    "default": "default",
+                    "required": false
+                },
+                {
+                    "name": "rimTextBottom",
+                    "type": "STRING",
+                    "description": "For style=rim, the call to action text to put at bottom of the rim",
+                    "default": "Scan Me",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Generate a QR code for https://www.example.com in PNG format.",
+                    "parameters": {
+                        "url": "https://www.example.com",
+                        "imageType": "png"
+                    }
+                },
+                {
+                    "utterance": "Create a QR code that links to https://www.shop.com with a transparent background in SVG format.",
+                    "parameters": {
+                        "url": "https://www.shop.com",
+                        "imageType": "svg",
+                        "bgColor": "transparent"
+                    }
+                },
+                {
+                    "utterance": "I need a QR code for https://www.blogsite.com in JPG format with a blue foreground.",
+                    "parameters": {
+                        "url": "https://www.blogsite.com",
+                        "imageType": "jpg",
+                        "fgColor": "#0000ff"
+                    }
+                },
+                {
+                    "utterance": "Can you create a PDF QR code for https://www.news.com with a red background and default style?",
+                    "parameters": {
+                        "url": "https://www.news.com",
+                        "imageType": "pdf",
+                        "bgColor": "#ff0000",
+                        "style": "default"
+                    }
+                },
+                {
+                    "utterance": "Make a QR code for https://www.travel.com in SVG format with a circle pattern.",
+                    "parameters": {
+                        "url": "https://www.travel.com",
+                        "imageType": "svg",
+                        "moduleShape": "circle"
+                    }
+                },
+                {
+                    "utterance": "I want a QR code for https://www.music.com in PNG format with 'Listen Now' at the top of the rim.",
+                    "parameters": {
+                        "url": "https://www.music.com",
+                        "imageType": "png",
+                        "rimTextTop": "Listen Now",
+                        "style": "rim"
+                    }
+                },
+                {
+                    "utterance": "Create a QR code for https://www.food.com in JPG format with a diamond pattern and green foreground.",
+                    "parameters": {
+                        "url": "https://www.food.com",
+                        "imageType": "jpg",
+                        "moduleShape": "diamond",
+                        "fgColor": "#00ff00"
+                    }
+                },
+                {
+                    "utterance": "Generate a QR code for https://www.fashion.com in PDF format with 'Shop Now' at the bottom of the rim.",
+                    "parameters": {
+                        "url": "https://www.fashion.com",
+                        "imageType": "pdf",
+                        "rimTextBottom": "Shop Now",
+                        "style": "rim"
+                    }
+                },
+                {
+                    "utterance": "I need a QR code for https://www.sports.com in SVG format with a square pattern and yellow background.",
+                    "parameters": {
+                        "url": "https://www.sports.com",
+                        "imageType": "svg",
+                        "moduleShape": "square",
+                        "bgColor": "#ffff00"
+                    }
+                },
+                {
+                    "utterance": "Make a QR code for https://www.education.com in PNG format with an inset style and purple foreground.",
+                    "parameters": {
+                        "url": "https://www.education.com",
+                        "imageType": "png",
+                        "style": "inset",
+                        "fgColor": "#800080"
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Business_Software"
+}

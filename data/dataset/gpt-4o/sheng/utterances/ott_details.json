@@ -1,0 +1,713 @@
+{
+    "name": "OTT details",
+    "description": "Get Streaming details of Movie and TV Shows. We support 150+ Streaming platforms in US and India such as HBO, YouTube, Netflix , Primve Video, Hotstar, Hulu, etc . (use our OTT Providers endpoint to get the full list OTT providers we support) . In additon to streaming info we also provide basic details on any given movie title. ",
+    "url": "https://rapidapi.com/gox-ai-gox-ai-default/api/ott-details/",
+    "api_methods": [
+        {
+            "name": "Advanced Search",
+            "description": "This endpoint allows you to search for a movie or tvshow based on various parameters such as release year , imdb rating , genre , language etc.",
+            "url": "https://ott-details.p.rapidapi.com/advancedsearch",
+            "parameters": [
+                {
+                    "name": "start_year",
+                    "type": "NUMBER",
+                    "description": "Enter any year between 1970 to 2020 to get results.",
+                    "default": "1970",
+                    "required": false
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1",
+                    "required": false
+                },
+                {
+                    "name": "max_imdb",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "7.8",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Enter type 'movie' or 'show'",
+                    "default": "movie",
+                    "required": false
+                },
+                {
+                    "name": "sort",
+                    "type": "STRING",
+                    "description": "Enter values highestrated , lowestrated , latest , oldest to  sort results accodingly .",
+                    "default": "latest",
+                    "required": false
+                },
+                {
+                    "name": "min_imdb",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "6",
+                    "required": false
+                },
+                {
+                    "name": "genre",
+                    "type": "STRING",
+                    "description": "use comma seperated values to enter multiple genre eg : action,horror",
+                    "default": "action",
+                    "required": false
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "use comma seperated values to enter multiple values , eg : english,german",
+                    "default": "english",
+                    "required": false
+                },
+                {
+                    "name": "end_year",
+                    "type": "NUMBER",
+                    "description": "Enter any year from 1970 to 2020 to  get results.",
+                    "default": "2020",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find the highest rated action movies released between 2000 and 2010.",
+                    "parameters": {
+                        "start_year": 2000,
+                        "end_year": 2010,
+                        "genre": "action",
+                        "sort": "highestrated"
+                    }
+                },
+                {
+                    "utterance": "Show me comedy shows in English with an IMDb rating above 7.5.",
+                    "parameters": {
+                        "type": "show",
+                        "genre": "comedy",
+                        "language": "english",
+                        "min_imdb": 7.5
+                    }
+                },
+                {
+                    "utterance": "List the latest horror movies available in German.",
+                    "parameters": {
+                        "genre": "horror",
+                        "language": "german",
+                        "sort": "latest"
+                    }
+                },
+                {
+                    "utterance": "What are the oldest drama movies with an IMDb rating between 6 and 8?",
+                    "parameters": {
+                        "genre": "drama",
+                        "min_imdb": 6,
+                        "max_imdb": 8,
+                        "sort": "oldest"
+                    }
+                },
+                {
+                    "utterance": "Find movies released in 1995 with a rating above 8.",
+                    "parameters": {
+                        "start_year": 1995,
+                        "end_year": 1995,
+                        "min_imdb": 8
+                    }
+                },
+                {
+                    "utterance": "Show me the lowest rated sci-fi shows from the 1980s.",
+                    "parameters": {
+                        "type": "show",
+                        "genre": "sci-fi",
+                        "start_year": 1980,
+                        "end_year": 1989,
+                        "sort": "lowestrated"
+                    }
+                },
+                {
+                    "utterance": "List all romance movies in French released after 2015.",
+                    "parameters": {
+                        "genre": "romance",
+                        "language": "french",
+                        "start_year": 2016
+                    }
+                },
+                {
+                    "utterance": "Find the top-rated animated movies from the 1990s.",
+                    "parameters": {
+                        "genre": "animated",
+                        "start_year": 1990,
+                        "end_year": 1999,
+                        "sort": "highestrated"
+                    }
+                },
+                {
+                    "utterance": "What are the latest thriller shows with a rating below 6.5?",
+                    "parameters": {
+                        "type": "show",
+                        "genre": "thriller",
+                        "max_imdb": 6.5,
+                        "sort": "latest"
+                    }
+                },
+                {
+                    "utterance": "Show me adventure movies in Spanish from 2005.",
+                    "parameters": {
+                        "genre": "adventure",
+                        "language": "spanish",
+                        "start_year": 2005,
+                        "end_year": 2005
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Basic Info",
+            "description": "Get info on a  cast such as name , profession , birth and death year , bio , poster , best titles  etc.",
+            "url": "https://ott-details.p.rapidapi.com/getcastDetails",
+            "parameters": [
+                {
+                    "name": "peopleid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "nm0000375",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details about the actor with ID nm0000375?",
+                    "parameters": {
+                        "peopleid": "nm0000375"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the career and biography of the person with ID nm0000123.",
+                    "parameters": {
+                        "peopleid": "nm0000123"
+                    }
+                },
+                {
+                    "utterance": "I want to know the best titles of the individual with ID nm0000456.",
+                    "parameters": {
+                        "peopleid": "nm0000456"
+                    }
+                },
+                {
+                    "utterance": "What are the birth and death years of the person with ID nm0000789?",
+                    "parameters": {
+                        "peopleid": "nm0000789"
+                    }
+                },
+                {
+                    "utterance": "Give me the professional background of the person with ID nm0000987.",
+                    "parameters": {
+                        "peopleid": "nm0000987"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the poster and bio of the individual with ID nm0000654?",
+                    "parameters": {
+                        "peopleid": "nm0000654"
+                    }
+                },
+                {
+                    "utterance": "What is the profession of the person with ID nm0000345?",
+                    "parameters": {
+                        "peopleid": "nm0000345"
+                    }
+                },
+                {
+                    "utterance": "I need information on the actor with ID nm0000567.",
+                    "parameters": {
+                        "peopleid": "nm0000567"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the biography and best titles of the person with ID nm0000234?",
+                    "parameters": {
+                        "peopleid": "nm0000234"
+                    }
+                },
+                {
+                    "utterance": "What are the notable works of the individual with ID nm0000890?",
+                    "parameters": {
+                        "peopleid": "nm0000890"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Params",
+            "description": "Get array of values that can be used as params in Advanced Search .",
+            "url": "https://ott-details.p.rapidapi.com/getParams",
+            "parameters": [
+                {
+                    "name": "param",
+                    "type": "STRING",
+                    "description": "input 'genre' or 'language' to get array of genre or languages that can be used as filter in advanced search .",
+                    "default": "genre",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide a list of genres available for filtering movies?",
+                    "parameters": {
+                        "param": "genre"
+                    }
+                },
+                {
+                    "utterance": "What languages can I use to filter TV shows?",
+                    "parameters": {
+                        "param": "language"
+                    }
+                },
+                {
+                    "utterance": "I want to know the different genres I can use to search for films.",
+                    "parameters": {
+                        "param": "genre"
+                    }
+                },
+                {
+                    "utterance": "Could you tell me the available languages for movie filtering?",
+                    "parameters": {
+                        "param": "language"
+                    }
+                },
+                {
+                    "utterance": "List all the genres that I can use to filter my movie search.",
+                    "parameters": {
+                        "param": "genre"
+                    }
+                },
+                {
+                    "utterance": "What are the language options for filtering TV shows?",
+                    "parameters": {
+                        "param": "language"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the genres available for advanced movie search?",
+                    "parameters": {
+                        "param": "genre"
+                    }
+                },
+                {
+                    "utterance": "I need a list of languages that can be used to filter TV shows.",
+                    "parameters": {
+                        "param": "language"
+                    }
+                },
+                {
+                    "utterance": "What genres can I choose from when searching for movies?",
+                    "parameters": {
+                        "param": "genre"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the languages available for filtering movies?",
+                    "parameters": {
+                        "param": "language"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Search",
+            "description": "This endpoint allows you to search for a movie or tvshow based on the given 'title '.",
+            "url": "https://ott-details.p.rapidapi.com/search",
+            "parameters": [
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Endgame",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "*Maximum number of pages returned is 10 ",
+                    "default": "1",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find streaming details for the movie 'Inception'?",
+                    "parameters": {
+                        "title": "Inception"
+                    }
+                },
+                {
+                    "utterance": "Where can I watch the TV show 'Breaking Bad' online?",
+                    "parameters": {
+                        "title": "Breaking Bad"
+                    }
+                },
+                {
+                    "utterance": "Get me the streaming platforms for 'The Crown'.",
+                    "parameters": {
+                        "title": "The Crown"
+                    }
+                },
+                {
+                    "utterance": "I want to know where 'Stranger Things' is available for streaming.",
+                    "parameters": {
+                        "title": "Stranger Things"
+                    }
+                },
+                {
+                    "utterance": "Find out which services offer 'The Mandalorian'.",
+                    "parameters": {
+                        "title": "The Mandalorian"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the streaming options for 'The Witcher'?",
+                    "parameters": {
+                        "title": "The Witcher"
+                    }
+                },
+                {
+                    "utterance": "What platforms have 'Game of Thrones' available?",
+                    "parameters": {
+                        "title": "Game of Thrones"
+                    }
+                },
+                {
+                    "utterance": "Look up the streaming details for 'The Office'.",
+                    "parameters": {
+                        "title": "The Office"
+                    }
+                },
+                {
+                    "utterance": "Where can I stream 'Friends'?",
+                    "parameters": {
+                        "title": "Friends"
+                    }
+                },
+                {
+                    "utterance": "Get streaming information for 'The Godfather'.",
+                    "parameters": {
+                        "title": "The Godfather"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Title Details",
+            "description": "Get basic information on a movie or tv show such as imdbid , title , genre , runtime , imdbrating , language , synopsis , type , imageurl  , Streaming platforms info etc.",
+            "url": "https://ott-details.p.rapidapi.com/gettitleDetails",
+            "parameters": [
+                {
+                    "name": "imdbid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "tt9904802",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the streaming details for the movie with IMDb ID tt9904802?",
+                    "parameters": {
+                        "imdbid": "tt9904802"
+                    }
+                },
+                {
+                    "utterance": "I want to know where I can watch the show with IMDb ID tt9904802.",
+                    "parameters": {
+                        "imdbid": "tt9904802"
+                    }
+                },
+                {
+                    "utterance": "Get me the basic information and streaming platforms for the title with IMDb ID tt9904802.",
+                    "parameters": {
+                        "imdbid": "tt9904802"
+                    }
+                },
+                {
+                    "utterance": "What are the streaming options for the movie with IMDb ID tt9904802?",
+                    "parameters": {
+                        "imdbid": "tt9904802"
+                    }
+                },
+                {
+                    "utterance": "Find out the OTT platforms where the show with IMDb ID tt9904802 is available.",
+                    "parameters": {
+                        "imdbid": "tt9904802"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the genre and streaming details for the title with IMDb ID tt9904802?",
+                    "parameters": {
+                        "imdbid": "tt9904802"
+                    }
+                },
+                {
+                    "utterance": "I need the runtime and streaming information for the movie with IMDb ID tt9904802.",
+                    "parameters": {
+                        "imdbid": "tt9904802"
+                    }
+                },
+                {
+                    "utterance": "Where can I stream the movie with IMDb ID tt9904802?",
+                    "parameters": {
+                        "imdbid": "tt9904802"
+                    }
+                },
+                {
+                    "utterance": "Get the synopsis and streaming platforms for the show with IMDb ID tt9904802.",
+                    "parameters": {
+                        "imdbid": "tt9904802"
+                    }
+                },
+                {
+                    "utterance": "What is the IMDb rating and where can I watch the movie with IMDb ID tt9904802?",
+                    "parameters": {
+                        "imdbid": "tt9904802"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Additional Title Details",
+            "description": "Get  additional details for a movie or tv show like reviews  , quotes , plotsummary , number of votes , trailer url  , cast details etc.",
+            "url": "https://ott-details.p.rapidapi.com/getadditionalDetails",
+            "parameters": [
+                {
+                    "name": "imdbid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "tt7286456",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide additional details for the movie with IMDb ID tt7286456?",
+                    "parameters": {
+                        "imdbid": "tt7286456"
+                    }
+                },
+                {
+                    "utterance": "I need the plot summary and cast details for the show with IMDb ID tt4154796.",
+                    "parameters": {
+                        "imdbid": "tt4154796"
+                    }
+                },
+                {
+                    "utterance": "What are the reviews and quotes for the film with IMDb ID tt0111161?",
+                    "parameters": {
+                        "imdbid": "tt0111161"
+                    }
+                },
+                {
+                    "utterance": "Get me the trailer URL and number of votes for the movie with IMDb ID tt1375666.",
+                    "parameters": {
+                        "imdbid": "tt1375666"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the cast details and plot summary for the series with IMDb ID tt0903747.",
+                    "parameters": {
+                        "imdbid": "tt0903747"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the reviews and trailer URL for the movie with IMDb ID tt0133093?",
+                    "parameters": {
+                        "imdbid": "tt0133093"
+                    }
+                },
+                {
+                    "utterance": "Please provide the quotes and number of votes for the film with IMDb ID tt0109830.",
+                    "parameters": {
+                        "imdbid": "tt0109830"
+                    }
+                },
+                {
+                    "utterance": "I want to see the plot summary and reviews for the show with IMDb ID tt0944947.",
+                    "parameters": {
+                        "imdbid": "tt0944947"
+                    }
+                },
+                {
+                    "utterance": "Get additional details like cast and quotes for the movie with IMDb ID tt0816692.",
+                    "parameters": {
+                        "imdbid": "tt0816692"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the trailer URL and plot summary for the film with IMDb ID tt0468569?",
+                    "parameters": {
+                        "imdbid": "tt0468569"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "OTT Providers",
+            "description": "Get  information on OTT platforms we suuport .",
+            "url": "https://ott-details.p.rapidapi.com/getPlatforms",
+            "parameters": [
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "currently only USA and India region is supported enter param 'US' for USA and 'IN' for India.",
+                    "default": "IN",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What streaming platforms are available in the US?",
+                    "parameters": {
+                        "region": "US"
+                    }
+                },
+                {
+                    "utterance": "Can you list the OTT providers supported in India?",
+                    "parameters": {
+                        "region": "IN"
+                    }
+                },
+                {
+                    "utterance": "Which streaming services can I access in the USA?",
+                    "parameters": {
+                        "region": "US"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the OTT platforms available in India.",
+                    "parameters": {
+                        "region": "IN"
+                    }
+                },
+                {
+                    "utterance": "What are the supported streaming platforms in the US?",
+                    "parameters": {
+                        "region": "US"
+                    }
+                },
+                {
+                    "utterance": "List the OTT services I can use in India.",
+                    "parameters": {
+                        "region": "IN"
+                    }
+                },
+                {
+                    "utterance": "Which OTT providers are available in the United States?",
+                    "parameters": {
+                        "region": "US"
+                    }
+                },
+                {
+                    "utterance": "Can you provide a list of streaming platforms in India?",
+                    "parameters": {
+                        "region": "IN"
+                    }
+                },
+                {
+                    "utterance": "What OTT services are supported in the US region?",
+                    "parameters": {
+                        "region": "US"
+                    }
+                },
+                {
+                    "utterance": "Give me the list of OTT platforms available in India.",
+                    "parameters": {
+                        "region": "IN"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "New Arrivals",
+            "description": "Get the latest arrivals from different platforms .",
+            "url": "https://ott-details.p.rapidapi.com/getnew",
+            "parameters": [
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "Use 'IN' for India and 'US' for USA , * currently we support only US and Indian region.",
+                    "default": "US",
+                    "required": true
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "1",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the latest movies available on streaming platforms in the US?",
+                    "parameters": {
+                        "region": "US"
+                    }
+                },
+                {
+                    "utterance": "Show me the new TV shows that have arrived on Indian streaming services.",
+                    "parameters": {
+                        "region": "IN"
+                    }
+                },
+                {
+                    "utterance": "Can you list the latest arrivals on Netflix and Hulu in the US?",
+                    "parameters": {
+                        "region": "US"
+                    }
+                },
+                {
+                    "utterance": "What are the new releases on streaming platforms in India?",
+                    "parameters": {
+                        "region": "IN"
+                    }
+                },
+                {
+                    "utterance": "Find the latest movies and shows on US streaming services.",
+                    "parameters": {
+                        "region": "US"
+                    }
+                },
+                {
+                    "utterance": "What are the new arrivals on Prime Video and Hotstar in India?",
+                    "parameters": {
+                        "region": "IN"
+                    }
+                },
+                {
+                    "utterance": "Show me the latest streaming content available in the US.",
+                    "parameters": {
+                        "region": "US"
+                    }
+                },
+                {
+                    "utterance": "What are the newest additions to Indian streaming platforms?",
+                    "parameters": {
+                        "region": "IN"
+                    }
+                },
+                {
+                    "utterance": "Can you provide a list of the latest arrivals on US streaming services?",
+                    "parameters": {
+                        "region": "US"
+                    }
+                },
+                {
+                    "utterance": "What new movies and TV shows are available on Indian streaming platforms?",
+                    "parameters": {
+                        "region": "IN"
+                    }
+                }
+            ]
+        }
+    ]
+}

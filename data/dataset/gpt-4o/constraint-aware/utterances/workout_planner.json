@@ -1,0 +1,342 @@
+{
+    "name": "Workout Planner",
+    "description": "Get workout plans based on time duration, target muscle, fitness level, fitness goals, and equipment available.",
+    "url": "https://rapidapi.com/nabeeldev1340/api/workout-planner1/",
+    "api_methods": [
+        {
+            "name": "Get Customized Plan",
+            "description": "The /customized endpoint provides a way for users to generate personalized workout plans based on their preferences. It takes various parameters into account to create a workout plan tailored to the user's needs. \nHere's an explanation of the parameters and how to use them:\n1. time: This parameter represents the duration of the workout plan in minutes. By default, if not provided, it is set to 30 minutes. You can customize this parameter to specify the desired duration of your workout.\n2. equipment : This parameter allows you to specify the equipment available for your workout. If you don't have any equipment, you can set it to \"none\". However, if you have specific equipment available, you can provide the details in this parameter.\n3. muscle: This parameter represents the target muscle group for your workout plan. You can specify the muscle group you want to focus on, such as \"legs\", \"chest\", \"back\", etc. If you don't have a specific target muscle group, you can set it to \"none\".\n4. fitness_level: This parameter enables you to define your fitness level. You can choose from options like \"beginner\", \"intermediate\", or \"advanced\" to indicate your current fitness level. The workout plan generated will be adjusted based on this level. \n5. fitness_goals: This parameter allows you to specify your fitness goals, such as \"weight_loss\", \"muscle_gain\", \"strength_training\", \"cardiovascular_endurance\", \"flexibility\", or \"general_fitness\". By indicating your goals, the generated workout plan will align with your specific objectives.",
+            "url": "https://workout-planner1.p.rapidapi.com/customized",
+            "parameters": [
+                {
+                    "name": "fitness_goals",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "strength",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "weight_loss",
+                                "muscle_gain",
+                                "strength_training",
+                                "cardiovascular_endurance",
+                                "flexibility",
+                                "general_fitness"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "fitness_level",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "beginner",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "beginner",
+                                "intermediate",
+                                "advanced"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "muscle",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "biceps",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "legs",
+                                "chest",
+                                "back",
+                                "biceps",
+                                "triceps",
+                                "shoulders",
+                                "abs",
+                                "none"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "equipment",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "dumbbells",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "none",
+                                "dumbbells",
+                                "barbell",
+                                "kettlebell",
+                                "resistance_bands",
+                                "treadmill",
+                                "stationary_bike",
+                                "elliptical",
+                                "rowing_machine",
+                                "medicine_ball",
+                                "pull_up_bar",
+                                "bench",
+                                "jump_rope",
+                                "yoga_mat"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "time",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "30",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "min": 1
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "I want a workout plan for muscle gain focusing on my legs using dumbbells for 45 minutes.",
+                    "parameters": {
+                        "fitness_goals": "muscle_gain",
+                        "fitness_level": "beginner",
+                        "muscle": "legs",
+                        "equipment": "dumbbells",
+                        "time": 45
+                    }
+                },
+                {
+                    "utterance": "Can you create a plan for weight loss targeting my abs with a jump rope for 20 minutes?",
+                    "parameters": {
+                        "fitness_goals": "weight_loss",
+                        "fitness_level": "beginner",
+                        "muscle": "abs",
+                        "equipment": "jump_rope",
+                        "time": 20
+                    }
+                },
+                {
+                    "utterance": "I need a strength training routine for my chest using a barbell for 60 minutes.",
+                    "parameters": {
+                        "fitness_goals": "strength_training",
+                        "fitness_level": "beginner",
+                        "muscle": "chest",
+                        "equipment": "barbell",
+                        "time": 60
+                    }
+                },
+                {
+                    "utterance": "Give me a workout plan for cardiovascular endurance with no equipment, focusing on my back for 30 minutes.",
+                    "parameters": {
+                        "fitness_goals": "cardiovascular_endurance",
+                        "fitness_level": "beginner",
+                        "muscle": "back",
+                        "equipment": "none",
+                        "time": 30
+                    }
+                },
+                {
+                    "utterance": "I'd like a flexibility workout for my shoulders using a yoga mat for 15 minutes.",
+                    "parameters": {
+                        "fitness_goals": "flexibility",
+                        "fitness_level": "beginner",
+                        "muscle": "shoulders",
+                        "equipment": "yoga_mat",
+                        "time": 15
+                    }
+                },
+                {
+                    "utterance": "Create a general fitness plan for my triceps with resistance bands for 25 minutes.",
+                    "parameters": {
+                        "fitness_goals": "general_fitness",
+                        "fitness_level": "beginner",
+                        "muscle": "triceps",
+                        "equipment": "resistance_bands",
+                        "time": 25
+                    }
+                },
+                {
+                    "utterance": "I want an advanced workout for muscle gain targeting my biceps with a pull-up bar for 40 minutes.",
+                    "parameters": {
+                        "fitness_goals": "muscle_gain",
+                        "fitness_level": "advanced",
+                        "muscle": "biceps",
+                        "equipment": "pull_up_bar",
+                        "time": 40
+                    }
+                },
+                {
+                    "utterance": "Can you suggest an intermediate plan for strength training focusing on my abs with a medicine ball for 35 minutes?",
+                    "parameters": {
+                        "fitness_goals": "strength_training",
+                        "fitness_level": "intermediate",
+                        "muscle": "abs",
+                        "equipment": "medicine_ball",
+                        "time": 35
+                    }
+                },
+                {
+                    "utterance": "I need a beginner workout for weight loss targeting my legs using a treadmill for 50 minutes.",
+                    "parameters": {
+                        "fitness_goals": "weight_loss",
+                        "fitness_level": "beginner",
+                        "muscle": "legs",
+                        "equipment": "treadmill",
+                        "time": 50
+                    }
+                },
+                {
+                    "utterance": "Give me a plan for cardiovascular endurance with a stationary bike focusing on my chest for 30 minutes.",
+                    "parameters": {
+                        "fitness_goals": "cardiovascular_endurance",
+                        "fitness_level": "beginner",
+                        "muscle": "chest",
+                        "equipment": "stationary_bike",
+                        "time": 30
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get Workout Plan",
+            "description": "Get Workout Plans\n\nThis api request can be used to get Workout plan based on:\n\n- Time duration\n- Target Muscle\n- Location\n- Equipment\n\nHence api call takes 4 query parameters:\n\n- time\n- muscle\n- location\n- equipment",
+            "url": "https://workout-planner1.p.rapidapi.com/",
+            "parameters": [
+                {
+                    "name": "time",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "30",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "equipment",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "dumbbells",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "muscle",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "biceps",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "gym",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you suggest a 45-minute workout plan for my legs using resistance bands at home?",
+                    "parameters": {
+                        "time": "45",
+                        "equipment": "resistance bands",
+                        "muscle": "legs",
+                        "location": "home"
+                    }
+                },
+                {
+                    "utterance": "I need a 20-minute workout focusing on my abs with a yoga mat in the park.",
+                    "parameters": {
+                        "time": "20",
+                        "equipment": "yoga mat",
+                        "muscle": "abs",
+                        "location": "park"
+                    }
+                },
+                {
+                    "utterance": "What's a good 60-minute routine for my back using a pull-up bar at the gym?",
+                    "parameters": {
+                        "time": "60",
+                        "equipment": "pull-up bar",
+                        "muscle": "back",
+                        "location": "gym"
+                    }
+                },
+                {
+                    "utterance": "Give me a 15-minute chest workout plan with dumbbells in my living room.",
+                    "parameters": {
+                        "time": "15",
+                        "equipment": "dumbbells",
+                        "muscle": "chest",
+                        "location": "living room"
+                    }
+                },
+                {
+                    "utterance": "I want a 30-minute workout for my shoulders using kettlebells at the beach.",
+                    "parameters": {
+                        "time": "30",
+                        "equipment": "kettlebells",
+                        "muscle": "shoulders",
+                        "location": "beach"
+                    }
+                },
+                {
+                    "utterance": "Can you provide a 50-minute plan for my triceps with a resistance band in the backyard?",
+                    "parameters": {
+                        "time": "50",
+                        "equipment": "resistance band",
+                        "muscle": "triceps",
+                        "location": "backyard"
+                    }
+                },
+                {
+                    "utterance": "Suggest a 25-minute workout for my calves using a jump rope in the garage.",
+                    "parameters": {
+                        "time": "25",
+                        "equipment": "jump rope",
+                        "muscle": "calves",
+                        "location": "garage"
+                    }
+                },
+                {
+                    "utterance": "I need a 40-minute full-body workout with a medicine ball at the community center.",
+                    "parameters": {
+                        "time": "40",
+                        "equipment": "medicine ball",
+                        "muscle": "full-body",
+                        "location": "community center"
+                    }
+                },
+                {
+                    "utterance": "What's a 35-minute routine for my glutes using a stability ball in the basement?",
+                    "parameters": {
+                        "time": "35",
+                        "equipment": "stability ball",
+                        "muscle": "glutes",
+                        "location": "basement"
+                    }
+                },
+                {
+                    "utterance": "Can you recommend a 55-minute workout for my forearms with a barbell at the sports complex?",
+                    "parameters": {
+                        "time": "55",
+                        "equipment": "barbell",
+                        "muscle": "forearms",
+                        "location": "sports complex"
+                    }
+                }
+            ]
+        }
+    ]
+}

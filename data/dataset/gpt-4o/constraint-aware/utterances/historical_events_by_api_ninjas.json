@@ -1,0 +1,138 @@
+{
+    "name": "Historical Events by API-Ninjas",
+    "description": "Search through the most famous events in history. See more info at https://api-ninjas.com/api/historicalevents.",
+    "url": "https://rapidapi.com/apininjas/api/historical-events-by-api-ninjas/",
+    "api_methods": [
+        {
+            "name": "/v1/historicalevents",
+            "description": "API Ninjas Historical Events API endpoint. Returns a list of up to 10 events that match the search parameters. At least one of the following parameters is required: text, year, month, day.",
+            "url": "https://historical-events-by-api-ninjas.p.rapidapi.com/v1/historicalevents",
+            "parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "query text to search events by. Use keywords or short phrases for best match results.",
+                    "default": "roman empire",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "text, year, month, day: At least one of these parameters is required."
+                    }
+                },
+                {
+                    "name": "month",
+                    "type": "NUMBER",
+                    "description": "integer month (e.g. 3 for March).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1,
+                            "max": 12
+                        },
+                        "inter-dependency": "text, year, month, day: At least one of these parameters is required."
+                    }
+                },
+                {
+                    "name": "day",
+                    "type": "NUMBER",
+                    "description": "calendar day of the month.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1,
+                            "max": 31
+                        },
+                        "inter-dependency": "text, year, month, day: At least one of these parameters is required."
+                    }
+                },
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "4-digit year (e.g. 1776). For BC/BCE years, use a negative integer (e.g. -351 for 351 BC).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "text, year, month, day: At least one of these parameters is required."
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "number of results to offset (for pagination).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you tell me about events that happened in the Roman Empire?",
+                    "parameters": {
+                        "text": "Roman Empire"
+                    }
+                },
+                {
+                    "utterance": "What historical events took place in March 1965?",
+                    "parameters": {
+                        "month": 3,
+                        "year": 1965
+                    }
+                },
+                {
+                    "utterance": "I'm curious about what happened on July 4th in history.",
+                    "parameters": {
+                        "month": 7,
+                        "day": 4
+                    }
+                },
+                {
+                    "utterance": "Could you find events from the year 1066?",
+                    "parameters": {
+                        "year": 1066
+                    }
+                },
+                {
+                    "utterance": "What significant events occurred in December 1941?",
+                    "parameters": {
+                        "month": 12,
+                        "year": 1941
+                    }
+                },
+                {
+                    "utterance": "Tell me about events that happened on the 15th of any month.",
+                    "parameters": {
+                        "day": 15
+                    }
+                },
+                {
+                    "utterance": "What are some historical events related to the French Revolution?",
+                    "parameters": {
+                        "text": "French Revolution"
+                    }
+                },
+                {
+                    "utterance": "Can you list events from the year 44 BC?",
+                    "parameters": {
+                        "year": -44
+                    }
+                },
+                {
+                    "utterance": "I'm interested in events that happened in April.",
+                    "parameters": {
+                        "month": 4
+                    }
+                },
+                {
+                    "utterance": "What happened on the 1st of January throughout history?",
+                    "parameters": {
+                        "month": 1,
+                        "day": 1
+                    }
+                }
+            ]
+        }
+    ]
+}

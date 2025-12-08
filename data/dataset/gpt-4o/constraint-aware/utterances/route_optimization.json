@@ -1,0 +1,114 @@
+{
+    "name": "Route optimization",
+    "description": "Calculate fastest driving, cycling, walking or multimodal public transportation route between locations",
+    "url": "https://rapidapi.com/geoapify-gmbh-geoapify/api/route-optimization/",
+    "api_methods": [
+        {
+            "name": "Route and directions",
+            "description": "Calculate route between provided waypoints, including turn by turn directions",
+            "url": "https://route-optimization.p.rapidapi.com/v1/routing",
+            "parameters": [
+                {
+                    "name": "mode",
+                    "type": "STRING",
+                    "description": "Routing mode - drive, truck, bicycle, walk or transit",
+                    "default": "drive",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "drive",
+                                "truck",
+                                "bicycle",
+                                "walk",
+                                "transit"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "waypoints",
+                    "type": "STRING",
+                    "description": "List of two or more lat,lon coordinates, separated by the pipe symbol \\\"|\\\"",
+                    "default": "48.34364,10.87474|48.37073,10.90925",
+                    "required": true,
+                    "constraints": {
+                        "format": "lat,lon coordinates separated by pipe symbol '|'"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find the fastest driving route from Central Park, New York to Times Square, New York?",
+                    "parameters": {
+                        "mode": "drive",
+                        "waypoints": "40.785091,-73.968285|40.758896,-73.985130"
+                    }
+                },
+                {
+                    "utterance": "What's the best cycling path from the Eiffel Tower to the Louvre Museum?",
+                    "parameters": {
+                        "mode": "bicycle",
+                        "waypoints": "48.858844,2.294351|48.860611,2.337644"
+                    }
+                },
+                {
+                    "utterance": "Give me the walking directions from the Sydney Opera House to the Sydney Harbour Bridge.",
+                    "parameters": {
+                        "mode": "walk",
+                        "waypoints": "-33.856784,151.215297|-33.852306,151.210787"
+                    }
+                },
+                {
+                    "utterance": "How do I get from the Colosseum to the Vatican City using public transport?",
+                    "parameters": {
+                        "mode": "transit",
+                        "waypoints": "41.890210,12.492231|41.902916,12.453389"
+                    }
+                },
+                {
+                    "utterance": "Plan a truck route from the Port of Los Angeles to the Las Vegas Convention Center.",
+                    "parameters": {
+                        "mode": "truck",
+                        "waypoints": "33.736061,-118.292289|36.131389,-115.151611"
+                    }
+                },
+                {
+                    "utterance": "What's the quickest way to drive from Buckingham Palace to the British Museum?",
+                    "parameters": {
+                        "mode": "drive",
+                        "waypoints": "51.501364,-0.14189|51.519413,-0.127625"
+                    }
+                },
+                {
+                    "utterance": "Can you map out a cycling route from the Golden Gate Bridge to Fisherman's Wharf?",
+                    "parameters": {
+                        "mode": "bicycle",
+                        "waypoints": "37.819929,-122.478255|37.808000,-122.417743"
+                    }
+                },
+                {
+                    "utterance": "I need walking directions from the Brandenburg Gate to the Berlin TV Tower.",
+                    "parameters": {
+                        "mode": "walk",
+                        "waypoints": "52.516275,13.377704|52.520816,13.409419"
+                    }
+                },
+                {
+                    "utterance": "How can I get from Tokyo Tower to Shibuya Crossing using public transit?",
+                    "parameters": {
+                        "mode": "transit",
+                        "waypoints": "35.658581,139.745438|35.659108,139.703728"
+                    }
+                },
+                {
+                    "utterance": "Plan a truck route from the Port of Rotterdam to the Amsterdam RAI Exhibition and Convention Centre.",
+                    "parameters": {
+                        "mode": "truck",
+                        "waypoints": "51.947499,4.125083|52.340695,4.892416"
+                    }
+                }
+            ]
+        }
+    ]
+}

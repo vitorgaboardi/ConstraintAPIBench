@@ -1,0 +1,134 @@
+{
+    "tool_name": "Indeed Jobs API",
+    "tool_description": "Indeed Jobs Search API - USA\nGet the Jobs List as JSON by giving Keyword, Location (USA Only) and offset value.\nContact me at: vuesdata@gmail.com or visit https://www.vuesdata.com for building custom spiders or custom requests.",
+    "title": "Indeed Jobs API",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 4086,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.4,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/vuesdata/api/indeed-jobs-api/",
+    "host": "indeed-jobs-api.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "SearchJobs",
+            "url": "https://indeed-jobs-api.p.rapidapi.com/indeed-us/",
+            "description": "offset = 0 (starting of the page, it must be increased by 10 to achieve pagination)\nkeyword = python (it can be any search keyword for ex: job title or skill title)\nlocation = california (For now this API gets data for USA Indeed. You can enter a specific city or state.)\nThis will provide you with a list of 15 jobs in the page, by default a single page can have a max of 15 jobs posting only. In order to get all the data using pagination you need to keep increasing the count of offset by 10.\n\nYou will get the following fields using this API.\n\n'position'\n'company_name'\n'job_title'\n'job_location'\n'salary'\n'date'\n'job_url'\n'urgently_hiring'\n'multiple_hiring'\n'company_rating'\n'company_reviews'\n'company_review_link'\n'company_logo_url'\n'page_number'",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://indeed-jobs-api.p.rapidapi.com/indeed-us/\"\nquerystring = {\"location\": location, \"keyword\": keyword, \"offset\": offset}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"indeed-jobs-api.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "california",
+                    "required": true
+                },
+                {
+                    "name": "keyword",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "python",
+                    "required": true
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "0",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find jobs in New York related to data science starting from the first page.",
+                    "parameters": {
+                        "location": "New York",
+                        "keyword": "data science",
+                        "offset": 0
+                    }
+                },
+                {
+                    "utterance": "Search for software engineering jobs in Texas starting from the second page.",
+                    "parameters": {
+                        "location": "Texas",
+                        "keyword": "software engineering",
+                        "offset": 10
+                    }
+                },
+                {
+                    "utterance": "Get a list of marketing jobs in California starting from the third page.",
+                    "parameters": {
+                        "location": "California",
+                        "keyword": "marketing",
+                        "offset": 20
+                    }
+                },
+                {
+                    "utterance": "Find nursing jobs in Florida starting from the first page.",
+                    "parameters": {
+                        "location": "Florida",
+                        "keyword": "nursing",
+                        "offset": 0
+                    }
+                },
+                {
+                    "utterance": "Search for graphic design jobs in Chicago starting from the fourth page.",
+                    "parameters": {
+                        "location": "Chicago",
+                        "keyword": "graphic design",
+                        "offset": 30
+                    }
+                },
+                {
+                    "utterance": "Get a list of accounting jobs in Washington starting from the second page.",
+                    "parameters": {
+                        "location": "Washington",
+                        "keyword": "accounting",
+                        "offset": 10
+                    }
+                },
+                {
+                    "utterance": "Find teaching jobs in Boston starting from the first page.",
+                    "parameters": {
+                        "location": "Boston",
+                        "keyword": "teaching",
+                        "offset": 0
+                    }
+                },
+                {
+                    "utterance": "Search for customer service jobs in Atlanta starting from the third page.",
+                    "parameters": {
+                        "location": "Atlanta",
+                        "keyword": "customer service",
+                        "offset": 20
+                    }
+                },
+                {
+                    "utterance": "Get a list of sales jobs in Denver starting from the fifth page.",
+                    "parameters": {
+                        "location": "Denver",
+                        "keyword": "sales",
+                        "offset": 40
+                    }
+                },
+                {
+                    "utterance": "Find IT support jobs in Seattle starting from the first page.",
+                    "parameters": {
+                        "location": "Seattle",
+                        "keyword": "IT support",
+                        "offset": 0
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Jobs"
+}

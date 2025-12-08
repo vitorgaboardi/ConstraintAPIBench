@@ -1,0 +1,275 @@
+{
+    "name": "Microsoft Authenticator",
+    "description": "Generate and validate time-based one-time passwords (TOTP) for your second factor authentication (2FA) scenario using Microsoft Authenticator app",
+    "url": "https://rapidapi.com/chdan/api/microsoft-authenticator/",
+    "api_methods": [
+        {
+            "name": "enroll",
+            "description": "Step 2. Generate QR code and enroll using Google Authenticator app",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/enroll/",
+            "parameters": [
+                {
+                    "name": "secret",
+                    "type": "STRING",
+                    "description": "Secret code that /new/ or /new_v2/ return",
+                    "default": "IH225HMVWDS3XJVY",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "account",
+                    "type": "STRING",
+                    "description": "Account within the company",
+                    "default": "User1",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "issuer",
+                    "type": "STRING",
+                    "description": "A company issuing temporary codes",
+                    "default": "HomeCorp",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you generate a QR code for setting up two-factor authentication?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to enroll my device for 2FA using Microsoft Authenticator.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "How do I get a QR code for Microsoft Authenticator?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please create a QR code for enrolling in two-factor authentication.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Set up Microsoft Authenticator for my account.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Generate a QR code so I can enroll in 2FA.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to use Microsoft Authenticator for two-factor authentication.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you help me enroll in 2FA with Microsoft Authenticator?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Provide a QR code for Microsoft Authenticator setup.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Enroll my device in two-factor authentication using Microsoft Authenticator.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "new_v2",
+            "description": "Step 1. Generate new secret \n\nnb! This is the absolutely the same as the /new/, the only difference is that here we omit the return message \"Your new secret: \", which makes it a little easier to parse the results",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/new_v2/",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Generate a new secret for my Microsoft Authenticator app.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you create a new secret for my 2FA setup?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a fresh secret for my Microsoft Authenticator.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please generate a new TOTP secret for my second factor authentication.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Set up a new secret for my Microsoft Authenticator.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Create a new secret for my 2FA with Microsoft Authenticator.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to generate a new secret for my Microsoft Authenticator app.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you help me generate a new secret for my Microsoft Authenticator?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Generate a new TOTP secret for my Microsoft Authenticator.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to generate a new secret for my Microsoft Authenticator app.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "new",
+            "description": "Step 1. Generate new secret",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/new/",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you generate a new secret for my Microsoft Authenticator?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a new secret key for my 2FA setup.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please create a new TOTP secret for my Microsoft Authenticator app.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Generate a fresh secret for my second factor authentication.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to set up a new TOTP secret for my Microsoft Authenticator.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you generate a new secret for my 2FA?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a new TOTP secret for my Microsoft Authenticator.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please generate a new secret for my Microsoft Authenticator app.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you create a new secret for my 2FA?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I\u2019d like to generate a new TOTP secret for my Microsoft Authenticator.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "validate",
+            "description": "Step 3. Validate TOTP",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/validate/",
+            "parameters": [
+                {
+                    "name": "secret",
+                    "type": "STRING",
+                    "description": "Secret code that /new/ or /new_v2/ return",
+                    "default": "IH225HMVWDS3XJVY",
+                    "required": true
+                },
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "Temporary code generated by Microsoft Authenticator app",
+                    "default": "425079",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you validate the TOTP code 123456 with the secret key ABCDEF?",
+                    "parameters": {
+                        "secret": "ABCDEF",
+                        "code": "123456"
+                    }
+                },
+                {
+                    "utterance": "Is the code 789012 valid for the secret key GHIJKL?",
+                    "parameters": {
+                        "secret": "GHIJKL",
+                        "code": "789012"
+                    }
+                },
+                {
+                    "utterance": "Please verify the TOTP code 345678 using the secret key MNOPQR.",
+                    "parameters": {
+                        "secret": "MNOPQR",
+                        "code": "345678"
+                    }
+                },
+                {
+                    "utterance": "Does the code 901234 match the secret key STUVWX?",
+                    "parameters": {
+                        "secret": "STUVWX",
+                        "code": "901234"
+                    }
+                },
+                {
+                    "utterance": "Check if the code 567890 is correct for the secret key YZABCD.",
+                    "parameters": {
+                        "secret": "YZABCD",
+                        "code": "567890"
+                    }
+                },
+                {
+                    "utterance": "Validate the TOTP code 234567 with the secret key EFGHIJ.",
+                    "parameters": {
+                        "secret": "EFGHIJ",
+                        "code": "234567"
+                    }
+                },
+                {
+                    "utterance": "Is the code 890123 valid when using the secret key KLMNOP?",
+                    "parameters": {
+                        "secret": "KLMNOP",
+                        "code": "890123"
+                    }
+                },
+                {
+                    "utterance": "Can you confirm the code 456789 with the secret key QRSTUV?",
+                    "parameters": {
+                        "secret": "QRSTUV",
+                        "code": "456789"
+                    }
+                },
+                {
+                    "utterance": "Verify if the code 012345 is correct for the secret key WXYZAB.",
+                    "parameters": {
+                        "secret": "WXYZAB",
+                        "code": "012345"
+                    }
+                },
+                {
+                    "utterance": "Does the TOTP code 678901 match the secret key CDEFGH?",
+                    "parameters": {
+                        "secret": "CDEFGH",
+                        "code": "678901"
+                    }
+                }
+            ]
+        }
+    ]
+}

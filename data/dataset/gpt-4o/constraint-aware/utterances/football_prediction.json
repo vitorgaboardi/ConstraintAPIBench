@@ -1,0 +1,677 @@
+{
+    "name": "Football Prediction",
+    "description": "The Football Prediction API provides predictions for upcoming football matches, average bookie odds, results for past matches and prediction performance statistics for past results.",
+    "url": "https://rapidapi.com/boggio-analytics/api/football-prediction/",
+    "api_methods": [
+        {
+            "name": "Head To Head",
+            "description": "Shows head to head stats and previous encounters for the home and away team of an upcoming match.",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/head-to-head/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "(use predictions endpoint to get list of IDs)",
+                    "default": "81930",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "Limit the search to only X previous encounters. (max is 10)",
+                    "default": "10",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 10
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the head-to-head stats for the upcoming match between Manchester United and Liverpool?",
+                    "parameters": {
+                        "id": "Manchester United vs Liverpool"
+                    }
+                },
+                {
+                    "utterance": "I want to see the previous encounters for the Chelsea vs Arsenal match.",
+                    "parameters": {
+                        "id": "Chelsea vs Arsenal"
+                    }
+                },
+                {
+                    "utterance": "Give me the head-to-head history for the Real Madrid and Barcelona game, but limit it to the last 5 matches.",
+                    "parameters": {
+                        "id": "Real Madrid vs Barcelona",
+                        "limit": 5
+                    }
+                },
+                {
+                    "utterance": "Show me the past matchups for the Bayern Munich vs Borussia Dortmund game.",
+                    "parameters": {
+                        "id": "Bayern Munich vs Borussia Dortmund"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the head-to-head results for the AC Milan and Inter Milan match, with a limit of 3 previous games.",
+                    "parameters": {
+                        "id": "AC Milan vs Inter Milan",
+                        "limit": 3
+                    }
+                },
+                {
+                    "utterance": "What are the head-to-head stats for the Paris Saint-Germain vs Marseille match?",
+                    "parameters": {
+                        "id": "Paris Saint-Germain vs Marseille"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the head-to-head details for the Juventus and Napoli game, but only for the last 7 encounters?",
+                    "parameters": {
+                        "id": "Juventus vs Napoli",
+                        "limit": 7
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the head-to-head record for the Tottenham Hotspur vs Manchester City match.",
+                    "parameters": {
+                        "id": "Tottenham Hotspur vs Manchester City"
+                    }
+                },
+                {
+                    "utterance": "Show me the head-to-head stats for the Atletico Madrid vs Sevilla game, limited to the last 2 matches.",
+                    "parameters": {
+                        "id": "Atletico Madrid vs Sevilla",
+                        "limit": 2
+                    }
+                },
+                {
+                    "utterance": "What are the previous match results for the Ajax vs Feyenoord match?",
+                    "parameters": {
+                        "id": "Ajax vs Feyenoord"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Home Team League Stats",
+            "description": "Shows the league table and stats for the home team of an upcoming match.",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/home-league-stats/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "(use predictions endpoint to get list of IDs)",
+                    "default": "81930",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the league stats for the home team in the match with ID 81930?",
+                    "parameters": {
+                        "id": 81930
+                    }
+                },
+                {
+                    "utterance": "I need the league table for the home team in the upcoming match with ID 12345.",
+                    "parameters": {
+                        "id": 12345
+                    }
+                },
+                {
+                    "utterance": "What's the league performance of the home team for the match identified by ID 67890?",
+                    "parameters": {
+                        "id": 67890
+                    }
+                },
+                {
+                    "utterance": "Give me the home team's league stats for the match with ID 54321.",
+                    "parameters": {
+                        "id": 54321
+                    }
+                },
+                {
+                    "utterance": "Please provide the league table for the home team in the match with ID 98765.",
+                    "parameters": {
+                        "id": 98765
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the league stats for the home team in the match with ID 11223.",
+                    "parameters": {
+                        "id": 11223
+                    }
+                },
+                {
+                    "utterance": "Show me the home team's league performance for the match with ID 33445.",
+                    "parameters": {
+                        "id": 33445
+                    }
+                },
+                {
+                    "utterance": "What are the league stats for the home team in the match with ID 55667?",
+                    "parameters": {
+                        "id": 55667
+                    }
+                },
+                {
+                    "utterance": "Can you provide the league table for the home team in the match with ID 77889?",
+                    "parameters": {
+                        "id": 77889
+                    }
+                },
+                {
+                    "utterance": "I want to know the league stats for the home team in the match with ID 99001.",
+                    "parameters": {
+                        "id": 99001
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Home Team Last 10 Matches",
+            "description": "Grab the statistics and list of the last 10 matches played by the home team for a certain ID",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/home-last-10/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "(use predictions endpoint to get list of IDs)",
+                    "default": "81930",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the last 10 matches played by Manchester United?",
+                    "parameters": {
+                        "id": "Manchester United"
+                    }
+                },
+                {
+                    "utterance": "I want to see the recent performance of Real Madrid in their last 10 games.",
+                    "parameters": {
+                        "id": "Real Madrid"
+                    }
+                },
+                {
+                    "utterance": "Give me the statistics for the last 10 matches of FC Barcelona.",
+                    "parameters": {
+                        "id": "FC Barcelona"
+                    }
+                },
+                {
+                    "utterance": "What are the results of the last 10 matches played by Bayern Munich?",
+                    "parameters": {
+                        "id": "Bayern Munich"
+                    }
+                },
+                {
+                    "utterance": "Show me the last 10 games played by Juventus.",
+                    "parameters": {
+                        "id": "Juventus"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know how Liverpool performed in their last 10 matches.",
+                    "parameters": {
+                        "id": "Liverpool"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the last 10 match results for Paris Saint-Germain?",
+                    "parameters": {
+                        "id": "Paris Saint-Germain"
+                    }
+                },
+                {
+                    "utterance": "Tell me about the last 10 matches of Chelsea.",
+                    "parameters": {
+                        "id": "Chelsea"
+                    }
+                },
+                {
+                    "utterance": "What are the statistics for the last 10 matches of AC Milan?",
+                    "parameters": {
+                        "id": "AC Milan"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the last 10 matches played by Borussia Dortmund.",
+                    "parameters": {
+                        "id": "Borussia Dortmund"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Away Team Last 10 Matches",
+            "description": "Grab the statistics and list of the last 10 matches played by the away team for a certain ID",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/away-last-10/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "(use predictions endpoint to get list of IDs)",
+                    "default": "81930",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the last 10 matches played by Manchester United?",
+                    "parameters": {
+                        "id": "Manchester United"
+                    }
+                },
+                {
+                    "utterance": "I want to see the recent 10 games of Real Madrid.",
+                    "parameters": {
+                        "id": "Real Madrid"
+                    }
+                },
+                {
+                    "utterance": "Give me the statistics for the last 10 matches of FC Barcelona.",
+                    "parameters": {
+                        "id": "FC Barcelona"
+                    }
+                },
+                {
+                    "utterance": "What are the results of the last 10 matches for Juventus?",
+                    "parameters": {
+                        "id": "Juventus"
+                    }
+                },
+                {
+                    "utterance": "Show me the last 10 games played by Bayern Munich.",
+                    "parameters": {
+                        "id": "Bayern Munich"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the outcomes of the last 10 matches for Paris Saint-Germain.",
+                    "parameters": {
+                        "id": "Paris Saint-Germain"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the last 10 match results for Chelsea?",
+                    "parameters": {
+                        "id": "Chelsea"
+                    }
+                },
+                {
+                    "utterance": "List the last 10 matches played by Liverpool.",
+                    "parameters": {
+                        "id": "Liverpool"
+                    }
+                },
+                {
+                    "utterance": "What are the statistics for the last 10 games of AC Milan?",
+                    "parameters": {
+                        "id": "AC Milan"
+                    }
+                },
+                {
+                    "utterance": "I need the last 10 match details for Borussia Dortmund.",
+                    "parameters": {
+                        "id": "Borussia Dortmund"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Away Team League Stats",
+            "description": "Shows the league table and stats for the away team of an upcoming match.",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/away-league-stats/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "(use predictions endpoint to get list of IDs)",
+                    "default": "86397",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the league stats for the away team in the match with ID 86397?",
+                    "parameters": {
+                        "id": 86397
+                    }
+                },
+                {
+                    "utterance": "I need the league table for the away team in the game identified by ID 10234.",
+                    "parameters": {
+                        "id": 10234
+                    }
+                },
+                {
+                    "utterance": "What are the stats for the away team in the match with ID 56789?",
+                    "parameters": {
+                        "id": 56789
+                    }
+                },
+                {
+                    "utterance": "Please provide the league stats for the away team in the match with ID 34567.",
+                    "parameters": {
+                        "id": 34567
+                    }
+                },
+                {
+                    "utterance": "Get me the league table for the away team in the match with ID 78901.",
+                    "parameters": {
+                        "id": 78901
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the league stats for the away team in the match with ID 23456.",
+                    "parameters": {
+                        "id": 23456
+                    }
+                },
+                {
+                    "utterance": "Show me the league stats for the away team in the match with ID 67890.",
+                    "parameters": {
+                        "id": 67890
+                    }
+                },
+                {
+                    "utterance": "Can you provide the league table for the away team in the match with ID 45678?",
+                    "parameters": {
+                        "id": 45678
+                    }
+                },
+                {
+                    "utterance": "I want to know the league stats for the away team in the match with ID 90123.",
+                    "parameters": {
+                        "id": 90123
+                    }
+                },
+                {
+                    "utterance": "Please show the league table for the away team in the match with ID 11223.",
+                    "parameters": {
+                        "id": 11223
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Prediction Details",
+            "description": "Grab all available predictions for a match id",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/predictions/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "99999",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me the predictions for the match between Manchester United and Liverpool?",
+                    "parameters": {
+                        "id": "Manchester United vs Liverpool"
+                    }
+                },
+                {
+                    "utterance": "I need the prediction details for the upcoming game between Real Madrid and Barcelona.",
+                    "parameters": {
+                        "id": "Real Madrid vs Barcelona"
+                    }
+                },
+                {
+                    "utterance": "What are the predictions for the Chelsea vs Arsenal match?",
+                    "parameters": {
+                        "id": "Chelsea vs Arsenal"
+                    }
+                },
+                {
+                    "utterance": "Show me the predictions for the Bayern Munich against Borussia Dortmund game.",
+                    "parameters": {
+                        "id": "Bayern Munich vs Borussia Dortmund"
+                    }
+                },
+                {
+                    "utterance": "Could you provide the prediction details for the Juventus vs AC Milan match?",
+                    "parameters": {
+                        "id": "Juventus vs AC Milan"
+                    }
+                },
+                {
+                    "utterance": "I want to know the predictions for the Paris Saint-Germain and Marseille game.",
+                    "parameters": {
+                        "id": "Paris Saint-Germain vs Marseille"
+                    }
+                },
+                {
+                    "utterance": "Tell me the predictions for the match between Inter Milan and Napoli.",
+                    "parameters": {
+                        "id": "Inter Milan vs Napoli"
+                    }
+                },
+                {
+                    "utterance": "What are the predictions for the Atletico Madrid vs Sevilla game?",
+                    "parameters": {
+                        "id": "Atletico Madrid vs Sevilla"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the predictions for the Tottenham Hotspur against Manchester City match?",
+                    "parameters": {
+                        "id": "Tottenham Hotspur vs Manchester City"
+                    }
+                },
+                {
+                    "utterance": "I need the prediction details for the game between Ajax and Feyenoord.",
+                    "parameters": {
+                        "id": "Ajax vs Feyenoord"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "List available federations",
+            "description": "Returns an array of all the available federations.",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/list-federations",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you show me all the football federations available?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the federations in the football prediction database.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What federations are included in your football predictions?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to know which football federations you cover.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide a list of all available football federations?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the federations you have predictions for.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the federations that your football prediction service includes?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the federations that are part of your football predictions.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which federations can I get predictions for?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me a list of federations available in your football prediction API.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Performance stats for past predictions",
+            "description": "Returns information about the accuracy of past predictions. (in the last day, 7 days, 14 days and 30 days) Can be additionally filtered by federation and market. If no market filter is provided it defaults to classic",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/performance-stats",
+            "parameters": [
+                {
+                    "name": "federation",
+                    "type": "STRING",
+                    "description": "Filter stats by federation",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "market",
+                    "type": "STRING",
+                    "description": "Show stats for a different prediction market. Defaults to \"classic\" if not provided",
+                    "default": "classic",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "classic"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "How accurate were the football predictions over the last 7 days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you show me the prediction performance for the past 30 days in the UEFA federation?",
+                    "parameters": {
+                        "federation": "UEFA"
+                    }
+                },
+                {
+                    "utterance": "What are the prediction stats for the last 14 days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to see the prediction accuracy for the past day in the CONMEBOL federation.",
+                    "parameters": {
+                        "federation": "CONMEBOL"
+                    }
+                },
+                {
+                    "utterance": "Give me the performance stats for the last 7 days in the AFC federation.",
+                    "parameters": {
+                        "federation": "AFC"
+                    }
+                },
+                {
+                    "utterance": "What is the prediction performance for the last 30 days?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the prediction accuracy for the past 14 days in the CAF federation.",
+                    "parameters": {
+                        "federation": "CAF"
+                    }
+                },
+                {
+                    "utterance": "How did the predictions perform over the last day in the OFC federation?",
+                    "parameters": {
+                        "federation": "OFC"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the prediction stats for the last 7 days in the CONCACAF federation?",
+                    "parameters": {
+                        "federation": "CONCACAF"
+                    }
+                },
+                {
+                    "utterance": "What are the prediction performance stats for the past 30 days in the classic market?",
+                    "parameters": {
+                        "market": "classic"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Get list of fixture IDs",
+            "description": "Returns a list of fixture IDs that can be used to make requests to endpoints expecting a ID url parameter.\nCan be filtered by:\n\n- iso_date\n- market\n- federation",
+            "url": "https://football-prediction-api.p.rapidapi.com/api/v2/get-list-of-fixture-ids",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the list of upcoming football match fixtures?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need the fixture IDs for the next football games.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the fixture IDs for the upcoming matches?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me the list of fixture IDs for the football matches happening soon.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide the fixture IDs for the upcoming football events?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the fixture IDs for the next set of football matches.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see the fixture IDs for the upcoming football games.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the fixture IDs for the upcoming football matches.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the IDs for the upcoming football fixtures?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the fixture IDs for the next football matches?",
+                    "parameters": {}
+                }
+            ]
+        }
+    ]
+}

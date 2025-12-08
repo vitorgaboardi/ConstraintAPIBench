@@ -1,0 +1,217 @@
+{
+    "name": "Microsoft Authenticator",
+    "description": "Generate and validate time-based one-time passwords (TOTP) for your second factor authentication (2FA) scenario using Microsoft Authenticator app",
+    "url": "https://rapidapi.com/chdan/api/microsoft-authenticator/",
+    "api_methods": [
+        {
+            "name": "enroll",
+            "description": "Step 2. Generate QR code and enroll using Google Authenticator app",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/enroll/",
+            "parameters": [
+                {
+                    "name": "secret",
+                    "type": "STRING",
+                    "description": "Secret code that /new/ or /new_v2/ return",
+                    "default": "IH225HMVWDS3XJVY",
+                    "required": true,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "account",
+                    "type": "STRING",
+                    "description": "Account within the company",
+                    "default": "User1",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "issuer",
+                    "type": "STRING",
+                    "description": "A company issuing temporary codes",
+                    "default": "HomeCorp",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "I need to set up my account with the Microsoft Authenticator app.",
+                    "parameters": {
+                        "account": "User1"
+                    }
+                },
+                {
+                    "utterance": "Can you help me enroll my account with the issuer HomeCorp using the Microsoft Authenticator?",
+                    "parameters": {
+                        "account": "User1",
+                        "issuer": "HomeCorp"
+                    }
+                },
+                {
+                    "utterance": "Please generate a QR code for my account at TechCorp.",
+                    "parameters": {
+                        "account": "TechCorp"
+                    }
+                },
+                {
+                    "utterance": "I want to enroll my account with the issuer SecureBank.",
+                    "parameters": {
+                        "account": "User1",
+                        "issuer": "SecureBank"
+                    }
+                },
+                {
+                    "utterance": "Set up my account with the issuer FinTech using the Microsoft Authenticator.",
+                    "parameters": {
+                        "account": "User1",
+                        "issuer": "FinTech"
+                    }
+                },
+                {
+                    "utterance": "Generate a QR code for my account at HealthPlus.",
+                    "parameters": {
+                        "account": "HealthPlus"
+                    }
+                },
+                {
+                    "utterance": "Can you enroll my account with the issuer EduWorld?",
+                    "parameters": {
+                        "account": "User1",
+                        "issuer": "EduWorld"
+                    }
+                },
+                {
+                    "utterance": "I need to set up my account with the issuer TravelCo.",
+                    "parameters": {
+                        "account": "User1",
+                        "issuer": "TravelCo"
+                    }
+                },
+                {
+                    "utterance": "Please help me generate a QR code for my account at ShopMart.",
+                    "parameters": {
+                        "account": "ShopMart"
+                    }
+                },
+                {
+                    "utterance": "Enroll my account with the issuer MediaHub using the Microsoft Authenticator.",
+                    "parameters": {
+                        "account": "User1",
+                        "issuer": "MediaHub"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "new_v2",
+            "description": "Step 1. Generate new secret \n\nnb! This is the absolutely the same as the /new/, the only difference is that here we omit the return message \"Your new secret: \", which makes it a little easier to parse the results",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/new_v2/",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "new",
+            "description": "Step 1. Generate new secret",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/new/",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "validate",
+            "description": "Step 3. Validate TOTP",
+            "url": "https://microsoft-authenticator.p.rapidapi.com/validate/",
+            "parameters": [
+                {
+                    "name": "secret",
+                    "type": "STRING",
+                    "description": "Secret code that /new/ or /new_v2/ return",
+                    "default": "IH225HMVWDS3XJVY",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "code",
+                    "type": "STRING",
+                    "description": "Temporary code generated by Microsoft Authenticator app",
+                    "default": "425079",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you verify the code 425079 with the secret IH225HMVWDS3XJVY?",
+                    "parameters": {
+                        "secret": "IH225HMVWDS3XJVY",
+                        "code": "425079"
+                    }
+                },
+                {
+                    "utterance": "I need to check if the code 123456 is valid using the secret ABCDEFGHIJKLMN.",
+                    "parameters": {
+                        "secret": "ABCDEFGHIJKLMN",
+                        "code": "123456"
+                    }
+                },
+                {
+                    "utterance": "Please validate the TOTP 654321 with the secret key ZYXWVUTSRQPONML.",
+                    "parameters": {
+                        "secret": "ZYXWVUTSRQPONML",
+                        "code": "654321"
+                    }
+                },
+                {
+                    "utterance": "Is the code 789012 correct for the secret MNOPQRSTUVWX?",
+                    "parameters": {
+                        "secret": "MNOPQRSTUVWX",
+                        "code": "789012"
+                    }
+                },
+                {
+                    "utterance": "Check the validity of the code 345678 using the secret key QWERTYUIOPASDF.",
+                    "parameters": {
+                        "secret": "QWERTYUIOPASDF",
+                        "code": "345678"
+                    }
+                },
+                {
+                    "utterance": "Can you confirm if 987654 is a valid code with the secret ZXCVBNMASDFGH?",
+                    "parameters": {
+                        "secret": "ZXCVBNMASDFGH",
+                        "code": "987654"
+                    }
+                },
+                {
+                    "utterance": "Validate the code 112233 with the secret key POIUYTREWQLKJH.",
+                    "parameters": {
+                        "secret": "POIUYTREWQLKJH",
+                        "code": "112233"
+                    }
+                },
+                {
+                    "utterance": "Is the TOTP 334455 valid for the secret ASDFGHJKLQWERT?",
+                    "parameters": {
+                        "secret": "ASDFGHJKLQWERT",
+                        "code": "334455"
+                    }
+                },
+                {
+                    "utterance": "Please check if 556677 is the correct code for the secret key LKJHGFDSAPOIU.",
+                    "parameters": {
+                        "secret": "LKJHGFDSAPOIU",
+                        "code": "556677"
+                    }
+                },
+                {
+                    "utterance": "Can you verify the TOTP 778899 with the secret key MNBVCXZLKJHGF?",
+                    "parameters": {
+                        "secret": "MNBVCXZLKJHGF",
+                        "code": "778899"
+                    }
+                }
+            ]
+        }
+    ]
+}

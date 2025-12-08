@@ -1,0 +1,196 @@
+{
+    "product_id": "api_b533892b-b4a1-44dc-a8ae-abb675098b4d",
+    "tool_description": "Find books by title, author, series, and reading complexity. Try the demo: [https://bookfinder-1-r7047837.deta.app](https://bookfinder-1-r7047837.deta.app/)",
+    "home_url": "https://rapidapi.com/dfskGT/api/book-finder1/",
+    "name": "Book Finder",
+    "title": "Book Finder",
+    "pricing": "FREE",
+    "tool_name": "Book Finder",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 501,
+        "avgSuccessRate": 96,
+        "popularityScore": 9.7,
+        "__typename": "Score"
+    },
+    "host": "book-finder1.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Find books",
+            "url": "https://book-finder1.p.rapidapi.com/api/search",
+            "description": "Search books using optional title, author, series, book type, categories, and [lexile measure](https://lexile.com/educators/understanding-lexile-measures/) range.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://book-finder1.p.rapidapi.com/api/search\"\nquerystring = {\"book_type\": \"Fiction\", \"categories\": \"\", \"lexile_max\": \"800\", \"series\": \"Wings of fire\", \"lexile_min\": \"600\", \"page\": 1, \"author\": \"\", \"title\": \"\", \"results_per_page\": 25}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-finder1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://book-finder1.p.rapidapi.com/api/search\"\nquerystring = {\"book_type\": \"Fiction\", \"categories\": \"\", \"lexile_max\": \"800\", \"series\": \"Wings of fire\", \"lexile_min\": \"600\", \"page\": 1, \"author\": \"\", \"title\": \"\", \"results_per_page\": 25}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"book-finder1.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": {
+                "detail": [
+                    {
+                        "loc": [
+                            "query",
+                            "title"
+                        ],
+                        "msg": "ensure this value has at least 2 characters",
+                        "type": "value_error.any_str.min_length",
+                        "ctx": {
+                            "limit_value": 2
+                        }
+                    },
+                    {
+                        "loc": [
+                            "query",
+                            "author"
+                        ],
+                        "msg": "ensure this value has at least 2 characters",
+                        "type": "value_error.any_str.min_length",
+                        "ctx": {
+                            "limit_value": 2
+                        }
+                    }
+                ]
+            },
+            "statuscode": 1,
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "book_type",
+                    "type": "STRING",
+                    "description": "Book type, fiction or nonfiction.",
+                    "default": "Fiction",
+                    "required": false
+                },
+                {
+                    "name": "categories",
+                    "type": "STRING",
+                    "description": "Semicolon separated book categories to search for, e.g., 'Mystery & Suspense; Science Fiction & Fantasy'. Available categories include: ['Animals, Bugs & Pets', 'Art, Creativity & Music', 'General Literature', 'Hobbies, Sports & Outdoors', 'Science Fiction & Fantasy', 'Real Life', 'Science & Technology', 'Mystery & Suspense', 'Reference']",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "lexile_max",
+                    "type": "NUMBER",
+                    "description": "Maximum Lexile measure.",
+                    "default": "800",
+                    "required": false
+                },
+                {
+                    "name": "series",
+                    "type": "STRING",
+                    "description": "Series name.",
+                    "default": "Wings of fire",
+                    "required": false
+                },
+                {
+                    "name": "lexile_min",
+                    "type": "NUMBER",
+                    "description": "Minimum Lexile measure.",
+                    "default": "600",
+                    "required": false
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page of the results.",
+                    "default": 1,
+                    "required": false
+                },
+                {
+                    "name": "author",
+                    "type": "STRING",
+                    "description": "Name of the author.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Terms to be appeared in book title.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "results_per_page",
+                    "type": "NUMBER",
+                    "description": "Results per page.",
+                    "default": 25,
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find me some fiction books by J.K. Rowling.",
+                    "parameters": {
+                        "book_type": "Fiction",
+                        "author": "J.K. Rowling"
+                    }
+                },
+                {
+                    "utterance": "Show me books in the 'Science Fiction & Fantasy' category with a Lexile measure between 700 and 900.",
+                    "parameters": {
+                        "categories": "Science Fiction & Fantasy",
+                        "lexile_min": 700,
+                        "lexile_max": 900
+                    }
+                },
+                {
+                    "utterance": "I want to find nonfiction books about 'Real Life' with a Lexile measure no higher than 750.",
+                    "parameters": {
+                        "book_type": "Nonfiction",
+                        "categories": "Real Life",
+                        "lexile_max": 750
+                    }
+                },
+                {
+                    "utterance": "Can you find books from the 'Wings of fire' series?",
+                    "parameters": {
+                        "series": "Wings of fire"
+                    }
+                },
+                {
+                    "utterance": "Search for books titled 'The Great Adventure' in the 'Mystery & Suspense' category.",
+                    "parameters": {
+                        "title": "The Great Adventure",
+                        "categories": "Mystery & Suspense"
+                    }
+                },
+                {
+                    "utterance": "Find books by George Orwell with a Lexile measure between 600 and 800.",
+                    "parameters": {
+                        "author": "George Orwell",
+                        "lexile_min": 600,
+                        "lexile_max": 800
+                    }
+                },
+                {
+                    "utterance": "Show me the first page of results for books in the 'Art, Creativity & Music' category.",
+                    "parameters": {
+                        "categories": "Art, Creativity & Music",
+                        "page": 1
+                    }
+                },
+                {
+                    "utterance": "I need a list of nonfiction books with a Lexile measure of at least 650.",
+                    "parameters": {
+                        "book_type": "Nonfiction",
+                        "lexile_min": 650
+                    }
+                },
+                {
+                    "utterance": "Find books by Agatha Christie in the 'Mystery & Suspense' category.",
+                    "parameters": {
+                        "author": "Agatha Christie",
+                        "categories": "Mystery & Suspense"
+                    }
+                },
+                {
+                    "utterance": "Show me 10 results per page for books in the 'Science & Technology' category.",
+                    "parameters": {
+                        "categories": "Science & Technology",
+                        "results_per_page": 10
+                    }
+                }
+            ]
+        }
+    ],
+    "standardized_name": "book_finder",
+    "category": "Education"
+}

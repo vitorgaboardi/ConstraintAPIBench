@@ -1,0 +1,282 @@
+{
+    "product_id": "api_409f66af-545d-4b86-bf72-9141c86d1d6b",
+    "tool_description": "Google News and Bing News Alternative. The Best API to Search News from the 2500+ Publishers Around The World. ",
+    "home_url": "https://rapidapi.com/MatcherLabs/api/news-api14/",
+    "name": "News API_v2",
+    "title": "News API",
+    "pricing": "FREEMIUM",
+    "tool_name": "News API_v2",
+    "score": {
+        "avgServiceLevel": 97,
+        "avgLatency": 2861,
+        "avgSuccessRate": 96,
+        "popularityScore": 9.8,
+        "__typename": "Score"
+    },
+    "host": "news-api14.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "Top Headlines",
+            "url": "https://news-api14.p.rapidapi.com/top-headlines",
+            "description": "Endpoint to find top headlines news.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://news-api14.p.rapidapi.com/top-headlines\"\nquerystring = {\"language\": \"en\", \"category\": \"sports\", \"country\": \"us\", \"sortBy\": \"\", \"pageSize\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"news-api14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://news-api14.p.rapidapi.com/top-headlines\"\nquerystring = {\"language\": \"en\", \"category\": \"sports\", \"country\": \"us\", \"sortBy\": \"\", \"pageSize\": \"10\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"news-api14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "en, zh-Hans, zh-Hant, id, cs, uk, he, ar, de, es-419, ja, ko, fr, it, lv, lt, ml, th, hu, nl, no, pl, pt-419, pt-150, ro, sk, sl, sv, vi, tr, el, bg, ru, sr, mr, hi, bn, ta, te",
+                    "default": "en",
+                    "required": false
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Possible options: business, science, sports, entertainment, health, technology\n\nDefault value: all categories",
+                    "default": "sports",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "MY, GB, CN, TW, AU, BW, ET, KR, GH, IE, KE, LV, NA, IN, BD, TH, NZ, NG, PK, PH, SG, ZA, TZ, UG, ZW, ID, CZ, DE, AT, CH, AR, EG, CL, CO, CU, US, MX, PE, VE, LB, CA, FR, MA, SN, IT, LT, HK, JP, HU, BE, NL, NO, PL, BR, PT, RO, SK, SI, SE, VN, TR, GR, BG, RU, RS, UA, IL, AE, SA",
+                    "default": "us",
+                    "required": false
+                },
+                {
+                    "name": "sortBy",
+                    "type": "ENUM",
+                    "description": "Default value: published_date",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the top headlines in the US today?",
+                    "parameters": {
+                        "country": "US"
+                    }
+                },
+                {
+                    "utterance": "Show me the latest business news in Japan.",
+                    "parameters": {
+                        "country": "JP",
+                        "category": "business"
+                    }
+                },
+                {
+                    "utterance": "Get the top 5 technology headlines in India.",
+                    "parameters": {
+                        "country": "IN",
+                        "category": "technology",
+                        "pageSize": 5
+                    }
+                },
+                {
+                    "utterance": "What are the latest sports news in the UK?",
+                    "parameters": {
+                        "country": "GB",
+                        "category": "sports"
+                    }
+                },
+                {
+                    "utterance": "Find the top health headlines in Canada.",
+                    "parameters": {
+                        "country": "CA",
+                        "category": "health"
+                    }
+                },
+                {
+                    "utterance": "Show me the top entertainment news in France.",
+                    "parameters": {
+                        "country": "FR",
+                        "category": "entertainment"
+                    }
+                },
+                {
+                    "utterance": "What are the latest science headlines in Germany?",
+                    "parameters": {
+                        "country": "DE",
+                        "category": "science"
+                    }
+                },
+                {
+                    "utterance": "Get the top 7 headlines in Spanish from Mexico.",
+                    "parameters": {
+                        "country": "MX",
+                        "language": "es-419",
+                        "pageSize": 7
+                    }
+                },
+                {
+                    "utterance": "Find the latest news in Chinese from Taiwan.",
+                    "parameters": {
+                        "country": "TW",
+                        "language": "zh-Hant"
+                    }
+                },
+                {
+                    "utterance": "Show me the top headlines in Australia sorted by published date.",
+                    "parameters": {
+                        "country": "AU",
+                        "sortBy": "published_date"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Search",
+            "url": "https://news-api14.p.rapidapi.com/search",
+            "description": "Endpoint to search news by specific keywords.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://news-api14.p.rapidapi.com/search\"\nquerystring = {\"to\": \"\", \"q\": \"computer\", \"pageSize\": \"10\", \"from\": \"\", \"country\": \"us\", \"language\": \"en\", \"sortBy\": \"\", \"publisher\": \"cnn.com,bbc.com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"news-api14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://news-api14.p.rapidapi.com/search\"\nquerystring = {\"to\": \"\", \"q\": \"computer\", \"pageSize\": \"10\", \"from\": \"\", \"country\": \"us\", \"language\": \"en\", \"sortBy\": \"\", \"publisher\": \"cnn.com,bbc.com\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"news-api14.p.rapidapi.com\"\n        }\n\nresponse = requests.get(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "statuscode": 200,
+            "schema": {},
+            "parameters": [
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "computer",
+                    "required": true
+                },
+                {
+                    "name": "to",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "The datetime string must match ISO 8601 format",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "pageSize",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "10",
+                    "required": false
+                },
+                {
+                    "name": "from",
+                    "type": "DATE (YYYY-MM-DD)",
+                    "description": "The datetime string must match ISO 8601 format",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "MY, GB, CN, TW, AU, BW, ET, KR, GH, IE, KE, LV, NA, IN, BD, TH, NZ, NG, PK, PH, SG, ZA, TZ, UG, ZW, ID, CZ, DE, AT, CH, AR, EG, CL, CO, CU, US, MX, PE, VE, LB, CA, FR, MA, SN, IT, LT, HK, JP, HU, BE, NL, NO, PL, BR, PT, RO, SK, SI, SE, VN, TR, GR, BG, RU, RS, UA, IL, AE, SA",
+                    "default": "us",
+                    "required": false
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "en, zh-Hans, zh-Hant, id, cs, uk, he, ar, de, es-419, ja, ko, fr, it, lv, lt, ml, th, hu, nl, no, pl, pt-419, pt-150, ro, sk, sl, sv, vi, tr, el, bg, ru, sr, mr, hi, bn, ta, te",
+                    "default": "en",
+                    "required": false
+                },
+                {
+                    "name": "sortBy",
+                    "type": "ENUM",
+                    "description": "Default value: random",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "publisher",
+                    "type": "STRING",
+                    "description": "A Comma-separated string of publisher's.\n\nMaximum 5 publishers.",
+                    "default": "cnn.com,bbc.com",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find news articles about climate change.",
+                    "parameters": {
+                        "q": "climate change"
+                    }
+                },
+                {
+                    "utterance": "Search for the latest news on artificial intelligence from CNN and BBC.",
+                    "parameters": {
+                        "q": "artificial intelligence",
+                        "publisher": "cnn.com,bbc.com"
+                    }
+                },
+                {
+                    "utterance": "Get news articles about the US elections published between 2023-01-01 and 2023-03-31.",
+                    "parameters": {
+                        "q": "US elections",
+                        "from": "2023-01-01",
+                        "to": "2023-03-31"
+                    }
+                },
+                {
+                    "utterance": "Find news about space exploration in French.",
+                    "parameters": {
+                        "q": "space exploration",
+                        "language": "fr"
+                    }
+                },
+                {
+                    "utterance": "Search for news articles about COVID-19 in India.",
+                    "parameters": {
+                        "q": "COVID-19",
+                        "country": "IN"
+                    }
+                },
+                {
+                    "utterance": "Get the latest news on technology from the last 7 days.",
+                    "parameters": {
+                        "q": "technology",
+                        "from": "2023-10-01",
+                        "to": "2023-10-08"
+                    }
+                },
+                {
+                    "utterance": "Find news articles about renewable energy sorted by relevance.",
+                    "parameters": {
+                        "q": "renewable energy",
+                        "sortBy": "relevance"
+                    }
+                },
+                {
+                    "utterance": "Search for news about global warming in Spanish.",
+                    "parameters": {
+                        "q": "global warming",
+                        "language": "es-419"
+                    }
+                },
+                {
+                    "utterance": "Get news articles about the Olympics in Japan.",
+                    "parameters": {
+                        "q": "Olympics",
+                        "country": "JP"
+                    }
+                },
+                {
+                    "utterance": "Find news about the stock market from The New York Times and The Wall Street Journal.",
+                    "parameters": {
+                        "q": "stock market",
+                        "publisher": "nytimes.com,wsj.com"
+                    }
+                }
+            ]
+        }
+    ],
+    "standardized_name": "news_api_v2",
+    "category": "News_Media"
+}

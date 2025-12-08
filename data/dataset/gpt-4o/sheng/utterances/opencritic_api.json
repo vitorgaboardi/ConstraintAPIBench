@@ -1,0 +1,1457 @@
+{
+    "name": "OpenCritic API",
+    "description": "An API for accessing video game and video game review data",
+    "url": "https://rapidapi.com/opencritic-opencritic-default/api/opencritic-api/",
+    "api_methods": [
+        {
+            "name": "Reviews for Game (legacy fix)",
+            "description": "Gets reviews for a specific Game ID. Uses /review/game/{id} for legacy support.",
+            "url": "https://opencritic-api.p.rapidapi.com/review/game/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "463",
+                    "required": true
+                },
+                {
+                    "name": "skip",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20",
+                    "required": false
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "Sorts reviews based on one of the following:\n\n- newest (newest reviews first, by publishedDate of the review)\n- oldest (oldest reviews first, by publishedDate of the review)\n- score-high (highest scoring reviews first, with unscored reviews last)\n- score-low (lowest scoring reviews first, with unscored reviews last)\n- popularity (based on publication popularity)\n- blend (reviews within the last 3.5 days first; otherwise, sort by popularity)",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the reviews for the game with ID 463?",
+                    "parameters": {
+                        "id": 463
+                    }
+                },
+                {
+                    "utterance": "Show me the newest reviews for the game with ID 500.",
+                    "parameters": {
+                        "id": 500,
+                        "sort": "newest"
+                    }
+                },
+                {
+                    "utterance": "I want to see the oldest reviews for the game with ID 300.",
+                    "parameters": {
+                        "id": 300,
+                        "sort": "oldest"
+                    }
+                },
+                {
+                    "utterance": "Get the highest scoring reviews for the game with ID 150.",
+                    "parameters": {
+                        "id": 150,
+                        "sort": "score-high"
+                    }
+                },
+                {
+                    "utterance": "Fetch the lowest scoring reviews for the game with ID 200.",
+                    "parameters": {
+                        "id": 200,
+                        "sort": "score-low"
+                    }
+                },
+                {
+                    "utterance": "Can you provide the most popular reviews for the game with ID 350?",
+                    "parameters": {
+                        "id": 350,
+                        "sort": "popularity"
+                    }
+                },
+                {
+                    "utterance": "I need the reviews sorted by blend for the game with ID 250.",
+                    "parameters": {
+                        "id": 250,
+                        "sort": "blend"
+                    }
+                },
+                {
+                    "utterance": "Retrieve reviews for the game with ID 400, skipping the first 20.",
+                    "parameters": {
+                        "id": 400,
+                        "skip": 20
+                    }
+                },
+                {
+                    "utterance": "Get the reviews for the game with ID 550, sorted by popularity and skip the first 10.",
+                    "parameters": {
+                        "id": 550,
+                        "sort": "popularity",
+                        "skip": 10
+                    }
+                },
+                {
+                    "utterance": "Show me the reviews for the game with ID 600, sorted by score-high.",
+                    "parameters": {
+                        "id": 600,
+                        "sort": "score-high"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/game/{id}",
+            "description": "Get game data",
+            "url": "https://opencritic-api.p.rapidapi.com/game/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The OpenCritic Game ID",
+                    "default": "463",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the details for the game with ID 463?",
+                    "parameters": {
+                        "id": 463
+                    }
+                },
+                {
+                    "utterance": "What are the reviews for the game with ID 1024?",
+                    "parameters": {
+                        "id": 1024
+                    }
+                },
+                {
+                    "utterance": "Fetch the game data for the game with ID 789.",
+                    "parameters": {
+                        "id": 789
+                    }
+                },
+                {
+                    "utterance": "I need information on the game with ID 555.",
+                    "parameters": {
+                        "id": 555
+                    }
+                },
+                {
+                    "utterance": "Get me the details of the game with ID 321.",
+                    "parameters": {
+                        "id": 321
+                    }
+                },
+                {
+                    "utterance": "What can you tell me about the game with ID 678?",
+                    "parameters": {
+                        "id": 678
+                    }
+                },
+                {
+                    "utterance": "Show me the review data for the game with ID 890.",
+                    "parameters": {
+                        "id": 890
+                    }
+                },
+                {
+                    "utterance": "I'd like to know more about the game with ID 234.",
+                    "parameters": {
+                        "id": 234
+                    }
+                },
+                {
+                    "utterance": "Please provide the game data for ID 456.",
+                    "parameters": {
+                        "id": 456
+                    }
+                },
+                {
+                    "utterance": "Can you get the information for the game with ID 999?",
+                    "parameters": {
+                        "id": 999
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/game/hall-of-fame",
+            "description": "Get the top 12 games on the OpenCritic Hall of Fame for the current year (usually changes in early February).",
+            "url": "https://opencritic-api.p.rapidapi.com/game/hall-of-fame",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What are the top 12 games in the OpenCritic Hall of Fame this year?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the current year's Hall of Fame games on OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the top games in the OpenCritic Hall of Fame for this year.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which games made it to the OpenCritic Hall of Fame this year?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'd like to know the top 12 games in the OpenCritic Hall of Fame for the current year.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the Hall of Fame games on OpenCritic for this year?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the top 12 games in the OpenCritic Hall of Fame for this year.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide the current year's top 12 Hall of Fame games on OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the best games in the OpenCritic Hall of Fame for this year?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me the top 12 games in the OpenCritic Hall of Fame for the current year.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "General Search",
+            "description": "Search a combination of Outlet, Game, and Author by String",
+            "url": "https://opencritic-api.p.rapidapi.com/meta/search",
+            "parameters": [
+                {
+                    "name": "criteria",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "god is of",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find reviews for the game 'The Last of Us Part II'.",
+                    "parameters": {
+                        "criteria": "The Last of Us Part II"
+                    }
+                },
+                {
+                    "utterance": "Search for articles by the author 'Jason Schreier'.",
+                    "parameters": {
+                        "criteria": "Jason Schreier"
+                    }
+                },
+                {
+                    "utterance": "Look up reviews from 'IGN' for the latest games.",
+                    "parameters": {
+                        "criteria": "IGN"
+                    }
+                },
+                {
+                    "utterance": "Find reviews for 'Cyberpunk 2077'.",
+                    "parameters": {
+                        "criteria": "Cyberpunk 2077"
+                    }
+                },
+                {
+                    "utterance": "Search for game reviews by 'Polygon'.",
+                    "parameters": {
+                        "criteria": "Polygon"
+                    }
+                },
+                {
+                    "utterance": "Look up articles by 'Keza MacDonald'.",
+                    "parameters": {
+                        "criteria": "Keza MacDonald"
+                    }
+                },
+                {
+                    "utterance": "Find reviews for 'Red Dead Redemption 2'.",
+                    "parameters": {
+                        "criteria": "Red Dead Redemption 2"
+                    }
+                },
+                {
+                    "utterance": "Search for reviews from 'GameSpot'.",
+                    "parameters": {
+                        "criteria": "GameSpot"
+                    }
+                },
+                {
+                    "utterance": "Look up reviews for 'Hades'.",
+                    "parameters": {
+                        "criteria": "Hades"
+                    }
+                },
+                {
+                    "utterance": "Find articles by 'Tom Phillips'.",
+                    "parameters": {
+                        "criteria": "Tom Phillips"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "All Outlet Profiles",
+            "description": "Get all Outlet profiles",
+            "url": "https://opencritic-api.p.rapidapi.com/outlet",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Show me all the gaming review outlets available.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the video game review outlets.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide a list of all gaming outlets?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to see all the outlets that review video games.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch all the profiles of video game review outlets.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me a comprehensive list of all video game outlets.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the different outlets that review video games?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Retrieve all the profiles of gaming review outlets.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list all the outlets that provide video game reviews?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to know all the video game review outlets.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Game Search",
+            "description": "Searches OpenCritic for games with similar names/titles. Search results are based on inverse trigram distance, with 0 being a perfect match and 1 being no shared/overlapping trigrams. See the [pg_trgm](https://www.postgresql.org/docs/current/pgtrgm.html) library for more information.",
+            "url": "https://opencritic-api.p.rapidapi.com/game/search",
+            "parameters": [
+                {
+                    "name": "criteria",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "the withcer 3",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find games similar to The Legend of Zelda: Breath of the Wild.",
+                    "parameters": {
+                        "criteria": "The Legend of Zelda: Breath of the Wild"
+                    }
+                },
+                {
+                    "utterance": "Search for games that are like Red Dead Redemption 2.",
+                    "parameters": {
+                        "criteria": "Red Dead Redemption 2"
+                    }
+                },
+                {
+                    "utterance": "Look up games with titles similar to Cyberpunk 2077.",
+                    "parameters": {
+                        "criteria": "Cyberpunk 2077"
+                    }
+                },
+                {
+                    "utterance": "Can you find games that have a similar name to God of War?",
+                    "parameters": {
+                        "criteria": "God of War"
+                    }
+                },
+                {
+                    "utterance": "Search for video games with names close to Final Fantasy XV.",
+                    "parameters": {
+                        "criteria": "Final Fantasy XV"
+                    }
+                },
+                {
+                    "utterance": "Find games that are similar in title to Assassin's Creed Valhalla.",
+                    "parameters": {
+                        "criteria": "Assassin's Creed Valhalla"
+                    }
+                },
+                {
+                    "utterance": "Look for games with names like Horizon Zero Dawn.",
+                    "parameters": {
+                        "criteria": "Horizon Zero Dawn"
+                    }
+                },
+                {
+                    "utterance": "Search for games with titles similar to The Last of Us Part II.",
+                    "parameters": {
+                        "criteria": "The Last of Us Part II"
+                    }
+                },
+                {
+                    "utterance": "Find games that have a similar name to Ghost of Tsushima.",
+                    "parameters": {
+                        "criteria": "Ghost of Tsushima"
+                    }
+                },
+                {
+                    "utterance": "Look up games with titles close to Resident Evil Village.",
+                    "parameters": {
+                        "criteria": "Resident Evil Village"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/game/popular",
+            "description": "Gets the most popular games on OpenCritic, using a blend of page views, recent reviews, and the notoriety of publications that have reviewed it",
+            "url": "https://opencritic-api.p.rapidapi.com/game/popular",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What are the most popular games right now?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the top trending games on OpenCritic.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which games are currently the most popular according to recent reviews?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the most popular video games at the moment?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the top games based on page views and reviews?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Find the games that are trending now on OpenCritic.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the most talked-about games currently?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me a list of the most popular games according to OpenCritic.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which games have the highest popularity on OpenCritic right now?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show the most popular games based on recent reviews and publication notoriety.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/game",
+            "description": "Query for searching game listings",
+            "url": "https://opencritic-api.p.rapidapi.com/game",
+            "parameters": [
+                {
+                    "name": "platforms",
+                    "type": "STRING",
+                    "description": "Platforms to search in a comma-separated list. Valid values are:\n\nall,ps4,xb1,pc,wii-u,vita,switch,oculus,vive,psvr,3ds,xbsx,ps5,stadia,vive",
+                    "default": "ps4,ps5",
+                    "required": false
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "order",
+                    "type": "ENUM",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "skip",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the top-rated games available on PS5 and Xbox Series X.",
+                    "parameters": {
+                        "platforms": "ps5,xbsx"
+                    }
+                },
+                {
+                    "utterance": "List the latest games for PC and Switch.",
+                    "parameters": {
+                        "platforms": "pc,switch",
+                        "sort": "release_date",
+                        "order": "desc"
+                    }
+                },
+                {
+                    "utterance": "Find the most popular games on Oculus and Vive.",
+                    "parameters": {
+                        "platforms": "oculus,vive",
+                        "sort": "popularity",
+                        "order": "desc"
+                    }
+                },
+                {
+                    "utterance": "What are the highest-rated games on PS4?",
+                    "parameters": {
+                        "platforms": "ps4",
+                        "sort": "rating",
+                        "order": "desc"
+                    }
+                },
+                {
+                    "utterance": "Show me the newest releases for Stadia.",
+                    "parameters": {
+                        "platforms": "stadia",
+                        "sort": "release_date",
+                        "order": "desc"
+                    }
+                },
+                {
+                    "utterance": "List the top 10 games for Xbox One.",
+                    "parameters": {
+                        "platforms": "xb1",
+                        "sort": "rating",
+                        "order": "desc",
+                        "skip": 10
+                    }
+                },
+                {
+                    "utterance": "Find games available on both PSVR and Vive.",
+                    "parameters": {
+                        "platforms": "psvr,vive"
+                    }
+                },
+                {
+                    "utterance": "What are the best games for the Nintendo 3DS?",
+                    "parameters": {
+                        "platforms": "3ds",
+                        "sort": "rating",
+                        "order": "desc"
+                    }
+                },
+                {
+                    "utterance": "Show me the most recent games for the Wii U.",
+                    "parameters": {
+                        "platforms": "wii-u",
+                        "sort": "release_date",
+                        "order": "desc"
+                    }
+                },
+                {
+                    "utterance": "List the top-rated games for the PlayStation Vita.",
+                    "parameters": {
+                        "platforms": "vita",
+                        "sort": "rating",
+                        "order": "desc"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Score Format",
+            "description": "Gets OpenCritic Score Formats",
+            "url": "https://opencritic-api.p.rapidapi.com/score-format",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "Author Search",
+            "description": "Search for an Author",
+            "url": "https://opencritic-api.p.rapidapi.com/author/search",
+            "parameters": [
+                {
+                    "name": "criteria",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "travis north",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find reviews by the author John Doe.",
+                    "parameters": {
+                        "criteria": "John Doe"
+                    }
+                },
+                {
+                    "utterance": "Search for articles written by Emily Clark.",
+                    "parameters": {
+                        "criteria": "Emily Clark"
+                    }
+                },
+                {
+                    "utterance": "Look up game reviews authored by Michael Smith.",
+                    "parameters": {
+                        "criteria": "Michael Smith"
+                    }
+                },
+                {
+                    "utterance": "Get all publications by Sarah Johnson.",
+                    "parameters": {
+                        "criteria": "Sarah Johnson"
+                    }
+                },
+                {
+                    "utterance": "Find the latest reviews from David Brown.",
+                    "parameters": {
+                        "criteria": "David Brown"
+                    }
+                },
+                {
+                    "utterance": "Search for video game critiques by Jessica Lee.",
+                    "parameters": {
+                        "criteria": "Jessica Lee"
+                    }
+                },
+                {
+                    "utterance": "Look up articles by Chris Wilson.",
+                    "parameters": {
+                        "criteria": "Chris Wilson"
+                    }
+                },
+                {
+                    "utterance": "Find reviews authored by Amanda Martinez.",
+                    "parameters": {
+                        "criteria": "Amanda Martinez"
+                    }
+                },
+                {
+                    "utterance": "Search for game reviews by Robert Garcia.",
+                    "parameters": {
+                        "criteria": "Robert Garcia"
+                    }
+                },
+                {
+                    "utterance": "Get critiques written by Linda Rodriguez.",
+                    "parameters": {
+                        "criteria": "Linda Rodriguez"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/game/reviewed-this-week",
+            "description": "Gets the most reviewed games this week",
+            "url": "https://opencritic-api.p.rapidapi.com/game/reviewed-this-week",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What are the most reviewed games this week?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you show me the top reviewed games for this week?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which games have received the most reviews this week?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the games with the highest number of reviews this week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I'm curious about the most talked-about games this week. Can you tell me which ones they are?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the trending games based on reviews this week?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide a list of the most reviewed video games this week?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which video games have been reviewed the most this week?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the games that have received the most attention from reviewers this week.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the top games in terms of reviews for this week?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Genre",
+            "description": "Gets OpenCritic genres",
+            "url": "https://opencritic-api.p.rapidapi.com/genre",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What are the different video game genres available on OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list all the genres of games that OpenCritic covers?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the genres of video games that are reviewed on OpenCritic.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What genres does OpenCritic categorize video games into?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know the various game genres listed on OpenCritic.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide a list of all game genres available on OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me about the different genres of video games on OpenCritic.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the categories of video games according to OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the video game genres that OpenCritic has data on.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me the genres of games that OpenCritic reviews?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Platform",
+            "description": "Gets OpenCritic Platforms",
+            "url": "https://opencritic-api.p.rapidapi.com/platform",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "Reviews for Outlet",
+            "description": "Gets reviews for a specific Outlet ID",
+            "url": "https://opencritic-api.p.rapidapi.com/review/outlet/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "56",
+                    "required": true
+                },
+                {
+                    "name": "skip",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20",
+                    "required": false
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "Sorts reviews based on one of the following:\n\n- newest (newest reviews first, by publishedDate of the review)\n- oldest (oldest reviews first, by publishedDate of the review)\n- score-high (highest scoring reviews first, with unscored reviews last)\n- score-low (lowest scoring reviews first, with unscored reviews last)\n- popularity (based on publication popularity)\n- blend (reviews within the last 3.5 days first; otherwise, sort by popularity)",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the latest reviews from outlet ID 56?",
+                    "parameters": {
+                        "id": 56,
+                        "sort": "newest"
+                    }
+                },
+                {
+                    "utterance": "Show me the most popular reviews from outlet ID 42.",
+                    "parameters": {
+                        "id": 42,
+                        "sort": "popularity"
+                    }
+                },
+                {
+                    "utterance": "Fetch the reviews with the highest scores from outlet ID 78.",
+                    "parameters": {
+                        "id": 78,
+                        "sort": "score-high"
+                    }
+                },
+                {
+                    "utterance": "Get the oldest reviews available from outlet ID 34.",
+                    "parameters": {
+                        "id": 34,
+                        "sort": "oldest"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the reviews with the lowest scores from outlet ID 90.",
+                    "parameters": {
+                        "id": 90,
+                        "sort": "score-low"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the reviews from outlet ID 56, skipping the first 20?",
+                    "parameters": {
+                        "id": 56,
+                        "skip": 20
+                    }
+                },
+                {
+                    "utterance": "I want to see the blended reviews from outlet ID 67.",
+                    "parameters": {
+                        "id": 67,
+                        "sort": "blend"
+                    }
+                },
+                {
+                    "utterance": "Please provide the newest reviews from outlet ID 56, skipping the first 10.",
+                    "parameters": {
+                        "id": 56,
+                        "skip": 10,
+                        "sort": "newest"
+                    }
+                },
+                {
+                    "utterance": "Get the most popular reviews from outlet ID 23, skipping the first 5.",
+                    "parameters": {
+                        "id": 23,
+                        "skip": 5,
+                        "sort": "popularity"
+                    }
+                },
+                {
+                    "utterance": "Show me the reviews sorted by blend from outlet ID 56.",
+                    "parameters": {
+                        "id": 56,
+                        "sort": "blend"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Reviews for Author",
+            "description": "Gets reviews for a specific Author ID",
+            "url": "https://opencritic-api.p.rapidapi.com/review/author/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "481",
+                    "required": true
+                },
+                {
+                    "name": "skip",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20",
+                    "required": false
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "Sorts reviews based on one of the following:\n\n- newest (newest reviews first, by publishedDate of the review)\n- oldest (oldest reviews first, by publishedDate of the review)\n- score-high (highest scoring reviews first, with unscored reviews last)\n- score-low (lowest scoring reviews first, with unscored reviews last)\n- popularity (based on publication popularity)\n- blend (reviews within the last 3.5 days first; otherwise, sort by popularity)",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the latest reviews for author ID 481?",
+                    "parameters": {
+                        "id": 481,
+                        "sort": "newest"
+                    }
+                },
+                {
+                    "utterance": "Show me the most popular reviews by author ID 481.",
+                    "parameters": {
+                        "id": 481,
+                        "sort": "popularity"
+                    }
+                },
+                {
+                    "utterance": "Fetch the reviews with the highest scores for author ID 481.",
+                    "parameters": {
+                        "id": 481,
+                        "sort": "score-high"
+                    }
+                },
+                {
+                    "utterance": "I want to see the oldest reviews from author ID 481.",
+                    "parameters": {
+                        "id": 481,
+                        "sort": "oldest"
+                    }
+                },
+                {
+                    "utterance": "Get the reviews with the lowest scores for author ID 481.",
+                    "parameters": {
+                        "id": 481,
+                        "sort": "score-low"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the reviews for author ID 481, starting from the 20th review.",
+                    "parameters": {
+                        "id": 481,
+                        "skip": 20
+                    }
+                },
+                {
+                    "utterance": "Can you show me a blend of recent and popular reviews for author ID 481?",
+                    "parameters": {
+                        "id": 481,
+                        "sort": "blend"
+                    }
+                },
+                {
+                    "utterance": "Please provide the reviews sorted by popularity for author ID 481.",
+                    "parameters": {
+                        "id": 481,
+                        "sort": "popularity"
+                    }
+                },
+                {
+                    "utterance": "I need to see the newest reviews for author ID 481, skipping the first 20.",
+                    "parameters": {
+                        "id": 481,
+                        "skip": 20,
+                        "sort": "newest"
+                    }
+                },
+                {
+                    "utterance": "Get me the reviews sorted by the lowest scores for author ID 481, starting after the first 20.",
+                    "parameters": {
+                        "id": 481,
+                        "skip": 20,
+                        "sort": "score-low"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Outlet Profile",
+            "description": "Gets a given outlet's profile",
+            "url": "https://opencritic-api.p.rapidapi.com/outlet/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "The Outlet's ID",
+                    "default": "56",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the profile for the outlet with ID 56?",
+                    "parameters": {
+                        "id": 56
+                    }
+                },
+                {
+                    "utterance": "I need the profile details for the outlet with ID 102.",
+                    "parameters": {
+                        "id": 102
+                    }
+                },
+                {
+                    "utterance": "Fetch the profile of the outlet with ID 78.",
+                    "parameters": {
+                        "id": 78
+                    }
+                },
+                {
+                    "utterance": "What is the profile information for the outlet with ID 34?",
+                    "parameters": {
+                        "id": 34
+                    }
+                },
+                {
+                    "utterance": "Retrieve the profile for the outlet with ID 89.",
+                    "parameters": {
+                        "id": 89
+                    }
+                },
+                {
+                    "utterance": "Get the profile for the outlet with ID 45.",
+                    "parameters": {
+                        "id": 45
+                    }
+                },
+                {
+                    "utterance": "I want to see the profile of the outlet with ID 67.",
+                    "parameters": {
+                        "id": 67
+                    }
+                },
+                {
+                    "utterance": "Please provide the profile for the outlet with ID 23.",
+                    "parameters": {
+                        "id": 23
+                    }
+                },
+                {
+                    "utterance": "Show me the profile for the outlet with ID 91.",
+                    "parameters": {
+                        "id": 91
+                    }
+                },
+                {
+                    "utterance": "Can you get the profile for the outlet with ID 12?",
+                    "parameters": {
+                        "id": 12
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Author Profile",
+            "description": "Gets an Author's profile data on OpenCritic",
+            "url": "https://opencritic-api.p.rapidapi.com/author/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "Author ID",
+                    "default": "481",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the profile of the author with ID 481?",
+                    "parameters": {
+                        "id": 481
+                    }
+                },
+                {
+                    "utterance": "I need the profile details for the author with ID 123.",
+                    "parameters": {
+                        "id": 123
+                    }
+                },
+                {
+                    "utterance": "Fetch the author profile for ID 789.",
+                    "parameters": {
+                        "id": 789
+                    }
+                },
+                {
+                    "utterance": "Retrieve the profile information for the author with ID 456.",
+                    "parameters": {
+                        "id": 456
+                    }
+                },
+                {
+                    "utterance": "Get the author profile data for ID 321.",
+                    "parameters": {
+                        "id": 321
+                    }
+                },
+                {
+                    "utterance": "What is the profile of the author with ID 654?",
+                    "parameters": {
+                        "id": 654
+                    }
+                },
+                {
+                    "utterance": "I want to see the author profile for ID 987.",
+                    "parameters": {
+                        "id": 987
+                    }
+                },
+                {
+                    "utterance": "Please provide the profile of the author with ID 159.",
+                    "parameters": {
+                        "id": 159
+                    }
+                },
+                {
+                    "utterance": "Show me the author profile for ID 753.",
+                    "parameters": {
+                        "id": 753
+                    }
+                },
+                {
+                    "utterance": "Access the profile of the author with ID 852.",
+                    "parameters": {
+                        "id": 852
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/game/reviewed-today",
+            "description": "Gets the 10 games that have been most reviewed today.",
+            "url": "https://opencritic-api.p.rapidapi.com/game/reviewed-today",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What are the top 10 most reviewed games today?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the games that received the most reviews today?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the 10 games with the highest number of reviews today.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which games have been reviewed the most today?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know the top 10 games in terms of reviews today.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the games that have been most frequently reviewed today.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are today's most reviewed video games?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me which games got the most reviews today?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Find the 10 games with the most reviews today.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which video games have been reviewed the most today?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/game/hall-of-fame/{year}",
+            "description": "Gets the Hall of Fame for a specific year",
+            "url": "https://opencritic-api.p.rapidapi.com/game/hall-of-fame/{year}",
+            "parameters": [
+                {
+                    "name": "year",
+                    "type": "NUMBER",
+                    "description": "Year between 2016 and the current calendar year",
+                    "default": "2020",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the Hall of Fame games for 2018?",
+                    "parameters": {
+                        "year": 2018
+                    }
+                },
+                {
+                    "utterance": "Show me the top games in the Hall of Fame for 2021.",
+                    "parameters": {
+                        "year": 2021
+                    }
+                },
+                {
+                    "utterance": "Can you list the Hall of Fame games for the year 2019?",
+                    "parameters": {
+                        "year": 2019
+                    }
+                },
+                {
+                    "utterance": "Which games made it to the Hall of Fame in 2020?",
+                    "parameters": {
+                        "year": 2020
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the Hall of Fame games for 2017.",
+                    "parameters": {
+                        "year": 2017
+                    }
+                },
+                {
+                    "utterance": "Get me the Hall of Fame video games for 2022.",
+                    "parameters": {
+                        "year": 2022
+                    }
+                },
+                {
+                    "utterance": "What were the Hall of Fame games in 2016?",
+                    "parameters": {
+                        "year": 2016
+                    }
+                },
+                {
+                    "utterance": "Find the Hall of Fame games for the year 2023.",
+                    "parameters": {
+                        "year": 2023
+                    }
+                },
+                {
+                    "utterance": "Could you provide the Hall of Fame games for 2024?",
+                    "parameters": {
+                        "year": 2024
+                    }
+                },
+                {
+                    "utterance": "Tell me the Hall of Fame games for 2025.",
+                    "parameters": {
+                        "year": 2025
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/game/recently-released",
+            "description": "Gets the 8 most recently released major titles on OpenCritic",
+            "url": "https://opencritic-api.p.rapidapi.com/game/recently-released",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What are the 8 most recently released major video games?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the latest major titles that have been released.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the newest major games available on OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the latest major video game releases?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me the most recent major game titles released.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the newest major games that have come out recently?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the 8 latest major video game releases.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the most recent major titles in the gaming world?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide the latest major game releases?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show the most recently released major games.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/game/upcoming",
+            "description": "Gets the next 8 upcoming major titles on OpenCritic",
+            "url": "https://opencritic-api.p.rapidapi.com/game/upcoming",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "What are the next 8 major video game titles coming up on OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the upcoming major games according to OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the next 8 major releases in the gaming world as per OpenCritic.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the upcoming major video game releases on OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the next 8 major video game titles that are about to be released according to OpenCritic.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide the upcoming major game titles from OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the next major games to be released as listed on OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the upcoming major video game titles on OpenCritic.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the next 8 major games coming soon according to OpenCritic?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the upcoming major video game releases on OpenCritic?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "Reviews for Game",
+            "description": "Gets reviews for a specific Game ID",
+            "url": "https://opencritic-api.p.rapidapi.com/reviews/game/{id}",
+            "parameters": [
+                {
+                    "name": "id",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "463",
+                    "required": true
+                },
+                {
+                    "name": "sort",
+                    "type": "ENUM",
+                    "description": "Sorts reviews based on one of the following:\n\n- newest (newest reviews first, by publishedDate of the review)\n- oldest (oldest reviews first, by publishedDate of the review)\n- score-high (highest scoring reviews first, with unscored reviews last)\n- score-low (lowest scoring reviews first, with unscored reviews last)\n- popularity (based on publication popularity)\n- blend (reviews within the last 3.5 days first; otherwise, sort by popularity)",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "skip",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "20",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get the newest reviews for the game with ID 463?",
+                    "parameters": {
+                        "id": 463,
+                        "sort": "newest"
+                    }
+                },
+                {
+                    "utterance": "Fetch the oldest reviews for the game with ID 500.",
+                    "parameters": {
+                        "id": 500,
+                        "sort": "oldest"
+                    }
+                },
+                {
+                    "utterance": "Show me the highest scoring reviews for the game with ID 300.",
+                    "parameters": {
+                        "id": 300,
+                        "sort": "score-high"
+                    }
+                },
+                {
+                    "utterance": "I want to see the lowest scoring reviews for the game with ID 150.",
+                    "parameters": {
+                        "id": 150,
+                        "sort": "score-low"
+                    }
+                },
+                {
+                    "utterance": "Get the most popular reviews for the game with ID 200.",
+                    "parameters": {
+                        "id": 200,
+                        "sort": "popularity"
+                    }
+                },
+                {
+                    "utterance": "Retrieve reviews sorted by blend for the game with ID 350.",
+                    "parameters": {
+                        "id": 350,
+                        "sort": "blend"
+                    }
+                },
+                {
+                    "utterance": "Can you skip the first 10 reviews and show the rest for the game with ID 463?",
+                    "parameters": {
+                        "id": 463,
+                        "skip": 10
+                    }
+                },
+                {
+                    "utterance": "Please skip the first 5 reviews and get the rest for the game with ID 250.",
+                    "parameters": {
+                        "id": 250,
+                        "skip": 5
+                    }
+                },
+                {
+                    "utterance": "Get reviews for the game with ID 400, sorted by newest, skipping the first 15.",
+                    "parameters": {
+                        "id": 400,
+                        "sort": "newest",
+                        "skip": 15
+                    }
+                },
+                {
+                    "utterance": "Fetch the reviews for the game with ID 100, sorted by popularity, skipping the first 20.",
+                    "parameters": {
+                        "id": 100,
+                        "sort": "popularity",
+                        "skip": 20
+                    }
+                }
+            ]
+        }
+    ]
+}

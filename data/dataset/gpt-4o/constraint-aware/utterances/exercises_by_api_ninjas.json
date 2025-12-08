@@ -1,0 +1,166 @@
+{
+    "name": "Exercises by API-Ninjas",
+    "description": "Get workout exercises for every muscle group. See more info at https://api-ninjas.com/api/exercises.",
+    "url": "https://rapidapi.com/apininjas/api/exercises-by-api-ninjas/",
+    "api_methods": [
+        {
+            "name": "/v1/exercises",
+            "description": "API Ninjas Exercises API endpoint. Returns up to 10 exercises that satisfy the given parameters.",
+            "url": "https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises",
+            "parameters": [
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "number of results to offset for pagination. Default is 0.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "muscle",
+                    "type": "STRING",
+                    "description": "muscle group targeted by the exercise. Possible values are:\n\nabdominals\nabductors\nadductors\nbiceps\ncalves\nchest\nforearms\nglutes\nhamstrings\nlats\nlower_back\nmiddle_back\nneck\nquadriceps\ntraps\ntriceps",
+                    "default": "biceps",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "abdominals",
+                                "abductors",
+                                "adductors",
+                                "biceps",
+                                "calves",
+                                "chest",
+                                "forearms",
+                                "glutes",
+                                "hamstrings",
+                                "lats",
+                                "lower_back",
+                                "middle_back",
+                                "neck",
+                                "quadriceps",
+                                "traps",
+                                "triceps"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "exercise type. Possible values are:\n\ncardio\nolympic_weightlifting\nplyometrics\npowerlifting\nstrength\nstretching\nstrongman",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "cardio",
+                                "olympic_weightlifting",
+                                "plyometrics",
+                                "powerlifting",
+                                "strength",
+                                "stretching",
+                                "strongman"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "difficulty",
+                    "type": "STRING",
+                    "description": "difficulty level of the exercise. Possible values are:\n\nbeginner\nintermediate\nexpert",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "beginner",
+                                "intermediate",
+                                "expert"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "name of exercise. This value can be partial (e.g. press will match Dumbbell Bench Press)",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you suggest some beginner exercises for the chest?",
+                    "parameters": {
+                        "muscle": "chest",
+                        "difficulty": "beginner"
+                    }
+                },
+                {
+                    "utterance": "I'm looking for some strength exercises targeting the calves.",
+                    "parameters": {
+                        "muscle": "calves",
+                        "type": "strength"
+                    }
+                },
+                {
+                    "utterance": "What are some expert-level plyometrics exercises?",
+                    "parameters": {
+                        "type": "plyometrics",
+                        "difficulty": "expert"
+                    }
+                },
+                {
+                    "utterance": "Show me some exercises for the forearms.",
+                    "parameters": {
+                        "muscle": "forearms"
+                    }
+                },
+                {
+                    "utterance": "Do you have any stretching exercises for the neck?",
+                    "parameters": {
+                        "muscle": "neck",
+                        "type": "stretching"
+                    }
+                },
+                {
+                    "utterance": "Find some powerlifting exercises for the lower back.",
+                    "parameters": {
+                        "muscle": "lower_back",
+                        "type": "powerlifting"
+                    }
+                },
+                {
+                    "utterance": "Can you give me some intermediate exercises for the glutes?",
+                    "parameters": {
+                        "muscle": "glutes",
+                        "difficulty": "intermediate"
+                    }
+                },
+                {
+                    "utterance": "I'm interested in strongman exercises for the traps.",
+                    "parameters": {
+                        "muscle": "traps",
+                        "type": "strongman"
+                    }
+                },
+                {
+                    "utterance": "What are some exercises that include the word 'press'?",
+                    "parameters": {
+                        "name": "press"
+                    }
+                },
+                {
+                    "utterance": "Could you list some cardio exercises for the adductors?",
+                    "parameters": {
+                        "muscle": "adductors",
+                        "type": "cardio"
+                    }
+                }
+            ]
+        }
+    ]
+}

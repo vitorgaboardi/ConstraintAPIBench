@@ -1,0 +1,183 @@
+{
+    "name": "Book Finder",
+    "description": "Find books by title, author, series, and reading complexity. Try the demo: [https://bookfinder-1-r7047837.deta.app](https://bookfinder-1-r7047837.deta.app/)",
+    "url": "https://rapidapi.com/dfskGT/api/book-finder1/",
+    "api_methods": [
+        {
+            "name": "Find books",
+            "description": "Search books using optional title, author, series, book type, categories, and [lexile measure](https://lexile.com/educators/understanding-lexile-measures/) range.",
+            "url": "https://book-finder1.p.rapidapi.com/api/search",
+            "parameters": [
+                {
+                    "name": "book_type",
+                    "type": "STRING",
+                    "description": "Book type, fiction or nonfiction.",
+                    "default": "Fiction",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "fiction",
+                                "nonfiction"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "categories",
+                    "type": "STRING",
+                    "description": "Semicolon separated book categories to search for, e.g., 'Mystery & Suspense; Science Fiction & Fantasy'. Available categories include: ['Animals, Bugs & Pets', 'Art, Creativity & Music', 'General Literature', 'Hobbies, Sports & Outdoors', 'Science Fiction & Fantasy', 'Real Life', 'Science & Technology', 'Mystery & Suspense', 'Reference']",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "Animals, Bugs & Pets",
+                                "Art, Creativity & Music",
+                                "General Literature",
+                                "Hobbies, Sports & Outdoors",
+                                "Science Fiction & Fantasy",
+                                "Real Life",
+                                "Science & Technology",
+                                "Mystery & Suspense",
+                                "Reference"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "lexile_max",
+                    "type": "NUMBER",
+                    "description": "Maximum Lexile measure.",
+                    "default": "800",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "series",
+                    "type": "STRING",
+                    "description": "Series name.",
+                    "default": "Wings of fire",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "lexile_min",
+                    "type": "NUMBER",
+                    "description": "Minimum Lexile measure.",
+                    "default": "600",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Page of the results.",
+                    "default": 1,
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "author",
+                    "type": "STRING",
+                    "description": "Name of the author.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "title",
+                    "type": "STRING",
+                    "description": "Terms to be appeared in book title.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "results_per_page",
+                    "type": "NUMBER",
+                    "description": "Results per page.",
+                    "default": 25,
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find some fiction books by J.K. Rowling?",
+                    "parameters": {
+                        "book_type": "fiction",
+                        "author": "J.K. Rowling"
+                    }
+                },
+                {
+                    "utterance": "I'm looking for books in the 'Science Fiction & Fantasy' category with a Lexile measure between 700 and 900.",
+                    "parameters": {
+                        "categories": "Science Fiction & Fantasy",
+                        "lexile_min": 700,
+                        "lexile_max": 900
+                    }
+                },
+                {
+                    "utterance": "Show me nonfiction books about 'Real Life' topics.",
+                    "parameters": {
+                        "book_type": "nonfiction",
+                        "categories": "Real Life"
+                    }
+                },
+                {
+                    "utterance": "Find books in the 'Wings of Fire' series.",
+                    "parameters": {
+                        "series": "Wings of Fire"
+                    }
+                },
+                {
+                    "utterance": "Do you have any books by George Orwell with a Lexile measure under 800?",
+                    "parameters": {
+                        "author": "George Orwell",
+                        "lexile_max": 800
+                    }
+                },
+                {
+                    "utterance": "I'm interested in 'Mystery & Suspense' books with a Lexile measure starting from 500.",
+                    "parameters": {
+                        "categories": "Mystery & Suspense",
+                        "lexile_min": 500
+                    }
+                },
+                {
+                    "utterance": "Can you find books with the title 'The Great Adventure'?",
+                    "parameters": {
+                        "title": "The Great Adventure"
+                    }
+                },
+                {
+                    "utterance": "Show me some 'Art, Creativity & Music' books by Pablo Picasso.",
+                    "parameters": {
+                        "categories": "Art, Creativity & Music",
+                        "author": "Pablo Picasso"
+                    }
+                },
+                {
+                    "utterance": "I'm looking for 'Science & Technology' books with a Lexile measure between 600 and 1000.",
+                    "parameters": {
+                        "categories": "Science & Technology",
+                        "lexile_min": 600,
+                        "lexile_max": 1000
+                    }
+                },
+                {
+                    "utterance": "Find nonfiction books with the title 'The World of Nature'.",
+                    "parameters": {
+                        "book_type": "nonfiction",
+                        "title": "The World of Nature"
+                    }
+                }
+            ]
+        }
+    ]
+}

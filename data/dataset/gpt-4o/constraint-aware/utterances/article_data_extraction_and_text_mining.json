@@ -1,0 +1,227 @@
+{
+    "name": "Article Data Extraction and Text Mining",
+    "description": "Ujeebu Article Extraction API extracts clean text, and other structured data from news and blog articles.",
+    "url": "https://rapidapi.com/lexper/api/article-data-extraction-and-text-mining/",
+    "api_methods": [
+        {
+            "name": "/v1.1/card",
+            "description": "Extract a preview of an article (article card). This is faster than the extract endpoint as it doesn't do any in-depth analysis of the content of the article, and instead mostly relies on its meta tags.",
+            "url": "https://lexper.p.rapidapi.com/v1.1/card",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "URL of article to preview.\n",
+                    "default": "https://thenextweb.com/news/pixel-6-teaser",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "js_timeout",
+                    "type": "NUMBER",
+                    "description": "when JavaScript is enabled, indicates how many seconds the API should wait for the JS interpreter before starting the extraction.\n",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "js",
+                    "type": "ENUM",
+                    "description": "indicates whether to execute JavaScript or not.\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you give me a quick preview of the article at https://thenextweb.com/news/pixel-6-teaser?",
+                    "parameters": {
+                        "url": "https://thenextweb.com/news/pixel-6-teaser"
+                    }
+                },
+                {
+                    "utterance": "I need a summary of the article from https://www.bbc.com/news/technology-56933733 with JavaScript enabled.",
+                    "parameters": {
+                        "url": "https://www.bbc.com/news/technology-56933733",
+                        "js": "true"
+                    }
+                },
+                {
+                    "utterance": "Fetch a preview for the article at https://www.cnn.com/2023/10/01/world/climate-change-report/index.html and wait 45 seconds for JavaScript.",
+                    "parameters": {
+                        "url": "https://www.cnn.com/2023/10/01/world/climate-change-report/index.html",
+                        "js_timeout": 45
+                    }
+                },
+                {
+                    "utterance": "Get me the article card for https://www.nytimes.com/2023/09/30/business/economy/inflation-economy.html without running JavaScript.",
+                    "parameters": {
+                        "url": "https://www.nytimes.com/2023/09/30/business/economy/inflation-economy.html",
+                        "js": "false"
+                    }
+                },
+                {
+                    "utterance": "I'd like a quick extract of the article at https://www.forbes.com/sites/johnmauldin/2023/10/02/market-outlook/ with JavaScript execution.",
+                    "parameters": {
+                        "url": "https://www.forbes.com/sites/johnmauldin/2023/10/02/market-outlook/",
+                        "js": "true"
+                    }
+                },
+                {
+                    "utterance": "Preview the article from https://www.theguardian.com/world/2023/oct/03/global-warming-effects and set the JavaScript timeout to 60 seconds.",
+                    "parameters": {
+                        "url": "https://www.theguardian.com/world/2023/oct/03/global-warming-effects",
+                        "js_timeout": 60
+                    }
+                },
+                {
+                    "utterance": "Can you extract a preview from https://www.washingtonpost.com/politics/2023/10/04/election-updates/ without JavaScript?",
+                    "parameters": {
+                        "url": "https://www.washingtonpost.com/politics/2023/10/04/election-updates/",
+                        "js": "false"
+                    }
+                },
+                {
+                    "utterance": "I need a brief overview of the article at https://www.bloomberg.com/news/articles/2023-10-05/stock-market-analysis with JavaScript enabled and a 20-second timeout.",
+                    "parameters": {
+                        "url": "https://www.bloomberg.com/news/articles/2023-10-05/stock-market-analysis",
+                        "js": "true",
+                        "js_timeout": 20
+                    }
+                },
+                {
+                    "utterance": "Get a quick summary of the article at https://www.reuters.com/business/finance/2023/10/06/financial-markets-overview/ and execute JavaScript.",
+                    "parameters": {
+                        "url": "https://www.reuters.com/business/finance/2023/10/06/financial-markets-overview/",
+                        "js": "true"
+                    }
+                },
+                {
+                    "utterance": "Please provide a preview of the article from https://www.techcrunch.com/2023/10/07/startup-funding-trends/ with a 15-second JavaScript timeout.",
+                    "parameters": {
+                        "url": "https://www.techcrunch.com/2023/10/07/startup-funding-trends/",
+                        "js_timeout": 15
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/v1.1/extract",
+            "description": "Article Extraction Endpoint",
+            "url": "https://lexper.p.rapidapi.com/v1.1/extract",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "URL",
+                    "default": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "media",
+                    "type": "BOOLEAN",
+                    "description": "extract media",
+                    "default": "true",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "js",
+                    "type": "ENUM",
+                    "description": "indicates whether to execute JavaScript or not. ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "js_timeout",
+                    "type": "NUMBER",
+                    "description": "when JavaScript is enabled, indicates how many seconds the API should wait for the JS interpreter before starting the extraction",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you extract the text from this article on TechCrunch about Twitter's new feature?",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/"
+                    }
+                },
+                {
+                    "utterance": "I need the clean text and media from the New York Times article on climate change.",
+                    "parameters": {
+                        "url": "https://www.nytimes.com/2023/10/01/climate/climate-change-impact.html",
+                        "media": true
+                    }
+                },
+                {
+                    "utterance": "Please extract the content from this BBC article and make sure to execute JavaScript.",
+                    "parameters": {
+                        "url": "https://www.bbc.com/news/world-asia-58784655",
+                        "js": true
+                    }
+                },
+                {
+                    "utterance": "Get the text from this blog post on Medium, and wait 45 seconds for JavaScript execution.",
+                    "parameters": {
+                        "url": "https://medium.com/@johndoe/understanding-ai-5d6f7e8b9c1a",
+                        "js": true,
+                        "js_timeout": 45
+                    }
+                },
+                {
+                    "utterance": "Extract the article from The Guardian about the recent elections, including any media.",
+                    "parameters": {
+                        "url": "https://www.theguardian.com/world/2023/oct/02/elections-results",
+                        "media": true
+                    }
+                },
+                {
+                    "utterance": "Can you get the text from this Forbes article on the latest tech trends?",
+                    "parameters": {
+                        "url": "https://www.forbes.com/sites/tech/2023/10/03/latest-tech-trends/"
+                    }
+                },
+                {
+                    "utterance": "I want the content from this CNN article, and ensure JavaScript is executed with a 60-second timeout.",
+                    "parameters": {
+                        "url": "https://www.cnn.com/2023/10/04/tech/ai-advancements/index.html",
+                        "js": true,
+                        "js_timeout": 60
+                    }
+                },
+                {
+                    "utterance": "Extract the text and media from this Wired article on cybersecurity.",
+                    "parameters": {
+                        "url": "https://www.wired.com/story/cybersecurity-threats-2023/",
+                        "media": true
+                    }
+                },
+                {
+                    "utterance": "Please get the clean text from this Reuters article about the stock market.",
+                    "parameters": {
+                        "url": "https://www.reuters.com/markets/stocks/2023/10/05/stock-market-update/"
+                    }
+                },
+                {
+                    "utterance": "I need the article content from this Bloomberg piece on global economics, with JavaScript execution.",
+                    "parameters": {
+                        "url": "https://www.bloomberg.com/news/articles/2023-10-06/global-economics-outlook",
+                        "js": true
+                    }
+                }
+            ]
+        }
+    ]
+}

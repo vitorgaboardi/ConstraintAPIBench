@@ -1,0 +1,298 @@
+{
+    "name": "Article Extractor and Summarizer",
+    "description": "This is an API which extracts news/article body from a URL and uses GPT to summarize (and optionally translate) the article content. Useful for text mining purposes. Leverages powerful and flexible web scraping engine (ScrapeNinja.net) with high-quality rotating proxies under the hood. In depth review and API implementation details: https://pixeljets.com/blog/gpt-summary-is-broken/ . My video where ChatGPT summary capabilities are explored: https://youtu.be/hRQqJtgYz_Q",
+    "url": "https://rapidapi.com/restyler/api/article-extractor-and-summarizer/",
+    "api_methods": [
+        {
+            "name": "/summarize",
+            "description": "Summarizes the article after extracting it from the specified url.",
+            "url": "https://article-extractor-and-summarizer.p.rapidapi.com/summarize",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://time.com/6266679/musk-ai-open-letter/",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "lang",
+                    "type": "ENUM",
+                    "description": "Target language to translate summary into",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "ENUM"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "html",
+                    "type": "BOOLEAN",
+                    "description": "pass TRUE if you want to convert new line symbols in API response text with html paragraph tags ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "length",
+                    "type": "NUMBER",
+                    "description": "Length in paragraphs. This parameter might be ignored for a very long articles.",
+                    "default": "3",
+                    "required": false,
+                    "constraints": {
+                        "default": "3"
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you summarize the article from this link: https://www.bbc.com/news/world-us-canada-65443210?",
+                    "parameters": {
+                        "url": "https://www.bbc.com/news/world-us-canada-65443210"
+                    }
+                },
+                {
+                    "utterance": "Summarize the content of this URL in French: https://www.lemonde.fr/international/article/2023/05/15/la-crise-politique-en-france-s-intensifie_6174563_3210.html",
+                    "parameters": {
+                        "url": "https://www.lemonde.fr/international/article/2023/05/15/la-crise-politique-en-france-s-intensifie_6174563_3210.html",
+                        "lang": "fr"
+                    }
+                },
+                {
+                    "utterance": "Extract and summarize this article in 2 paragraphs: https://www.nytimes.com/2023/05/14/world/europe/ukraine-russia-war.html",
+                    "parameters": {
+                        "url": "https://www.nytimes.com/2023/05/14/world/europe/ukraine-russia-war.html",
+                        "length": 2
+                    }
+                },
+                {
+                    "utterance": "Summarize this article and format the response with HTML tags: https://www.theguardian.com/world/2023/may/15/china-us-tensions-rise-over-taiwan",
+                    "parameters": {
+                        "url": "https://www.theguardian.com/world/2023/may/15/china-us-tensions-rise-over-taiwan",
+                        "html": true
+                    }
+                },
+                {
+                    "utterance": "Can you summarize this article in Spanish and keep it to 3 paragraphs? https://www.elpais.com/internacional/2023-05-15/la-guerra-en-ucrania-se-intensifica.html",
+                    "parameters": {
+                        "url": "https://www.elpais.com/internacional/2023-05-15/la-guerra-en-ucrania-se-intensifica.html",
+                        "lang": "es",
+                        "length": 3
+                    }
+                },
+                {
+                    "utterance": "Summarize the article from this link: https://www.washingtonpost.com/politics/2023/05/15/biden-trump-2024-election/",
+                    "parameters": {
+                        "url": "https://www.washingtonpost.com/politics/2023/05/15/biden-trump-2024-election/"
+                    }
+                },
+                {
+                    "utterance": "Extract and summarize this article in German: https://www.spiegel.de/politik/deutschland/2023-05-15",
+                    "parameters": {
+                        "url": "https://www.spiegel.de/politik/deutschland/2023-05-15",
+                        "lang": "de"
+                    }
+                },
+                {
+                    "utterance": "Summarize this article in 4 paragraphs and use HTML tags: https://www.reuters.com/world/us/2023/05/15/us-china-tensions-escalate-over-taiwan/",
+                    "parameters": {
+                        "url": "https://www.reuters.com/world/us/2023/05/15/us-china-tensions-escalate-over-taiwan/",
+                        "length": 4,
+                        "html": true
+                    }
+                },
+                {
+                    "utterance": "Can you summarize this article in Italian? https://www.repubblica.it/esteri/2023/05/15/news/",
+                    "parameters": {
+                        "url": "https://www.repubblica.it/esteri/2023/05/15/news/",
+                        "lang": "it"
+                    }
+                },
+                {
+                    "utterance": "Summarize the article from this URL in 1 paragraph: https://www.cnn.com/2023/05/15/politics/us-politics-news/index.html",
+                    "parameters": {
+                        "url": "https://www.cnn.com/2023/05/15/politics/us-politics-news/index.html",
+                        "length": 1
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/extract",
+            "description": "Extract an article body and markdown version of the body.",
+            "url": "https://article-extractor-and-summarizer.p.rapidapi.com/extract",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://time.com/6266679/musk-ai-open-letter/",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you extract and summarize the article from this link: https://www.nytimes.com/2023/10/01/world/europe/ukraine-russia-war.html?",
+                    "parameters": {
+                        "url": "https://www.nytimes.com/2023/10/01/world/europe/ukraine-russia-war.html"
+                    }
+                },
+                {
+                    "utterance": "Summarize the content of this article: https://www.theguardian.com/technology/2023/oct/02/ai-artificial-intelligence-future-impact",
+                    "parameters": {
+                        "url": "https://www.theguardian.com/technology/2023/oct/02/ai-artificial-intelligence-future-impact"
+                    }
+                },
+                {
+                    "utterance": "Extract the body of this news article: https://www.bbc.com/news/world-asia-66970375",
+                    "parameters": {
+                        "url": "https://www.bbc.com/news/world-asia-66970375"
+                    }
+                },
+                {
+                    "utterance": "Can you summarize the article from this URL: https://www.wired.com/story/quantum-computing-breakthrough/?",
+                    "parameters": {
+                        "url": "https://www.wired.com/story/quantum-computing-breakthrough/"
+                    }
+                },
+                {
+                    "utterance": "What does this article say? https://www.forbes.com/sites/johnkoetsier/2023/10/02/the-future-of-work-in-the-age-of-ai/",
+                    "parameters": {
+                        "url": "https://www.forbes.com/sites/johnkoetsier/2023/10/02/the-future-of-work-in-the-age-of-ai/"
+                    }
+                },
+                {
+                    "utterance": "Extract and summarize this article: https://www.cnbc.com/2023/10/02/elon-musks-x-to-charge-new-users-1-per-year-for-basic-features.html",
+                    "parameters": {
+                        "url": "https://www.cnbc.com/2023/10/02/elon-musks-x-to-charge-new-users-1-per-year-for-basic-features.html"
+                    }
+                },
+                {
+                    "utterance": "Summarize the news article from this link: https://www.reuters.com/technology/spacex-launches-4-astronauts-space-station-crew-7-mission-2023-10-02/",
+                    "parameters": {
+                        "url": "https://www.reuters.com/technology/spacex-launches-4-astronauts-space-station-crew-7-mission-2023-10-02/"
+                    }
+                },
+                {
+                    "utterance": "Can you extract the body of this article: https://www.bloomberg.com/news/articles/2023-10-02/global-economy-faces-new-challenges-as-oil-prices-surge?",
+                    "parameters": {
+                        "url": "https://www.bloomberg.com/news/articles/2023-10-02/global-economy-faces-new-challenges-as-oil-prices-surge"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the summary of this article? https://www.theverge.com/2023/10/2/23899925/apple-iphone-15-pro-max-review-camera-battery-life",
+                    "parameters": {
+                        "url": "https://www.theverge.com/2023/10/2/23899925/apple-iphone-15-pro-max-review-camera-battery-life"
+                    }
+                },
+                {
+                    "utterance": "Extract and summarize the content from this URL: https://www.npr.org/2023/10/02/1202932025/climate-change-extreme-weather-global-warming",
+                    "parameters": {
+                        "url": "https://www.npr.org/2023/10/02/1202932025/climate-change-extreme-weather-global-warming"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/summarize-text",
+            "description": "Summarize text (in Markdown)",
+            "url": "https://article-extractor-and-summarizer.p.rapidapi.com/summarize-text",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you summarize this article for me?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please provide a summary of the content from this link.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a brief overview of this news article.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you extract and summarize the main points from this URL?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Summarize the text from this webpage for me.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you give me a concise summary of this article?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I\u2019d like a summary of the content from this article link.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please summarize the body of this news piece.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Extract and summarize the key points from this article.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you summarize the main ideas from this webpage?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/summarize-text",
+            "description": "Summarize text (in Markdown)",
+            "url": "https://article-extractor-and-summarizer.p.rapidapi.com/summarize-text",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you summarize this article for me?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What\u2019s the main point of this news piece?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me a brief overview of this blog post.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Summarize the content from this link.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you provide a summary of this webpage?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What does this article say in a nutshell?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Break down the key points of this news article.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Summarize the text from this URL.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Give me a quick summary of this online article.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What\u2019s the gist of this webpage content?",
+                    "parameters": {}
+                }
+            ]
+        }
+    ]
+}

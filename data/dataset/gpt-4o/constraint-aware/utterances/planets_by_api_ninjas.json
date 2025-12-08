@@ -1,0 +1,218 @@
+{
+    "name": "Planets by API-Ninjas",
+    "description": "Get statistics on thousands of planets in the known universe. See more info at https://api-ninjas.com/api/planets.",
+    "url": "https://rapidapi.com/apininjas/api/planets-by-api-ninjas/",
+    "api_methods": [
+        {
+            "name": "/v1/planets",
+            "description": "Get a list of planets matching specified parameters. Returns at most 30 results. To access more than 30 results, use the offset parameter to offset results in multiple API calls.",
+            "url": "https://planets-by-api-ninjas.p.rapidapi.com/v1/planets",
+            "parameters": [
+                {
+                    "name": "max_period",
+                    "type": "NUMBER",
+                    "description": "maximum orbital period of the planet in Earth days.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_period, max_period: min_period must be less than or equal to max_period."
+                    }
+                },
+                {
+                    "name": "max_temperature",
+                    "type": "NUMBER",
+                    "description": "maximum average surface temperature of the planet in Kelvin.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_temperature, max_temperature: min_temperature must be less than or equal to max_temperature."
+                    }
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "number of results to offset for pagination.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "max_distance_light_year",
+                    "type": "NUMBER",
+                    "description": "maximum distance the planet is from Earth in light years.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_distance_light_year, max_distance_light_year: min_distance_light_year must be less than or equal to max_distance_light_year."
+                    }
+                },
+                {
+                    "name": "min_distance_light_year",
+                    "type": "NUMBER",
+                    "description": "minimum distance the planet is from Earth in light years.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_distance_light_year, max_distance_light_year: min_distance_light_year must be less than or equal to max_distance_light_year."
+                    }
+                },
+                {
+                    "name": "max_mass",
+                    "type": "NUMBER",
+                    "description": "maximum mass of the planet in Jupiters (1 Jupiter = 1.898 \u00d7 10^27 kg).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_mass, max_mass: min_mass must be less than or equal to max_mass."
+                    }
+                },
+                {
+                    "name": "max_semi_major_axis",
+                    "type": "NUMBER",
+                    "description": "maximum semi major axis of planet in astronomical units (AU).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_semi_major_axis, max_semi_major_axis: min_semi_major_axis must be less than or equal to max_semi_major_axis."
+                    }
+                },
+                {
+                    "name": "min_mass",
+                    "type": "NUMBER",
+                    "description": "minimum mass of the planet in Jupiters (1 Jupiter = 1.898 \u00d7 10^27 kg).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_mass, max_mass: min_mass must be less than or equal to max_mass."
+                    }
+                },
+                {
+                    "name": "min_semi_major_axis",
+                    "type": "NUMBER",
+                    "description": "minimum semi major axis of planet in astronomical units (AU).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_semi_major_axis, max_semi_major_axis: min_semi_major_axis must be less than or equal to max_semi_major_axis."
+                    }
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": " name of the planet.",
+                    "default": "Mars",
+                    "required": false
+                },
+                {
+                    "name": "min_temperature",
+                    "type": "NUMBER",
+                    "description": "minimum average surface temperature of the planet in Kelvin.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_temperature, max_temperature: min_temperature must be less than or equal to max_temperature."
+                    }
+                },
+                {
+                    "name": "max_radius",
+                    "type": "NUMBER",
+                    "description": "maximum average radius of the planet in Jupiters (1 Jupiter = 69911 km).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_radius, max_radius: min_radius must be less than or equal to max_radius."
+                    }
+                },
+                {
+                    "name": "min_radius",
+                    "type": "NUMBER",
+                    "description": "minimum average radius of the planet in Jupiters (1 Jupiter = 69911 km).",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_radius, max_radius: min_radius must be less than or equal to max_radius."
+                    }
+                },
+                {
+                    "name": "min_period",
+                    "type": "NUMBER",
+                    "description": "minimum orbital period of the planet in Earth days.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "inter-dependency": "min_period, max_period: min_period must be less than or equal to max_period."
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find planets with a maximum orbital period of 365 days?",
+                    "parameters": {
+                        "max_period": 365
+                    }
+                },
+                {
+                    "utterance": "Show me planets that are at least 10 light years away but no more than 50 light years.",
+                    "parameters": {
+                        "min_distance_light_year": 10,
+                        "max_distance_light_year": 50
+                    }
+                },
+                {
+                    "utterance": "I want to know about planets with a surface temperature between 200 and 300 Kelvin.",
+                    "parameters": {
+                        "min_temperature": 200,
+                        "max_temperature": 300
+                    }
+                },
+                {
+                    "utterance": "List planets with a mass between 0.5 and 2 Jupiters.",
+                    "parameters": {
+                        "min_mass": 0.5,
+                        "max_mass": 2
+                    }
+                },
+                {
+                    "utterance": "Find planets with a semi-major axis ranging from 0.1 to 5 AU.",
+                    "parameters": {
+                        "min_semi_major_axis": 0.1,
+                        "max_semi_major_axis": 5
+                    }
+                },
+                {
+                    "utterance": "Are there any planets named 'Kepler-22b'?",
+                    "parameters": {
+                        "name": "Kepler-22b"
+                    }
+                },
+                {
+                    "utterance": "What planets have a radius between 0.9 and 1.1 Jupiters?",
+                    "parameters": {
+                        "min_radius": 0.9,
+                        "max_radius": 1.1
+                    }
+                },
+                {
+                    "utterance": "Show me planets with an orbital period of at least 100 days.",
+                    "parameters": {
+                        "min_period": 100
+                    }
+                },
+                {
+                    "utterance": "Can you list planets with a maximum distance of 20 light years from Earth?",
+                    "parameters": {
+                        "max_distance_light_year": 20
+                    }
+                },
+                {
+                    "utterance": "Find planets with a maximum surface temperature of 500 Kelvin.",
+                    "parameters": {
+                        "max_temperature": 500
+                    }
+                }
+            ]
+        }
+    ]
+}

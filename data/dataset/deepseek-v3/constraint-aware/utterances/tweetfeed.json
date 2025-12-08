@@ -1,0 +1,157 @@
+{
+    "name": "TweetFeed",
+    "description": "Free feed with IOCs -  malicious URLs, domains, IPs, and hashes. [Website: https://tweetfeed.live]",
+    "url": "https://rapidapi.com/danlopgom/api/tweetfeed/",
+    "api_methods": [
+        {
+            "name": "v1",
+            "description": "Version 1 Endpoint.",
+            "url": "https://tweetfeed.p.rapidapi.com/v1/{time}/{filter1}/{filter2}",
+            "parameters": [
+                {
+                    "name": "time",
+                    "type": "string",
+                    "description": "Select 1 of these timeframes:\n\n**today** - Today starting 00:00 UTC)\n**week** - Last 7 days\n**month** - Last 30 days\n**year** - Last 365 days",
+                    "default": "today",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "today",
+                                "week",
+                                "month",
+                                "year"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "filter1",
+                    "type": "string",
+                    "description": "Can be an specific user, type or tag:\n\nType \u2192 **url** / **domain** / **ip** / **sha256** / **md5**\nTag \u2192 **phishing** / **ransomware** / **CobaltStrike** ...\nUser \u2192 **@malwrhunterteam** / **@1ZRR4H** / **@MBThreatIntel** / ... (don't forget the @)",
+                    "default": "phishing",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "url",
+                                "domain",
+                                "ip",
+                                "sha256",
+                                "md5",
+                                "phishing",
+                                "ransomware",
+                                "CobaltStrike",
+                                "@malwrhunterteam",
+                                "@1ZRR4H",
+                                "@MBThreatIntel"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "filter2",
+                    "type": "string",
+                    "description": "Can be an specific user, type or tag:\n\nType \u2192 **url** / **domain** / **ip** / **sha256** / **md5**\nTag \u2192 **phishing** / **ransomware** / **CobaltStrike** ...\nUser \u2192 **@malwrhunterteam** / **@1ZRR4H** / **@MBThreatIntel** / ... (don't forget the @)",
+                    "default": "url",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "url",
+                                "domain",
+                                "ip",
+                                "sha256",
+                                "md5",
+                                "phishing",
+                                "ransomware",
+                                "CobaltStrike",
+                                "@malwrhunterteam",
+                                "@1ZRR4H",
+                                "@MBThreatIntel"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the malicious URLs detected today.",
+                    "parameters": {
+                        "time": "today",
+                        "filter1": "url"
+                    }
+                },
+                {
+                    "utterance": "What ransomware threats were reported in the last week?",
+                    "parameters": {
+                        "time": "week",
+                        "filter1": "ransomware"
+                    }
+                },
+                {
+                    "utterance": "Can you list the domains flagged by @malwrhunterteam this month?",
+                    "parameters": {
+                        "time": "month",
+                        "filter1": "@malwrhunterteam",
+                        "filter2": "domain"
+                    }
+                },
+                {
+                    "utterance": "Give me the IP addresses associated with CobaltStrike over the past year.",
+                    "parameters": {
+                        "time": "year",
+                        "filter1": "CobaltStrike",
+                        "filter2": "ip"
+                    }
+                },
+                {
+                    "utterance": "What phishing activities were detected today?",
+                    "parameters": {
+                        "time": "today",
+                        "filter1": "phishing"
+                    }
+                },
+                {
+                    "utterance": "Show me the SHA256 hashes reported by @MBThreatIntel in the last week.",
+                    "parameters": {
+                        "time": "week",
+                        "filter1": "@MBThreatIntel",
+                        "filter2": "sha256"
+                    }
+                },
+                {
+                    "utterance": "List the malicious domains detected this month.",
+                    "parameters": {
+                        "time": "month",
+                        "filter1": "domain"
+                    }
+                },
+                {
+                    "utterance": "What IP addresses were flagged by @1ZRR4H today?",
+                    "parameters": {
+                        "time": "today",
+                        "filter1": "@1ZRR4H",
+                        "filter2": "ip"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the MD5 hashes associated with ransomware over the past year?",
+                    "parameters": {
+                        "time": "year",
+                        "filter1": "ransomware",
+                        "filter2": "md5"
+                    }
+                },
+                {
+                    "utterance": "What URLs were reported by @malwrhunterteam in the last week?",
+                    "parameters": {
+                        "time": "week",
+                        "filter1": "@malwrhunterteam",
+                        "filter2": "url"
+                    }
+                }
+            ]
+        }
+    ]
+}

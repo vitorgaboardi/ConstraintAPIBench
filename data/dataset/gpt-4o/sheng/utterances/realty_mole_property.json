@@ -1,0 +1,1274 @@
+{
+    "name": "Realty Mole Property",
+    "description": "Get instant access to 140+ million property records, owner details, home value and rent estimates, active listings and rental market statistics with the Realty Mole real estate data API. Available nationwide in the US.",
+    "url": "https://rapidapi.com/realtymole/api/realty-mole-property-api/",
+    "api_methods": [
+        {
+            "name": "Property Rental Listings",
+            "description": "Search for rental listings in a geographical area or around a specific location. Returns the listed rent, date, property features, and other listing information. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/rentalListings",
+            "parameters": [
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "The two-character state abbreviation, used to search for listings in a specific state",
+                    "default": "TX",
+                    "required": false
+                },
+                {
+                    "name": "status",
+                    "type": "STRING",
+                    "description": "The current listing status, used to search for listings matching this criteria. Supported values are: `Active`, `Inactive`",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "daysOld",
+                    "type": "NUMBER",
+                    "description": "The maximum number of days since a property was listed on the market, with a minimum of 1",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "bedrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bedrooms, used to search for listings matching this criteria",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "The type of the property, used to search for listings matching this criteria. Supported values are: `Single Family`, `Condo`, `Townhouse`, `Manufactured`, `Duplex-Triplex`, `Apartment`",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "The latitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "The 5-digit zip code, used to search for listings in a specific zip code",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "bathrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The address of the property, in the format of 'Street, City, State, Zip'. Used to retrieve data for a specific property, or together with the `radius` parameter to search for listings in a specific area",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The maximum number of listings to return, between 1 and 500. Defaults to 50 if not provided",
+                    "default": "10",
+                    "required": false
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "The radius of the search area, in kilometers. Use in combination with the `latitude`/`longitude` or `address` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The index of the first listing to return, used to paginate through large lists of results. Defaults to 0 if not provided",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "The name of the city, used to search for listings in a specific city",
+                    "default": "Austin",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "The longitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find active rental listings in Austin, Texas with at least 2 bedrooms.",
+                    "parameters": {
+                        "city": "Austin",
+                        "state": "TX",
+                        "status": "Active",
+                        "bedrooms": 2
+                    }
+                },
+                {
+                    "utterance": "Show me rental properties in the 90210 zip code listed in the last 5 days.",
+                    "parameters": {
+                        "zipCode": "90210",
+                        "daysOld": 5
+                    }
+                },
+                {
+                    "utterance": "Search for condos available for rent in Miami with 3 bathrooms.",
+                    "parameters": {
+                        "city": "Miami",
+                        "propertyType": "Condo",
+                        "bathrooms": 3
+                    }
+                },
+                {
+                    "utterance": "List the top 20 single-family homes for rent in San Francisco.",
+                    "parameters": {
+                        "city": "San Francisco",
+                        "propertyType": "Single Family",
+                        "limit": 20
+                    }
+                },
+                {
+                    "utterance": "Find apartments for rent within a 10 km radius of 40.7128\u00b0 N, 74.0060\u00b0 W.",
+                    "parameters": {
+                        "latitude": 40.7128,
+                        "longitude": -74.006,
+                        "radius": 10,
+                        "propertyType": "Apartment"
+                    }
+                },
+                {
+                    "utterance": "Show inactive rental listings in Los Angeles with 4 bedrooms.",
+                    "parameters": {
+                        "city": "Los Angeles",
+                        "status": "Inactive",
+                        "bedrooms": 4
+                    }
+                },
+                {
+                    "utterance": "Find townhouses for rent in Chicago with at least 2.5 bathrooms.",
+                    "parameters": {
+                        "city": "Chicago",
+                        "propertyType": "Townhouse",
+                        "bathrooms": 2.5
+                    }
+                },
+                {
+                    "utterance": "Search for duplex-triplex rentals in Houston, Texas.",
+                    "parameters": {
+                        "city": "Houston",
+                        "state": "TX",
+                        "propertyType": "Duplex-Triplex"
+                    }
+                },
+                {
+                    "utterance": "List rental properties in the 30301 area with 3 bedrooms and 2 bathrooms.",
+                    "parameters": {
+                        "zipCode": "30301",
+                        "bedrooms": 3,
+                        "bathrooms": 2
+                    }
+                },
+                {
+                    "utterance": "Find manufactured homes for rent in Phoenix listed within the last 7 days.",
+                    "parameters": {
+                        "city": "Phoenix",
+                        "propertyType": "Manufactured",
+                        "daysOld": 7
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Sale Listings",
+            "description": "Search for sale listings in a geographical area or around a specific location. Returns the listed price, date, property features, and other listing information. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/saleListings",
+            "parameters": [
+                {
+                    "name": "daysOld",
+                    "type": "NUMBER",
+                    "description": "The maximum number of days since a property was listed on the market, with a minimum of 1",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "status",
+                    "type": "STRING",
+                    "description": "The current listing status, used to search for listings matching this criteria. Supported values are: `Active`, `Inactive`",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "The type of the property, used to search for listings matching this criteria. Supported values are: `Single Family`, `Condo`, `Townhouse`, `Manufactured`, `Duplex-Triplex`, `Apartment`, `Land`",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "bathrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bathrooms, used to search for listings matching this criteria. Supports fractions to indicate partial bathrooms",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "The 5-digit zip code, used to search for listings in a specific zip code",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "The two-character state abbreviation, used to search for listings in a specific state",
+                    "default": "TX",
+                    "required": false
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "The latitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "bedrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bedrooms, used to search for listings matching this criteria",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "The radius of the search area, in kilometers. Use in combination with the `latitude`/`longitude` or `address` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The maximum number of listings to return, between 1 and 500. Defaults to 50 if not provided",
+                    "default": "10",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The index of the first listing to return, used to paginate through large lists of results. Defaults to 0 if not provided",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "The name of the city, used to search for listings in a specific city",
+                    "default": "Austin",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "The longitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for listings in a specific area",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The address of the property, in the format of 'Street, City, State, Zip'. Used to retrieve data for a specific property, or together with the `radius` parameter to search for listings in a specific area",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find active single family homes for sale in Austin, TX with at least 3 bedrooms and 2 bathrooms.",
+                    "parameters": {
+                        "status": "Active",
+                        "propertyType": "Single Family",
+                        "city": "Austin",
+                        "state": "TX",
+                        "bedrooms": 3,
+                        "bathrooms": 2
+                    }
+                },
+                {
+                    "utterance": "Show me the latest condo listings in Miami, FL that have been on the market for less than 10 days.",
+                    "parameters": {
+                        "propertyType": "Condo",
+                        "city": "Miami",
+                        "state": "FL",
+                        "daysOld": 10
+                    }
+                },
+                {
+                    "utterance": "Search for townhouses in the 90210 zip code with at least 4 bathrooms.",
+                    "parameters": {
+                        "propertyType": "Townhouse",
+                        "zipCode": "90210",
+                        "bathrooms": 4
+                    }
+                },
+                {
+                    "utterance": "List all inactive apartment listings in New York City.",
+                    "parameters": {
+                        "status": "Inactive",
+                        "propertyType": "Apartment",
+                        "city": "New York"
+                    }
+                },
+                {
+                    "utterance": "Find land for sale within a 5 km radius of 34.0522 latitude and -118.2437 longitude.",
+                    "parameters": {
+                        "propertyType": "Land",
+                        "latitude": 34.0522,
+                        "longitude": -118.2437,
+                        "radius": 5
+                    }
+                },
+                {
+                    "utterance": "Show me duplex-triplex properties in Chicago, IL with 3 bedrooms.",
+                    "parameters": {
+                        "propertyType": "Duplex-Triplex",
+                        "city": "Chicago",
+                        "state": "IL",
+                        "bedrooms": 3
+                    }
+                },
+                {
+                    "utterance": "Find manufactured homes for sale in the state of Texas.",
+                    "parameters": {
+                        "propertyType": "Manufactured",
+                        "state": "TX"
+                    }
+                },
+                {
+                    "utterance": "Search for properties in Los Angeles, CA with a maximum of 2 listings returned.",
+                    "parameters": {
+                        "city": "Los Angeles",
+                        "state": "CA",
+                        "limit": 2
+                    }
+                },
+                {
+                    "utterance": "List properties for sale in the 30301 zip code with a limit of 5 results.",
+                    "parameters": {
+                        "zipCode": "30301",
+                        "limit": 5
+                    }
+                },
+                {
+                    "utterance": "Find properties around the address '123 Main St, Dallas, TX, 75201' within a 10 km radius.",
+                    "parameters": {
+                        "address": "123 Main St, Dallas, TX, 75201",
+                        "radius": 10
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Rental Listing by Id",
+            "description": "Returns a single property rental listing matching the specified id, if it exists. Property ids can be obtained via the `/properties`, `/saleListings` or `/rentalListings` endpoints. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/rentalListings/{propertyid}",
+            "parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "string",
+                    "description": "The id of the property listing to return",
+                    "default": "1702-Cherry-Orchard-Dr,-Austin,-TX-78745",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details for the property with ID 1702-Cherry-Orchard-Dr,-Austin,-TX-78745?",
+                    "parameters": {
+                        "propertyId": "1702-Cherry-Orchard-Dr,-Austin,-TX-78745"
+                    }
+                },
+                {
+                    "utterance": "I need the rental listing information for property ID 1234-Main-St,-Dallas,-TX-75201.",
+                    "parameters": {
+                        "propertyId": "1234-Main-St,-Dallas,-TX-75201"
+                    }
+                },
+                {
+                    "utterance": "Fetch the property details for the listing with ID 5678-Oak-Lane,-Houston,-TX-77002.",
+                    "parameters": {
+                        "propertyId": "5678-Oak-Lane,-Houston,-TX-77002"
+                    }
+                },
+                {
+                    "utterance": "What are the details for the property with ID 9101-Pine-St,-San-Antonio,-TX-78205?",
+                    "parameters": {
+                        "propertyId": "9101-Pine-St,-San-Antonio,-TX-78205"
+                    }
+                },
+                {
+                    "utterance": "Get the rental listing for the property ID 1122-Maple-Ave,-Fort-Worth,-TX-76104.",
+                    "parameters": {
+                        "propertyId": "1122-Maple-Ave,-Fort-Worth,-TX-76104"
+                    }
+                },
+                {
+                    "utterance": "Show me the property details for ID 3344-Cedar-Rd,-El-Paso,-TX-79912.",
+                    "parameters": {
+                        "propertyId": "3344-Cedar-Rd,-El-Paso,-TX-79912"
+                    }
+                },
+                {
+                    "utterance": "I want to see the rental listing for property ID 5566-Birch-Blvd,-Arlington,-TX-76010.",
+                    "parameters": {
+                        "propertyId": "5566-Birch-Blvd,-Arlington,-TX-76010"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the property information for ID 7788-Spruce-St,-Corpus-Christi,-TX-78401.",
+                    "parameters": {
+                        "propertyId": "7788-Spruce-St,-Corpus-Christi,-TX-78401"
+                    }
+                },
+                {
+                    "utterance": "Can you get the details for the property with ID 9900-Willow-Way,-Plano,-TX-75074?",
+                    "parameters": {
+                        "propertyId": "9900-Willow-Way,-Plano,-TX-75074"
+                    }
+                },
+                {
+                    "utterance": "Please provide the rental listing for property ID 2468-Ash-Ln,-Lubbock,-TX-79401.",
+                    "parameters": {
+                        "propertyId": "2468-Ash-Ln,-Lubbock,-TX-79401"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Sale Listing by Id",
+            "description": "Returns a single property sale listing matching the specified id, if it exists. Property ids can be obtained via the `/properties`, `/saleListings` or `/rentalListings` endpoints. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/saleListings/{propertyid}",
+            "parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "string",
+                    "description": "The id of the property listing to return",
+                    "default": "1702-Cherry-Orchard-Dr,-Austin,-TX-78745",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details for the property with ID 1702-Cherry-Orchard-Dr,-Austin,-TX-78745?",
+                    "parameters": {
+                        "propertyId": "1702-Cherry-Orchard-Dr,-Austin,-TX-78745"
+                    }
+                },
+                {
+                    "utterance": "I need the sale listing information for property ID 1234-Main-St,-Dallas,-TX-75201.",
+                    "parameters": {
+                        "propertyId": "1234-Main-St,-Dallas,-TX-75201"
+                    }
+                },
+                {
+                    "utterance": "What are the details for the property with ID 5678-Oak-Lane,-Houston,-TX-77002?",
+                    "parameters": {
+                        "propertyId": "5678-Oak-Lane,-Houston,-TX-77002"
+                    }
+                },
+                {
+                    "utterance": "Please fetch the property sale listing for ID 9101-Pine-St,-San-Antonio,-TX-78205.",
+                    "parameters": {
+                        "propertyId": "9101-Pine-St,-San-Antonio,-TX-78205"
+                    }
+                },
+                {
+                    "utterance": "Get me the property details for ID 1122-Maple-Ave,-Fort-Worth,-TX-76104.",
+                    "parameters": {
+                        "propertyId": "1122-Maple-Ave,-Fort-Worth,-TX-76104"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the sale listing for property ID 3344-Cedar-Rd,-El-Paso,-TX-79901.",
+                    "parameters": {
+                        "propertyId": "3344-Cedar-Rd,-El-Paso,-TX-79901"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the property information for ID 5566-Birch-Blvd,-Arlington,-TX-76010?",
+                    "parameters": {
+                        "propertyId": "5566-Birch-Blvd,-Arlington,-TX-76010"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the sale listing for property ID 7788-Spruce-St,-Corpus-Christi,-TX-78401.",
+                    "parameters": {
+                        "propertyId": "7788-Spruce-St,-Corpus-Christi,-TX-78401"
+                    }
+                },
+                {
+                    "utterance": "I need the details for the property with ID 9900-Willow-Way,-Plano,-TX-75074.",
+                    "parameters": {
+                        "propertyId": "9900-Willow-Way,-Plano,-TX-75074"
+                    }
+                },
+                {
+                    "utterance": "Please provide the sale listing for property ID 2468-Poplar-Dr,-Lubbock,-TX-79401.",
+                    "parameters": {
+                        "propertyId": "2468-Poplar-Dr,-Lubbock,-TX-79401"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Record by Id",
+            "description": "Returns a single property record matching the specified id, if it exists. Property ids can be obtained via the `/properties`, `/saleListings` or `/rentalListings` endpoints. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/properties/{propertyid}",
+            "parameters": [
+                {
+                    "name": "propertyId",
+                    "type": "STRING",
+                    "description": "The id of the property record to return",
+                    "default": "5500-Grand-Lake-Dr,-San-Antonio,-TX-78244",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide details for the property with ID 5500-Grand-Lake-Dr,-San-Antonio,-TX-78244?",
+                    "parameters": {
+                        "propertyId": "5500-Grand-Lake-Dr,-San-Antonio,-TX-78244"
+                    }
+                },
+                {
+                    "utterance": "I need the property record for 123-Main-St,-Los-Angeles,-CA-90001.",
+                    "parameters": {
+                        "propertyId": "123-Main-St,-Los-Angeles,-CA-90001"
+                    }
+                },
+                {
+                    "utterance": "Fetch the property details for ID 789-Oak-St,-Chicago,-IL-60611.",
+                    "parameters": {
+                        "propertyId": "789-Oak-St,-Chicago,-IL-60611"
+                    }
+                },
+                {
+                    "utterance": "What are the details for the property with ID 456-Pine-St,-Miami,-FL-33101?",
+                    "parameters": {
+                        "propertyId": "456-Pine-St,-Miami,-FL-33101"
+                    }
+                },
+                {
+                    "utterance": "Get the property record for 321-Elm-St,-New-York,-NY-10001.",
+                    "parameters": {
+                        "propertyId": "321-Elm-St,-New-York,-NY-10001"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the property information for ID 654-Maple-St,-Houston,-TX-77002?",
+                    "parameters": {
+                        "propertyId": "654-Maple-St,-Houston,-TX-77002"
+                    }
+                },
+                {
+                    "utterance": "Retrieve the property record for 987-Cedar-St,-Phoenix,-AZ-85001.",
+                    "parameters": {
+                        "propertyId": "987-Cedar-St,-Phoenix,-AZ-85001"
+                    }
+                },
+                {
+                    "utterance": "I need information on the property with ID 159-Birch-St,-Philadelphia,-PA-19103.",
+                    "parameters": {
+                        "propertyId": "159-Birch-St,-Philadelphia,-PA-19103"
+                    }
+                },
+                {
+                    "utterance": "Please provide the property details for 753-Spruce-St,-San-Diego,-CA-92101.",
+                    "parameters": {
+                        "propertyId": "753-Spruce-St,-San-Diego,-CA-92101"
+                    }
+                },
+                {
+                    "utterance": "What is the property record for ID 852-Willow-St,-Dallas,-TX-75201?",
+                    "parameters": {
+                        "propertyId": "852-Willow-St,-Dallas,-TX-75201"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Records",
+            "description": "Search for property records in a geographical area, or around a specific address. Returns the property features, owner details, tax assessment, and other property information. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/properties",
+            "parameters": [
+                {
+                    "name": "bathrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bathrooms, used to search for properties matching this criteria. Supports fractions to indicate partial bathrooms",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "The type of the property, used to search for properties matching this criteria. Supported values are: `Single Family`, `Condo`, `Townhouse`, `Manufactured`, `Duplex-Triplex`, `Apartment`, `Land`",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "The latitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for properties in a specific area",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "offset",
+                    "type": "NUMBER",
+                    "description": "The index of the first property record to return, used to paginate through large lists of results. Defaults to 0 if not provided",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "city",
+                    "type": "STRING",
+                    "description": "The name of the city, used to search for properties in a specific city",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "The 2-character state abbreviation, used to search for properties in a specific state",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The maximum number of property records to return, between 1 and 500. Defaults to 50 if not provided",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "The 5-digit zip code, used to search for properties in a specific zip code",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "bedrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bedrooms, used to search for properties matching this criteria",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "The longitude of the search area. Use the `latitude`/`longitude` and `radius` parameters to search for properties in a specific area",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The address of the property, in the format of 'Street, City, State, Zip'. Used to retrieve data for a specific property, or together with the `radius` parameter to search for properties in a specific area",
+                    "default": "5500 Grand Lake Dr, San Antonio, TX, 78244",
+                    "required": false
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "The radius of the search area, in kilometers. Use in combination with the `latitude`/`longitude` or `address` parameters to search for properties in a specific area",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find single family homes with 3 bedrooms and 2 bathrooms in Austin, TX.",
+                    "parameters": {
+                        "propertyType": "Single Family",
+                        "bedrooms": 3,
+                        "bathrooms": 2,
+                        "city": "Austin",
+                        "state": "TX"
+                    }
+                },
+                {
+                    "utterance": "Search for condos in Miami, FL with at least 2 bathrooms.",
+                    "parameters": {
+                        "propertyType": "Condo",
+                        "bathrooms": 2,
+                        "city": "Miami",
+                        "state": "FL"
+                    }
+                },
+                {
+                    "utterance": "Show me properties within a 5 km radius of 123 Main St, Los Angeles, CA.",
+                    "parameters": {
+                        "address": "123 Main St, Los Angeles, CA",
+                        "radius": 5
+                    }
+                },
+                {
+                    "utterance": "List all townhouses in the 90210 zip code.",
+                    "parameters": {
+                        "propertyType": "Townhouse",
+                        "zipCode": "90210"
+                    }
+                },
+                {
+                    "utterance": "Find apartments in New York, NY with 1 bedroom.",
+                    "parameters": {
+                        "propertyType": "Apartment",
+                        "bedrooms": 1,
+                        "city": "New York",
+                        "state": "NY"
+                    }
+                },
+                {
+                    "utterance": "Search for land properties in Denver, CO.",
+                    "parameters": {
+                        "propertyType": "Land",
+                        "city": "Denver",
+                        "state": "CO"
+                    }
+                },
+                {
+                    "utterance": "Get details of properties near latitude 34.0522 and longitude -118.2437 with a 10 km radius.",
+                    "parameters": {
+                        "latitude": 34.0522,
+                        "longitude": -118.2437,
+                        "radius": 10
+                    }
+                },
+                {
+                    "utterance": "Show me duplex-triplex properties in Chicago, IL.",
+                    "parameters": {
+                        "propertyType": "Duplex-Triplex",
+                        "city": "Chicago",
+                        "state": "IL"
+                    }
+                },
+                {
+                    "utterance": "Find manufactured homes in the 30301 area.",
+                    "parameters": {
+                        "propertyType": "Manufactured",
+                        "zipCode": "30301"
+                    }
+                },
+                {
+                    "utterance": "List properties in San Francisco, CA with 4 bedrooms and 3 bathrooms.",
+                    "parameters": {
+                        "bedrooms": 4,
+                        "bathrooms": 3,
+                        "city": "San Francisco",
+                        "state": "CA"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Rent Estimate",
+            "description": "Returns a rent estimate and comparable rental listings for an address or lat/long coordinate. Providing property feature parameters will improve the estimate accuracy. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/rentalPrice",
+            "parameters": [
+                {
+                    "name": "squareFootage",
+                    "type": "NUMBER",
+                    "description": "The total living area size of the property, in square feet",
+                    "default": "1600",
+                    "required": false
+                },
+                {
+                    "name": "bedrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bedrooms in the property",
+                    "default": "4",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "The longitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "The type of the property. Supported values are: `Single Family`, `Condo`, `Townhouse`, `Manufactured`, `Duplex-Triplex`, `Apartment`",
+                    "default": "Single Family",
+                    "required": false
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The property address, in the format of 'Street, City, State, Zip'. You need to provide either the `address` or the `latitude`/`longitude` parameters",
+                    "default": "5500 Grand Lake Drive, San Antonio, TX, 78244",
+                    "required": false
+                },
+                {
+                    "name": "maxRadius",
+                    "type": "NUMBER",
+                    "description": "The maximum distance between comparable listings and the subject property, in kilometers. Defaults to 50 if not provided",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "bathrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bathrooms in the property. Supports fractions to indicate partial bathrooms",
+                    "default": "2",
+                    "required": false
+                },
+                {
+                    "name": "daysOld",
+                    "type": "NUMBER",
+                    "description": "The maximum number of days since comparable listings were last seen on the market, with a minimum of 1",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "compCount",
+                    "type": "NUMBER",
+                    "description": "The number of comparable listings returned by the API, between 5 and 25. Defaults to 10 if not provided",
+                    "default": "5",
+                    "required": false
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "The latitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the rent estimate for a single family home at 123 Main St, Los Angeles, CA, 90001 with 3 bedrooms and 2 bathrooms?",
+                    "parameters": {
+                        "address": "123 Main St, Los Angeles, CA, 90001",
+                        "propertyType": "Single Family",
+                        "bedrooms": 3,
+                        "bathrooms": 2
+                    }
+                },
+                {
+                    "utterance": "Can you provide a rent estimate for a condo located at 456 Elm St, Miami, FL, 33101 with 2 bedrooms?",
+                    "parameters": {
+                        "address": "456 Elm St, Miami, FL, 33101",
+                        "propertyType": "Condo",
+                        "bedrooms": 2
+                    }
+                },
+                {
+                    "utterance": "Find the rent estimate for a townhouse with 4 bedrooms and 3 bathrooms at 789 Pine St, Seattle, WA, 98101.",
+                    "parameters": {
+                        "address": "789 Pine St, Seattle, WA, 98101",
+                        "propertyType": "Townhouse",
+                        "bedrooms": 4,
+                        "bathrooms": 3
+                    }
+                },
+                {
+                    "utterance": "What is the estimated rent for an apartment at 101 Maple Ave, Chicago, IL, 60601 with 1 bedroom and 1.5 bathrooms?",
+                    "parameters": {
+                        "address": "101 Maple Ave, Chicago, IL, 60601",
+                        "propertyType": "Apartment",
+                        "bedrooms": 1,
+                        "bathrooms": 1.5
+                    }
+                },
+                {
+                    "utterance": "Get the rent estimate for a manufactured home at 202 Oak St, Austin, TX, 73301 with 3 bedrooms.",
+                    "parameters": {
+                        "address": "202 Oak St, Austin, TX, 73301",
+                        "propertyType": "Manufactured",
+                        "bedrooms": 3
+                    }
+                },
+                {
+                    "utterance": "Provide a rent estimate for a duplex-triplex located at 303 Birch Rd, Denver, CO, 80201 with 2 bedrooms and 1 bathroom.",
+                    "parameters": {
+                        "address": "303 Birch Rd, Denver, CO, 80201",
+                        "propertyType": "Duplex-Triplex",
+                        "bedrooms": 2,
+                        "bathrooms": 1
+                    }
+                },
+                {
+                    "utterance": "What is the rent estimate for a property at latitude 34.0522 and longitude -118.2437 with 4 bedrooms and 2 bathrooms?",
+                    "parameters": {
+                        "latitude": 34.0522,
+                        "longitude": -118.2437,
+                        "bedrooms": 4,
+                        "bathrooms": 2
+                    }
+                },
+                {
+                    "utterance": "Find the rent estimate for a single family home with 5 bedrooms and 3 bathrooms at 404 Cedar St, Orlando, FL, 32801.",
+                    "parameters": {
+                        "address": "404 Cedar St, Orlando, FL, 32801",
+                        "propertyType": "Single Family",
+                        "bedrooms": 5,
+                        "bathrooms": 3
+                    }
+                },
+                {
+                    "utterance": "Can you give me a rent estimate for a condo at 505 Spruce St, Boston, MA, 02101 with 2 bedrooms and 2 bathrooms?",
+                    "parameters": {
+                        "address": "505 Spruce St, Boston, MA, 02101",
+                        "propertyType": "Condo",
+                        "bedrooms": 2,
+                        "bathrooms": 2
+                    }
+                },
+                {
+                    "utterance": "What is the rent estimate for a townhouse with 3 bedrooms and 2.5 bathrooms at 606 Willow St, San Francisco, CA, 94101?",
+                    "parameters": {
+                        "address": "606 Willow St, San Francisco, CA, 94101",
+                        "propertyType": "Townhouse",
+                        "bedrooms": 3,
+                        "bathrooms": 2.5
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Random Property Records",
+            "description": "Returns a list of property records selected at random up to the specified limit, to facilitate applications requiring samples of randomly selected property data. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/randomProperties",
+            "parameters": [
+                {
+                    "name": "limit",
+                    "type": "NUMBER",
+                    "description": "The number of records to return, between 1 and 500. Defaults to 10 if not provided",
+                    "default": "5",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide me with 15 random property records?",
+                    "parameters": {
+                        "limit": 15
+                    }
+                },
+                {
+                    "utterance": "I need a sample of 50 property records.",
+                    "parameters": {
+                        "limit": 50
+                    }
+                },
+                {
+                    "utterance": "Fetch 100 random property records for analysis.",
+                    "parameters": {
+                        "limit": 100
+                    }
+                },
+                {
+                    "utterance": "Give me a list of 5 random property records.",
+                    "parameters": {
+                        "limit": 5
+                    }
+                },
+                {
+                    "utterance": "Please provide 200 random property records.",
+                    "parameters": {
+                        "limit": 200
+                    }
+                },
+                {
+                    "utterance": "I would like to see 30 random property records.",
+                    "parameters": {
+                        "limit": 30
+                    }
+                },
+                {
+                    "utterance": "Can you get me 75 random property records?",
+                    "parameters": {
+                        "limit": 75
+                    }
+                },
+                {
+                    "utterance": "Retrieve 10 random property records for me.",
+                    "parameters": {
+                        "limit": 10
+                    }
+                },
+                {
+                    "utterance": "I need 300 random property records for my project.",
+                    "parameters": {
+                        "limit": 300
+                    }
+                },
+                {
+                    "utterance": "Please fetch 500 random property records.",
+                    "parameters": {
+                        "limit": 500
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Rental Market Data",
+            "description": "Returns rental data for a single US zip code, including rent averages, rental listing composition, and historical rent trends. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/zipCodes/{zipcode}",
+            "parameters": [
+                {
+                    "name": "zipCode",
+                    "type": "STRING",
+                    "description": "A valid 5-digit US zip code",
+                    "default": "29611",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the average rent in the 90210 zip code?",
+                    "parameters": {
+                        "zipCode": "90210"
+                    }
+                },
+                {
+                    "utterance": "Can you provide rental market data for the 10001 area?",
+                    "parameters": {
+                        "zipCode": "10001"
+                    }
+                },
+                {
+                    "utterance": "I'd like to know the rental trends in the 30301 zip code.",
+                    "parameters": {
+                        "zipCode": "30301"
+                    }
+                },
+                {
+                    "utterance": "Get me the rental listing composition for the 60614 zip code.",
+                    "parameters": {
+                        "zipCode": "60614"
+                    }
+                },
+                {
+                    "utterance": "What are the historical rent trends in the 94105 area?",
+                    "parameters": {
+                        "zipCode": "94105"
+                    }
+                },
+                {
+                    "utterance": "Please provide the average rental prices for the 33101 zip code.",
+                    "parameters": {
+                        "zipCode": "33101"
+                    }
+                },
+                {
+                    "utterance": "I need rental data for the 75201 zip code.",
+                    "parameters": {
+                        "zipCode": "75201"
+                    }
+                },
+                {
+                    "utterance": "What is the rental market like in the 02108 area?",
+                    "parameters": {
+                        "zipCode": "02108"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the rent averages for the 20001 zip code?",
+                    "parameters": {
+                        "zipCode": "20001"
+                    }
+                },
+                {
+                    "utterance": "I'd like to see the rental market statistics for the 85001 area.",
+                    "parameters": {
+                        "zipCode": "85001"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Property Value Estimate",
+            "description": "Returns a property value estimate and comparable sale listings for an address or lat/long coordinate. Providing property feature parameters will improve the estimate accuracy. [More info.](https://rapidapi.com/realtymole/api/realty-mole-property-api/details)",
+            "url": "https://realty-mole-property-api.p.rapidapi.com/salePrice",
+            "parameters": [
+                {
+                    "name": "bedrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bedrooms in the property",
+                    "default": "4",
+                    "required": false
+                },
+                {
+                    "name": "daysOld",
+                    "type": "NUMBER",
+                    "description": "The maximum number of days since comparable listings were last seen on the market, with a minimum of 1",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "bathrooms",
+                    "type": "NUMBER",
+                    "description": "The number of bathrooms in the property. Supports fractions to indicate partial bathrooms",
+                    "default": "2",
+                    "required": false
+                },
+                {
+                    "name": "maxRadius",
+                    "type": "NUMBER",
+                    "description": "The maximum distance between comparable listings and the subject property, in kilometers. Defaults to 50 if not provided",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "latitude",
+                    "type": "NUMBER",
+                    "description": "The latitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "squareFootage",
+                    "type": "NUMBER",
+                    "description": "The total living area size of the property, in square feet",
+                    "default": "1600",
+                    "required": false
+                },
+                {
+                    "name": "propertyType",
+                    "type": "STRING",
+                    "description": "The type of the property. Supported values are: `Single Family`, `Condo`, `Townhouse`, `Manufactured`, `Duplex-Triplex`, `Apartment`, `Land`",
+                    "default": "Single Family",
+                    "required": false
+                },
+                {
+                    "name": "longitude",
+                    "type": "NUMBER",
+                    "description": "The longitude of the property. The `latitude`/`longitude` can be provided instead of the `address` parameter",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "address",
+                    "type": "STRING",
+                    "description": "The property address, in the format of 'Street, City, State, Zip'. You need to provide either the `address` or the `latitude`/`longitude` parameters",
+                    "default": "5500 Grand Lake Drive, San Antonio, TX, 78244",
+                    "required": false
+                },
+                {
+                    "name": "compCount",
+                    "type": "NUMBER",
+                    "description": "The number of comparable listings returned by the API, between 5 and 25. Defaults to 10 if not provided",
+                    "default": "5",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What is the estimated value of a single family home at 123 Main St, Springfield, IL with 3 bedrooms and 2 bathrooms?",
+                    "parameters": {
+                        "address": "123 Main St, Springfield, IL",
+                        "bedrooms": 3,
+                        "bathrooms": 2,
+                        "propertyType": "Single Family"
+                    }
+                },
+                {
+                    "utterance": "Can you provide a property value estimate for a condo located at 456 Elm St, Miami, FL with 2 bedrooms and 1.5 bathrooms?",
+                    "parameters": {
+                        "address": "456 Elm St, Miami, FL",
+                        "bedrooms": 2,
+                        "bathrooms": 1.5,
+                        "propertyType": "Condo"
+                    }
+                },
+                {
+                    "utterance": "Estimate the value of a townhouse with 4 bedrooms and 3 bathrooms at 789 Pine St, Denver, CO.",
+                    "parameters": {
+                        "address": "789 Pine St, Denver, CO",
+                        "bedrooms": 4,
+                        "bathrooms": 3,
+                        "propertyType": "Townhouse"
+                    }
+                },
+                {
+                    "utterance": "What is the property value estimate for a manufactured home at 101 Maple Ave, Orlando, FL with 3 bedrooms?",
+                    "parameters": {
+                        "address": "101 Maple Ave, Orlando, FL",
+                        "bedrooms": 3,
+                        "propertyType": "Manufactured"
+                    }
+                },
+                {
+                    "utterance": "Get the estimated value for a duplex-triplex property at 202 Oak St, Austin, TX with 5 bedrooms and 4 bathrooms.",
+                    "parameters": {
+                        "address": "202 Oak St, Austin, TX",
+                        "bedrooms": 5,
+                        "bathrooms": 4,
+                        "propertyType": "Duplex-Triplex"
+                    }
+                },
+                {
+                    "utterance": "How much is an apartment worth at 303 Birch Rd, Seattle, WA with 2 bedrooms and 2 bathrooms?",
+                    "parameters": {
+                        "address": "303 Birch Rd, Seattle, WA",
+                        "bedrooms": 2,
+                        "bathrooms": 2,
+                        "propertyType": "Apartment"
+                    }
+                },
+                {
+                    "utterance": "Provide a value estimate for a land property at 404 Cedar Blvd, Los Angeles, CA.",
+                    "parameters": {
+                        "address": "404 Cedar Blvd, Los Angeles, CA",
+                        "propertyType": "Land"
+                    }
+                },
+                {
+                    "utterance": "What is the estimated value of a property at 505 Walnut St, Chicago, IL with 4 bedrooms, 3 bathrooms, and 2000 square feet?",
+                    "parameters": {
+                        "address": "505 Walnut St, Chicago, IL",
+                        "bedrooms": 4,
+                        "bathrooms": 3,
+                        "squareFootage": 2000
+                    }
+                },
+                {
+                    "utterance": "Estimate the value of a single family home at 606 Cherry Ln, Boston, MA with 3 bedrooms, 2 bathrooms, and a max radius of 30 km for comparables.",
+                    "parameters": {
+                        "address": "606 Cherry Ln, Boston, MA",
+                        "bedrooms": 3,
+                        "bathrooms": 2,
+                        "propertyType": "Single Family",
+                        "maxRadius": 30
+                    }
+                },
+                {
+                    "utterance": "Can you give me a property value estimate for a house at 707 Spruce St, Phoenix, AZ with 4 bedrooms, 2.5 bathrooms, and 1800 square feet?",
+                    "parameters": {
+                        "address": "707 Spruce St, Phoenix, AZ",
+                        "bedrooms": 4,
+                        "bathrooms": 2.5,
+                        "squareFootage": 1800
+                    }
+                }
+            ]
+        }
+    ]
+}

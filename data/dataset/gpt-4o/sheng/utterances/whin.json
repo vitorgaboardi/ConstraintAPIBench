@@ -1,0 +1,1392 @@
+{
+    "tool_name": "whin",
+    "tool_description": "Send and receive any message type to your WhatsApp, or to whatsapp groups with a shared gateway.",
+    "title": "whin",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 99,
+        "avgLatency": 415,
+        "avgSuccessRate": 99,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/inutil-inutil-default/api/whin2/",
+    "host": "whin2.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "send to groups",
+            "url": "https://whin2.p.rapidapi.com/send2group",
+            "description": "This endpoint will send a message to a whatsapp group. You need the group-id to route the message. Check this [video](https://youtu.be/wD0DWoua0L4) lo learn how to use it.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/send2group\"\nquerystring = {\"gid\": gid}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.post(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "gid",
+                    "type": "STRING",
+                    "description": "Enter the group identification (gid) provided by whin when you requested a group. Check the [video](https://youtu.be/wD0DWoua0L4) to learn how to get it.",
+                    "default": "120363027787407242",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Send a reminder message to the project team group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Share the meeting agenda with the marketing group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Post the latest sales report to the sales team group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Send a happy birthday message to the family group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Notify the event planning group about the venue change.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Share the new policy document with the HR group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Send a thank you note to the volunteers group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Inform the book club group about the next meeting date.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Send the weekly newsletter to the community group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Share the holiday schedule with the office group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "send",
+            "url": "https://whin2.p.rapidapi.com/send",
+            "description": "It will send  you a whatsapp. Learn how to use this endpoint: a text on this [video](https://youtu.be/MqAbY6Gu8yM), or this one for [media](https://youtu.be/qq3prJTVMRg) file types.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/send\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.post(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Send a message to my WhatsApp about the meeting schedule.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Notify the group about the upcoming event via WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Share the latest project updates with my team on WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Send a reminder to my WhatsApp about the doctor's appointment.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Send the holiday pictures to the family group on WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Send a birthday greeting to my friend on WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Share the new product launch video with the marketing team on WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Send the dinner invitation to my friends via WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Notify the class about the change in schedule through WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Send the concert tickets to my WhatsApp.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "personal listener",
+            "url": "https://whin2.p.rapidapi.com/webhk",
+            "description": "The response is an url that you have to use as a webhook destination at the origin service. The content sent to it will be routed as a message to a whatsapp group owned by the user, or to the user.\nLearn use-cases on these videos: [grafana alerts](https://youtu.be/RvVgg0qwNDk),[Shelly notifications](https://youtu.be/B6MLlBUkyvo), [synology notifications](https://youtu.be/zeAJNuXYqH4).",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/webhk\"\nquerystring = {\"gid\": gid}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "gid",
+                    "type": "STRING",
+                    "description": "Each whatsapp group will have its own webhook address; set the group-id on this field to get a unique valid url and deliver webhooks as messages on each whatsapp group. Learn how to get a valid value [here](https://rapidapi.com/inutil-inutil-default/api/whin2/tutorials/how-to-use-the-groups-category-to-send-and-receive-whatsapps-to%2Ffrom-groups%3F-1).",
+                    "default": "1234567890123",
+                    "required": false
+                },
+                {
+                    "name": "origin",
+                    "type": "ENUM",
+                    "description": "This is the service that is sending Webhooks to your whin personal receiver. If the origin service is nos listed you can select `Do not include in request`, or leave the value blank, and whin will do its best to parse the payload received.",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Set up a webhook for my WhatsApp group with ID 9876543210987 to receive alerts from Grafana.",
+                    "parameters": {
+                        "gid": "9876543210987",
+                        "origin": "Grafana"
+                    }
+                },
+                {
+                    "utterance": "I need a webhook URL for my group ID 1231231231231 to get notifications from Synology.",
+                    "parameters": {
+                        "gid": "1231231231231",
+                        "origin": "Synology"
+                    }
+                },
+                {
+                    "utterance": "Create a webhook for group ID 4564564564564 to receive messages from Shelly.",
+                    "parameters": {
+                        "gid": "4564564564564",
+                        "origin": "Shelly"
+                    }
+                },
+                {
+                    "utterance": "Generate a webhook URL for my WhatsApp group with ID 7897897897897 without specifying an origin service.",
+                    "parameters": {
+                        "gid": "7897897897897",
+                        "origin": ""
+                    }
+                },
+                {
+                    "utterance": "I want to set up a webhook for group ID 3213213213213 to receive messages from an unspecified service.",
+                    "parameters": {
+                        "gid": "3213213213213",
+                        "origin": ""
+                    }
+                },
+                {
+                    "utterance": "Provide a webhook for my group ID 6546546546546 to get alerts from Grafana.",
+                    "parameters": {
+                        "gid": "6546546546546",
+                        "origin": "Grafana"
+                    }
+                },
+                {
+                    "utterance": "Can you create a webhook for group ID 9879879879879 to receive notifications from Shelly?",
+                    "parameters": {
+                        "gid": "9879879879879",
+                        "origin": "Shelly"
+                    }
+                },
+                {
+                    "utterance": "I need a webhook URL for group ID 1112223334445 to get updates from Synology.",
+                    "parameters": {
+                        "gid": "1112223334445",
+                        "origin": "Synology"
+                    }
+                },
+                {
+                    "utterance": "Set up a webhook for my WhatsApp group with ID 5556667778888 without specifying the origin.",
+                    "parameters": {
+                        "gid": "5556667778888",
+                        "origin": ""
+                    }
+                },
+                {
+                    "utterance": "Generate a webhook for group ID 9998887776665 to receive messages from an unknown service.",
+                    "parameters": {
+                        "gid": "9998887776665",
+                        "origin": ""
+                    }
+                }
+            ]
+        },
+        {
+            "name": "create a group",
+            "url": "https://whin2.p.rapidapi.com/creategroup",
+            "description": "This API will create a group, it will add you, and will promote you to Admin of the group. Check this [video](https://youtu.be/wD0DWoua0L4) to learn how to use it.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/creategroup\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Create a new WhatsApp group for our project team.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Set up a group chat for the family reunion.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a new group for the book club discussions.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you create a WhatsApp group for the soccer team?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Start a new group for our office colleagues.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please make a group for the wedding planning committee.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Initiate a group chat for the neighborhood watch.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Form a new group for the online course participants.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Create a WhatsApp group for the weekend hiking trip.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Set up a group for the charity event volunteers.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "group invite link",
+            "url": "https://whin2.p.rapidapi.com/getlink",
+            "description": "the endpoint returns an invite link url for a group you own.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/getlink\"\nquerystring = {\"gid\": gid}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "gid",
+                    "type": "STRING",
+                    "description": "the group id of which you want to get an invite link url",
+                    "default": "98327493279327",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you provide the invite link for the group with ID 123456789?",
+                    "parameters": {
+                        "gid": "123456789"
+                    }
+                },
+                {
+                    "utterance": "I need the invite link for my group with ID 987654321.",
+                    "parameters": {
+                        "gid": "987654321"
+                    }
+                },
+                {
+                    "utterance": "What's the invite link for the group with ID 1122334455?",
+                    "parameters": {
+                        "gid": "1122334455"
+                    }
+                },
+                {
+                    "utterance": "Please get me the invite link for the group with ID 5566778899.",
+                    "parameters": {
+                        "gid": "5566778899"
+                    }
+                },
+                {
+                    "utterance": "Could you fetch the invite link for the group with ID 6677889900?",
+                    "parameters": {
+                        "gid": "6677889900"
+                    }
+                },
+                {
+                    "utterance": "I need to share the invite link for the group with ID 9988776655.",
+                    "parameters": {
+                        "gid": "9988776655"
+                    }
+                },
+                {
+                    "utterance": "Can you get the invite link for the group with ID 2233445566?",
+                    "parameters": {
+                        "gid": "2233445566"
+                    }
+                },
+                {
+                    "utterance": "Please provide the invite link for the group with ID 3344556677.",
+                    "parameters": {
+                        "gid": "3344556677"
+                    }
+                },
+                {
+                    "utterance": "I need the invite link for the group with ID 4455667788.",
+                    "parameters": {
+                        "gid": "4455667788"
+                    }
+                },
+                {
+                    "utterance": "What's the invite link for my group with ID 5566778899?",
+                    "parameters": {
+                        "gid": "5566778899"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "list groups",
+            "url": "https://whin2.p.rapidapi.com/mygroups",
+            "description": "This endpoint returns a list of the groups you created through whin.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/mygroups\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you show me all the WhatsApp groups I've created?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the groups I have set up using the whin gateway.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the names of the WhatsApp groups I created?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please provide a list of all my WhatsApp groups.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the groups I have created through the whin API.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list all the WhatsApp groups I manage?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to see all the groups I've created using whin.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Fetch the list of WhatsApp groups I have set up.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the WhatsApp groups I have created with the shared gateway?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the groups I have established through the whin service.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "hk receiver",
+            "url": "https://whin2.p.rapidapi.com/hk/{user}/{service}",
+            "description": "this endpoint shall be used by the origin services, it's **NOT** to be used on the playground.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/hk/{user}/{service}\"\nquerystring = {\"gid\": gid}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "user",
+                    "type": "string",
+                    "description": "",
+                    "default": "rapidapi-username",
+                    "required": true
+                },
+                {
+                    "name": "gid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "120363044823414490",
+                    "required": false
+                },
+                {
+                    "name": "service",
+                    "type": "string",
+                    "description": "",
+                    "default": "origin-service",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Send a message to my WhatsApp using the user ID rapidapi-username.",
+                    "parameters": {
+                        "user": "rapidapi-username"
+                    }
+                },
+                {
+                    "utterance": "Use the user ID rapidapi-username to send a message to the group with ID 120363044823414490.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Receive messages on WhatsApp for the user rapidapi-username.",
+                    "parameters": {
+                        "user": "rapidapi-username"
+                    }
+                },
+                {
+                    "utterance": "Send a message to the WhatsApp group using user rapidapi-username and service origin-service.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "Use rapidapi-username to send a message to the group with ID 120363044823414490 via origin-service.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "gid": "120363044823414490",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "Send a WhatsApp message using user rapidapi-username and the default service.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "Receive messages for user rapidapi-username in the group 120363044823414490.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Use rapidapi-username to send a message to WhatsApp with the default group ID.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Send a message to WhatsApp using rapidapi-username and the origin-service.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "Receive WhatsApp messages for user rapidapi-username using the origin-service.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "service": "origin-service"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "hk receiver",
+            "url": "https://whin2.p.rapidapi.com/hk/{user}/{service}",
+            "description": "this endpoint shall be triggered by origin services, it's **NOT** to be used on the playground.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/hk/{user}/{service}\"\nquerystring = {\"gid\": gid}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.post(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "user",
+                    "type": "string",
+                    "description": "",
+                    "default": "rapidapi-username",
+                    "required": true
+                },
+                {
+                    "name": "gid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "120363044823414490",
+                    "required": false
+                },
+                {
+                    "name": "service",
+                    "type": "string",
+                    "description": "",
+                    "default": "origin-service",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Send a message to the group with ID 120363044823414490 using my username.",
+                    "parameters": {
+                        "user": "my-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Use the origin-service to send a message as rapidapi-username.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "Send a message to my WhatsApp group using the service origin-service.",
+                    "parameters": {
+                        "user": "my-username",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "I want to send a message to the group with ID 120363044823414490.",
+                    "parameters": {
+                        "user": "my-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Send a message using my username and the default service.",
+                    "parameters": {
+                        "user": "my-username",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "Use rapidapi-username to send a message to the group with ID 120363044823414490.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Send a message to my WhatsApp using the origin-service.",
+                    "parameters": {
+                        "user": "my-username",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "I want to send a message to the group with ID 120363044823414490 using rapidapi-username.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Use my username to send a message with the default service.",
+                    "parameters": {
+                        "user": "my-username",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "Send a message to the group with ID 120363044823414490 using the origin-service.",
+                    "parameters": {
+                        "user": "my-username",
+                        "gid": "120363044823414490",
+                        "service": "origin-service"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "hook receiver",
+            "url": "https://whin2.p.rapidapi.com/hook/{user}",
+            "description": "This endpoint shall be triggered by the webhook origin and is not intended to be used through this frontend.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/hook/{user}\"\nquerystring = {\"gid\": gid}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.post(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "user",
+                    "type": "string",
+                    "description": "",
+                    "default": "your-RapidAPI-username",
+                    "required": true
+                },
+                {
+                    "name": "gid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "120363044823414490",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Send a message to my WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Receive messages on WhatsApp with my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Use my RapidAPI username to send a message to the group with ID 120363044823414490.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Trigger a webhook to send a message to my WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Send a notification to my WhatsApp group using my RapidAPI username and group ID 120363044823414490.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Use my RapidAPI username to receive messages from the WhatsApp group with ID 120363044823414490.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Send a broadcast message to my WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Receive a message on WhatsApp group with ID 120363044823414490 using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Use my RapidAPI username to send a message to a specific WhatsApp group.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Trigger a webhook to receive messages on my WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "hook receiver",
+            "url": "https://whin2.p.rapidapi.com/hook/{user}",
+            "description": "This endpoint shall be triggered by the webhook origin and is not intended to be used through this frontend.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/hook/{user}\"\nquerystring = {\"gid\": gid}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "user",
+                    "type": "string",
+                    "description": "",
+                    "default": "your-RapidAPI-username",
+                    "required": true
+                },
+                {
+                    "name": "gid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "120363044823414490",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Send a message to my WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Receive messages on WhatsApp with my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Use my RapidAPI username to send a message to the group with ID 120363044823414490.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Trigger a webhook to send a message to my WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Send a notification to my WhatsApp group using my RapidAPI username and group ID 120363044823414490.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Use my RapidAPI username to receive messages from the group with ID 120363044823414490.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Send a broadcast message to my WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Receive a broadcast message on WhatsApp with my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Use my RapidAPI username to send a message to a specific WhatsApp group.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Trigger a webhook to receive messages on my WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "set url",
+            "url": "https://whin2.p.rapidapi.com/seturl",
+            "description": "Set a whin-receive endpoint. Learn how to use it on this [video](https://youtu.be/8WyG_becZXM). This is the valid url where the whatsapps you send to whin, or are written on a whatsapp group, will be delivered. The url has to be accessible from the internet; this endpoint expects a 200 response from the destination, otherwise it wont be set.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/seturl\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.post(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "show url",
+            "url": "https://whin2.p.rapidapi.com/showurl",
+            "description": "This endpoint is used to request the webhook routes created on your account. \nLearn how to use it on this [video](https://youtu.be/8WyG_becZXM)",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/showurl\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you show me the webhook routes I have set up on my account?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need to see the list of webhook routes created on my account.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please display the webhook routes configured for my account.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the current webhook routes available on my account?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the webhook routes that are active on my account.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide the details of webhook routes on my account?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to check the webhook routes linked to my account.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the webhook routes that have been created on my account.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you give me an overview of the webhook routes on my account?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please show the webhook routes associated with my account.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "websocket checker",
+            "url": "https://whin2.p.rapidapi.com/wskchk",
+            "description": "Whin-receive (thick-client) websockets checker. \nThis endpoint is **ONLY** used to authorize websocket connections to the backend by thick clients. The Response is a token needed to complete handshaking.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/wskchk\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": []
+        },
+        {
+            "name": "signup",
+            "url": "https://whin2.p.rapidapi.com/signup",
+            "description": "This endpoint is **ONLY** used to enter the code you received to signup. Follow this [video](https://youtu.be/uOZ-oH4kP58), or read the [tutorial](https://rapidapi.com/inutil-inutil-default/api/whin2/tutorials/what-to-do-to-start-using-whin%3F-1), to learn how to start using whin.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/signup\"\nquerystring = {\"code\": code}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "code",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "12345",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "I received a signup code 67890, can you help me enter it?",
+                    "parameters": {
+                        "code": 67890
+                    }
+                },
+                {
+                    "utterance": "Please use the code 54321 to complete my registration.",
+                    "parameters": {
+                        "code": 54321
+                    }
+                },
+                {
+                    "utterance": "I need to enter the code 98765 to finish signing up.",
+                    "parameters": {
+                        "code": 98765
+                    }
+                },
+                {
+                    "utterance": "Can you input the code 11223 for my signup process?",
+                    "parameters": {
+                        "code": 11223
+                    }
+                },
+                {
+                    "utterance": "I have a code 33445 that I need to use for registration.",
+                    "parameters": {
+                        "code": 33445
+                    }
+                },
+                {
+                    "utterance": "Please enter the signup code 55667 for me.",
+                    "parameters": {
+                        "code": 55667
+                    }
+                },
+                {
+                    "utterance": "I got a code 77889 for signing up, can you enter it?",
+                    "parameters": {
+                        "code": 77889
+                    }
+                },
+                {
+                    "utterance": "Help me input the code 99001 to complete my signup.",
+                    "parameters": {
+                        "code": 99001
+                    }
+                },
+                {
+                    "utterance": "I need to use the code 22334 to finish my registration.",
+                    "parameters": {
+                        "code": 22334
+                    }
+                },
+                {
+                    "utterance": "Can you assist me by entering the code 44556 for signup?",
+                    "parameters": {
+                        "code": 44556
+                    }
+                }
+            ]
+        },
+        {
+            "name": "delete url",
+            "url": "https://whin2.p.rapidapi.com/delurl",
+            "description": "This endpoint will erase the url you set to receive the whatsapps sent to whin. Learn how to use it on this [video](https://youtu.be/8WyG_becZXM).",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/delurl\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Remove the URL for receiving WhatsApp messages.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Erase the current URL set for WhatsApp message reception.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Delete the URL configured for receiving WhatsApp messages.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Clear the URL used for receiving messages on WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Remove the existing URL for WhatsApp message reception.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Erase the URL currently set for receiving WhatsApp messages.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Delete the URL that is used to receive WhatsApp messages.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Clear the configured URL for WhatsApp message reception.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Remove the URL linked to receiving WhatsApp messages.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Erase the URL associated with receiving messages on WhatsApp.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "send to groups",
+            "url": "https://whin2.p.rapidapi.com/send2group",
+            "description": "This endpoint will send a message to a whatsapp group. You need the group-id to route the message. Check this [video](https://youtu.be/wD0DWoua0L4) lo learn how to use it.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/send2group\"\nquerystring = {\"gid\": \"120363027787407242\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/send2group\"\nquerystring = {\"gid\": \"120363027787407242\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "parameters": [
+                {
+                    "name": "gid",
+                    "type": "STRING",
+                    "description": "Enter the group identification (gid) provided by whin when you requested a group. Check the [video](https://youtu.be/wD0DWoua0L4) to learn how to get it.",
+                    "default": "120363027787407242",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Send a reminder message to the project team group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Share the meeting agenda with the marketing group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Post the latest sales report to the sales team group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Send a happy birthday message to the family group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Notify the event planning group about the venue change.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Share the new policy document with the HR group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Send a thank you note to the volunteers group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Inform the book club group about the next meeting date.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Send the weekly newsletter to the community group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                },
+                {
+                    "utterance": "Share the holiday schedule with the office group.",
+                    "parameters": {
+                        "gid": "120363027787407242"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "send",
+            "url": "https://whin2.p.rapidapi.com/send",
+            "description": "It will send  you a whatsapp. Learn how to use this endpoint: a text on this [video](https://youtu.be/MqAbY6Gu8yM), or this one for [media](https://youtu.be/qq3prJTVMRg) file types.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/send\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/send\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Send a message to my WhatsApp about the meeting details.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you send a reminder to the group chat about the project deadline?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please send the latest sales report to my WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Share the vacation photos with the family group on WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Send a birthday greeting to John on WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Notify the team about the change in schedule via WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Send the new menu to the restaurant group on WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please send the event invitation to my WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Share the video tutorial with the study group on WhatsApp.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Send a thank you message to the client on WhatsApp.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "hk receiver",
+            "url": "https://whin2.p.rapidapi.com/hk/rapidapi-username/origin-service",
+            "description": "this endpoint shall be triggered by origin services, it's **NOT** to be used on the playground.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/hk/rapidapi-username/origin-service\"\nquerystring = {\"gid\": \"120363044823414490\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/hk/{user}/{service}\"\nquerystring = {\"gid\": \"120363044823414490\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "parameters": [
+                {
+                    "name": "user",
+                    "type": "string",
+                    "description": "",
+                    "default": "rapidapi-username",
+                    "required": true
+                },
+                {
+                    "name": "gid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "120363044823414490",
+                    "required": false
+                },
+                {
+                    "name": "service",
+                    "type": "string",
+                    "description": "",
+                    "default": "origin-service",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Send a message to my WhatsApp using the user ID rapidapi-username.",
+                    "parameters": {
+                        "user": "rapidapi-username"
+                    }
+                },
+                {
+                    "utterance": "Use the user ID rapidapi-username to send a message to the group with ID 120363044823414490.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Receive messages on WhatsApp for the user rapidapi-username from the origin-service.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "Send a notification to WhatsApp group 120363044823414490 using user rapidapi-username.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Use rapidapi-username to send a message via the origin-service.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "Send a WhatsApp message to the group with ID 120363044823414490 for user rapidapi-username.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Receive a message on WhatsApp for user rapidapi-username.",
+                    "parameters": {
+                        "user": "rapidapi-username"
+                    }
+                },
+                {
+                    "utterance": "Send a message to WhatsApp using user rapidapi-username and service origin-service.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "service": "origin-service"
+                    }
+                },
+                {
+                    "utterance": "Use rapidapi-username to send a message to WhatsApp group 120363044823414490.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Receive messages for user rapidapi-username from the origin-service on WhatsApp.",
+                    "parameters": {
+                        "user": "rapidapi-username",
+                        "service": "origin-service"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "hook receiver",
+            "url": "https://whin2.p.rapidapi.com/hook/your-RapidAPI-username",
+            "description": "This endpoint shall be triggered by the webhook origin and is not intended to be used through this frontend.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/hook/your-RapidAPI-username\"\nquerystring = {\"gid\": \"120363044823414490\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/hook/{user}\"\nquerystring = {\"gid\": \"120363044823414490\"}\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers, params=querystring)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "parameters": [
+                {
+                    "name": "user",
+                    "type": "string",
+                    "description": "",
+                    "default": "your-RapidAPI-username",
+                    "required": true
+                },
+                {
+                    "name": "gid",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "120363044823414490",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Send a message to my WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Trigger a webhook to receive messages on WhatsApp with my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Use my RapidAPI username to send a message to the default WhatsApp group.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Receive messages on WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Send a notification to my WhatsApp group with the ID 120363044823414490 using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Use my RapidAPI username to send a message to a specific WhatsApp group.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Trigger the webhook to send a message to my WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Send a message to the WhatsApp group with ID 120363044823414490 using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username",
+                        "gid": "120363044823414490"
+                    }
+                },
+                {
+                    "utterance": "Receive a message on WhatsApp using my RapidAPI username.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username"
+                    }
+                },
+                {
+                    "utterance": "Use my RapidAPI username to send a message to the default WhatsApp group.",
+                    "parameters": {
+                        "user": "your-RapidAPI-username",
+                        "gid": "120363044823414490"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "set url",
+            "url": "https://whin2.p.rapidapi.com/seturl",
+            "description": "Set a whin-receive endpoint. Learn how to use it on this [video](https://youtu.be/8WyG_becZXM). This is the valid url where the whatsapps you send to whin, or are written on a whatsapp group, will be delivered. The url has to be accessible from the internet; this endpoint expects a 200 response from the destination, otherwise it wont be set.",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/seturl\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://whin2.p.rapidapi.com/seturl\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"whin2.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "parameters": [],
+            "utterances": []
+        }
+    ],
+    "category": "Communication"
+}

@@ -1,0 +1,316 @@
+{
+    "tool_name": "Article Extractor and Summarizer",
+    "tool_description": "This is an API which extracts news/article body from a URL and uses GPT to summarize (and optionally translate) the article content. Useful for text mining purposes. Leverages powerful and flexible web scraping engine (ScrapeNinja.net) with high-quality rotating proxies under the hood. In depth review and API implementation details: https://pixeljets.com/blog/gpt-summary-is-broken/ . My video where ChatGPT summary capabilities are explored: https://youtu.be/hRQqJtgYz_Q",
+    "title": "Article Extractor and Summarizer",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 62,
+        "avgLatency": 10453,
+        "avgSuccessRate": 53,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/restyler/api/article-extractor-and-summarizer/",
+    "host": "article-extractor-and-summarizer.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "/summarize",
+            "url": "https://article-extractor-and-summarizer.p.rapidapi.com/summarize",
+            "description": "Summarizes the article after extracting it from the specified url.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://article-extractor-and-summarizer.p.rapidapi.com/summarize\"\nquerystring = {\"length\": length, \"url\": url}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"article-extractor-and-summarizer.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://time.com/6266679/musk-ai-open-letter/",
+                    "required": true
+                },
+                {
+                    "name": "lang",
+                    "type": "ENUM",
+                    "description": "Target language to translate summary into",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "html",
+                    "type": "BOOLEAN",
+                    "description": "pass TRUE if you want to convert new line symbols in API response text with html paragraph tags ",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "length",
+                    "type": "NUMBER",
+                    "description": "Length in paragraphs. This parameter might be ignored for a very long articles.",
+                    "default": "3",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you summarize the article from https://time.com/6266679/musk-ai-open-letter/ for me?",
+                    "parameters": {
+                        "url": "https://time.com/6266679/musk-ai-open-letter/"
+                    }
+                },
+                {
+                    "utterance": "Please extract and summarize the content from https://www.bbc.com/news/world-us-canada-56580728.",
+                    "parameters": {
+                        "url": "https://www.bbc.com/news/world-us-canada-56580728"
+                    }
+                },
+                {
+                    "utterance": "Summarize the article at https://www.nytimes.com/2023/04/01/technology/elon-musk-twitter.html and translate it to Spanish.",
+                    "parameters": {
+                        "url": "https://www.nytimes.com/2023/04/01/technology/elon-musk-twitter.html",
+                        "lang": "Spanish"
+                    }
+                },
+                {
+                    "utterance": "I need a brief summary of the article from https://www.theguardian.com/technology/2023/apr/01/elon-musk-twitter-ai.",
+                    "parameters": {
+                        "url": "https://www.theguardian.com/technology/2023/apr/01/elon-musk-twitter-ai"
+                    }
+                },
+                {
+                    "utterance": "Could you summarize the article at https://www.cnn.com/2023/04/01/tech/elon-musk-twitter-ai/index.html in French?",
+                    "parameters": {
+                        "url": "https://www.cnn.com/2023/04/01/tech/elon-musk-twitter-ai/index.html",
+                        "lang": "French"
+                    }
+                },
+                {
+                    "utterance": "Get me a summary of the article from https://www.forbes.com/sites/johnkoetsier/2023/04/01/elon-musk-twitter-ai/ with HTML formatting.",
+                    "parameters": {
+                        "url": "https://www.forbes.com/sites/johnkoetsier/2023/04/01/elon-musk-twitter-ai/",
+                        "html": true
+                    }
+                },
+                {
+                    "utterance": "Can you provide a summary of the article at https://www.washingtonpost.com/technology/2023/04/01/elon-musk-twitter-ai/ in German?",
+                    "parameters": {
+                        "url": "https://www.washingtonpost.com/technology/2023/04/01/elon-musk-twitter-ai/",
+                        "lang": "German"
+                    }
+                },
+                {
+                    "utterance": "Please summarize the article from https://www.reuters.com/technology/elon-musk-twitter-ai-2023-04-01/ in 5 paragraphs.",
+                    "parameters": {
+                        "url": "https://www.reuters.com/technology/elon-musk-twitter-ai-2023-04-01/",
+                        "length": 5
+                    }
+                },
+                {
+                    "utterance": "Extract and summarize the content from https://www.bloomberg.com/news/articles/2023-04-01/elon-musk-twitter-ai with a length of 2 paragraphs.",
+                    "parameters": {
+                        "url": "https://www.bloomberg.com/news/articles/2023-04-01/elon-musk-twitter-ai",
+                        "length": 2
+                    }
+                },
+                {
+                    "utterance": "I need a summary of the article at https://www.nbcnews.com/tech/elon-musk-twitter-ai-rcna123456 with HTML tags.",
+                    "parameters": {
+                        "url": "https://www.nbcnews.com/tech/elon-musk-twitter-ai-rcna123456",
+                        "html": true
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/extract",
+            "url": "https://article-extractor-and-summarizer.p.rapidapi.com/extract",
+            "description": "Extract an article body and markdown version of the body.",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://article-extractor-and-summarizer.p.rapidapi.com/extract\"\nquerystring = {\"url\": url}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"article-extractor-and-summarizer.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "https://time.com/6266679/musk-ai-open-letter/",
+                    "required": true
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you extract and summarize the article from this URL: https://time.com/6266679/musk-ai-open-letter/?",
+                    "parameters": {
+                        "url": "https://time.com/6266679/musk-ai-open-letter/"
+                    }
+                },
+                {
+                    "utterance": "Please summarize the content of the article found at https://www.bbc.com/news/world-us-canada-56580728.",
+                    "parameters": {
+                        "url": "https://www.bbc.com/news/world-us-canada-56580728"
+                    }
+                },
+                {
+                    "utterance": "I need a summary of the article located at https://www.nytimes.com/2023/04/01/technology/elon-musk-twitter.html.",
+                    "parameters": {
+                        "url": "https://www.nytimes.com/2023/04/01/technology/elon-musk-twitter.html"
+                    }
+                },
+                {
+                    "utterance": "Could you extract the main points from this article: https://www.theguardian.com/world/2023/apr/01/ukraine-russia-war-latest-news.",
+                    "parameters": {
+                        "url": "https://www.theguardian.com/world/2023/apr/01/ukraine-russia-war-latest-news"
+                    }
+                },
+                {
+                    "utterance": "What does the article at https://www.forbes.com/sites/johnkoetsier/2023/04/01/ai-revolution/ say?",
+                    "parameters": {
+                        "url": "https://www.forbes.com/sites/johnkoetsier/2023/04/01/ai-revolution/"
+                    }
+                },
+                {
+                    "utterance": "Summarize the key details from this URL: https://www.cnn.com/2023/04/01/health/covid-vaccine-update/index.html.",
+                    "parameters": {
+                        "url": "https://www.cnn.com/2023/04/01/health/covid-vaccine-update/index.html"
+                    }
+                },
+                {
+                    "utterance": "Can you provide a summary of the article at https://www.washingtonpost.com/politics/2023/04/01/biden-administration-policy-changes/?",
+                    "parameters": {
+                        "url": "https://www.washingtonpost.com/politics/2023/04/01/biden-administration-policy-changes/"
+                    }
+                },
+                {
+                    "utterance": "Extract and summarize the article from https://www.reuters.com/business/finance/2023/04/01/global-markets-overview/.",
+                    "parameters": {
+                        "url": "https://www.reuters.com/business/finance/2023/04/01/global-markets-overview/"
+                    }
+                },
+                {
+                    "utterance": "I need the main points from the article at https://www.bloomberg.com/news/articles/2023-04-01/stock-market-today.",
+                    "parameters": {
+                        "url": "https://www.bloomberg.com/news/articles/2023-04-01/stock-market-today"
+                    }
+                },
+                {
+                    "utterance": "What are the highlights of the article found at https://www.aljazeera.com/news/2023/4/1/middle-east-conflict-latest-updates?",
+                    "parameters": {
+                        "url": "https://www.aljazeera.com/news/2023/4/1/middle-east-conflict-latest-updates"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/summarize-text",
+            "url": "https://article-extractor-and-summarizer.p.rapidapi.com/summarize-text",
+            "description": "Summarize text (in Markdown)",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://article-extractor-and-summarizer.p.rapidapi.com/summarize-text\"\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"article-extractor-and-summarizer.p.rapidapi.com\"\n}\n\nresponse = requests.post(url, headers=headers)\n\nprint(response.json())\n",
+            "statuscode": 111,
+            "body": "",
+            "headers": "",
+            "schema": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you summarize the article from this URL: https://example.com/news/latest-updates?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a summary of the content from this link: https://example.com/blog/tech-trends-2023.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please extract and summarize the main points from this article: https://example.com/articles/health-benefits.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide a brief summary of the news from this URL: https://example.com/news/world-events?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Summarize the key information from this webpage: https://example.com/reports/market-analysis.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want a concise summary of the article found here: https://example.com/stories/inspirational-journeys.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you give me a summary of the content at this link: https://example.com/insights/economic-outlook?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please summarize the details from this page: https://example.com/updates/science-discoveries.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Extract and summarize the article from this URL: https://example.com/features/technology-advancements.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a brief summary of the information on this site: https://example.com/news/local-news.",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "/summarize-text",
+            "url": "https://article-extractor-and-summarizer.p.rapidapi.com/summarize-text",
+            "description": "Summarize text (in Markdown)",
+            "method": "POST",
+            "code": "import requests\n\nurl = \"https://article-extractor-and-summarizer.p.rapidapi.com/summarize-text\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"article-extractor-and-summarizer.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "convert_code": "import requests\n\nurl = \"https://article-extractor-and-summarizer.p.rapidapi.com/summarize-text\"\n\nheaders = {\n            \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n            \"X-RapidAPI-Host\": \"article-extractor-and-summarizer.p.rapidapi.com\"\n        }\n\nresponse = requests.post(url, headers=headers)\nprint(response.json())\n",
+            "test_endpoint": "",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you summarize the article from this URL: https://example.com/news/latest-updates?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please extract and summarize the content from the following link: https://example.com/tech/innovations.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a summary of the article at this URL: https://example.com/world/politics.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you provide a brief summary of the article found here: https://example.com/health/wellness-tips?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Summarize the main points from this article: https://example.com/finance/market-trends.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the key takeaways from the article at this URL: https://example.com/sports/highlights?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Extract and summarize the content from this page: https://example.com/entertainment/movies-review.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you give me a summary of the article located at: https://example.com/science/discoveries?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please summarize the article from this link: https://example.com/travel/destinations-guide.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I would like a summary of the content from this URL: https://example.com/education/learning-resources.",
+                    "parameters": {}
+                }
+            ]
+        }
+    ],
+    "category": "Artificial_Intelligence_Machine_Learning"
+}

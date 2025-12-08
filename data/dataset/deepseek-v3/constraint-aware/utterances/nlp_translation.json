@@ -1,0 +1,446 @@
+{
+    "name": "NLP Translation",
+    "description": "Neural Translate. 110+ Langs. HTML/Text/JSON. Protected words. Multiple target langs in single request.",
+    "url": "https://rapidapi.com/gofitech/api/nlp-translation/",
+    "api_methods": [
+        {
+            "name": "JSON Data Translate",
+            "description": "Translate values inside JSON formatted string with **protected keys** and **protected words** capabilities",
+            "url": "https://nlp-translation.p.rapidapi.com/v1/jsontranslate",
+            "parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "es",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "json",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "{\"name\":{\"firstName\":\"George\",\"lastName\":\"Bush\"},\"age\":30,\"Address\":null,\"cities\":[{\"code\":\"NYC\",\"name\":\"New York City\",\"state\":\"New York\",\"lat\":40.73061,\"long\":-73.935242,\"description\":\"<p>New York City (NYC), often called New York (NY), is the most populous city in the United States. With an estimated 2019 population of 8,336,817 distributed over about 302.6 square miles (784 km2), New York is also the most densely populated major city in the United States.</p>\"},{\"code\":\"LA\",\"name\":\"City of Los Angeles\",\"state\":\"California\",\"lat\":34.05,\"long\":-118.25,\"description\":\"<p>Los Angeles (l\u0254\u02d0s \u02c8\u00e6nd\u0292\u0259l\u0259s); Spanish: Los \u00c1ngeles; Spanish for 'The Angels'), officially the City of Los Angeles and often known by its initials L.A., is the largest city in California. With an estimated population of nearly four million people, it is the second-most populous city in the United States (after New York City) and the third-most populous city in North America (after Mexico City and New York City).</p>\"}]}",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "protected_words",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "New York;Los Angeles",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "protected_keys",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "name.firstName;name.lastName;cities.code",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": "error parsing the information"
+        },
+        {
+            "name": "Translate",
+            "description": "Translate Text or HTML",
+            "url": "https://nlp-translation.p.rapidapi.com/v1/translate",
+            "parameters": [
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "es",
+                    "required": true
+                },
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "Hello, world!!",
+                    "required": true
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en",
+                    "required": false
+                },
+                {
+                    "name": "protected_words",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Translate 'Good morning' into Spanish.",
+                    "parameters": {
+                        "to": "es",
+                        "text": "Good morning"
+                    }
+                },
+                {
+                    "utterance": "Can you translate 'How are you?' to French?",
+                    "parameters": {
+                        "to": "fr",
+                        "text": "How are you?"
+                    }
+                },
+                {
+                    "utterance": "I need 'Welcome to the conference' translated into German.",
+                    "parameters": {
+                        "to": "de",
+                        "text": "Welcome to the conference"
+                    }
+                },
+                {
+                    "utterance": "Translate 'Thank you for your help' into Italian, keeping the word 'help' unchanged.",
+                    "parameters": {
+                        "to": "it",
+                        "text": "Thank you for your help",
+                        "protected_words": "help"
+                    }
+                },
+                {
+                    "utterance": "How do you say 'Happy birthday' in Portuguese?",
+                    "parameters": {
+                        "to": "pt",
+                        "text": "Happy birthday"
+                    }
+                },
+                {
+                    "utterance": "Translate 'See you later' into Japanese from English.",
+                    "parameters": {
+                        "to": "ja",
+                        "text": "See you later",
+                        "from": "en"
+                    }
+                },
+                {
+                    "utterance": "Can you translate 'The meeting is at 3 PM' into Russian, preserving 'PM'?",
+                    "parameters": {
+                        "to": "ru",
+                        "text": "The meeting is at 3 PM",
+                        "protected_words": "PM"
+                    }
+                },
+                {
+                    "utterance": "I want 'Good night' translated into Chinese.",
+                    "parameters": {
+                        "to": "zh",
+                        "text": "Good night"
+                    }
+                },
+                {
+                    "utterance": "Translate 'Please wait a moment' into Arabic from English.",
+                    "parameters": {
+                        "to": "ar",
+                        "text": "Please wait a moment",
+                        "from": "en"
+                    }
+                },
+                {
+                    "utterance": "How would you translate 'Enjoy your meal' into Korean, keeping 'meal' as is?",
+                    "parameters": {
+                        "to": "ko",
+                        "text": "Enjoy your meal",
+                        "protected_words": "meal"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "Translate",
+            "description": "Translate Text or HTML",
+            "url": "https://nlp-translation.p.rapidapi.com/v1/translate",
+            "parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "HTML or plain text to translate",
+                    "default": "Hello World",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Destination Language code. Case sensitive.",
+                    "default": "es",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Source Language. Case sensitive. Leave it blank is not recommended",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "protected_words",
+                    "type": "STRING",
+                    "description": "Case sensitive. Separated with semicolon (;)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Translate 'Good morning' to French.",
+                    "parameters": {
+                        "text": "Good morning",
+                        "to": "fr"
+                    }
+                },
+                {
+                    "utterance": "Can you translate 'How are you?' into Spanish?",
+                    "parameters": {
+                        "text": "How are you?",
+                        "to": "es"
+                    }
+                },
+                {
+                    "utterance": "Please translate 'Thank you' to German.",
+                    "parameters": {
+                        "text": "Thank you",
+                        "to": "de"
+                    }
+                },
+                {
+                    "utterance": "Translate 'I love programming' into Japanese, keeping 'programming' as is.",
+                    "parameters": {
+                        "text": "I love programming",
+                        "to": "ja",
+                        "protected_words": "programming"
+                    }
+                },
+                {
+                    "utterance": "How do you say 'Happy Birthday' in Italian?",
+                    "parameters": {
+                        "text": "Happy Birthday",
+                        "to": "it"
+                    }
+                },
+                {
+                    "utterance": "Translate 'The weather is nice today' to Portuguese, assuming it's in English.",
+                    "parameters": {
+                        "text": "The weather is nice today",
+                        "to": "pt",
+                        "from": "en"
+                    }
+                },
+                {
+                    "utterance": "Can you translate 'See you later' into Russian, keeping 'later' unchanged?",
+                    "parameters": {
+                        "text": "See you later",
+                        "to": "ru",
+                        "protected_words": "later"
+                    }
+                },
+                {
+                    "utterance": "Translate 'What time is it?' to Chinese.",
+                    "parameters": {
+                        "text": "What time is it?",
+                        "to": "zh"
+                    }
+                },
+                {
+                    "utterance": "Please translate 'I need help' into Arabic, assuming the source language is English.",
+                    "parameters": {
+                        "text": "I need help",
+                        "to": "ar",
+                        "from": "en"
+                    }
+                },
+                {
+                    "utterance": "How would you translate 'Good night' to Korean, keeping 'Good' as is?",
+                    "parameters": {
+                        "text": "Good night",
+                        "to": "ko",
+                        "protected_words": "Good"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "JSON Data Translate",
+            "description": "Translate values inside JSON formatted string with **protected keys** and **protected words** capabilities",
+            "url": "https://nlp-translation.p.rapidapi.com/v1/jsontranslate",
+            "parameters": [
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "en",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "es",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "json",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "{\"name\":{\"firstName\":\"George\",\"lastName\":\"Bush\"},\"age\":30,\"Address\":null,\"cities\":[{\"code\":\"NYC\",\"name\":\"New York City\",\"state\":\"New York\",\"lat\":40.73061,\"long\":-73.935242,\"description\":\"<p>New York City (NYC), often called New York (NY), is the most populous city in the United States. With an estimated 2019 population of 8,336,817 distributed over about 302.6 square miles (784 km2), New York is also the most densely populated major city in the United States.</p>\"},{\"code\":\"LA\",\"name\":\"City of Los Angeles\",\"state\":\"California\",\"lat\":34.05,\"long\":-118.25,\"description\":\"<p>Los Angeles (l\u0254\u02d0s \u02c8\u00e6nd\u0292\u0259l\u0259s); Spanish: Los \u00c1ngeles; Spanish for 'The Angels'), officially the City of Los Angeles and often known by its initials L.A., is the largest city in California. With an estimated population of nearly four million people, it is the second-most populous city in the United States (after New York City) and the third-most populous city in North America (after Mexico City and New York City).</p>\"}]}",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "protected_words",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "New York;Los Angeles",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "protected_keys",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "name.firstName;name.lastName;cities.code",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": "error parsing the information"
+        },
+        {
+            "name": "Translate",
+            "description": "Translate Text or HTML",
+            "url": "https://nlp-translation.p.rapidapi.com/v1/translate",
+            "parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "HTML or plain text to translate",
+                    "default": "Hello World",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "to",
+                    "type": "STRING",
+                    "description": "Destination Language code. Case sensitive.",
+                    "default": "es",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "from",
+                    "type": "STRING",
+                    "description": "Source Language. Case sensitive. Leave it blank is not recommended",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "protected_words",
+                    "type": "STRING",
+                    "description": "Case sensitive. Separated with semicolon (;)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Translate 'Good morning' into French.",
+                    "parameters": {
+                        "text": "Good morning",
+                        "to": "fr"
+                    }
+                },
+                {
+                    "utterance": "How do I say 'Thank you' in Spanish?",
+                    "parameters": {
+                        "text": "Thank you",
+                        "to": "es"
+                    }
+                },
+                {
+                    "utterance": "Can you translate this HTML content to German?",
+                    "parameters": {
+                        "text": "<p>Welcome to our website</p>",
+                        "to": "de"
+                    }
+                },
+                {
+                    "utterance": "Translate 'I love programming' from English to Japanese.",
+                    "parameters": {
+                        "text": "I love programming",
+                        "to": "ja",
+                        "from": "en"
+                    }
+                },
+                {
+                    "utterance": "What is 'Hello, how are you?' in Italian?",
+                    "parameters": {
+                        "text": "Hello, how are you?",
+                        "to": "it"
+                    }
+                },
+                {
+                    "utterance": "Translate 'The quick brown fox' to Russian, keeping 'fox' as is.",
+                    "parameters": {
+                        "text": "The quick brown fox",
+                        "to": "ru",
+                        "protected_words": "fox"
+                    }
+                },
+                {
+                    "utterance": "How would you say 'Happy Birthday' in Portuguese?",
+                    "parameters": {
+                        "text": "Happy Birthday",
+                        "to": "pt"
+                    }
+                },
+                {
+                    "utterance": "Translate 'This is a test message' from English to Chinese.",
+                    "parameters": {
+                        "text": "This is a test message",
+                        "to": "zh",
+                        "from": "en"
+                    }
+                },
+                {
+                    "utterance": "Can you translate 'Please wait a moment' into Arabic?",
+                    "parameters": {
+                        "text": "Please wait a moment",
+                        "to": "ar"
+                    }
+                },
+                {
+                    "utterance": "Translate 'The weather is nice today' to French, preserving 'weather'.",
+                    "parameters": {
+                        "text": "The weather is nice today",
+                        "to": "fr",
+                        "protected_words": "weather"
+                    }
+                }
+            ]
+        }
+    ]
+}

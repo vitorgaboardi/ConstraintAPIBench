@@ -1,0 +1,230 @@
+{
+    "name": "Article Data Extraction and Text Mining",
+    "description": "Ujeebu Article Extraction API extracts clean text, and other structured data from news and blog articles.",
+    "url": "https://rapidapi.com/lexper/api/article-data-extraction-and-text-mining/",
+    "api_methods": [
+        {
+            "name": "/v1.1/card",
+            "description": "Extract a preview of an article (article card). This is faster than the extract endpoint as it doesn't do any in-depth analysis of the content of the article, and instead mostly relies on its meta tags.",
+            "url": "https://lexper.p.rapidapi.com/v1.1/card",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "URL of article to preview.\n",
+                    "default": "https://thenextweb.com/news/pixel-6-teaser",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "js_timeout",
+                    "type": "NUMBER",
+                    "description": "when JavaScript is enabled, indicates how many seconds the API should wait for the JS interpreter before starting the extraction.\n",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "js",
+                    "type": "ENUM",
+                    "description": "indicates whether to execute JavaScript or not.\n",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "technical": true,
+                        "values": {
+                            "enumerated": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you extract a preview of the article from this link?",
+                    "parameters": {
+                        "url": "https://www.nytimes.com/2023/10/01/us/politics/biden-trump-election.html"
+                    }
+                },
+                {
+                    "utterance": "What does the preview of the article at this URL look like?",
+                    "parameters": {
+                        "url": "https://www.theguardian.com/world/2023/oct/02/climate-crisis-global-warming-extreme-weather"
+                    }
+                },
+                {
+                    "utterance": "Show me a quick summary of the article from this webpage.",
+                    "parameters": {
+                        "url": "https://www.bbc.com/news/world-europe-66769012"
+                    }
+                },
+                {
+                    "utterance": "Extract the preview of the article at this address.",
+                    "parameters": {
+                        "url": "https://www.washingtonpost.com/politics/2023/10/02/trump-indictment-georgia-election/"
+                    }
+                },
+                {
+                    "utterance": "Can you get me a preview of the article from this site?",
+                    "parameters": {
+                        "url": "https://www.reuters.com/world/us/us-house-republicans-prepare-government-shutdown-plan-2023-10-02/"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the preview of the article at this link?",
+                    "parameters": {
+                        "url": "https://www.cnn.com/2023/10/02/politics/us-government-shutdown/index.html"
+                    }
+                },
+                {
+                    "utterance": "Extract a quick overview of the article from this URL.",
+                    "parameters": {
+                        "url": "https://www.bloomberg.com/news/articles/2023-10-02/us-government-shutdown-looms-as-congress-deadlocks-on-spending"
+                    }
+                },
+                {
+                    "utterance": "Can you preview the article from this webpage?",
+                    "parameters": {
+                        "url": "https://www.npr.org/2023/10/02/1203000000/us-government-shutdown-congress-deadlock"
+                    }
+                },
+                {
+                    "utterance": "Show me the preview of the article at this link.",
+                    "parameters": {
+                        "url": "https://www.aljazeera.com/news/2023/10/2/us-government-shutdown-looms-as-congress-deadlocks-on-spending"
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the quick summary of the article from this URL?",
+                    "parameters": {
+                        "url": "https://www.foxnews.com/politics/us-government-shutdown-looms-congress-deadlocks-spending"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "/v1.1/extract",
+            "description": "Article Extraction Endpoint",
+            "url": "https://lexper.p.rapidapi.com/v1.1/extract",
+            "parameters": [
+                {
+                    "name": "url",
+                    "type": "STRING",
+                    "description": "URL",
+                    "default": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "media",
+                    "type": "BOOLEAN",
+                    "description": "extract media",
+                    "default": "true",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "js",
+                    "type": "ENUM",
+                    "description": "indicates whether to execute JavaScript or not. ",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "true",
+                                "false"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "js_timeout",
+                    "type": "NUMBER",
+                    "description": "when JavaScript is enabled, indicates how many seconds the API should wait for the JS interpreter before starting the extraction",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you extract the text and images from this article about Twitter's tweet editing feature?",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                        "media": "true",
+                        "js": "true"
+                    }
+                },
+                {
+                    "utterance": "Extract the clean text from this TechCrunch article without executing JavaScript.",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                        "js": "false"
+                    }
+                },
+                {
+                    "utterance": "Get the structured data from this URL, including any embedded media.",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                        "media": "true"
+                    }
+                },
+                {
+                    "utterance": "Please extract the text from this article and run JavaScript to render the content.",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                        "js": "true"
+                    }
+                },
+                {
+                    "utterance": "Extract the text and media from this news article about Twitter.",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                        "media": "true"
+                    }
+                },
+                {
+                    "utterance": "Can you pull the clean text from this blog post without extracting any media?",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/"
+                    }
+                },
+                {
+                    "utterance": "Extract the text from this URL and skip JavaScript execution.",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                        "js": "false"
+                    }
+                },
+                {
+                    "utterance": "Get the text and images from this article about Twitter's new feature.",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                        "media": "true"
+                    }
+                },
+                {
+                    "utterance": "Extract the clean text from this article and include any embedded media.",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                        "media": "true"
+                    }
+                },
+                {
+                    "utterance": "Can you extract the text from this URL and execute JavaScript to render the content?",
+                    "parameters": {
+                        "url": "https://techcrunch.com/2022/09/07/twitter-will-let-you-edit-your-tweet-up-to-five-times/",
+                        "js": "true"
+                    }
+                }
+            ]
+        }
+    ]
+}

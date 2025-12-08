@@ -1,0 +1,330 @@
+{
+    "name": "TrackingMore_v2",
+    "description": "All-in-one global package tracking tool. Support track and trace international 472 couriers.",
+    "url": "https://rapidapi.com/apidojo/api/trackingmore/",
+    "api_methods": [
+        {
+            "name": "carriers/list",
+            "description": "List all supported carriers",
+            "url": "https://trackingmore.p.rapidapi.com/carriers/list",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Can you show me all the carriers you support?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I need a list of all the available shipping carriers.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the supported couriers for package tracking?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Please provide a list of all the carriers you can track.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which shipping companies can I track with your service?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Could you give me a rundown of all the supported carriers?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List all the couriers that are supported for tracking.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "I want to know which carriers are available for tracking.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Tell me all the shipping carriers you support.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the names of all the carriers you can track?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "packages/track (Deprecated)",
+            "description": "Get tracking information of specific package",
+            "url": "https://trackingmore.p.rapidapi.com/packages/track",
+            "parameters": [
+                {
+                    "name": "carrierCode",
+                    "type": "STRING",
+                    "description": "Carrier code gotten from .../carriers/list or carriers/detect endpoint",
+                    "default": "yunexpress",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "trackingNumber",
+                    "type": "STRING",
+                    "description": "Tracking number of package",
+                    "default": "YT2003521266065328",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                },
+                {
+                    "name": "lang",
+                    "type": "STRING",
+                    "description": "One of the following : en|cn|es|it|ru",
+                    "default": "en",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "en",
+                                "cn",
+                                "es",
+                                "it",
+                                "ru"
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you track my package with YunExpress? The tracking number is YT2003521266065328.",
+                    "parameters": {
+                        "carrierCode": "yunexpress",
+                        "trackingNumber": "YT2003521266065328"
+                    }
+                },
+                {
+                    "utterance": "I need to know the status of my parcel with tracking number YT2003521266065329 from FedEx.",
+                    "parameters": {
+                        "carrierCode": "fedex",
+                        "trackingNumber": "YT2003521266065329"
+                    }
+                },
+                {
+                    "utterance": "Please provide the tracking details for my DHL package. The tracking number is YT2003521266075330.",
+                    "parameters": {
+                        "carrierCode": "dhl",
+                        "trackingNumber": "YT2003521266075330"
+                    }
+                },
+                {
+                    "utterance": "What's the current location of my UPS shipment? The tracking number is YT2003521266085331.",
+                    "parameters": {
+                        "carrierCode": "ups",
+                        "trackingNumber": "YT2003521266085331"
+                    }
+                },
+                {
+                    "utterance": "Can you give me the tracking information for my package with tracking number YT2003521266095332 from USPS in Spanish?",
+                    "parameters": {
+                        "carrierCode": "usps",
+                        "trackingNumber": "YT2003521266095332",
+                        "lang": "es"
+                    }
+                },
+                {
+                    "utterance": "I need the tracking updates for my package from Royal Mail. The tracking number is YT2003521266105333, and I'd like the information in Italian.",
+                    "parameters": {
+                        "carrierCode": "royalmail",
+                        "trackingNumber": "YT2003521266105333",
+                        "lang": "it"
+                    }
+                },
+                {
+                    "utterance": "Could you track my package with tracking number YT2003521266115334 from Canada Post in Russian?",
+                    "parameters": {
+                        "carrierCode": "canadapost",
+                        "trackingNumber": "YT2003521266115334",
+                        "lang": "ru"
+                    }
+                },
+                {
+                    "utterance": "Find out where my package is with tracking number YT2003521266125335 from Australia Post.",
+                    "parameters": {
+                        "carrierCode": "auspost",
+                        "trackingNumber": "YT2003521266125335"
+                    }
+                },
+                {
+                    "utterance": "Can you check the status of my package from Japan Post? The tracking number is YT2003521266135336.",
+                    "parameters": {
+                        "carrierCode": "japanpost",
+                        "trackingNumber": "YT2003521266135336"
+                    }
+                },
+                {
+                    "utterance": "I want to track my package with tracking number YT2003521266145337 from La Poste in Chinese.",
+                    "parameters": {
+                        "carrierCode": "laposte",
+                        "trackingNumber": "YT2003521266145337",
+                        "lang": "cn"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "packages/v2/track",
+            "description": "Get tracking information of specific package",
+            "url": "https://trackingmore.p.rapidapi.com/packages/v2/track",
+            "parameters": [
+                {
+                    "name": "trackingNumber",
+                    "type": "STRING",
+                    "description": "Tracking number of package",
+                    "default": "NY323068698GB",
+                    "required": true,
+                    "constraints": {
+                        "id": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you track the package with tracking number NY323068698GB?",
+                    "parameters": {
+                        "trackingNumber": "NY323068698GB"
+                    }
+                },
+                {
+                    "utterance": "I need the status of my shipment with tracking number ZH123456789US.",
+                    "parameters": {
+                        "trackingNumber": "ZH123456789US"
+                    }
+                },
+                {
+                    "utterance": "What's the current location of the parcel with tracking number DE987654321CN?",
+                    "parameters": {
+                        "trackingNumber": "DE987654321CN"
+                    }
+                },
+                {
+                    "utterance": "Please provide the delivery details for the package with tracking number FR1122334455FR.",
+                    "parameters": {
+                        "trackingNumber": "FR1122334455FR"
+                    }
+                },
+                {
+                    "utterance": "Can you give me an update on the package with tracking number JP9988776655JP?",
+                    "parameters": {
+                        "trackingNumber": "JP9988776655JP"
+                    }
+                },
+                {
+                    "utterance": "I want to know the status of my order with tracking number CA5566778899CA.",
+                    "parameters": {
+                        "trackingNumber": "CA5566778899CA"
+                    }
+                },
+                {
+                    "utterance": "Track the shipment with tracking number AU3344556677AU for me.",
+                    "parameters": {
+                        "trackingNumber": "AU3344556677AU"
+                    }
+                },
+                {
+                    "utterance": "Could you check the delivery status for the package with tracking number IT2233445566IT?",
+                    "parameters": {
+                        "trackingNumber": "IT2233445566IT"
+                    }
+                },
+                {
+                    "utterance": "Find out where my parcel is with tracking number ES6677889900ES.",
+                    "parameters": {
+                        "trackingNumber": "ES6677889900ES"
+                    }
+                },
+                {
+                    "utterance": "I need to track my package with tracking number GB4455667788GB.",
+                    "parameters": {
+                        "trackingNumber": "GB4455667788GB"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "carriers/detect",
+            "description": "Detect carrier by providing tracking number",
+            "url": "https://trackingmore.p.rapidapi.com/carriers/detect",
+            "parameters": [
+                {
+                    "name": "trackingNumber",
+                    "type": "STRING",
+                    "description": "The tracking number of parcel",
+                    "default": "YT2003521266065328",
+                    "required": true,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you find out which carrier is handling the package with tracking number YT2003521266065328?",
+                    "parameters": {
+                        "trackingNumber": "YT2003521266065328"
+                    }
+                },
+                {
+                    "utterance": "I need to know the carrier for my parcel with tracking number 1Z999AA10123456784.",
+                    "parameters": {
+                        "trackingNumber": "1Z999AA10123456784"
+                    }
+                },
+                {
+                    "utterance": "Which courier is responsible for the shipment with tracking number LX123456789CN?",
+                    "parameters": {
+                        "trackingNumber": "LX123456789CN"
+                    }
+                },
+                {
+                    "utterance": "Please detect the carrier for the package with tracking number 9400110200881234567890.",
+                    "parameters": {
+                        "trackingNumber": "9400110200881234567890"
+                    }
+                },
+                {
+                    "utterance": "Can you tell me the carrier for the parcel with tracking number RB123456785GB?",
+                    "parameters": {
+                        "trackingNumber": "RB123456785GB"
+                    }
+                },
+                {
+                    "utterance": "I want to know which carrier is handling the package with tracking number 123456789012.",
+                    "parameters": {
+                        "trackingNumber": "123456789012"
+                    }
+                },
+                {
+                    "utterance": "Find out the courier for my shipment with tracking number 567890123456.",
+                    "parameters": {
+                        "trackingNumber": "567890123456"
+                    }
+                },
+                {
+                    "utterance": "Could you detect the carrier for the package with tracking number 1Z12345E1512345676?",
+                    "parameters": {
+                        "trackingNumber": "1Z12345E1512345676"
+                    }
+                },
+                {
+                    "utterance": "What is the carrier for the parcel with tracking number 1234567890AB?",
+                    "parameters": {
+                        "trackingNumber": "1234567890AB"
+                    }
+                },
+                {
+                    "utterance": "I need to find out the courier for the package with tracking number 1Z12345E6205277936.",
+                    "parameters": {
+                        "trackingNumber": "1Z12345E6205277936"
+                    }
+                }
+            ]
+        }
+    ]
+}

@@ -1,0 +1,332 @@
+{
+    "tool_name": "TrueWay Places",
+    "tool_description": "Search for places. Provides detailed information for over 100 million places and points of interest.",
+    "title": "TrueWay Places",
+    "pricing": "FREEMIUM",
+    "score": {
+        "avgServiceLevel": 100,
+        "avgLatency": 276,
+        "avgSuccessRate": 100,
+        "popularityScore": 9.9,
+        "__typename": "Score"
+    },
+    "home_url": "https://rapidapi.com/trueway/api/trueway-places/",
+    "host": "trueway-places.p.rapidapi.com",
+    "api_list": [
+        {
+            "name": "FindPlacesNearby",
+            "url": "https://trueway-places.p.rapidapi.com/FindPlacesNearby",
+            "description": "Search for nearby places",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://trueway-places.p.rapidapi.com/FindPlacesNearby\"\nquerystring = {\"location\": location, \"language\": language, \"radius\": radius, \"type\": type}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"trueway-places.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "key1": "value",
+                "key2": "value"
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "phone_number": {
+                                    "type": "string"
+                                },
+                                "website": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "object",
+                                    "properties": {
+                                        "lat": {
+                                            "type": "number"
+                                        },
+                                        "lng": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "types": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                },
+                                "distance": {
+                                    "type": "integer"
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "location",
+                    "type": "STRING",
+                    "description": "The latitude/longitude around which to retrieve places",
+                    "default": "37.783366,-122.402325",
+                    "required": true
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language in which to return results",
+                    "default": "en",
+                    "required": false
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "The distance (in meters) within which to return results. Max = 10000 m",
+                    "default": "180",
+                    "required": false
+                },
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "The type of places that are returned",
+                    "default": "cafe",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find cafes within 500 meters of 40.712776,-74.005974.",
+                    "parameters": {
+                        "location": "40.712776,-74.005974",
+                        "radius": 500,
+                        "type": "cafe"
+                    }
+                },
+                {
+                    "utterance": "Search for restaurants near 34.052235,-118.243683.",
+                    "parameters": {
+                        "location": "34.052235,-118.243683",
+                        "type": "restaurant"
+                    }
+                },
+                {
+                    "utterance": "Locate parks within 1000 meters of 51.507351,-0.127758.",
+                    "parameters": {
+                        "location": "51.507351,-0.127758",
+                        "radius": 1000,
+                        "type": "park"
+                    }
+                },
+                {
+                    "utterance": "Find museums around 48.856613,2.352222 with results in French.",
+                    "parameters": {
+                        "location": "48.856613,2.352222",
+                        "language": "fr",
+                        "type": "museum"
+                    }
+                },
+                {
+                    "utterance": "Search for gyms near 35.689487,139.691711.",
+                    "parameters": {
+                        "location": "35.689487,139.691711",
+                        "type": "gym"
+                    }
+                },
+                {
+                    "utterance": "Find libraries within 300 meters of 55.755825,37.617298.",
+                    "parameters": {
+                        "location": "55.755825,37.617298",
+                        "radius": 300,
+                        "type": "library"
+                    }
+                },
+                {
+                    "utterance": "Locate bars around 41.878113,-87.629799.",
+                    "parameters": {
+                        "location": "41.878113,-87.629799",
+                        "type": "bar"
+                    }
+                },
+                {
+                    "utterance": "Search for hotels near 52.520008,13.404954.",
+                    "parameters": {
+                        "location": "52.520008,13.404954",
+                        "type": "hotel"
+                    }
+                },
+                {
+                    "utterance": "Find shopping malls within 800 meters of 37.774929,-122.419418.",
+                    "parameters": {
+                        "location": "37.774929,-122.419418",
+                        "radius": 800,
+                        "type": "shopping_mall"
+                    }
+                },
+                {
+                    "utterance": "Locate hospitals around 28.613939,77.209023.",
+                    "parameters": {
+                        "location": "28.613939,77.209023",
+                        "type": "hospital"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "FindPlaceByText",
+            "url": "https://trueway-places.p.rapidapi.com/FindPlaceByText",
+            "description": "Search for places by text string",
+            "method": "GET",
+            "code": "import requests\n\nurl = \"https://trueway-places.p.rapidapi.com/FindPlaceByText\"\nquerystring = {\"text\": text, \"language\": language}\n\nheaders = {\n    \"X-RapidAPI-Key\": \"SIGN-UP-FOR-KEY\",\n    \"X-RapidAPI-Host\": \"trueway-places.p.rapidapi.com\"\n}\n\nresponse = requests.get(url, headers=headers, params=querystring)\n\nprint(response.json())\n",
+            "statuscode": 200,
+            "body": {
+                "key1": "value",
+                "key2": "value"
+            },
+            "headers": {},
+            "schema": {
+                "type": "object",
+                "properties": {
+                    "results": {
+                        "type": "array",
+                        "items": {
+                            "type": "object",
+                            "properties": {
+                                "id": {
+                                    "type": "string"
+                                },
+                                "name": {
+                                    "type": "string"
+                                },
+                                "address": {
+                                    "type": "string"
+                                },
+                                "phone_number": {
+                                    "type": "string"
+                                },
+                                "website": {
+                                    "type": "string"
+                                },
+                                "location": {
+                                    "type": "object",
+                                    "properties": {
+                                        "lat": {
+                                            "type": "number"
+                                        },
+                                        "lng": {
+                                            "type": "number"
+                                        }
+                                    }
+                                },
+                                "types": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "parameters": [
+                {
+                    "name": "text",
+                    "type": "STRING",
+                    "description": "A text string on which to search",
+                    "default": "Children's Creativity Museum",
+                    "required": true
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "The language in which to return results",
+                    "default": "en",
+                    "required": false
+                },
+                {
+                    "name": "bounds",
+                    "type": "STRING",
+                    "description": "Rectangular bounds (south,west,north,east)",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find information about the Eiffel Tower.",
+                    "parameters": {
+                        "text": "Eiffel Tower"
+                    }
+                },
+                {
+                    "utterance": "Search for details on the Great Wall of China.",
+                    "parameters": {
+                        "text": "Great Wall of China"
+                    }
+                },
+                {
+                    "utterance": "Look up the Sydney Opera House in Spanish.",
+                    "parameters": {
+                        "text": "Sydney Opera House",
+                        "language": "es"
+                    }
+                },
+                {
+                    "utterance": "Get details about the Statue of Liberty.",
+                    "parameters": {
+                        "text": "Statue of Liberty"
+                    }
+                },
+                {
+                    "utterance": "Find place information for the Colosseum in Rome.",
+                    "parameters": {
+                        "text": "Colosseum"
+                    }
+                },
+                {
+                    "utterance": "Search for the Taj Mahal with results in Hindi.",
+                    "parameters": {
+                        "text": "Taj Mahal",
+                        "language": "hi"
+                    }
+                },
+                {
+                    "utterance": "Look up the Louvre Museum.",
+                    "parameters": {
+                        "text": "Louvre Museum"
+                    }
+                },
+                {
+                    "utterance": "Find details about Machu Picchu.",
+                    "parameters": {
+                        "text": "Machu Picchu"
+                    }
+                },
+                {
+                    "utterance": "Search for information on the Burj Khalifa.",
+                    "parameters": {
+                        "text": "Burj Khalifa"
+                    }
+                },
+                {
+                    "utterance": "Get information about the Golden Gate Bridge in French.",
+                    "parameters": {
+                        "text": "Golden Gate Bridge",
+                        "language": "fr"
+                    }
+                }
+            ]
+        }
+    ],
+    "category": "Mapping"
+}

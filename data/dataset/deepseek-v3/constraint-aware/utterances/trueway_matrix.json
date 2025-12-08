@@ -1,0 +1,152 @@
+{
+    "name": "TrueWay Matrix",
+    "description": "Calculate distances and durations between a set of origins and destinations.",
+    "url": "https://rapidapi.com/trueway/api/trueway-matrix/",
+    "api_methods": [
+        {
+            "name": "CalculateDrivingDistanceMatrix",
+            "description": "Calculate distances and durations between a set of origins and destinations.",
+            "url": "https://trueway-matrix.p.rapidapi.com/CalculateDrivingMatrix",
+            "parameters": [
+                {
+                    "name": "origins",
+                    "type": "STRING",
+                    "description": "List of origins described as semicolon-delimited coordinate pairs with latitudes and longitudes. Max: 25",
+                    "default": "40.629041,-74.025606;40.630099,-73.993521;40.644895,-74.013818;40.627177,-73.980853",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "max": 25
+                        }
+                    }
+                },
+                {
+                    "name": "destinations",
+                    "type": "STRING",
+                    "description": "List of destinations described as semicolon-delimited coordinate pairs with latitudes and longitudes. If not specified, an n x n matrix will be generated using the origins. Max: 25",
+                    "default": "40.629041,-74.025606;40.630099,-73.993521;40.644895,-74.013818;40.627177,-73.980853",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "max": 25
+                        }
+                    }
+                },
+                {
+                    "name": "start_time",
+                    "type": "STRING",
+                    "description": "Time when travel is expected to start. You can specify the time as an integer in seconds since midnight, January 1, 1970 UTC or you can use \\\"now\\\" to specify the current time.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "format": "seconds since midnight, January 1, 1970 UTC or 'now'"
+                    }
+                },
+                {
+                    "name": "avoid_tolls",
+                    "type": "BOOLEAN",
+                    "description": "avoid toll roads",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "avoid_highways",
+                    "type": "BOOLEAN",
+                    "description": "avoid highways",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "avoid_ferries",
+                    "type": "BOOLEAN",
+                    "description": "avoid ferries",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What are the driving distances and durations from Times Square to Central Park?",
+                    "parameters": {
+                        "origins": "40.758896,-73.985130",
+                        "destinations": "40.785091,-73.968285"
+                    }
+                },
+                {
+                    "utterance": "Can you calculate the driving matrix from Brooklyn Bridge to the Statue of Liberty, avoiding tolls?",
+                    "parameters": {
+                        "origins": "40.706086,-73.996864",
+                        "destinations": "40.689249,-74.044500",
+                        "avoid_tolls": true
+                    }
+                },
+                {
+                    "utterance": "Find the driving distances and durations from Empire State Building to Rockefeller Center, avoiding highways.",
+                    "parameters": {
+                        "origins": "40.748817,-73.985428",
+                        "destinations": "40.758740,-73.978673",
+                        "avoid_highways": true
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the driving time from Grand Central Terminal to Madison Square Garden, starting at 3 PM?",
+                    "parameters": {
+                        "origins": "40.752726,-73.977229",
+                        "destinations": "40.750504,-73.993439",
+                        "start_time": "now"
+                    }
+                },
+                {
+                    "utterance": "Calculate the driving matrix from Wall Street to Battery Park, avoiding ferries.",
+                    "parameters": {
+                        "origins": "40.707491,-74.011276",
+                        "destinations": "40.703258,-74.017044",
+                        "avoid_ferries": true
+                    }
+                },
+                {
+                    "utterance": "What are the driving distances from the Brooklyn Museum to Prospect Park, avoiding tolls and highways?",
+                    "parameters": {
+                        "origins": "40.671246,-73.963592",
+                        "destinations": "40.660204,-73.968956",
+                        "avoid_tolls": true,
+                        "avoid_highways": true
+                    }
+                },
+                {
+                    "utterance": "Can you find the driving durations from Yankee Stadium to Citi Field, starting now?",
+                    "parameters": {
+                        "origins": "40.829643,-73.926175",
+                        "destinations": "40.756050,-73.845900",
+                        "start_time": "now"
+                    }
+                },
+                {
+                    "utterance": "Calculate the driving matrix from the Metropolitan Museum of Art to the American Museum of Natural History, avoiding tolls and ferries.",
+                    "parameters": {
+                        "origins": "40.779437,-73.963244",
+                        "destinations": "40.781324,-73.973988",
+                        "avoid_tolls": true,
+                        "avoid_ferries": true
+                    }
+                },
+                {
+                    "utterance": "What\u2019s the driving distance from the High Line to Chelsea Market, avoiding highways?",
+                    "parameters": {
+                        "origins": "40.747992,-74.004765",
+                        "destinations": "40.742353,-74.006161",
+                        "avoid_highways": true
+                    }
+                },
+                {
+                    "utterance": "Find the driving durations from the Brooklyn Botanic Garden to the New York Aquarium, starting at 10 AM.",
+                    "parameters": {
+                        "origins": "40.668987,-73.962569",
+                        "destinations": "40.574925,-73.974053",
+                        "start_time": "now"
+                    }
+                }
+            ]
+        }
+    ]
+}

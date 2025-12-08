@@ -1,0 +1,428 @@
+{
+    "name": "CAISO",
+    "description": "API for California Independent System Operator data provided from caiso.com. It includes data on energy emissions, demand, supply, and prices. Updated daily.",
+    "url": "https://rapidapi.com/buildingviz-buildingviz-default/api/caiso/",
+    "api_methods": [
+        {
+            "name": "caiso",
+            "description": "Gets standard CAISO data",
+            "url": "https://caiso.p.rapidapi.com/caiso",
+            "parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "Type needs to be one of \\\\\\\\\\\\\\\"co2\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"fuelsource\\\\\\\\\\\\\\\", \\\\\\\\\\\\\\\"netdemand\\\\\\\\\\\\\\\", or \\\\\\\\\\\\\\\"all\\\\\\\\\\\\\\\". The \\\\\\\\\\\\\\\"all\\\\\\\\\\\\\\\" value will combine the results for the three other tables into a single CSV file with all the columns you requested.",
+                    "default": "co2",
+                    "required": true,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "co2",
+                                "fuelsource",
+                                "netdemand",
+                                "all"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "enddate",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20220901",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "interval",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "30",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "startdate",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20220101",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Can you get me the latest CO2 emissions data from CAISO?",
+                    "parameters": {
+                        "type": "co2"
+                    }
+                },
+                {
+                    "utterance": "I need information on the fuel sources used in California's energy grid.",
+                    "parameters": {
+                        "type": "fuelsource"
+                    }
+                },
+                {
+                    "utterance": "What's the current net demand for electricity in California?",
+                    "parameters": {
+                        "type": "netdemand"
+                    }
+                },
+                {
+                    "utterance": "Could you provide a comprehensive report combining CO2 emissions, fuel sources, and net demand?",
+                    "parameters": {
+                        "type": "all"
+                    }
+                },
+                {
+                    "utterance": "Show me the data on CO2 emissions from the California Independent System Operator.",
+                    "parameters": {
+                        "type": "co2"
+                    }
+                },
+                {
+                    "utterance": "Fetch the details about the fuel sources contributing to California's energy supply.",
+                    "parameters": {
+                        "type": "fuelsource"
+                    }
+                },
+                {
+                    "utterance": "Give me an update on the net electricity demand in California.",
+                    "parameters": {
+                        "type": "netdemand"
+                    }
+                },
+                {
+                    "utterance": "I want to see all the latest data from CAISO, including emissions, fuel sources, and demand.",
+                    "parameters": {
+                        "type": "all"
+                    }
+                },
+                {
+                    "utterance": "What are the recent CO2 emission figures reported by CAISO?",
+                    "parameters": {
+                        "type": "co2"
+                    }
+                },
+                {
+                    "utterance": "Provide me with the latest information on fuel sources used in California's energy production.",
+                    "parameters": {
+                        "type": "fuelsource"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "caisonode",
+            "description": "Returns nodes where prices are tracked by CAISO",
+            "url": "https://caiso.p.rapidapi.com/caisonode",
+            "parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "state",
+                    "required": true
+                },
+                {
+                    "name": "long",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "-114.1056",
+                    "required": false
+                },
+                {
+                    "name": "radius",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "100",
+                    "required": false
+                },
+                {
+                    "name": "region",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "state",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "wa",
+                    "required": false
+                },
+                {
+                    "name": "name",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "lat",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "34.6106",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me the nodes tracked by CAISO in California.",
+                    "parameters": {
+                        "type": "state",
+                        "state": "ca"
+                    }
+                },
+                {
+                    "utterance": "What are the CAISO nodes near Los Angeles?",
+                    "parameters": {
+                        "type": "state",
+                        "lat": 34.0522,
+                        "long": -118.2437
+                    }
+                },
+                {
+                    "utterance": "Can you list the CAISO nodes within 50 miles of San Francisco?",
+                    "parameters": {
+                        "type": "state",
+                        "lat": 37.7749,
+                        "long": -122.4194,
+                        "radius": 50
+                    }
+                },
+                {
+                    "utterance": "Find CAISO nodes in the Pacific Northwest region.",
+                    "parameters": {
+                        "type": "state",
+                        "region": "Pacific Northwest"
+                    }
+                },
+                {
+                    "utterance": "Where are the CAISO nodes located in Washington state?",
+                    "parameters": {
+                        "type": "state",
+                        "state": "wa"
+                    }
+                },
+                {
+                    "utterance": "Show me the CAISO nodes around Sacramento with a 30-mile radius.",
+                    "parameters": {
+                        "type": "state",
+                        "lat": 38.5816,
+                        "long": -121.4944,
+                        "radius": 30
+                    }
+                },
+                {
+                    "utterance": "What nodes does CAISO track in the Bay Area?",
+                    "parameters": {
+                        "type": "state",
+                        "region": "Bay Area"
+                    }
+                },
+                {
+                    "utterance": "List the CAISO nodes near San Diego.",
+                    "parameters": {
+                        "type": "state",
+                        "lat": 32.7157,
+                        "long": -117.1611
+                    }
+                },
+                {
+                    "utterance": "Can you find CAISO nodes in Oregon?",
+                    "parameters": {
+                        "type": "state",
+                        "state": "or"
+                    }
+                },
+                {
+                    "utterance": "Show me the CAISO nodes tracked in Nevada.",
+                    "parameters": {
+                        "type": "state",
+                        "state": "nv"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "caisoregion",
+            "description": "Gets Regional Authorities where node prices are tracked by CAISO",
+            "url": "https://caiso.p.rapidapi.com/caisoregion",
+            "parameters": [],
+            "utterances": [
+                {
+                    "utterance": "Which regions are monitored by CAISO for node prices?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you list the areas where CAISO tracks node prices?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What are the regional authorities covered by CAISO for price tracking?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Show me the regions where CAISO monitors node prices.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Where does CAISO keep track of node prices?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which areas does CAISO oversee for node price data?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "List the regions where CAISO records node prices.",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "What regions are included in CAISO's node price tracking?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Can you tell me the regions CAISO tracks for node prices?",
+                    "parameters": {}
+                },
+                {
+                    "utterance": "Which regional authorities are part of CAISO's node price monitoring?",
+                    "parameters": {}
+                }
+            ]
+        },
+        {
+            "name": "caisoprice",
+            "description": "Fetches hourly CAISO price data",
+            "url": "https://caiso.p.rapidapi.com/caisoprice",
+            "parameters": [
+                {
+                    "name": "type",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "date",
+                    "required": true,
+                    "constraints": {}
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "",
+                    "default": "12",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "date",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "20220601",
+                    "required": false,
+                    "constraints": {}
+                },
+                {
+                    "name": "format",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "jsonpage",
+                    "required": false,
+                    "constraints": {
+                        "technical": true
+                    }
+                },
+                {
+                    "name": "node",
+                    "type": "STRING",
+                    "description": "",
+                    "default": "",
+                    "required": false,
+                    "constraints": {}
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "What were the hourly prices for CAISO on June 1st, 2022?",
+                    "parameters": {
+                        "type": "date",
+                        "date": "20220601"
+                    }
+                },
+                {
+                    "utterance": "Can you fetch the hourly price data for CAISO at node NP15?",
+                    "parameters": {
+                        "type": "date",
+                        "node": "NP15"
+                    }
+                },
+                {
+                    "utterance": "Show me the hourly CAISO prices for yesterday.",
+                    "parameters": {
+                        "type": "date"
+                    }
+                },
+                {
+                    "utterance": "Get the hourly price data for CAISO on July 4th, 2022 at node SP15.",
+                    "parameters": {
+                        "type": "date",
+                        "date": "20220704",
+                        "node": "SP15"
+                    }
+                },
+                {
+                    "utterance": "What are the hourly prices for CAISO at node ZP26?",
+                    "parameters": {
+                        "type": "date",
+                        "node": "ZP26"
+                    }
+                },
+                {
+                    "utterance": "Fetch the hourly CAISO price data for August 15th, 2022.",
+                    "parameters": {
+                        "type": "date",
+                        "date": "20220815"
+                    }
+                },
+                {
+                    "utterance": "Can you show me the hourly prices for CAISO at node AP2?",
+                    "parameters": {
+                        "type": "date",
+                        "node": "AP2"
+                    }
+                },
+                {
+                    "utterance": "What were the hourly CAISO prices on September 1st, 2022?",
+                    "parameters": {
+                        "type": "date",
+                        "date": "20220901"
+                    }
+                },
+                {
+                    "utterance": "Get the hourly price data for CAISO at node NP26.",
+                    "parameters": {
+                        "type": "date",
+                        "node": "NP26"
+                    }
+                },
+                {
+                    "utterance": "Show me the hourly CAISO prices for October 10th, 2022.",
+                    "parameters": {
+                        "type": "date",
+                        "date": "20221010"
+                    }
+                }
+            ]
+        }
+    ]
+}

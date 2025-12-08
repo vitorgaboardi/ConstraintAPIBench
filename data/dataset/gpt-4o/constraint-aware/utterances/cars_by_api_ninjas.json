@@ -1,0 +1,263 @@
+{
+    "name": "Cars by API-Ninjas",
+    "description": "Get detailed data on tens of thousands of vehicle models from dozens of automakers. See more info at https://api-ninjas.com/api/cars.",
+    "url": "https://rapidapi.com/apininjas/api/cars-by-api-ninjas/",
+    "api_methods": [
+        {
+            "name": "/v1/cars",
+            "description": "API Ninjas Cars API endpoint.",
+            "url": "https://cars-by-api-ninjas.p.rapidapi.com/v1/cars",
+            "parameters": [
+                {
+                    "name": "model",
+                    "type": "STRING",
+                    "description": "Model of vehicle.",
+                    "default": "corolla",
+                    "required": false
+                },
+                {
+                    "name": "max_city_mpg",
+                    "type": "NUMBER",
+                    "description": "Maximum city fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "min_comb_mpg",
+                    "type": "NUMBER",
+                    "description": "Minimum combination (city + highway) fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "max_hwy_mpg",
+                    "type": "NUMBER",
+                    "description": "Maximum highway fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "fuel_type",
+                    "type": "STRING",
+                    "description": "Type of fuel used. Possible values: **gas**, **diesel**, **electricity**",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "gas",
+                                "diesel",
+                                "electricity"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "limit",
+                    "type": "STRING",
+                    "description": "How many results to return. Must be between **1** and **30**. Default is **5**",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 1,
+                            "max": 30
+                        }
+                    }
+                },
+                {
+                    "name": "drive",
+                    "type": "STRING",
+                    "description": "Drive transmission. Possible values: **fwd** (front-wheel drive), **rwd** (rear-wheel drive), **awd** (all-wheel drive), **4wd** (four-wheel drive)",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "fwd",
+                                "rwd",
+                                "awd",
+                                "4wd"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "max_comb_mpg",
+                    "type": "NUMBER",
+                    "description": "Maximum combination (city + highway) fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "make",
+                    "type": "STRING",
+                    "description": "Vehicle manufacturer.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "transmission",
+                    "type": "STRING",
+                    "description": "Type of transmission. Possible values: **manual**, **automatic**",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                "manual",
+                                "automatic"
+                            ]
+                        }
+                    }
+                },
+                {
+                    "name": "year",
+                    "type": "STRING",
+                    "description": "Vehicle model year.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "min_hwy_mpg",
+                    "type": "NUMBER",
+                    "description": "Minimum highway fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "min_city_mpg",
+                    "type": "NUMBER",
+                    "description": "Minimum City fuel efficiency in miles per gallon.",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "min": 0
+                        }
+                    }
+                },
+                {
+                    "name": "cylinders",
+                    "type": "NUMBER",
+                    "description": "Number of cylinders. Possible values: **2, 3 4, 5, 6, 8, 10, 12, 16**",
+                    "default": "",
+                    "required": false,
+                    "constraints": {
+                        "values": {
+                            "enumerated": [
+                                2,
+                                3,
+                                4,
+                                5,
+                                6,
+                                8,
+                                10,
+                                12,
+                                16
+                            ]
+                        }
+                    }
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Show me details of the latest Toyota Corolla models.",
+                    "parameters": {
+                        "make": "Toyota",
+                        "model": "Corolla",
+                        "year": "2023"
+                    }
+                },
+                {
+                    "utterance": "I need information on electric cars with a minimum combined MPG of 50.",
+                    "parameters": {
+                        "fuel_type": "electricity",
+                        "min_comb_mpg": 50
+                    }
+                },
+                {
+                    "utterance": "Find me diesel vehicles with a maximum highway MPG of 30.",
+                    "parameters": {
+                        "fuel_type": "diesel",
+                        "max_hwy_mpg": 30
+                    }
+                },
+                {
+                    "utterance": "List all rear-wheel drive cars from Ford.",
+                    "parameters": {
+                        "make": "Ford",
+                        "drive": "rwd"
+                    }
+                },
+                {
+                    "utterance": "What are the details of manual transmission cars with at least 6 cylinders?",
+                    "parameters": {
+                        "transmission": "manual",
+                        "cylinders": 6
+                    }
+                },
+                {
+                    "utterance": "Show me cars with a maximum city MPG of 25 and a minimum highway MPG of 30.",
+                    "parameters": {
+                        "max_city_mpg": 25,
+                        "min_hwy_mpg": 30
+                    }
+                },
+                {
+                    "utterance": "I want to see up to 10 results of all-wheel drive vehicles.",
+                    "parameters": {
+                        "drive": "awd",
+                        "limit": "10"
+                    }
+                },
+                {
+                    "utterance": "Can you find me gas-powered cars with a minimum city MPG of 20?",
+                    "parameters": {
+                        "fuel_type": "gas",
+                        "min_city_mpg": 20
+                    }
+                },
+                {
+                    "utterance": "Give me details on 4-wheel drive cars with a maximum combined MPG of 40.",
+                    "parameters": {
+                        "drive": "4wd",
+                        "max_comb_mpg": 40
+                    }
+                },
+                {
+                    "utterance": "I'm looking for automatic transmission vehicles from Honda.",
+                    "parameters": {
+                        "make": "Honda",
+                        "transmission": "automatic"
+                    }
+                }
+            ]
+        }
+    ]
+}

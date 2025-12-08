@@ -1,0 +1,374 @@
+{
+    "name": "NewsData",
+    "description": "Best News API To Search And Collect Worldwide News",
+    "url": "https://rapidapi.com/algodom-media-algodom-media-default/api/newsdata2/",
+    "api_methods": [
+        {
+            "name": "sources",
+            "description": "News sources endpoint provides access to the subsets of news publishers that the latest news is available from.\n\nIt's mainly a convenience endpoint that you can use to keep track of the publishers available on the API, and you can pipe it straight through to your users",
+            "url": "https://newsdata2.p.rapidapi.com/sources",
+            "parameters": [
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "Find sources that display news in a specific country. Possible Options: us gb in jp ae sa au ca sg",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "Find sources that display news in a specific language. Possible Options: en ar jp in es fr",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "Find sources that display news of this category. Possible Options: top business science technology sports health entertainment",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find news sources in the United States.",
+                    "parameters": {
+                        "country": "us"
+                    }
+                },
+                {
+                    "utterance": "Get news sources that display news in English.",
+                    "parameters": {
+                        "language": "en"
+                    }
+                },
+                {
+                    "utterance": "Show me news sources for business news.",
+                    "parameters": {
+                        "category": "business"
+                    }
+                },
+                {
+                    "utterance": "Find news sources in Japan that display news in Japanese.",
+                    "parameters": {
+                        "country": "jp",
+                        "language": "jp"
+                    }
+                },
+                {
+                    "utterance": "Get news sources in India for sports news.",
+                    "parameters": {
+                        "country": "in",
+                        "category": "sports"
+                    }
+                },
+                {
+                    "utterance": "Find news sources in the United Arab Emirates that display news in Arabic.",
+                    "parameters": {
+                        "country": "ae",
+                        "language": "ar"
+                    }
+                },
+                {
+                    "utterance": "Show me news sources in Australia for health news.",
+                    "parameters": {
+                        "country": "au",
+                        "category": "health"
+                    }
+                },
+                {
+                    "utterance": "Get news sources in Canada that display news in French.",
+                    "parameters": {
+                        "country": "ca",
+                        "language": "fr"
+                    }
+                },
+                {
+                    "utterance": "Find news sources in Singapore for technology news.",
+                    "parameters": {
+                        "country": "sg",
+                        "category": "technology"
+                    }
+                },
+                {
+                    "utterance": "Show me news sources in the United Kingdom for entertainment news.",
+                    "parameters": {
+                        "country": "gb",
+                        "category": "entertainment"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "news",
+            "description": "The latest news endpoint provides access to the latest and breaking news for a country, for a specific category in a country, or for a single or multiple domains. The news articles are sorted by the publish date.\n\nRetrieving the latest news allows you to build experience such as showcasing the latest news, breaking news tickers and analyzing News to better understand their content.",
+            "url": "https://newsdata2.p.rapidapi.com/news",
+            "parameters": [
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "A comma separated string of languages (maximum 5) to restrict the search to. Possible Options: en ar jp in es fr",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "A comma separated string of 2-letter ISO 3166-1 countries (maximum 5) to restrict the search to. Possible Options: us gb in jp ae sa au ca",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Use this to page through the results if the total results found is greater than the page size.\n\n",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "A comma separated string of categories (maximum 5) to restrict the search to. Possible Options: top business science technology sports health entertainment",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "qintitle",
+                    "type": "STRING",
+                    "description": "Keywords or phrases to search for in the news title only.\n\nPlease note: This parameter can't be used with q parameter in the same query.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Keywords or phrases to search for in the news title and content. \nPlease note: You can't use AND and OR in the same query.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "A comma separated string of domains (maximum 5) to restrict the search to. Use the /domains endpoint to find top sources id.",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find the latest news in English from the United States.",
+                    "parameters": {
+                        "language": "en",
+                        "country": "us"
+                    }
+                },
+                {
+                    "utterance": "Search for news articles about technology in Japan.",
+                    "parameters": {
+                        "category": "technology",
+                        "country": "jp"
+                    }
+                },
+                {
+                    "utterance": "Get the latest sports news from India.",
+                    "parameters": {
+                        "category": "sports",
+                        "country": "in"
+                    }
+                },
+                {
+                    "utterance": "Find news articles with the keyword 'climate change' in the title.",
+                    "parameters": {
+                        "qintitle": "climate change"
+                    }
+                },
+                {
+                    "utterance": "Search for news about health in both English and French.",
+                    "parameters": {
+                        "category": "health",
+                        "language": "en,fr"
+                    }
+                },
+                {
+                    "utterance": "Get the latest business news from the UK and Canada.",
+                    "parameters": {
+                        "category": "business",
+                        "country": "gb,ca"
+                    }
+                },
+                {
+                    "utterance": "Find news articles from the domains 'bbc.com' and 'cnn.com'.",
+                    "parameters": {
+                        "domain": "bbc.com,cnn.com"
+                    }
+                },
+                {
+                    "utterance": "Search for news articles about science in Arabic from Saudi Arabia.",
+                    "parameters": {
+                        "category": "science",
+                        "language": "ar",
+                        "country": "sa"
+                    }
+                },
+                {
+                    "utterance": "Get the latest entertainment news in Spanish from Spain.",
+                    "parameters": {
+                        "category": "entertainment",
+                        "language": "es",
+                        "country": "es"
+                    }
+                },
+                {
+                    "utterance": "Find news articles with the keyword 'election' in the title and content.",
+                    "parameters": {
+                        "q": "election"
+                    }
+                }
+            ]
+        },
+        {
+            "name": "archive",
+            "description": "The news archive endpoint provides access to the old news data for a country, for a specific category in a country, or for a single or multiple domains.\n\nRetrieving a piece of old news allows you to get the past news data for research and analysis purposes.",
+            "url": "https://newsdata2.p.rapidapi.com/archive",
+            "parameters": [
+                {
+                    "name": "domain",
+                    "type": "STRING",
+                    "description": "A comma separated string of domains (maximum 5) to restrict the search to. Use the /domains endpoint to find top sources id.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "q",
+                    "type": "STRING",
+                    "description": "Keywords or phrases to search for in the news title and content. The value must be URL-encoded\nPlease note: You can't use AND and OR in the same query.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "qintitle",
+                    "type": "STRING",
+                    "description": "Keywords or phrases to search for in the news title only.\n\nPlease note: This parameter can't be used with q parameter in the same query.",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "category",
+                    "type": "STRING",
+                    "description": "A comma separated string of categories (maximum 5) to restrict the search to. Possible Options: top business science technology sports health entertainment",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "from_date",
+                    "type": "STRING",
+                    "description": "A date and optional time for the oldest article allowed. This should be in ISO 8601 format ",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "language",
+                    "type": "STRING",
+                    "description": "A comma separated string of languages (maximum 5) to restrict the search to. Possible Options: en ar jp in es fr",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "page",
+                    "type": "NUMBER",
+                    "description": "Use this to page through the results if the total results found is greater than the page size.\n",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "to_date",
+                    "type": "STRING",
+                    "description": "A date and optional time for the newest article allowed. This should be in ISO 8601 format ",
+                    "default": "",
+                    "required": false
+                },
+                {
+                    "name": "country",
+                    "type": "STRING",
+                    "description": "A comma separated string of 2-letter ISO 3166-1 countries (maximum 5) to restrict the search to. Possible Options: us gb in jp ae sa au ca",
+                    "default": "",
+                    "required": false
+                }
+            ],
+            "utterances": [
+                {
+                    "utterance": "Find news articles about climate change from the BBC and CNN.",
+                    "parameters": {
+                        "q": "climate change",
+                        "domain": "bbc.com,cnn.com"
+                    }
+                },
+                {
+                    "utterance": "Search for news articles with the title 'Election Results 2023'.",
+                    "parameters": {
+                        "qintitle": "Election Results 2023"
+                    }
+                },
+                {
+                    "utterance": "Get the latest technology news from the US and UK.",
+                    "parameters": {
+                        "category": "technology",
+                        "country": "us,gb"
+                    }
+                },
+                {
+                    "utterance": "Find sports news articles published between January 1, 2023, and March 31, 2023.",
+                    "parameters": {
+                        "category": "sports",
+                        "from_date": "2023-01-01",
+                        "to_date": "2023-03-31"
+                    }
+                },
+                {
+                    "utterance": "Search for health-related news articles in Spanish.",
+                    "parameters": {
+                        "category": "health",
+                        "language": "es"
+                    }
+                },
+                {
+                    "utterance": "Find news articles about the economy from Japan and India.",
+                    "parameters": {
+                        "q": "economy",
+                        "country": "jp,in"
+                    }
+                },
+                {
+                    "utterance": "Get the second page of results for entertainment news articles.",
+                    "parameters": {
+                        "category": "entertainment",
+                        "page": 2
+                    }
+                },
+                {
+                    "utterance": "Search for news articles with the title 'COVID-19 Update' published in 2022.",
+                    "parameters": {
+                        "qintitle": "COVID-19 Update",
+                        "from_date": "2022-01-01",
+                        "to_date": "2022-12-31"
+                    }
+                },
+                {
+                    "utterance": "Find science news articles from France and Germany.",
+                    "parameters": {
+                        "category": "science",
+                        "country": "fr,de"
+                    }
+                },
+                {
+                    "utterance": "Search for news articles about artificial intelligence in English and Japanese.",
+                    "parameters": {
+                        "q": "artificial intelligence",
+                        "language": "en,jp"
+                    }
+                }
+            ]
+        }
+    ]
+}
