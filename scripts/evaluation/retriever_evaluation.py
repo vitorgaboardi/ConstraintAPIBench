@@ -5,12 +5,8 @@ import os
 import json
 import pandas as pd
 from sentence_transformers import SentenceTransformer
-from api_evaluator import APIEvaluator  # your evaluator
+from api_evaluator import APIEvaluator
 from pathlib import Path
-
-# ---------------------------
-# 1. Load your testing dataset
-# ---------------------------
 
 testing_path = "/home/vitor/Documents/phd/ConstraintAPIBench/data/testing"
 
@@ -37,22 +33,12 @@ for row in labels_df.itertuples():
 print(f"Loaded {len(queries)} queries and {len(corpus)} documents.")
 print(f"Loaded relevance mappings for {len(relevant_docs)} queries.")
 
-# ---------------------------
-# 2. Load a standard retriever model
-# ---------------------------
-# Try different ones:
-# "all-MiniLM-L6-v2", "intfloat/e5-base-v2", "BAAI/bge-base-en-v1.5"
-
-model_name = "sentence-transformers/all-mpnet-base-v2"
+# model_name = "sentence-transformers/all-mpnet-base-v2"
 # model_name = "ToolBench/ToolBench_IR_bert_based_uncased"
 # model_name = "Qwen/Qwen3-Embedding-4B"
-# model_name = "/home/vitor/Documents/phd/ConstraintAPIBench/models/gpt-4o/sheng/2025-11-18_15-11-21"
-# model_name = "/home/vitor/Documents/phd/ConstraintAPIBench/models/gpt-4o/constraint-aware/2025-11-18_14-54-20"
-model = SentenceTransformer(model_name)
+model_name = "intfloat/multilingual-e5-base"
+model = SentenceTransformer(model_name, trust_remote_code=True)
 
-# ---------------------------
-# 3. Initialize the evaluator
-# ---------------------------
 ir_evaluator = APIEvaluator(
     queries=queries,
     corpus=corpus,
@@ -63,9 +49,6 @@ ir_evaluator = APIEvaluator(
     write_csv=False
 )
 
-# ---------------------------
-# 4. Run the evaluation
-# ---------------------------
 print(f"\nEvaluating model: {model_name}")
 ndcg_scores = ir_evaluator.compute_metrices(model)
 

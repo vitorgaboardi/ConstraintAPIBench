@@ -17,7 +17,9 @@ from torch.utils.data import DataLoader
 from torch.utils.tensorboard import SummaryWriter
 import argparse
 import sys
-
+import random
+import numpy as np
+import gc
 
 def load_config(path: Path) -> dict:
     """Loads configuration to be used in the generation method."""
@@ -109,20 +111,32 @@ def main():
     logging.info(f"Training on {len(train_samples)} samples and evaluating on {len(test_queries)} test queries.")
 
     evaluation_results = {}
-    seeds = [123, 456, 789, 2024, 42]
-    
-    for i in range(5):
-        logger.info(f"Starting run {i+1} with seed {seeds[i]}")
-        
-        # Set all seeds for reproducibility
-        torch.manual_seed(seeds[i])
-        torch.cuda.manual_seed(seeds[i])
-        torch.cuda.manual_seed_all(seeds[i])  # for multi-GPU
+    random.seed(42)
+    np.random.seed(42)
+    torch.manual_seed(42)
+    torch.cuda.manual_seed_all(42)
+    torch.backends.cudnn.deterministic = True
+    torch.backends.cudnn.benchmark = False
 
-        # Create fresh model for each run
-        word_embedding_model = models.Transformer(embedding_model, max_seq_length=max_seq_length)
-        pooling_model = models.Pooling(word_embedding_model.get_word_embedding_dimension())
-        model = SentenceTransformer(modules=[word_embedding_model, pooling_model])
+    seeds = random.sample(range(0, 101), 5)
+    
+    for i, seed in enumerate(seeds):
+        logger.info(f"Starting run {i} with seed {seed}")
+        
+        # Clear previous model from memory
+        if i > 0:
+            del model
+            torch.cuda.empty_cache()
+            gc.collect()
+
+        # Set all seeds for reproducibility
+        torch.manual_seed(seed)
+        torch.cuda.manual_seed(seed)
+        if torch.cuda.is_available():
+            torch.cuda.manual_seed_all(seed)
+
+        model = SentenceTransformer(embedding_model, trust_remote_code=True)
+        model.max_seq_length = max_seq_length
 
         # Create fresh dataloader with new seed for shuffling
         train_dataloader = DataLoader(train_samples, shuffle=True, batch_size=train_batch_size)
@@ -143,7 +157,7 @@ def main():
         ndcg_scores = ir_evaluator.compute_metrices(model)
         
         evaluation_results[f'run_{i+1}'] = {
-            'seed': seeds[i],
+            'seed': seed,
             'NDCG@1': ndcg_scores[0],
             'NDCG@3': ndcg_scores[1],
             'NDCG@5': ndcg_scores[2],
@@ -156,7 +170,6 @@ def main():
             json.dump(evaluation_results, f, indent=4)
     
     logger.info(f"All runs completed. Results saved to {results_file}")
-
 
 if __name__ == '__main__':
     main()

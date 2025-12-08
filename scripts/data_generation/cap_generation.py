@@ -8,7 +8,7 @@ from pathlib import Path
 from data_generation.cap.constraint_extractor import ConstraintExtractor
 from data_generation.cap.utterance_generator import UtteranceGenerator
 
-env_path = Path(__file__).resolve().parent.parent / ".env"
+env_path = Path(__file__).resolve().parent.parent.parent / ".env"
 load_dotenv(dotenv_path=env_path)
 
 def load_config(path: Path) -> dict:
@@ -28,14 +28,14 @@ def load_config(path: Path) -> dict:
 
 def main():
     # 1 - loading config information
-    cfg = load_config(Path(__file__).parent.parent / "config" / "config_gen_data.yaml")
+    cfg = load_config(Path(__file__).parent.parent.parent / "config" / "config_gen_data.yaml")
     llm_name = cfg["llm_name"]
     llm_url = cfg["llm_url"]
     llm_temp = cfg.get("llm_temp", 1.0)
     utterances = cfg.get("utterances", 10)
     oas_path = cfg["oas_path"]
     output_folder = Path(cfg["output_folder"], (llm_name.split('/')[-1]).lower(), "constraint-aware")
-    api_key = os.getenv("OPENAI_API_KEY")
+    api_key = os.getenv("DEEPINFRA_API_KEY")
 
     # 2 - initializing extractor and utterance generator
     extractor = ConstraintExtractor(api_key=api_key, base_url=llm_url,model_name=llm_name)
